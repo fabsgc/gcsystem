@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no" ?>
+<lang>
+  <sentence id="windowinfo_Back">Retour</sentence>
+  <sentence id="blockinfo_Back">Retour</sentence>
+  <sentence id="bienvenue">Bienvenue !</sentence>
+  <sentence id="content">Bienvenue dans votre nouveau projet GCsystem, merci d'avoir choisi notre framework.</sentence>
+  <sentence id="liredoc">lire la documentation</sentence>
+  <sentence id="lirecours">lire le cours d'introduction</sentence>
+</lang>
