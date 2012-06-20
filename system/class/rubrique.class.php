@@ -182,7 +182,7 @@
 					break;
 					
 					case 'title': 
-						$this->title==$info;
+						$this->title=$info;
 					break;
 
 					case 'type': 
