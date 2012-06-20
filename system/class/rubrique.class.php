@@ -33,7 +33,7 @@
 			$this->doctype.="\n";
 			$this->doctype.='<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >';
 			$this->title='Page Web';
-			$this->metaContentType='text/html; charset=utf-8';
+			$this->metaContentType='text/html; charset='.CHARSET;
 			$this->metaKeyword='';
 			$this->metaDescription='';
 			$this->metaRobot='index,follow';
@@ -376,6 +376,14 @@
 		}
 		
 		/* ---------- FONCTIONS ------------- */
+		
+		public function getLangClient(){
+			$langcode = (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
+			$langcode = (!empty($langcode)) ? explode(";", $langcode) : $langcode;
+			$langcode = (!empty($langcode['0'])) ? explode(",", $langcode['0']) : $langcode;
+			$langcode = (!empty($langcode['0'])) ? explode("-", $langcode['0']) : $langcode;
+			return $langcode['0'];
+		}
 		
 		public function windowInfo($Title, $Content, $Time, $Redirect, $lang="fr"){
 			?>
