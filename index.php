@@ -73,7 +73,7 @@ if(isset($_GET['soucat'])) { $_GET['soucat']=intval(htmlentities($_GET['soucat']
 if(isset($_GET['token'])) { $_GET['token']=htmlentities($_GET['token']); }
 
 /* ------ enregistrement de la rubrique et de l'url -------- */
-$GLOBALS['rubrique']->setErrorLog('errors.log','Page rewrite : http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].' rubrique : '.$_SERVER["SERVER_NAME"].$_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"].' / origine : '.$_SERVER['HTTP_REFERER'].' / IP : '.$_SERVER['REMOTE_ADDR']);
+$GLOBALS['rubrique']->setErrorLog('history.log','Page rewrite : http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].' rubrique : '.$_SERVER["SERVER_NAME"].$_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"].' / origine : '.$_SERVER['HTTP_REFERER'].' / IP : '.$_SERVER['REMOTE_ADDR']);
 
 /* ------ articulation du site web -------- */
   
