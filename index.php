@@ -39,7 +39,7 @@ $c = new TestErrorHandling();
 
 /* ---------- connexion SQL ----------------- */
 
-$GLOBALS['base']=$rubrique->connectDatabase($db);
+$GLOBALS['base']=$GLOBALS['rubrique']->connectDatabase($db);
 
 /* --------------- Gzip --------- */
 
