@@ -14,7 +14,7 @@
 		protected $lang		             ;       
 		protected $show		          = true;       
 		
-		public  function __construct($file="", $nom="", $timecache=0, $lang){
+		public  function __construct($file="", $nom="", $timecache=0, $lang=""){
 			$this->file=TEMPLATE_PATH.$file.TEMPLATE_EXT;
 			if(file_exists($this->file) or is_readable($this->file)){
 				$handle = fopen($this->file, 'rb');
@@ -24,12 +24,20 @@
 				$this->nom=$nom;
 				$this->timeCache=$timecache;
 				$this->fileCache=CACHE_PATH.'template_'.$this->nom.'.tpl.compil.php';
-				$this->lang=$lang;
+				if(!$lang){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
 				$this->setParser();
 			} 
 			else{
 				array_push($error, 'le fichier de template spécifié n\'a pas été trouvé.');
 			}
+		}
+		
+		private function getLangClient(){
+			$langcode = (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
+			$langcode = (!empty($langcode)) ? explode(";", $langcode) : $langcode;
+			$langcode = (!empty($langcode['0'])) ? explode(",", $langcode['0']) : $langcode;
+			$langcode = (!empty($langcode['0'])) ? explode("-", $langcode['0']) : $langcode;
+			return $langcode['0'];
 		}
 		
 		protected function setParser(){
