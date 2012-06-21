@@ -24,6 +24,15 @@
 		
 		$data = $sql->fetch('query2', sqlGc::PARAM_FETCHCOLUMN);
 		echo $data;
+		
+		$forms= new formsGC("livreor", "livreor".FILES_EXT, "post", "", "", "");
+$forms->addFieldset('ajouter un message');
+$forms->addHtml('ajouter un message', '<label style="margin: auto; width: 680px;">Message</label><br />');
+$forms->addTextarea('ajouter un message', '', '', array('name'=>'message', 'id'=>'textarea', 'cols'=>60, 'rows'=>10), 2);
+$forms->addHtml('ajouter un message', '<label><img src="captcha.html" alt="captcha" /></label>');
+$forms->addInputText('ajouter un message', '', '', array('name'=>"captcha", 'size'=>25),  2);
+$forms->addSubmitReset("submit", array('value'=>'envoyer', 'name'=>"button_livreor"), 0);
+$forms->showForms();
 			
 	echo $GLOBALS['rubrique']->affFooter();
 ?>

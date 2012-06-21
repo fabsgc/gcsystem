@@ -444,7 +444,9 @@
 						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
 					}
 					else{
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].''].@$_GET[''.$attribute['name'].'']."\"";
+						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
 					}
 				break;
 				
@@ -453,7 +455,9 @@
 						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
 					}
 					else{
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].''].@$_GET[''.$attribute['name'].'']."\"";
+						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
 					}
 				break;
 
@@ -462,7 +466,9 @@
 						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
 					}
 					else{
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].''].@$_GET[''.$attribute['name'].'']."\"";
+						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
 					}
 				break;
 				
@@ -471,7 +477,9 @@
 						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
 					}
 					else{
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].''].@$_GET[''.$attribute['name'].'']."\"";
+						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
 					}
 				break;
 				
@@ -480,7 +488,9 @@
 						$this->GCtypeInput.="<input type=\"text\" value=\"".$attribute['value']."\"";
 					}
 					else{
-						$this->GCtypeInput.="<input type=\"text\" value=\"".@$_POST[''.$attribute['name'].''].@$_GET[''.$attribute['name'].'']."\"";
+						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
 					}
 				break;
 			}
@@ -637,7 +647,8 @@
 			}
 			$this->GCtypeTextarea.=">";
 			if($value!="" && !@$_POST[''.$attribute['name'].''] && !@$_POST[''.$attribute['name'].'']) $this->GCtypeTextarea.=$value;
-			$this->GCtypeTextarea.=@$_POST[''.$attribute['name'].''].@$_GET[''.$attribute['name'].''];
+			if (isset($_POST[''.$attribute['name'].''])) $this->GCtypeTextarea.=@$_POST[''.$attribute['name'].''];
+			if (isset($_GET[''.$attribute['name'].''])) $this->GCtypeTextarea.=@$_GET[''.$attribute['name'].''];
 			$this->GCtypeTextarea.="</textarea>";
 			for($this->i=1;$this->i<=$br;$this->i++){
 				$this->GCtypeTextarea.="<br />";

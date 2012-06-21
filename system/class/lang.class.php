@@ -14,6 +14,7 @@
 		private $domXml;
 		private $sentence;
 		private $error = array();
+		private $erreur ;
 		private $content;
 		
 		public function __construct($lang){
@@ -25,7 +26,6 @@
 			$this->lang = $lang;
 			$this->addError('fichier à ouvrir : '.$lang);
 			$this->loadFile();
-			echo $this->showError();
 		}
 		
 		public function loadFile(){
@@ -82,9 +82,9 @@
 		
 		public function showError(){
 			foreach($this->error as $error){
-				$erreur .=$error."<br />";
+				$this->erreur .=$error."<br />";
 			}
-			return $erreur;
+			return $this->erreur;
 		}
 		
 		private function checkEncoding($val){
