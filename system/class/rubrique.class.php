@@ -96,14 +96,6 @@
 				return $this->langInstance->loadSentence($sentence);
 			}
 			
-			private function getLangClient(){
-				$langcode = (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
-				$langcode = (!empty($langcode)) ? explode(";", $langcode) : $langcode;
-				$langcode = (!empty($langcode['0'])) ? explode(",", $langcode['0']) : $langcode;
-				$langcode = (!empty($langcode['0'])) ? explode("-", $langcode['0']) : $langcode;
-				return $langcode['0'];
-			}
-			
 			public function GzipinitOutputFilter() {
 				ob_start('ob_gzhandler');
 				register_shutdown_function('ob_end_flush');
