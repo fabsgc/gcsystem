@@ -499,8 +499,11 @@
 		}   
 		
 		public function affFooter(){
-			$this->footer="  </body>\n</html>";
+			if(ENVIRONMENT == 'development'){
+				$appdev = new appDev();
+			}
 			
+			$this->footer="  </body>\n</html>";
 			return $this->footer;
 		}
 		

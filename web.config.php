@@ -105,14 +105,23 @@ define('CLASS_LANG', CLASS_PATH.'lang.class.php');
 //class file
 define('CLASS_FILE', CLASS_PATH.'file.class.php');
 
-//class file
+//class dir
 define('CLASS_DIR', CLASS_PATH.'dir.class.php');
 
 //class picture
 define('CLASS_PICTURE', CLASS_PATH.'picture.class.php');
 
-//class picture
+//class sql
 define('CLASS_SQL', CLASS_PATH.'sqlGc.class.php');
+
+//class appDev
+define('CLASS_APPDEV', CLASS_PATH.'appDev.class.php');
+
+//class zip
+define('CLASS_ZIP', CLASS_PATH.'zip.class.php');
+
+//class mail
+define('CLASS_MAIL', CLASS_PATH.'mail.class.php');
 
 //extension des fichiers de fonctions
 define('FUNCTION_EXT', '.function');

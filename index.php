@@ -25,6 +25,10 @@ require_once(CLASS_FILE);
 require_once(CLASS_DIR);
 require_once(CLASS_PICTURE);
 require_once(CLASS_SQL);
+require_once(CLASS_APPDEV);
+require_once(CLASS_ZIP);
+require_once(CLASS_MAIL);
+
 
 /* ---------- creation de la page -------------- */
 
