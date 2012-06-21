@@ -1,4 +1,13 @@
 <?php
+	/*\
+	 | ------------------------------------------------------
+	 | @file : picture.class.php
+	 | @author : fab@c++
+	 | @description : class fille de file.class.php gérant les images
+	 | @version : 2.0 bêta
+	 | ------------------------------------------------------
+	\*/
+	
     class picture extends file{
 		private $img;                //contient l'url de l'image
 		private $imgGD;              //objet GD

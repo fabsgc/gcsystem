@@ -1,4 +1,13 @@
 <?php
+	/*\
+	 | ------------------------------------------------------
+	 | @file : sqlGc.class.php
+	 | @author : fab@c++
+	 | @description : class facilitant la gestion des requêtes SQL
+	 | @version : 2.0 bêta
+	 | ------------------------------------------------------
+	\*/
+	
 	class sqlGc{
 		protected $var            = array();       //liste des variables
 		protected $query          = array();       //liste des requêtes

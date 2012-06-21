@@ -1,4 +1,13 @@
 <?php
+	/*\
+	 | ------------------------------------------------------
+	 | @file : templateGc.class.php
+	 | @author : fab@c++
+	 | @description : class gérant le moteur de template
+	 | @version : 2.0 bêta
+	 | ------------------------------------------------------
+	\*/
+	
 	class templateGc{
 		protected $file               = "";       //chemin vers le .tpl
 		protected $fileCache          = "";       //chemin vers le .compil.tpl
@@ -76,7 +85,7 @@
 		
 		public function saveCache($contenu){
 			$file = fopen($this->fileCache, 'w+');
-			fputs($file, $contenu);
+			fputs($file, ($contenu));
 			fclose($file);
 		}
 		
@@ -102,7 +111,6 @@
 						else{
 							$this->contentCompiled=$this->compile($this->content);
 							$this->saveCache($this->contentCompiled);
-							echo $this->contentCompiled;
 							foreach ($this->vars as $cle => $valeur){
 								${$cle} = $valeur;
 							}
@@ -151,7 +159,6 @@
 						else{
 							$this->contentCompiled=$this->compile($this->content);
 							$this->saveCache($this->contentCompiled);
-							echo $this->contentCompiled;
 							foreach ($this->vars as $cle => $valeur){
 								${$cle} = $valeur;
 							}
@@ -190,7 +197,7 @@
 						include($this->fileCache);
 					$out = ob_get_contents();
 					ob_get_clean();
-					return $out;
+					return($out);
 				}
 			}
 		}

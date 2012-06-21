@@ -1,4 +1,13 @@
 <?php
+	/*\
+	 | ------------------------------------------------------
+	 | @file : captcha.class.php
+	 | @author : fab@c++
+	 | @description : class permettant la génération de captcha personnalisée
+	 | @version : 2.0 bêta
+	 | ------------------------------------------------------
+	\*/
+	
 	class captchaGC{
 		private $img;
 		private $mot;

@@ -1,4 +1,13 @@
 <?php
+	/*\
+	 | ------------------------------------------------------
+	 | @file : dir.class.php
+	 | @author : fab@c++
+	 | @description : class gèrant les opérations sur les fichiers
+	 | @version : 2.0 bêta
+	 | ------------------------------------------------------
+	\*/
+	
     class dir{		
 		private $dir;
 		

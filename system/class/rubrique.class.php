@@ -1,4 +1,13 @@
 <?php
+	/*\
+	 | ------------------------------------------------------
+	 | @file : rubrique.class.php
+	 | @author : fab@c++
+	 | @description : class mère de l'application
+	 | @version : 2.0 bêta
+	 | ------------------------------------------------------
+	\*/
+	
 	class rubrique implements general{
 		
 		/* --- infos d'en tete -- */

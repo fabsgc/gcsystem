@@ -1,4 +1,13 @@
 <?php
+	/*\
+	 | ------------------------------------------------------
+	 | @file : lang.class.php
+	 | @author : fab@c++
+	 | @description : class permettant la gestion de plusieurs langues
+	 | @version : 2.0 bêta
+	 | ------------------------------------------------------
+	\*/
+	
     class lang{
 		private $lang = 'fr';
 		private $langFile = true;

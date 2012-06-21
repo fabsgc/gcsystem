@@ -1,4 +1,13 @@
 <?php
+	/*\
+	 | ------------------------------------------------------
+	 | @file : file.class.php
+	 | @author : fab@c++
+	 | @description : class gérant les opérations sur les fichiers
+	 | @version : 2.0 bêta
+	 | ------------------------------------------------------
+	\*/
+	
     class file{		
 		private $file;
 		private $error;

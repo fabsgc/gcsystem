@@ -2,17 +2,14 @@
 session_start();
 
 /*\
-
  | ------------------------------------------------------
-
  | @file : index.php
  | @author : fab@c++
  | @description : Controlleur central de l'application
- | @version : 0.1 Alpha
- 
+ | @version : 2.0 bêta
  | ------------------------------------------------------
- 
 \*/
+
 require_once('web.config.php');
 require_once(CLASS_LANG);
 require_once(CLASS_GENERAL_INTERFACE);

@@ -19,6 +19,13 @@
 			echo $data['ID'].' '.$data['pseudo'].'<br />';
 		}
 		
+		$cache = new cache('cache2', $sql->fetch('query1'), 0);
+		$cache->setCache();
+		
+		foreach($cache->getCache() as $data){
+			echo $data['ID'].' '.$data['pseudo'].'<br />';
+		}
+		
 		$data = $sql->fetch('query2', sqlGc::PARAM_FETCHCOLUMN);
 		echo $data;
 			
