@@ -67,7 +67,7 @@
 			else{
 				$time_ago = time() - filemtime($this->nameFile);
 		 
-				if($time_ago > $this-time){
+				if($time_ago > $this->time){
 					$rep = true;
 				}
 			}

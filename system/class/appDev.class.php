@@ -26,7 +26,10 @@
 				font: 16px Verdana, Arial, sans-serif;
 				text-align: left;
 				color: 
-				#2F2F2F;">interface de développement en cours de création</div>';
+				#2F2F2F;">
+					<div id="dev_logo" style=" display: inline-block;"><img src="'.IMG_PATH.'logo.png" style="width: 25px" /></div>
+					<div id="dev_text" style="position: relative; top: -6px; display: inline-block;">interface de développement en cours de création</div>
+				</div>';
 		}
 		
 		public  function __desctuct(){
