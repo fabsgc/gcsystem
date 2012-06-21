@@ -7,6 +7,7 @@
 	 | @version : 2.0 bêta
 	 | ------------------------------------------------------
 	\*/
+	
 	class Cache{
 		private $name              ; //nom du cache
 		private $nameFile          ; //nom du fichier de cache
