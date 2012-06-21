@@ -37,7 +37,7 @@
 		
 		/* ---------- CONSTRUCTEURS --------- */
 		
-		public  function __construct(){
+		public  function __construct($lang=""){
 			$this->doctype='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
 			$this->doctype.="\n";
 			$this->doctype.='<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >';
@@ -52,9 +52,9 @@
 			$this->css= array ('default.css');
 			$this->jsInFile = array('inpage.js');
 			$this->otherHeader = array();
-			$this->lang = 'fr';
 			$this->langInstance;
 			$this->createLangInstance();
+			if($lang==""){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
 		}
 		
 		/* ---------- CONNEXION A LA BASE DE DONNEES --------- */
@@ -89,7 +89,7 @@
 			}
 			
 			private function createLangInstance(){
-				if($this->lang=""){ $this->langInstance = new lang($this->getLangClient()); } else { $this->langInstance = new lang($this->lang); }
+				$this->langInstance = new lang($this->lang);
 			}
 			
 			public function useLang($sentence){
@@ -387,11 +387,14 @@
 		/* ---------- FONCTIONS ------------- */
 		
 		public function getLangClient(){
-			$langcode = (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
-			$langcode = (!empty($langcode)) ? explode(";", $langcode) : $langcode;
-			$langcode = (!empty($langcode['0'])) ? explode(",", $langcode['0']) : $langcode;
-			$langcode = (!empty($langcode['0'])) ? explode("-", $langcode['0']) : $langcode;
-			return $langcode['0'];
+			if(!array_key_exists('HTTP_ACCEPT_LANGUAGE', $_SERVER) || !$_SERVER['HTTP_ACCEPT_LANGUAGE'] ) { return DEFAULTLANG; }
+			else{
+				$langcode = (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
+				$langcode = (!empty($langcode)) ? explode(";", $langcode) : $langcode;
+				$langcode = (!empty($langcode['0'])) ? explode(",", $langcode['0']) : $langcode;
+				$langcode = (!empty($langcode['0'])) ? explode("-", $langcode['0']) : $langcode;
+				return $langcode['0'];
+			}
 		}
 		
 		public function windowInfo($Title, $Content, $Time, $Redirect, $lang="fr"){
@@ -500,7 +503,7 @@
 		
 		public function affFooter(){
 			if(ENVIRONMENT == 'development'){
-				$appdev = new appDev();
+				$appdev = new appDev($this->lang);
 			}
 			
 			$this->footer="  </body>\n</html>";

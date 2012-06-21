@@ -30,6 +30,6 @@
 	
 </style>
 <div id="GCsysytem_dev">
-	<div id="GCsysytem_dev_logo"><img src="<?php echo htmlentities($IMG_PATH); ?>logo.png" style="width: 25px" /></div>
-	<div id="GCsysytem_dev_content"><?php echo htmlentities($text); ?></div>
+	<div id="GCsysytem_dev_logo"><img src="<?php echo ($IMG_PATH); ?>logo.png" style="width: 25px" /></div>
+	<div id="GCsysytem_dev_content"><?php echo ($text); ?></div>
 </div>

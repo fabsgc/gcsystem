@@ -6,7 +6,7 @@
 	$GLOBALS['rubrique']->setInfo(array('title'=>'émerde'));
 	echo $GLOBALS['rubrique']->affHeader();
 		echo $GLOBALS['rubrique']->getLangClient(); //constructeur
-		$t= new templateGC('gcsystem', 'GCsystem', '0', 'nl');
+		$t= new templateGC('gcsystem', 'GCsystem', '0');
 		$t->setShow(FALSE);
 		echo $t->show();
 

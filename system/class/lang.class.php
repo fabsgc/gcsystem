@@ -31,7 +31,10 @@
 		public function loadFile(){
 			if(is_file(LANG_PATH.$this->lang.LANG_EXT)){
 				$this->langFile=true;
-				$this->domXml = new DomDocument();
+				
+				$string = file_get_contents(LANG_PATH.$this->lang.LANG_EXT);
+
+				$this->domXml = new DomDocument('1.0', 'iso-8859-15');
 				if($this->domXml->load(LANG_PATH.$this->lang.LANG_EXT)){
 					$this->langFile=true;
 					$this->addError('fichier ouvert : '.$this->lang);
@@ -59,7 +62,7 @@
 				}
 				
 				if($this->content!=""){
-					return $this->content;
+					return utf8_decode($this->content);
 				}
 				else{
 					return 'texte non trouvé';
@@ -75,6 +78,11 @@
 				$erreur .=$error."<br />";
 			}
 			return $erreur;
+		}
+		
+		private function checkEncoding($val){
+			$val =  preg_replace('#Ã©#isU', 'é', $val);
+			return $val;
 		}
 		
 		private function addError($error){

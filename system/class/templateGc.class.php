@@ -266,7 +266,7 @@
 		private function parsevars(){
 			foreach ($this->templateGC->vars as $cle => $valeur){
 				$variable = '$'.$cle.'='.$valeur.';';
-				$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).''.$cle.''.preg_quote($this->bal['vars'][1]).'`', '<?php echo htmlentities($'.$cle.'); ?>', $this->contenu);
+				$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).''.$cle.''.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($'.$cle.'); ?>', $this->contenu);
 			}
 			$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).'([A-Za-z0-9._-]+)'.preg_quote($this->bal['vars'][1]).'`', '<?php echo $$1; ?>', $this->contenu);
 		}

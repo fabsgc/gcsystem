@@ -156,6 +156,9 @@ define('RUBRIQUE_FORBIDDEN', 'Vous n\'ête pas autorisé(e) à accéder à cette page
 //dossier où est placé le framework à partir de la racine du répertoire
 define('FOLDER', 'GCsystem');
 
+//dossier où est placé le framework à partir de la racine du répertoire
+define('DEFAULTLANG', 'nl');
+
 /** Definit l'environnement dans lequel est effectué l'application :
 * development : erreurs affichées
 * production : erreurs non affichées **/
