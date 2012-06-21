@@ -31,6 +31,9 @@
 			}
 		}
 		
+		public function setChmod($chmod){
+		}
+		
 		public function moveTo($dir){
 			if(copy($file, $dest)){
 				if(delete($file)){

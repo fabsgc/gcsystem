@@ -19,6 +19,12 @@
 			$this->dir = $dir;
 		}
 		
+		public function setChmod($chmod){
+		}
+		
+		public function setChmodFiles($chmod){
+		}
+		
 		public function moveTo($dir){
 		
 		}
