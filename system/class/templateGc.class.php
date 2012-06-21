@@ -38,6 +38,12 @@
 			} 
 			else{
 				array_push($error, 'le fichier de template spécifié n\'a pas été trouvé.');
+				$this->content = "le fichier ne peut pas être lu";
+				$this->nom=$nom;
+				$this->timeCache=$timecache;
+				$this->fileCache=CACHE_PATH.'template_'.$this->nom.'.tpl.compil.php';
+				if($lang==""){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
+				$this->setParser();
 			}
 		}
 		
@@ -89,8 +95,11 @@
 			fclose($file);
 		}
 		
-		public function showDebug(){
-			return $this->error;
+		public function showError(){
+			foreach($this->error as $error){
+				$this->erreur .=$error."<br />";
+			}
+			return $this->erreur;
 		}
 
 		public function show(){
