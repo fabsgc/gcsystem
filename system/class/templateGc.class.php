@@ -33,7 +33,7 @@
 				$this->nom=$nom;
 				$this->timeCache=$timecache;
 				$this->fileCache=CACHE_PATH.'template_'.$this->nom.'.tpl.compil.php';
-				if(!$lang){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
+				if($lang==""){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
 				$this->setParser();
 			} 
 			else{

@@ -3,7 +3,7 @@
 	require_once(SQL_PATH.'index'.SQL_EXT.'.php');
 	require_once(FORMS_PATH.'index'.FORMS_EXT.'.php');
 
-	$GLOBALS['rubrique']->setInfo(array('title'=>'émerde'));
+	$GLOBALS['rubrique']->setInfo(array('title'=>'é bijour'));
 	echo $GLOBALS['rubrique']->affHeader();
 		echo $GLOBALS['rubrique']->getLangClient(); //constructeur
 		$t= new templateGC('gcsystem', 'GCsystem', '0');
