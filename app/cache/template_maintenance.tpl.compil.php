@@ -27,5 +27,5 @@
 	}
 </style>
 <div id="GCsystem">
-	<h1><?php echo "Le site web est pour l'instant indisponible."; ?></h1>
+	<h1><?php echo "De website is op dit moment beschikbaar niet."; ?></h1>
 </div>

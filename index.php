@@ -32,7 +32,7 @@ require_once(CLASS_MAIL);
 
 /* ---------- creation de la page -------------- */
 
-$GLOBALS['rubrique'] = new rubrique(); //constructeur
+$GLOBALS['rubrique'] = new rubrique('nl'); //constructeur
 
 /* ---------- gestion des erreurs (log) ----------- */
 

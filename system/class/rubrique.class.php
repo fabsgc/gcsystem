@@ -433,8 +433,8 @@
 			$tpl->show();
 		}
 		
-		public function setMaintenance($Title, $Content, $Time, $Redirect, $lang="fr"){
-			$tpl = new templateGC('maintenance', 'maintenance', 0, $lang);				
+		public function setMaintenance(){
+			$tpl = new templateGC('maintenance', 'maintenance', 0, $this->lang);				
 			$tpl->show();
 		}
 		

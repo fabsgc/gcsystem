@@ -4,7 +4,6 @@
 		echo $GLOBALS['rubrique']->getLangClient(); //constructeur
 		$t= new templateGC('gcsystem', 'GCsystem', '0');
 		$t->setShow(FALSE);
-		echo $t->showError();
 		echo $t->show();
 
 		// $sql = new sqlGc($GLOBALS['base'][BDD]);
