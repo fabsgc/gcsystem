@@ -89,11 +89,19 @@
 			}
 			
 			private function createLangInstance(){
-				$this->langInstance = new lang($this->lang);
+				if($this->lang=""){ $this->langInstance = new lang($this->getLangClient()); } else { $this->langInstance = new lang($this->lang); }
 			}
 			
 			public function useLang($sentence){
 				return $this->langInstance->loadSentence($sentence);
+			}
+			
+			private function getLangClient(){
+				$langcode = (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
+				$langcode = (!empty($langcode)) ? explode(";", $langcode) : $langcode;
+				$langcode = (!empty($langcode['0'])) ? explode(",", $langcode['0']) : $langcode;
+				$langcode = (!empty($langcode['0'])) ? explode("-", $langcode['0']) : $langcode;
+				return $langcode['0'];
 			}
 			
 			public function GzipinitOutputFilter() {
