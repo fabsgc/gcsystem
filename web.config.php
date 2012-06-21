@@ -160,9 +160,12 @@ define('FOLDER', 'GCsystem');
 define('DEFAULTLANG', 'nl');
 
 /** Definit l'environnement dans lequel est effectué l'application :
-* development : erreurs affichées
+* development : erreurs affichées + barre de développement
 * production : erreurs non affichées **/
 define('ENVIRONMENT', 'development');
+
+/* affiche le message de maintenance */
+define('MAINTENANCE', 'on');
 
 /* --------------parametres de connexion a la base de donnees------------------*/
 

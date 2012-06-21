@@ -433,6 +433,11 @@
 			$tpl->show();
 		}
 		
+		public function setMaintenance($Title, $Content, $Time, $Redirect, $lang="fr"){
+			$tpl = new templateGC('maintenance', 'maintenance', 0, $lang);				
+			$tpl->show();
+		}
+		
 		public function affHeader(){
 			$this->header.=$this->doctype."\n";
 			$this->header.="  <head>\n";

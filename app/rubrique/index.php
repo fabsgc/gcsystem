@@ -2,7 +2,7 @@
 	$GLOBALS['rubrique']->setInfo(array('title'=>'é bijour'));
 	echo $GLOBALS['rubrique']->affHeader();
 		echo $GLOBALS['rubrique']->getLangClient(); //constructeur
-		$t= new templateGC('gcsysteme', 'GCsystem', '0');
+		$t= new templateGC('gcsystem', 'GCsystem', '0');
 		$t->setShow(FALSE);
 		echo $t->showError();
 		echo $t->show();

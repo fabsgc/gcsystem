@@ -77,22 +77,27 @@ if(isset($_GET['token'])) { $_GET['token']=htmlentities($_GET['token']); }
 $GLOBALS['rubrique']->setErrorLog('history.log','Page rewrite : http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].' rubrique : '.$_SERVER["SERVER_NAME"].$_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"].' / origine : '.$_SERVER['HTTP_REFERER'].' / IP : '.$_SERVER['REMOTE_ADDR']);
 
 /* ------ articulation du site web -------- */
-  
-if(isset($_GET['rubrique'])){
-	switch($_GET['rubrique']){
-		default:
+
+if(MAINTENANCE=='off'){
+	if(isset($_GET['rubrique'])){
+		switch($_GET['rubrique']){
+			default:
+				$GLOBALS['rubrique']->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, 'index'.FILES_EXT); 
+				$GLOBALS['rubrique']->setErrorLog('errors.log', 'La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée');
+			break;
+		}
+	}
+	else{
+		if(is_file(RUBRIQUE_PATH.'index.php')){ 
+			$GLOBALS['rubrique']->setRubrique('index');
+		} 
+		else { 
 			$GLOBALS['rubrique']->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, 'index'.FILES_EXT); 
 			$GLOBALS['rubrique']->setErrorLog('errors.log', 'La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée');
-		break;
+		}
 	}
 }
 else{
-	if(is_file(RUBRIQUE_PATH.'index.php')){ 
-		$GLOBALS['rubrique']->setRubrique('index');
-	} 
-	else { 
-		$GLOBALS['rubrique']->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, 'index'.FILES_EXT); 
-		$GLOBALS['rubrique']->setErrorLog('errors.log', 'La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée');
-	}
+	$GLOBALS['rubrique']->setMaintenance();
 }
 ?>
