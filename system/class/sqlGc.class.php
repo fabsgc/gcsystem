@@ -88,8 +88,8 @@
 				}
 				
 				$this->cache->setVal($data);
-					$this->cache->setCache($data);
-					return $this->cache->getCache();
+				$this->cache->setCache($data);
+				return $this->cache->getCache();
 			}
 			else{
 				return $this->cache->getCache();
