@@ -87,7 +87,7 @@
 		
 		public function compile($contenu){
 			return $this->variable.$this->refParser->parse($contenu);
-		}
+		} 
 		
 		public function saveCache($contenu){
 			$file = fopen($this->fileCache, 'w+');
