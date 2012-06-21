@@ -1,1 +1,10 @@
-Bienvenue dans le projet GCsystem
+Information:
+-----------
+Open-Source depuis sa création
+Version: 2.0
+Auteur: fab@c++
+Description: framework php mvc de développement d'appliation web
+
+Nécessite: PHP 5, une base de donnée et mod_rewrite on
+
+Chmod en 777
