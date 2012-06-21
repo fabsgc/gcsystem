@@ -114,6 +114,13 @@
 				fputs($file, date("d/m/Y à H:i ! : ",time()).$message."\n");
 			}
 			
+			public function setRubrique($rubrique){
+				require_once(RUBRIQUE_PATH.$rubrique.'.php');
+				if(file_exists(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php')){ require_once(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php'); }
+				if(file_exists(SQL_PATH.$rubrique.FUNCTION_EXT.'.php')){ require_once(SQL_PATH.$rubrique.FUNCTION_EXT.'.php'); }
+				if(file_exists(FORMS_PATH.$rubrique.FUNCTION_EXT.'.php')){ require_once(FORMS_PATH.$rubrique.FUNCTION_EXT.'.php'); }
+			}
+			
 			public function sendMail($email, $message_html, $sujet, $envoyeur){
 				if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $email)){
 					$passage_ligne = "\r\n";

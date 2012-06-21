@@ -87,8 +87,8 @@ if(isset($_GET['rubrique'])){
 	}
 }
 else{
-	if(is_file(RUBRIQUE_PATH.'index.php')) { 
-		require_once(RUBRIQUE_PATH.'index.php') ;
+	if(is_file(RUBRIQUE_PATH.'index.php')){ 
+		$GLOBALS['rubrique']->setRubrique('index');
 	} 
 	else { 
 		$GLOBALS['rubrique']->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, 'index'.FILES_EXT); 

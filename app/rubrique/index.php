@@ -1,8 +1,4 @@
 <?php
-	require_once(INCLUDE_PATH.'index'.FUNCTION_EXT.'.php');
-	require_once(SQL_PATH.'index'.SQL_EXT.'.php');
-	require_once(FORMS_PATH.'index'.FORMS_EXT.'.php');
-
 	$GLOBALS['rubrique']->setInfo(array('title'=>'é bijour'));
 	echo $GLOBALS['rubrique']->affHeader();
 		echo $GLOBALS['rubrique']->getLangClient(); //constructeur
