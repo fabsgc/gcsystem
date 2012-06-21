@@ -29,7 +29,6 @@
 		}
 		
 		public function useLang($sentence){
-			echo $this->langInstance->showError();
 			return $this->langInstance->loadSentence($sentence);
 		}
 		
