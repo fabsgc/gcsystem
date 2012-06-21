@@ -13,6 +13,8 @@
 		protected $query          = array();       //liste des requêtes
 		protected $bdd            = array();       //connexion sql
 		protected $error          = array();       //erreur
+		protected $cache                   ;       //référence vers un objet de type cache
+		protected $time                    ;       //durée de mise en cache
 		const PARAM_INT           = 1;             //les paramètres des variables, en relation avec PDO::PARAM_
 		const PARAM_BOOL          = 5;
 		const PARAM_NULL          = 0;
@@ -30,55 +32,67 @@
 			}
 		}
 		
-		public function query($nom, $query){
+		public function query($nom, $query, $time=0){
 			$this->query[''.$nom.''] = $query;
+			$this->time[''.$nom.''] = $time;
 		}
 
 		public function  fetch($nom, $fetch = self::PARAM_FETCH){
-			$query = $this->bdd->prepare(''.$this->query[''.$nom.''].'');
+			$this->cache = new cache($nom.'.sql', "", $this->time[''.$nom.'']);
 			
-			foreach($this->var as $cle => $val){
-				if(preg_match('#'.$cle.'#', $this->query[''.$nom.''])){
-					if(is_array($val)){
-						$query->bindValue($cle,$val[0],$val[1]);
-					}
-					else{
-						switch(gettype($val)){
-							case 'boolean' :
-								$query->bindValue(":$cle",$val,self::PARAM_BOOL);
-							break;
-							
-							case 'integer' :
-								$query->bindValue(":$cle",$val,self::PARAM_INT);
-							break;
-							
-							case 'double' :
-								$query->bindValue(":$cle",$val,self::PARAM_STR);
-							break;
-							
-							case 'string' :
-								$query->bindValue(":$cle",$val,self::PARAM_STR);
-							break;
-							
-							case 'NULL' :
-								$query->bindValue(":$cle",$val,self::PARAM_NULL);
-							break;
-							
-							default :
-								$this->addError('type non géré');
-							break;
+			if($this->cache->isDie()){
+				$query = $this->bdd->prepare(''.$this->query[''.$nom.''].'');
+				
+				foreach($this->var as $cle => $val){
+					if(preg_match('#'.$cle.'#', $this->query[''.$nom.''])){
+						if(is_array($val)){
+							$query->bindValue($cle,$val[0],$val[1]);
+						}
+						else{
+							switch(gettype($val)){
+								case 'boolean' :
+									$query->bindValue(":$cle",$val,self::PARAM_BOOL);
+								break;
+								
+								case 'integer' :
+									$query->bindValue(":$cle",$val,self::PARAM_INT);
+								break;
+								
+								case 'double' :
+									$query->bindValue(":$cle",$val,self::PARAM_STR);
+								break;
+								
+								case 'string' :
+									$query->bindValue(":$cle",$val,self::PARAM_STR);
+								break;
+								
+								case 'NULL' :
+									$query->bindValue(":$cle",$val,self::PARAM_NULL);
+								break;
+								
+								default :
+									$this->addError('type non géré');
+								break;
+							}
 						}
 					}
+					
 				}
 				
+				$query->execute();
+				
+				switch($fetch){
+					case self::PARAM_FETCH : $data = $query->fetchAll(); break;
+					case self::PARAM_FETCHCOLUMN : $data = $query->fetchColumn(); break;
+					default : $this->addError('cette constante n\'existe pas'); $data=""; break;
+				}
+				
+				$this->cache->setVal($data);
+					$this->cache->setCache($data);
+					return $this->cache->getCache();
 			}
-			
-			$query->execute();
-			
-			switch($fetch){
-				case self::PARAM_FETCH : return $data = $query->fetchAll(); break;
-				case self::PARAM_FETCHCOLUMN : return $data = $query->fetchColumn(); break;
-				default : $this->addError('cette constante n\'existe pas'); break;
+			else{
+				return $this->cache->getCache();
 			}
 		}
 		

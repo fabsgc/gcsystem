@@ -42,6 +42,10 @@
 			$this->nameFileFile = CACHE_PATH.$name.'.cache';
 		}
 		
+		public function setVal($val){
+			$this->val = $val;
+		}
+		
 		public function setTime($time=0){
 			$this->time = $time;
 		}

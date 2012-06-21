@@ -12,8 +12,8 @@
 
 		$sql = new sqlGc($GLOBALS['base'][BDD]);
 		$sql->setVar(array('id' => array(7, sqlGc::PARAM_INT)));
-		$sql->query('query1', 'SELECT * FROM membre LIMIT 0,3');
-		$sql->query('query2', 'SELECT COUNT(*) as machin FROM membre');
+		$sql->query('query1', 'SELECT * FROM membre LIMIT 0,3', '1000');
+		$sql->query('query2', 'SELECT COUNT(*) as machin FROM membre', '10');
 		
 		foreach($sql->fetch('query1') as $data){
 			echo $data['ID'].' '.$data['pseudo'].'<br />';
