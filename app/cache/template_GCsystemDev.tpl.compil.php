@@ -49,10 +49,10 @@
 	#GCsysytem_dev_content_zone{
 		clear: left;
 		background-color: white;
-		width: 269px;
+		width: 194px;
 		height: 60px;
-		overflow: auto;
 		word-wrap: breal-work;
+		overflow: auto;
 	}
 	
 	#GCsysytem_dev_content_zone::-webkit-scrollbar {
@@ -93,7 +93,7 @@
 		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>time.png"/></div>
 		<div class="GCsysytem_dev_content_content" style="padding: 2px; width: 70px;"><?php echo ($timeexec); ?> ms</div>
 	</div>
-	<div class="GCsysytem_dev_content" style="width: 300px; padding: 0px;">
+	<div class="GCsysytem_dev_content" style="width: 225px; padding: 0px;">
 		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>http.png" title="rubriques chargées"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone">
@@ -101,19 +101,27 @@
 			</div>
 		</div>
 	</div>
-	<div class="GCsysytem_dev_content" style="width: 300px; padding: 0px;">
+	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
 		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>sql.png" title="requête sql exécutées"/></div>
 		<div class="GCsysytem_dev_content_content">
-			<div id="GCsysytem_dev_content_zone">
+			<div id="GCsysytem_dev_content_zone" style="width: 219px;">
 			<?php echo ($sql); ?>
 			</div>
 		</div>
 	</div>
-	<div class="GCsysytem_dev_content" style="width: 300px; padding: 0px;">
+	<div class="GCsysytem_dev_content" style="width: 225px; padding: 0px;">
 		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>tpl.png" title="fichier de template chargés"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone">
 			<?php echo ($tpl); ?>
+			</div>
+		</div>
+	</div>
+	<div class="GCsysytem_dev_content" style="width: 200px; padding: 0px;">
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>arbo.png" title="variable de rubrique"/></div>
+		<div class="GCsysytem_dev_content_content">
+			<div id="GCsysytem_dev_content_zone"  style="width: 169px;">
+			<?php echo ($arbo); ?>
 			</div>
 		</div>
 	</div>

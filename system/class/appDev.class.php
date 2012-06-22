@@ -17,6 +17,7 @@
 		private $rubrique   =array();
 		private $template   =array();
 		private $sql        =array();
+		private $arbo               ;
 		
 		public  function __construct($lang=""){
 			if(!$lang){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
@@ -36,6 +37,16 @@
 				$sql .= $val.'<br />';
 			}
 			
+			$this->arbo .= 'rubrique.';
+			if(isset($_GET['rubrique'])) $this->arbo .= $_GET['rubrique']; 
+				else $this->arbo .= 'no';
+			$this->arbo .= ' ::action.';
+			if(isset($_GET['rubrique'])) $this->arbo .= $_GET['action']; 
+				else $this->arbo .= 'no';
+			$this->arbo .= ' ::id.';
+			if(isset($_GET['id'])) $this->arbo .= $_GET['id']; 
+				else $this->arbo .= 'no';
+
 			$tpl = new templateGC('GCsystemDev', 'GCsystemDev', 0, $lang="");
 			$tpl->assign(array(
 				'text'=>$this->useLang('appdev_temp'),
@@ -43,7 +54,8 @@
 				'timeexec' => round($this->timeExecEnd,2),
 				'http' => $rubrique,
 				'tpl' => $template,
-				'sql' => $sql
+				'sql' => $sql,
+				'arbo' => $this->arbo
 			));
 				
 			$tpl->show();
