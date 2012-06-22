@@ -9,3 +9,5 @@ Description: framework php mvc de développement d'appliation web
 Nécessite: PHP 5, une base de donnée et mod_rewrite on
 
 Chmod en 777
+
+Utilisation des images de la barre de développement de simfony pendant la période de développement du Framework

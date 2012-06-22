@@ -91,11 +91,11 @@
 <div id="GCsysytem_dev">
 	<div id="GCsysytem_dev_logo"><img src="<?php echo ($IMG_PATH); ?>logo.png"/></div>
 	<div class="GCsysytem_dev_content">
-		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>time.png" title="<?php echo "temps d'exécution"; ?>temps d'exécution"/><img src="<?php echo ($IMG_PATH); ?>memory.png" title="<?php echo "mémoire utilisée"; ?>mémoire utilisée"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>time.png" title="<?php echo "temps d'exécution"; ?>"/><img src="<?php echo ($IMG_PATH); ?>memory.png" title="<?php echo "mémoire utilisée"; ?>"/></div>
 		<div class="GCsysytem_dev_content_content" style="padding: 2px; width: 70px;"><?php echo ($timeexec); ?> ms<br /><span style="position: relative; top: 20px;"><?php echo ($memory); ?> kb</span></div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>http.png" title="<?php echo "fichiers inclus"; ?>fichiers inclus"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>http.png" title="<?php echo "fichiers inclus"; ?>"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone" style="width: 219px;">
 			<?php echo ($http); ?>
@@ -103,7 +103,7 @@
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 275px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>sql.png" title="<?php echo "requête sql exécutées"; ?>requête sql exécutées"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>sql.png" title="<?php echo "requête sql exécutées"; ?>"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone" style="width: 244px;">
 			<?php echo ($sql); ?>
@@ -111,7 +111,7 @@
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>tpl.png" title="<?php echo "fichier de template inclus."; ?>fichier de template chargés"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>tpl.png" title="<?php echo "fichier de template inclus."; ?>"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone" style="width: 219px;">
 			<?php echo ($tpl); ?>
@@ -119,7 +119,7 @@
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 200px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>arbo.png" title="<?php echo "variable get et post."; ?>variable post et get"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>arbo.png" title="<?php echo "variable get et post."; ?>"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone"  style="width: 169px;">
 			<?php echo ($arbo); ?>
