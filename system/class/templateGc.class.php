@@ -147,6 +147,7 @@
 				}
 			}
 			elseif($this->show==false){
+				$GLOBALS['appdev']->addTemplate($this->file);
 				if(is_file($this->fileCache) && $this->timeCache>0){
 					$this->timeFile=filemtime($this->fileCache);
 					if(($this->timeFile+$this->timeCache)>time()){

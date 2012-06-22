@@ -16,10 +16,9 @@
 		margin-bottom: 20px;
 		word-wrap: break-word;
 		position:absolute; 
-		top:50%; 
+		top:200px; 
 		left:50%; 
 		margin-left:-400px; 
-		margin-top:-200px;
 	}
 	
 	h1{

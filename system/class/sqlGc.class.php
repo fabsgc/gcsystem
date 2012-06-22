@@ -42,32 +42,39 @@
 			
 			if($this->cache->isDie()){
 				$query = $this->bdd->prepare(''.$this->query[''.$nom.''].'');
+				$GLOBALS['appdev']->addSql(''.$this->query[''.$nom.''].'');
 				
 				foreach($this->var as $cle => $val){
 					if(preg_match('#'.$cle.'#', $this->query[''.$nom.''])){
 						if(is_array($val)){
 							$query->bindValue($cle,$val[0],$val[1]);
+							$GLOBALS['appdev']->addSql('_'.$cle.' : '.$val[0]);
 						}
 						else{
 							switch(gettype($val)){
 								case 'boolean' :
 									$query->bindValue(":$cle",$val,self::PARAM_BOOL);
+									$GLOBALS['appdev']->addSql('_'.$cle.' : '.$val);
 								break;
 								
 								case 'integer' :
 									$query->bindValue(":$cle",$val,self::PARAM_INT);
+									$GLOBALS['appdev']->addSql('_'.$cle.' : '.$val);
 								break;
 								
 								case 'double' :
 									$query->bindValue(":$cle",$val,self::PARAM_STR);
+									$GLOBALS['appdev']->addSql('_'.$cle.' : '.$val);
 								break;
 								
 								case 'string' :
 									$query->bindValue(":$cle",$val,self::PARAM_STR);
+									$GLOBALS['appdev']->addSql('_'.$cle.' : '.$val);
 								break;
 								
 								case 'NULL' :
 									$query->bindValue(":$cle",$val,self::PARAM_NULL);
+									$GLOBALS['appdev']->addSql($cle.' : '.$val);
 								break;
 								
 								default :

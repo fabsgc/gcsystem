@@ -28,11 +28,14 @@ require_once(CLASS_SQL);
 require_once(CLASS_APPDEV);
 require_once(CLASS_ZIP);
 require_once(CLASS_MAIL);
+require_once(CLASS_BBCODE);
+require_once(CLASS_MODO);
 
 
 /* ---------- creation de la page -------------- */
 
-$GLOBALS['rubrique'] = new rubrique('nl'); //constructeur
+$GLOBALS['appdev'] = new appDev();
+$GLOBALS['rubrique'] = new rubrique(); //constructeur
 
 /* ---------- gestion des erreurs (log) ----------- */
 
@@ -78,7 +81,7 @@ $GLOBALS['rubrique']->setErrorLog('history.log','Page rewrite : http://'.$_SERVE
 
 /* ------ articulation du site web -------- */
 
-if(MAINTENANCE=='off'){
+if(MAINTENANCE==true){
 	if(isset($_GET['rubrique'])){
 		switch($_GET['rubrique']){
 			default:
@@ -97,7 +100,8 @@ if(MAINTENANCE=='off'){
 		}
 	}
 }
-else{
+elseif(MAINTENANCE==false){
 	$GLOBALS['rubrique']->setMaintenance();
 }
-?>
+
+if(ENVIRONMENT == 'development') $GLOBALS['appdev']->show();

@@ -16,10 +16,9 @@
 		margin-bottom: 20px;
 		word-wrap: break-word;
 		position:absolute; 
-		top:50%; 
+		top:200px; 
 		left:50%; 
 		margin-left:-400px; 
-		margin-top:-200px;
 	}
 	
 	h1{
@@ -27,5 +26,5 @@
 	}
 </style>
 <div id="GCsystem">
-	<h1><?php echo "De website is op dit moment beschikbaar niet."; ?></h1>
+	<h1><?php echo "Le site web est pour l'instant indisponible."; ?></h1>
 </div>

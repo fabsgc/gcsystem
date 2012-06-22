@@ -123,6 +123,12 @@ define('CLASS_ZIP', CLASS_PATH.'zip.class.php');
 //class mail
 define('CLASS_MAIL', CLASS_PATH.'mail.class.php');
 
+//class bbcode
+define('CLASS_BBCODE', CLASS_PATH.'bbcode.class.php');
+
+//class modo
+define('CLASS_MODO', CLASS_PATH.'modo.class.php');
+
 //extension des fichiers de fonctions
 define('FUNCTION_EXT', '.function');
 
@@ -165,7 +171,7 @@ define('DEFAULTLANG', 'nl');
 define('ENVIRONMENT', 'development');
 
 /* affiche le message de maintenance */
-define('MAINTENANCE', 'on');
+define('MAINTENANCE', true);
 
 /* --------------parametres de connexion a la base de donnees------------------*/
 
