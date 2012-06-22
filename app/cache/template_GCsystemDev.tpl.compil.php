@@ -30,6 +30,7 @@
 	#GCsysytem_dev_logo img{
 		width: 55px;
 		height: 55px;
+		float: left;
 	}
 	
 	.GCsysytem_dev_content{
@@ -90,8 +91,8 @@
 <div id="GCsysytem_dev">
 	<div id="GCsysytem_dev_logo"><img src="<?php echo ($IMG_PATH); ?>logo.png"/></div>
 	<div class="GCsysytem_dev_content">
-		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>time.png"/></div>
-		<div class="GCsysytem_dev_content_content" style="padding: 2px; width: 70px;"><?php echo ($timeexec); ?> ms</div>
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>time.png" title="temps d'exécution"/><img src="<?php echo ($IMG_PATH); ?>memory.png" title="mémoire utilisée"/></div>
+		<div class="GCsysytem_dev_content_content" style="padding: 2px; width: 70px;"><?php echo ($timeexec); ?> ms<br /><?php echo ($memory); ?> kb</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 225px; padding: 0px;">
 		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>http.png" title="rubriques chargées"/></div>

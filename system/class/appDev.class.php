@@ -55,7 +55,8 @@
 				'http' => $rubrique,
 				'tpl' => $template,
 				'sql' => $sql,
-				'arbo' => $this->arbo
+				'arbo' => $this->arbo,
+				'memory' => (memory_get_usage(true)/1024)
 			));
 				
 			$tpl->show();

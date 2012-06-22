@@ -103,5 +103,6 @@ if(MAINTENANCE==true){
 elseif(MAINTENANCE==false){
 	$GLOBALS['rubrique']->setMaintenance();
 }
-
+echo memory_get_peak_usage(true).'<br />';
+echo memory_get_usage(true);
 if(ENVIRONMENT == 'development') $GLOBALS['appdev']->show();
