@@ -38,16 +38,14 @@
 				$sql .= $val.'<br />';
 			}
 			
-			$this->arbo .= 'rubrique.';
-			if(isset($_GET['rubrique'])) $this->arbo .= $_GET['rubrique']; 
-				else $this->arbo .= 'no';
-			$this->arbo .= ' ::action.';
-			if(isset($_GET['rubrique'])) $this->arbo .= $_GET['action']; 
-				else $this->arbo .= 'no';
-			$this->arbo .= ' ::id.';
-			if(isset($_GET['id'])) $this->arbo .= $_GET['id']; 
-				else $this->arbo .= 'no';
-
+			
+			foreach($_GET as $cle => $val){
+				$this->arbo .="".$cle."::".$val."#";
+			}
+			foreach($_POST as $cle => $val){
+				$this->arbo .="".$cle."::".$val."#";
+			}
+			
 			$tpl = new templateGC('GCsystemDev', 'GCsystemDev', 0, $lang="");
 			$tpl->assign(array(
 				'text'=>$this->useLang('appdev_temp'),

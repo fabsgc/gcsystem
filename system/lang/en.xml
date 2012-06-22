@@ -8,4 +8,10 @@
   <sentence id="lirecours">read the introductory tutorial</sentence>
   <sentence id="appdev_temp">interface development being created</sentence>
   <sentence id="maintenance">The website is currently unavailable.</sentence>
+  <sentence id="executiontime">time of execution</sentence>
+  <sentence id="memoireuse">memory used</sentence>
+  <sentence id="fichierinclus">included files</sentence>
+  <sentence id="requetesql">sql queries executed</sentence>
+  <sentence id="fichiertpl">templates files included.</sentence>
+  <sentence id="vargetpost">var get and post.</sentence>
 </lang>

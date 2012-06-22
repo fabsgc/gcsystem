@@ -85,7 +85,7 @@
 					}
 					
 				}
-				
+				$GLOBALS['appdev']->addSql('####################################');
 				$query->execute();
 				
 				switch($fetch){

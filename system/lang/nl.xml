@@ -8,4 +8,10 @@
   <sentence id="lirecours">lezen de inleidende les</sentence>
   <sentence id="appdev_temp">interface ontwikkeling is aan het zijn gecreëerd</sentence>
   <sentence id="maintenance">De website is op dit moment beschikbaar niet.</sentence>
+  <sentence id="executiontime">tijd van of uitvoering</sentence>
+  <sentence id="memoireuse">geheugen gebruikt</sentence>
+  <sentence id="fichierinclus">bestanden opgenomen</sentence>
+  <sentence id="requetesql">sql vragen uitgevoerd</sentence>
+  <sentence id="fichiertpl">templates bestanden gebruikt.</sentence>
+  <sentence id="vargetpost">var get en post.</sentence>
 </lang>
