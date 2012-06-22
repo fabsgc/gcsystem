@@ -116,9 +116,9 @@
 			
 			public function setRubrique($rubrique){
 				require_once(RUBRIQUE_PATH.$rubrique.'.php');
-				if(file_exists(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php')){ require_once(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php'); $GLOBALS['appdev']->addRubrique(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php'); }
-				if(file_exists(SQL_PATH.$rubrique.SQL_EXT.'.php')){ require_once(SQL_PATH.$rubrique.SQL_EXT.'.php'); $GLOBALS['appdev']->addRubrique(SQL_PATH.$rubrique.SQL_EXT.'.php'); }
-				if(file_exists(FORMS_PATH.$rubrique.FORMS_EXT.'.php')){ require_once(FORMS_PATH.$rubrique.FORMS_EXT.'.php'); $GLOBALS['appdev']->addRubrique(FORMS_PATH.$rubrique.FORMS_EXT.'.php'); }
+				if(file_exists(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php')){ require_once(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php');}
+				if(file_exists(SQL_PATH.$rubrique.SQL_EXT.'.php')){ require_once(SQL_PATH.$rubrique.SQL_EXT.'.php');}
+				if(file_exists(FORMS_PATH.$rubrique.FORMS_EXT.'.php')){ require_once(FORMS_PATH.$rubrique.FORMS_EXT.'.php'); }
 			}
 			
 			public function sendMail($email, $message_html, $sujet, $envoyeur){

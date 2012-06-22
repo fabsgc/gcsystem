@@ -26,6 +26,7 @@
 		}
 		
 		public function show(){
+			$this->rubrique = get_included_files();
 			self::setTimeExec();
 			foreach($this->rubrique as $val){
 				$rubrique .= $val.'<br />';

@@ -15,7 +15,7 @@
 		text-align: left;
 		color: 
 		#2F2F2F;
-		height: 60px;
+		min-height: 60px;
 	}
 	
 	#GCsysytem_dev_logo{
@@ -94,26 +94,26 @@
 		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}time.png" title="temps d'exécution"/><img src="{IMG_PATH}memory.png" title="mémoire utilisée"/></div>
 		<div class="GCsysytem_dev_content_content" style="padding: 2px; width: 70px;">{timeexec} ms<br />{memory} kb</div>
 	</div>
-	<div class="GCsysytem_dev_content" style="width: 225px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}http.png" title="rubriques chargées"/></div>
+	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
+		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}http.png" title="fichiers inclus"/></div>
 		<div class="GCsysytem_dev_content_content">
-			<div id="GCsysytem_dev_content_zone">
+			<div id="GCsysytem_dev_content_zone" style="width: 219px;">
 			{http}
 			</div>
 		</div>
 	</div>
-	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
+	<div class="GCsysytem_dev_content" style="width: 275px; padding: 0px;">
 		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}sql.png" title="requête sql exécutées"/></div>
 		<div class="GCsysytem_dev_content_content">
-			<div id="GCsysytem_dev_content_zone" style="width: 219px;">
+			<div id="GCsysytem_dev_content_zone" style="width: 244px;">
 			{sql}
 			</div>
 		</div>
 	</div>
-	<div class="GCsysytem_dev_content" style="width: 225px; padding: 0px;">
+	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
 		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}tpl.png" title="fichier de template chargés"/></div>
 		<div class="GCsysytem_dev_content_content">
-			<div id="GCsysytem_dev_content_zone">
+			<div id="GCsysytem_dev_content_zone" style="width: 219px;">
 			{tpl}
 			</div>
 		</div>
