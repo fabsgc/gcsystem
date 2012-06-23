@@ -69,12 +69,48 @@
 			if(preg_match('#list template#', $this->command)){				
 				if($this->dossier = opendir(TEMPLATE_PATH)){
 					while(false !== ($this->fichier = readdir($this->dossier))){
-						if(is_file(TEMPLATE_PATH.$this->fichier)){
+						if(is_file(TEMPLATE_PATH.$this->fichier) && $this->fichier!='.htaccess'){
 							$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->fichier.'';
 						}
 					}
 				}
 				$this->result = '<br /><span style="color: black;">----</span>> fichiers de template listés';
+			}
+			
+			if(preg_match('#list rubrique#', $this->command)){	
+				if($this->dossier = opendir(RUBRIQUE_PATH)){
+					$this->command .= '<br /><span style="color: black;">----</span>>####################### RUBRIQUE';
+					while(false !== ($this->fichier = readdir($this->dossier))){
+						if(is_file(RUBRIQUE_PATH.$this->fichier) && $this->fichier!='.htaccess'){
+							$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->fichier.'';
+						}
+					}
+				}
+				if($this->dossier = opendir(INCLUDE_PATH)){
+					$this->command .= '<br /><span style="color: black;">----</span>>####################### FUNCTION';
+					while(false !== ($this->fichier = readdir($this->dossier))){
+						if(is_file(RUBRIQUE_PATH.$this->fichier) && $this->fichier!='.htaccess'){
+							$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->fichier.'';
+						}
+					}
+				}
+				if($this->dossier = opendir(SQL_PATH)){
+					$this->command .= '<br /><span style="color: black;">----</span>>####################### SQL';
+					while(false !== ($this->fichier = readdir($this->dossier))){
+						if(is_file(RUBRIQUE_PATH.$this->fichier) && $this->fichier!='.htaccess'){
+							$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->fichier.'';
+						}
+					}
+				}
+				if($this->dossier = opendir(FORMS_PATH)){
+					$this->command .= '<br /><span style="color: black;">----</span>>####################### FORMS';
+					while(false !== ($this->fichier = readdir($this->dossier))){
+						if(is_file(RUBRIQUE_PATH.$this->fichier) && $this->fichier!='.htaccess'){
+							$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->fichier.'';
+						}
+					}
+				}
+				$this->result = '<br /><span style="color: black;">----</span>> fichiers de rubrique listés';
 			}
 			
 			if(preg_match('#list included#', $this->command)){				
