@@ -11,6 +11,8 @@
 	class modoGc{
 		public $contenu                       ; //contenu à filtrer
 		private $error              = array() ; //array contenant toutes les erreurs enregistrées
+		private $insulte =array(
+			'salaud', 'merde', 'salope', 'pute', 'putain', 'fils de pute', 'enculé', 'connasse'); //array contenant toutes les erreurs enregistrées
 		
 		public  function __construct(){
 		}

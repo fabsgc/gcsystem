@@ -66,6 +66,13 @@
 				$this->result = '<br /><span style="color: black;">----</span>> le template <u>'.$this->commandExplode[2].'</u> a bien été créé';
 			}
 			
+			if(preg_match('#add class (.+)#', $this->command)){
+				$monfichier = fopen(CLASS_PATH.$this->commandExplode[2].'.class.php', 'a');
+				fclose($monfichier);
+				$this->command .= '<br /><span style="color: black;">----</span>> '.CLASS_PATH.$this->commandExplode[2].'.class.php';
+				$this->result = '<br /><span style="color: black;">----</span>> le fichier class <u>'.CLASS_PATH.$this->commandExplode[2].'.class.php'.'</u> a bien été créé';
+			}
+			
 			if(preg_match('#list template#', $this->command)){				
 				if($this->dossier = opendir(TEMPLATE_PATH)){
 					while(false !== ($this->fichier = readdir($this->dossier))){

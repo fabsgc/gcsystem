@@ -47,7 +47,7 @@
 		height: 100%;
 		overflow: none;
 		word-wrap: break-word;
-		font-size: 0.90em;
+		font-size: 0.98em;
 		font-family: Consolas;
 		padding: 1px;
 		line-height: 0.95em;
