@@ -3,7 +3,7 @@
 	echo $GLOBALS['rubrique']->affHeader();
 		switch($_GET['action']){
 			case 'terminal':
-				$terminal = new terminalGC($_POST['message']);
+				$terminal = new terminalGC(htmlentities($_POST['message']));
 				echo $terminal ->parse();
 			break;
 			
