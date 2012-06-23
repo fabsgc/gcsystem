@@ -8,7 +8,7 @@
 	 | ------------------------------------------------------
 	\*/
 	
-    class file{		
+    class fileGc{		
 		private $file;
 		private $error;
 		

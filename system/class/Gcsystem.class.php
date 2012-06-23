@@ -8,7 +8,7 @@
 	 | ------------------------------------------------------
 	\*/
 	
-	class rubrique implements general{
+	class Gcsystem implements generalGc{
 		
 		/* --- infos d'en tete -- */
 		
@@ -89,7 +89,7 @@
 			}
 			
 			private function createLangInstance(){
-				$this->langInstance = new lang($this->lang);
+				$this->langInstance = new langGc($this->lang);
 			}
 			
 			public function useLang($sentence){
@@ -115,10 +115,10 @@
 			}
 			
 			public function setRubrique($rubrique){
-				require_once(RUBRIQUE_PATH.$rubrique.'.php');
-				if(file_exists(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php')){ require_once(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php');}
 				if(file_exists(SQL_PATH.$rubrique.SQL_EXT.'.php')){ require_once(SQL_PATH.$rubrique.SQL_EXT.'.php');}
 				if(file_exists(FORMS_PATH.$rubrique.FORMS_EXT.'.php')){ require_once(FORMS_PATH.$rubrique.FORMS_EXT.'.php'); }
+				if(file_exists(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php')){ require_once(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php');}
+				require_once(RUBRIQUE_PATH.$rubrique.'.php');
 			}
 			
 			public function sendMail($email, $message_html, $sujet, $envoyeur){
@@ -408,7 +408,7 @@
 			?>
 				<link href="asset/css/default.css" rel="stylesheet" type="text/css" media="screen, print, handheld" />
 			<?php
-			$tpl = new templateGC('tplGc_windowInfo', 'tplGc_windowInfo', 0, $lang);
+			$tpl = new templateGC('GCtplGc_windowInfo', 'tplGc_windowInfo', 0, $lang);
 			
 			$tpl->assign(array(
 				'title'=>$Title,
@@ -421,7 +421,7 @@
 		}
 		
 		public function blockInfo($Title, $Content, $Time, $Redirect, $lang="fr"){
-			$tpl = new templateGC('tplGc_blockInfo', 'tplGc_blockInfo', 0, $lang);
+			$tpl = new templateGC('GCtplGc_blockInfo', 'tplGc_blockInfo', 0, $lang);
 			
 			$tpl->assign(array(
 				'title'=>$Title,
@@ -434,7 +434,7 @@
 		}
 		
 		public function setMaintenance(){
-			$tpl = new templateGC('maintenance', 'maintenance', 0, $this->lang);				
+			$tpl = new templateGC('GCmaintenance', 'GCmaintenance', 0, $this->lang);				
 			$tpl->show();
 		}
 		

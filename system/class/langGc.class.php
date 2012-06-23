@@ -8,7 +8,7 @@
 	 | ------------------------------------------------------
 	\*/
 	
-    class lang{
+    class langGc{
 		private $lang = 'fr';
 		private $langFile = true;
 		private $domXml;

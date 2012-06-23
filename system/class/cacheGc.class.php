@@ -8,7 +8,7 @@
 	 | ------------------------------------------------------
 	\*/
 	
-	class Cache{
+	class CacheGc{
 		private $name              ; //nom du cache
 		private $nameFile          ; //nom du fichier de cache
 		private $time              ; //temps de mise en cache
@@ -84,11 +84,11 @@
 		}
 		
 		private function compress($val){
-			return $val;
+			return gzcompress($val,9);
 		}
 		
 		private function uncompress($val){
-			return ($val);
+			return gzuncompress($val);
 		}
 	}
 ?>

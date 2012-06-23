@@ -1,15 +1,15 @@
 <?php
 	/*\
 	 | ------------------------------------------------------
-	 | @file : modo.class.php
+	 | @file : zip.class.php
 	 | @author : fab@c++
-	 | @description : class gérant le filtrage du contenu du site
+	 | @description : class gérant les fichiers compressés
 	 | @version : 2.0 bêta
 	 | ------------------------------------------------------
 	\*/
 	
-	class modo{
-		public $contenu                       ; //contenu à filtrer
+	class zipGc{
+		public $file                          ; //chemin vers le fichier compressé
 		private $error              = array() ; //array contenant toutes les erreurs enregistrées
 		
 		public  function __construct(){

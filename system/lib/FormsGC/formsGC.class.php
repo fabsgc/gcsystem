@@ -113,7 +113,7 @@
 					array_push($this->GCid_uniq, $attribute['id']);
 				}
 				
-				$element= new FileGC();
+				$element= new FilesGc();
 				array_push($this->GCelements, $element->showFile($label, $attribute, $br).'label['.$fieldset.']');
 				unset($element);
 			}
@@ -600,7 +600,7 @@
 		}
 	}
 	
-	class FileGC {
+	class FilesGc {
 		private $GCtypeFile;
 		private $i;
 		

@@ -1,16 +1,18 @@
 <?php
 	/*\
 	 | ------------------------------------------------------
-	 | @file : bbcode.class.php
+	 | @file : mail.class.php
 	 | @author : fab@c++
-	 | @description : class gérant le parsage des messages
+	 | @description : class générant des mails
 	 | @version : 2.0 bêta
 	 | ------------------------------------------------------
 	\*/
 	
-	class bbcode{
-		public $contenu                       ; //contenu à parser
-		private $error              = array() ; //array contenant toutes les erreurs enregistrées
+	class mailGc{
+		public $destinataire                          ; //email du destinataire
+		public $message                               ; //message
+		public $piece                       = array() ; //liste des pièces jointes
+		public $error                       = array() ; //liste des erreurs
 		
 		public  function __construct(){
 		}

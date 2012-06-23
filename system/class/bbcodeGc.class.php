@@ -1,15 +1,15 @@
 <?php
 	/*\
 	 | ------------------------------------------------------
-	 | @file : zip.class.php
+	 | @file : bbcode.class.php
 	 | @author : fab@c++
-	 | @description : class gérant les fichiers compressés
+	 | @description : class gérant le parsage des messages
 	 | @version : 2.0 bêta
 	 | ------------------------------------------------------
 	\*/
 	
-	class zip{
-		public $file                          ; //chemin vers le fichier compressé
+	class bbcodeGc{
+		public $contenu                       ; //contenu à parser
 		private $error              = array() ; //array contenant toutes les erreurs enregistrées
 		
 		public  function __construct(){

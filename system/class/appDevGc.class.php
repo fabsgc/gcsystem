@@ -1,14 +1,14 @@
 <?php
 	/*\
 	 | ------------------------------------------------------
-	 | @file : appDev.class.php
+	 | @file : appDevGc.class.php
 	 | @author : fab@c++
 	 | @description : class à utiliser lors du développement de l'application
 	 | @version : 2.0 bêta
 	 | ------------------------------------------------------
 	\*/
 	
-	class appDev{
+	class appDevGc{
 		private $lang               ; // gestion des langues via des fichiers XML
 		private $langInstance       ;
 		private $timeExec           ;
@@ -26,6 +26,9 @@
 		}
 		
 		public function show(){
+			$rubrique="";
+			$template="";
+			$sql="";
 			$this->rubrique = get_included_files();
 			self::setTimeExec();
 			foreach($this->rubrique as $val){
@@ -48,7 +51,7 @@
 			
 			$tpl = new templateGC('GCsystemDev', 'GCsystemDev', 0, $lang="");
 			$tpl->assign(array(
-				'text'=>$this->useLang('appdev_temp'),
+				'text'=>$this->useLang('appDevGc_temp'),
 				'IMG_PATH'=>IMG_PATH,
 				'timeexec' => round($this->timeExecEnd,2),
 				'http' => $rubrique,
@@ -62,7 +65,7 @@
 		}
 		
 		private function createLangInstance(){
-			$this->langInstance = new lang($this->lang);
+			$this->langInstance = new langGc($this->lang);
 		}
 		
 		public function useLang($sentence){

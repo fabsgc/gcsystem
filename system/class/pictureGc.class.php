@@ -8,7 +8,7 @@
 	 | ------------------------------------------------------
 	\*/
 	
-    class picture extends file{
+    class pictureGc extends fileGc{
 		private $img;                //contient l'url de l'image
 		private $imgGD;              //objet GD
 		private $error = array();    //erreurs

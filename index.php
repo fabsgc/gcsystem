@@ -25,17 +25,18 @@ require_once(CLASS_FILE);
 require_once(CLASS_DIR);
 require_once(CLASS_PICTURE);
 require_once(CLASS_SQL);
-require_once(CLASS_APPDEV);
+require_once(CLASS_appDevGc);
 require_once(CLASS_ZIP);
 require_once(CLASS_MAIL);
 require_once(CLASS_BBCODE);
 require_once(CLASS_MODO);
+require_once(CLASS_TERMINAL);
 
 
 /* ---------- creation de la page -------------- */
 
-$GLOBALS['appdev'] = new appDev();
-$GLOBALS['rubrique'] = new rubrique(); //constructeur
+$GLOBALS['appDevGc'] = new appDevGc();
+$GLOBALS['rubrique'] = new Gcsystem(); //constructeur
 
 /* ---------- gestion des erreurs (log) ----------- */
 
@@ -84,8 +85,12 @@ $GLOBALS['rubrique']->setErrorLog('history.log','Page rewrite : http://'.$_SERVE
 if(MAINTENANCE==true){
 	if(isset($_GET['rubrique'])){
 		switch($_GET['rubrique']){
+			case 'terminal':
+				$GLOBALS['rubrique']->setRubrique('terminal');
+			break;
+			
 			default:
-				$GLOBALS['rubrique']->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, 'index'.FILES_EXT); 
+				$GLOBALS['rubrique']->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
 				$GLOBALS['rubrique']->setErrorLog('errors.log', 'La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée');
 			break;
 		}
@@ -95,7 +100,7 @@ if(MAINTENANCE==true){
 			$GLOBALS['rubrique']->setRubrique('index');
 		} 
 		else { 
-			$GLOBALS['rubrique']->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, 'index'.FILES_EXT); 
+			$GLOBALS['rubrique']->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
 			$GLOBALS['rubrique']->setErrorLog('errors.log', 'La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée');
 		}
 	}
@@ -103,4 +108,4 @@ if(MAINTENANCE==true){
 elseif(MAINTENANCE==false){
 	$GLOBALS['rubrique']->setMaintenance();
 }
-if(ENVIRONMENT == 'development') $GLOBALS['appdev']->show();
+if(ENVIRONMENT == 'development') $GLOBALS['appDevGc']->show();

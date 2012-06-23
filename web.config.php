@@ -76,19 +76,19 @@ define('FILES_EXT', '.html');
 define('FUNCTION_GENERIQUE', INCLUDE_PATH.'function.php');
 
 //class mere gerant l'application
-define('CLASS_GENERAL_INTERFACE', CLASS_PATH.'general.class.php');
+define('CLASS_GENERAL_INTERFACE', CLASS_PATH.'generalGc.class.php');
 
 //class mere gerant l'application
-define('CLASS_RUBRIQUE', CLASS_PATH.'rubrique.class.php');
+define('CLASS_RUBRIQUE', CLASS_PATH.'Gcsystem.class.php');
 
 //class gerant les log
-define('CLASS_LOG', CLASS_PATH.'log.class.php');
+define('CLASS_LOG', CLASS_PATH.'logGc.class.php');
 
 //class gerant les log
-define('CLASS_CACHE', CLASS_PATH.'cache.class.php');
+define('CLASS_CACHE', CLASS_PATH.'cacheGc.class.php');
 
 //class gerant les captchas
-define('CLASS_CAPTCHA', CLASS_PATH.'captcha.class.php');
+define('CLASS_CAPTCHA', CLASS_PATH.'captchaGc.class.php');
 
 //class gerant des exceptions
 define('CLASS_EXCEPTION', CLASS_PATH.'exceptionGc.class.php');
@@ -100,34 +100,37 @@ define('CLASS_TEMPLATE', CLASS_PATH.'templateGc.class.php');
 define('CLASS_FORMSGC', LIB_PATH.'FormsGC/formsGC.php');
 
 //class lang
-define('CLASS_LANG', CLASS_PATH.'lang.class.php');
+define('CLASS_LANG', CLASS_PATH.'langGc.class.php');
 
 //class file
-define('CLASS_FILE', CLASS_PATH.'file.class.php');
+define('CLASS_FILE', CLASS_PATH.'fileGc.class.php');
 
 //class dir
-define('CLASS_DIR', CLASS_PATH.'dir.class.php');
+define('CLASS_DIR', CLASS_PATH.'dirGc.class.php');
 
 //class picture
-define('CLASS_PICTURE', CLASS_PATH.'picture.class.php');
+define('CLASS_PICTURE', CLASS_PATH.'pictureGc.class.php');
 
 //class sql
 define('CLASS_SQL', CLASS_PATH.'sqlGc.class.php');
 
-//class appDev
-define('CLASS_APPDEV', CLASS_PATH.'appDev.class.php');
+//class appDevGc
+define('CLASS_appDevGc', CLASS_PATH.'appDevGc.class.php');
 
 //class zip
-define('CLASS_ZIP', CLASS_PATH.'zip.class.php');
+define('CLASS_ZIP', CLASS_PATH.'zipGc.class.php');
 
 //class mail
-define('CLASS_MAIL', CLASS_PATH.'mail.class.php');
+define('CLASS_MAIL', CLASS_PATH.'mailGc.class.php');
 
 //class bbcode
-define('CLASS_BBCODE', CLASS_PATH.'bbcode.class.php');
+define('CLASS_BBCODE', CLASS_PATH.'bbcodeGc.class.php');
 
 //class modo
-define('CLASS_MODO', CLASS_PATH.'modo.class.php');
+define('CLASS_MODO', CLASS_PATH.'modoGc.class.php');
+
+//class modo
+define('CLASS_TERMINAL', CLASS_PATH.'terminalGc.class.php');
 
 //extension des fichiers de fonctions
 define('FUNCTION_EXT', '.function');

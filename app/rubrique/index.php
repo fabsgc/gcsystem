@@ -23,7 +23,7 @@
 			echo $data['ID'].' '.$data['pseudo'].'<br />';
 		}
 		
-		$cache = new cache('cache2', $sql->fetch('query1'), 0);
+		$cache = new cacheGc('cache2', $sql->fetch('query1'), 0);
 		$cache->setCache();
 		
 		foreach($cache->getCache() as $data){

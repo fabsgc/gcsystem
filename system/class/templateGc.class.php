@@ -104,6 +104,7 @@
 
 		public function show(){
 			if($this->show==true){
+				$GLOBALS['appDevGc']->addTemplate($this->file);
 				if(is_file($this->fileCache) && $this->timeCache>0){
 					$this->timeFile=filemtime($this->fileCache);
 					if(($this->timeFile+$this->timeCache)>time()){
@@ -147,7 +148,7 @@
 				}
 			}
 			elseif($this->show==false){
-				$GLOBALS['appdev']->addTemplate($this->file);
+				$GLOBALS['appDevGc']->addTemplate($this->file);
 				if(is_file($this->fileCache) && $this->timeCache>0){
 					$this->timeFile=filemtime($this->fileCache);
 					if(($this->timeFile+$this->timeCache)>time()){
@@ -247,7 +248,7 @@
 		}
 		
 		private function createLangInstance(){
-			$this->langInstance = new lang($this->lang);
+			$this->langInstance = new langGc($this->lang);
 		}
 		
 		private function useLang($sentence){

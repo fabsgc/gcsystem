@@ -38,43 +38,43 @@
 		}
 
 		public function  fetch($nom, $fetch = self::PARAM_FETCH){
-			$this->cache = new cache($nom.'.sql', "", $this->time[''.$nom.'']);
+			$this->cache = new cacheGc($nom.'.sql', "", $this->time[''.$nom.'']);
 			
 			if($this->cache->isDie()){
 				$query = $this->bdd->prepare(''.$this->query[''.$nom.''].'');
-				$GLOBALS['appdev']->addSql(''.$this->query[''.$nom.''].'');
+				$GLOBALS['appDevGc']->addSql(''.$this->query[''.$nom.''].'');
 				
 				foreach($this->var as $cle => $val){
 					if(preg_match('#'.$cle.'#', $this->query[''.$nom.''])){
 						if(is_array($val)){
 							$query->bindValue($cle,$val[0],$val[1]);
-							$GLOBALS['appdev']->addSql('_'.$cle.' : '.$val[0]);
+							$GLOBALS['appDevGc']->addSql('_'.$cle.' : '.$val[0]);
 						}
 						else{
 							switch(gettype($val)){
 								case 'boolean' :
 									$query->bindValue(":$cle",$val,self::PARAM_BOOL);
-									$GLOBALS['appdev']->addSql('_'.$cle.' : '.$val);
+									$GLOBALS['appDevGc']->addSql('_'.$cle.' : '.$val);
 								break;
 								
 								case 'integer' :
 									$query->bindValue(":$cle",$val,self::PARAM_INT);
-									$GLOBALS['appdev']->addSql('_'.$cle.' : '.$val);
+									$GLOBALS['appDevGc']->addSql('_'.$cle.' : '.$val);
 								break;
 								
 								case 'double' :
 									$query->bindValue(":$cle",$val,self::PARAM_STR);
-									$GLOBALS['appdev']->addSql('_'.$cle.' : '.$val);
+									$GLOBALS['appDevGc']->addSql('_'.$cle.' : '.$val);
 								break;
 								
 								case 'string' :
 									$query->bindValue(":$cle",$val,self::PARAM_STR);
-									$GLOBALS['appdev']->addSql('_'.$cle.' : '.$val);
+									$GLOBALS['appDevGc']->addSql('_'.$cle.' : '.$val);
 								break;
 								
 								case 'NULL' :
 									$query->bindValue(":$cle",$val,self::PARAM_NULL);
-									$GLOBALS['appdev']->addSql($cle.' : '.$val);
+									$GLOBALS['appDevGc']->addSql($cle.' : '.$val);
 								break;
 								
 								default :
@@ -85,7 +85,7 @@
 					}
 					
 				}
-				$GLOBALS['appdev']->addSql('####################################');
+				$GLOBALS['appDevGc']->addSql('####################################');
 				$query->execute();
 				
 				switch($fetch){

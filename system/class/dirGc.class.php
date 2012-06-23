@@ -8,7 +8,7 @@
 	 | ------------------------------------------------------
 	\*/
 	
-    class dir{		
+    class dirGc{		
 		private $dir;
 		
 		public function __construct($dir){
