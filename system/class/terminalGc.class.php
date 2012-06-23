@@ -11,7 +11,7 @@
 	class terminalGc{
 		public $command                       ; //contenu à traiter
 		public $commandExplode                ; //contenu à traiter
-		public $result                        ='/ commande non reconnu'; //resultat du traitement
+		public $result                        ='/ <span style="color: red;">commande non reconnu</span>'; //resultat du traitement
 		public $dossier                       ; //dossier
 		public $fichier                       ; //fichier
 		
@@ -35,7 +35,7 @@
 				$monfichier = fopen(FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php', 'a');
 				fclose($monfichier);
 				$this->command .= '<br /><span style="color: black;">----</span>> '.FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php';
-				$this->result = '<br /><span style="color: black;">----</span>> la rubrique <u>'.$this->commandExplode[2].'</u> a bien été créée';
+				$this->result = '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">la rubrique <u>'.$this->commandExplode[2].'</u> a bien été créée</span>';
 			}
 			
 			if(preg_match('#delete rubrique (.+)#', $this->command)){
@@ -56,21 +56,21 @@
 					$this->command .= '<br /><span style="color: black;">----</span>> '.FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php';
 				}
 				
-				$this->result = '<br /><span style="color: black;">----</span>> la rubrique <u>'.$this->commandExplode[2].'</u> a bien été supprimée';
+				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> la rubrique <u>'.$this->commandExplode[2].'</u> a bien été supprimée</span>';
 			}
 			
 			if(preg_match('#add template (.+)#', $this->command)){
 				$monfichier = fopen(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, 'a');
 				fclose($monfichier);
 				$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
-				$this->result = '<br /><span style="color: black;">----</span>> le template <u>'.$this->commandExplode[2].'</u> a bien été créé';
+				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.$this->commandExplode[2].'</u> a bien été créé</span>';
 			}
 			
 			if(preg_match('#add class (.+)#', $this->command)){
 				$monfichier = fopen(CLASS_PATH.$this->commandExplode[2].'.class.php', 'a');
 				fclose($monfichier);
 				$this->command .= '<br /><span style="color: black;">----</span>> '.CLASS_PATH.$this->commandExplode[2].'.class.php';
-				$this->result = '<br /><span style="color: black;">----</span>> le fichier class <u>'.CLASS_PATH.$this->commandExplode[2].'.class.php'.'</u> a bien été créé';
+				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le fichier class <u>'.CLASS_PATH.$this->commandExplode[2].'.class.php'.'</u> a bien été créé</span>';
 			}
 			
 			if(preg_match('#list template#', $this->command)){				
@@ -81,10 +81,86 @@
 						}
 					}
 				}
-				$this->result = '<br /><span style="color: black;">----</span>> fichiers de template listés';
+				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> fichiers de template listés</span>';
 			}
 			
-			if(preg_match('#list rubrique#', $this->command)){	
+			if(preg_match('#delete template (.+)#', $this->command)){
+				if(is_file(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT)){
+					unlink(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT);
+					$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.'</u> a bien été supprimé</span>';
+				}
+				else{
+					$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Ce template n\'existe pas</span>';
+				}
+			}
+			
+			if(preg_match('#rename template (.+) (.+)#', $this->command)){
+				if(is_file(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT)){
+					if(!is_file(TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT)){
+						rename(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT);
+						$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.' -> '.TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT;
+						$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.'</u> a bien été rénommé en <u>'.TEMPLATE_PATH.$this->commandExplode[3].'</u></span>';
+					}
+					else{
+						$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT;
+						$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Un template porte déjà le même nom</span>';
+					}
+				}
+				else{
+					$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Ce template n\'existe pas</span>';
+				}
+			}
+			
+			if(preg_match('#rename rubrique (.+) (.+)#', $this->command)){
+				if($this->commandExplode[2]!='index' && $this->commandExplode[2]!='terminal'){
+					if($this->commandExplode[2]!='index' && $this->commandExplode[3]!='terminal'){
+						if(is_file(RUBRIQUE_PATH.$this->commandExplode[2].'.php')){
+							if(!is_file(RUBRIQUE_PATH.$this->commandExplode[3].'.php')){
+								if(is_file(RUBRIQUE_PATH.$this->commandExplode[2].'.php') && !is_file(RUBRIQUE_PATH.$this->commandExplode[3].'.php')){
+									rename(RUBRIQUE_PATH.$this->commandExplode[2].'.php', RUBRIQUE_PATH.$this->commandExplode[3].'.php');
+									$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->commandExplode[2].'.php'.' -> '.RUBRIQUE_PATH.$this->commandExplode[3].'.php';
+									$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le fichier <u>'.RUBRIQUE_PATH.$this->commandExplode[2].'.php'.'</u> a bien été rénommé en <u>'.RUBRIQUE_PATH.$this->commandExplode[3].'.php'.'</u></span>';
+								}
+								if(is_file(INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php') && !is_file(INCLUDE_PATH.$this->commandExplode[3].FUNCTION_EXT.'.php')){
+									rename(INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php', INCLUDE_PATH.$this->commandExplode[3].FUNCTION_EXT.'.php');
+									$this->command .= '<br /><span style="color: black;">----</span>> '.INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php'.' -> '.INCLUDE_PATH.$this->commandExplode[3].FUNCTION_EXT.'.php';
+								}
+								if(is_file(SQL_PATH.$this->commandExplode[2].SQL_EXT.'.php') && !is_file(SQL_PATH.$this->commandExplode[3].SQL_EXT.'.php')){
+									rename(SQL_PATH.$this->commandExplode[2].SQL_EXT.'.php', SQL_PATH.$this->commandExplode[3].SQL_EXT.'.php');
+									$this->command .= '<br /><span style="color: black;">----</span>> '.SQL_PATH.$this->commandExplode[2].SQL_EXT.'.php'.' -> '.SQL_PATH.$this->commandExplode[3].SQL_EXT.'.php';
+								}
+								if(is_file(FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php') && !is_file(FORMS_PATH.$this->commandExplode[3].FORMS_EXT.'.php')){
+									rename(FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php', FORMS_PATH.$this->commandExplode[3].FORMS_EXT.'.php');
+									$this->command .= '<br /><span style="color: black;">----</span>> '.FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php'.' -> '.FORMS_PATH.$this->commandExplode[3].FORMS_EXT.'.php';
+								}
+								
+								$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> la rubrique <u>'.$this->commandExplode[2].'</u> a bien été rénommée en <u>'.$this->commandExplode[3].'</u></span>';
+							}
+							else{
+								$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT;
+							$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Une rubrique porte déjà le même nom</span>';
+							}
+						}
+						else{
+							$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
+							$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Cette rubrique n\'existe pas</span>';
+						}
+					}
+					else{
+						$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT;
+						$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
+					}
+				}
+				else{
+					$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
+				}
+			}
+			
+			if(preg_match('#list rubrique#', $this->command)){
 				if($this->dossier = opendir(RUBRIQUE_PATH)){
 					$this->command .= '<br /><span style="color: black;">----</span>>####################### RUBRIQUE';
 					while(false !== ($this->fichier = readdir($this->dossier))){
@@ -117,14 +193,14 @@
 						}
 					}
 				}
-				$this->result = '<br /><span style="color: black;">----</span>> fichiers de rubrique listés';
+				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> fichiers de rubrique listés</span>';
 			}
 			
 			if(preg_match('#list included#', $this->command)){				
 				foreach(get_included_files() as $val){
 					$this->command .= '<br /><span style="color: black;">----</span>> '.$val;
 				}
-				$this->result = '<br /><span style="color: black;">----</span>> fichiers inclus';
+				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> fichiers inclus listés</span>';
 			}
 			
 			if(preg_match('#clear cache#', $this->command)){
@@ -136,7 +212,7 @@
 						}
 					}
 				}
-				$this->result = '<br /><span style="color: black;">----</span>> le cache a bien été vidé';
+				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le cache a bien été vidé</span>';
 			}
 			
 			if(preg_match('#clear log#', $this->command)){
@@ -148,7 +224,7 @@
 						}
 					}
 				}
-				$this->result = '<br /><span style="color: black;">----</span>> le log a bien été vidé';
+				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le log a bien été vidé</span>';
 			}
 			
 			return '> '.$this->command.' '.$this->result;

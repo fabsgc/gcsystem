@@ -10,7 +10,7 @@
 			default:
 				$t= new templateGC('GCterminal', 'GCterminal', '0');
 				if(ENVIRONMENT == 'development') $t->assign(array('moins' => 60, 'moins2'=>90));
-					else $t->assign(array('moins' => 0, 'moins2' => 0));
+					else $t->assign(array('moins' => 0, 'moins2' => 30));
 				$t->show();
 			break;
 		}
