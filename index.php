@@ -82,7 +82,7 @@ $GLOBALS['rubrique']->setErrorLog('history.log','Page rewrite : http://'.$_SERVE
 
 /* ------ articulation du site web -------- */
 
-if(MAINTENANCE==true){
+if(MAINTENANCE==false){
 	if(isset($_GET['rubrique'])){
 		switch($_GET['rubrique']){
 			case 'terminal':
@@ -105,7 +105,7 @@ if(MAINTENANCE==true){
 		}
 	}
 }
-elseif(MAINTENANCE==false){
+elseif(MAINTENANCE==true){
 	$GLOBALS['rubrique']->setMaintenance();
 }
 if(ENVIRONMENT == 'development') $GLOBALS['appDevGc']->show();

@@ -174,7 +174,7 @@ define('DEFAULTLANG', 'nl');
 define('ENVIRONMENT', 'development');
 
 /* affiche le message de maintenance */
-define('MAINTENANCE', true);
+define('MAINTENANCE', false);
 
 /* --------------parametres de connexion a la base de donnees------------------*/
 
