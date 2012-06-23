@@ -270,6 +270,22 @@
 				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le log a bien été vidé</span>';
 			}
 			
+			if(preg_match('#help#', $this->command)){
+				$this->command .= '<br /><span style="color: black;">----</span>> add rubrique nom';
+				$this->command .= '<br /><span style="color: black;">----</span>> delete rubrique nom';
+				$this->command .= '<br /><span style="color: black;">----</span>> rename rubrique nom nouveaunom';
+				$this->command .= '<br /><span style="color: black;">----</span>> add template nom';
+				$this->command .= '<br /><span style="color: black;">----</span>> delete template nom';
+				$this->command .= '<br /><span style="color: black;">----</span>> rename template nom nouveaunom';
+				$this->command .= '<br /><span style="color: black;">----</span>> add class nom';
+				$this->command .= '<br /><span style="color: black;">----</span>> list template';
+				$this->command .= '<br /><span style="color: black;">----</span>> list included';
+				$this->command .= '<br /><span style="color: black;">----</span>> list rubrique';
+				$this->command .= '<br /><span style="color: black;">----</span>> clear cache';
+				$this->command .= '<br /><span style="color: black;">----</span>> clear log';
+				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> liste des commandes</span>';
+			}
+			
 			return '> '.$this->command.' '.$this->result;
 		}
 	}
