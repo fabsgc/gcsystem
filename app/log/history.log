@@ -146,3 +146,5 @@
 23/06/2012 à 21:54 ! : Page rewrite : http://localhost/GCsystem2.0/index.php?rubrique=terminal rubrique : localhost/GCsystem2.0/index.php?rubrique=terminal / origine :  / IP : 127.0.0.1
 23/06/2012 à 21:54 ! : Page rewrite : http://localhost/GCsystem2.0/index.php?rubrique=terminal&action=terminal rubrique : localhost/GCsystem2.0/index.php?rubrique=terminal&action=terminal / origine : http://localhost/GCsystem2.0/index.php?rubrique=terminal / IP : 127.0.0.1
 23/06/2012 à 21:59 ! : Page rewrite : http://localhost/GCsystem2.0/index.php?rubrique=terminal rubrique : localhost/GCsystem2.0/index.php?rubrique=terminal / origine :  / IP : 127.0.0.1
+23/06/2012 à 22:05 ! : Page rewrite : http://localhost/GCsystem2.0/index.php?rubrique=terminal&action=terminal rubrique : localhost/GCsystem2.0/index.php?rubrique=terminal&action=terminal / origine : http://localhost/GCsystem2.0/index.php?rubrique=terminal / IP : 127.0.0.1
+23/06/2012 à 22:06 ! : Page rewrite : http://localhost/GCsystem2.0/index.php rubrique : localhost/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1

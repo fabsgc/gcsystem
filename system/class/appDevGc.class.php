@@ -43,10 +43,10 @@
 			
 			
 			foreach($_GET as $cle => $val){
-				$this->arbo .="".$cle."::".$val."#";
+				$this->arbo .="".htmlentities($cle)."::".htmlentities($val)."#";
 			}
 			foreach($_POST as $cle => $val){
-				$this->arbo .="".$cle."::".$val."#";
+				$this->arbo .="".htmlentities($cle)."::".htmlentities($val)."#";
 			}
 			
 			$tpl = new templateGC('GCsystemDev', 'GCsystemDev', 0, $lang="");
