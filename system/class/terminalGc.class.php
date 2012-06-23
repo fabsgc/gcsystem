@@ -14,66 +14,97 @@
 		public $result                        ='/ <span style="color: red;">commande non reconnu</span>'; //resultat du traitement
 		public $dossier                       ; //dossier
 		public $fichier                       ; //fichier
+		public $forbidden                     ; //fichier interdit
 		
 		public  function __construct($command){
 			$this->command = $command;
 			$this->command = substr($this->command,11,strlen($this->command)); 
-			$this->commandExplode = explode(' ', trim($this->command)); 
+			$this->commandExplode = explode(' ', trim($this->command));
+			$this->forbidden = array(
+				RUBRIQUE_PATH.'index.php', INCLUDE_PATH.'index'.INCLUDE_PATH.'.php', SQL_PATH.'index'.SQL_PATH.'.php', FORMS_PATH.'index'.FORMS_PATH.'.php',
+				RUBRIQUE_PATH.'terminal.php',
+				TEMPLATE_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.'GCmaintenance'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,
+				CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
+			);
 		}
-		
+
 		public function parse(){
 			if(preg_match('#add rubrique (.+)#', $this->command)){
-				$monfichier = fopen(RUBRIQUE_PATH.$this->commandExplode[2].'.php', 'a');
-				fclose($monfichier);
-				$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->commandExplode[2].'.php';
-				$monfichier = fopen(INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php', 'a');
-				fclose($monfichier);
-				$this->command .= '<br /><span style="color: black;">----</span>> '.INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php';
-				$monfichier = fopen(SQL_PATH.$this->commandExplode[2].SQL_EXT.'.php', 'a');
-				fclose($monfichier);
-				$this->command .= '<br /><span style="color: black;">----</span>> '.SQL_PATH.$this->commandExplode[2].SQL_EXT.'.php';
-				$monfichier = fopen(FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php', 'a');
-				fclose($monfichier);
-				$this->command .= '<br /><span style="color: black;">----</span>> '.FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php';
-				$this->result = '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">la rubrique <u>'.$this->commandExplode[2].'</u> a bien été créée</span>';
+				if(!array_search(RUBRIQUE_PATH.$this->commandExplode[2].'.php', $this->forbidden)){
+					$monfichier = fopen(RUBRIQUE_PATH.$this->commandExplode[2].'.php', 'a');
+					fclose($monfichier);
+					$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->commandExplode[2].'.php';
+					$monfichier = fopen(INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php', 'a');
+					fclose($monfichier);
+					$this->command .= '<br /><span style="color: black;">----</span>> '.INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php';
+					$monfichier = fopen(SQL_PATH.$this->commandExplode[2].SQL_EXT.'.php', 'a');
+					fclose($monfichier);
+					$this->command .= '<br /><span style="color: black;">----</span>> '.SQL_PATH.$this->commandExplode[2].SQL_EXT.'.php';
+					$monfichier = fopen(FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php', 'a');
+					fclose($monfichier);
+					$this->command .= '<br /><span style="color: black;">----</span>> '.FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php';
+					$this->result = '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">la rubrique <u>'.$this->commandExplode[2].'</u> a bien été créée</span>';
+				}
+				else{
+					$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->commandExplode[2].'.php';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
+				}
 			}
 			
 			if(preg_match('#delete rubrique (.+)#', $this->command)){
-				if(is_file(RUBRIQUE_PATH.$this->commandExplode[2].'.php')){
-					unlink(RUBRIQUE_PATH.$this->commandExplode[2].'.php');
-					$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->commandExplode[2].'.php'.'';
-				}
-				if(is_file(INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php')){
-					unlink(INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php');
-					$this->command .= '<br /><span style="color: black;">----</span>> '.INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php';
-				}
-				if(is_file(SQL_PATH.$this->commandExplode[2].SQL_EXT.'.php')){
-					unlink(SQL_PATH.$this->commandExplode[2].SQL_EXT.'.php');
-					$this->command .= '<br /><span style="color: black;">----</span>> '.SQL_PATH.$this->commandExplode[2].SQL_EXT.'.php';
-				}
-				if(is_file(FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php')){
-					unlink(FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php');
-					$this->command .= '<br /><span style="color: black;">----</span>> '.FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php';
-				}
+				if(!array_search(RUBRIQUE_PATH.$this->commandExplode[2].'.php', $this->forbidden)){
+					if(is_file(RUBRIQUE_PATH.$this->commandExplode[2].'.php')){
+						unlink(RUBRIQUE_PATH.$this->commandExplode[2].'.php');
+						$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->commandExplode[2].'.php'.'';
+					}
+					if(is_file(INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php')){
+						unlink(INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php');
+						$this->command .= '<br /><span style="color: black;">----</span>> '.INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php';
+					}
+					if(is_file(SQL_PATH.$this->commandExplode[2].SQL_EXT.'.php')){
+						unlink(SQL_PATH.$this->commandExplode[2].SQL_EXT.'.php');
+						$this->command .= '<br /><span style="color: black;">----</span>> '.SQL_PATH.$this->commandExplode[2].SQL_EXT.'.php';
+					}
+					if(is_file(FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php')){
+						unlink(FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php');
+						$this->command .= '<br /><span style="color: black;">----</span>> '.FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php';
+					}
 				
-				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> la rubrique <u>'.$this->commandExplode[2].'</u> a bien été supprimée</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> la rubrique <u>'.$this->commandExplode[2].'</u> a bien été supprimée</span>';
+				}
+				else{
+					$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->commandExplode[2].'.php';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
+				}
 			}
 			
 			if(preg_match('#add template (.+)#', $this->command)){
-				$monfichier = fopen(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, 'a');
-				fclose($monfichier);
-				$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
-				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.$this->commandExplode[2].'</u> a bien été créé</span>';
+				if(!array_search(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, $this->forbidden)){
+					$monfichier = fopen(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, 'a');
+					fclose($monfichier);
+					$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.$this->commandExplode[2].'</u> a bien été créé</span>';
+				}
+				else{
+					$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
+				}
 			}
 			
 			if(preg_match('#add class (.+)#', $this->command)){
-				$monfichier = fopen(CLASS_PATH.$this->commandExplode[2].'.class.php', 'a');
-				fclose($monfichier);
-				$this->command .= '<br /><span style="color: black;">----</span>> '.CLASS_PATH.$this->commandExplode[2].'.class.php';
-				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le fichier class <u>'.CLASS_PATH.$this->commandExplode[2].'.class.php'.'</u> a bien été créé</span>';
+				if(!array_search(CLASS_PATH.$this->commandExplode[2].'.class.php', $this->forbidden)){
+					$monfichier = fopen(CLASS_PATH.$this->commandExplode[2].'.class.php', 'a');
+					fclose($monfichier);
+					$this->command .= '<br /><span style="color: black;">----</span>> '.CLASS_PATH.$this->commandExplode[2].'.class.php';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le fichier class <u>'.CLASS_PATH.$this->commandExplode[2].'.class.php'.'</u> a bien été créé</span>';
+				}
+				else{
+					$this->command .= '<br /><span style="color: black;">----</span>> '.CLASS_PATH.$this->commandExplode[2].'.class.php';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
+				}
 			}
 			
-			if(preg_match('#list template#', $this->command)){				
+			if(preg_match('#list template#', $this->command)){		
 				if($this->dossier = opendir(TEMPLATE_PATH)){
 					while(false !== ($this->fichier = readdir($this->dossier))){
 						if(is_file(TEMPLATE_PATH.$this->fichier) && $this->fichier!='.htaccess'){
@@ -85,38 +116,50 @@
 			}
 			
 			if(preg_match('#delete template (.+)#', $this->command)){
-				if(is_file(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT)){
-					unlink(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT);
-					$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.'</u> a bien été supprimé</span>';
+				if(!array_search(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, $this->forbidden)){
+					if(is_file(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT)){
+						unlink(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT);
+						$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
+						$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.'</u> a bien été supprimé</span>';
+					}
+					else{
+						$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
+						$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Ce template n\'existe pas</span>';
+					}
 				}
 				else{
 					$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Ce template n\'existe pas</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
 				}
 			}
 			
 			if(preg_match('#rename template (.+) (.+)#', $this->command)){
-				if(is_file(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT)){
-					if(!is_file(TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT)){
-						rename(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT);
-						$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.' -> '.TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT;
-						$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.'</u> a bien été rénommé en <u>'.TEMPLATE_PATH.$this->commandExplode[3].'</u></span>';
+				if(!array_search(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, $this->forbidden)){
+					if(is_file(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT)){
+						if(!is_file(TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT)){
+							rename(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT);
+							$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.' -> '.TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT;
+							$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.'</u> a bien été rénommé en <u>'.TEMPLATE_PATH.$this->commandExplode[3].'</u></span>';
+						}
+						else{
+							$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT;
+							$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Un template porte déjà le même nom</span>';
+						}
 					}
 					else{
-						$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT;
-						$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Un template porte déjà le même nom</span>';
+						$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
+						$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Ce template n\'existe pas</span>';
 					}
 				}
 				else{
 					$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Ce template n\'existe pas</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
 				}
 			}
 			
 			if(preg_match('#rename rubrique (.+) (.+)#', $this->command)){
-				if($this->commandExplode[2]!='index' && $this->commandExplode[2]!='terminal'){
-					if($this->commandExplode[2]!='index' && $this->commandExplode[3]!='terminal'){
+				if(!array_search(RUBRIQUE_PATH.$this->commandExplode[2].'.php', $this->forbidden)){
+					if(!array_search(RUBRIQUE_PATH.$this->commandExplode[2].'.php', $this->forbidden)){
 						if(is_file(RUBRIQUE_PATH.$this->commandExplode[2].'.php')){
 							if(!is_file(RUBRIQUE_PATH.$this->commandExplode[3].'.php')){
 								if(is_file(RUBRIQUE_PATH.$this->commandExplode[2].'.php') && !is_file(RUBRIQUE_PATH.$this->commandExplode[3].'.php')){
@@ -230,4 +273,3 @@
 			return '> '.$this->command.' '.$this->result;
 		}
 	}
-?>

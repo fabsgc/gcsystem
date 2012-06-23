@@ -40,9 +40,6 @@
 	  outline:none;
 	}
 	
-	#gc_terminal_top_content{
-	}
-
 	#gc_terminal #terminal{
 		height: 100%;
 		overflow: none;
