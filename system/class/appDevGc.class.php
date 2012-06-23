@@ -32,21 +32,21 @@
 			$this->rubrique = get_included_files();
 			self::setTimeExec();
 			foreach($this->rubrique as $val){
-				$rubrique .= $val.'<br />';
+				$rubrique .= $val."\n";
 			}
 			foreach($this->template as $val){
-				$template .= $val.'<br />';
+				$template .= $val."\n";
 			}
 			foreach($this->sql as $val){
-				$sql .= $val.'<br />';
+				$sql .= $val."\n";
 			}
 			
 			
 			foreach($_GET as $cle => $val){
-				$this->arbo .="".htmlentities($cle)."::".htmlentities($val)."#";
+				$this->arbo .="".$cle."::".$val."#";
 			}
 			foreach($_POST as $cle => $val){
-				$this->arbo .="".htmlentities($cle)."::".htmlentities($val)."#";
+				$this->arbo .="".$cle."::".$val."#";
 			}
 			
 			$tpl = new templateGC('GCsystemDev', 'GCsystemDev', 0, $lang="");
