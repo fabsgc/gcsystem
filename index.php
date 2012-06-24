@@ -11,8 +11,8 @@ session_start();
 \*/
 
 require_once('web.config.php');
-require_once(CLASS_LANG);
 require_once(CLASS_GENERAL_INTERFACE);
+require_once(CLASS_LANG);
 require_once(CLASS_RUBRIQUE);
 require_once(CLASS_LOG);
 require_once(CLASS_EXCEPTION);

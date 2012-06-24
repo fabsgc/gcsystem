@@ -294,6 +294,11 @@
 		
 		private function update(){
 			$contenu = "";
+			$sauvegarde ="";
+			$suppr = "";
+			
+			$sauvegarde = file_get_contents('web.config.php');
+			$sauvegarde = preg_replace('`(.*)parametres de connexion a la base de donnees(.*)`isU', '$2', $sauvegarde);
 			
 			foreach($this->updateFile as $file){				
 				$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
@@ -306,6 +311,10 @@
 				fclose($fp);
 				$contenu = '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
 			}
+			
+			$suppr = file_get_contents('web.config.php');
+			$suppr = preg_replace('`(.*)(parametres de connexion a la base de donnees)(.*)`is', '|||||||||||||| $1 |||||||', $suppr);
+			file_put_contents('web.config.php', $sauvegarde, FILE_APPEND);
 			
 			return $contenu;
 		}
