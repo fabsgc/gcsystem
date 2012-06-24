@@ -304,7 +304,7 @@
 				curl_exec($ch);
 				curl_close($ch);
 				fclose($fp);
-				$contenu = '<br /><span style="color: black;">----</span>> '.$file.' -> https://raw.github.com/fabsgc/GCsystem/master/'.$file;
+				$contenu = '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
 			}
 			
 			return $contenu;
