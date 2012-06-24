@@ -29,12 +29,12 @@
 				CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
 			);
 			$this->updateFile = array(
-				RUBRIQUE_PATH.'terminal.php',
-				'web.config.php',
-				'index.php',
-				LIB_PATH.'FormsGC/formsGC.class.php', LIB_PATH.'FormsGC/formsGCValidator.class.php',
-				TEMPLATE_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.'GCmaintenance'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,
-				CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
+				//RUBRIQUE_PATH.'terminal.php',
+				'web.config.php'
+				//'index.php',
+				// LIB_PATH.'FormsGC/formsGC.class.php', LIB_PATH.'FormsGC/formsGCValidator.class.php',
+				// TEMPLATE_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.'GCmaintenance'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,
+				// CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
 			); // liste des répertoires systèmes à updater
 		}
 
@@ -309,11 +309,12 @@
 				curl_exec($ch);
 				curl_close($ch);
 				fclose($fp);
-				$contenu = '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
+				$contenu .= '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
 			}
 			
 			$suppr = file_get_contents('web.config.php');
-			$suppr = preg_replace('`(.*)(parametres de connexion a la base de donnees)(.*)`is', '|||||||||||||| $1 |||||||', $suppr);
+			$suppr = preg_replace('`(.*)(parametres de connexion a la base de donnees)(.*)`is', '$1parametres de connexion a la base de donnees', $suppr);
+			file_put_contents('web.config.php', $suppr);
 			file_put_contents('web.config.php', $sauvegarde, FILE_APPEND);
 			
 			return $contenu;
