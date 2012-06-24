@@ -189,4 +189,4 @@ $db['bdd']['extension'] = "pdo";
 //base du site (utile pour eviter les repetition et faciliter  les changements de bdd
 define('BDD', '8_legeekcafe');
 
-coucou
+//coucou
