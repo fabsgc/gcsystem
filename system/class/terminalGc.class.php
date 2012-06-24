@@ -15,6 +15,8 @@
 		public $dossier                       ; //dossier
 		public $fichier                       ; //fichier
 		public $forbidden                     ; //fichier interdit
+		public $updateFile                    ; //fichier interdit
+		public $updateDir                     ; //fichier interdit
 		
 		public  function __construct($command){
 			$this->command = $command;
@@ -26,6 +28,14 @@
 				TEMPLATE_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.'GCmaintenance'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,
 				CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
 			);
+			$this->updateFile = array(
+				RUBRIQUE_PATH.'terminal.php',
+				'web.config.php',
+				'index.php'
+				LIB_PATH.'FormsGC/formsGC.class.php', LIB_PATH.'FormsGC/formsGCValidator.class.php',
+				TEMPLATE_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.'GCmaintenance'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,
+				CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
+			); // liste des répertoires systèmes à updater
 		}
 
 		public function parse(){
@@ -50,8 +60,7 @@
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
 				}
 			}
-			
-			if(preg_match('#delete rubrique (.+)#', $this->command)){
+			elseif(preg_match('#delete rubrique (.+)#', $this->command)){
 				if(!array_search(RUBRIQUE_PATH.$this->commandExplode[2].'.php', $this->forbidden)){
 					if(is_file(RUBRIQUE_PATH.$this->commandExplode[2].'.php')){
 						unlink(RUBRIQUE_PATH.$this->commandExplode[2].'.php');
@@ -77,8 +86,7 @@
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
 				}
 			}
-			
-			if(preg_match('#add template (.+)#', $this->command)){
+			elseif(preg_match('#add template (.+)#', $this->command)){
 				if(!array_search(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, $this->forbidden)){
 					$monfichier = fopen(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, 'a');
 					fclose($monfichier);
@@ -90,8 +98,7 @@
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
 				}
 			}
-			
-			if(preg_match('#add class (.+)#', $this->command)){
+			elseif(preg_match('#add class (.+)#', $this->command)){
 				if(!array_search(CLASS_PATH.$this->commandExplode[2].'.class.php', $this->forbidden)){
 					$monfichier = fopen(CLASS_PATH.$this->commandExplode[2].'.class.php', 'a');
 					fclose($monfichier);
@@ -103,8 +110,7 @@
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
 				}
 			}
-			
-			if(preg_match('#list template#', $this->command)){		
+			elseif(preg_match('#list template#', $this->command)){		
 				if($this->dossier = opendir(TEMPLATE_PATH)){
 					while(false !== ($this->fichier = readdir($this->dossier))){
 						if(is_file(TEMPLATE_PATH.$this->fichier) && $this->fichier!='.htaccess'){
@@ -114,8 +120,7 @@
 				}
 				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> fichiers de template listés</span>';
 			}
-			
-			if(preg_match('#delete template (.+)#', $this->command)){
+			elseif(preg_match('#delete template (.+)#', $this->command)){
 				if(!array_search(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, $this->forbidden)){
 					if(is_file(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT)){
 						unlink(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT);
@@ -132,8 +137,7 @@
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
 				}
 			}
-			
-			if(preg_match('#rename template (.+) (.+)#', $this->command)){
+			elseif(preg_match('#rename template (.+) (.+)#', $this->command)){
 				if(!array_search(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, $this->forbidden)){
 					if(is_file(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT)){
 						if(!is_file(TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT)){
@@ -156,8 +160,7 @@
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
 				}
 			}
-			
-			if(preg_match('#rename rubrique (.+) (.+)#', $this->command)){
+			elseif(preg_match('#rename rubrique (.+) (.+)#', $this->command)){
 				if(!array_search(RUBRIQUE_PATH.$this->commandExplode[2].'.php', $this->forbidden)){
 					if(!array_search(RUBRIQUE_PATH.$this->commandExplode[2].'.php', $this->forbidden)){
 						if(is_file(RUBRIQUE_PATH.$this->commandExplode[2].'.php')){
@@ -202,8 +205,7 @@
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> La modification de ce fichier est interdite</span>';
 				}
 			}
-			
-			if(preg_match('#list rubrique#', $this->command)){
+			elseif(preg_match('#list rubrique#', $this->command)){
 				if($this->dossier = opendir(RUBRIQUE_PATH)){
 					$this->command .= '<br /><span style="color: black;">----</span>>####################### RUBRIQUE';
 					while(false !== ($this->fichier = readdir($this->dossier))){
@@ -238,15 +240,13 @@
 				}
 				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> fichiers de rubrique listés</span>';
 			}
-			
-			if(preg_match('#list included#', $this->command)){				
+			elseif(preg_match('#list included#', $this->command)){				
 				foreach(get_included_files() as $val){
 					$this->command .= '<br /><span style="color: black;">----</span>> '.$val;
 				}
 				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> fichiers inclus listés</span>';
 			}
-			
-			if(preg_match('#clear cache#', $this->command)){
+			elseif(preg_match('#clear cache#', $this->command)){
 				if($this->dossier = opendir(CACHE_PATH)){
 					while(false !== ($this->fichier = readdir($this->dossier))){
 						if(is_file(CACHE_PATH.$this->fichier)){
@@ -257,8 +257,7 @@
 				}
 				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le cache a bien été vidé</span>';
 			}
-			
-			if(preg_match('#clear log#', $this->command)){
+			elseif(preg_match('#clear log#', $this->command)){
 				if($this->dossier = opendir(LOG_PATH)){
 					while(false !== ($this->fichier = readdir($this->dossier))){
 						if(is_file(LOG_PATH.$this->fichier)){
@@ -269,8 +268,7 @@
 				}
 				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le log a bien été vidé</span>';
 			}
-			
-			if(preg_match('#help#', $this->command)){
+			elseif(preg_match('#help#', $this->command)){
 				$this->command .= '<br /><span style="color: black;">----</span>> add rubrique nom';
 				$this->command .= '<br /><span style="color: black;">----</span>> delete rubrique nom';
 				$this->command .= '<br /><span style="color: black;">----</span>> rename rubrique nom nouveaunom';
@@ -286,7 +284,29 @@
 				$this->command .= '<br /><span style="color: black;">----</span>> clear';
 				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> liste des commandes</span>';
 			}
+			elseif(preg_match('#update#', $this->command)){
+				$this->command = $this->update();
+				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> framework à jour</span>';
+			}
 			
 			return '> '.$this->command.' '.$this->result;
+		}
+		
+		private function update(){
+			$contenu = "";
+			
+			foreach($this->updateFile as $file){				
+				$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
+				$fp = fopen($file, "w");
+				curl_setopt($ch, CURLOPT_FILE, $fp);
+				curl_setopt($ch, CURLOPT_HEADER, 0);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_exec($ch);
+				curl_close($ch);
+				fclose($fp);
+				$contenu = '<br /><span style="color: black;">----</span>> '.$file.' -> https://raw.github.com/fabsgc/GCsystem/master/'.$file;
+			}
+			
+			return $contenu;
 		}
 	}

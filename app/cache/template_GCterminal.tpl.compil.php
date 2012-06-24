@@ -48,7 +48,7 @@
 		font-family: Consolas;
 		padding: 1px;
 		line-height: 0.95em;
-		padding-bottom: <?php echo ($moins2); ?>px;
+		padding-bottom: <?php echo htmlentities($moins2); ?>px;
 	}
 
 	#gc_terminal input[type=text]{
@@ -59,7 +59,7 @@
 		background-color: rgb(30,30,30);
 		font-family: Consolas;
 		position: fixed;
-		bottom: <?php echo ($moins); ?>px;
+		bottom: <?php echo htmlentities($moins); ?>px;
 	}
 </style>
 <script>
