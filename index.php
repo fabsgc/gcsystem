@@ -9,7 +9,6 @@ session_start();
  | @version : 2.0 bêta
  | ------------------------------------------------------
 \*/
-
 require_once('web.config.php');
 require_once(CLASS_GENERAL_INTERFACE);
 require_once(CLASS_LANG);

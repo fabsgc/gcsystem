@@ -295,9 +295,13 @@
 					$this->command .= '<br /><span style="color: black;">----</span>> update';
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> liste des commandes</span>';
 				}
-				elseif(preg_match('#update#', $this->command)){
+				elseif(preg_match('#update updater#', $this->command)){
 					$this->command = $this->update();
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> framework à jour</span>';
+				}
+				elseif(preg_match('#update#', $this->command)){
+					$this->command = $this->update();
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> updater à jour</span>';
 				}
 				elseif(preg_match('#disconnect#', $this->command) && $this->mdp==false){
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> Vous avez été déconnecté</span>';
@@ -310,6 +314,18 @@
 			}
 			
 			return '> '.$this->command.' '.$this->result;
+		}
+		
+		private function updater(){		
+			$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL);
+			$fp = fopen(CLASS_TERMINAL, "w");
+			curl_setopt($ch, CURLOPT_FILE, $fp);
+			curl_setopt($ch, CURLOPT_HEADER, 0);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_exec($ch);
+			curl_close($ch);
+			fclose($fp);
+			$contenu .= '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL.'</span>';
 		}
 		
 		private function update(){
