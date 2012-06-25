@@ -187,7 +187,7 @@ define('FOLDER', 'GCsystem');
 define('DEFAULTLANG', 'nl');
 
 /** Definit l'environnement dans lequel est effectué l'application :
-* development : erreurs affichées + barre de développement
+* development : erreurs affichées + barre de développement et présence d'un terminal
 * production : erreurs non affichées **/
 define('ENVIRONMENT', 'development');
 
@@ -201,9 +201,9 @@ define('TERMINAL_MDP', 'mdp');
 define('JQUERY', true);
 
 /* fichier jquery */
-define('JQUERYFILE', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
-define('JQUERYUIJS', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js');
-define('JQUERYUICSS', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/smoothness/jquery-ui.css');
+define('JQUERYFILE', JS_PATH.'jquery.min.js');
+define('JQUERYUIJS', JS_PATH.'jquery-ui.min.js');
+define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
 
 /* --------------parametres de connexion a la base de donnees------------------*/
 
