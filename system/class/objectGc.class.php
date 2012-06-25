@@ -13,7 +13,6 @@
 		private $error              = array(); //array contenant toutes les erreurs enregistrées
 		
 		public  function __construct(){
-			if
 		}
 		
 		private function showError(){

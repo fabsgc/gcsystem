@@ -36,6 +36,8 @@ require_once(CLASS_DATE);
 require_once(CLASS_TEXT); 
 require_once(CLASS_FEED); 
 require_once(CLASS_JS); 
+require_once(CLASS_OBJECT); 
+require_once(CLASS_SOCIAL); 
 
 
 /* ---------- creation de la page -------------- */
@@ -83,6 +85,7 @@ if(isset($_GET['soucat'])) { $_GET['soucat']=intval(htmlentities($_GET['soucat']
 if(isset($_GET['token'])) { $_GET['token']=htmlentities($_GET['token']); }
 
 /* ------ enregistrement de la rubrique et de l'url -------- */
+
 $GLOBALS['rubrique']->setErrorLog('history.log','Page rewrite : http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].' rubrique : '.$_SERVER["SERVER_NAME"].$_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"].' / origine : '.$_SERVER['HTTP_REFERER'].' / IP : '.$_SERVER['REMOTE_ADDR']);
 
 /* ------ articulation du site web -------- */
@@ -96,7 +99,7 @@ if(MAINTENANCE==false){
 
 			default:
 				$GLOBALS['rubrique']->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
-				$GLOBALS['rubrique']->setErrorLog('errors.log', 'La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée');
+				$GLOBALS['rubrique']->setErrorLog('errors.log', 'The rubric '.$_GET['rubrique'].' were not found');
 			break;
 		}
 	}
@@ -106,7 +109,7 @@ if(MAINTENANCE==false){
 		} 
 		else { 
 			$GLOBALS['rubrique']->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
-			$GLOBALS['rubrique']->setErrorLog('errors.log', 'La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée');
+			$GLOBALS['rubrique']->setErrorLog('errors.log', 'The rubric '.$_GET['rubrique'].' were not found');
 		}
 	}
 }

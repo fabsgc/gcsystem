@@ -154,7 +154,7 @@ define('CLASS_JS', CLASS_PATH.'jsGc.class.php');
 define('CLASS_OBJECT', CLASS_PATH.'objectGc.class.php');
 
 //class social
-define('CLASS_SOCIAL', CLASS_PATH.'social.class.php');
+define('CLASS_SOCIAL', CLASS_PATH.'socialGc.class.php');
 
 //extension des fichiers de fonctions
 define('FUNCTION_EXT', '.function');
