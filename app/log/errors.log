@@ -42,3 +42,7 @@
 25/06/2012 à 13:10 ! : Erreur n°8 (Undefined property: terminalGc::$mdp) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\terminalGc.class.php à la ligne 304
 25/06/2012 à 13:10 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 85
 25/06/2012 à 13:10 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+25/06/2012 à 13:13 ! : Erreur n°8 (Undefined property: terminalGc::$mdp) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\terminalGc.class.php à la ligne 302
+25/06/2012 à 13:14 ! : Erreur n°8 (Undefined property: terminalGc::$mdp) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\terminalGc.class.php à la ligne 302
+25/06/2012 à 13:34 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 85
+25/06/2012 à 13:34 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4

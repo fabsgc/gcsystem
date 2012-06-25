@@ -141,8 +141,14 @@ define('CLASS_DOWNLOAD', CLASS_PATH.'downloadGc.class.php');
 //class date
 define('CLASS_DATE', CLASS_PATH.'dateGc.class.php');
 
-//class date
+//class texte
 define('CLASS_TEXT', CLASS_PATH.'textGc.class.php');
+
+//class feed
+define('CLASS_FEED', CLASS_PATH.'feedGc.class.php');
+
+//class js
+define('CLASS_JS', CLASS_PATH.'jsGc.class.php');
 
 //extension des fichiers de fonctions
 define('FUNCTION_EXT', '.function');
@@ -188,7 +194,7 @@ define('ENVIRONMENT', 'development');
 /* affiche le message de maintenance */
 define('MAINTENANCE', false);
 
-/* affiche le message de maintenance */
+/* mot de passe pour se connecter au terminal */
 define('TERMINAL_MDP', 'mdp');
 
 /* --------------parametres de connexion a la base de donnees------------------*/
