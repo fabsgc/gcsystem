@@ -142,7 +142,7 @@ define('CLASS_DOWNLOAD', CLASS_PATH.'downloadGc.class.php');
 define('CLASS_DATE', CLASS_PATH.'dateGc.class.php');
 
 //class date
-define('CLASS_TEXT', CLASS_PATH.'TextGc.class.php');
+define('CLASS_TEXT', CLASS_PATH.'textGc.class.php');
 
 //extension des fichiers de fonctions
 define('FUNCTION_EXT', '.function');
