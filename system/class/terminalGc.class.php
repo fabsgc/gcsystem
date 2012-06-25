@@ -300,7 +300,7 @@
 			$suppr2 = "";
 			
 			$sauvegarde = file_get_contents('web.config.php');
-			$sauvegarde = preg_replace('`(.*)parametres de connexion a la base de donnees(.*)`isU', '$2', $sauvegarde2);
+			$sauvegarde = preg_replace('`(.*)parametres de connexion a la base de donnees(.*)`isU', '$2', $sauvegarde);
 			$sauvegarde2 = file_get_contents('index.php');
 			$sauvegarde2 = preg_replace('`(.*)articulation du site web(.*)`isU', '$2', $sauvegarde2);
 			
@@ -324,8 +324,8 @@
 			}
 			
 			$suppr2 = file_get_contents('index.php');
-			$suppr2 = preg_replace('`(.*)(articulation du site web)(.*)`is', '$1articulation du site web', $suppr);
-			if($suppr!="" && $sauvegarde!=""){
+			$suppr2 = preg_replace('`(.*)(articulation du site web)(.*)`is', '$1articulation du site web', $suppr2);
+			if($suppr2!="" && $sauvegarde2!=""){
 				file_put_contents('index.php', $suppr2);
 				file_put_contents('index.php', $sauvegarde2, FILE_APPEND);
 			}

@@ -54,7 +54,7 @@ switch(ENVIRONMENT){
 	case 'development' :		
 		error_reporting(E_ALL | E_NOTICE);			
 	break;
-					
+
 	case 'production' :	
 		error_reporting(0);					
 	break;					
@@ -88,7 +88,7 @@ if(MAINTENANCE==false){
 			case 'terminal':
 				$GLOBALS['rubrique']->setRubrique('terminal');
 			break;
-			
+
 			default:
 				$GLOBALS['rubrique']->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
 				$GLOBALS['rubrique']->setErrorLog('errors.log', 'La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée');
