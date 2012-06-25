@@ -11,7 +11,7 @@
 	class terminalGc{
 		public $command                       ; //contenu à traiter
 		public $commandExplode                ; //contenu à traiter
-		public $result                        ='/ <span style="color: red;">commande non reconnu</span>'; //resultat du traitement
+		public $result                        ='/ <span style="color: red;">commande non reconnu. Tapez help pour avoir la liste des commandes valides</span>'; //resultat du traitement
 		public $dossier                       ; //dossier
 		public $fichier                       ; //fichier
 		public $forbidden                     ; //fichier interdit
@@ -282,6 +282,7 @@
 				$this->command .= '<br /><span style="color: black;">----</span>> clear cache';
 				$this->command .= '<br /><span style="color: black;">----</span>> clear log';
 				$this->command .= '<br /><span style="color: black;">----</span>> clear';
+				$this->command .= '<br /><span style="color: black;">----</span>> update';
 				$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> liste des commandes</span>';
 			}
 			elseif(preg_match('#update#', $this->command)){

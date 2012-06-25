@@ -103,7 +103,7 @@
 				field.value = "app/console ";
 				field.focus();								
 			}
-			document.getElementById('terminal').scrollTop = document.getElementById('terminal').scrollHeight;	
+			document.getElementById('terminal').scrollTop = document.getElementById('terminal').scrollHeight;
 		}
 	}
 </script>
