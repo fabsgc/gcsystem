@@ -188,6 +188,9 @@ define('ENVIRONMENT', 'development');
 /* affiche le message de maintenance */
 define('MAINTENANCE', false);
 
+/* affiche le message de maintenance */
+define('TERMINAL_MDP', 'mdp');
+
 /* --------------parametres de connexion a la base de donnees------------------*/
 
 $db['bdd']['hostname'] = "localhost";
