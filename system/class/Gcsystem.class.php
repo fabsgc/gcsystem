@@ -12,24 +12,27 @@
 		
 		/* --- infos d'en tete -- */
 		
-		private $doctype;
-		private $title;
-		private $metaContentType;
-		private $metaKeyword;
-		private $metaDescription;
-		private $metaRobot;
-		private $metaGoogleSite;
-		private $openSearch;
-		private $js = array();
-		private $css = array();
-		private $jsInFile = array();
-		private $rss = array();
-		private $contentMarkupBody;
-		private $localisation;
-		private $otherHeader = array();
+		private $doctype                     ;
+		private $title                       ;
+		private $metaContentType             ;
+		private $metaKeyword                 ;
+		private $metaDescription             ;
+		private $metaRobot                   ;
+		private $metaGoogleSite              ;
+		private $openSearch                  ;
+		private $js =                 array();
+		private $css =                array();
+		private $jsInFile =           array();
+		private $rss =                array();
+		private $contentMarkupBody           ;
+		private $localisation                ;
+		private $otherHeader        = array();
+		private $fbTitle                     ;
+		private $fbDescription               ;
+		private $fbImage                     ;
 		
-		private $lang; // gestion des langues via des fichiers XML
-		private $langInstance;
+		private $lang                        ; // gestion des langues via des fichiers XML
+		private $langInstance                ;
 		/* --- permet d'affiche le doctype et l'entete (avant la balise body) et </body></html> -- */
 		
 		private $header;
@@ -256,6 +259,18 @@
 					case 'lang':
 						$this->lang=$info;
 					break;
+					
+					case 'fb_title':
+						$this->fbTitle=$info;
+					break;
+					
+					case 'fb_desccription':
+						$this->fbDesccription=$info;
+					break;
+					
+					case 'fb_image':
+						$this->fbImage=$info;
+					break;
 				}
 			}
 		}
@@ -318,6 +333,18 @@
 		
 		public function SetotherHeader($OtherHeader){
 			$this->otherHeader=$OtherHeader;
+		} 
+		
+		public function SetFbTitle($FbTitle){
+			$this->fbTitle=$FbTitle;
+		} 
+		
+		public function SetFbDescription($FbDescription){
+			$this->fbDescription=$FbDescription;
+		} 
+		
+		public function SetFbImage($FbImage){
+			$this->fbImage=$FbImage;
 		} 
 		
 		public function setLang($Lang){
@@ -387,6 +414,18 @@
 			return $this->lang;
 		} 
 		
+		public function getFbTitle(){
+			return $this->fbTitle;
+		} 
+		
+		public function getFbDescription(){
+			return $this->fbDescription;
+		} 
+		
+		public function getFbImage(){
+			return $this->fbImage;
+		} 
+		
 		public  function __desctuct(){
 		
 		}
@@ -449,6 +488,15 @@
 			$this->header.="    <meta name=\"robots\" content=\"".$this->metaRobot."\" />\n";
 			$this->header.="    <meta name=\"geo.placename\" content=\"".$this->localisation."\" />\n";
 			
+			if($this->fbTitle!=""){
+				$this->header.="    <meta property=\"og:description\" content=\"".$this->fbTitle."\" />\n";
+			}
+			if($this->fbDescription!=""){
+				$this->header.="    <meta property=\"og:description\" content=\"".$this->fbDescription."\" />\n";
+			}
+			if($this->fbImage!=""){
+				$this->header.="    <meta property=\"og:description\" content=\"".$this->fbImage."\" />\n";
+			}
 			if($this->metaGoogleSite!=""){
 				$this->header.="    <meta name=\"google-site-verification\" content=\"".$this->metaGoogleSite."\" />\n";
 			}
