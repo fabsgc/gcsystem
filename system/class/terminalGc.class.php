@@ -296,7 +296,7 @@
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> liste des commandes</span>';
 				}
 				elseif(preg_match('#update updater#', $this->command)){
-					$this->command = $this->update();
+					$this->command = $this->updater();
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> framework à jour</span>';
 				}
 				elseif(preg_match('#update#', $this->command)){
