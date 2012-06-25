@@ -9,14 +9,14 @@
 	\*/
 	
 	class terminalGc{
-		public $command                       ; //contenu à traiter
-		public $commandExplode                ; //contenu à traiter
-		public $result                        ='/ <span style="color: red;">commande non reconnu. Tapez help pour avoir la liste des commandes valides</span>'; //resultat du traitement
-		public $dossier                       ; //dossier
-		public $fichier                       ; //fichier
-		public $forbidden                     ; //fichier interdit
-		public $updateFile                    ; //fichier interdit
-		public $updateDir                     ; //fichier interdit
+		private $command                       ; //contenu à traiter
+		private $commandExplode                ; //contenu à traiter
+		private $result                        ='/ <span style="color: red;">commande non reconnu. Tapez help pour avoir la liste des commandes valides</span>'; //resultat du traitement
+		private $dossier                       ; //dossier
+		private $fichier                       ; //fichier
+		private $forbidden                     ; //fichier interdit
+		private $updateFile                    ; //fichier interdit
+		private $updateDir                     ; //fichier interdit
 		
 		public  function __construct($command){
 			$this->command = $command;
@@ -39,16 +39,16 @@
 		}
 
 		public function parse(){
-			if((preg_match('#connect (.+)#', $this->command) && isset($_SESSION['terminalMdp']) && $_SESSION['terminalMdp']==0) || (preg_match('#connect (.+)#', $this->command) && empty($_SESSION['terminalMdp']))){
+			if((preg_match('#connect (.+)#', $this->command) && isset($_SESSION['GC_terminalMdp']) && $_SESSION['GC_terminalMdp']==0) || (preg_match('#connect (.+)#', $this->command) && empty($_SESSION['GC_terminalMdp']))){
 				if(TERMINAL_MDP == $this->commandExplode[1]){
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> Le mot de passe est correct</span>';
-					$_SESSION['terminalMdp'] = 1;
+					$_SESSION['GC_terminalMdp'] = 1;
 				}
 				else{
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Le mot de passe est incorrect</span>';
 				}
 			}
-			elseif(isset($_SESSION['terminalMdp']) && $_SESSION['terminalMdp']==1){
+			elseif(isset($_SESSION['GC_terminalMdp']) && $_SESSION['GC_terminalMdp']==1){
 				if(preg_match('#add rubrique (.+)#', $this->command)){
 					if(!array_search(RUBRIQUE_PATH.$this->commandExplode[2].'.php', $this->forbidden)){
 						$monfichier = fopen(RUBRIQUE_PATH.$this->commandExplode[2].'.php', 'a');
@@ -297,15 +297,15 @@
 				}
 				elseif(preg_match('#update updater#', $this->command)){
 					$this->command = $this->updater();
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> framework à jour</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> updater à jour</span>';
 				}
 				elseif(preg_match('#update#', $this->command)){
 					$this->command = $this->update();
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> updater à jour</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> framework à jour</span>';
 				}
 				elseif(preg_match('#disconnect#', $this->command) && $this->mdp==false){
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> Vous avez été déconnecté</span>';
-					$_SESSION['terminalMdp'] = 0;
+					$_SESSION['GC_terminalMdp'] = 0;
 				}
 			}
 			else{
@@ -325,7 +325,7 @@
 			curl_exec($ch);
 			curl_close($ch);
 			fclose($fp);
-			$contenu .= '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL.'</span>';
+			return $contenu .= '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL.'</span>';
 		}
 		
 		private function update(){

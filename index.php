@@ -66,7 +66,7 @@ switch(ENVIRONMENT){
 }
 
 $GLOBALS['css']= array('default.css');
-$GLOBALS['js'] = array('jquery-1.5.min.js', 'script.js');
+$GLOBALS['js'] = array('script.js');
 
 /* ---------- protection des variables GET (faille XSS) -------------- */
 

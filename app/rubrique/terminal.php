@@ -1,5 +1,5 @@
 <?php
-	$GLOBALS['rubrique']->setInfo(array('title'=>'é bijour', 'css'=>'', 'js'=>array('jquery-1.5.min.js')));
+	$GLOBALS['rubrique']->setInfo(array('title'=>'é bijour', 'css'=>''));
 	echo $GLOBALS['rubrique']->affHeader();
 		switch($_GET['action']){
 			case 'terminal':

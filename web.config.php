@@ -197,6 +197,14 @@ define('MAINTENANCE', false);
 /* mot de passe pour se connecter au terminal */
 define('TERMINAL_MDP', 'mdp');
 
+/* mettre à true pour pouvoir utiliser jquery et jquery ui */
+define('JQUERY', true);
+
+/* fichier jquery */
+define('JQUERYFILE', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
+define('JQUERYUIJS', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js');
+define('JQUERYUICSS', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/smoothness/jquery-ui.css');
+
 /* --------------parametres de connexion a la base de donnees------------------*/
 
 $db['bdd']['hostname'] = "localhost";

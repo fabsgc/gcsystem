@@ -26,7 +26,7 @@
 		private $rss =                array();
 		private $contentMarkupBody           ;
 		private $localisation                ;
-		private $otherHeader        = array();
+		private $otherHeader =        array();
 		private $fbTitle                     ;
 		private $fbDescription               ;
 		private $fbImage                     ;
@@ -506,6 +506,12 @@
 			
 			if(is_file(FAVICON_PATH)){
 				$this->header.="     <link rel=\"icon\" type=\"image/png\" href=\"".FAVICON_PATH."\" />\n";
+			}
+			
+			if(JQUERY==true){
+				$this->header.="    <script type=\"text/javascript\" src=\"".JQUERYFILE."\" ></script> \n";
+				$this->header.="    <script type=\"text/javascript\" src=\"".JQUERYUIJS."\" ></script> \n";
+				$this->header.="    <link href=\"".JQUERYUICSS."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
 			}
 			
 			foreach($this->js as $element){

@@ -15,18 +15,18 @@
 		protected $error          = array();       //erreur
 		protected $cache                   ;       //référence vers un objet de type cache
 		protected $time                    ;       //durée de mise en cache
-		const PARAM_INT           = 1;             //les paramètres des variables, en relation avec PDO::PARAM_
-		const PARAM_BOOL          = 5;
-		const PARAM_NULL          = 0;
-		const PARAM_STR           = 2;
-		const PARAM_FETCH         = 0;
-		const PARAM_FETCHCOLUMN   = 1;
+		const PARAM_INT                 = 1;       //les paramètres des variables, en relation avec PDO::PARAM_
+		const PARAM_BOOL                = 5;
+		const PARAM_NULL                = 0;
+		const PARAM_STR                 = 2;
+		const PARAM_FETCH               = 0;
+		const PARAM_FETCHCOLUMN         = 1;
 		
 		public  function __construct($bdd){
 			$this->bdd = $bdd;
 		}
 		
-		public function setVar($var){
+		public function setVar($var = array()){
 			foreach($var as $cle => $valeur){
 				$this->var[$cle] = $valeur;
 			}

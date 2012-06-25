@@ -3,12 +3,12 @@
 		
 		/* -------- FORMULAIRE -------- */
 		
-		private $GCname;
-		private $GCaction;
-		private $GCmethod;
-		private $GCenctype;
-		private $GCaccept_charset;
-		private $GCaccept_file;
+		private $GCname               = "formulaire";
+		private $GCaction             = "#"         ;
+		private $GCmethod             = "GET"       ;
+		private $GCenctype            = ""          ;
+		private $GCaccept_charset     = ""          ;
+		private $GCaccept_file        = ""          ;
 		private $GCcontent;
 		private $GCdate_id=0;
 		private $GClegend_id=0;
@@ -26,13 +26,38 @@
 		
 		/* ---------- CONSTRUCTEURS --------- */
 		
-		public  function __construct($name="", $action="", $method="", $enctype="", $accept_charset="", $accept_file=""){
-			if($name!="") $this->GCname=$name; else $this->GCname="formulaire";
-			if($action!="") $this->GCaction=$action; else $this->GCaction="action.html";
-			if($method!="") $this->GCmethod=$method; else $this->GCmethod="get";
-			if($enctype!="") $this->GCenctype=$enctype; else $this->GCenctype="multipart/form-data";
-			if($accept_charset!="") $this->GCaccept_charset=$accept_charset; else $this->GCaccept_charset="";
-			if($accept_file!="") $this->GCaccept_file=$accept_file; else $this->GCaccept_file="";
+		public  function __construct($info=array()){
+			foreach($info as $cle=>$info){
+				switch($cle){
+					case'name':
+						$this->GCname=$info;
+					break;
+					
+					case'action':
+						$this->GCaction=$info;
+					break;
+					
+					case'method':
+						$this->GCmethod=$info;
+					break;
+					
+					case'enctype':
+						$this->GCmethod=$info;
+					break;
+					
+					case'enctype':
+						$this->GCmethod=$info;
+					break;
+					
+					case'accept_charset':
+						$this->GCaccept_charset=$info;
+					break;
+					
+					case'accept_file':
+						$this->GCaccept_file=$info;
+					break;
+				}
+			}
 		}
 		
 		public function addFieldset($legend=""){
