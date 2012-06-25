@@ -150,6 +150,12 @@ define('CLASS_FEED', CLASS_PATH.'feedGc.class.php');
 //class js
 define('CLASS_JS', CLASS_PATH.'jsGc.class.php');
 
+//class object
+define('CLASS_OBJECT', CLASS_PATH.'objectGc.class.php');
+
+//class social
+define('CLASS_SOCIAL', CLASS_PATH.'social.class.php');
+
 //extension des fichiers de fonctions
 define('FUNCTION_EXT', '.function');
 

@@ -1,15 +1,14 @@
 <?php
 	/*\
 	 | ------------------------------------------------------
-	 | @file : objectGc.class.php
+	 | @file : socialGc.class.php
 	 | @author : fab@c++
-	 | @description : class gérant les fichiers compressés
+	 | @description : class gérant différents réseaux sociaux
 	 | @version : 2.0 bêta
 	 | ------------------------------------------------------
 	\*/
 	
 	class objectGc{
-		private $object                      ; //contient une référence vers l'objet créé
 		private $error              = array(); //array contenant toutes les erreurs enregistrées
 		
 		public  function __construct(){
@@ -30,21 +29,5 @@
 		public  function __desctuct(){
 		
 		}
-	}
-	
-	class ObjectCalendarGC{
-	
-	}
-	
-	class ObjectDialogBoxGC{
-	
-	}
-	
-	class ObjectSwfGc{
-	
-	}
-	
-	class ObjectVideoGc{
-	
 	}
 ?>
