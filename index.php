@@ -34,6 +34,8 @@ require_once(CLASS_UPDLOAD);
 require_once(CLASS_DOWNLOAD);
 require_once(CLASS_DATE);
 require_once(CLASS_TEXT); 
+require_once(CLASS_FEED); 
+require_once(CLASS_JS); 
 
 
 /* ---------- creation de la page -------------- */
