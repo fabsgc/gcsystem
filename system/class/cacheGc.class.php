@@ -1,9 +1,9 @@
 <?php
 	/*\
 	 | ------------------------------------------------------
-	 | @file : cache.class.php
+	 | @file : cacheGc.class.php
 	 | @author : fab@c++
-	 | @description : class gérant la mis en cache de façon générale
+	 | @description : class gérant la mise en cache de façon générale
 	 | @version : 2.0 bêta
 	 | ------------------------------------------------------
 	\*/

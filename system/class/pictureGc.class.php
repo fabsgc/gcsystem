@@ -1,9 +1,9 @@
 <?php
 	/*\
 	 | ------------------------------------------------------
-	 | @file : picture.class.php
+	 | @file : pictureGc.class.php
 	 | @author : fab@c++
-	 | @description : class fille de file.class.php gérant les images
+	 | @description : class fille de fileGc.class.php gérant les images
 	 | @version : 2.0 bêta
 	 | ------------------------------------------------------
 	\*/

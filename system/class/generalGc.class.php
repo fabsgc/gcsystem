@@ -1,7 +1,7 @@
 <?php
 	/*\
 	 | ------------------------------------------------------
-	 | @file : general.class.php
+	 | @file : generalGc.class.php
 	 | @author : fab@c++
 	 | @description : interface
 	 | @version : 2.0 bêta

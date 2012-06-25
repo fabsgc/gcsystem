@@ -1,7 +1,7 @@
 <?php
 	/*\
 	 | ------------------------------------------------------
-	 | @file : zip.class.php
+	 | @file : zipGc.class.php
 	 | @author : fab@c++
 	 | @description : class gérant les fichiers compressés
 	 | @version : 2.0 bêta

@@ -1,7 +1,7 @@
 <?php
 	/*\
 	 | ------------------------------------------------------
-	 | @file : bbcode.class.php
+	 | @file : bbcodeGc.class.php
 	 | @author : fab@c++
 	 | @description : class gérant le parsage des messages
 	 | @version : 2.0 bêta

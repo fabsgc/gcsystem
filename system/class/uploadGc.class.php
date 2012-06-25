@@ -1,18 +1,15 @@
 <?php
 	/*\
 	 | ------------------------------------------------------
-	 | @file : modoGc.class.php
+	 | @file : uploadGc.class.php
 	 | @author : fab@c++
-	 | @description : class gérant le filtrage du contenu du site
+	 | @description : class gérant les uploads
 	 | @version : 2.0 bêta
 	 | ------------------------------------------------------
 	\*/
 	
-	class modoGc{
-		public $contenu                       ; //contenu à filtrer
+	class uploadGc{
 		private $error              = array() ; //array contenant toutes les erreurs enregistrées
-		private $insulte =array(
-			'salaud', 'merde', 'salope', 'pute', 'putain', 'fils de pute', 'enculé', 'connasse'); //array contenant toutes les erreurs enregistrées
 		
 		public  function __construct(){
 		}

@@ -1,7 +1,7 @@
 <?php
 	/*\
 	 | ------------------------------------------------------
-	 | @file : captcha.class.php
+	 | @file : captchaGc.class.php
 	 | @author : fab@c++
 	 | @description : class permettant la génération de captcha personnalisée
 	 | @version : 2.0 bêta

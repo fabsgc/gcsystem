@@ -31,6 +31,10 @@ require_once(CLASS_MAIL);
 require_once(CLASS_BBCODE);
 require_once(CLASS_MODO);
 require_once(CLASS_TERMINAL);
+require_once(CLASS_UPDLOAD);
+require_once(CLASS_DOWNLOAD);
+require_once(CLASS_DATE);
+require_once(CLASS_TEXT); 
 
 
 /* ---------- creation de la page -------------- */
