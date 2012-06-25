@@ -29,12 +29,12 @@
 				CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
 			);
 			$this->updateFile = array(
-				RUBRIQUE_PATH.'terminal.php',
+				//RUBRIQUE_PATH.'terminal.php',
 				'web.config.php',
-				'index.php',
-				LIB_PATH.'FormsGC/formsGC.class.php', LIB_PATH.'FormsGC/formsGCValidator.class.php',
-				TEMPLATE_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.'GCmaintenance'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,
-				CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
+				'index.php'
+				// LIB_PATH.'FormsGC/formsGC.class.php', LIB_PATH.'FormsGC/formsGCValidator.class.php',
+				// TEMPLATE_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.'GCmaintenance'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,
+				// CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
 			); // liste des répertoires systèmes à updater
 		}
 
@@ -295,10 +295,14 @@
 		private function update(){
 			$contenu = "";
 			$sauvegarde ="";
+			$sauvegarde2 ="";
 			$suppr = "";
+			$suppr2 = "";
 			
 			$sauvegarde = file_get_contents('web.config.php');
-			$sauvegarde = preg_replace('`(.*)parametres de connexion a la base de donnees(.*)`isU', '$2', $sauvegarde);
+			$sauvegarde = preg_replace('`(.*)parametres de connexion a la base de donnees(.*)`isU', '$2', $sauvegarde2);
+			$sauvegarde2 = file_get_contents('index.php');
+			$sauvegarde2 = preg_replace('`(.*)articulation du site web(.*)`isU', '$2', $sauvegarde2);
 			
 			foreach($this->updateFile as $file){				
 				$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
@@ -314,8 +318,17 @@
 			
 			$suppr = file_get_contents('web.config.php');
 			$suppr = preg_replace('`(.*)(parametres de connexion a la base de donnees)(.*)`is', '$1parametres de connexion a la base de donnees', $suppr);
-			file_put_contents('web.config.php', $suppr);
-			file_put_contents('web.config.php', $sauvegarde, FILE_APPEND);
+			if($suppr!="" && $sauvegarde!=""){
+				file_put_contents('web.config.php', $suppr);
+				file_put_contents('web.config.php', $sauvegarde, FILE_APPEND);
+			}
+			
+			$suppr2 = file_get_contents('index.php');
+			$suppr2 = preg_replace('`(.*)(articulation du site web)(.*)`is', '$1articulation du site web', $suppr);
+			if($suppr!="" && $sauvegarde!=""){
+				file_put_contents('index.php', $suppr2);
+				file_put_contents('index.php', $sauvegarde2, FILE_APPEND);
+			}
 			
 			return $contenu;
 		}
