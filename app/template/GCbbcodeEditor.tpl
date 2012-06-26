@@ -4,7 +4,7 @@
 		background-color : {bgcolor};
 		border-radius : 4px;
 		padding: 1px;
-		padding-right: 4px;
+		padding-right: 3px;
 		font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 	}
 	
@@ -12,12 +12,21 @@
 		border: none;
 		width: {width};
 		height: {height};
-		margin-bottom: -4px;
-		margin-top: -4px;
+		margin-bottom: -2px;
+		margin-top: 1px;
+		padding: 1px;
 	}
 	
 	.gc_bbcode_preview_zone{
 		width: {width};
+		padding: 0 1px 0 1px;
+		background-color: rgb(245,245,245);
+		border-bottom-left-radius : 4px;
+		border-bottom-right-radius : 4px;
+		max-height: 250px;
+		overflow: auto;
+		overflow-x:hidden;
+		word-wrap: break-word;
 	}
 	
 	div .button {
@@ -482,18 +491,47 @@
 	}
 	
 	function preview_{id}(id){
-		alert('salut');
+		field = nl2br_js(document.getElementById('{id}').value);
+
+		<foreach var="$bbcode" as="$val">
+			field = field.replace(/\[<function name="html_entity_decode" string="$val[0]" />\]([\s\S]*?)\[\/<function name="html_entity_decode" string="$val[1]" />\]/g, '<<function name="html_entity_decode" string="$val[2]" />>{val[4]}</<function name="html_entity_decode" string="$val[3]" />>');
+		</foreach>
+		<foreach var="$smiley" as="$val">
+			field = field.replace(/<function name="preg_quote" string="$val[1]"/> /g, '<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" /> ');
+			field = field.replace(/<function name="preg_quote" string="$val[1]"/>&lt;br \/&gt;/g, '<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" /><br />');
+		</foreach>
+		<foreach var="$bbCodeS" as="$val">
+			field = field.replace(/\[<function name="html_entity_decode" string="$val[0]" />\]([\s\S]*?)\[\/<function name="html_entity_decode" string="$val[0]" />\]/g, '<<function name="html_entity_decode" string="$val[0]" />>$1</<function name="html_entity_decode" string="$val[0]" />>');
+		</foreach>
+		
+		field = field.replace('&gt;&lt;br \/&gt;', '>');
+		
+		document.getElementById('zone_{id}').innerHTML = field;
+		document.getElementById('zone_{id}').innerHTML = field;
+		document.getElementById('zone_{id}').scrollTop = 1000;
+	}
+	
+	function previewAjax_{id}(id){
+		alert('_(alertpreviewbbocde)_');
+	}
+	
+	function nl2br_js(myString) {
+		var regX = /\n/gi ;
+	
+		s = new String(myString);
+		s = s.replace(regX, "<br /> \n");
+		return s;
 	}
 </script>
 <div class="gc_bbcode">
 	<div class="gc_bbcode_option option {theme}">
 		<foreach var="$smiley" as="$val">
-			{val[0]}
+			<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" onclick="insertTag_{id}('<function name="preg_quote" string="$val[1]"/>', '', '{id}'); " />
 		</foreach>
 	</div>
-	<textarea id="{id}" name="{name}" >{message}</textarea>
+	<textarea id="{id}" name="{name}"<if cond="$preview == true && $instantane == true"> onKeyUp="preview_{id}('{id}');" </if> >{message}</textarea>
 	<if cond="$preview == true">
-		<div class="gc_bbcode_preview_button button {theme}" onClick="preview_{id}({id});">
+		<div class="gc_bbcode_preview_button button {theme}" onClick="previewAjax_{id}('{id}');">
 			_(bbcodepreview)_
 		</div>
 		<div class="gc_bbcode_preview_zone" id="zone_{id}">

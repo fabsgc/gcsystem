@@ -21,6 +21,8 @@
 		height: 25px;
 		width: 100%;
 		font-size: 1.15em;
+		position: fixed;
+		top: 0;
 		border-top:1px #b0b0b0 solid;
 		background-color: #444444;
 		background-image:-webkit-linear-gradient(top, #E5E5E5, #AEAEAE);
@@ -73,6 +75,10 @@
 		font-family: Consolas;
 		position: fixed;
 		bottom: <?php echo htmlentities($moins); ?>px;
+	}
+	
+	#terminal_read, gc_terminal_top_content{
+		margin-top: 26px;
 	}
 </style>
 <script>

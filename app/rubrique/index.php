@@ -57,7 +57,7 @@
 		
 		$code = new bbcodeGc('fr');
 		// echo $code -> parse($message);
-		$code -> editor('yop', array('id'=>'salut', 'name'=>'sdlkfjdslfsjdl'));
+		$code->editor('yop', array('id'=>'editeur', 'name'=>'message'));
 		
 
 		

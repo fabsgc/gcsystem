@@ -3,7 +3,7 @@
 	 | ------------------------------------------------------
 	 | @file : bbcodeGc.class.php
 	 | @author : fab@c++
-	 | @description : class gérant le parsage des messages
+	 | @description : class gérant le parsage des messages et l'affichage d'un éditeur plus ou moins avancé
 	 | @version : 2.0 bêta
 	 | ------------------------------------------------------
 	\*/
@@ -19,23 +19,25 @@
 		const PARSETAGEND                 = '>'              ;
 		const PARSETAGENDAUTO             = '/>'             ;
 		const BBCODE                      = 'bbcode'         ; //répertoire contenant les images
-		private $lang                                        ; // gestion des langues via des fichiers XML
+		private $lang                                        ; //gestion des langues via des fichiers XML
 		private $langInstance                                ; //instance de la class langGc
 		private $id                                          ; //id uniq pour la création d'un formulaire de bbcode
 		private $name                                        ; //name pour la création d'un formulaire de bbcode
 		private $preview                  =true              ; //la prévisualisation est activée
+		private $previewInstantanee       =true              ; //la prévisualisation instantanée est activée
 		
 		private $bbcodeWidth              ='600px'           ; //largeur de l'éditeur
 		private $bbcodeHeight             ='250px'           ; //largeur de la zone de texte de l'éditeur
 		private $bbcodeBgColor            ='#9d9d9d'         ; //couleur de fond de l'éditeur
 		private $bbcodeButton             ='blue'            ; //couleur de la barre d'option et du bouton prévisualiser.
 															   //valeur : button blue red green pinkish maroonish golden brownish 
-															   //grayish skinish yellowish goldenish pink violet orange seagreen:active
+															   //grayish skinish yellowish goldenish pink violet orange seagreen
 		
 		private $bbCode = array (
 			'abbr'   => array ('abbr title=&quot;(.*)&quot;', 'abbr', 'abbr title="$1"', 'abbr', '$2'),
 			'quote'  => array ('quote title=&quot;(.*)&quot;', 'quote', 'blockquote title="$1"', 'blockquote', '$2'),
 			'sup'    => array ('sup', 'sup', 'sup', 'sup', '$1'),
+			'sub'    => array ('sub', 'sub', 'sub', 'sub', '$1'),
 			'a'      => array ('a', 'a', 'a href="$1"', 'a', '$1'),
 			'a2'     => array ('a url=&quot;(.*)&quot;', 'a', 'a href="$1"', 'a', '$2'),
 			'h1'     => array ('h1', 'h1', 'h1', 'h1', '$1'),
@@ -44,20 +46,20 @@
 			'h4'     => array ('h4', 'h4', 'h4', 'h4', '$1'),
 			'h5'     => array ('h5', 'h5', 'h5', 'h5', '$1'),
 			'h6'     => array ('h6', 'h6', 'h6', 'h6', '$1'),
-			'h6'     => array ('em', 'em', 'em', 'em', '$1'),
+			'em'     => array ('em', 'em', 'em', 'em', '$1'),
 			'img'    => array ('img', 'img', 'img src="$1"', '', ''),
 			'audio'  => array ('audio', 'audio', 'audio src="$1" controls="controls"', 'audio', '$1'),
-			'ins'  => array ('ins', 'ins', 'ins', 'ins', '$1'),
-			'del'  => array ('del', 'del', 'del', 'del', '$1'),
-			'dfn'  => array ('dfn', 'dfn', 'dfn', 'dfn', '$1'),
-			'strong'  => array ('strong', 'strong', 'strong', 'strong', '$1'),
-			'pre'  => array ('pre', 'pre', 'pre', 'pre', '$1'),
-			'align'  => array ('align val=&quot;(.*)&quot;', 'align', 'span style="text-align: $1', 'span', '$2'),
-			'float'  => array ('float val=&quot;(.*)&quot;', 'float', 'span style="float: $1', 'span', '$2'),
+			'ins'    => array ('ins', 'ins', 'ins', 'ins', '$1'),
+			'del'    => array ('del', 'del', 'del', 'del', '$1'),
+			'dfn'    => array ('dfn', 'dfn', 'dfn', 'dfn', '$1'),
+			'strong' => array ('strong', 'strong', 'strong', 'strong', '$1'),
+			'pre'    => array ('pre', 'pre', 'pre', 'pre', '$1'),
+			'align'  => array ('align val=&quot;(.*)&quot;', 'align', 'span style="display: inline-block; text-align: $1;"', 'span', '$2'),
+			'float'  => array ('float val=&quot;(.*)&quot;', 'float', 'span style="float: $1;"', 'span', '$2'),
 			'email'  => array ('email', 'email', 'a href="mailto:$1"', 'a', '$1'),
 			'color'  => array ('color val=&quot;(.*)&quot;', 'color', 'span style="color: $1;"', 'span', '$1'),
-			'taille'  => array ('size val=&quot;(.*)&quot;', 'size', 'span style="font-size: $1em;"', 'span', '$1'),
-			'police'  => array ('font val=&quot;(.*)&quot;', 'font', 'span style="font-family: $1;"', 'span', '$1'),
+			'taille' => array ('size val=&quot;(.*)&quot;', 'size', 'span style="font-size: $1em;"', 'span', '$1'),
+			'police' => array ('font val=&quot;(.*)&quot;', 'font', 'span style="font-family: $1;"', 'span', '$1'),
 		);
 
 		private $bbCodeSmiley = array (
@@ -72,10 +74,74 @@
 			'^^'       => array('hihi.png', '^^'),
 			':-&deg;'  => array('siffle.png', ':-°'),
 			':think:'  => array('think.png', ':think:'),
-			':\'('     => array('pleure.png', ':\'(')
+			':pleure:'     => array('pleure.png', ':pleure:')
+		);
+		
+		private $bbCodeJs = array (
+			'abbr'   => array ('abbr title="(.*)"', 'abbr', 'abbr title="$1"', 'abbr', '$2'),
+			'quote'  => array ('quote title="(.*)"', 'quote', 'blockquote title="$1"', 'blockquote', '$2'),
+			'sup'    => array ('sup', 'sup', 'sup', 'sup', '$1'),
+			'sub'    => array ('sub', 'sub', 'sub', 'sub', '$1'),
+			'a'      => array ('a', 'a', 'a href="$1"', 'a', '$1'),
+			'a2'     => array ('a url="(.*)"', 'a', 'a href="$1"', 'a', '$2'),
+			'h1'     => array ('h1', 'h1', 'h1', 'h1', '$1'),
+			'h2'     => array ('h2', 'h2', 'h2', 'h2', '$1'),
+			'h3'     => array ('h3', 'h3', 'h3', 'h3', '$1'),
+			'h4'     => array ('h4', 'h4', 'h4', 'h4', '$1'),
+			'h5'     => array ('h5', 'h5', 'h5', 'h5', '$1'),
+			'h6'     => array ('h6', 'h6', 'h6', 'h6', '$1'),
+			'h6'     => array ('em', 'em', 'em', 'em', '$1'),
+			'img'    => array ('img', 'img', 'img src="$1"', '', ''),
+			'audio'  => array ('audio', 'audio', 'audio src="$1" controls="controls"', 'audio', '$1'),
+			'ins'    => array ('ins', 'ins', 'ins', 'ins', '$1'),
+			'del'    => array ('del', 'del', 'del', 'del', '$1'),
+			'dfn'    => array ('dfn', 'dfn', 'dfn', 'dfn', '$1'),
+			'strong' => array ('strong', 'strong', 'strong', 'strong', '$1'),
+			'pre'    => array ('pre', 'pre', 'pre', 'pre', '$1'),
+			'align'  => array ('align val="(.*)"', 'align', 'span style="display: inline-block; text-align: $1;"', 'span', '$2'),
+			'float'  => array ('float val="(.*)"', 'float', 'span style="float: $1;"', 'span', '$2'),
+			'email'  => array ('email', 'email', 'a href="mailto:$1"', 'a', '$1'),
+			'color'  => array ('color val="(.*)"', 'color', 'span style="color: $1;"', 'span', '$1'),
+			'taille' => array ('size val="(.*)"', 'size', 'span style="font-size: $1em;"', 'span', '$1'),
+			'police' => array ('font val="(.*)"', 'font', 'span style="font-family: $1;"', 'span', '$1'),
 		);
 		
 		private $bbCodeS = array ('ul', 'li', 'ol', 'table', 'tr', 'td', 'th');
+		
+		private $bbCodeSJs = array (
+			'ul'    => array('ul'),
+			'li'    => array('li'), 
+			'ol'    => array('ol'), 
+			'table' => array('table'), 
+			'tr'    => array('tr'), 
+			'td'    => array('td'), 
+			'th'    =>  array('th')
+		);
+		
+		private $bbCodeEditor = array (
+			'strong' => array ('strong', 'strong', 'gras.png'),
+			'em'     => array ('em', 'em', 'italique.png'),
+			'ins'    => array ('ins', 'ins', 'souligne.png'),
+			'del'    => array ('del', 'del', ),
+			'h3'     => array ('h3', 'h3', 'h3', 'h3', '$1'),
+			'h4'     => array ('h4', 'h4', 'h4', 'h4', '$1'),
+			'a2'     => array ('a url=&quot;(.*)&quot;', 'a', 'a href="$1"', 'a', '$2'),
+			'img'    => array ('img', 'img', 'img src="$1"', '', ''),
+			'liste'  => array ('img', 'img', 'img src="$1"', '', ''),
+			'tableau'=> array ('img', 'img', 'img src="$1"', '', ''),
+			'quote'  => array ('quote title=&quot;(.*)&quot;', 'quote', 'blockquote title="$1"', 'blockquote', '$2'),
+			'email'  => array ('email', 'email', 'a href="mailto:$1"', 'a', '$1'),
+			'sup'    => array ('sup', 'sup', 'sup', 'sup', '$1'),
+			'sub'    => array ('sub', 'sub', 'sub', 'sub', '$1'),
+			'align'  => array ('align val=&quot;(.*)&quot;', 'align', 'span style="display: inline-block; text-align: $1;"', 'span', '$2'),
+			'float'  => array ('float val=&quot;(.*)&quot;', 'float', 'span style="float: $1;"', 'span', '$2'),
+			'color'  => array ('color val=&quot;(.*)&quot;', 'color', 'span style="color: $1;"', 'span', '$1'),
+			'taille' => array ('size val=&quot;(.*)&quot;', 'size', 'span style="font-size: $1em;"', 'span', '$1'),
+			'police' => array ('font val=&quot;(.*)&quot;', 'font', 'span style="font-family: $1;"', 'span', '$1'),
+			'audio'  => array ('audio', 'audio', 'audio src="$1" controls="controls"', 'audio', '$1'),
+			'video'  => array ('audio', 'audio', 'audio src="$1" controls="controls"', 'audio', '$1'),
+			'code'   => array ('audio', 'audio', 'audio src="$1" controls="controls"', 'audio', '$1'),
+		);
 
 		public  function __construct($lang=""){
 			require_once(GESHI);
@@ -195,6 +261,10 @@
 			$this->preview=$preview;
 		} 
 		
+		public function setInstantane($preview){
+			$this->previewInstantanee=$preview;
+		} 
+		
 		private function _highlight($contenu){
 			$contenu[1] = html_entity_decode($contenu[1]);
 			$contenu[2] = html_entity_decode($contenu[2]);
@@ -301,20 +371,33 @@
 					case 'theme':
 						$this->bbcodeButton = $info;
 					break;
+					
+					case 'preview':
+						$this->preview = $info;
+					break;
+					
+					case 'instantane':
+						$this->previewInstantanee = $info;
+					break;
 				}
 			}
 			
 			$tpl = new templateGC('GCbbcodeEditor', 'GCbbcodeEditor', 0, $this->lang);
 			$tpl->assign(array(
-				'message' => $message,
+				'message' => $contenu,
 				'preview' => $this->preview,
+				'instantane' => $this->previewInstantanee,
 				'id' => $this->id,
 				'name' => $this->name,
 				'width' => $this->bbcodeWidth,
+				'Twidth' => $this->bbcodeWidth,
 				'height' => $this->bbcodeHeight,
 				'bgcolor' => $this->bbcodeBgColor,
 				'theme' => $this->bbcodeButton,
-				'smiley' => $this->bbCodeSmiley
+				'smiley' => $this->bbCodeSmiley,
+				'bbcode' => $this->bbCodeJs,
+				'imgpath' => IMG_PATH,
+				'bbCodeS' => $this->bbCodeSJs
 			));
 			$tpl->show();
 		}

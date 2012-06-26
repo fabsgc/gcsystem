@@ -4,7 +4,7 @@
 		background-color : <?php echo htmlentities($bgcolor); ?>;
 		border-radius : 4px;
 		padding: 1px;
-		padding-right: 4px;
+		padding-right: 3px;
 		font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 	}
 	
@@ -12,12 +12,21 @@
 		border: none;
 		width: <?php echo htmlentities($width); ?>;
 		height: <?php echo htmlentities($height); ?>;
-		margin-bottom: -4px;
-		margin-top: -4px;
+		margin-bottom: -2px;
+		margin-top: 1px;
+		padding: 1px;
 	}
 	
 	.gc_bbcode_preview_zone{
 		width: <?php echo htmlentities($width); ?>;
+		padding: 0 1px 0 1px;
+		background-color: rgb(245,245,245);
+		border-bottom-left-radius : 4px;
+		border-bottom-right-radius : 4px;
+		max-height: 250px;
+		overflow: auto;
+		overflow-x:hidden;
+		word-wrap: break-word;
 	}
 	
 	div .button {
@@ -482,18 +491,47 @@
 	}
 	
 	function preview_<?php echo htmlentities($id); ?>(id){
-		alert('salut');
+		field = nl2br_js(document.getElementById('<?php echo htmlentities($id); ?>').value);
+
+		<?php if(!empty($bbcode)) { foreach($bbcode as $val) { ?>
+			field = field.replace(/\[<?php echo (html_entity_decode("$val[0]")); ?>\]([\s\S]*?)\[\/<?php echo (html_entity_decode("$val[1]")); ?>\]/g, '<<?php echo (html_entity_decode("$val[2]")); ?>><?php echo htmlentities($val[4]); ?></<?php echo (html_entity_decode("$val[3]")); ?>>');
+		<?php }} ?>
+		<?php if(!empty($smiley)) { foreach($smiley as $val) { ?>
+			field = field.replace(/<?php echo (preg_quote("$val[1]")); ?> /g, '<img src="<?php echo htmlentities($imgpath); ?>bbcode/<?php echo htmlentities($val[0]); ?>" alt="<?php echo htmlentities($val[1]); ?>" /> ');
+			field = field.replace(/<?php echo (preg_quote("$val[1]")); ?>&lt;br \/&gt;/g, '<img src="<?php echo htmlentities($imgpath); ?>bbcode/<?php echo htmlentities($val[0]); ?>" alt="<?php echo htmlentities($val[1]); ?>" /><br />');
+		<?php }} ?>
+		<?php if(!empty($bbCodeS)) { foreach($bbCodeS as $val) { ?>
+			field = field.replace(/\[<?php echo (html_entity_decode("$val[0]")); ?>\]([\s\S]*?)\[\/<?php echo (html_entity_decode("$val[0]")); ?>\]/g, '<<?php echo (html_entity_decode("$val[0]")); ?>>$1</<?php echo (html_entity_decode("$val[0]")); ?>>');
+		<?php }} ?>
+		
+		field = field.replace('&gt;&lt;br \/&gt;', '>');
+		
+		document.getElementById('zone_<?php echo htmlentities($id); ?>').innerHTML = field;
+		document.getElementById('zone_<?php echo htmlentities($id); ?>').innerHTML = field;
+		document.getElementById('zone_<?php echo htmlentities($id); ?>').scrollTop = 1000;
+	}
+	
+	function previewAjax_<?php echo htmlentities($id); ?>(id){
+		alert('<?php echo "vous devez écrire la fonction pour l\'utiliser"; ?>');
+	}
+	
+	function nl2br_js(myString) {
+		var regX = /\n/gi ;
+	
+		s = new String(myString);
+		s = s.replace(regX, "<br /> \n");
+		return s;
 	}
 </script>
 <div class="gc_bbcode">
 	<div class="gc_bbcode_option option <?php echo htmlentities($theme); ?>">
 		<?php if(!empty($smiley)) { foreach($smiley as $val) { ?>
-			<?php echo htmlentities($val[0]); ?>
+			<img src="<?php echo htmlentities($imgpath); ?>bbcode/<?php echo htmlentities($val[0]); ?>" alt="<?php echo htmlentities($val[1]); ?>" onclick="insertTag_<?php echo htmlentities($id); ?>('<?php echo (preg_quote("$val[1]")); ?>', '', '<?php echo htmlentities($id); ?>'); " />
 		<?php }} ?>
 	</div>
-	<textarea id="<?php echo htmlentities($id); ?>" name="<?php echo htmlentities($name); ?>" ><?php echo htmlentities($message); ?></textarea>
+	<textarea id="<?php echo htmlentities($id); ?>" name="<?php echo htmlentities($name); ?>"<?php if($preview == true && $instantane == true) { ?> onKeyUp="preview_<?php echo htmlentities($id); ?>('<?php echo htmlentities($id); ?>');" <?php } ?> ><?php echo htmlentities($message); ?></textarea>
 	<?php if($preview == true) { ?>
-		<div class="gc_bbcode_preview_button button <?php echo htmlentities($theme); ?>" onClick="preview_<?php echo htmlentities($id); ?>(<?php echo htmlentities($id); ?>);">
+		<div class="gc_bbcode_preview_button button <?php echo htmlentities($theme); ?>" onClick="previewAjax_<?php echo htmlentities($id); ?>('<?php echo htmlentities($id); ?>');">
 			<?php echo "prévisualiser"; ?>
 		</div>
 		<div class="gc_bbcode_preview_zone" id="zone_<?php echo htmlentities($id); ?>">
