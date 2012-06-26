@@ -441,6 +441,33 @@
 		-moz-box-shadow: 0 1px 1px rgba(0,0,0,.1);
 		box-shadow: 0 1px 1px rgba(0,0,0,.1);
 	}
+	
+	/* Personnalize */
+	.button.personnalize, .option.personnalize {
+		background-color: #<?php echo htmlentities($color[0]); ?>;
+		background-image: -webkit-linear-gradient(top,#<?php echo htmlentities($color[0]); ?>, #<?php echo htmlentities($color[1]); ?>);
+		background-image: -moz-linear-gradient(top,#<?php echo htmlentities($color[0]); ?>, #<?php echo htmlentities($color[1]); ?>);
+		background-image: -ms-linear-gradient(top,#<?php echo htmlentities($color[0]); ?>, #<?php echo htmlentities($color[1]); ?>);
+		background-image: -o-linear-gradient(top,#<?php echo htmlentities($color[0]); ?>, #<?php echo htmlentities($color[1]); ?>);
+		background-image: linear-gradient(top,#<?php echo htmlentities($color[0]); ?>, #<?php echo htmlentities($color[1]); ?>);
+
+		border: 1px solid #<?php echo htmlentities($color[0]); ?>;
+	}
+	
+	.button.personnalize:hover {
+		border: 1px solid #<?php echo htmlentities($color[0]); ?>;
+		
+		background-color: #<?php echo htmlentities($color[0]); ?>;
+		background-image: -webkit-linear-gradient(top,#<?php echo htmlentities($color[0]); ?>,#<?php echo htmlentities($color[1]); ?>);
+		background-image: -moz-linear-gradient(top,#<?php echo htmlentities($color[0]); ?>,#<?php echo htmlentities($color[1]); ?>);
+		background-image: -ms-linear-gradient(top,#<?php echo htmlentities($color[0]); ?>,#<?php echo htmlentities($color[1]); ?>);
+		background-image: -o-linear-gradient(top,#<?php echo htmlentities($color[0]); ?>,#<?php echo htmlentities($color[1]); ?>);
+		background-image: linear-gradient(top,#<?php echo htmlentities($color[0]); ?>,#<?php echo htmlentities($color[1]); ?>);
+		
+		-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
+		-moz-box-shadow: 0 1px 1px rgba(0,0,0,.1);
+		box-shadow: 0 1px 1px rgba(0,0,0,.1);
+	}
 
 	/* defaults */
 
@@ -456,7 +483,7 @@
 	.button.grayish:active, .button.skinish:active,
 	.button.yellowish:active, .button.goldenish:active,
 	.button.pink:active, .button.violet:active, .button.orange:active,
-	.button.seagreen:active {
+	.button.seagreen:active, .button.personnalize:active {
 		-webkit-box-shadow: inset 0px 1px 2px rgba(0,0,0,.3);
 		-moz-box-shadow: inset 0px 1px 2px rgba(0,0,0,.3);
 		box-shadow: inset 0px 1px 2px rgba(0,0,0,.3);
@@ -532,7 +559,7 @@
 		<?php }} ?>
 		<br />
 		<?php if(!empty($smiley)) { foreach($smiley as $val) { ?>
-			<img src="<?php echo htmlentities($imgpath); ?>bbcode/<?php echo htmlentities($val[0]); ?>" alt="<?php echo htmlentities($val[1]); ?>" onclick="insertTag_<?php echo htmlentities($id); ?>('<?php echo (preg_quote("$val[1]")); ?>', '', '<?php echo htmlentities($id); ?>'); " />
+			<img src="<?php echo htmlentities($imgpath); ?>bbcode/<?php echo htmlentities($val[0]); ?>" alt="<?php echo htmlentities($val[1]); ?>" onclick="insertTag_<?php echo htmlentities($id); ?>('<?php echo (preg_quote("$val[1]")); ?> ', '', '<?php echo htmlentities($id); ?>'); " />
 		<?php }} ?>
 	</div>
 	<textarea id="<?php echo htmlentities($id); ?>" name="<?php echo htmlentities($name); ?>"<?php if($preview == true && $instantane == true) { ?> onKeyUp="preview_<?php echo htmlentities($id); ?>('<?php echo htmlentities($id); ?>');" <?php } ?> ><?php echo htmlentities($message); ?></textarea>

@@ -31,7 +31,8 @@
 		private $bbcodeBgColor            ='#9d9d9d'         ; //couleur de fond de l'éditeur
 		private $bbcodeButton             ='blue'            ; //couleur de la barre d'option et du bouton prévisualiser.
 															   //valeur : button blue red green pinkish maroonish golden brownish 
-															   //grayish skinish yellowish goldenish pink violet orange seagreen
+															   //grayish skinish yellowish goldenish pink violet orange seagreen personalize
+		private $bbcodeButtonColor        = array()          ; //dans le cas de couleurs personnalisées
 		
 		private $bbCode = array (
 			'abbr'   => array ('abbr title=&quot;(.*)&quot;', 'abbr', 'abbr title="$1"', 'abbr', '$2'),
@@ -379,6 +380,10 @@
 					case 'instantane':
 						$this->previewInstantanee = $info;
 					break;
+					
+					case 'color' :
+						$this->bbcodeButtonColor = $info;
+					break;
 				}
 			}
 			
@@ -398,7 +403,8 @@
 				'bbcode' => $this->bbCodeJs,
 				'imgpath' => IMG_PATH,
 				'bbCodeS' => $this->bbCodeSJs,
-				'bbCodeEditor' => $this->bbCodeEditor
+				'bbCodeEditor' => $this->bbCodeEditor,
+				'color' => $this->bbcodeButtonColor
 			));
 			$tpl->show();
 		}

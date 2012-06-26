@@ -441,6 +441,33 @@
 		-moz-box-shadow: 0 1px 1px rgba(0,0,0,.1);
 		box-shadow: 0 1px 1px rgba(0,0,0,.1);
 	}
+	
+	/* Personnalize */
+	.button.personnalize, .option.personnalize {
+		background-color: #{color[0]};
+		background-image: -webkit-linear-gradient(top,#{color[0]}, #{color[1]});
+		background-image: -moz-linear-gradient(top,#{color[0]}, #{color[1]});
+		background-image: -ms-linear-gradient(top,#{color[0]}, #{color[1]});
+		background-image: -o-linear-gradient(top,#{color[0]}, #{color[1]});
+		background-image: linear-gradient(top,#{color[0]}, #{color[1]});
+
+		border: 1px solid #{color[0]};
+	}
+	
+	.button.personnalize:hover {
+		border: 1px solid #{color[0]};
+		
+		background-color: #{color[0]};
+		background-image: -webkit-linear-gradient(top,#{color[0]},#{color[1]});
+		background-image: -moz-linear-gradient(top,#{color[0]},#{color[1]});
+		background-image: -ms-linear-gradient(top,#{color[0]},#{color[1]});
+		background-image: -o-linear-gradient(top,#{color[0]},#{color[1]});
+		background-image: linear-gradient(top,#{color[0]},#{color[1]});
+		
+		-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
+		-moz-box-shadow: 0 1px 1px rgba(0,0,0,.1);
+		box-shadow: 0 1px 1px rgba(0,0,0,.1);
+	}
 
 	/* defaults */
 
@@ -456,7 +483,7 @@
 	.button.grayish:active, .button.skinish:active,
 	.button.yellowish:active, .button.goldenish:active,
 	.button.pink:active, .button.violet:active, .button.orange:active,
-	.button.seagreen:active {
+	.button.seagreen:active, .button.personnalize:active {
 		-webkit-box-shadow: inset 0px 1px 2px rgba(0,0,0,.3);
 		-moz-box-shadow: inset 0px 1px 2px rgba(0,0,0,.3);
 		box-shadow: inset 0px 1px 2px rgba(0,0,0,.3);
@@ -532,7 +559,7 @@
 		</foreach>
 		<br />
 		<foreach var="$smiley" as="$val">
-			<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" onclick="insertTag_{id}('<function name="preg_quote" string="$val[1]"/>', '', '{id}'); " />
+			<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" onclick="insertTag_{id}('<function name="preg_quote" string="$val[1]"/> ', '', '{id}'); " />
 		</foreach>
 	</div>
 	<textarea id="{id}" name="{name}"<if cond="$preview == true && $instantane == true"> onKeyUp="preview_{id}('{id}');" </if> >{message}</textarea>
