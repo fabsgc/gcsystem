@@ -24,7 +24,7 @@
 		public function setCache(){
 			if(!file_exists($this->nameFile)){
 				$fichier = fopen($this->nameFile, 'w+');
-				fwrite($fichier, $this->compress(serialize($this->val)));
+				fwrite($fichier, $this->_compress(serialize($this->val)));
 				fclose($fichier);
 			}
 		 
@@ -32,7 +32,7 @@
 		 
 			if($time_ago > $this->time){
 				$fichier = fopen($this->nameFile, 'w+');
-				fwrite($fichier, $this->compress(serialize($this->val)));
+				fwrite($fichier, $this->_compress(serialize($this->val)));
 				fclose($fichier);
 			}
 		}
@@ -52,7 +52,7 @@
 	 
 		public function getCache(){
 			if(file_exists($this->nameFile)){
-				return unserialize($this->uncompress(file_get_contents($this->nameFile)));
+				return unserialize($this->_uncompress(file_get_contents($this->nameFile)));
 			}
 			else{
 				$this->setCache();
@@ -83,11 +83,11 @@
 			}
 		}
 		
-		private function compress($val){
+		private function _compress($val){
 			return gzcompress($val,9);
 		}
 		
-		private function uncompress($val){
+		private function _uncompress($val){
 			return gzuncompress($val);
 		}
 	}

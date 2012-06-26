@@ -17,11 +17,11 @@
 			$this->img = $img;
 		}
 		
-		public function setImg($img){
+		public function _setImg($img){
 			$this->img = $img;
 		}
 		
-		public function fromTo($to){
+		public function _fromTo($to){
 			switch ($this->img){
 					case 'jpg':
 						case 'peg':
@@ -41,7 +41,7 @@
 					break;
 					
 					default :
-						$this->addError('L\'extension n\'est pas gérée');
+						$this->_addError('L\'extension n\'est pas gérée');
 					break;
 				}
 		}
@@ -62,7 +62,7 @@
 					break;
 					
 					default :
-						$this->addError('L\'extension n\'est pas gérée');
+						$this->_addError('L\'extension n\'est pas gérée');
 					break;
 				}
 		}
@@ -83,13 +83,20 @@
 					break;
 					
 					default :
-						$this->addError('L\'extension n\'est pas gérée');
+						$this->_addError('L\'extension n\'est pas gérée');
 					break;
 				}
 		}
 		
-		private function addError($error){
+		private function _addError($error){
 			array_push($this->error, $error);
+		}
+		
+		private function _showError(){
+			foreach($this->error as $error){
+				$erreur .=$error."<br />";
+			}
+			return $erreur;
 		}
 		
 		public function __destruct(){

@@ -21,7 +21,7 @@
 		protected $timeCache		  = 0;       //contient le temps de mise en cache
 		protected $timeFile		      = 0;       //contient la date de dernière modif du template
 		protected $lang		             ;       
-		protected $show		          = true;       
+		protected $show		          = true;      
 		
 		public  function __construct($file="", $nom="", $timecache=0, $lang=""){
 			$this->file=TEMPLATE_PATH.$file.TEMPLATE_EXT;
@@ -38,7 +38,7 @@
 			} 
 			else{
 				array_push($error, 'le fichier de template spécifié n\'a pas été trouvé.');
-				$this->content = "le fichier ne peut pas être lu";
+				$this->_addError("le fichier ne peut pas être lu");
 				$this->nom=$nom;
 				$this->timeCache=$timecache;
 				$this->fileCache=CACHE_PATH.'template_'.$this->nom.'.tpl.compil.php';
@@ -215,6 +215,17 @@
 		
 		public function setShow($show){
 			$this->show = $show;
+		}
+		
+		private function _showError(){
+			foreach($this->error as $error){
+				$erreur .=$error."<br />";
+			}
+			return $erreur;
+		}
+		
+		private function _addError($error){
+			array_push($this->error, $error);
 		}
 	}
 	

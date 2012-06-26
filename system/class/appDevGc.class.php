@@ -9,19 +9,19 @@
 	\*/
 	
 	class appDevGc{
-		private $lang               ; // gestion des langues via des fichiers XML
-		private $langInstance       ;
-		private $timeExec           ;
-		private $timeExecStart      ;
-		private $timeExecEnd        ;
-		private $rubrique   =array();
-		private $template   =array();
-		private $sql        =array();
-		private $arbo               ;
+		private $lang                ; // gestion des langues via des fichiers XML
+		private $langInstance        ;
+		private $timeExec            ; //calcul du temps d'exécution
+		private $timeExecStart       ; //time de départ
+		private $timeExecEnd         ; //time de fin
+		private $rubrique   = array(); //liste des rubrique
+		private $template   = array(); //liste des templates
+		private $sql        = array(); //liste des requêtes sql
+		private $arbo                ; //liste des fichiers inclus
 		
 		public  function __construct($lang=""){
 			if(!$lang){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
-			$this->createLangInstance();
+			$this->_createLangInstance();
 			$this->timeExecStart=microtime(true);
 		}
 		
@@ -40,7 +40,6 @@
 			foreach($this->sql as $val){
 				$sql .= $val."\n";
 			}
-			
 			
 			foreach($_GET as $cle => $val){
 				$this->arbo .="".$cle."::".$val."#";
@@ -64,7 +63,7 @@
 			$tpl->show();
 		}
 		
-		private function createLangInstance(){
+		private function _createLangInstance(){
 			$this->langInstance = new langGc($this->lang);
 		}
 		
@@ -81,9 +80,6 @@
 				$langcode = (!empty($langcode['0'])) ? explode("-", $langcode['0']) : $langcode;
 				return $langcode['0'];
 			}
-		}
-		
-		public function setLogXml($type, $contenu){
 		}
 		
 		public function setTimeExec(){

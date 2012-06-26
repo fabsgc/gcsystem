@@ -78,7 +78,7 @@
 								break;
 								
 								default :
-									$this->addError('type non géré');
+									$this->_addError('type non géré');
 								break;
 							}
 						}
@@ -91,7 +91,7 @@
 				switch($fetch){
 					case self::PARAM_FETCH : $data = $query->fetchAll(); break;
 					case self::PARAM_FETCHCOLUMN : $data = $query->fetchColumn(); break;
-					default : $this->addError('cette constante n\'existe pas'); $data=""; break;
+					default : $this->_addError('cette constante n\'existe pas'); $data=""; break;
 				}
 				
 				$this->cache->setVal($data);
@@ -103,14 +103,14 @@
 			}
 		}
 		
-		private function showError(){
+		private function _showError(){
 			foreach($this->error as $error){
 				$erreur .=$error."<br />";
 			}
 			return $erreur;
 		}
 		
-		private function addError($error){
+		private function _addError($error){
 			array_push($this->error, $error);
 		}
 	}

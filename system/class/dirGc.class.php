@@ -8,8 +8,9 @@
 	 | ------------------------------------------------------
 	\*/
 	
-    class dirGc{		
+    class dirGc{
 		private $dir;
+		private $error              = array() ; //array contenant toutes les erreurs enregistrées
 		
 		public function __construct($dir){
 			$this->dir = $dir;
@@ -35,6 +36,17 @@
 		
 		public function showdir($dir){
 		
+		}
+		
+		private function _showError(){
+			foreach($this->error as $error){
+				$erreur .=$error."<br />";
+			}
+			return $erreur;
+		}
+		
+		private function _addError($error){
+			array_push($this->error, $error);
 		}
 
 		public function __destruct(){

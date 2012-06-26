@@ -156,6 +156,9 @@ define('CLASS_OBJECT', CLASS_PATH.'objectGc.class.php');
 //class social
 define('CLASS_SOCIAL', CLASS_PATH.'socialGc.class.php');
 
+//GESHI
+define('GESHI', LIB_PATH.'geshi/geshi.php');
+
 //extension des fichiers de fonctions
 define('FUNCTION_EXT', '.function');
 
@@ -201,7 +204,7 @@ define('ENVIRONMENT', 'development');
 define('MAINTENANCE', false);
 
 /* mot de passe pour se connecter au terminal */
-define('TERMINAL_MDP', 'mdp');
+define('TERMINAL_MDP', 'trinite');
 
 /* mettre à true pour pouvoir utiliser jquery et jquery ui */
 define('JQUERY', true);

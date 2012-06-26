@@ -17,7 +17,7 @@
 				$this->file = $file;
 			}
 			else{
-				$this->addError('le fichier n\'est pas accessible');
+				$this->_addError('le fichier n\'est pas accessible');
 			}
 		}
 		
@@ -26,7 +26,7 @@
 				$this->file = $file;
 			}
 			else{
-				$this->addError('le fichier n\'est pas accessible');
+				$this->_addError('le fichier n\'est pas accessible');
 				return false;
 			}
 		}
@@ -42,7 +42,7 @@
 				}
 			}
 			else{
-				$this->addError('le fichier n\'a pas pu être déplacé');
+				$this->_addError('le fichier n\'a pas pu être déplacé');
 				return false;
 			}
 		}
@@ -52,7 +52,7 @@
 				return true;
 			}
 			else{
-				$this->addError('le fichier n\'a pas pu être copié');
+				$this->_addError('le fichier n\'a pas pu être copié');
 				return false;
 			}
 		}
@@ -61,11 +61,11 @@
 		
 		}
 		
-		private function addError($error){
+		private function _addError($error){
 			array_push($this->error, $error);
 		}
 		
-		public function showError(){
+		private function _showError(){
 			foreach($this->error as $error){
 				$erreur .=$error."<br />";
 			}

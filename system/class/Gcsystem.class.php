@@ -56,7 +56,7 @@
 			$this->jsInFile = array('inpage.js');
 			$this->otherHeader = array();
 			$this->langInstance;
-			$this->createLangInstance();
+			$this->_createLangInstance();
 			if($lang==""){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
 		}
 		
@@ -91,7 +91,7 @@
 				return $sql_connect;
 			}
 			
-			private function createLangInstance(){
+			private function _createLangInstance(){
 				$this->langInstance = new langGc($this->lang);
 			}
 			

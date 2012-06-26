@@ -14,14 +14,14 @@
 		public  function __construct(){
 		}
 		
-		private function showError(){
+		private function _showError(){
 			foreach($this->error as $error){
 				$erreur .=$error."<br />";
 			}
 			return $erreur;
 		}
 		
-		private function addError($error){
+		private function _addError($error){
 			array_push($this->error, $error);
 		}
 		
