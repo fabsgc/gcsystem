@@ -11,16 +11,23 @@
 	class bbcodeGc{
 		private $contenu                                     ; //contenu à parser
 		private $error                    = array()          ; //array contenant toutes les erreurs enregistrées
-		private $private                  = array()          ; //array contenant toutes les erreurs enregistrées
-		const TAGSTART                    = '['              ;
+		const TAGSTART                    = '['              ; //constante contenant les tag pour la syntaxe
 		const TAGSTART2                   = '[/'             ;
 		const TAGEND                      = ']'              ;
 		const PARSETAGSTART               = '<'              ;
 		const PARSETAGSTART2              = '</'             ;
 		const PARSETAGEND                 = '>'              ;
+		const PARSETAGENDAUTO             = '/>'             ;
+		const BBCODE                      = 'bbcode'         ; //répertoire contenant les images
 		private $lang                                        ; // gestion des langues via des fichiers XML
-		private $langInstance                                ;
+		private $langInstance                                ; //instance de la class langGc
 		private $id                                          ; //id uniq pour la création d'un formulaire de bbcode
+		private $name                                        ; //name pour la création d'un formulaire de bbcode
+		private $preview                  =true              ; //la prévisualisation est activée
+		
+		private $bbcodeWidth              ='600px'            ; //largeur de l'éditeur
+		private $bbcodeHeight             ='250px'           ; //largeur de la zone de texte de l'éditeur
+		private $bbcodeBgColor            ='#9d9d9d'         ; //largeur de la zone de texte de l'éditeur
 		
 		private $bbCode = array (
 			'abbr'   => array ('abbr title=&quot;(.*)&quot;', 'abbr', 'abbr title="$1"', 'abbr', '$2'),
@@ -113,6 +120,7 @@
 			);
 			
 			$this->contenu = htmlentities($contenu);
+			
 			foreach($this->bbCode as $cle => $valeur){
 				if($valeur[3]!=""){
 					$this->contenu = preg_replace(
@@ -124,7 +132,7 @@
 				else{ //cas des balises auto fermantes
 					$this->contenu = preg_replace(
 						'`'.preg_quote(self::TAGSTART).$valeur[0].preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).$valeur[1].preg_quote(self::TAGEND).'`isU', 
-							self::PARSETAGSTART.$valeur[2].self::PARSETAGEND.' ', 
+							self::PARSETAGSTART.$valeur[2].self::PARSETAGENDAUTO.' ', 
 							$this->contenu
 					);
 				}
@@ -143,6 +151,14 @@
 							$this->contenu
 					);
 
+			}
+			
+			foreach($this->bbCodeSmiley as $cle => $valeur){
+				$this->contenu = preg_replace(
+					'`'.preg_quote($cle).'`isU', 
+						self::PARSETAGSTART.'img src="'.IMG_PATH.'bbcode/'.$valeur[0].'" alt="'.$valeur[1].'" '.self::PARSETAGENDAUTO.' ', 
+						$this->contenu
+				);
 			}
 			
 			//balise non html
@@ -170,6 +186,10 @@
 		public function setLang($Lang){
 			$this->lang=$Lang;
 			$this->langInstance->setLang($this->lang);
+		} 
+		
+		public function setPreview($preview){
+			$this->preview=$preview;
 		} 
 		
 		private function _highlight($contenu){
@@ -249,10 +269,44 @@
 			}
 		}
 		
-		public function editor($contenu){
-			$this->id = uniqid();
+		public function editor($contenu, $option = array()){
+			$this->id = 'id_'.uniqid();
+			$this->name = 'name_'.uniqid();
+			
+			foreach($option as $cle=>$info){
+				switch($cle){
+					case 'width':
+						$this->bbcodeWidth = $info;
+					break;
+					
+					case 'height':
+						$this->bbcodeHeight = $info;
+					break;
+					
+					case 'bgcolor':
+						$this->bbcodeBgColor = $info;
+					break;
+					
+					case 'id':
+						$this->id = $info;
+					break;
+					
+					case 'name':
+						$this->name = $info;
+					break;
+				}
+			}
+			
 			$tpl = new templateGC('GCbbcodeEditor', 'GCbbcodeEditor', 0, $this->lang);
-			$tpl->assign(array());
+			$tpl->assign(array(
+				'message' => $message,
+				'preview' => $this->preview,
+				'id' => $this->id,
+				'name' => $this->name,
+				'width' => $this->bbcodeWidth,
+				'height' => $this->bbcodeHeight,
+				'bgcolor' => $this->bbcodeBgColor,
+			));
 			$tpl->show();
 		}
 		

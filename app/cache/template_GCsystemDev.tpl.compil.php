@@ -1,4 +1,8 @@
 <style>
+	body{
+		margin-bottom: 60px;
+	}
+	
 	#GCsysytem_dev{
 		position: fixed;
 		background-color: #F7F7F7;

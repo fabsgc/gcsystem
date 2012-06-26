@@ -21,6 +21,7 @@
 		const PARAM_STR                 = 2;
 		const PARAM_FETCH               = 0;
 		const PARAM_FETCHCOLUMN         = 1;
+		const PARAM_FETCHINSERT         = 2;
 		
 		public  function __construct($bdd){
 			$this->bdd = $bdd;
@@ -91,6 +92,7 @@
 				switch($fetch){
 					case self::PARAM_FETCH : $data = $query->fetchAll(); break;
 					case self::PARAM_FETCHCOLUMN : $data = $query->fetchColumn(); break;
+					case self::PARAM_FETCHINSERT : $data = true; break;
 					default : $this->_addError('cette constante n\'existe pas'); $data=""; break;
 				}
 				

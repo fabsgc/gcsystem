@@ -1,4 +1,17 @@
 <style>
+	.gc_bbcode{
+		width : {width};
+		background-color : {bgcolor};
+		border-radius : 4px;
+		padding: 1px;
+		padding-right: 4px;
+	}
+	
+	textarea#{id}{
+		border: none;
+		width: {width};
+		height: {height};
+	}
 </style>
 <script>
 	function insertTag(startTag, endTag, textareaId, tagType) {
@@ -28,6 +41,19 @@
 		field.scrollTop = scroll; // et on redéfinit le scroll.
 	}
 </script>
-<div id="gc_bbcode">
-_(bbcodepreview)_
+<div class="gc_bbcode">
+	<div class="gc_bbcode_code">
+		<div class="gc_bbcode_code_option">
+		</div>
+		<div class="gc_bbcode_code_zone">
+			<textarea id={id} name={name} >{message}</textarea />
+		</div>
+	</div>
+	<if cond="$preview == true">
+		<div class="gc_bbcode_preview_button">
+			_(bbcodepreview)_
+		</div>
+		<div class="gc_bbcode_preview_zone">
+		</div>
+	</if>
 </div>

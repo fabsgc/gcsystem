@@ -51,11 +51,13 @@
 		
 		[code type="php"]<?php echo "salut"; ?>[/code]
 		
-		http://localhost/GCsystem2.0/index.php';
+		http://localhost/GCsystem2.0/index.php
+		
+		:)';
 		
 		$code = new bbcodeGc('nl');
 		echo $code -> parse($message);
-		$code -> editor();
+		$code -> editor('yop', array('id'=>'salut', 'name'=>'sdlkfjdslfsjdl'));
 		
 
 		
