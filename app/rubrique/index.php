@@ -55,8 +55,8 @@
 		
 		:)';*/
 		
-		$code = new bbcodeGc('nl');
-		echo $code -> parse($message);
+		$code = new bbcodeGc('fr');
+		// echo $code -> parse($message);
 		$code -> editor('yop', array('id'=>'salut', 'name'=>'sdlkfjdslfsjdl'));
 		
 

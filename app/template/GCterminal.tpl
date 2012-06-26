@@ -21,7 +21,20 @@
 		height: 25px;
 		width: 100%;
 		font-size: 1.15em;
-		background-color: rgb(40,40,40);
+		border-top:1px #b0b0b0 solid;
+		background-color: #444444;
+		background-image:-webkit-linear-gradient(top, #E5E5E5, #AEAEAE);
+		background-image:-moz-linear-gradient(top, #E5E5E5, #AEAEAE);
+		background-image:-ms-linear-gradient(top, #E5E5E5, #AEAEAE);
+		background-image:-o-linear-gradient(top, #E5E5E5, #AEAEAE);
+		background-image:linear-gradient(to bottom, #E5E5E5, #AEAEAE);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#E5E5E5', EndColorStr='#AEAEAE');
+		font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+		margin:0;
+		display:block;
+		text-align:center;
+		color:#464646;
+		text-shadow:0 1px 0 rgba(255,255,255,.75);
 		text-indent: 4px;
 	}
 

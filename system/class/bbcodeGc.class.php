@@ -25,9 +25,12 @@
 		private $name                                        ; //name pour la création d'un formulaire de bbcode
 		private $preview                  =true              ; //la prévisualisation est activée
 		
-		private $bbcodeWidth              ='600px'            ; //largeur de l'éditeur
+		private $bbcodeWidth              ='600px'           ; //largeur de l'éditeur
 		private $bbcodeHeight             ='250px'           ; //largeur de la zone de texte de l'éditeur
-		private $bbcodeBgColor            ='#9d9d9d'         ; //largeur de la zone de texte de l'éditeur
+		private $bbcodeBgColor            ='#9d9d9d'         ; //couleur de fond de l'éditeur
+		private $bbcodeButton             ='blue'            ; //couleur de la barre d'option et du bouton prévisualiser.
+															   //valeur : button blue red green pinkish maroonish golden brownish 
+															   //grayish skinish yellowish goldenish pink violet orange seagreen:active
 		
 		private $bbCode = array (
 			'abbr'   => array ('abbr title=&quot;(.*)&quot;', 'abbr', 'abbr title="$1"', 'abbr', '$2'),
@@ -294,6 +297,10 @@
 					case 'name':
 						$this->name = $info;
 					break;
+					
+					case 'theme':
+						$this->bbcodeButton = $info;
+					break;
 				}
 			}
 			
@@ -306,6 +313,8 @@
 				'width' => $this->bbcodeWidth,
 				'height' => $this->bbcodeHeight,
 				'bgcolor' => $this->bbcodeBgColor,
+				'theme' => $this->bbcodeButton,
+				'smiley' => $this->bbCodeSmiley
 			));
 			$tpl->show();
 		}
