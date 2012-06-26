@@ -101,9 +101,9 @@
 			'align'  => array ('align val="(.*)"', 'align', 'span style="display: inline-block; text-align: $1;"', 'span', '$2'),
 			'float'  => array ('float val="(.*)"', 'float', 'span style="float: $1;"', 'span', '$2'),
 			'email'  => array ('email', 'email', 'a href="mailto:$1"', 'a', '$1'),
-			'color'  => array ('color val="(.*)"', 'color', 'span style="color: $1;"', 'span', '$1'),
-			'taille' => array ('size val="(.*)"', 'size', 'span style="font-size: $1em;"', 'span', '$1'),
-			'police' => array ('font val="(.*)"', 'font', 'span style="font-family: $1;"', 'span', '$1'),
+			'color'  => array ('color val="(.*)"', 'color', 'span style="color: $1;"', 'span', '$2'),
+			'taille' => array ('size val="(.*)"', 'size', 'span style="font-size: $1em;"', 'span', '$2'),
+			'police' => array ('font val="(.*)"', 'font', 'span style="font-family: $1;"', 'span', '$2'),
 		);
 		
 		private $bbCodeS = array ('ul', 'li', 'ol', 'table', 'tr', 'td', 'th');
@@ -122,25 +122,25 @@
 			'strong' => array ('strong', 'strong', 'gras.png'),
 			'em'     => array ('em', 'em', 'italique.png'),
 			'ins'    => array ('ins', 'ins', 'souligne.png'),
-			'del'    => array ('del', 'del', ),
-			'h3'     => array ('h3', 'h3', 'h3', 'h3', '$1'),
-			'h4'     => array ('h4', 'h4', 'h4', 'h4', '$1'),
-			'a2'     => array ('a url=&quot;(.*)&quot;', 'a', 'a href="$1"', 'a', '$2'),
-			'img'    => array ('img', 'img', 'img src="$1"', '', ''),
-			'liste'  => array ('img', 'img', 'img src="$1"', '', ''),
-			'tableau'=> array ('img', 'img', 'img src="$1"', '', ''),
-			'quote'  => array ('quote title=&quot;(.*)&quot;', 'quote', 'blockquote title="$1"', 'blockquote', '$2'),
-			'email'  => array ('email', 'email', 'a href="mailto:$1"', 'a', '$1'),
-			'sup'    => array ('sup', 'sup', 'sup', 'sup', '$1'),
-			'sub'    => array ('sub', 'sub', 'sub', 'sub', '$1'),
-			'align'  => array ('align val=&quot;(.*)&quot;', 'align', 'span style="display: inline-block; text-align: $1;"', 'span', '$2'),
-			'float'  => array ('float val=&quot;(.*)&quot;', 'float', 'span style="float: $1;"', 'span', '$2'),
-			'color'  => array ('color val=&quot;(.*)&quot;', 'color', 'span style="color: $1;"', 'span', '$1'),
-			'taille' => array ('size val=&quot;(.*)&quot;', 'size', 'span style="font-size: $1em;"', 'span', '$1'),
-			'police' => array ('font val=&quot;(.*)&quot;', 'font', 'span style="font-family: $1;"', 'span', '$1'),
-			'audio'  => array ('audio', 'audio', 'audio src="$1" controls="controls"', 'audio', '$1'),
-			'video'  => array ('audio', 'audio', 'audio src="$1" controls="controls"', 'audio', '$1'),
-			'code'   => array ('audio', 'audio', 'audio src="$1" controls="controls"', 'audio', '$1'),
+			'del'    => array ('del', 'del', 'barre.png'),
+			'h3'     => array ('h3', 'h3', 'titre1.png'),
+			'h4'     => array ('h4', 'h4', 'titre2.png'),
+			'a2'     => array ('a url=&quot;&quot;', 'a', 'lien.png'),
+			'img'    => array ('img', 'img', 'image.png'),
+			'liste'  => array ('ul][li', 'li][/ul', 'liste.png'),
+			'tableau'=> array ('table][tr][td', 'td][/tr][/table', 'tab.png'),
+			'quote'  => array ('quote title=&quot;&quot;', 'quote', 'citation.png'),
+			'email'  => array ('email', 'email', 'email.png'),
+			'sup'    => array ('sup', 'sup', 'sup.png'),
+			'sub'    => array ('sub', 'sub', 'sub.png'),
+			'align'  => array ('align val=&quot;&quot;', 'align', 'align.png'),
+			'float'  => array ('float val=&quot;&quot;', 'float', 'float.png'),
+			'color'  => array ('color val=&quot;&quot;', 'color', 'color.png'),
+			'taille' => array ('size val=&quot;&quot;', 'size', 'sizeup.png'),
+			'police' => array ('font val=&quot;&quot;', 'font', 'style.png'),
+			'audio'  => array ('audio', 'audio', 'son.png'),
+			'video'  => array ('video', 'video', 'video.png'),
+			'code'   => array ('code type=&quot;&quot;', 'code', 'code.png'),
 		);
 
 		public  function __construct($lang=""){
@@ -397,7 +397,8 @@
 				'smiley' => $this->bbCodeSmiley,
 				'bbcode' => $this->bbCodeJs,
 				'imgpath' => IMG_PATH,
-				'bbCodeS' => $this->bbCodeSJs
+				'bbCodeS' => $this->bbCodeSJs,
+				'bbCodeEditor' => $this->bbCodeEditor
 			));
 			$tpl->show();
 		}

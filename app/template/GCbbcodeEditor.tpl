@@ -488,6 +488,8 @@
 		} 
 
 		field.scrollTop = scroll; // et on redéfinit le scroll.
+		
+		preview_{id}('{id}');
 	}
 	
 	function preview_{id}(id){
@@ -525,6 +527,10 @@
 </script>
 <div class="gc_bbcode">
 	<div class="gc_bbcode_option option {theme}">
+		<foreach var="$bbCodeEditor" as="$val">
+			<img src="{imgpath}bbcode/{val[2]}" alt="{val[2]}" onclick="insertTag_{id}('[<function name="preg_quote" string="$val[0]"/>]', '[/<function name="preg_quote" string="$val[1]"/>]', '{id}'); " />
+		</foreach>
+		<br />
 		<foreach var="$smiley" as="$val">
 			<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" onclick="insertTag_{id}('<function name="preg_quote" string="$val[1]"/>', '', '{id}'); " />
 		</foreach>
@@ -534,7 +540,7 @@
 		<div class="gc_bbcode_preview_button button {theme}" onClick="previewAjax_{id}('{id}');">
 			_(bbcodepreview)_
 		</div>
-		<div class="gc_bbcode_preview_zone" id="zone_{id}">
-		</div>
 	</if>
+	<div class="gc_bbcode_preview_zone" id="zone_{id}">
+	</div>
 </div>

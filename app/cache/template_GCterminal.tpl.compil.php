@@ -38,6 +38,7 @@
 		color:#464646;
 		text-shadow:0 1px 0 rgba(255,255,255,.75);
 		text-indent: 4px;
+		box-shadow: rgba(0, 0, 0, 0.25) 0 0 8px;
 	}
 
 	#gc_terminal_top_titre{

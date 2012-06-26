@@ -488,6 +488,8 @@
 		} 
 
 		field.scrollTop = scroll; // et on redéfinit le scroll.
+		
+		preview_<?php echo htmlentities($id); ?>('<?php echo htmlentities($id); ?>');
 	}
 	
 	function preview_<?php echo htmlentities($id); ?>(id){
@@ -525,6 +527,10 @@
 </script>
 <div class="gc_bbcode">
 	<div class="gc_bbcode_option option <?php echo htmlentities($theme); ?>">
+		<?php if(!empty($bbCodeEditor)) { foreach($bbCodeEditor as $val) { ?>
+			<img src="<?php echo htmlentities($imgpath); ?>bbcode/<?php echo htmlentities($val[2]); ?>" alt="<?php echo htmlentities($val[2]); ?>" onclick="insertTag_<?php echo htmlentities($id); ?>('[<?php echo (preg_quote("$val[0]")); ?>]', '[/<?php echo (preg_quote("$val[1]")); ?>]', '<?php echo htmlentities($id); ?>'); " />
+		<?php }} ?>
+		<br />
 		<?php if(!empty($smiley)) { foreach($smiley as $val) { ?>
 			<img src="<?php echo htmlentities($imgpath); ?>bbcode/<?php echo htmlentities($val[0]); ?>" alt="<?php echo htmlentities($val[1]); ?>" onclick="insertTag_<?php echo htmlentities($id); ?>('<?php echo (preg_quote("$val[1]")); ?>', '', '<?php echo htmlentities($id); ?>'); " />
 		<?php }} ?>
@@ -534,7 +540,7 @@
 		<div class="gc_bbcode_preview_button button <?php echo htmlentities($theme); ?>" onClick="previewAjax_<?php echo htmlentities($id); ?>('<?php echo htmlentities($id); ?>');">
 			<?php echo "prévisualiser"; ?>
 		</div>
-		<div class="gc_bbcode_preview_zone" id="zone_<?php echo htmlentities($id); ?>">
-		</div>
 	<?php } ?>
+	<div class="gc_bbcode_preview_zone" id="zone_<?php echo htmlentities($id); ?>">
+	</div>
 </div>
