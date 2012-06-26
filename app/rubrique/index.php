@@ -57,7 +57,7 @@
 		
 		$code = new bbcodeGc('fr');
 		// echo $code -> parse($message);
-		$code->editor('', array('id'=>'editeur', 'name'=>'message', 'theme'=>'personnalize', color => array('cd1818', 'f8fb1b'),  'width'=>'700px', 'height'=>'300px'));
+		$code->editor('', array('id'=>'editeur', 'name'=>'message', 'theme'=>'personnalize', color => array('FE9F4B', 'FE7A04'),  'width'=>'700px', 'height'=>'300px'));
 		
 
 		

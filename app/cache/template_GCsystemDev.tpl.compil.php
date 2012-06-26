@@ -126,7 +126,7 @@
 		<div class="GCsysytem_dev_content_logo"><img src="<?php echo htmlentities($IMG_PATH); ?>arbo.png" title="<?php echo "variable get et post."; ?>"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone"  style="width: 169px;">
-			<?php echo htmlentities($arbo); ?>
+			<?php echo (nl2br("$arbo")); ?>
 			</div>
 		</div>
 	</div>

@@ -41,11 +41,17 @@
 				$sql .= $val."\n";
 			}
 			
+			$this->arbo .="-----------get------------\n";
 			foreach($_GET as $cle => $val){
-				$this->arbo .="".$cle."::".$val."#";
+				$this->arbo .="".$cle."::".$val."\n";
 			}
+			$this->arbo .="-----------post-----------\n";
 			foreach($_POST as $cle => $val){
-				$this->arbo .="".$cle."::".$val."#";
+				$this->arbo .="".$cle."::".$val."\n";
+			}
+			$this->arbo .="----------session--------\n";
+			foreach($_SESSION as $cle => $val){
+				$this->arbo .="".$cle."::".$val."\n";
 			}
 			
 			$tpl = new templateGC('GCsystemDev', 'GCsystemDev', 0, $lang="");
