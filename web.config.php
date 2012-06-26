@@ -204,7 +204,7 @@ define('ENVIRONMENT', 'development');
 define('MAINTENANCE', false);
 
 /* mot de passe pour se connecter au terminal */
-define('TERMINAL_MDP', 'trinite');
+define('TERMINAL_MDP', 'mdp');
 
 /* mettre à true pour pouvoir utiliser jquery et jquery ui */
 define('JQUERY', true);

@@ -40,7 +40,7 @@
 				
 		// echo '<input id="id" />';
 		
-		$message = '[abbr title="slut"]sdfklsjlddffkd[/abbr] [sup]dfsdf[/sup] [a]sqkjlqskd[/a] [a url="skd"]sddf[/a] [img]http://localhost/GCsystem2.0/asset/image/arbo.png[/img] 
+		/*$message = '[abbr title="slut"]sdfklsjlddffkd[/abbr] [sup]dfsdf[/sup] [a]sqkjlqskd[/a] [a url="skd"]sddf[/a] [img]http://localhost/GCsystem2.0/asset/image/arbo.png[/img] 
 		[ul]
 		[li]sdf[/li]
 		[/ul]
@@ -53,7 +53,7 @@
 		
 		http://localhost/GCsystem2.0/index.php
 		
-		:)';
+		:)';*/
 		
 		$code = new bbcodeGc('nl');
 		echo $code -> parse($message);

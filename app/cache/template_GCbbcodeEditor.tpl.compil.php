@@ -12,9 +12,13 @@
 		width: <?php echo htmlentities($width); ?>;
 		height: <?php echo htmlentities($height); ?>;
 	}
+	
+	.gc_bbcode_preview_zone{
+		width: <?php echo htmlentities($width); ?>;
+	}
 </style>
 <script>
-	function insertTag(startTag, endTag, textareaId, tagType) {
+	function insertTag_<?php echo htmlentities($id); ?>(startTag, endTag, textareaId, tagType) {
 		var field  = document.getElementById(textareaId); 
 		var scroll = field.scrollTop;
 		field.focus();
@@ -40,20 +44,24 @@
 
 		field.scrollTop = scroll; // et on redéfinit le scroll.
 	}
+	
+	function preview_<?php echo htmlentities($id); ?>(id){
+		alert('salut');
+	}
 </script>
 <div class="gc_bbcode">
 	<div class="gc_bbcode_code">
 		<div class="gc_bbcode_code_option">
 		</div>
 		<div class="gc_bbcode_code_zone">
-			<textarea id=<?php echo htmlentities($id); ?> name=<?php echo htmlentities($name); ?> ><?php echo htmlentities($message); ?></textarea />
+			<textarea id="<?php echo htmlentities($id); ?>" name="<?php echo htmlentities($name); ?>" ><?php echo htmlentities($message); ?></textarea>
 		</div>
 	</div>
 	<?php if($preview == true) { ?>
-		<div class="gc_bbcode_preview_button">
+		<div class="gc_bbcode_preview_button" onClick="preview_<?php echo htmlentities($id); ?>(<?php echo htmlentities($id); ?>);">
 			<?php echo "bekijken"; ?>
 		</div>
-		<div class="gc_bbcode_preview_zone">
+		<div class="gc_bbcode_preview_zone" id="zone_<?php echo htmlentities($id); ?>">
 		</div>
 	<?php } ?>
 </div>

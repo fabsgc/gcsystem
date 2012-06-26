@@ -12,9 +12,13 @@
 		width: {width};
 		height: {height};
 	}
+	
+	.gc_bbcode_preview_zone{
+		width: {width};
+	}
 </style>
 <script>
-	function insertTag(startTag, endTag, textareaId, tagType) {
+	function insertTag_{id}(startTag, endTag, textareaId, tagType) {
 		var field  = document.getElementById(textareaId); 
 		var scroll = field.scrollTop;
 		field.focus();
@@ -40,20 +44,24 @@
 
 		field.scrollTop = scroll; // et on redéfinit le scroll.
 	}
+	
+	function preview_{id}(id){
+		alert('salut');
+	}
 </script>
 <div class="gc_bbcode">
 	<div class="gc_bbcode_code">
 		<div class="gc_bbcode_code_option">
 		</div>
 		<div class="gc_bbcode_code_zone">
-			<textarea id={id} name={name} >{message}</textarea />
+			<textarea id="{id}" name="{name}" >{message}</textarea>
 		</div>
 	</div>
 	<if cond="$preview == true">
-		<div class="gc_bbcode_preview_button">
+		<div class="gc_bbcode_preview_button" onClick="preview_{id}({id});">
 			_(bbcodepreview)_
 		</div>
-		<div class="gc_bbcode_preview_zone">
+		<div class="gc_bbcode_preview_zone" id="zone_{id}">
 		</div>
 	</if>
 </div>
