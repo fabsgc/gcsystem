@@ -1474,3 +1474,11 @@
 27/06/2012 à 19:53 ! : Erreur n°8 (Undefined variable: Redirect) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 468
 27/06/2012 à 19:54 ! : Erreur n°8 (Undefined variable: file) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\terminalGc.class.php à la ligne 335
 27/06/2012 à 19:54 ! : Erreur n°8 (Undefined variable: contenu) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\terminalGc.class.php à la ligne 335
+27/06/2012 à 19:56 ! : Erreur n°8 (Undefined variable: contenu) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\terminalGc.class.php à la ligne 335
+27/06/2012 à 19:56 ! : Erreur n°8 (Undefined property: terminalGc::$mdp) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\terminalGc.class.php à la ligne 307
+27/06/2012 à 20:29 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 20:29 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+27/06/2012 à 20:30 ! : Erreur n°8 (Undefined variable: contenu) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\terminalGc.class.php à la ligne 335
+27/06/2012 à 20:36 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 20:36 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+27/06/2012 à 20:38 ! : Erreur n°8 (Undefined variable: contenu) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\terminalGc.class.php à la ligne 335

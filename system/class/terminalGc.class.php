@@ -297,11 +297,11 @@
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> liste des commandes</span>';
 				}
 				elseif(preg_match('#update updater#', $this->command)){
-					$this->command = $this->updater();
+					$this->command .= $this->updater();
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> updater à jour</span>';
 				}
 				elseif(preg_match('#update#', $this->command)){
-					$this->command = $this->update();
+					$this->command .= $this->update();
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> framework à jour</span>';
 				}
 				elseif(preg_match('#disconnect#', $this->command) && $this->mdp==false){
@@ -316,7 +316,7 @@
 				}
 			}
 			else{
-				$this->command = '<span style="color: red;"> erreur de connexion</span>';
+				$this->command .= '<span style="color: red;"> erreur de connexion</span>';
 				$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Vous devez vous connecter grâce au  mot de passe du fichier de config</span>';
 			}
 			
