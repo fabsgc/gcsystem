@@ -332,7 +332,7 @@
 			curl_exec($ch);
 			curl_close($ch);
 			fclose($fp);
-			return $contenu .= '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL.'</span>';
+			return $contenu .= '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.CLASS_TERMINAL.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL.'</span>';
 		}
 		
 		private function update(){

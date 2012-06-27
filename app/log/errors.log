@@ -1470,3 +1470,7 @@
 27/06/2012 à 19:45 ! : Erreur n°8 (Undefined variable: Redirect) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 468
 27/06/2012 à 19:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
 27/06/2012 à 19:46 ! : Erreur n°8 (Undefined variable: Redirect) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 468
+27/06/2012 à 19:53 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 19:53 ! : Erreur n°8 (Undefined variable: Redirect) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 468
+27/06/2012 à 19:54 ! : Erreur n°8 (Undefined variable: file) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\terminalGc.class.php à la ligne 335
+27/06/2012 à 19:54 ! : Erreur n°8 (Undefined variable: contenu) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\terminalGc.class.php à la ligne 335
