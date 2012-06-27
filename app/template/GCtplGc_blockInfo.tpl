@@ -16,4 +16,3 @@
 		<meta http-equiv='Refresh' content='{time}; URL={redirect}'>";
 	</if>
 </div>
-{time}

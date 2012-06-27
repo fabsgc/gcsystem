@@ -11,12 +11,12 @@
 		// $sql->query('query2', 'SELECT COUNT(*) as machin FROM membre', '1');
 		// $sql->query('query3', 'SELECT * FROM membre WHERE ID=:id', '1');
 		
-		$sql = new sqlGc($GLOBALS['base'][BDD]);
-		$sql->query('query4', 'INSERT INTO connectes() VALUES(:id, :id)', '1');
-		$sql->query('query5', 'INSERT INTO connectes() VALUES(:id, :id)', '1');
-		$sql->setVar(array('id' => 7, 'machin' => 10));
-		$sql->fetch('query4', sqlGc::PARAM_FETCHINSERT);
-		$sql->getVar();
+		// $sql = new sqlGc($GLOBALS['base'][BDD]);
+		// $sql->query('query4', 'INSERT INTO connectes() VALUES(:id, :id)', '1');
+		// $sql->query('query5', 'INSERT INTO connectes() VALUES(:id, :id)', '1');
+		// $sql->setVar(array('id' => 7, 'machin' => 10));
+		// $sql->fetch('query4', sqlGc::PARAM_FETCHINSERT);
+		// $sql->getVar();
 	
 		// foreach($sql->fetch('query1') as $data){
 			// echo $data['ID'].' '.$data['pseudo'].'<br />';
@@ -75,6 +75,8 @@
 		// echo $date->getDecalTimeZone();
 		// echo $date->isBissextile();
 		// echo $date->isSummer();
+		
+		$GLOBALS['rubrique']->blockInfo('sa','sa',0);
 		
 	echo $GLOBALS['rubrique']->affFooter();
 ?>

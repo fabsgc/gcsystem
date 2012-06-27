@@ -23,12 +23,16 @@
 		private $dayFr                   = array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche');
 		private $dayEn                   = array('Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
 		private $dayNl                   = array('maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag');
+		private $dayEs                   = array('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo');
+		private $dayDe                   = array('Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
 		private $dayPhp                  = array('Mon', 'Thu', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
 		
 		const NMONTH                     = 11      ; //nombre de mois 0-11
 		private $monthFr                 = array('janvier' ,'février' ,'mars' ,'avril' ,'mai' ,'juin' ,'juillet' ,'août' ,'septembre' ,'octobre' ,'novembre' ,'decembre');
-		private $monthNl                 = array('januari' ,'februari' ,'maart' ,'april' ,'mei' ,'juni' ,'juli' ,'augustus' ,'september' ,'oktober' ,'november' ,'december');
 		private $monthEn                 = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+		private $monthNl                 = array('januari' ,'februari' ,'maart' ,'april' ,'mei' ,'juni' ,'juli' ,'augustus' ,'september' ,'oktober' ,'november' ,'december');
+		private $monthEs                 = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio??', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+		private $monthDe                 = array('Januar', 'Februar', 'März', 'April', 'könnte', 'June', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
 		private $monthPhp                = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
 		
 		private $zones                   = array('UM12' => -12, 'UM11' => -11, 'UM10' => -10, 'UM95' => -9.5, 'UM9' => -9, 'UM8' => -8, 'UM7' => -7, 'UM6' => -6,
