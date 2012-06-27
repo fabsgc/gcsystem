@@ -37,6 +37,10 @@
 			$this->query[''.$nom.''] = $query;
 			$this->time[''.$nom.''] = $time;
 		}
+		
+		public function getVar(){
+			return print_r($this->var);
+		}
 
 		public function  fetch($nom, $fetch = self::PARAM_FETCH){
 			$this->cache = new cacheGc($nom.'.sql', "", $this->time[''.$nom.'']);

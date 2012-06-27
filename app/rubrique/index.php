@@ -13,9 +13,11 @@
 		
 		$sql = new sqlGc($GLOBALS['base'][BDD]);
 		$sql->query('query4', 'INSERT INTO connectes() VALUES(:id, :id)', '1');
-		$sql->setVar(array('id' => array(7, sqlGc::PARAM_INT), 'machin' => array (10, sqlGc::PARAM_INT)));
+		$sql->query('query5', 'INSERT INTO connectes() VALUES(:id, :id)', '1');
+		$sql->setVar(array('id' => 7, 'machin' => 10));
 		$sql->fetch('query4', sqlGc::PARAM_FETCHINSERT);
-		
+		$sql->getVar();
+	
 		// foreach($sql->fetch('query1') as $data){
 			// echo $data['ID'].' '.$data['pseudo'].'<br />';
 		// }
