@@ -20,26 +20,29 @@
 		private $dayMonth                = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31) ; //tableau contenant le nombre de jour pour chaque mois
 		
 		const NDAY                       = 6       ; //nombre de jour 0-6
-		private $dayFr                   = array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche');
-		private $dayEn                   = array('Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
-		private $dayNl                   = array('maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag');
-		private $dayEs                   = array('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo');
-		private $dayDe                   = array('Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
-		private $dayPhp                  = array('Mon', 'Thu', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
+		private $dayLang                 = array('fr' => array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'),
+		                                         'en' => array('Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
+		                                         'nl' => array('maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag'),
+		                                         'es' => array('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'),
+		                                         'de' => array('Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'),
+		                                         'php'=> array('Mon', 'Thu', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'));
 		
 		const NMONTH                     = 11      ; //nombre de mois 0-11
-		private $monthFr                 = array('janvier' ,'février' ,'mars' ,'avril' ,'mai' ,'juin' ,'juillet' ,'août' ,'septembre' ,'octobre' ,'novembre' ,'decembre');
-		private $monthEn                 = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
-		private $monthNl                 = array('januari' ,'februari' ,'maart' ,'april' ,'mei' ,'juni' ,'juli' ,'augustus' ,'september' ,'oktober' ,'november' ,'december');
-		private $monthEs                 = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio??', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
-		private $monthDe                 = array('Januar', 'Februar', 'März', 'April', 'könnte', 'June', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
-		private $monthPhp                = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+		private $monthLang               = array('fr' => array('janvier' ,'février' ,'mars' ,'avril' ,'mai' ,'juin' ,'juillet' ,'août' ,'septembre' ,'octobre' ,'novembre' ,'decembre'),
+		                                         'en' => array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+		                                         'nl' => array('januari' ,'februari' ,'maart' ,'april' ,'mei' ,'juni' ,'juli' ,'augustus' ,'september' ,'oktober' ,'november' ,'december'),
+		                                         'es' => array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio??', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
+		                                         'de' => array('Januar', 'Februar', 'März', 'April', 'könnte', 'June', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'),
+		                                         'php'=> array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'));
 		
 		private $zones                   = array('UM12' => -12, 'UM11' => -11, 'UM10' => -10, 'UM95' => -9.5, 'UM9' => -9, 'UM8' => -8, 'UM7' => -7, 'UM6' => -6,
 												 'UM5' => -5, 'UM45' => -4.5, 'UM4' => -4, 'UM35' => -3.5, 'UM3' => -3, 'UM2' => -2, 'UM1' => -1, 'UTC' => 0,
 												 'UP1' => +1, 'UP2' => +2, 'UP3' => +3, 'UP35' => +3.5, 'UP4' => +4, 'UP45' => +4.5, 'UP5' => +5, 'UP55' => +5.5,
 												 'UP575' => +5.75, 'UP6' => +6, 'UP65' => +6.5, 'UP7' => +7, 'UP8' => +8, 'UP875' => +8.75, 'UP9' => +9, 'UP95' => +9.5,
 												 'UP10' => +10, 'UP105' => +10.5, 'UP11' => +11, 'UP115' => +11.5, 'UP12' => +12, 'UP1275' => +12.75, 'UP13' => +13, 'UP14' => +14);
+		
+		const PARAM_TIMESTAMP            =1;  //permet aux fonctions de gérer soit une date au format mktime stockée dans un tableau soit un timestamps normal
+		const PARAM_DATETIME             =2;
 		
 		const WEEK                       = 604800;
 		const DAY                        = 86400;
@@ -104,145 +107,173 @@
 		const DATE_COMPLETE_EN_1                 = 'd/m/Y \a\t h\h i\m s\s';
 		const DATE_COMPLETE_EN_2                 = 'j M Y \a\t h \h\o\u\r\(\s\) i \m\i\n\u\t\(\s\) s \s\e\c\o\n\d\(\s\)';
 		
+		const DATE_COMPLETE_H_ES_1               = 'd/m/Y \a \l\a(\s\) h';
+		const DATE_COMPLETE_H_ES_2               = 'j \d\e M \d\e Y \a \l\a(\s\) h';
+		const DATE_COMPLETE_HM_ES_1              = 'd/m/Y \a \l\a(\s\) h \y i\m';
+		const DATE_COMPLETE_HM_ES_2              = 'j \d\e M \d\e Y \a \l\a(\s\) h \y i \m\i\n\u\t\o\(\s\)';
+		const DATE_COMPLETE_ES_1                 = 'd/m/Y \a \l\a(\s\) h \y i\m \y s\s';
+		const DATE_COMPLETE_ES_2                 = 'j \d\e M \d\e Y \a \l\a(\s\) h \y i \m\i\n\u\t\o\(\s\) \y s \s\e\c\u\n\d\a\(\s\)';
+		
 		public  function __construct($lang=""){
 			$this->langInstance;
 			$this->_createLangInstance();
 			if($lang==""){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
 		}
 		
-		public function getDate($time=NULL, $format=NULL){
+		public function getDate($time=NULL, $format=NULL, $param = self::PARAM_TIMESTAMP){
+			if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
 			$time = intval($time);
 			if($time == NULL) $time = time();
 			if($format == NULL) $format = self::DATE_DEFAULT;
 			return date($format, $time);
 		}
 		
-		public function getDateFr($time=NULL, $format=NULL){
+		private function _dayToLang($lang, $date){
+			foreach($this->dayLang as $cle => $valeur){
+				if($cle!=$lang){
+					for($this->i = 0; $this->i <= self::NDAY; $this->i++){
+						$date = preg_replace('`'.$valeur[$this->i].'`', $this->dayLang[$lang][$this->i], $date);
+					}
+				}	
+			}
+			return $date;
+		}
+		
+		private function _monthToLang($lang, $date){
+			foreach($this->monthLang as $cle => $valeur){
+				if($cle!=$lang){
+					for($this->i = 0; $this->i <= self::NMONTH; $this->i++){
+						$date = preg_replace('`'.$valeur[$this->i].'`', $this->monthLang[$lang][$this->i], $date);
+					}
+				}	
+			}
+			return $date;
+		}
+		
+		public function getDateFr($time=NULL, $format=NULL, $param = self::PARAM_TIMESTAMP){
+			if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
+			$time = intval($time);
+			if($time == NULL) $time = time();
+			if($format == NULL) $format = self::DATE_DEFAULT;
+			
+			$this->date = $this->getDate($time, $format, $param = self::PARAM_TIMESTAMP);
+			$this->date = $this->_dayToLang('fr', $this->date );
+			$this->date = $this->_monthToLang('fr', $this->date );
+			return $this->date;
+		}
+		
+		public function getDateEn($time=NULL, $format=NULL, $param = self::PARAM_TIMESTAMP){
+			if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
 			$time = intval($time);
 			if($time == NULL) $time = time();
 			if($format == NULL) $format = self::DATE_DEFAULT;
 			
 			$this->date = $this->getDate($time, $format);
-
-			//day enphp to fr
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->dayPhp[$this->i].'`', $this->dayFr[$this->i], $this->date);
-			}
-			//day en to fr
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->dayEn[$this->i].'`', $this->dayFr[$this->i], $this->date);
-			}
-			//day nl to fr
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->dayNl[$this->i].'`', $this->dayFr[$this->i], $this->date);
-			}
-			
-			//month enphp to fr
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->monthPhp[$this->i].'`', $this->monthFr[$this->i], $this->date);
-			}
-			//month en to fr
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->monthEn[$this->i].'`', $this->monthFr[$this->i], $this->date);
-			}
-			//month nl to fr
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->monthNl[$this->i].'`', $this->monthFr[$this->i], $this->date);
-			}
-			
+			$this->date = $this->_dayToLang('en', $this->date);
+			$this->date = $this->_monthToLang('en', $this->date);
 			return $this->date;
 		}
 		
-		public function getDateEn($time=NULL, $format=NULL){
+		public function getDateNl($time=NULL, $format=NULL, $param = self::PARAM_TIMESTAMP){
+			if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
 			$time = intval($time);
 			if($time == NULL) $time = time();
 			if($format == NULL) $format = self::DATE_DEFAULT;
 			
 			$this->date = $this->getDate($time, $format);
-
-			//day enphp to en
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->dayPhp[$this->i].'`', $this->dayEn[$this->i], $this->date);
-			}
-			//day fr to en
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->dayFr[$this->i].'`', $this->dayEn[$this->i], $this->date);
-			}
-			//day nl to en
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->dayNl[$this->i].'`', $this->dayEn[$this->i], $this->date);
-			}
-			
-			//month enphp to en
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->monthPhp[$this->i].'`', $this->monthEn[$this->i], $this->date);
-			}
-			//month fr to en
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->monthFr[$this->i].'`', $this->monthEn[$this->i], $this->date);
-			}
-			//month nl to en
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->monthNl[$this->i].'`', $this->monthEn[$this->i], $this->date);
-			}
-			
+			$this->date = $this->_dayToLang('nl', $this->date);
+			$this->date = $this->_monthToLang('nl', $this->date);
 			return $this->date;
 		}
 		
-		public function getDateNl($time=NULL, $format=NULL){
+		public function getDateDe($time=NULL, $format=NULL, $param = self::PARAM_TIMESTAMP){
+			if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
 			$time = intval($time);
 			if($time == NULL) $time = time();
 			if($format == NULL) $format = self::DATE_DEFAULT;
 			
 			$this->date = $this->getDate($time, $format);
-
-			//day enphp to nl
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->dayPhp[$this->i].'`', $this->dayNl[$this->i], $this->date);
-			}
-			//day fr to nl
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->dayFr[$this->i].'`', $this->dayNl[$this->i], $this->date);
-			}
-			//day en to nl
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->dayEn[$this->i].'`', $this->dayNl[$this->i], $this->date);
-			}
-			
-			//month enphp to en
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->monthPhp[$this->i].'`', $this->monthNl[$this->i], $this->date);
-			}
-			//month fr to en
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->monthFr[$this->i].'`', $this->monthNl[$this->i], $this->date);
-			}
-			//month nl to en
-			for($this->i = 0; $this->i <= self::NDAY; $this->i++){
-				$this->date = preg_replace('`'.$this->monthEn[$this->i].'`', $this->monthNl[$this->i], $this->date);
-			}
-			
+			$this->date = $this->_dayToLang('de', $this->date);
+			$this->date = $this->_monthToLang('de', $this->date);
 			return $this->date;
 		}
 		
-		public function getDecalTimeZone($time=NULL){
+		public function getDateEs($time=NULL, $format=NULL, $param = self::PARAM_TIMESTAMP){
+			if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
+			$time = intval($time);
+			if($time == NULL) $time = time();
+			if($format == NULL) $format = self::DATE_DEFAULT;
+			
+			$this->date = $this->getDate($time, $format);
+			$this->date = $this->_dayToLang('es', $this->date);
+			$this->date = $this->_monthToLang('es', $this->date);
+			return $this->date;
+		}
+		
+		private function _getDatetoTimestamp($date = array()){
+			return mktime($date['hour'], $date['minute'], $date['second'], $date['month'], $date['day'], $date['year']);
+		}
+		
+		public function getDecalTimeZone($time=NULL, $param = self::PARAM_TIMESTAMP){
+			if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
 			$time = intval($time);
 			if($time == NULL) $time = time();
 			return date('Z', $time);
 		}
 		
-		public function getAge($time=NULL){
+		public function getAge($time=NULL, $param = self::PARAM_TIMESTAMP){
+			if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
 			$time = intval($time);
 			if($time == NULL) $time = time();
+			
+			$t = time();
+			$age = ($time < 0) ? ( $t + ($time * -1) ) : $t - $time;
+			$year = 60 * 60 * 24 * 365;
+			
+			$ageYears = $age / $year;
+			$ageMonth = $ageYears - intval($ageYears);
+			return array(intval($ageYears), intval($ageMonth*12));
 		}
 		
-		public function getAgo($time=NULL){
-			$time = intval($time);
-			if($time == NULL) $time = time();
-			return date('Z', $time);
+		//by Lucas5190 
+		public function getAgo($time=NULL, $time2=NULL, $param = self::PARAM_TIMESTAMP){
+			if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); $time2 = _getDatetoTimestamp($time2); }
+			$time = intval($time); $time2 = intval($time2);
+			if($time == NULL) $time = time(); if($time2 == NULL) $time2 = time();
+			
+			$date = $time;
+			 $tampon = $time2;
+			 $diff = $tampon - $date;
+
+			 $dateDay = date('d', $date);
+			 $tamponDay = date('d', $tampon);
+			 $diffDay = $tamponDay - $dateDay;
+
+			if($diff < 60 && $diffDay == 0){
+				return 'Il y a '.$diff.'s';
+			}
+			else if($diff < 600 && $diffDay == 0){
+				return 'Il y a '.floor($diff/60).'m et '.floor($diff%60).'s';
+			}
+			else if($diff < 3600 && $diffDay == 0){
+				return 'Il y a '.floor($diff/60).'m';
+			}
+			else if($diff < 7200 && $diffDay == 0){
+				return 'Il y a '.floor($diff/3600).'h et '.floor(($diff%3600)/60).'m';
+			}
+			else if($diff < 24*3600 && $diffDay == 0){
+				return 'Aujourd\'hui à '.date('H\hi', $time);
+			}
+			else if($diff < 48*3600 && $diffDay == 1){
+				return 'Hier à '.date('H\hi', $time);
+			}
+			else{
+				return 'Le '.date('d/m/Y', $time).' à '.date('H\hi', $time).'.';
+			}
 		}
 		
-		public function isBissextile($time=""){
+		public function isBissextile($time=NULL, $param = self::PARAM_TIMESTAMP){
+			if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
 			$time = intval($time);
 			if($time == NULL) $time = time();
 			
@@ -250,7 +281,8 @@
 				else return false;
 		}
 		
-		public function isSummer($time=""){
+		public function isSummer($time=NULL, $param = self::PARAM_TIMESTAMP){
+			if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
 			$time = intval($time);
 			if($time == NULL) $time = time();
 			
@@ -258,7 +290,7 @@
 				else return false;
 		}
 		
-		public function getDayInMonth($month="", $time=""){
+		public function getDayInMonth($time="", $month=""){
 			if ($month < 1 OR $month > 12){
 				return 0;
 			}

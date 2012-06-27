@@ -71,12 +71,17 @@
 		// echo $date->getDateEn(time(), dateGc::DATE_COMPLETE_FR_2);
 		// echo $date->getDateNl(time(), dateGc::DATE_COMPLETE_FR_2);
 		// echo $date->getDateNl(time(), dateGc::DATE_DEFAULT);
-		echo $date->getDateNl(time(), dateGc::DATE_COMPLETE_NL_2);
+		echo $date->getDateEs('654689847', dateGc::DATE_COMPLETE_FR_2);
+		$age = $date->getAge('154689847', dateGc::PARAM_TIMESTAMP);
+		echo $age[0].' ans '.$age[1];
+		echo $date->getAgo('1340840627');
 		// echo $date->getDecalTimeZone();
 		// echo $date->isBissextile();
 		// echo $date->isSummer();
 		
-		$GLOBALS['rubrique']->blockInfo('sa','sa',0);
+		// $GLOBALS['rubrique']->blockInfo('sa','sa',0);
+		
+		$tableau = 'salut';
 		
 	echo $GLOBALS['rubrique']->affFooter();
 ?>

@@ -1482,3 +1482,486 @@
 27/06/2012 à 20:36 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
 27/06/2012 à 20:36 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
 27/06/2012 à 20:38 ! : Erreur n°8 (Undefined variable: contenu) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\terminalGc.class.php à la ligne 335
+27/06/2012 à 20:40 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 20:40 ! : Erreur n°8 (Undefined variable: Redirect) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 455
+27/06/2012 à 20:42 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 20:42 ! : Erreur n°8 (Undefined variable: tablea) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 83
+27/06/2012 à 20:48 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 20:48 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 20:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:15 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:15 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:15 ! : Erreur n°8 (Undefined variable: date) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:15 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:15 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:15 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:15 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:15 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:15 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:15 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:15 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:16 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:16 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:16 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:16 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:16 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:16 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:16 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:16 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 124
+27/06/2012 à 21:19 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: es) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: de) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: php) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 125
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:19 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 137
+27/06/2012 à 21:21 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 136
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 136
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 136
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 136
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 136
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 136
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: en) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 136
+27/06/2012 à 21:21 ! : Erreur n°8 (Undefined index: nl) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 136
+27/06/2012 à 21:22 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:22 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:22 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:22 ! : Erreur n°8 (Undefined property: dateGc::$monthD) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:22 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:22 ! : Erreur n°8 (Undefined property: dateGc::$monthD) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:23 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:23 ! : Erreur n°8 (Undefined property: dateGc::$monthD) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:23 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:23 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:24 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:24 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:25 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:25 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:25 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:25 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:25 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:25 ! : Erreur n°8 (Undefined property: dateGc::$monthM) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 133
+27/06/2012 à 21:25 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:25 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:25 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 21:25 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 21:28 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:15 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:15 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:15 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:15 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:19 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:19 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:19 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:19 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:20 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:20 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:20 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:20 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:20 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:20 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:20 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:20 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:21 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:21 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:21 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:21 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:21 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:21 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:30 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:30 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:43 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:43 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:44 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined variable: tampon) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 246
+27/06/2012 à 23:44 ! : Erreur n°8 (Use of undefined constant Â° - assumed 'Â°') dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 249
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:44 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined variable: tampon) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 246
+27/06/2012 à 23:44 ! : Erreur n°8 (Use of undefined constant Â° - assumed 'Â°') dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 249
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:44 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined variable: tampon) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 246
+27/06/2012 à 23:44 ! : Erreur n°8 (Use of undefined constant Â° - assumed 'Â°') dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 249
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:44 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined variable: tampon) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 246
+27/06/2012 à 23:44 ! : Erreur n°8 (Use of undefined constant Â° - assumed 'Â°') dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 249
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:44 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:44 ! : Erreur n°8 (Undefined variable: tampon) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 246
+27/06/2012 à 23:45 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:45 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:45 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:45 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:45 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:45 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:45 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:45 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:45 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:46 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:46 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:47 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:47 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:47 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:47 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:47 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:47 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:47 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:47 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:47 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:48 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:48 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:48 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:48 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:48 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:48 ! : Erreur n°8 (Undefined variable: time) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\dateGc.class.php à la ligne 240
+27/06/2012 à 23:48 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:48 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:48 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:48 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:48 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:48 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:48 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:48 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:48 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:48 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:48 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:48 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:48 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:48 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:48 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:48 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:48 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:48 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
+27/06/2012 à 23:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+27/06/2012 à 23:49 ! : Erreur n°8 (Use of undefined constant color - assumed 'color') dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 67
