@@ -41,7 +41,7 @@
 		public function  fetch($nom, $fetch = self::PARAM_FETCH){
 			$this->cache = new cacheGc($nom.'.sql', "", $this->time[''.$nom.'']);
 			
-			if($this->cache->isDie()){
+			if($this->cache->isDie() || $fetch == self::PARAM_FETCHINSERT){
 				$query = $this->bdd->prepare(''.$this->query[''.$nom.''].'');
 				$GLOBALS['appDevGc']->addSql(''.$this->query[''.$nom.''].'');
 				
@@ -96,9 +96,15 @@
 					default : $this->_addError('cette constante n\'existe pas'); $data=""; break;
 				}
 				
-				$this->cache->setVal($data);
-				$this->cache->setCache($data);
-				return $this->cache->getCache();
+				switch($fetch){
+					case self::PARAM_FETCH :
+						case self::PARAM_FETCHCOLUMN : 
+							$this->cache->setVal($data);
+							$this->cache->setCache($data);
+							return $this->cache->getCache(); break;
+					case self::PARAM_FETCHINSERT : return true; break;
+					default : $this->_addError('cette constante n\'existe pas'); $data=""; break;
+				}
 			}
 			else{
 				return $this->cache->getCache();

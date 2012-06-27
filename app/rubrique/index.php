@@ -11,6 +11,11 @@
 		// $sql->query('query2', 'SELECT COUNT(*) as machin FROM membre', '1');
 		// $sql->query('query3', 'SELECT * FROM membre WHERE ID=:id', '1');
 		
+		$sql = new sqlGc($GLOBALS['base'][BDD]);
+		$sql->query('query4', 'INSERT INTO connectes() VALUES(:id, :id)', '1');
+		$sql->setVar(array('id' => array(7, sqlGc::PARAM_INT), 'machin' => array (10, sqlGc::PARAM_INT)));
+		$sql->fetch('query4', sqlGc::PARAM_FETCHINSERT);
+		
 		// foreach($sql->fetch('query1') as $data){
 			// echo $data['ID'].' '.$data['pseudo'].'<br />';
 		// }
@@ -59,7 +64,15 @@
 		// echo $code -> parse($message);
 		$code->editor('', array('id'=>'editeur', 'name'=>'message', 'theme'=>'personnalize', color => array('FE9F4B', 'FE7A04'),  'width'=>'700px', 'height'=>'300px'));
 		
-
+		$date = new dateGc('fr');
+		// echo $date->getDateFr(time(), dateGc::DATE_COMPLETE_FR_2);
+		// echo $date->getDateEn(time(), dateGc::DATE_COMPLETE_FR_2);
+		// echo $date->getDateNl(time(), dateGc::DATE_COMPLETE_FR_2);
+		// echo $date->getDateNl(time(), dateGc::DATE_DEFAULT);
+		echo $date->getDateNl(time(), dateGc::DATE_COMPLETE_NL_2);
+		// echo $date->getDecalTimeZone();
+		// echo $date->isBissextile();
+		// echo $date->isSummer();
 		
 	echo $GLOBALS['rubrique']->affFooter();
 ?>
