@@ -62,26 +62,29 @@
 		
 		:)';*/
 		
-		$code = new bbcodeGc('fr');
+		// $code = new bbcodeGc('fr');
 		// echo $code -> parse($message);
-		$code->editor('', array('id'=>'editeur', 'name'=>'message', 'theme'=>'personnalize', color => array('FE9F4B', 'FE7A04'),  'width'=>'700px', 'height'=>'300px'));
+		// $code->editor('', array('id'=>'editeur', 'name'=>'message', 'theme'=>'personnalize', color => array('FE9F4B', 'FE7A04'),  'width'=>'700px', 'height'=>'300px'));
 		
-		$date = new dateGc('fr');
+		// $date = new dateGc('fr');
 		// echo $date->getDateFr(time(), dateGc::DATE_COMPLETE_FR_2);
 		// echo $date->getDateEn(time(), dateGc::DATE_COMPLETE_FR_2);
 		// echo $date->getDateNl(time(), dateGc::DATE_COMPLETE_FR_2);
 		// echo $date->getDateNl(time(), dateGc::DATE_DEFAULT);
-		echo $date->getDateEs('654689847', dateGc::DATE_COMPLETE_FR_2);
-		$age = $date->getAge('154689847', dateGc::PARAM_TIMESTAMP);
-		echo $age[0].' ans '.$age[1];
-		echo $date->getAgo('1340840627');
+		// echo $date->getDateEs('654689847', dateGc::DATE_COMPLETE_FR_2);
+		// $age = $date->getAge('154689847', dateGc::PARAM_TIMESTAMP);
+		// echo $age[0].' ans '.$age[1];
+		// echo $date->getAgo('1340840627');
 		// echo $date->getDecalTimeZone();
 		// echo $date->isBissextile();
 		// echo $date->isSummer();
 		
 		// $GLOBALS['rubrique']->blockInfo('sa','sa',0);
 		
-		$tableau = 'salut';
+		$file = new fileGc('system/class/terminalGc.class.php');
+		// echo $file->getFileExt();
+		// $file->moveTo('system/');
+		echo $file->showError();
 		
 	echo $GLOBALS['rubrique']->affFooter();
 ?>

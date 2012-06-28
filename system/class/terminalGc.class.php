@@ -7,7 +7,7 @@
 	 | @version : 2.0 bêta
 	 | ------------------------------------------------------
 	\*/
-	
+
 	class terminalGc{
 		private $command                       ; //contenu à traiter
 		private $commandExplode                ; //contenu à traiter
@@ -17,7 +17,7 @@
 		private $forbidden                     ; //fichier interdit
 		private $updateFile                    ; //fichier interdit
 		private $updateDir                     ; //fichier interdit
-		
+
 		public  function __construct($command){
 			$this->command = $command;
 			$this->command = substr($this->command,11,strlen($this->command)); 
@@ -89,7 +89,7 @@
 							unlink(FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php');
 							$this->command .= '<br /><span style="color: black;">----</span>> '.FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php';
 						}
-					
+
 						$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> la rubrique <u>'.$this->commandExplode[2].'</u> a bien été supprimée</span>';
 					}
 					else{
@@ -193,7 +193,7 @@
 										rename(FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php', FORMS_PATH.$this->commandExplode[3].FORMS_EXT.'.php');
 										$this->command .= '<br /><span style="color: black;">----</span>> '.FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php'.' -> '.FORMS_PATH.$this->commandExplode[3].FORMS_EXT.'.php';
 									}
-									
+
 									$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> la rubrique <u>'.$this->commandExplode[2].'</u> a bien été rénommée en <u>'.$this->commandExplode[3].'</u></span>';
 								}
 								else{
@@ -319,10 +319,10 @@
 				$this->command .= '<span style="color: red;"> erreur de connexion</span>';
 				$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Vous devez vous connecter grâce au  mot de passe du fichier de config</span>';
 			}
-			
+
 			return '> '.$this->command.' '.$this->result;
 		}
-		
+
 		private function updater(){		
 			$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL);
 			$fp = fopen(CLASS_TERMINAL, "w");
@@ -334,19 +334,19 @@
 			fclose($fp);
 			return $contenu .= '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.CLASS_TERMINAL.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL.'</span>';
 		}
-		
+
 		private function update(){
 			$contenu = "";
 			$sauvegarde ="";
 			$sauvegarde2 ="";
 			$suppr = "";
 			$suppr2 = "";
-			
+
 			$sauvegarde = file_get_contents('web.config.php');
 			$sauvegarde = preg_replace('`(.*)parametres de connexion a la base de donnees(.*)`isU', '$2', $sauvegarde);
 			$sauvegarde2 = file_get_contents('index.php');
 			$sauvegarde2 = preg_replace('`(.*)articulation du site web(.*)`isU', '$2', $sauvegarde2);
-			
+
 			foreach($this->updateFile as $file){				
 				$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
 				$fp = fopen($file, "w");
@@ -358,21 +358,21 @@
 				fclose($fp);
 				$contenu .= '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
 			}
-			
+
 			$suppr = file_get_contents('web.config.php');
 			$suppr = preg_replace('`(.*)(parametres de connexion a la base de donnees)(.*)`is', '$1parametres de connexion a la base de donnees', $suppr);
 			if($suppr!="" && $sauvegarde!=""){
 				file_put_contents('web.config.php', $suppr);
 				file_put_contents('web.config.php', $sauvegarde, FILE_APPEND);
 			}
-			
+
 			$suppr2 = file_get_contents('index.php');
 			$suppr2 = preg_replace('`(.*)(articulation du site web)(.*)`is', '$1articulation du site web', $suppr2);
 			if($suppr2!="" && $sauvegarde2!=""){
 				file_put_contents('index.php', $suppr2);
 				file_put_contents('index.php', $sauvegarde2, FILE_APPEND);
 			}
-			
+
 			return $contenu;
 		}
 	}

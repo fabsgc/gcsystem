@@ -10,6 +10,7 @@
 	
 	class uploadGc{
 		private $error              = array() ; //array contenant toutes les erreurs enregistrées
+		private $extensions              = array() ; //contiendra la liste des extensions autorisées
 		
 		public  function __construct(){
 		}
