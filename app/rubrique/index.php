@@ -83,7 +83,7 @@
 		
 		$file = new fileGc('system/class/terminalGc.class.php');
 		// echo $file->getFileExt();
-		// $file->moveTo('system/');
+		$file->getFileContent();
 		echo $file->showError();
 		
 	echo $GLOBALS['rubrique']->affFooter();

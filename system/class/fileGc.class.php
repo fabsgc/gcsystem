@@ -9,12 +9,21 @@
 	\*/
 	
     class fileGc{		
-		private $_filePath                                   ;
+		protected $_filePath                                   ;
 		private $_fileName                                   ;
 		private $_fileExt                                    ;
+		private $_fileContent                                ;
+		private $_fileChmod                                  ;
 		private $_error                             = array();
-		private $_isExist                           = false  ;
 		private $_info                              = array();
+		private $_isExist                           = false  ;
+		
+		const NOFILE   = 'Aucun fichier n\'a été difini'     ;
+		const NOACCESS = 'le fichier n\'est pas accessible'  ;
+		const NOREAD   = 'le fichier n\'est pas lisible'     ;
+		
+		const CHMOD0644                              = 0644  ;
+		const CHMOD0755                              = 0755  ;
 		
 		public function __construct($filepath){
 			if($filepath == NULL) { $filepath = 'empty.txt'; $this->_setFileDefault($filepath); }
@@ -22,7 +31,7 @@
 				$this->setFile($filepath);
 			}
 			else{
-				$this->_addError('le fichier n\'est pas accessible');
+				$this->_addError(self::NOACCESS);
 			}
 		}
 		
@@ -38,22 +47,34 @@
 			return $this->_fileExt;
 		}
 		
+		public function getFileInfo(){
+			return $this->_fileInfo;
+		}
+		
+		public function getFileContent(){
+			return $this->_fileContent;
+		}
+		
+		public function getFileChmod(){
+			return $this->_fileContent;
+		}
+		
 		public function getSize(){
 			if($this->_isExist == true){
 				return $this->_fileInfo['size'];
 			}
 			else{
-				$this->_addError('Aucun fichier n\'a été difini');
+				$this->_addError(self::NOFILE);
 				return false;
 			}
 		}
 		
-		public function getLasAccess(){
+		public function getLastAccess(){
 			if($this->_isExist == true){
 				return $this->_fileInfo['atime'];
 			}
 			else{
-				$this->_addError('Aucun fichier n\'a été difini');
+				$this->_addError(self::NOFILE);
 				return false;
 			}
 		}
@@ -63,17 +84,7 @@
 				return $this->_fileInfo['ctime'];
 			}
 			else{
-				$this->_addError('Aucun fichier n\'a été difini');
-				return false;
-			}
-		}
-		
-		public function getFile(){
-			if($this->_isExist == true){
-				return file_get_contents($this->_filePath);
-			}
-			else{
-				$this->_addError('Aucun fichier n\'a été difini');
+				$this->_addError(self::NOFILE);
 				return false;
 			}
 		}
@@ -83,7 +94,7 @@
 				return file_get_contents($this->_filePath);
 			}
 			else{
-				$this->_addError('Aucun fichier n\'a été difini');
+				$this->_addError(self::NOFILE);
 				return false;
 			}
 		}
@@ -96,21 +107,23 @@
 				$this->_setFileName($filepath);
 				$this->_setFileExt($filepath);
 				$this->_setFileInfo($filepath);
+				$this->_setFileContent($filepath);
+				$this->_setFileChmod($filepath);
 				$this->_isExist = true;
 			}
 			else{
-				$this->_addError('le fichier n\'est pas accessible');
+				$this->_addError(self::NOACCESS);
 			}
 		}
 		
-		public function setChmod($chmod){
-			if($this->_isExist == true){
-			
-			}
-			else{
-				$this->_addError('Aucun fichier n\'a été difini');
-				return false;
-			}
+		public function setChmod($chmod =self::CHMOD644){
+			chmod($thid->_filePath, $chmod);
+			$this->_setFileChmod($this->_filePath);
+		}
+		
+		public function setContent($content){
+			file_put_content($this->_fileContent, $content);
+			$this->_setFileContent($this->_filePath);
 		}
 		
 		public function moveTo($dir){
@@ -131,7 +144,7 @@
 				}
 			}
 			else{
-				$this->_addError('Aucun fichier n\'a été difini');
+				$this->_addError(self::NOFILE);
 				return false;
 			}
 		}
@@ -147,7 +160,23 @@
 				}
 			}
 			else{
-				$this->_addError('Aucun fichier n\'a été difini');
+				$this->_addError(self::NOFILE);
+				return false;
+			}
+		}
+		
+		public function contentTo($file){
+			if(is_file($file)){
+				if(is_readable($file)){
+					file_put_contents($file, $this->_fileContent);
+				}
+				else{
+					$this->_addError(self::NOAREAD);
+					return false;
+				}
+			}
+			else{
+				$this->_addError(self::NOACCESS);
 				return false;
 			}
 		}
@@ -163,7 +192,7 @@
 				return true;
 			}
 			else{
-				$this->_addError('le fichier n\'est pas accessible');
+				$this->_addError(self::NOACCESS);
 				return false;
 			}
 		}
@@ -174,7 +203,7 @@
 				return true;
 			}
 			else{
-				$this->_addError('le fichier n\'est pas accessible');
+				$this->_addError(self::NOACCESS);
 				return false;
 			}
 		}
@@ -186,7 +215,24 @@
 				return true;
 			}
 			else{
-				$this->_addError('le fichier n\'est pas accessible');
+				$this->_addError(self::NOACCESS);
+				return false;
+			}
+		}
+		
+		private function _setFileContent($file){
+			if(is_file($file)){
+				if(is_readable($file)){
+					$this->_fileContent = file_get_contents($file);
+					return true;
+				}
+				else{
+					$this->_addError(self::NOAREAD);
+					return false;
+				}
+			}
+			else{
+				$this->_addError(self::NOACCESS);
 				return false;
 			}
 		}
@@ -197,7 +243,18 @@
 				return true;
 			}
 			else{
-				$this->_addError('le fichier n\'est pas accessible');
+				$this->_addError(self::NOACCESS);
+				return false;
+			}
+		}
+		
+		private function _setFileChmod($file){
+			if(is_file($file)){
+				$this->_fileChmod = substr(sprintf('%o', fileperms($file)), -4);;
+				return true;
+			}
+			else{
+				$this->_addError(self::NOACCESS);
 				return false;
 			}
 		}

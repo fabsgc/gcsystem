@@ -19,8 +19,7 @@
 		private $updateDir                     ; //fichier interdit
 
 		public  function __construct($command){
-			$this->command = $command;
-			$this->command = substr($this->command,11,strlen($this->command)); 
+			$this->command = '<span style="color: gold;"> '.$command.'</span>';
 			$this->commandExplode = explode(' ', trim($this->command));
 			$this->forbidden = array(
 				RUBRIQUE_PATH.'index.php', INCLUDE_PATH.'index'.INCLUDE_PATH.'.php', SQL_PATH.'index'.SQL_PATH.'.php', FORMS_PATH.'index'.FORMS_PATH.'.php',

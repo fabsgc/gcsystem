@@ -3,7 +3,7 @@
 		padding: 0;
 		margin: 0;
 		font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
-		height: 100%;
+		background-color: black;
 	}
 	
 	#gc_terminal{
@@ -15,6 +15,7 @@
 		font-size: 0.95em;
 		color: white;
 		background-color: black;
+		margin-bottom : {moins2}px;
 	}
 
 	#gc_terminal_top{
@@ -64,36 +65,57 @@
 		font-family: Consolas;
 		padding: 1px;
 		line-height: 0.95em;
-		padding-bottom: {moins2}px;
-	}
-
-	#gc_terminal input[type=text]{
-		width: 100%;
-		opacity: 1;
-		height: 26px;
-		font-size: 1.0em;
-		background-color: rgb(30,30,30);
-		font-family: Consolas;
-		position: fixed;
-		bottom: {moins}px;
 	}
 	
+	#gc_terminal #terminal_input_write{
+		opacity: 1;
+		font-size: 1.0em;
+		font-family: Consolas;
+		float: left;
+		position: relative;
+		background-color: rgba(0, 0, 0, 0);	
+		top: -7px;
+	}
+	
+	#gc_terminal #terminal_input_write_left{
+		width: 140px;
+		opacity: 1;
+		font-size: 1.0em;
+		font-family: Consolas;
+		float: left;
+		text-shadow : white 0px 0px 5px;
+		position: relative;
+		background-color: rgba(0, 0, 0, 0);	
+		top: -7px;
+	}
+	
+	
 	#terminal_read, gc_terminal_top_content{
-		margin-top: 26px;
+		margin-top: 28px;
+	}
+	
+	#terminal_read{
 	}
 </style>
-<script>
-	function terminal_empty(evenement){
-		document.getElementById('terminal').scrollTop = document.getElementById('terminal').scrollHeight;
+<script>	
+	function pageScroll() {
+    	window.scrollBy(0,1000); // horizontal and vertical scroll increments
+    	scrolldelay = setTimeout('pageScroll()',0); // scrolls every 100 milliseconds
+		stopScroll();
 	}
-
+	
+	function stopScroll() {
+    	clearTimeout(scrolldelay);
+	}
+	
 	function terminal(evenement){
+		window.location.href="#terminal_input_write";
 		var touche = window.event ? evenement.keyCode : evenement.which;
-		
+		pageScroll();
 		if(touche==13){
 			var field  = document.getElementById('terminal_input_write');
 			var commande  = document.getElementById('terminal');
-			if(document.getElementById('terminal_input_write').value=="app/console clear"){
+			if(document.getElementById('terminal_input_write').value=="clear"){
 				document.getElementById('terminal').innerHTML="";
 				document.getElementById('terminal_input_write').value="";
 			}
@@ -102,30 +124,34 @@
 				var sVar1 = encodeURIComponent(field.value);	
 				
 				$(function(){
-					// lorsque l'on clique sur Prévisualiser
-
-						var message = $('#terminal_input_write').val();
-						$.post("index.php?rubrique=terminal&action=terminal",
-						{
-							message: message
-						},
-						function(data){
-							var val = $('#terminal').html();
-							$('#terminal').html(val+'<br />'+data);
-						});
-
+					var message = $('#terminal_input_write').val();
+					$.post("index.php?rubrique=terminal&action=terminal",
+					{
+						message: message
+					},
+					function(data){
+						var val = $('#terminal').html();
+						if(val==""){ var val2="" } else { var val2="<br />"; }
+						$('#terminal').html(val+val2+data);
+					});
 				});
 
-				field.value = "app/console ";
+				field.value = "";
 				field.focus();								
 			}
 			else{
-				field.value = "app/console ";
+				field.value = "";
 				field.focus();								
 			}
-			document.getElementById('terminal').scrollTop = document.getElementById('terminal').scrollHeight;
 		}
+		window.location.href="#terminal_input_write";
 	}
+	
+	function terminal_empty(){
+		window.location.href="#terminal_input_write";
+	}
+
+	
 </script>
 <div id="gc_terminal">
 	<div id="gc_terminal_top">
@@ -133,12 +159,17 @@
 	</div>
 	<div id="gc_terminal_top_content">
 		<div id="terminal_read">
-			<div id="terminal" readonly="readonly">
-				> hello
+			<div id="terminal" readonly="readonly"></div>
+			<div id="terminal_write">
+				<input type="text" value="> app/console &#8594;" id="terminal_input_write_left"/>
+				<input type="text" value="" id="terminal_input_write" onkeyPress="terminal(event);" onkeyUp="terminal_empty();"/>
 			</div>
-		</div>
-		<div id="terminal_write">
-			<input type="text" value="app/console " id="terminal_input_write" onkeyPress="terminal(event);" onkeyUp="terminal_empty(event);" onkeyDown="terminal_empty(event);" />
 		</div>
 	</div>
 </div>
+<script>
+	if (document.body){
+		document.getElementById('terminal_input_write').style.width = (document.body.clientWidth-180) + "px";
+		document.getElementById('terminal_input_write').focus();
+	}
+</script>

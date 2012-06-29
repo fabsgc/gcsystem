@@ -2317,3 +2317,603 @@
 28/06/2012 à 17:11 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
 28/06/2012 à 17:12 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
 28/06/2012 à 17:12 ! : Erreur n°8 (Undefined variable: erreur) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\fileGc.class.php à la ligne 183
+28/06/2012 à 17:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+28/06/2012 à 17:24 ! : Erreur n°8 (Undefined variable: erreur) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\fileGc.class.php à la ligne 238
+28/06/2012 à 17:25 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+28/06/2012 à 17:25 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+28/06/2012 à 17:25 ! : Erreur n°8 (Undefined variable: erreur) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\fileGc.class.php à la ligne 238
+28/06/2012 à 17:25 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+28/06/2012 à 17:25 ! : Erreur n°8 (Undefined variable: erreur) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\fileGc.class.php à la ligne 238
+28/06/2012 à 17:26 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+28/06/2012 à 17:26 ! : Erreur n°8 (Undefined variable: erreur) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\fileGc.class.php à la ligne 238
+28/06/2012 à 18:22 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+28/06/2012 à 21:30 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+28/06/2012 à 21:30 ! : Erreur n°8 (Undefined variable: erreur) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\fileGc.class.php à la ligne 257
+28/06/2012 à 21:30 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+28/06/2012 à 21:30 ! : Erreur n°8 (Undefined variable: erreur) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\fileGc.class.php à la ligne 257
+28/06/2012 à 21:30 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+28/06/2012 à 21:30 ! : Erreur n°8 (Undefined variable: erreur) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\fileGc.class.php à la ligne 257
+29/06/2012 à 14:35 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:35 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:36 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:36 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:37 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:37 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:37 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:37 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:38 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:38 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:39 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:39 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:39 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:39 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:40 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:40 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:41 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:41 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:41 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:41 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:42 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:42 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:42 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:42 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:42 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:42 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:46 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:47 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:47 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:47 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:47 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:48 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:48 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:48 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:48 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:49 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:49 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:50 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:50 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:50 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:50 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:51 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:51 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:51 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:51 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:51 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:51 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:51 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:51 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:52 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:53 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:53 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:53 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:53 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:53 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:53 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:53 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:53 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:54 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:54 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:54 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:54 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:54 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:54 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:54 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:54 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:54 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:54 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:54 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:54 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:55 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:55 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:56 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:56 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:57 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:57 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:57 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:57 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:58 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:58 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:58 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:58 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:58 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:58 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:59 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:59 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:59 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:59 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:59 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:59 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:59 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:59 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:59 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:59 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 14:59 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 14:59 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:02 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:02 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:02 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:02 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:02 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:02 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:03 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:04 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:04 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:05 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:05 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:05 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:05 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:05 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:05 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:05 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:05 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:05 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:05 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:06 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:06 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:12 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:12 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:14 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:14 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:15 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:15 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:15 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:15 ! : Erreur n°8 (Undefined variable: erreur) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\fileGc.class.php à la ligne 270
+29/06/2012 à 15:15 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:15 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:17 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:17 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:18 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:18 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:18 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:18 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:19 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:19 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:20 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:20 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:21 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:21 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:21 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:21 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:22 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:22 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:23 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:23 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:23 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:23 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:24 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:24 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:25 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:25 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:25 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:25 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:26 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:26 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:27 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:27 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:27 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:27 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:28 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:28 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:29 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:29 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:29 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:29 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:31 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:31 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:34 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:34 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:35 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:35 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:35 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:35 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:36 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:36 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:37 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:37 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:37 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:37 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:37 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:37 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:39 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:39 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:39 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:39 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:40 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:40 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:40 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:40 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:41 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:41 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:41 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:41 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:41 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:41 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:41 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:41 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:42 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:42 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:42 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:42 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:44 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:44 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:44 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:44 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:45 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:45 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:45 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:45 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:45 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:45 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:47 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:47 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:49 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:50 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:50 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:50 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:50 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:51 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:51 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:52 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:53 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:53 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 15:55 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:55 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:55 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:55 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:55 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:55 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 3
+29/06/2012 à 15:55 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:55 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:55 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:55 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 3
+29/06/2012 à 15:55 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:55 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 4
+29/06/2012 à 15:56 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:56 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 15:57 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:57 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 15:58 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:58 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 15:58 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 15:58 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:01 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:01 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:04 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:04 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:04 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:04 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:06 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:06 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:06 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:06 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:07 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:07 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:07 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:07 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:08 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:08 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:08 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:08 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:10 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:10 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:12 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:12 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:13 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:13 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:15 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:15 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:15 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:15 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:16 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:16 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:16 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:16 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:16 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:16 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:17 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:17 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:18 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:18 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:21 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:21 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:23 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:23 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:25 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:25 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:25 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:25 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:26 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:26 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:26 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:26 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:26 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:26 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:27 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:27 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:29 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:29 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:29 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:29 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:29 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:29 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:31 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:31 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:31 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:31 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:31 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:31 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:32 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:32 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:33 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:33 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:37 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:37 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:37 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:37 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:37 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:37 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:38 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:38 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:39 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:39 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:39 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:39 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:39 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:39 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:39 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:39 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:40 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:40 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:40 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:40 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:40 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:40 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:40 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:40 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:40 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:40 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:41 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:41 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:41 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:41 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:42 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:42 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:42 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:42 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:44 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:44 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:44 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:44 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:44 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:44 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:47 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:47 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:47 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:47 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:47 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:47 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:47 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:47 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:49 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:49 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:49 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:49 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:49 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:49 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:50 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:50 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:50 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:50 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:50 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:50 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:50 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:50 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:50 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:51 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:51 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:51 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:51 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:51 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:51 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:51 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:51 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:51 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:51 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:51 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:51 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:51 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:51 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:51 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:52 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:52 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:52 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:52 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:52 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:53 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:53 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:53 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:53 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:53 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:53 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:53 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:53 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:53 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:53 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:53 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:53 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:53 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:53 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:53 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:53 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:54 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:54 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:54 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:54 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:54 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:54 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:54 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:54 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:54 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:54 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:54 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:54 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:54 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:54 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:54 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:54 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:54 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:54 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:54 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:55 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:55 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:55 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:55 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:55 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:55 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:55 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:55 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:55 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:55 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:55 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:55 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:55 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:55 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:55 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:55 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:55 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:56 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:56 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:56 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:56 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:56 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:56 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:56 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:56 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:56 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:56 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:57 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:57 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:57 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:57 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:58 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:58 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:58 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:58 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:58 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:58 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:58 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:58 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:58 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:58 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:59 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:59 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:59 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:59 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:59 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 16:59 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 16:59 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:59 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:59 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:59 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 16:59 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 17:00 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:00 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:01 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 17:02 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 17:02 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:02 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 17:06 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:06 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:07 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:07 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:07 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+29/06/2012 à 17:07 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+29/06/2012 à 17:07 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:07 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
+29/06/2012 à 17:11 ! : Erreur n°2048 (Creating default object from empty value) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 72
