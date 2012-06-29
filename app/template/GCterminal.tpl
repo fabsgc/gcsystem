@@ -109,10 +109,11 @@
 	}
 	
 	function terminal(evenement){
-		window.location.href="#terminal_input_write";
+		//if (window.focus){ window.location.href="#terminal_input_write"; }
 		var touche = window.event ? evenement.keyCode : evenement.which;
 		pageScroll();
 		if(touche==13){
+			window.location.href="#terminal_input_write";
 			var field  = document.getElementById('terminal_input_write');
 			var commande  = document.getElementById('terminal');
 			if(document.getElementById('terminal_input_write').value=="clear"){
@@ -137,18 +138,19 @@
 				});
 
 				field.value = "";
-				field.focus();								
+				field.focus();
+				window.setTimeout(function (){ document.getElementById(field).focus(); }, 0);				
 			}
 			else{
 				field.value = "";
 				field.focus();								
 			}
+			if (window.focus){ window.location.href="#terminal_input_write"; }
 		}
-		window.location.href="#terminal_input_write";
 	}
 	
 	function terminal_empty(){
-		window.location.href="#terminal_input_write";
+		//if (window.focus){ window.location.href="#terminal_input_write"; }
 	}
 
 	

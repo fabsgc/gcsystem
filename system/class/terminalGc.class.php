@@ -3,7 +3,7 @@
 	 | ------------------------------------------------------
 	 | @file : terminalGc.class.php
 	 | @author : fab@c++
-	 | @description : class gérant les fichiers compressés
+	 | @description : class g&#233;rant les fichiers compress&#233;s
 	 | @version : 2.0 bêta
 	 | ------------------------------------------------------
 	\*/
@@ -19,8 +19,8 @@
 		private $updateDir                     ; //fichier interdit
 
 		public  function __construct($command){
+			$this->commandExplode = explode(' ', trim($command));
 			$this->command = '<span style="color: gold;"> '.$command.'</span>';
-			$this->commandExplode = explode(' ', trim($this->command));
 			$this->forbidden = array(
 				RUBRIQUE_PATH.'index.php', INCLUDE_PATH.'index'.INCLUDE_PATH.'.php', SQL_PATH.'index'.SQL_PATH.'.php', FORMS_PATH.'index'.FORMS_PATH.'.php',
 				RUBRIQUE_PATH.'terminal.php',
@@ -35,7 +35,7 @@
 				TEMPLATE_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.'GCmaintenance'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.'GCterminal'.TEMPLATE_EXT,
 				CLASS_FEED, CLASS_JS, CLASS_TEXT, CLASS_DATE, CLASS_DOWNLOAD, CLASS_UPDLOAD ,CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
 				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT, 
-			); // liste des fichiers systèmes à updater
+			); // liste des fichiers syst&#232;mes à updater
 		}
 
 		public function parse(){
@@ -63,7 +63,7 @@
 						$monfichier = fopen(FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php', 'a');
 						fclose($monfichier);
 						$this->command .= '<br /><span style="color: black;">----</span>> '.FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php';
-						$this->result = '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">la rubrique <u>'.$this->commandExplode[2].'</u> a bien été créée</span>';
+						$this->result = '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">la rubrique <u>'.$this->commandExplode[2].'</u> a bien &#233;t&#233; cr&#233;&#233;e</span>';
 					}
 					else{
 						$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->commandExplode[2].'.php';
@@ -89,7 +89,7 @@
 							$this->command .= '<br /><span style="color: black;">----</span>> '.FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php';
 						}
 
-						$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> la rubrique <u>'.$this->commandExplode[2].'</u> a bien été supprimée</span>';
+						$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> la rubrique <u>'.$this->commandExplode[2].'</u> a bien &#233;t&#233; supprim&#233;e</span>';
 					}
 					else{
 						$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->commandExplode[2].'.php';
@@ -101,7 +101,7 @@
 						$monfichier = fopen(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, 'a');
 						fclose($monfichier);
 						$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
-						$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.$this->commandExplode[2].'</u> a bien été créé</span>';
+						$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.$this->commandExplode[2].'</u> a bien &#233;t&#233; cr&#233;&#233;</span>';
 					}
 					else{
 						$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
@@ -113,7 +113,7 @@
 						$monfichier = fopen(CLASS_PATH.$this->commandExplode[2].'.class.php', 'a');
 						fclose($monfichier);
 						$this->command .= '<br /><span style="color: black;">----</span>> '.CLASS_PATH.$this->commandExplode[2].'.class.php';
-						$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le fichier class <u>'.CLASS_PATH.$this->commandExplode[2].'.class.php'.'</u> a bien été créé</span>';
+						$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le fichier class <u>'.CLASS_PATH.$this->commandExplode[2].'.class.php'.'</u> a bien &#233;t&#233; cr&#233;&#233;</span>';
 					}
 					else{
 						$this->command .= '<br /><span style="color: black;">----</span>> '.CLASS_PATH.$this->commandExplode[2].'.class.php';
@@ -128,14 +128,14 @@
 							}
 						}
 					}
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> fichiers de template listés</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> fichiers de template list&#233;s</span>';
 				}
 				elseif(preg_match('#delete template (.+)#', $this->command)){
 					if(!array_search(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, $this->forbidden)){
 						if(is_file(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT)){
 							unlink(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT);
 							$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
-							$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.'</u> a bien été supprimé</span>';
+							$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.'</u> a bien &#233;t&#233; supprim&#233;</span>';
 						}
 						else{
 							$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT;
@@ -153,11 +153,11 @@
 							if(!is_file(TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT)){
 								rename(TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT, TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT);
 								$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.' -> '.TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT;
-								$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.'</u> a bien été rénommé en <u>'.TEMPLATE_PATH.$this->commandExplode[3].'</u></span>';
+								$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->commandExplode[2].TEMPLATE_EXT.'</u> a bien &#233;t&#233; r&#233;nomm&#233; en <u>'.TEMPLATE_PATH.$this->commandExplode[3].'</u></span>';
 							}
 							else{
 								$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT;
-								$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Un template porte déjà le même nom</span>';
+								$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Un template porte d&#233;jà le même nom</span>';
 							}
 						}
 						else{
@@ -178,7 +178,7 @@
 									if(is_file(RUBRIQUE_PATH.$this->commandExplode[2].'.php') && !is_file(RUBRIQUE_PATH.$this->commandExplode[3].'.php')){
 										rename(RUBRIQUE_PATH.$this->commandExplode[2].'.php', RUBRIQUE_PATH.$this->commandExplode[3].'.php');
 										$this->command .= '<br /><span style="color: black;">----</span>> '.RUBRIQUE_PATH.$this->commandExplode[2].'.php'.' -> '.RUBRIQUE_PATH.$this->commandExplode[3].'.php';
-										$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le fichier <u>'.RUBRIQUE_PATH.$this->commandExplode[2].'.php'.'</u> a bien été rénommé en <u>'.RUBRIQUE_PATH.$this->commandExplode[3].'.php'.'</u></span>';
+										$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le fichier <u>'.RUBRIQUE_PATH.$this->commandExplode[2].'.php'.'</u> a bien &#233;t&#233; r&#233;nomm&#233; en <u>'.RUBRIQUE_PATH.$this->commandExplode[3].'.php'.'</u></span>';
 									}
 									if(is_file(INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php') && !is_file(INCLUDE_PATH.$this->commandExplode[3].FUNCTION_EXT.'.php')){
 										rename(INCLUDE_PATH.$this->commandExplode[2].FUNCTION_EXT.'.php', INCLUDE_PATH.$this->commandExplode[3].FUNCTION_EXT.'.php');
@@ -193,11 +193,11 @@
 										$this->command .= '<br /><span style="color: black;">----</span>> '.FORMS_PATH.$this->commandExplode[2].FORMS_EXT.'.php'.' -> '.FORMS_PATH.$this->commandExplode[3].FORMS_EXT.'.php';
 									}
 
-									$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> la rubrique <u>'.$this->commandExplode[2].'</u> a bien été rénommée en <u>'.$this->commandExplode[3].'</u></span>';
+									$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> la rubrique <u>'.$this->commandExplode[2].'</u> a bien &#233;t&#233; r&#233;nomm&#233;e en <u>'.$this->commandExplode[3].'</u></span>';
 								}
 								else{
 									$this->command .= '<br /><span style="color: black;">----</span>> '.TEMPLATE_PATH.$this->commandExplode[3].TEMPLATE_EXT;
-								$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Une rubrique porte déjà le même nom</span>';
+								$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Une rubrique porte d&#233;jà le même nom</span>';
 								}
 							}
 							else{
@@ -248,13 +248,13 @@
 							}
 						}
 					}
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> fichiers de rubrique listés</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> fichiers de rubrique list&#233;s</span>';
 				}
 				elseif(preg_match('#list included#', $this->command)){				
 					foreach(get_included_files() as $val){
 						$this->command .= '<br /><span style="color: black;">----</span>> '.$val;
 					}
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> fichiers inclus listés</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> fichiers inclus list&#233;s</span>';
 				}
 				elseif(preg_match('#clear cache#', $this->command)){
 					if($this->dossier = opendir(CACHE_PATH)){
@@ -265,7 +265,7 @@
 							}
 						}
 					}
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le cache a bien été vidé</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le cache a bien &#233;t&#233; vid&#233;</span>';
 				}
 				elseif(preg_match('#clear log#', $this->command)){
 					if($this->dossier = opendir(LOG_PATH)){
@@ -276,7 +276,7 @@
 							}
 						}
 					}
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le log a bien été vidé</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> le log a bien &#233;t&#233; vid&#233;</span>';
 				}
 				elseif(preg_match('#help#', $this->command)){
 					$this->command .= '<br /><span style="color: black;">----</span>> add rubrique nom';
@@ -304,19 +304,19 @@
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> framework à jour</span>';
 				}
 				elseif(preg_match('#disconnect#', $this->command) && $this->mdp==false){
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> Vous avez été déconnecté</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> Vous avez &#233;t&#233; d&#233;connect&#233;</span>';
 					$_SESSION['GC_terminalMdp'] = 0;
 				}
 				elseif(preg_match('#changepassword (.+)#', $this->command)){
 					$sauvegarde = file_get_contents('web.config.php');
 					$sauvegarde = preg_replace("`define\('TERMINAL_MDP', '(.+)'\)`isU", 'define(\'TERMINAL_MDP\', \''.$this->commandExplode[1].'\')',  $sauvegarde);
 					file_put_contents('web.config.php', $sauvegarde);
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> Le mot de passe a bien été modifié'.$sauvegarde.'</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> Le mot de passe a bien &#233;t&#233; modifi&#233;'.$sauvegarde.'</span>';
 				}
 			}
 			else{
-				$this->command .= '<span style="color: red;"> erreur de connexion</span>';
-				$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Vous devez vous connecter grâce au  mot de passe du fichier de config</span>';
+				$this->command .= '<span style="color: red;"> / erreur de connexion</span>';
+				$this->result = '<br /><span style="color: black;">----</span>><span style="color: red;"> Vous devez vous connecter gr&#226;ce au  mot de passe du fichier de config</span>';
 			}
 
 			return '> '.$this->command.' '.$this->result;
