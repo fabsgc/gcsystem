@@ -11,7 +11,6 @@
     class pictureGc extends fileGc{
 		private $img;                //contient l'url de l'image
 		private $imgGD;              //objet GD
-		private $error = array();    //erreurs
 		
 		public function __construct($img){
 			$this->img = $img;
@@ -86,17 +85,6 @@
 						$this->_addError('L\'extension n\'est pas gérée');
 					break;
 				}
-		}
-		
-		private function _addError($error){
-			array_push($this->error, $error);
-		}
-		
-		private function _showError(){
-			foreach($this->error as $error){
-				$erreur .=$error."<br />";
-			}
-			return $erreur;
 		}
 		
 		public function __destruct(){

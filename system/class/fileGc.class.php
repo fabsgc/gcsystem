@@ -10,13 +10,13 @@
 	
     class fileGc{		
 		protected $_filePath                                   ;
-		private $_fileName                                   ;
-		private $_fileExt                                    ;
-		private $_fileContent                                ;
-		private $_fileChmod                                  ;
-		private $_error                             = array();
-		private $_info                              = array();
-		private $_isExist                           = false  ;
+		protected $_fileName                                   ;
+		protected $_fileExt                                    ;
+		protected $_fileContent                                ;
+		protected $_fileChmod                                  ;
+		protected $_error                             = array();
+		protected $_info                              = array();
+		protected $_isExist                           = false  ;
 		
 		const NOFILE   = 'Aucun fichier n\'a été difini'     ;
 		const NOACCESS = 'le fichier n\'est pas accessible'  ;
@@ -47,6 +47,11 @@
 			return $this->_fileExt;
 		}
 		
+		public function getExtension($ext){
+			$extension = explode('.', basename($ext));
+			return $extension[count($extension)-1];
+		}
+		
 		public function getFileInfo(){
 			return $this->_fileInfo;
 		}
@@ -67,6 +72,10 @@
 				$this->_addError(self::NOFILE);
 				return false;
 			}
+		}
+		
+		public function getExist(){
+			return $this->_isExist;
 		}
 		
 		public function getLastAccess(){
@@ -181,12 +190,12 @@
 			}
 		}
 		
-		private function _setFileDefault($file){
+		protected function _setFileDefault($file){
 			$fileCreate = fopen($file, 'a');
 			fclose($fileCreate);
 		}
 		
-		private function _setFilePath($file){
+		protected function _setFilePath($file){
 			if(is_file($file)){
 				$this->_filePath = $file;
 				return true;
@@ -197,7 +206,7 @@
 			}
 		}
 		
-		private function _setFileName($file){
+		protected function _setFileName($file){
 			if(is_file($file)){
 				$this->_fileName = basename($file);
 				return true;
@@ -208,7 +217,7 @@
 			}
 		}
 		
-		private function _setFileExt($file){
+		protected function _setFileExt($file){
 			if(is_file($file)){
 				$extension = explode('.', basename($file));
 				$this->_fileExt = $extension[count($extension)-1];
@@ -220,7 +229,7 @@
 			}
 		}
 		
-		private function _setFileContent($file){
+		protected function _setFileContent($file){
 			if(is_file($file)){
 				if(is_readable($file)){
 					$this->_fileContent = file_get_contents($file);
@@ -237,7 +246,7 @@
 			}
 		}
 		
-		private function _setFileInfo($file){
+		protected function _setFileInfo($file){
 			if(is_file($file)){
 				$this->_fileInfo = stat($file);
 				return true;
@@ -248,7 +257,7 @@
 			}
 		}
 		
-		private function _setFileChmod($file){
+		protected function _setFileChmod($file){
 			if(is_file($file)){
 				$this->_fileChmod = substr(sprintf('%o', fileperms($file)), -4);;
 				return true;
@@ -259,7 +268,7 @@
 			}
 		}
 		
-		private function _addError($error){
+		protected function _addError($error){
 			array_push($this->_error, $error);
 		}
 		

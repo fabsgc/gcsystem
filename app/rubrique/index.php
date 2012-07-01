@@ -1,6 +1,6 @@
 <?php
-	$GLOBALS['rubrique']->setInfo(array('title'=>'é bijour'));
-	echo $GLOBALS['rubrique']->affHeader();
+	// $GLOBALS['rubrique']->setInfo(array('title'=>'é bijour'));
+	// echo $GLOBALS['rubrique']->affHeader();
 		// $t= new templateGC('GCsystem', 'GCsystem', '0');
 		// $t->setShow(FALSE);
 		// echo $t->show();
@@ -81,10 +81,15 @@
 		
 		// $GLOBALS['rubrique']->blockInfo('sa','sa',0);
 		
-		$file = new fileGc('system/class/terminalGc.class.php');
+		// $file = new fileGc('system/class/terminalGc.class.php');
 		// echo $file->getFileExt();
-		$file->getFileContent();
-		echo $file->showError();
+		// $file->getFileContent();
+		// echo $file->showError();
 		
-	echo $GLOBALS['rubrique']->affFooter();
+		// $file = new downloadGc('index.php', 'index.html', downloadGc::EXT_HTML);
+		$file = new downloadGc('asset/image/memory.png', 'test.png', downloadGc::EXT_PNG);
+		echo $file->download();
+		// echo $file->showError();
+		
+	// echo $GLOBALS['rubrique']->affFooter();
 ?>

@@ -74,7 +74,7 @@
 		float: left;
 		position: relative;
 		background-color: rgba(0, 0, 0, 0);	
-		top: -7px;
+		top: -6px;
 	}
 	
 	#gc_terminal #terminal_input_write_left{
@@ -86,7 +86,7 @@
 		text-shadow : white 0px 0px 5px;
 		position: relative;
 		background-color: rgba(0, 0, 0, 0);	
-		top: -7px;
+		top: -6px;
 	}
 	
 	

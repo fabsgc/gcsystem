@@ -19,6 +19,7 @@
 		private $sql        = array(); //liste des requêtes sql
 		private $arbo                ; //liste des fichiers inclus
 		private $_show      = 0      ; //liste des fichiers inclus
+		private $_setShow   = true   ; //liste des fichiers inclus
 		
 		public  function __construct($lang=""){
 			if(!$lang){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
@@ -27,50 +28,56 @@
 		}
 		
 		public function show(){
-			if($this->_show==0){
-				$rubrique="";
-				$template="";
-				$sql="";
-				$this->rubrique = get_included_files();
-				self::setTimeExec();
-				foreach($this->rubrique as $val){
-					$rubrique .= $val."\n";
-				}
-				foreach($this->template as $val){
-					$template .= $val."\n";
-				}
-				foreach($this->sql as $val){
-					$sql .= $val."\n";
-				}
-				
-				$this->arbo .="-----------get------------\n";
-				foreach($_GET as $cle => $val){
-					$this->arbo .="".$cle."::".$val."\n";
-				}
-				$this->arbo .="-----------post-----------\n";
-				foreach($_POST as $cle => $val){
-					$this->arbo .="".$cle."::".$val."\n";
-				}
-				$this->arbo .="----------session--------\n";
-				foreach($_SESSION as $cle => $val){
-					$this->arbo .="".$cle."::".$val."\n";
-				}
-				
-				$tpl = new templateGC('GCsystemDev', 'GCsystemDev', 0, $lang="");
-				$tpl->assign(array(
-					'text'=>$this->useLang('appDevGc_temp'),
-					'IMG_PATH'=>IMG_PATH,
-					'timeexec' => round($this->timeExecEnd,2),
-					'http' => $rubrique,
-					'tpl' => $template,
-					'sql' => $sql,
-					'arbo' => $this->arbo,
-					'memory' => (memory_get_usage(true)/1024)
-				));
+			if($this->_setShow == true){
+				if($this->_show==0){
+					$rubrique="";
+					$template="";
+					$sql="";
+					$this->rubrique = get_included_files();
+					self::setTimeExec();
+					foreach($this->rubrique as $val){
+						$rubrique .= $val."\n";
+					}
+					foreach($this->template as $val){
+						$template .= $val."\n";
+					}
+					foreach($this->sql as $val){
+						$sql .= $val."\n";
+					}
 					
-				$tpl->show();
-				$tih->_show =1;
+					$this->arbo .="-----------get------------\n";
+					foreach($_GET as $cle => $val){
+						$this->arbo .="".$cle."::".$val."\n";
+					}
+					$this->arbo .="-----------post-----------\n";
+					foreach($_POST as $cle => $val){
+						$this->arbo .="".$cle."::".$val."\n";
+					}
+					$this->arbo .="----------session--------\n";
+					foreach($_SESSION as $cle => $val){
+						$this->arbo .="".$cle."::".$val."\n";
+					}
+					
+					$tpl = new templateGC('GCsystemDev', 'GCsystemDev', 0, $lang="");
+					$tpl->assign(array(
+						'text'=>$this->useLang('appDevGc_temp'),
+						'IMG_PATH'=>IMG_PATH,
+						'timeexec' => round($this->timeExecEnd,2),
+						'http' => $rubrique,
+						'tpl' => $template,
+						'sql' => $sql,
+						'arbo' => $this->arbo,
+						'memory' => (memory_get_usage(true)/1024)
+					));
+						
+					$tpl->show();
+					$this->_show =1;
+				}
 			}
+		}
+		
+		public function setShow($show){
+			$this->_setShow = $show;
 		}
 		
 		private function _createLangInstance(){
