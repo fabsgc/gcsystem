@@ -22,6 +22,7 @@
 		const PARAM_FETCH               = 0;
 		const PARAM_FETCHCOLUMN         = 1;
 		const PARAM_FETCHINSERT         = 2;
+		const PARAM_FETCHUPDATE         = 3;
 		
 		public  function __construct($bdd){
 			$this->bdd = $bdd;
@@ -97,6 +98,7 @@
 					case self::PARAM_FETCH : $data = $query->fetchAll(); break;
 					case self::PARAM_FETCHCOLUMN : $data = $query->fetchColumn(); break;
 					case self::PARAM_FETCHINSERT : $data = true; break;
+					case self::PARAM_FETCHUPDATE : $data = true; break;
 					default : $this->_addError('cette constante n\'existe pas'); $data=""; break;
 				}
 				
@@ -107,6 +109,7 @@
 							$this->cache->setCache($data);
 							return $this->cache->getCache(); break;
 					case self::PARAM_FETCHINSERT : return true; break;
+					case self::PARAM_FETCHUPDATE : return true; break;
 					default : $this->_addError('cette constante n\'existe pas'); $data=""; break;
 				}
 			}

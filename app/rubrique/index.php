@@ -5,11 +5,14 @@
 		// $t->setShow(FALSE);
 		// echo $t->show();
 		
-		// $sql = new sqlGc($GLOBALS['base'][BDD]);
-		// $sql->setVar(array('id' => array(7, sqlGc::PARAM_INT)));
+		$sql = new sqlGc($GLOBALS['base'][BDD]);
+		$sql->setVar(array('id' => array(31, sqlGc::PARAM_INT), 'pass' => array("fuck", sqlGc::PARAM_STR)));
 		// $sql->query('query1', 'SELECT * FROM membre LIMIT 0,3', '1');
 		// $sql->query('query2', 'SELECT COUNT(*) as machin FROM membre', '1');
 		// $sql->query('query3', 'SELECT * FROM membre WHERE ID=:id', '1');
+		$sql->query('query4', 'UPDATE membre SET pass=:pass WHERE ID=:id', '1');
+		
+		echo $data = $sql->fetch('query4');
 		
 		// $sql = new sqlGc($GLOBALS['base'][BDD]);
 		// $sql->query('query4', 'INSERT INTO connectes() VALUES(:id, :id)', '1');
@@ -87,8 +90,8 @@
 		// echo $file->showError();
 		
 		// $file = new downloadGc('index.php', 'index.html', downloadGc::EXT_HTML);
-		$file = new downloadGc('asset/image/memory.png', 'test.png', downloadGc::EXT_PNG);
-		echo $file->download();
+		// $file = new downloadGc('asset/image/memory.png', 'test.png', downloadGc::EXT_PNG);
+		// echo $file->download();
 		// echo $file->showError();
 		
 	// echo $GLOBALS['rubrique']->affFooter();
