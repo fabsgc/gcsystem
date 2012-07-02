@@ -167,8 +167,7 @@
 				<input type="text" value="" id="terminal_input_write" onkeyPress="terminal(event);" onkeyUp="terminal_empty();"/>
 			</div>
 		</div>
-	</div>{$$_SESSION['GC_terminalMdp']}
-	</div>{$$_SESSION[GC_terminalMdp]}
+	</div>
 </div>
 <script>
 	if (document.body){
