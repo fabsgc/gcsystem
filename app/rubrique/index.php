@@ -7,13 +7,13 @@
 		
 		$sql = new sqlGc($GLOBALS['base'][BDD]);
 		$sql->setVar(array('id' => array(31, sqlGc::PARAM_INT), 'pass' => array("fuck", sqlGc::PARAM_STR)));
-		// $sql->query('query1', 'SELECT * FROM membre LIMIT 0,3', '1');
+		$sql->query('query1', 'SELECT * FROM membre LIMIT 0,3', '1');
 		// $sql->query('query2', 'SELECT COUNT(*) as machin FROM membre', '1');
 		// $sql->query('query3', 'SELECT * FROM membre WHERE ID=:id', '1');
 		$sql->query('query4', 'UPDATE membre SET pass=:pass WHERE ID=:id', '1');
 		
-		echo $data = $sql->fetch('query4');
-		
+		echo $data = $sql->fetch('query4', sqlGc::PARAM_FETCHUPDATE);
+		echo $data = $sql->execute('query1')->rowCount();
 		// $sql = new sqlGc($GLOBALS['base'][BDD]);
 		// $sql->query('query4', 'INSERT INTO connectes() VALUES(:id, :id)', '1');
 		// $sql->query('query5', 'INSERT INTO connectes() VALUES(:id, :id)', '1');
@@ -21,9 +21,9 @@
 		// $sql->fetch('query4', sqlGc::PARAM_FETCHINSERT);
 		// $sql->getVar();
 	
-		// foreach($sql->fetch('query1') as $data){
-			// echo $data['ID'].' '.$data['pseudo'].'<br />';
-		// }
+		foreach($sql->fetch('query1') as $data){
+			echo $data['ID'].' '.$data['pseudo'].'<br />';
+		}
 		
 		// foreach($sql->fetch('query3') as $data){
 			// echo $data['ID'].' '.$data['pseudo'].'<br />';

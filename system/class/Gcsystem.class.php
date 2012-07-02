@@ -30,6 +30,7 @@
 		private $fbTitle                     ;
 		private $fbDescription               ;
 		private $fbImage                     ;
+		private $htmlType                    ;
 		
 		private $lang                        ; // gestion des langues via des fichiers XML
 		private $langInstance                ;
@@ -196,6 +197,7 @@
 								$this->doctype='<!DOCTYPE html>';
 								$this->doctype.="\n";
 								$this->doctype.='<html lang="fr">';
+								$this->htmlType = 'html5';
 							break;
 						}
 					break;
@@ -481,7 +483,8 @@
 			$this->header.=$this->doctype."\n";
 			$this->header.="  <head>\n";
 			$this->header.="    <title>".($this->title)."</title>\n";
-			$this->header.="    <meta http-equiv=\"Content-Type\" content=\"".$this->metaContentType."\" />\n";
+			if($this->htmlType !='html5'){ $this->header.="    <meta http-equiv=\"Content-Type\" content=\"".$this->metaContentType."\" />\n"; }
+				else { $this->header.="    <meta charset=\"utf-8\" />"; }
 			$this->header.="    <meta http-equiv=\"content-language\" content=\"fr\"/>\n";
 			$this->header.="    <meta name=\"keywords\" content=\"".$this->metaKeyword."\"/>\n";
 			$this->header.="    <meta name=\"description\" content=\"".$this->metaDescription."\" />\n";
