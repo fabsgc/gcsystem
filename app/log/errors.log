@@ -164,3 +164,5 @@
 02/07/2012 à 00:33 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
 02/07/2012 à 15:48 ! : Erreur n°8 (Undefined property: sqlGc::$SELECT * FROM membre LIMIT 0,3) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\sqlGc.class.php à la ligne 38
 02/07/2012 à 15:48 ! : Erreur n°8 (Undefined property: sqlGc::$SELECT * FROM membre LIMIT 0,3) dans le fichier C:\wampServer\www\GCsystem2.0\system\class\sqlGc.class.php à la ligne 38
+02/07/2012 à 18:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+02/07/2012 à 18:52 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2

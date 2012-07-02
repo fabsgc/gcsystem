@@ -322,56 +322,66 @@
 			return '> '.$this->command.' '.$this->result;
 		}
 
-		private function updater(){		
-			$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL);
-			$fp = fopen(CLASS_TERMINAL, "w");
-			curl_setopt($ch, CURLOPT_FILE, $fp);
-			curl_setopt($ch, CURLOPT_HEADER, 0);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-			curl_exec($ch);
-			curl_close($ch);
-			fclose($fp);
-			return $contenu .= '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.CLASS_TERMINAL.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL.'</span>';
-		}
-
-		private function update(){
-			$contenu = "";
-			$sauvegarde ="";
-			$sauvegarde2 ="";
-			$suppr = "";
-			$suppr2 = "";
-
-			$sauvegarde = file_get_contents('web.config.php');
-			$sauvegarde = preg_replace('`(.*)parametres de connexion a la base de donnees(.*)`isU', '$2', $sauvegarde);
-			$sauvegarde2 = file_get_contents('index.php');
-			$sauvegarde2 = preg_replace('`(.*)articulation du site web(.*)`isU', '$2', $sauvegarde2);
-
-			foreach($this->updateFile as $file){				
-				$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
-				$fp = fopen($file, "w");
+		private function updater(){
+			if(curl_init()){
+				$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL);
+				$fp = fopen(CLASS_TERMINAL, "w");
 				curl_setopt($ch, CURLOPT_FILE, $fp);
 				curl_setopt($ch, CURLOPT_HEADER, 0);
 				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 				curl_exec($ch);
 				curl_close($ch);
 				fclose($fp);
-				$contenu .= '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
+				return $contenu .= '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.CLASS_TERMINAL.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL.'</span>';
 			}
-
-			$suppr = file_get_contents('web.config.php');
-			$suppr = preg_replace('`(.*)(parametres de connexion a la base de donnees)(.*)`is', '$1parametres de connexion a la base de donnees', $suppr);
-			if($suppr!="" && $sauvegarde!=""){
-				file_put_contents('web.config.php', $suppr);
-				file_put_contents('web.config.php', $sauvegarde, FILE_APPEND);
+			else{
+				return $contenu .= '<br /><span style="color: black;">----</span>> <span style="color: red;">Vous devez activer l\'extension C_URL dans le php.ini pour pouvoir utiliser la fonction update';
 			}
+		}
 
-			$suppr2 = file_get_contents('index.php');
-			$suppr2 = preg_replace('`(.*)(articulation du site web)(.*)`is', '$1articulation du site web', $suppr2);
-			if($suppr2!="" && $sauvegarde2!=""){
-				file_put_contents('index.php', $suppr2);
-				file_put_contents('index.php', $sauvegarde2, FILE_APPEND);
+		private function update(){
+			if(curl_init()){
+				$contenu = "";
+				$sauvegarde ="";
+				$sauvegarde2 ="";
+				$suppr = "";
+				$suppr2 = "";
+
+				$sauvegarde = file_get_contents('web.config.php');
+				$sauvegarde = preg_replace('`(.*)parametres de connexion a la base de donnees(.*)`isU', '$2', $sauvegarde);
+				$sauvegarde2 = file_get_contents('index.php');
+				$sauvegarde2 = preg_replace('`(.*)articulation du site web(.*)`isU', '$2', $sauvegarde2);
+
+				foreach($this->updateFile as $file){				
+					$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
+					$fp = fopen($file, "w");
+					curl_setopt($ch, CURLOPT_FILE, $fp);
+					curl_setopt($ch, CURLOPT_HEADER, 0);
+					curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+					curl_exec($ch);
+					curl_close($ch);
+					fclose($fp);
+					$contenu .= '<br /><span style="color: black;">----</span>> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
+				}
+
+				$suppr = file_get_contents('web.config.php');
+				$suppr = preg_replace('`(.*)(parametres de connexion a la base de donnees)(.*)`is', '$1parametres de connexion a la base de donnees', $suppr);
+				if($suppr!="" && $sauvegarde!=""){
+					file_put_contents('web.config.php', $suppr);
+					file_put_contents('web.config.php', $sauvegarde, FILE_APPEND);
+				}
+
+				$suppr2 = file_get_contents('index.php');
+				$suppr2 = preg_replace('`(.*)(articulation du site web)(.*)`is', '$1articulation du site web', $suppr2);
+				if($suppr2!="" && $sauvegarde2!=""){
+					file_put_contents('index.php', $suppr2);
+					file_put_contents('index.php', $sauvegarde2, FILE_APPEND);
+				}
+
+				return $contenu;
+			}	
+			else{
+				return $contenu .= '<br /><span style="color: black;">----</span>> <span style="color: red;">Vous devez activer l\'extension C_URL dans le php.ini pour pouvoir utiliser la fonction update';
 			}
-
-			return $contenu;
 		}
 	}
