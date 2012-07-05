@@ -57,11 +57,18 @@
 					foreach($_SESSION as $cle => $val){
 						$this->arbo .="".$cle."::".$val."\n";
 					}
+					$this->arbo .="----------file--------------\n";
+					foreach($_FILES as $cle => $val){
+						$this->arbo .="".$cle."\n";
+						foreach($val as $cle2 => $val2){
+							$this->arbo .="-".$cle2."::".$val2."\n";
+						}
+					}
 					
 					$tpl = new templateGC('GCsystemDev', 'GCsystemDev', 0, $lang="");
 					$tpl->assign(array(
 						'text'=>$this->useLang('appDevGc_temp'),
-						'IMG_PATH'=>IMG_PATH,
+						'IMG_PATH'=>IMG_PATH.'GCsystem/',
 						'timeexec' => round($this->timeExecEnd,2),
 						'http' => $rubrique,
 						'tpl' => $template,

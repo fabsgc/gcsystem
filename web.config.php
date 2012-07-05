@@ -180,6 +180,24 @@ define('RUBRIQUE_MISSING_PARAMETERS', 'Il manque des paramètre pour répondre à v
 //erreur variabels manquantes
 define('ACTION_NOT_FOUND', 'La rubrique n\'existe pas.');
 
+/* fichier jquery */
+define('JQUERYFILE', JS_PATH.'jquery.min.js');
+define('JQUERYUIJS', JS_PATH.'jquery-ui.min.js');
+define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
+
+/* --------------parametres de connexion a la base de donnees------------------*/
+
+$db['bdd']['hostname'] = "localhost";
+$db['bdd']['username'] = "root";
+$db['bdd']['password'] = "";
+$db['bdd']['database'] = "8_legeekcafe";
+$db['bdd']['extension'] = "pdo";
+
+/* -------------- CONSTANTE RELATIVE AU SITE ----------------- */
+
+//base du site (utile pour eviter les repetition et faciliter  les changements de bdd
+define('BDD', '8_legeekcafe');
+
 //charset
 define('CHARSET', 'iso-8859-15');
 
@@ -208,21 +226,3 @@ define('TERMINAL_MDP', 'mdp');
 
 /* mettre à true pour pouvoir utiliser jquery et jquery ui */
 define('JQUERY', true);
-
-/* fichier jquery */
-define('JQUERYFILE', JS_PATH.'jquery.min.js');
-define('JQUERYUIJS', JS_PATH.'jquery-ui.min.js');
-define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
-
-/* --------------parametres de connexion a la base de donnees------------------*/
-
-$db['bdd']['hostname'] = "localhost";
-$db['bdd']['username'] = "root";
-$db['bdd']['password'] = "";
-$db['bdd']['database'] = "8_legeekcafe";
-$db['bdd']['extension'] = "pdo";
-
-/* -------------- CONSTANTE RELATIVE AU SITE ----------------- */
-
-//base du site (utile pour eviter les repetition et faciliter  les changements de bdd
-define('BDD', '8_legeekcafe');

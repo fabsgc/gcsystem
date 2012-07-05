@@ -1,19 +1,24 @@
 <?php
+	header('Content-type: image/png');  
+	$nombre= mt_rand(1876,10255);
+	$img = new captchaGc($nombre, array('largeur'=>'240', 'hauteur'=>'40', 'color'=>array('100,98,100'), 'background'=>'asset/image/GCsystem/logo.png'));
+	$img->show();
+	$_SESSION['captcha'] = $nombre;
 	// $GLOBALS['rubrique']->setInfo(array('title'=>'é bijour'));
 	// echo $GLOBALS['rubrique']->affHeader();
 		// $t= new templateGC('GCsystem', 'GCsystem', '0');
 		// $t->setShow(FALSE);
 		// echo $t->show();
 		
-		$sql = new sqlGc($GLOBALS['base'][BDD]);
-		$sql->setVar(array('id' => array(31, sqlGc::PARAM_INT), 'pass' => array("fuck", sqlGc::PARAM_STR)));
-		$sql->query('query1', 'SELECT * FROM membre LIMIT 0,3', '1');
+		// $sql = new sqlGc($GLOBALS['base'][BDD]);
+		// $sql->setVar(array('id' => array(31, sqlGc::PARAM_INT), 'pass' => array("fuck", sqlGc::PARAM_STR)));
+		// $sql->query('query1', 'SELECT * FROM membre LIMIT 0,3', '1');
 		// $sql->query('query2', 'SELECT COUNT(*) as machin FROM membre', '1');
 		// $sql->query('query3', 'SELECT * FROM membre WHERE ID=:id', '1');
-		$sql->query('query4', 'UPDATE membre SET pass=:pass WHERE ID=:id', '1');
+		// $sql->query('query4', 'UPDATE membre SET pass=:pass WHERE ID=:id', '1');
 		
-		echo $data = $sql->fetch('query4', sqlGc::PARAM_FETCHUPDATE);
-		echo $data = $sql->execute('query1')->rowCount();
+		// echo $data = $sql->fetch('query4', sqlGc::PARAM_FETCHUPDATE);
+		// echo $data = $sql->execute('query1')->rowCount();
 		// $sql = new sqlGc($GLOBALS['base'][BDD]);
 		// $sql->query('query4', 'INSERT INTO connectes() VALUES(:id, :id)', '1');
 		// $sql->query('query5', 'INSERT INTO connectes() VALUES(:id, :id)', '1');
@@ -21,9 +26,9 @@
 		// $sql->fetch('query4', sqlGc::PARAM_FETCHINSERT);
 		// $sql->getVar();
 	
-		foreach($sql->fetch('query1') as $data){
-			echo $data['ID'].' '.$data['pseudo'].'<br />';
-		}
+		// foreach($sql->fetch('query1') as $data){
+			// echo $data['ID'].' '.$data['pseudo'].'<br />';
+		// }
 		
 		// foreach($sql->fetch('query3') as $data){
 			// echo $data['ID'].' '.$data['pseudo'].'<br />';

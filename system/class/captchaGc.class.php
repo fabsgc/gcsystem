@@ -9,163 +9,184 @@
 	\*/
 	
 	class captchaGC{
-		private $img;
-		private $mot;
+		private $_img;
+		private $_mot;
 		
-		private $largeur;
-		private $hauteur;
+		private $_largeur;
+		private $_hauteur;
 		
-		private $backgroundImage; //true ou false
-		private $background;
-		private $extension;
+		private $_backgroundImage; //true ou false
+		private $_background;
+		private $_extension;
 		
-		private $font; //true ou false
-		private $fontLink;
-		private $textColor;
-		private $textSize;
-		private $textPos;
+		private $_font; //true ou false
+		private $_fontLink;
+		private $_textColor;
+		private $_textSize;
+		private $_textPos;
 		
-		private $hachure; //true ou false
-		private $hachureColor;
+		private $_hachure; //true ou false
+		private $_hachureColor;
 		
-		private $i=0;
-		private $xhachure=0;
-		private $blur;
-		private $matrix_blur=array();
+		private $_i=0;
+		private $_xhachure=0;
+		private $_blur;
+		private $_matrix_blur=array();
 		
-		private $colorHachureAllocate;
-		private $colorBackgroundAllocate;
-		private $colorTextAllocate;
-		private $colorBordureAllocate;
+		private $_colorHachureAllocate;
+		private $_colorBackgroundAllocate;
+		private $_colorTextAllocate;
+		private $_colorBordureAllocate;
 		
-		private $bordure;
-		private $bordureColor;
+		private $_bordure;
+		private $_bordureColor;
+		
+		private $_error;
 		
 		public function __construct($mot, $property=array()){
-			$this->i = 0;
-			$this->mot = $mot;
-			$this->largeur = 10;
-			$this->hauteur = 10;
-			$this->backgroundImage = false;
-			$this->background = array(255,255,255);
-			$this->font = false;
-			$this->fontLink = "";
-			$this->textColor = array(0,0,0);
-			$this->textSize = 5;
-			$this->textPos = array(0,0);
-			$this->hachure = false;
-			$this->hachureColor = array(50,50,50);
-			$this->blur = false;
+			$this->_i = 0;
+			$this->_mot = $mot;
+			$this->_largeur = 10;
+			$this->_hauteur = 10;
+			$this->_backgroundImage = false;
+			$this->_background = array(255,255,255);
+			$this->_font = false;
+			$this->_fontLink = "";
+			$this->_textColor = array(0,0,0);
+			$this->_textSize = 5;
+			$this->_textPos = array(0,0);
+			$this->_hachure = false;
+			$this->_hachureColor = array(50,50,50);
+			$this->_blur = false;
 			
 			foreach($property as $cle=>$valeur){
 				switch($cle){
 					case 'largeur':
-						$this->largeur = $valeur;
+						$this->_largeur = $valeur;
 					break;
 					
 					case 'hauteur':
-						$this->hauteur = $valeur;
+						$this->_hauteur = $valeur;
 					break;
 					
 					case 'textcolor' :
-						$this->textColor = $valeur;
+						$this->_textColor = $valeur;
 					break;
 					
 					case 'textsize' :
-						$this->textSize = $valeur;
+						$this->_textSize = $valeur;
 					break;
 					
 					case 'textposition' :
-						$this->testPos = $valeur;
+						$this->_testPos = $valeur;
 					break;
 					
 					case 'background':
 						if(is_array($valeur)){
-							$this->backgroundImage = true;
-							$this->background = $valeur;
+							$this->_backgroundImage = false;
+							$this->_background = $valeur;
 						}
 						else{
-							$this->backgroundImage = false;
-							$this->background = $valeur;
+							$this->_backgroundImage = true;
+							$this->_background = $valeur;
 						}
 					break;
 					
 					case 'hachurecolor' :
-						$this->hachureColor = $valeur;
+						$this->_hachureColor = $valeur;
 					break;
 					
 					case 'hachure' :
-						$this->hachure = $valeur;
+						$this->_hachure = $valeur;
 					break;
 					
 					case 'blur' :
-						$this->blur = true;
+						$this->_blur = true;
 					break;
 					
 					case 'font' :
-						$this->font = true;
-						$this->fontLink = $valeur;
+						$this->_font = true;
+						$this->_fontLink = $valeur;
 					break;
 					
 					case 'bordure' :
-						$this->bordure = true;
-						$this->bordureColor = $valeur;
+						$this->_bordure = true;
+						$this->_bordureColor = $valeur;
 					break;
 				}
 			}
 		}
 		
 		public function show(){
-			if($this->backgroundImage==true){
-				$this->extension = substr($this->background, -3 );
-				$this->extension = strtolower($this->extension);
+			if($this->_backgroundImage==true){
+				$this->_extension = substr($this->_background, -3 );
+				$this->_extension = strtolower($this->_extension);
 				
-				switch ($this->extension){
+				switch ($this->_extension){
 					case 'jpg':
 						case 'peg':
-							$this->img = imagecreatefromjpeg($this->background);
+							$this->_img = imagecreatefromjpeg($this->_background);
 					break;
 
 					case 'gif':
-						$this->img = imagecreatefromgif($this->background);
+						$this->_img = imagecreatefromgif($this->_background);
+						imagealphablending($this->_img,FALSE);
+						imagesavealpha($this->_img,TRUE);
 					break;
 					
 					case 'png':
-						$this->img = imagecreatefrompng($this->background);
+						$this->_img = imagecreatefrompng($this->_background);
+						imagealphablending($this->_img,FALSE);
+						imagesavealpha($this->_img,TRUE);
+					break;
+					
+					default :
+						$thisy->_addError('L\'extension n\est pas gérée');
 					break;
 				}
 				
-				imagestring($this->img, 4, $this->textPos[0], $this->textPos[1], $this->mot, $this->colorTextAllocate);
+				imagestring($this->_img, 4, $this->_textPos[0], $this->_textPos[1], $this->_mot, $this->_colorTextAllocate);
 			}
 			else{
-				$this->img = imagecreate($this->largeur, $this->hauteur);
-				$this->colorBackgroundAllocate = imagecolorallocate($this->img, $this->background[0], $this->background[1], $this->background[2]);
-				$this->colorTextAllocate = imagecolorallocate($this->img, $this->textColor[0], $this->textColor[1], $this->textColor[2]);
-				imagestring($this->img, $this->textSize, $this->textPos[0], $this->textPos[1], $this->mot, $this->colorTextAllocate);
+				$this->_img = imagecreate($this->_largeur, $this->_hauteur);
+				$this->_colorBackgroundAllocate = imagecolorallocate($this->_img, $this->_background[0], $this->_background[1], $this->_background[2]);
+				$this->_colorTextAllocate = imagecolorallocate($this->_img, $this->_textColor[0], $this->_textColor[1], $this->_textColor[2]);
+				imagestring($this->_img, $this->_textSize, $this->_textPos[0], $this->_textPos[1], $this->_mot, $this->_colorTextAllocate);
 			}
 			
-			$this->colorHachureAllocate = imagecolorallocate($this->img, $this->hachureColor[0], $this->hachureColor[1], $this->hachureColor[2]);
-			$this->colorBordureAllocate = imagecolorallocate($this->img, $this->bordureColor[0], $this->bordureColor[1], $this->bordureColor[2]);
+			$this->_colorHachureAllocate = imagecolorallocate($this->_img, $this->_hachureColor[0], $this->_hachureColor[1], $this->_hachureColor[2]);
+			$this->_colorBordureAllocate = imagecolorallocate($this->_img, $this->_bordureColor[0], $this->_bordureColor[1], $this->_bordureColor[2]);
 				
 			
-			if($this->hachure==true){
-				for($this->i=0; $this->i<1; $this->i++){
-					imageline($this->img, 2,mt_rand(2,$this->hauteur), $this->largeur - 2, mt_rand(2,$this->hauteur), $this->colorHachureAllocate);
+			if($this->_hachure==true){
+				for($this->_i=0; $this->_i<1; $this->_i++){
+					imageline($this->_img, 2,mt_rand(2,$this->_hauteur), $this->_largeur - 2, mt_rand(2,$this->_hauteur), $this->_colorHachureAllocate);
 				}
 				
-				for($this->xhachure = 5; $this->xhachure < $this->largeur; $this->xhachure+=14)
+				for($this->_xhachure = 5; $this->_xhachure < $this->_largeur; $this->_xhachure+=14)
 				{
-					imageline($this->img, $this->xhachure,2,$this->xhachure-5,$this->hauteur, $this->colorHachureAllocate);
+					imageline($this->_img, $this->_xhachure,2,$this->_xhachure-5,$this->_hauteur, $this->_colorHachureAllocate);
 				}
 			}
 			
-			if($this->blur==true){
-				$this->matrix_blur = array(array(1,1,1),
+			if($this->_blur==true){
+				$this->_matrix_blur = array(array(1,1,1),
 										array(1,1,1),
 										array(1,1,1));
 			}
 			
-			return imagepng($this->img);
+			return imagepng($this->_img);
+		}
+		
+		private function _addError($error){
+			array_push($this->_error, $error);
+		}
+		
+		private function _showError(){
+			foreach($this->_error as $error){
+				$erreur .=$error."<br />";
+			}
+			return $erreur;
 		}
 		
 		public function __destruct(){

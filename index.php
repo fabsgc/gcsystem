@@ -117,3 +117,4 @@ elseif(MAINTENANCE==true){
 	$GLOBALS['rubrique']->setMaintenance();
 }
 if(ENVIRONMENT == 'development') $GLOBALS['appDevGc']->show();
+echo 'merde !';
