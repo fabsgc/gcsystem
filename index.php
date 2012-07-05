@@ -90,6 +90,10 @@ $GLOBALS['rubrique']->setErrorLog('history.log','Page rewrite : http://'.$_SERVE
 
 /* ------ articulation du site web -------- */
 
+/* ------ appelez ici vos classes personnelles -------- */
+
+/* -------- -------- */
+
 if(MAINTENANCE==false){
 	if(isset($_GET['rubrique'])){
 		switch($_GET['rubrique']){

@@ -2359,7 +2359,7 @@
 		
 		public  function showError(){
 			foreach($this->error as $erreur){
-				echo $erreur."<br />\n";
+				return $erreur."<br />\n";
 			}
 		}
 		
@@ -2367,11 +2367,7 @@
 			foreach($this->error as $erreur){
 				$this->Content.=$erreur."<br />";
 			}
-			?>
-				<div class="alert alert-error">
-					<?php echo $this->Content; ?>
-				</div>
-			<?php
+			return '<div class="alert alert-error">'.$this->Content.'</div>';
 		}
 		
 		public  function cleanError(){
