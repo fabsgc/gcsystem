@@ -297,11 +297,11 @@
 				}
 				elseif(preg_match('#update updater#', $this->command)){
 					$this->command .= $this->updater();
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> updater à jour</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> updater &#226; jour</span><meta http-equiv="refresh" content="1; URL=#">';
 				}
 				elseif(preg_match('#update#', $this->command)){
 					$this->command .= $this->update();
-					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> framework à jour</span>';
+					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> framework &#226; jour</span><meta http-equiv="refresh" content="1; URL=#">';
 				}
 				elseif(preg_match('#disconnect#', $this->command) && $this->mdp==false){
 					$this->result = '<br /><span style="color: black;">----</span>><span style="color: chartreuse;"> Vous avez &#233;t&#233; d&#233;connect&#233;</span>';
