@@ -20,6 +20,7 @@
 		const EXT_TXT                   = 'text/plain'                               ;
 		const EXT_HTM                   = 'text/html'                                ;
 		const EXT_HTML                  = 'text/html'                                ;
+		const EXT_JS                    = 'application/javascript'                                ;
 		const EXT_EXE                   = 'application/octet-stream'                 ;
 		const EXT_DOC                   = 'application/msword'                       ;
 		const EXT_XLS                   = 'application/vnd.ms-excel'                 ;

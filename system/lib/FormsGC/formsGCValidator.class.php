@@ -2359,8 +2359,9 @@
 		
 		public  function showError(){
 			foreach($this->error as $erreur){
-				return $erreur."<br />\n";
+				$error .= $erreur."<br />\n";
 			}
+			return $error;
 		}
 		
 		public  function showErrorBlock(){
