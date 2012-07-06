@@ -290,11 +290,11 @@
 				$variable = '$'.$cle.'='.$valeur.';';
 				$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).''.$cle.''.preg_quote($this->bal['vars'][1]).'`', '<?php echo htmlentities($'.$cle.'); ?>', $this->contenu);
 			}
-			$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).'([\[\]A-Za-z0-9._-]+)'.preg_quote($this->bal['vars'][1]).'`', '<?php echo htmlentities($$1); ?>', $this->contenu);
+			$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).'([\[\]A-Za-z0-9._-]+)'.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($$1); ?>', $this->contenu);
 		}
 		
 		private function parsevarsExist(){
-			$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][2]).'([\[\]A-Za-z0-9\$\'._-]+)'.preg_quote($this->bal['vars'][3]).'`', '<?php echo htmlentities($1); ?>', $this->contenu);
+			$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][2]).'([\[\]A-Za-z0-9\$\'._-]+)'.preg_quote($this->bal['vars'][3]).'`', '<?php echo ($1); ?>', $this->contenu);
 		}
 		
 		private function parseInclude(){

@@ -1,9 +1,9 @@
 <?php
-	header('Content-type: image/png');  
-	$nombre= mt_rand(1876,10255);
-	$img = new captchaGc($nombre, array('largeur'=>'240', 'hauteur'=>'40', 'color'=>array('100,98,100'), 'background'=>'asset/image/GCsystem/logo.png'));
-	$img->show();
-	$_SESSION['captcha'] = $nombre;
+	// header('Content-type: image/png');  
+	// $nombre= mt_rand(1876,10255);
+	// $img = new captchaGc($nombre, array('largeur'=>'240', 'hauteur'=>'40', 'color'=>array('100,98,100'), 'background'=>'asset/image/GCsystem/logo.png'));
+	// $img->show();
+	// $_SESSION['captcha'] = $nombre;
 	// $GLOBALS['rubrique']->setInfo(array('title'=>'é bijour'));
 	// echo $GLOBALS['rubrique']->affHeader();
 		// $t= new templateGC('GCsystem', 'GCsystem', '0');

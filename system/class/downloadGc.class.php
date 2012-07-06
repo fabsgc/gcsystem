@@ -13,31 +13,56 @@
 		const EXT_ZIP                   = 'application/gzip'                         ;
 		const EXT_GZ                    = 'application/x-gzip'                       ;
 		const EXT_PDF                   = 'application/pdf'                          ;
-		const EXT_PNG                   = 'image/png'                                ;
-		const EXT_GIF                   = 'image/gif'                                ;
-		const EXT_JPG                   = 'image/jpeg'                               ;
-		const EXT_JPEG                  = 'image/jpeg'                               ;
-		const EXT_TXT                   = 'text/plain'                               ;
-		const EXT_HTM                   = 'text/html'                                ;
-		const EXT_HTML                  = 'text/html'                                ;
-		const EXT_JS                    = 'application/javascript'                                ;
+		const EXT_JS                    = 'application/javascript'                   ;
+		const EXT_OGG                   = 'application/ogg'                          ;
 		const EXT_EXE                   = 'application/octet-stream'                 ;
 		const EXT_DOC                   = 'application/msword'                       ;
 		const EXT_XLS                   = 'application/vnd.ms-excel'                 ;
 		const EXT_PPT                   = 'application/vnd.ms-powerpoint'            ;
 		const EXT_DEFAULT               = 'application/force-download'               ;
+		const EXT_XML                   = 'application/xml'                          ;
+		const EXT_FLASH                 = 'application/x-shockwave-flash'            ;
+		const EXT_JSON                  = 'application/json'                         ;
+		const EXT_PNG                   = 'image/png'                                ;
+		const EXT_GIF                   = 'image/gif'                                ;
+		const EXT_JPG                   = 'image/jpeg'                               ;
+		const EXT_TIFF                  = 'image/tiff'                               ;
+		const EXT_ICO                   = 'image/vnd.microsoft.icon'                 ;
+		const EXT_SVG                   = 'image/svg+xml'                            ;
+		const EXT_JPEG                  = 'image/jpeg'                               ;
+		const EXT_TXT                   = 'text/plain'                               ;
+		const EXT_HTM                   = 'text/html'                                ;
+		const EXT_HTML                  = 'text/html'                                ;
+		const EXT_CSV                   = 'text/csv'                                 ;
+		const EXT_MPEGAUDIO             = 'audio/mpeg'                               ;
+		const EXT_RPL                   = 'audio/vnd.rn-realaudio'                   ;
+		const EXT_WAV                   = 'audio/x-wav'                              ;
+		const EXT_MPEG                  = 'video/mpeg'                               ;
+		const EXT_MP4                   = 'video/mp4'                                ;
+		const EXT_QUICKTIME             = 'video/quicktime'                          ;
+		const EXT_WMV                   = 'video/x-ms-wmv'                           ;
+		const EXT_AVI                   = 'video/x-msvideo'                          ;
+		const EXT_FLV                   = 'video/x-flv'                              ;
+		const EXT_ODT                   = 'application/vnd.oasis.opendocument.text'                                     ;
+		const EXT_ODTCALC               = 'application/vnd.oasis.opendocument.spreadsheet'                              ;
+		const EXT_ODTPRE                = 'application/vnd.oasis.opendocument.presentation'                             ;
+		const EXT_ODTGRA                = 'application/vnd.oasis.opendocument.graphics'                                 ;
+		const EXT_XLS2007               = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'           ;
+		const EXT_DOC2007               = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'     ;
+		const XUL                       = 'application/vnd.mozilla.xul+xml'                                             ;
 		
 		const NAME_DEFAULT              = 'telechargement'                           ;
 		
-		private $_listExt        = array(self::EXT_ZIP, self::EXT_GZ, self::EXT_PDF, self::EXT_PNG, self::EXT_GIF, 
+		private $_listExt               = array(self::EXT_ZIP, self::EXT_GZ, self::EXT_PDF, self::EXT_PNG, self::EXT_GIF, 
 										 self::EXT_JPG, self::EXT_JPEG, self::EXT_TXT, self::EXT_HTM, self::EXT_HTML, 
 										 self::EXT_EXE, self::EXT_XLS, self::EXT_PPT, self::EXT_DEFAULT);
 												
 		private $_fileNameDownload                                                   ;
 		private $_fileSize                                                           ;
 		private $_fileMd5                                                            ;
-		private $_succesParameters       = true                                      ;
-		private $_dateformat      = 'D, d M Y H:i:s'                          ;
+		private $_succesParameters      = true                                       ;
+		private $_dateformat            = 'D, d M Y H:i:s'                           ;
+		protected $_error                 = array()                                    ;
 		
 		public function __construct($filepath, $filename, $fileext){
 			if($filepath == "") { $filepath = 'no'; $this->_succesParameters = false; $this->_addError('aucun fichier n\'a été spécifié. Le téléchargement ne pourra pas être lancé'); }
@@ -109,6 +134,17 @@
 			if(readfile($this->_filePath))
 				return true;
 			exit();
+		}
+		
+		protected function _addError($error){
+			array_push($this->_error, $error);
+		}
+		
+		public function showError(){
+			foreach($this->_error as $error){
+				$erreur .=$error."<br />";
+			}
+			return $erreur;
 		}
 		
 		public  function __desctuct(){

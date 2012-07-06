@@ -297,18 +297,18 @@
 			if(preg_match('#youtube#isU',$contenu[1])){
 				if(preg_match('#www#isU',$contenu[1])){	
 					if(!preg_match('#gl=#isU',$contenu[1])){
-						$resultat =  preg_replace('#http://www.youtube.com/watch\?v=(.+)#isU', '$1', $contenu[1]);
+						$resultat =  preg_replace('#https?://www.youtube.com/watch\?v=(.+)#isU', '$1', $contenu[1]);
 					}
 					else{
-						$resultat =  preg_replace('#http://www.youtube.com/watch\?gl=(.+)&v=(.+)#isU', '$2', $contenu[1]);
+						$resultat =  preg_replace('#https?://www.youtube.com/watch\?gl=(.+)&v=(.+)#isU', '$2', $contenu[1]);
 					}	
 				}
 				else{
 					if(!preg_match('#gl=#isU',$contenu[1])){
-						$resultat =  preg_replace('#http://youtube.com/watch\?v=(.+)#isU', '$1', $contenu[1]);
+						$resultat =  preg_replace('#https?://youtube.com/watch\?v=(.+)#isU', '$1', $contenu[1]);
 					}
 					else{
-						$resultat =  preg_replace('#http://youtube.com/watch\?gl=(.+)v=(.+)#isU', '$2', $contenu[1]);
+						$resultat =  preg_replace('#https?://youtube.com/watch\?gl=(.+)v=(.+)#isU', '$2', $contenu[1]);
 					}
 				}
 				return '<object width="500" height="375" type="application/x-shockwave-flash" data="http://www.youtube.com/v/'.$resultat.'">
@@ -317,10 +317,10 @@
 			}
 			elseif(preg_match('#dailymotion#isU',$contenu[1])){
 				if(preg_match('#www#isU',$contenu[1])){
-					$resultat =  preg_replace('#http://www.dailymotion.com/video/(.+)#isU', 'http://www.dailymotion.com/swf/video/$1', $contenu[1]);
+					$resultat =  preg_replace('#https?://www.dailymotion.com/video/(.+)#isU', 'http://www.dailymotion.com/swf/video/$1', $contenu[1]);
 				}
 				else{
-					$resultat =  preg_replace('#http://dailymotion.com/video/(.+)#isU', 'http://www.dailymotion.com/swf/video/$1', $contenu[1]);
+					$resultat =  preg_replace('#https?://dailymotion.com/video/(.+)#isU', 'http://www.dailymotion.com/swf/video/$1', $contenu[1]);
 				}
 				return '<object width="500" height="375" type="application/x-shockwave-flash" data="'.$resultat.'"><param name="movie" value="'.$resultat.'">
 							<param name="allowFullScreen" value="true"><param name="wmode" value="transparent">
@@ -328,10 +328,10 @@
 			}
 			elseif(preg_match('#vimeo#isU',$contenu[1])){
 				if(preg_match('#www#isU',$contenu[1])){
-					$resultat =  preg_replace('#http://www.vimeo.com/(.+)#', 'http://www.vimeo.com/moogaloop.swf?clip_id=$1&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1', $contenu[1]);
+					$resultat =  preg_replace('#https?://www.vimeo.com/(.+)#', 'http://www.vimeo.com/moogaloop.swf?clip_id=$1&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1', $contenu[1]);
 				}
 				else{
-					$resultat =  preg_replace('#http://vimeo.com/(.+)#', 'http://www.vimeo.com/moogaloop.swf?clip_id=$1&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1', $contenu[1]);
+					$resultat =  preg_replace('#https?://vimeo.com/(.+)#', 'http://www.vimeo.com/moogaloop.swf?clip_id=$1&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1', $contenu[1]);
 				}
 				return '<object width="500" height="375" type="application/x-shockwave-flash" data="'.$resultat.'">
 							<param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="always" />
