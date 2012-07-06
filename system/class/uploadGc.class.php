@@ -147,6 +147,7 @@
 			}
 			else{
 				$this->_addError(self::NOFILE);
+				return false;
 			}
 			
 			if(in_array(false, $this->_checked)){
@@ -229,6 +230,14 @@
 		
 		public function getError(){
 			return $this->_checkedAnswer;
+		}
+		
+		public function getErrorHtml(){
+			foreach($this->_checkedAnswer as $valeur){
+				$retour .= $valeur.'<br />';
+			}
+			
+			echo $retour;
 		}
 		
 		protected function _setUpload($name){
