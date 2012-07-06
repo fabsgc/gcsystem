@@ -96,7 +96,7 @@
 	<div id="GCsysytem_dev_logo"><img src="{IMG_PATH}logo.png"/></div>
 	<div class="GCsysytem_dev_content">
 		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}time.png" title="_(executiontime)_"/><img src="{IMG_PATH}memory.png" title="_(memoireuse)_"/></div>
-		<div class="GCsysytem_dev_content_content" style="padding: 2px; width: 70px;">{timeexec} ms<br /><span style="position: relative; top: 20px;">{memory} kb</span></div>
+		<div class="GCsysytem_dev_content_content" style="padding: 2px; width: 70px;">{timeexec} ms<br /><span style="position: relative; top: 10px;">{memory} kb</span></div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
 		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}http.png" title="_(fichierinclus)_"/></div>

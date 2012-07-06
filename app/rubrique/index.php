@@ -101,7 +101,12 @@
 		
 	// echo $GLOBALS['rubrique']->affFooter();
 	
-	print_r($_FILES);
+	$file = new uploadGc('monfichier');
+	echo $file->checkFile(array('maxsize' => 5, 'extension' => array('png'), 'file_accept' => array('image/dfdf', 'image/dklldskf', 'image/png')), array('le fichier dois être plus petit que 5 octets', 'png', 'faux'));
+	echo $file->move('asset/', 'salope', 'txt');
+	echo $file->showError();
+	print_r($file->getError());
+	
 ?>
 	<form action="#" method="post" enctype="multipart/form-data">
         <p>

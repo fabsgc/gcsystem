@@ -84,7 +84,7 @@
 	trait errorGc{
 		protected $_error              = array() ; //array contenant toutes les erreurs enregistrées
 		
-		public function _showError(){
+		public function showError(){
 			foreach($this->_error as $error){
 				$erreur .=$error."<br />";
 			}
