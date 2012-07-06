@@ -9,54 +9,50 @@
 	\*/
 	
 	class templateGc{
-		protected $file               = "";       //chemin vers le .tpl
-		protected $fileCache          = "";       //chemin vers le .compil.tpl
-		protected $nom                = "";       //nom du fichier compilé à créer
-		protected $content            = "";       //contenu du fichier de template
-		protected $contentCompiled    = "";       //contenu du fichier de template
-		public $vars                  = array(); //ensemble des variables
-		protected $error              = array(); //liste les erreurs
-		protected $refParser		  = null;    //contient une réfénrece vers l'instance du parser
-		protected $variable		      = "";      //contient des variables
-		protected $timeCache		  = 0;       //contient le temps de mise en cache
-		protected $timeFile		      = 0;       //contient la date de dernière modif du template
-		protected $lang		             ;       
-		protected $show		          = true;      
+		use errorGc, langInstance;                                    //trait fonctions génériques
+		
+		protected $_file               = ""         ;    //chemin vers le .tpl
+		protected $_fileCache          = ""         ;    //chemin vers le .compil.tpl
+		protected $_nom                = ""         ;    //nom du fichier compilé à créer
+		protected $_content            = ""         ;    //contenu du fichier de template
+		protected $_contentCompiled    = ""         ;    //contenu du fichier de template
+		public $vars                   = array()    ;    //ensemble des variables
+		protected $_refParser		   = null       ;    //contient une réfénrece vers l'instance du parser
+		protected $_variable		   = ""         ;    //contient des variables
+		protected $_timeCache		   = 0          ;    //contient le temps de mise en cache
+		protected $_timeFile		   = 0          ;    //contient la date de dernière modif du template
+		protected $_show		       = true       ;
 		
 		public  function __construct($file="", $nom="", $timecache=0, $lang=""){
-			$this->file=TEMPLATE_PATH.$file.TEMPLATE_EXT;
-			if(file_exists($this->file) or is_readable($this->file)){
-				$handle = fopen($this->file, 'rb');
-				$this->content = fread($handle, filesize ($this->file));
-				fclose ($this->file);
+			$this->_file=TEMPLATE_PATH.$file.TEMPLATE_EXT;
+			if(file_exists($this->_file) or is_readable($this->_file)){
+				$handle = fopen($this->_file, 'rb');
+				$this->_content = fread($handle, filesize ($this->_file));
+				fclose ($this->_file);
 				
-				$this->nom=$nom;
-				$this->timeCache=$timecache;
-				$this->fileCache=CACHE_PATH.'template_'.$this->nom.'.tpl.compil.php';
-				if($lang==""){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
+				$this->_nom=$nom;
+				$this->_timeCache=$timecache;
+				$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';
+				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 				$this->setParser();
 			} 
 			else{
 				array_push($error, 'le fichier de template spécifié n\'a pas été trouvé.');
 				$this->_addError("le fichier ne peut pas être lu");
-				$this->nom=$nom;
-				$this->timeCache=$timecache;
-				$this->fileCache=CACHE_PATH.'template_'.$this->nom.'.tpl.compil.php';
-				if($lang==""){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
+				$this->_nom=$nom;
+				$this->_timeCache=$timecache;
+				$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';
+				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 				$this->setParser();
 			}
 		}
 		
-		private function getLangClient(){
-			$langcode = (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
-			$langcode = (!empty($langcode)) ? explode(";", $langcode) : $langcode;
-			$langcode = (!empty($langcode['0'])) ? explode(",", $langcode['0']) : $langcode;
-			$langcode = (!empty($langcode['0'])) ? explode("-", $langcode['0']) : $langcode;
-			return $langcode['0'];
+		protected function _createLangInstance(){
+			$this->_langInstance = new langGc($this->_lang);
 		}
 		
 		protected function setParser(){
-			$this->refParser = new templateGcParser($this, $this->lang);
+			$this->_refParser = new templateGcParser($this, $this->_lang);
 		}
 		
 		public  function assign($nom, $vars=null){
@@ -86,126 +82,119 @@
 		}
 		
 		public function compile($contenu){
-			return $this->variable.$this->refParser->parse($contenu);
+			return $this->_variable.$this->_refParser->parse($contenu);
 		} 
 		
 		public function saveCache($contenu){
-			$file = fopen($this->fileCache, 'w+');
+			$file = fopen($this->_fileCache, 'w+');
 			fputs($file, ($contenu));
 			fclose($file);
 		}
 		
-		public function showError(){
-			foreach($this->error as $error){
-				$this->erreur .=$error."<br />";
-			}
-			return $this->erreur;
-		}
-
 		public function show(){
-			if($this->show==true){
-				$GLOBALS['appDevGc']->addTemplate($this->file);
-				if(is_file($this->fileCache) && $this->timeCache>0){
-					$this->timeFile=filemtime($this->fileCache);
-					if(($this->timeFile+$this->timeCache)>time()){
-						$handle = fopen($this->fileCache, 'rb');
-						$content = fread($handle, filesize ($this->fileCache));
-						fclose ($this->fileCache);
+			if($this->_show==true){
+				$GLOBALS['appDevGc']->addTemplate($this->_file);
+				if(is_file($this->_fileCache) && $this->_timeCache>0){
+					$this->_timeFile=filemtime($this->_fileCache);
+					if(($this->_timeFile+$this->_timeCache)>time()){
+						$handle = fopen($this->_fileCache, 'rb');
+						$content = fread($handle, filesize ($this->_fileCache));
+						fclose ($this->_fileCache);
 						
-						if($content==$this->compile($this->content)){
+						if($content==$this->compile($this->_content)){
 							foreach ($this->vars as $cle => $valeur){
 								${$cle} = $valeur;
 							}
-							include($this->fileCache);
+							include($this->_fileCache);
 						}
 						else{
-							$this->contentCompiled=$this->compile($this->content);
-							$this->saveCache($this->contentCompiled);
+							$this->_contentCompiled=$this->compile($this->_content);
+							$this->saveCache($this->_contentCompiled);
 							foreach ($this->vars as $cle => $valeur){
 								${$cle} = $valeur;
 							}
-							include($this->fileCache);
+							include($this->_fileCache);
 						}
 					}
 					else{
-						$this->contentCompiled=$this->compile($this->content);
-						$this->saveCache($this->contentCompiled);
+						$this->_contentCompiled=$this->compile($this->_content);
+						$this->saveCache($this->_contentCompiled);
 						
 						foreach ($this->vars as $cle => $valeur){
 							${$cle} = $valeur;
 						}
-						include($this->fileCache);
+						include($this->_fileCache);
 					}
 				}
 				else{
-					$this->contentCompiled=$this->compile($this->content);
-					$this->saveCache($this->contentCompiled);
+					$this->_contentCompiled=$this->compile($this->_content);
+					$this->saveCache($this->_contentCompiled);
 					
 					foreach ($this->vars as $cle => $valeur){
 						${$cle} = $valeur;
 					}
-					include($this->fileCache);
+					include($this->_fileCache);
 				}
 			}
-			elseif($this->show==false){
-				$GLOBALS['appDevGc']->addTemplate($this->file);
-				if(is_file($this->fileCache) && $this->timeCache>0){
-					$this->timeFile=filemtime($this->fileCache);
-					if(($this->timeFile+$this->timeCache)>time()){
-						$handle = fopen($this->fileCache, 'rb');
-						$content = fread($handle, filesize ($this->fileCache));
-						fclose ($this->fileCache);
+			elseif($this->_show==false){
+				$GLOBALS['appDevGc']->addTemplate($this->_file);
+				if(is_file($this->_fileCache) && $this->_timeCache>0){
+					$this->_timeFile=filemtime($this->_fileCache);
+					if(($this->_timeFile+$this->_timeCache)>time()){
+						$handle = fopen($this->_fileCache, 'rb');
+						$content = fread($handle, filesize ($this->_fileCache));
+						fclose ($this->_fileCache);
 						
-						if($content==$this->compile($this->content)){
+						if($content==$this->compile($this->_content)){
 							foreach ($this->vars as $cle => $valeur){
 								${$cle} = $valeur;
 							}
 							
 							ob_start ();
-								include($this->fileCache);
+								include($this->_fileCache);
 							$out = ob_get_contents();
 							ob_get_clean();
 							return $out;
 						}
 						else{
-							$this->contentCompiled=$this->compile($this->content);
-							$this->saveCache($this->contentCompiled);
+							$this->_contentCompiled=$this->compile($this->_content);
+							$this->saveCache($this->_contentCompiled);
 							foreach ($this->vars as $cle => $valeur){
 								${$cle} = $valeur;
 							}
 							
 							ob_start ();
-								include($this->fileCache);
+								include($this->_fileCache);
 							$out = ob_get_contents();
 							ob_get_clean();
 							return $out;
 						}
 					}
 					else{
-						$this->contentCompiled=$this->compile($this->content);
-						$this->saveCache($this->contentCompiled);
+						$this->_contentCompiled=$this->compile($this->_content);
+						$this->saveCache($this->_contentCompiled);
 						
 						foreach ($this->vars as $cle => $valeur){
 							${$cle} = $valeur;
 						}
 						
 						ob_start ();
-							include($this->fileCache);
+							include($this->_fileCache);
 						$out = ob_get_contents();
 						ob_get_clean();
 						return $out;
 					}
 				}
 				else{
-					$this->contentCompiled=$this->compile($this->content);
-					$this->saveCache($this->contentCompiled);
+					$this->_contentCompiled=$this->compile($this->_content);
+					$this->saveCache($this->_contentCompiled);
 					
 					foreach ($this->vars as $cle => $valeur){
 						${$cle} = $valeur;
 					}
 					
 					ob_start ();
-						include($this->fileCache);
+						include($this->_fileCache);
 					$out = ob_get_contents();
 					ob_get_clean();
 					return($out);
@@ -214,27 +203,15 @@
 		}
 		
 		public function setShow($show){
-			$this->show = $show;
-		}
-		
-		private function _showError(){
-			foreach($this->error as $error){
-				$erreur .=$error."<br />";
-			}
-			return $erreur;
-		}
-		
-		private function _addError($error){
-			array_push($this->error, $error);
+			$this->_show = $show;
 		}
 	}
 	
 	class templateGcParser{
-		/// référence vers l'objet de la classe gagatemplate
-		protected $templateGC;
-		protected $lang;
-		protected $langInstance;
-		protected $contenu;
+		use errorGc, langInstance;                                              //trait fonctions génériques
+		
+		protected $templateGC     ;
+		protected $contenu        ;
 		
 		/// les balises à parser
 		protected $bal= array(
@@ -254,16 +231,16 @@
 		
 		public  function __construct(templateGC &$tplGC, $lang = 'fr'){
 			$this->templateGC=$tplGC;
-			$this->lang=$lang;
-			$this->createLangInstance();
+			$this->_lang=$lang;
+			$this->_createLangInstance();
 		}
 		
-		private function createLangInstance(){
-			$this->langInstance = new langGc($this->lang);
+		protected function _createLangInstance(){
+			$this->_langInstance = new langGc($this->_lang);
 		}
 		
-		private function useLang($sentence){
-			return $this->langInstance->loadSentence($sentence);
+		public function useLang($sentence){
+			return $this->_langInstance->loadSentence($sentence);
 		}
 		
 		public function parse($c){
@@ -285,7 +262,7 @@
 			return $this->contenu;
 		}
 		
-		private function parsevars(){
+		protected function parsevars(){
 			foreach ($this->templateGC->vars as $cle => $valeur){
 				$variable = '$'.$cle.'='.$valeur.';';
 				$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).''.$cle.''.preg_quote($this->bal['vars'][1]).'`', '<?php echo htmlentities($'.$cle.'); ?>', $this->contenu);
@@ -293,11 +270,11 @@
 			$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).'([\[\]A-Za-z0-9._-]+)'.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($$1); ?>', $this->contenu);
 		}
 		
-		private function parsevarsExist(){
+		protected function parsevarsExist(){
 			$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][2]).'([\[\]A-Za-z0-9\$\'._-]+)'.preg_quote($this->bal['vars'][3]).'`', '<?php echo ($1); ?>', $this->contenu);
 		}
 		
-		private function parseInclude(){
+		protected function parseInclude(){
 			$this->contenu = preg_replace_callback(
 				'`<'.preg_quote($this->bal['include'][0]).' '.preg_quote($this->bal['include'][1]).'="(.+)" />`isU', 
 				array('templateGcParser','parseIncludeCallback'), $this->contenu);	
@@ -305,7 +282,7 @@
 			$this->contenu=$this->parseIncludeChaine($this->contenu);
 		}
 		
-		private function parseIncludeChaine($chaine){
+		protected function parseIncludeChaine($chaine){
 			$chaine = preg_replace_callback(
 				'`<'.preg_quote($this->bal['include'][0]).' '.preg_quote($this->bal['include'][1]).'="(.+)" />`isU', 
 				array('templateGcParser','parseIncludeCallback'), $chaine);	
@@ -313,7 +290,7 @@
 				return $chaine;
 		}
 		
-		private function parseIncludeCallback($m){
+		protected function parseIncludeCallback($m){
 			foreach($m as $m){
 				//if($this->templateGC->file!=$m){
 					$m = TEMPLATE_PATH.$m.TEMPLATE_EXT;
@@ -327,7 +304,7 @@
 			return $content;
 		}
 		
-		private function parseCond(){
+		protected function parseCond(){
 			$this->contenu = preg_replace(array(
 					'`<'.preg_quote($this->bal['cond'][0]).' '.preg_quote($this->bal['cond'][3]).'="(.+)">`sU',
 					'`</'.preg_quote($this->bal['cond'][0]).'>`sU',
@@ -342,7 +319,7 @@
 				$this->contenu);
 		}
 		
-		private function parseSwitch(){
+		protected function parseSwitch(){
 			$this->contenu = preg_replace(array(
 					'`<'.preg_quote($this->bal['switch'][0]).' '.preg_quote($this->bal['switch'][2]).'="(.+)">`sU',
 					'`<'.preg_quote($this->bal['switch'][1]).'="(.+)">`sU',
@@ -361,15 +338,15 @@
 				$this->contenu);
 		}
 		
-		private function parseCom(){
+		protected function parseCom(){
 			$this->contenu = preg_replace('`'.preg_quote($this->bal['com'][0]).'.+'.preg_quote($this->bal['com'][1]).'`isU', null, $this->contenu);
 		}
 		
-		private function parseFunc(){
+		protected function parseFunc(){
 			$this->contenu = preg_replace_callback('`<'.preg_quote($this->bal['function'][0]).' '.preg_quote($this->bal['function'][1]).'="(\w+)"\s?(.*)?/?>`isU', array('templateGcParser', 'parseFuncCallback'), $this->contenu);
 		}
 
-		private static function parseFuncCallback($m){
+		protected static function parseFuncCallback($m){
 			$args = '';
 			if($nb = preg_match_all('`(string|int|var)="(.+)"`U', $m[2], $arr)){
 				for($i=0; $i<$nb; $i++){
@@ -380,7 +357,7 @@
 			return '<?php echo ('.$m[1].'('.$args.')); ?>';
 		}
 		
-		private function parseForeach(){
+		protected function parseForeach(){
 			$this->contenu = preg_replace(array(
 					'`<'.preg_quote($this->bal['foreach'][0]).' '.preg_quote($this->bal['foreach'][1]).'="(.+)" '.preg_quote($this->bal['foreach'][2]).'="(.+)">`sU',
 					'`</'.preg_quote($this->bal['foreach'][0]).'>`sU',
@@ -393,7 +370,7 @@
 			$this->contenu);
 		}
 		
-		private function parseWhile(){
+		protected function parseWhile(){
 			$this->contenu = preg_replace(array(
 					'`<'.preg_quote($this->bal['while'][0]).' '.preg_quote($this->bal['while'][1]).'="(.+)">`sU',
 					'`</'.preg_quote($this->bal['while'][0]).'>`sU'
@@ -404,7 +381,7 @@
 			$this->contenu);
 		}
 		
-		private function parseFor(){
+		protected function parseFor(){
 			$this->contenu = preg_replace(array(
 					'`<'.preg_quote($this->bal['for'][0]).' '.preg_quote($this->bal['for'][1]).'="(.+)" '.preg_quote($this->bal['for'][2]).'="(.+)-(.+)-(.+)">`sU',
 					'`</'.preg_quote($this->bal['for'][0]).'>`sU'
@@ -415,7 +392,7 @@
 			$this->contenu);
 		}
 		
-		private function parseVarAdd(){
+		protected function parseVarAdd(){
 			$this->contenu = preg_replace(array(
 					'`<'.preg_quote($this->bal['vars'][6]).' (.+) />`sU'
 				),array(
@@ -424,7 +401,7 @@
 			$this->contenu);
 		}
 		
-		private function parseSpaghettis(){
+		protected function parseSpaghettis(){
 			$this->contenu = preg_replace(array(
 					'`<'.preg_quote($this->bal['spaghettis'][0]).' />`sU',
 					'`<'.preg_quote($this->bal['spaghettis'][1]).' />`sU',
@@ -439,17 +416,17 @@
 			$this->contenu);
 		}
 		
-		private function parseLang(){
+		protected function parseLang(){
 			$this->contenu = preg_replace_callback('`'.preg_quote($this->bal['lang'][0]).'(.+)'.preg_quote($this->bal['lang'][1]).'`sU', array('templateGcParser', 'parseLangCallBack'), $this->contenu);
 		}
 		
-		private function parseLangCallBack($m){
+		protected function parseLangCallBack($m){
 			foreach($m as $m){
 			}
 			return '<?php echo "'.$this->useLang(''.$m.'').'"; ?>';
 		}
 		
-		private function parseGravatar(){
+		protected function parseGravatar(){
 			$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][7]).'(.+):(.+)'.preg_quote($this->bal['vars'][8]).'`sU',
 			'<?php echo \'<img src="http://gravatar.com/avatar/\'.md5("$1").\'?s=$2&default=http://\'.$_SERVER[\'HTTP_HOST\'].\'/\'.FOLDER.\'/asset/image/empty_avatar.png" alt="avatar" />\'; ?>',
 			$this->contenu);

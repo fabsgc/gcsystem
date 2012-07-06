@@ -9,20 +9,9 @@
 	\*/
 	
 	class SocialGc{
-		private $error              = array(); //array contenant toutes les erreurs enregistrées
+		use errorGc;                                    //trait fonctions génériques
 		
 		public  function __construct(){
-		}
-		
-		private function _showError(){
-			foreach($this->error as $error){
-				$erreur .=$error."<br />";
-			}
-			return $erreur;
-		}
-		
-		private function _addError($error){
-			array_push($this->error, $error);
 		}
 		
 		public  function __desctuct(){

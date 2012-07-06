@@ -9,15 +9,16 @@
 	\*/
 	
     class dirGc{
-		private $dir;
-		private $error              = array() ; //array contenant toutes les erreurs enregistrées
+		use errorGc;                            //trait fonctions génériques
+		
+		protected $_dir;
 		
 		public function __construct($dir){
-			$this->dir = $dir;
+			$this->_dir = $dir;
 		}
 		
 		public function setDir($dir){
-			$this->dir = $dir;
+			$this->_dir = $dir;
 		}
 		
 		public function setChmod($chmod){
@@ -36,17 +37,6 @@
 		
 		public function showdir($dir){
 		
-		}
-		
-		private function _showError(){
-			foreach($this->error as $error){
-				$erreur .=$error."<br />";
-			}
-			return $erreur;
-		}
-		
-		private function _addError($error){
-			array_push($this->error, $error);
 		}
 
 		public function __destruct(){

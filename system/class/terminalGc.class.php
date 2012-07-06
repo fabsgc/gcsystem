@@ -9,14 +9,16 @@
 	\*/
 
 	class terminalGc{
-		private $_command                       ; //contenu à traiter
-		private $_commandExplode                ; //contenu à traiter
-		private $_result                        ='/ <span style="color: red;">commande non reconnu. Tapez help pour avoir la liste des commandes valides</span>'; //resultat du traitement
-		private $_dossier                       ; //dossier
-		private $_fichier                       ; //fichier
-		private $_forbidden                     ; //fichier interdit
-		private $_updateFile                    ; //fichier interdit
-		private $_updateDir                     ; //fichier interdit
+		use errorGc;                              //trait fonctions génériques
+		
+		protected $_command                       ; //contenu à traiter
+		protected $_commandExplode                ; //contenu à traiter
+		protected $_result                        = '/ <span style="color: red;">commande non reconnu. Tapez help pour avoir la liste des commandes valides</span>'; //resultat du traitement
+		protected $_dossier                       ; //dossier
+		protected $_fichier                       ; //fichier
+		protected $_forbidden                     ; //fichier interdit
+		protected $_updateFile                    ; //fichier interdit
+		protected $_updateDir                     ; //fichier interdit
 
 		public  function __construct($command){
 			$this->_commandExplode = explode(' ', trim($command));
@@ -322,7 +324,7 @@
 			return '> '.$this->_command.' '.$this->_result;
 		}
 
-		private function _updater(){
+		protected function _updater(){
 			if(curl_init()){
 				$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL);
 				$fp = fopen(CLASS_TERMINAL, "w");
@@ -339,7 +341,7 @@
 			}
 		}
 
-		private function _update(){
+		protected function _update(){
 			if(curl_init()){
 				$contenu = "";
 				$sauvegarde ="";

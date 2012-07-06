@@ -8,9 +8,9 @@
 	 | ------------------------------------------------------
 	\*/
 	
-    class pictureGc extends fileGc{
-		private $img;                //contient l'url de l'image
-		private $imgGD;              //objet GD
+    class pictureGc extends fileGc{		
+		protected $img;                //contient l'url de l'image
+		protected $imgGD;              //objet GD
 		
 		public function __construct($img){
 			$this->img = $img;

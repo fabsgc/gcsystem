@@ -9,13 +9,15 @@
 	\*/
 	
 	class sqlGc{
+		use errorGc;                                    //trait fonctions génériques
+		
 		protected $_var            = array();       //liste des variables
 		protected $_query          = array();       //liste des requêtes
 		protected $_bdd            = array();       //connexion sql
-		protected $_error          = array();       //erreur
 		protected $_cache                   ;       //référence vers un objet de type cache
 		protected $_requete                 ;       //contient la requête sql
 		protected $_data                    ;       //contient les données
+		
 		const PARAM_INT                 = 1;       //les paramètres des variables, en relation avec PDO::PARAM_
 		const PARAM_BOOL                = 5;
 		const PARAM_NULL                = 0;
@@ -162,17 +164,6 @@
 			else{
 				return $this->_cache->getCache();
 			}
-		}
-		
-		public function showError(){
-			foreach($this->_error as $error){
-				$erreur .=$error."<br />";
-			}
-			return $erreur;
-		}
-		
-		private function _addError($error){
-			array_push($this->_error, $error);
 		}
 	}
 ?>

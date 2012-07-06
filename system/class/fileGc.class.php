@@ -8,13 +8,14 @@
 	 | ------------------------------------------------------
 	\*/
 	
-    class fileGc{		
+    class fileGc{
+		use errorGc;                           				   //trait fonctions génériques
+		
 		protected $_filePath                                   ;
 		protected $_fileName                                   ;
 		protected $_fileExt                                    ;
 		protected $_fileContent                                ;
 		protected $_fileChmod                                  ;
-		protected $_error                             = array();
 		protected $_info                              = array();
 		protected $_isExist                           = false  ;
 		
@@ -24,6 +25,8 @@
 		
 		const CHMOD0644                              = 0644  ;
 		const CHMOD0755                              = 0755  ;
+		const CHMOD0777                              = 0777  ;
+		const CHMOD0004                              = 0004  ;
 		
 		public function __construct($filepath){
 			if($filepath == NULL) { $filepath = 'empty.txt'; $this->_setFileDefault($filepath); }
@@ -268,17 +271,6 @@
 			}
 		}
 		
-		protected function _addError($error){
-			array_push($this->_error, $error);
-		}
-		
-		public function showError(){
-			foreach($this->_error as $error){
-				$erreur .=$error."<br />";
-			}
-			return $erreur;
-		}
-
 		public function __destruct(){
 		}
 	}

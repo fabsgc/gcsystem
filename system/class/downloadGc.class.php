@@ -8,8 +8,7 @@
 	 | ------------------------------------------------------
 	\*/
 	
-	class downloadGc extends fileGc{
-		
+	class downloadGc extends fileGc{	
 		const EXT_ZIP                   = 'application/gzip'                         ;
 		const EXT_GZ                    = 'application/x-gzip'                       ;
 		const EXT_PDF                   = 'application/pdf'                          ;
@@ -53,16 +52,15 @@
 		
 		const NAME_DEFAULT              = 'telechargement'                           ;
 		
-		private $_listExt               = array(self::EXT_ZIP, self::EXT_GZ, self::EXT_PDF, self::EXT_PNG, self::EXT_GIF, 
+		protected $_listExt               = array(self::EXT_ZIP, self::EXT_GZ, self::EXT_PDF, self::EXT_PNG, self::EXT_GIF, 
 										 self::EXT_JPG, self::EXT_JPEG, self::EXT_TXT, self::EXT_HTM, self::EXT_HTML, 
 										 self::EXT_EXE, self::EXT_XLS, self::EXT_PPT, self::EXT_DEFAULT);
 												
-		private $_fileNameDownload                                                   ;
-		private $_fileSize                                                           ;
-		private $_fileMd5                                                            ;
-		private $_succesParameters      = true                                       ;
-		private $_dateformat            = 'D, d M Y H:i:s'                           ;
-		protected $_error                 = array()                                    ;
+		protected $_fileNameDownload                                                   ;
+		protected $_fileSize                                                           ;
+		protected $_fileMd5                                                            ;
+		protected $_succesParameters      = true                                       ;
+		protected $_dateformat            = 'D, d M Y H:i:s'                           ;
 		
 		public function __construct($filepath, $filename, $fileext){
 			if($filepath == "") { $filepath = 'no'; $this->_succesParameters = false; $this->_addError('aucun fichier n\'a été spécifié. Le téléchargement ne pourra pas être lancé'); }
@@ -80,7 +78,7 @@
 			return $this->_fileNameDownload;
 		}
 		
-		public function setFile($filepath, $filename, $fileext){
+		public function setFile($filepath, $filename="nom", $fileext=downloadGc::EXT_DEFAULT){
 			if(is_file($filepath)){
 				$this->_setFilePath($filepath);
 				$this->_setFileName($filepath);
@@ -115,7 +113,7 @@
 		
 		public function download(){
 			$this->_fileSize = filesize($this->_filePath);
-			$this->_fileMd5 = md5_file($this->_filePath);
+			$this->_fileMd5  = md5_file($this->_filePath);
 		
 			error_reporting(0);
 			ini_set('zlib.output_compression', 0);
@@ -134,17 +132,6 @@
 			if(readfile($this->_filePath))
 				return true;
 			exit();
-		}
-		
-		protected function _addError($error){
-			array_push($this->_error, $error);
-		}
-		
-		public function showError(){
-			foreach($this->_error as $error){
-				$erreur .=$error."<br />";
-			}
-			return $erreur;
 		}
 		
 		public  function __desctuct(){

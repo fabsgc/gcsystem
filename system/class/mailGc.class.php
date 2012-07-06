@@ -9,23 +9,13 @@
 	\*/
 	
 	class mailGc{
-		public $destinataire                          ; //email du destinataire
-		public $message                               ; //message
-		public $piece                       = array() ; //liste des pièces jointes
-		public $error                       = array() ; //liste des erreurs
+		use errorGc;                           			    //trait fonctions génériques
+		
+		protected $_destinataire                          ; //email du destinataire
+		protected $_message                               ; //message
+		protected $_piece                       = array() ; //liste des pièces jointes
 		
 		public  function __construct(){
-		}
-		
-		private function _showError(){
-			foreach($this->error as $error){
-				$erreur .=$error."<br />";
-			}
-			return $erreur;
-		}
-		
-		private function _addError($error){
-			array_push($this->error, $error);
 		}
 		
 		public  function __desctuct(){

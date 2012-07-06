@@ -9,50 +9,52 @@
 	\*/
 	
 	class CacheGc{
-		private $name              ; //nom du cache
-		private $nameFile          ; //nom du fichier de cache
-		private $time              ; //temps de mise en cache
-		private $val               ; //contenu à mettre en cache
+		use errorGc;                  //trait fonctions génériques
+		
+		protected $_name              ; //nom du cache
+		protected $_nameFile          ; //nom du fichier de cache
+		protected $_time              ; //temps de mise en cache
+		protected $_val               ; //contenu à mettre en cache
 		
 		public function __construct($name, $val, $time=0){
-			$this->time = $time;
-			$this->name = $name;
-			$this->nameFile = CACHE_PATH.$name.'.cache';
-			$this->val = $val;
+			$this->_time = $time;
+			$this->_name = $name;
+			$this->_nameFile = CACHE_PATH.$name.'.cache';
+			$this->_val = $val;
 		}
 		
 		public function setCache(){
-			if(!file_exists($this->nameFile)){
-				$fichier = fopen($this->nameFile, 'w+');
-				fwrite($fichier, $this->_compress(serialize($this->val)));
+			if(!file_exists($this->_nameFile)){
+				$fichier = fopen($this->_nameFile, 'w+');
+				fwrite($fichier, $this->_compress(serialize($this->_val)));
 				fclose($fichier);
 			}
 		 
-			$time_ago = time() - filemtime($this->nameFile);
+			$time_ago = time() - filemtime($this->_nameFile);
 		 
-			if($time_ago > $this->time){
-				$fichier = fopen($this->nameFile, 'w+');
-				fwrite($fichier, $this->_compress(serialize($this->val)));
+			if($time_ago > $this->_time){
+				$fichier = fopen($this->_nameFile, 'w+');
+				fwrite($fichier, $this->_compress(serialize($this->_val)));
 				fclose($fichier);
 			}
 		}
 		
 		public function setName($name){
-			$this->name = $name;
-			$this->nameFileFile = CACHE_PATH.$name.'.cache';
+			$this->_name = $name;
+			$this->_nameFileFile = CACHE_PATH.$name.'.cache';
 		}
 		
 		public function setVal($val){
-			$this->val = $val;
+			$this->_val = $val;
 		}
 		
 		public function setTime($time=0){
-			$this->time = $time;
+			$this->_time = $time;
 		}
 	 
 		public function getCache(){
-			if(file_exists($this->nameFile)){
-				return unserialize($this->_uncompress(file_get_contents($this->nameFile)));
+			if(file_exists($this->_nameFile)){
+				return unserialize($this->_uncompress(file_get_contents($this->_nameFile)));
 			}
 			else{
 				$this->setCache();
@@ -61,13 +63,13 @@
 	 
 		public function isDie(){
 			$rep = false;
-			if(!file_exists($this->nameFile)){
+			if(!file_exists($this->_nameFile)){
 				$rep = false;
 			}
 			else{
-				$time_ago = time() - filemtime($this->nameFile);
+				$time_ago = time() - filemtime($this->_nameFile);
 		 
-				if($time_ago > $this->time){
+				if($time_ago > $this->_time){
 					$rep = true;
 				}
 			}
@@ -75,7 +77,7 @@
 		}
 		
 		public function isExist(){
-			if(file_exists($this->nameFile)){
+			if(file_exists($this->_nameFile)){
 				return true;
 			}
 			else{
@@ -83,11 +85,11 @@
 			}
 		}
 		
-		private function _compress($val){
+		protected function _compress($val){
 			return gzcompress($val,9);
 		}
 		
-		private function _uncompress($val){
+		protected function _uncompress($val){
 			return gzuncompress($val);
 		}
 	}

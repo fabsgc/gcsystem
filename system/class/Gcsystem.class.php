@@ -8,36 +8,34 @@
 	 | ------------------------------------------------------
 	\*/
 	
-	class Gcsystem implements generalGc{
-		
+	class Gcsystem{
+		use errorGc, langInstance, generalGc;                            //trait fonctions génériques
 		/* --- infos d'en tete -- */
 		
-		private $doctype                     ;
-		private $title                       ;
-		private $metaContentType             ;
-		private $metaKeyword                 ;
-		private $metaDescription             ;
-		private $metaRobot                   ;
-		private $metaGoogleSite              ;
-		private $openSearch                  ;
-		private $js =                 array();
-		private $css =                array();
-		private $jsInFile =           array();
-		private $rss =                array();
-		private $contentMarkupBody           ;
-		private $localisation                ;
-		private $otherHeader =        array();
-		private $fbTitle                     ;
-		private $fbDescription               ;
-		private $fbImage                     ;
-		private $htmlType                    ;
+		protected $doctype                     ;
+		protected $title                       ;
+		protected $metaContentType             ;
+		protected $metaKeyword                 ;
+		protected $metaDescription             ;
+		protected $metaRobot                   ;
+		protected $metaGoogleSite              ;
+		protected $openSearch                  ;
+		protected $js =                 array();
+		protected $css =                array();
+		protected $jsInFile =           array();
+		protected $rss =                array();
+		protected $contentMarkupBody           ;
+		protected $localisation                ;
+		protected $otherHeader =        array();
+		protected $fbTitle                     ;
+		protected $fbDescription               ;
+		protected $fbImage                     ;
+		protected $htmlType                    ;
 		
-		private $lang                        ; // gestion des langues via des fichiers XML
-		private $langInstance                ;
 		/* --- permet d'affiche le doctype et l'entete (avant la balise body) et </body></html> -- */
 		
-		private $header;
-		private $footer;
+		protected $header;
+		protected $footer;
 		
 		/* ---------- CONSTRUCTEURS --------- */
 		
@@ -56,7 +54,7 @@
 			$this->css= array ('default.css');
 			$this->jsInFile = array('inpage.js');
 			$this->otherHeader = array();
-			$this->langInstance;
+			$this->_langInstance;
 			$this->_createLangInstance();
 			if($lang==""){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
 		}
@@ -92,12 +90,12 @@
 				return $sql_connect;
 			}
 			
-			private function _createLangInstance(){
-				$this->langInstance = new langGc($this->lang);
+			protected function _createLangInstance(){
+				$this->_langInstance = new langGc($this->_lang);
 			}
 			
 			public function useLang($sentence){
-				return $this->langInstance->loadSentence($sentence);
+				return $this->_langInstance->loadSentence($sentence);
 			}
 			
 			public function GzipinitOutputFilter() {
@@ -112,54 +110,12 @@
 			public function destroyVarView($name){
 				unset($GLOBALS[''.$name.'']);
 			}
-					
-			public function setErrorLog($file, $message){
-				$file = fopen(LOG_PATH.$file, "a+");
-				fputs($file, date("d/m/Y à H:i ! : ",time()).$message."\n");
-			}
 			
 			public function setRubrique($rubrique){
 				if(file_exists(SQL_PATH.$rubrique.SQL_EXT.'.php')){ require_once(SQL_PATH.$rubrique.SQL_EXT.'.php');}
 				if(file_exists(FORMS_PATH.$rubrique.FORMS_EXT.'.php')){ require_once(FORMS_PATH.$rubrique.FORMS_EXT.'.php'); }
 				if(file_exists(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php')){ require_once(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php');}
 				require_once(RUBRIQUE_PATH.$rubrique.'.php');
-			}
-			
-			public function sendMail($email, $message_html, $sujet, $envoyeur){
-				if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $email)){
-					$passage_ligne = "\r\n";
-				}
-				else{
-					$passage_ligne = "\n";
-				}
-	 
-				//=====Création de la boundary
-				$boundary = "-----=".md5(rand());
-				//==========
-				
-				//=====Création du header de l'e-mail.
-				$header = "From: \"".$envoyeur."\"<contact@legeekcafe.com>".$passage_ligne;
-				$header.= "Reply-to: \"".$envoyeur."\" <contact@legeekcafe.com>".$passage_ligne;
-				$header.= "MIME-Version: 1.0".$passage_ligne;
-				$header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
-				//==========
-				 
-				//=====Création du message.
-				$message = $passage_ligne.$boundary.$passage_ligne;
-				
-				$message.= $passage_ligne."--".$boundary.$passage_ligne;
-				//=====Ajout du message au format HTML
-				$message.= "Content-Type: text/html; charset=\"ISO-8859-1\"".$passage_ligne;
-				$message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
-				$message.= $passage_ligne.$message_html.$passage_ligne;
-				//==========
-				$message.= $passage_ligne."--".$boundary."--".$passage_ligne;
-				$message.= $passage_ligne."--".$boundary."--".$passage_ligne;
-				//==========
-				
-				//=====Envoi de l'e-mail.
-				mail($email,$sujet,$message,$header);
-				//==========		
 			}
 		
 		/* ---------- SETTER --------- */
@@ -351,7 +307,7 @@
 		
 		public function setLang($Lang){
 			$this->lang=$Lang;
-			$this->langInstance->setLang($this->lang);
+			$this->_langInstance->setLang($this->lang);
 		} 
 		
 		/* ---------- GETTER --------- */
@@ -433,46 +389,6 @@
 		}
 		
 		/* ---------- FONCTIONS ------------- */
-		
-		public function getLangClient(){
-			if(!array_key_exists('HTTP_ACCEPT_LANGUAGE', $_SERVER) || !$_SERVER['HTTP_ACCEPT_LANGUAGE'] ) { return DEFAULTLANG; }
-			else{
-				$langcode = (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
-				$langcode = (!empty($langcode)) ? explode(";", $langcode) : $langcode;
-				$langcode = (!empty($langcode['0'])) ? explode(",", $langcode['0']) : $langcode;
-				$langcode = (!empty($langcode['0'])) ? explode("-", $langcode['0']) : $langcode;
-				return $langcode['0'];
-			}
-		}
-		
-		public function windowInfo($Title, $Content, $Time, $Redirect, $lang="fr"){
-			?>
-				<link href="asset/css/default.css" rel="stylesheet" type="text/css" media="screen, print, handheld" />
-			<?php
-			$tpl = new templateGC('GCtplGc_windowInfo', 'tplGc_windowInfo', 0, $lang);
-			
-			$tpl->assign(array(
-				'title'=>$Title,
-				'content'=>$Content,
-				'redirect'=>$Redirect,
-				'time'=>$Time,
-			));
-				
-			$tpl->show();
-		}
-		
-		public function blockInfo($Title, $Content, $Time, $Redirect, $lang="fr"){
-			$tpl = new templateGC('GCtplGc_blockInfo', 'tplGc_blockInfo', 0, $lang);
-			
-			$tpl->assign(array(
-				'title'=>$Title,
-				'content'=>$Content,
-				'redirect'=>$Redirect,
-				'time'=>$Time,
-			));
-				
-			$tpl->show();
-		}
 		
 		public function setMaintenance(){
 			$tpl = new templateGC('GCmaintenance', 'GCmaintenance', 0, $this->lang);				

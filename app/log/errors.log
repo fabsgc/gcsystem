@@ -331,3 +331,396 @@
 06/07/2012 à 00:12 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
 06/07/2012 à 00:13 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
 06/07/2012 à 00:13 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 01:14 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wampServer\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 01:14 ! : Erreur n°8 (Undefined variable: _FILE) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 104
+06/07/2012 à 01:14 ! : Erreur n°8 (Undefined variable: _FILE) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\index.php à la ligne 104
+06/07/2012 à 02:08 ! : Erreur n°8 (Undefined index: action) dans le fichier C:\wampServer\www\GCsystem2.0\app\rubrique\terminal.php à la ligne 2
+06/07/2012 à 11:12 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 11:12 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 11:12 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 11:12 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 11:12 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 11:13 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 11:13 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 11:13 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 11:13 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 11:13 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 11:13 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 11:14 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 11:14 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 11:14 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 11:14 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 11:14 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 11:14 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 11:14 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 11:14 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 11:14 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 11:15 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 11:15 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 11:15 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 11:15 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 11:15 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 11:15 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 11:16 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 11:16 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 11:16 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 11:18 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 11:18 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 11:21 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 11:21 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 14:39 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 14:39 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 14:39 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 14:42 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 14:42 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 14:42 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 14:42 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 14:42 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 14:42 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 16:19 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:19 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:22 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:22 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:39 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:39 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:42 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:42 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:43 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:43 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:43 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:43 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:43 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:43 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:43 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:43 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:44 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:44 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:46 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:46 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:46 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 16:46 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 60
+06/07/2012 à 16:51 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:51 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:51 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 16:51 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 58
+06/07/2012 à 16:51 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:51 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:51 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 16:51 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 58
+06/07/2012 à 16:51 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:51 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:51 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 16:52 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:52 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 16:52 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 58
+06/07/2012 à 16:52 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:52 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 16:52 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:52 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:52 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 16:53 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:53 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:53 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 16:53 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 58
+06/07/2012 à 16:55 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:55 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:55 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 16:55 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 62
+06/07/2012 à 16:56 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:56 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:56 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 16:56 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 62
+06/07/2012 à 16:57 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:57 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:57 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 16:57 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+06/07/2012 à 16:58 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 16:58 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 16:58 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 16:58 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+06/07/2012 à 17:00 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:00 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 17:00 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:00 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 68
+06/07/2012 à 17:00 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:00 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 17:00 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:00 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:00 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 17:00 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:00 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 68
+06/07/2012 à 17:00 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:00 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 17:00 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:00 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+06/07/2012 à 17:01 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:71
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(71): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:01 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 92
+06/07/2012 à 17:01 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:03 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:03 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+06/07/2012 à 17:03 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:03 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:03 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+06/07/2012 à 17:03 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:03 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+06/07/2012 à 17:03 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:03 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+06/07/2012 à 17:03 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:03 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+06/07/2012 à 17:03 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+06/07/2012 à 17:03 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:03 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+06/07/2012 à 17:04 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:04 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+06/07/2012 à 17:04 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:04 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+06/07/2012 à 17:04 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:04 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+06/07/2012 à 17:04 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:04 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+06/07/2012 à 17:04 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:04 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+06/07/2012 à 17:04 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:04 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+06/07/2012 à 17:06 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:06 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+06/07/2012 à 17:06 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:13 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:13 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+06/07/2012 à 17:13 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:13 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+06/07/2012 à 17:13 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+06/07/2012 à 17:13 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+06/07/2012 à 17:13 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+06/07/2012 à 17:13 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66

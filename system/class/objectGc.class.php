@@ -9,8 +9,9 @@
 	\*/
 	
 	class objectGc{
-		private $objectGc                      ; //contient une référence vers l'objet créé
-		private $error              = array(); //array contenant toutes les erreurs enregistrées
+		use errorGc;                             //trait fonctions génériques
+		
+		protected $objectGc                      ; //contient une référence vers l'objet créé
 		
 		public  function __construct(){
 		}
@@ -21,17 +22,6 @@
 		
 		public function addAutocomplete($id){
 			return $this->objectGc = new ObjectUiAutocompleteGC($id);
-		}
-		
-		private function _showError(){
-			foreach($this->error as $error){
-				$erreur .=$error."<br />";
-			}
-			return $erreur;
-		}
-		
-		private function _addError($error){
-			array_push($this->error, $error);
 		}
 		
 		public  function __desctuct(){
@@ -50,9 +40,9 @@
 	}
 	
 	class ObjectUiAutocompleteGC extends ObjectUiInteractions{
-		private $list        = array('no');
-		private $render               ;
-		private $id                   ;
+		protected $list        = array('no');
+		protected $render               ;
+		protected $id                   ;
 		
 		public  function __construct($id="no"){
 			$this->id = $id;

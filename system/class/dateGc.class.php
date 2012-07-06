@@ -9,18 +9,17 @@
 	\*/
 	
 	class dateGc{
-		private $_error                  = array() ; //array contenant toutes les erreurs enregistrées
-		private $_lang                             ; //gestion des langues via des fichiers XML
-		private $_langInstance                     ; //instance de la class langGc
-		private $_timestamp                        ; //timestamp
-		private $_date                             ; //contient la date en date
-		private $_i                                ; //compteur
-		private $_ago                    = array() ; //tableau contenant la liste sous forme de année-mois-jour-heure-minute-seconde
-		private $_age                    = array() ; //tableau contenant la liste sous forme de année-mois-jour-heure-minute-seconde
-		private $_dayMonth               = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31) ; //tableau contenant le nombre de jour pour chaque mois
+		use errorGc, langInstance;                                 //trait fonctions génériques
+
+		protected $_timestamp                        ; //timestamp
+		protected $_date                             ; //contient la date en date
+		protected $_i                                ; //compteur
+		protected $_ago                    = array() ; //tableau contenant la liste sous forme de année-mois-jour-heure-minute-seconde
+		protected $_age                    = array() ; //tableau contenant la liste sous forme de année-mois-jour-heure-minute-seconde
+		protected $_dayMonth               = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31) ; //tableau contenant le nombre de jour pour chaque mois
 		
 		const NDAY                       = 6       ; //nombre de jour 0-6
-		private $_dayLang                = array('fr' => array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'),
+		protected $_dayLang                = array('fr' => array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'),
 		                                         'en' => array('Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
 		                                         'nl' => array('maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag'),
 		                                         'es' => array('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'),
@@ -28,14 +27,14 @@
 		                                         'php'=> array('Mon', 'Thu', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'));
 		
 		const NMONTH                     = 11      ; //nombre de mois 0-11
-		private $_monthLang              = array('fr' => array('janvier' ,'février' ,'mars' ,'avril' ,'mai' ,'juin' ,'juillet' ,'août' ,'septembre' ,'octobre' ,'novembre' ,'decembre'),
+		protected $_monthLang              = array('fr' => array('janvier' ,'février' ,'mars' ,'avril' ,'mai' ,'juin' ,'juillet' ,'août' ,'septembre' ,'octobre' ,'novembre' ,'decembre'),
 		                                         'en' => array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
 		                                         'nl' => array('januari' ,'februari' ,'maart' ,'april' ,'mei' ,'juni' ,'juli' ,'augustus' ,'september' ,'oktober' ,'november' ,'december'),
 		                                         'es' => array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio??', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
 		                                         'de' => array('Januar', 'Februar', 'März', 'April', 'könnte', 'June', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'),
 		                                         'php'=> array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'));
 		
-		private $_zones                  = array('UM12' => -12, 'UM11' => -11, 'UM10' => -10, 'UM95' => -9.5, 'UM9' => -9, 'UM8' => -8, 'UM7' => -7, 'UM6' => -6,
+		protected $_zones                  = array('UM12' => -12, 'UM11' => -11, 'UM10' => -10, 'UM95' => -9.5, 'UM9' => -9, 'UM8' => -8, 'UM7' => -7, 'UM6' => -6,
 												 'UM5' => -5, 'UM45' => -4.5, 'UM4' => -4, 'UM35' => -3.5, 'UM3' => -3, 'UM2' => -2, 'UM1' => -1, 'UTC' => 0,
 												 'UP1' => +1, 'UP2' => +2, 'UP3' => +3, 'UP35' => +3.5, 'UP4' => +4, 'UP45' => +4.5, 'UP5' => +5, 'UP55' => +5.5,
 												 'UP575' => +5.75, 'UP6' => +6, 'UP65' => +6.5, 'UP7' => +7, 'UP8' => +8, 'UP875' => +8.75, 'UP9' => +9, 'UP95' => +9.5,
@@ -287,7 +286,7 @@
 			return $this->_dayMonth[$month - 1];
 		}
 		
-		private function _dayToLang($lang, $date){
+		protected function _dayToLang($lang, $date){
 			foreach($this->_dayLang as $cle => $valeur){
 				if($cle!=$lang){
 					for($this->_i = 0; $this->_i <= self::NDAY; $this->_i++){
@@ -298,7 +297,7 @@
 			return $date;
 		}
 		
-		private function _monthToLang($lang, $date){
+		protected function _monthToLang($lang, $date){
 			foreach($this->_monthLang as $cle => $valeur){
 				if($cle!=$lang){
 					for($this->_i = 0; $this->_i <= self::NMONTH; $this->_i++){
@@ -309,38 +308,16 @@
 			return $date;
 		}
 		
-		private function _getDatetoTimestamp($date = array()){
+		protected function _getDatetoTimestamp($date = array()){
 			return mktime($date['hour'], $date['minute'], $date['second'], $date['month'], $date['day'], $date['year']);
 		}
 		
-		private function _getLangClient(){
-			if(!array_key_exists('HTTP_ACCEPT_LANGUAGE', $_SERVER) || !$_SERVER['HTTP_ACCEPT_LANGUAGE'] ) { return DEFAULTLANG; }
-			else{
-				$langcode = (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
-				$langcode = (!empty($langcode)) ? explode(";", $langcode) : $langcode;
-				$langcode = (!empty($langcode['0'])) ? explode(",", $langcode['0']) : $langcode;
-				$langcode = (!empty($langcode['0'])) ? explode("-", $langcode['0']) : $langcode;
-				return $langcode['0'];
-			}
-		}
-		
-		private function _createLangInstance(){
+		protected function _createLangInstance(){
 			$this->_langInstance = new langGc($this->_lang);
 		}
 			
-		private function _useLang($sentence){
+		protected function _useLang($sentence){
 			return $this->_langInstance->loadSentence($sentence);
-		}
-		
-		private function _showError(){
-			foreach($this->_error as $error){
-				$erreur .=$error."<br />";
-			}
-			return $erreur;
-		}
-		
-		private function _addError($error){
-			array_push($this->_error, $error);
 		}
 		
 		public  function __desctuct(){

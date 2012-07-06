@@ -9,39 +9,39 @@
 	\*/
 	
 	class captchaGC{
-		private $_img;
-		private $_mot;
+		use errorGc;                            //trait fonctions génériques
 		
-		private $_largeur;
-		private $_hauteur;
+		protected $_img;
+		protected $_mot;
 		
-		private $_backgroundImage; //true ou false
-		private $_background;
-		private $_extension;
+		protected $_largeur;
+		protected $_hauteur;
 		
-		private $_font; //true ou false
-		private $_fontLink;
-		private $_textColor;
-		private $_textSize;
-		private $_textPos;
+		protected $_backgroundImage; //true ou false
+		protected $_background;
+		protected $_extension;
 		
-		private $_hachure; //true ou false
-		private $_hachureColor;
+		protected $_font; //true ou false
+		protected $_fontLink;
+		protected $_textColor;
+		protected $_textSize;
+		protected $_textPos;
 		
-		private $_i=0;
-		private $_xhachure=0;
-		private $_blur;
-		private $_matrix_blur=array();
+		protected $_hachure; //true ou false
+		protected $_hachureColor;
 		
-		private $_colorHachureAllocate;
-		private $_colorBackgroundAllocate;
-		private $_colorTextAllocate;
-		private $_colorBordureAllocate;
+		protected $_i=0;
+		protected $_xhachure=0;
+		protected $_blur;
+		protected $_matrix_blur=array();
 		
-		private $_bordure;
-		private $_bordureColor;
+		protected $_colorHachureAllocate;
+		protected $_colorBackgroundAllocate;
+		protected $_colorTextAllocate;
+		protected $_colorBordureAllocate;
 		
-		private $_error;
+		protected $_bordure;
+		protected $_bordureColor;
 		
 		public function __construct($mot, $property=array()){
 			$this->_i = 0;
@@ -176,17 +176,6 @@
 			}
 			
 			return imagepng($this->_img);
-		}
-		
-		private function _addError($error){
-			array_push($this->_error, $error);
-		}
-		
-		private function _showError(){
-			foreach($this->_error as $error){
-				$erreur .=$error."<br />";
-			}
-			return $erreur;
 		}
 		
 		public function __destruct(){

@@ -9,22 +9,30 @@
 	\*/
 	
 	class appDevGc{
-		private $_lang                ; // gestion des langues via des fichiers XML
-		private $_langInstance        ;
-		private $_timeExec            ; //calcul du temps d'exécution
-		private $_timeExecStart       ; //time de départ
-		private $_timeExecEnd         ; //time de fin
-		private $_rubrique   = array(); //liste des rubrique
-		private $_template   = array(); //liste des templates
-		private $_sql        = array(); //liste des requêtes sql
-		private $_arbo                ; //liste des fichiers inclus
-		private $_show      = 0      ; //liste des fichiers inclus
-		private $_setShow   = true   ; //liste des fichiers inclus
+		use errorGc, langInstance;                                              //trait fonctions génériques
+		
+		protected $_timeExec            ; //calcul du temps d'exécution
+		protected $_timeExecStart       ; //time de départ
+		protected $_timeExecEnd         ; //time de fin
+		protected $_rubrique   = array(); //liste des rubrique
+		protected $_template   = array(); //liste des templates
+		protected $_sql        = array(); //liste des requêtes sql
+		protected $_arbo                ; //liste des fichiers inclus
+		protected $_show      = 0       ; //liste des fichiers inclus
+		protected $_setShow   = true    ; //liste des fichiers inclus
 		
 		public  function __construct($lang=""){
 			if(!$lang){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();
 			$this->_timeExecStart=microtime(true);
+		}
+		
+		protected function _createLangInstance(){
+			$this->_langInstance = new langGc($this->_lang);
+		}
+		
+		public function useLang($sentence){
+			return $this->_langInstance->loadSentence($sentence);
 		}
 		
 		public function show(){
@@ -85,25 +93,6 @@
 		
 		public function setShow($show){
 			$this->_setShow = $show;
-		}
-		
-		private function _createLangInstance(){
-			$this->_langInstance = new langGc($this->_lang);
-		}
-		
-		public function useLang($sentence){
-			return $this->_langInstance->loadSentence($sentence);
-		}
-		
-		public function getLangClient(){
-			if(!array_key_exists('HTTP_ACCEPT_LANGUAGE', $_SERVER) || !$_SERVER['HTTP_ACCEPT_LANGUAGE'] ) { return DEFAULTLANG; }
-			else{
-				$langcode = (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
-				$langcode = (!empty($langcode)) ? explode(";", $langcode) : $langcode;
-				$langcode = (!empty($langcode['0'])) ? explode(",", $langcode['0']) : $langcode;
-				$langcode = (!empty($langcode['0'])) ? explode("-", $langcode['0']) : $langcode;
-				return $langcode['0'];
-			}
 		}
 		
 		public function setTimeExec(){
