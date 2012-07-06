@@ -5,9 +5,9 @@ Information ::
 -Version  : 2.0.1 Bêta
 -Créateur : fab@c++
 -Contributeurs actifs : Lucas5190, t1307
--Description : framework php mvc de développement d'appliation web. Ce framework se base sur la notion de rubrique. 
-Une rubrique regroupe donc un contrôleur, un modèle et une vue. 
-Framework proposant par défaut 3 langues : français, anglais, néerlandais
+-Description : framework php mvc de développement d'appliation web. 
+-Principe :Ce framework se base sur la notion de rubrique. Une rubrique regroupe donc un contrôleur, un modèle et une vue. 
+-Langue :Framework proposant par défaut 3 langues : français, anglais, néerlandais
 
 Spécifications :
 -----------
