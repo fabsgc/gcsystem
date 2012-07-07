@@ -3781,3 +3781,11 @@ Stack trace:
 07/07/2012 à 18:56 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 88
 07/07/2012 à 18:56 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 62
 07/07/2012 à 18:56 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 64
+07/07/2012 à 21:44 ! : Erreur n°8 (Undefined variable: db) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 27
+07/07/2012 à 21:44 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 88
+07/07/2012 à 21:44 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 62
+07/07/2012 à 21:44 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 64
+07/07/2012 à 21:44 ! : Erreur n°8 (Undefined variable: db) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 27
+07/07/2012 à 21:44 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 88
+07/07/2012 à 21:44 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 62
+07/07/2012 à 21:44 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 64

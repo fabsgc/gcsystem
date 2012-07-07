@@ -62,9 +62,9 @@
 		}
 		
 		/**
-		 * Fonction de censure du message
+		 * Fonction de censure du message, renvoie le texte censure ou non
 		 * @access	public
-		 * @return	boolean
+		 * @return	string
 		 * @since 2.0
 		*/
 		
@@ -73,15 +73,19 @@
 			$this->_parseInsulte = array();
 			foreach($this->_insulte as $insulte){
 				if(preg_match('`'.preg_quote($insulte).' `i', $this->_contenu)){
-					array_push($this->_parseInsulte, $insulte);
+					$this->_i++;
 				}
 			}
 			
-			if(count($this->_parseInsulte) != 0){
-				return $this->_parseInsulte;
+			if($this->_i++ > $this->_maxWord){
+				$content = $this->_contenu;
+				foreach($this->_insulte as $insulte){
+					$content = preg_replace('`'.preg_quote($insulte).'`i', '***censuré***', $content);
+				}
+				return $content;
 			}
 			else{
-				return true;
+				return $this->_contenu;
 			}
 		}
 		
