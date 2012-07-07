@@ -48,12 +48,12 @@
 		public function parse(){
 			$this->_parseInsulte = array();
 			foreach($this->_insulte as $insulte){
-				if(preg_match('`'.preg_quote($insulte).'`i', $tihs->_contenu)){
-				
+				if(preg_match('`'.preg_quote($insulte).' `i', $this->_contenu)){
+					array_push($this->_parseInsulte, $insulte);
 				}
 			}
 			
-			if(count($this->_parseInsulte) == 0){
+			if(count($this->_parseInsulte) != 0){
 				return $this->_parseInsulte;
 			}
 			else{
@@ -69,7 +69,20 @@
 		*/
 		
 		public function censure(){
-			$this->_i = 0;
+			$this->_i            = 0;
+			$this->_parseInsulte = array();
+			foreach($this->_insulte as $insulte){
+				if(preg_match('`'.preg_quote($insulte).' `i', $this->_contenu)){
+					array_push($this->_parseInsulte, $insulte);
+				}
+			}
+			
+			if(count($this->_parseInsulte) != 0){
+				return $this->_parseInsulte;
+			}
+			else{
+				return true;
+			}
 		}
 		
 		/**

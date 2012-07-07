@@ -190,11 +190,11 @@ define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
 
 /* --------------parametres de connexion a la base de donnees------------------*/
 
-$db['bdd']['hostname'] = "localhost";
-$db['bdd']['username'] = "root";
-$db['bdd']['password'] = "";
-$db['bdd']['database'] = "8_legeekcafe";
-$db['bdd']['extension'] = "pdo";
+// $db['bdd']['hostname'] = "localhost";
+// $db['bdd']['username'] = "root";
+// $db['bdd']['password'] = "";
+// $db['bdd']['database'] = "8_legeekcafe";
+// $db['bdd']['extension'] = "pdo";
 
 /* -------------- CONSTANTE RELATIVE AU SITE ----------------- */
 

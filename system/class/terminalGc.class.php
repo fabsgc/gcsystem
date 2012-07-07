@@ -323,7 +323,7 @@
 		}
 
 		protected function _updater(){
-			if(curl_init()){
+			if(function_exists('curl_init')){
 				$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.CLASS_TERMINAL);
 				$fp = fopen(CLASS_TERMINAL, "w");
 				curl_setopt($ch, CURLOPT_FILE, $fp);
@@ -340,7 +340,7 @@
 		}
 
 		protected function _update(){
-			if(curl_init()){
+			if(function_exists('curl_init')){
 				$contenu = "";
 				$sauvegarde ="";
 				$sauvegarde2 ="";
