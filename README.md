@@ -1,4 +1,4 @@
-Information :
+Informations :
 -----------
 
 * Open-Source depuis sa création
@@ -23,7 +23,7 @@ Installation :
 * décompressez l'archive dans le répertoire désiré
 * chargez le fichier index.php à la racine
 
-Contenu externe :
+Contenus externes :
 -----------
 
 *Utilisation des images de la barre de développement de symfony pendant la période de développement du Framework
