@@ -16,11 +16,14 @@ Spécifications :
 * l'extension CURL activée pour pouvoir faire les mises à jour
 * Chmod en lecture écriture (755,777)
 
-Utilisation des images de la barre de développement de symfony pendant la période de développement du Framework
-
 Installation :
 -----------
 
 * téléchargez l'archive sur github
 * décompressez l'archive dans le répertoire désiré
 * chargez le fichier index.php à la racine
+
+Contenu externe :
+-----------
+
+*Utilisation des images de la barre de développement de symfony pendant la période de développement du Framework
