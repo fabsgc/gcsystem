@@ -1,12 +1,10 @@
 <?php
-	/*\
-	 | ------------------------------------------------------
-	 | @file : downloadGc.class.php
-	 | @author : fab@c++
-	 | @description : class gérant les téléchargement
-	 | @version : 2.0 bêta
-	 | ------------------------------------------------------
-	\*/
+	/**
+	 * @file : downloadGc.class.php
+	 * @author : fab@c++
+	 * @description : class gérant les téléchargement
+	 * @version : 2.0 bêta
+	*/
 	
 	class downloadGc extends fileGc{	
 		const EXT_ZIP                   = 'application/gzip'                         ;

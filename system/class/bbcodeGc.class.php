@@ -1,12 +1,10 @@
 <?php
-	/*\
-	 | ------------------------------------------------------
-	 | @file : bbcodeGc.class.php
-	 | @author : fab@c++
-	 | @description : class gérant le parsage des messages et l'affichage d'un éditeur plus ou moins avancé
-	 | @version : 2.0 bêta
-	 | ------------------------------------------------------
-	\*/
+	/**
+	 * @file : bbcodeGc.class.php
+	 * @author : fab@c++
+	 * @description : class gérant le parsage des messages et l'affichage d'un éditeur plus ou moins avancé
+	 * @version : 2.0 bêta
+	*/
 	
 	class bbcodeGc{
 		use errorGc, langInstance;                                              //trait fonctions génériques

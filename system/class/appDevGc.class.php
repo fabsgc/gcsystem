@@ -1,12 +1,10 @@
 <?php
-	/*\
-	 | ------------------------------------------------------
-	 | @file : appDevGc.class.php
-	 | @author : fab@c++
-	 | @description : class à utiliser lors du développement de l'application
-	 | @version : 2.0 bêta
-	 | ------------------------------------------------------
-	\*/
+	/**
+	 * @file : appDevGc.class.php
+	 * @author : fab@c++
+	 * @description : class à utiliser lors du développement de l'application
+	 * @version : 2.0 bêta
+	*/
 	
 	class appDevGc{
 		use errorGc, langInstance;                                              //trait fonctions génériques

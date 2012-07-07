@@ -381,7 +381,7 @@ $language_data = array (
 
             //Unknown Mods ...
             'AgentLog','BindAddress','bs2000account','CacheForceCompletion',
-            'CacheGCInterval','CacheSize','NoCache','qsc','RefererIgnore',
+            'cacheGcInterval','CacheSize','NoCache','qsc','RefererIgnore',
             'RefererLog','Resourceconfig','ServerType','SingleListen'
             ),
         /*keywords 2*/

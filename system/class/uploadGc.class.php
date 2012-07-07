@@ -1,12 +1,10 @@
 <?php
-	/*\
-	 | ------------------------------------------------------
-	 | @file : uploadGc.class.php
-	 | @author : fab@c++
-	 | @description : class gérant les uploads
-	 | @version : 2.0 bêta
-	 | ------------------------------------------------------
-	\*/
+	/**
+	 * @file : uploadGc.class.php
+	 * @author : fab@c++
+	 * @description : class gérant les uploads
+	 * @version : 2.0 bêta
+	*/
 	
 	class uploadGc{
 		use errorGc;                               //trait fonctions génériques

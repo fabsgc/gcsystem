@@ -1,12 +1,10 @@
 <?php
-	/*\
-	 | ------------------------------------------------------
-	 | @file : dirGc.class.php
-	 | @author : fab@c++
-	 | @description : class gèrant les opérations sur les fichiers
-	 | @version : 2.0 bêta
-	 | ------------------------------------------------------
-	\*/
+	/**
+	 * @file : dirGc.class.php
+	 * @author : fab@c++
+	 * @description : class gèrant les opérations sur les fichiers
+	 * @version : 2.0 bêta
+	*/
 	
     class dirGc{
 		use errorGc;                            //trait fonctions génériques

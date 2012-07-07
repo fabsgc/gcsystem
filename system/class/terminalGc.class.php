@@ -1,12 +1,10 @@
 <?php
-	/*\
-	 | ------------------------------------------------------
-	 | @file : terminalGc.class.php
-	 | @author : fab@c++
-	 | @description : class g&#233;rant les fichiers compress&#233;s
-	 | @version : 2.0 bêta
-	 | ------------------------------------------------------
-	\*/
+	/**
+	 * @file : terminalGc.class.php
+	 * @author : fab@c++
+	 * @description : class g&eacute;rant les fichiers compress&#233;s
+	 * @version : 2.0 bêta
+	*/
 
 	class terminalGc{
 		use errorGc;                              //trait fonctions génériques

@@ -1,12 +1,10 @@
 <?php
-	/*\
-	 | ------------------------------------------------------
-	 | @file : templateGc.class.php
-	 | @author : fab@c++
-	 | @description : class gérant le moteur de template
-	 | @version : 2.0 bêta
-	 | ------------------------------------------------------
-	\*/
+	/**
+	 * @file : templateGc.class.php
+	 * @author : fab@c++
+	 * @description : class gérant le moteur de template
+	 * @version : 2.0 bêta
+	*/
 	
 	class templateGc{
 		use errorGc, langInstance;                                    //trait fonctions génériques

@@ -1,12 +1,10 @@
 <?php
-	/*\
-	 | ------------------------------------------------------
-	 | @file : objectGc.class.php
-	 | @author : fab@c++
-	 | @description : class gérant les fichiers compressés
-	 | @version : 2.0 bêta
-	 | ------------------------------------------------------
-	\*/
+	/**
+	 * @file : objectGc.class.php
+	 * @author : fab@c++
+	 * @description : class gérant les fichiers compressés
+	 * @version : 2.0 bêta
+	*/
 	
 	class objectGc{
 		use errorGc;                             //trait fonctions génériques

@@ -1,12 +1,10 @@
 <?php
-	/*\
-	 | ------------------------------------------------------
-	 | @file : rubrique.class.php
-	 | @author : fab@c++
-	 | @description : class mère de l'application
-	 | @version : 2.0 bêta
-	 | ------------------------------------------------------
-	\*/
+	/**
+	 * @file : rubrique.class.php
+	 * @author : fab@c++
+	 * @description : class mère de l'application
+	 * @version : 2.0 bêta
+	*/
 	
 	class Gcsystem{
 		use errorGc, langInstance, generalGc;                            //trait fonctions génériques

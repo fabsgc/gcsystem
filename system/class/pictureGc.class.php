@@ -1,12 +1,10 @@
 <?php
-	/*\
-	 | ------------------------------------------------------
-	 | @file : pictureGc.class.php
-	 | @author : fab@c++
-	 | @description : class fille de fileGc.class.php gérant les images
-	 | @version : 2.0 bêta
-	 | ------------------------------------------------------
-	\*/
+	/**
+	 * @file : pictureGc.class.php
+	 * @author : fab@c++
+	 * @description : class fille de fileGc.class.php gérant les images
+	 * @version : 2.0 bêta
+	*/
 	
     class pictureGc extends fileGc{		
 		protected $img;                //contient l'url de l'image

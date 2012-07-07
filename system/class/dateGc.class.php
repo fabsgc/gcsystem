@@ -1,12 +1,10 @@
 <?php
-	/*\
-	 | ------------------------------------------------------
-	 | @file : dateGc.class.php
-	 | @author : fab@c++
-	 | @description : class gérant les dates
-	 | @version : 2.0 bêta
-	 | ------------------------------------------------------
-	\*/
+	/**
+	 * @file : dateGc.class.php
+	 * @author : fab@c++
+	 * @description : class gérant les dates
+	 * @version : 2.0 bêta
+	*/
 	
 	class dateGc{
 		use errorGc, langInstance;                                 //trait fonctions génériques
@@ -18,7 +16,7 @@
 		protected $_age                    = array() ; //tableau contenant la liste sous forme de année-mois-jour-heure-minute-seconde
 		protected $_dayMonth               = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31) ; //tableau contenant le nombre de jour pour chaque mois
 		
-		const NDAY                       = 6       ; //nombre de jour 0-6
+		const NDAY                         = 6       ; //nombre de jour 0-6
 		protected $_dayLang                = array('fr' => array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'),
 		                                         'en' => array('Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
 		                                         'nl' => array('maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag'),
@@ -26,7 +24,7 @@
 		                                         'de' => array('Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'),
 		                                         'php'=> array('Mon', 'Thu', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'));
 		
-		const NMONTH                     = 11      ; //nombre de mois 0-11
+		const NMONTH                       = 11      ; //nombre de mois 0-11
 		protected $_monthLang              = array('fr' => array('janvier' ,'février' ,'mars' ,'avril' ,'mai' ,'juin' ,'juillet' ,'août' ,'septembre' ,'octobre' ,'novembre' ,'decembre'),
 		                                         'en' => array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
 		                                         'nl' => array('januari' ,'februari' ,'maart' ,'april' ,'mei' ,'juni' ,'juli' ,'augustus' ,'september' ,'oktober' ,'november' ,'december'),
@@ -40,14 +38,14 @@
 												 'UP575' => +5.75, 'UP6' => +6, 'UP65' => +6.5, 'UP7' => +7, 'UP8' => +8, 'UP875' => +8.75, 'UP9' => +9, 'UP95' => +9.5,
 												 'UP10' => +10, 'UP105' => +10.5, 'UP11' => +11, 'UP115' => +11.5, 'UP12' => +12, 'UP1275' => +12.75, 'UP13' => +13, 'UP14' => +14);
 		
-		const PARAM_TIMESTAMP            =1;  //permet aux fonctions de gérer soit une date au format mktime stockée dans un tableau soit un timestamps normal
-		const PARAM_DATETIME             =2;
+		const PARAM_TIMESTAMP              =1;  //permet aux fonctions de gérer soit une date au format mktime stockée dans un tableau soit un timestamps normal
+		const PARAM_DATETIME               =2;
 		
-		const WEEK                       = 604800;
-		const DAY                        = 86400;
-		const HOUR                       = 3600;
-		const MINUTE                     = 60;
-		const DATE_DEFAULT               = 'M d Y H:i';
+		const WEEK                         = 604800;
+		const DAY                          = 86400;
+		const HOUR                         = 3600;
+		const MINUTE                       = 60;
+		const DATE_DEFAULT                 = 'M d Y H:i';
 		
 		const DATE_J                             = 'd';
 		const DATE_JM_FR                         = 'd/m/';

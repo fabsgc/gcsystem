@@ -1,23 +1,39 @@
 <?php
-	/*\
-	 | ------------------------------------------------------
-	 | @file : logGc.class.php
-	 | @author : fab@c++
-	 | @description : class gérant les erreurs php
-	 | @version : 2.0 bêta
-	 | ------------------------------------------------------
-	\*/
+	/**
+	 * @file : logGc.class.php
+	 * @author : fab@c++
+	 * @description : class gérant les erreurs php
+	 * @version : 2.0 bêta
+	*/
 	
 	class TestErrorHandling { 
 		protected $error; 
-
+		
+		/**
+		 * Cr&eacute;e l'instance de la classe
+		 * @access	public
+		 * @return	void
+		 * @since 2.0
+		*/
+		
 		public function __construct () { 
 			$this->error = new TestErrorHandler; 
 			set_error_handler( array($this->error, 'errorManager' ) ); 
 		} 
 	} 
 
-	class TestErrorHandler{ 
+	class TestErrorHandler{
+		/**
+		 * Fonction gérant l'enregistrement des erreurs php dans le fichier de log
+		 * @access	public
+		 * @return	boolean
+		 * @param string $errno : erreur php (constante)
+		 * @param string $errstr : erreur php (string)
+		 * @param string $errfile : fichier ayant généré l'erreur
+		 * @param string $errline : ligne ayant généré l'erreur
+		 * @since 2.0
+		*/
+		
 		function errorManager($errno, $errstr, $errfile, $errline){
 			switch($errno){
 				case E_USER_NOTICE:
@@ -51,8 +67,7 @@
 					break;
 			}
 
-			// Ne pas executer le gestionnaire natif de PHP :
-		   return TRUE;
+		   return true;
 		}
 	} 
 ?>

@@ -1,12 +1,10 @@
 <?php
-	/*\
-	 | ------------------------------------------------------
-	 | @file : generalGc.class.php
-	 | @author : fab@c++
-	 | @description : traits
-	 | @version : 2.0 bêta
-	 | ------------------------------------------------------
-	\*/
+	/**
+	 * @file : generalGc.class.php
+	 * @author : fab@c++
+	 * @description : traits
+	 * @version : 2.0 bêta
+	*/
 
 	trait generalGc{
 		public function windowInfo($Title, $Content, $Time, $Redirect, $lang="fr"){
