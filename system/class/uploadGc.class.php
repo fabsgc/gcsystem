@@ -237,7 +237,7 @@
 				$retour .= $valeur.'<br />';
 			}
 			
-			echo $retour;
+			return $retour;
 		}
 		
 		protected function _setUpload($name){
