@@ -15,7 +15,7 @@ require_once(CLASS_AUTOLOAD);
 
 /* ---------- creation de la page -------------- */
 
-$GLOBALS['appDevGc'] = new appDevGc();
+$GLOBALS['appDevGc'] = new appDevGc('nl');
 $GLOBALS['rubrique'] = new Gcsystem(); //constructeur
 
 /* ---------- gestion des erreurs (log) ----------- */

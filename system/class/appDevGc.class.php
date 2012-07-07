@@ -19,8 +19,8 @@
 		protected $_show      = 0       ; //liste des fichiers inclus
 		protected $_setShow   = true    ; //liste des fichiers inclus
 		
-		public  function __construct($lang=""){
-			if(!$lang){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
+		public  function __construct($lang=NULL){
+			if($lang==NULL){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();
 			$this->_timeExecStart=microtime(true);
 		}
@@ -61,7 +61,12 @@
 					}
 					$this->_arbo .="----------session--------\n";
 					foreach($_SESSION as $cle => $val){
-						$this->_arbo .="".$cle."::".$val."\n";
+						if(!is_array($val)){
+							$this->_arbo .="".$cle."::".$val."\n";
+						}
+						else{
+							$this->_arbo .="".$cle."::Array\n";
+						}
 					}
 					$this->_arbo .="----------file--------------\n";
 					foreach($_FILES as $cle => $val){
@@ -71,7 +76,7 @@
 						}
 					}
 					
-					$tpl = new templateGC('GCsystemDev', 'GCsystemDev', 0, $lang="");
+					$tpl = new templateGC('GCsystemDev', 'GCsystemDev', 0, $this->_lang);
 					$tpl->assign(array(
 						'text'=>$this->useLang('appDevGc_temp'),
 						'IMG_PATH'=>IMG_PATH.'GCsystem/',
