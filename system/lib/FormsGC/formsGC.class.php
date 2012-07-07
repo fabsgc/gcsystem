@@ -417,7 +417,7 @@
 			
 			$this->GCcontent.="</form>";
 			
-			echo $this->GCcontent;
+			return $this->GCcontent;
 		}
 		
 		public function showPHPForms(){

@@ -26,7 +26,7 @@
 			if(file_exists($this->_file) or is_readable($this->_file)){
 				$handle = fopen($this->_file, 'rb');
 				$this->_content = fread($handle, filesize ($this->_file));
-				fclose ($this->_file);
+				fclose ($handle);
 				
 				$this->_nom=$nom;
 				$this->_timeCache=$timecache;
