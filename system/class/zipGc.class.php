@@ -7,7 +7,7 @@
 	*/
 	
 	class zipGc{
-		use errorGc;                                //trait fonctions génériques
+		use errorGc;                                //trait
 		
 		protected $_file                          ; //chemin vers le fichier compressé
 		

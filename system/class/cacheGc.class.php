@@ -7,7 +7,7 @@
 	*/
 	
 	class cacheGc{
-		use errorGc;                  //trait fonctions génériques
+		use errorGc;                  //trait
 		
 		protected $_name              ; //nom du cache
 		protected $_nameFile          ; //nom du fichier de cache

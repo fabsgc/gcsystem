@@ -7,7 +7,7 @@
 	*/
 	
 	class appDevGc{
-		use errorGc, langInstance;                                              //trait fonctions génériques
+		use errorGc, langInstance;                                              //trait
 		
 		protected $_timeExec            ; //calcul du temps d'exécution
 		protected $_timeExecStart       ; //time de départ

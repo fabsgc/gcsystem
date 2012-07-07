@@ -7,7 +7,7 @@
 	*/
 	
 	class dateGc{
-		use errorGc, langInstance;                                 //trait fonctions génériques
+		use errorGc, langInstance;                                 //trait
 
 		protected $_timestamp                        ; //timestamp
 		protected $_date                             ; //contient la date en date

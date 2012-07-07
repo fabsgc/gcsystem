@@ -7,7 +7,7 @@
 	*/
 	
 	class mailGc{
-		use errorGc;                           			    //trait fonctions génériques
+		use errorGc;                           			    //trait
 		
 		protected $_destinataire                          ; //email du destinataire
 		protected $_message                               ; //message

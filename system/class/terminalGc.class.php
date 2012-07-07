@@ -7,7 +7,7 @@
 	*/
 
 	class terminalGc{
-		use errorGc;                              //trait fonctions génériques
+		use errorGc;                              //trait
 		
 		protected $_command                       ; //contenu à traiter
 		protected $_commandExplode                ; //contenu à traiter

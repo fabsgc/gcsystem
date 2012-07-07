@@ -7,7 +7,7 @@
 	*/
 	
 	class bbcodeGc{
-		use errorGc, langInstance;                                              //trait fonctions génériques
+		use errorGc, langInstance;                                              //trait
 		
 		protected $_contenu                                     ; //contenu à parser
 		const TAGSTART                    = '['                 ; //constante contenant les tag pour la syntaxe

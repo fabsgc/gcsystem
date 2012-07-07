@@ -7,7 +7,7 @@
 	*/
 	
 	class modoGc{
-		use errorGc;                            //trait fonctions génériques
+		use errorGc;                            //trait
 		
 		protected $_contenu                       ; //contenu à filtrer
 		protected $_maxWord                  = 10  ; //contenu à filtrer

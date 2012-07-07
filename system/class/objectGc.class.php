@@ -7,7 +7,7 @@
 	*/
 	
 	class objectGc{
-		use errorGc;                             //trait fonctions génériques
+		use errorGc;                             //trait
 		
 		protected $objectGc                      ; //contient une référence vers l'objet créé
 		

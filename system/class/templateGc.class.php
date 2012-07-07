@@ -7,7 +7,7 @@
 	*/
 	
 	class templateGc{
-		use errorGc, langInstance;                                    //trait fonctions génériques
+		use errorGc, langInstance;                                    //trait
 		
 		protected $_file               = ""         ;    //chemin vers le .tpl
 		protected $_fileCache          = ""         ;    //chemin vers le .compil.tpl
@@ -206,7 +206,7 @@
 	}
 	
 	class templateGcParser{
-		use errorGc, langInstance;                                              //trait fonctions génériques
+		use errorGc, langInstance;                                              //trait
 		
 		protected $templateGC     ;
 		protected $contenu        ;

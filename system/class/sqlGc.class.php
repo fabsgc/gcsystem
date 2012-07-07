@@ -7,7 +7,7 @@
 	*/
 	
 	class sqlGc{
-		use errorGc;                                    //trait fonctions génériques
+		use errorGc;                                    //trait
 		
 		protected $_var            = array();       //liste des variables
 		protected $_query          = array();       //liste des requêtes

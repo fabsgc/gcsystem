@@ -7,7 +7,7 @@
 	*/
 	
 	class jsGc{
-		use errorGc;                            //trait fonctions génériques
+		use errorGc;                            //trait
 		
 		/**
 		 * Cr&eacute;e l'instance de la classe

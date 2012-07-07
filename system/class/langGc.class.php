@@ -7,44 +7,13 @@
 	*/
 	
     class langGc{
-		use errorGc;                            //trait fonctions génériques
+		use errorGc;                            //trait
 		
-		/**
-		 * nom de la langue a utiliser
-		 * @var string
-		 * @access protected
-		 * @since 2.0
-		*/
-		protected $_lang = 'fr';
-		/**
-		 * indique si le fichier de langue est charge ou non
-		 * @var bool
-		 * @access protected
-		 * @since 2.0
-		*/
-		protected $_langFile = true;
-		/**
-		 * contient l'object DomDocument natif de PHP, permet la lecture des fichiers de langues
-		 * @var DOMDocument
-		 * @access protected
-		 * @since 2.0
-		*/
-		protected $_domXml;
-		/**
-		 * contient la phrase du fichier de langue a charger
-		 * @var string
-		 * @access protected
-		 * @since 2.0
-		*/
-		protected $_sentence;
-		/**
-		 * _content
-		 * variable interm&eacute;diaire utilis&eacute;e dans loadSentence
-		 * @var string
-		 * @access protected
-		 * @since 2.0
-		*/
-		protected $_content;
+		protected $_lang = 'fr'       ; // nom de la langue a utilise
+		protected $_langFile = true   ; // indique si le fichier de langue est charge ou non
+		protected $_domXml            ; // contient l'object DomDocument natif de PHP, permet la lecture des fichiers de langues
+		protected $_sentence          ; // contient la phrase du fichier de langue à charger
+		protected $_content           ; // variable interm&eacute;diaire utilis&eacute;e dans loadSentence
 		
 		/**
 		 * Cr&eacute;e l'instance de la classe langue
@@ -53,6 +22,7 @@
 		 * @return	void
 		 * @since 2.0
 		*/
+		
 		public function __construct($lang){
 			$this->_lang = $lang;
 			$this->loadFile();
@@ -65,6 +35,7 @@
 		 * @return	void
 		 * @since 2.0
 		*/
+		
 		public function setLang($lang){
 			$this->_lang = $lang;
 			$this->_addError('fichier à ouvrir : '.$lang);

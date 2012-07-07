@@ -7,7 +7,7 @@
 	*/
 	
 	class uploadGc{
-		use errorGc;                               //trait fonctions génériques
+		use errorGc;                               //trait
 		
 		protected $_name                         ; //contient le nom du formulaire
 		protected $_type                         ; //contient le type du fichier

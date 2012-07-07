@@ -7,7 +7,7 @@
 	*/
 	
     class dirGc{
-		use errorGc;                            //trait fonctions génériques
+		use errorGc;                            //trait
 		
 		protected $_dir;
 		

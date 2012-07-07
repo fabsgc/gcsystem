@@ -7,7 +7,7 @@
 	*/
 	
     class fileGc{
-		use errorGc;                           				   //trait fonctions g&eacute;n&eacute;riques
+		use errorGc;                           				   //trait
 		
 		protected $_filePath                                   ;
 		protected $_fileName                                   ;
@@ -18,8 +18,8 @@
 		protected $_isExist                           = false  ;
 		
 		const NOFILE   = 'Aucun fichier n\'a &eacute;t&eacute; difini'     ;
-		const NOACCESS = 'le fichier n\'est pas accessible'  ;
-		const NOREAD   = 'le fichier n\'est pas lisible'     ;
+		const NOACCESS = 'le fichier n\'est pas accessible'                ;
+		const NOREAD   = 'le fichier n\'est pas lisible'                   ;
 		
 		const CHMOD0644                              = 0644  ;
 		const CHMOD0755                              = 0755  ;

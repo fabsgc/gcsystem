@@ -7,7 +7,7 @@
 	*/
 	
 	class Gcsystem{
-		use errorGc, langInstance, generalGc;                            //trait fonctions génériques
+		use errorGc, langInstance, generalGc;                            //trait
 		/* --- infos d'en tete -- */
 		
 		protected $doctype                     ;
