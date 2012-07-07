@@ -1220,7 +1220,6 @@
 			for($this->i=1;$this->i<=$br;$this->i++){
 				$this->GCtypeListebox.="<br />";
 			}
-			
 							
 			return $this->GCtypeListebox;
 		}
