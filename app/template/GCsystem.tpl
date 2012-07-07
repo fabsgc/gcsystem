@@ -50,7 +50,7 @@
 </style>
 <div id="GCsystem">
 	<div id="GCsystem_left">
-		<img src="asset/image/logo.png" alt="logo"/>
+		<img src="asset/image/GCsystem/logo.png" alt="logo"/>
 		/# {{gravatar:fabieudimi@hotmail.fr:500}} #/
 	</div>
 	<div id="GCsystem_right">

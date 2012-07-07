@@ -261,7 +261,7 @@
 				elseif(preg_match('#clear cache#', $this->_command)){
 					if($this->_dossier = opendir(CACHE_PATH)){
 						while(false !== ($this->_fichier = readdir($this->_dossier))){
-							if(is_file(CACHE_PATH.$this->_fichier)){
+							if(is_file(CACHE_PATH.$this->_fichier) && $this->_fichier!='.htaccess'){
 								unlink(CACHE_PATH.$this->_fichier);
 								$this->_command .= '<br /><span style="color: black;">----</span>> '.CACHE_PATH.$this->_fichier.'';
 							}
