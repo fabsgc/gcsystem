@@ -1428,3 +1428,23 @@ Stack trace:
 07/07/2012 à 00:02 ! : Erreur n°8 (Undefined index: monfichier) dans le fichier C:\wamp\www\GCsystem2.0\system\class\uploadGc.class.php à la ligne 244
 07/07/2012 à 00:02 ! : Erreur n°8 (Undefined variable: erreur) dans le fichier C:\wamp\www\GCsystem2.0\system\class\generalGc.class.php à la ligne 89
 07/07/2012 à 00:02 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+07/07/2012 à 01:36 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+07/07/2012 à 01:36 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+07/07/2012 à 01:36 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+07/07/2012 à 01:36 ! : Erreur n°8 (Undefined index: monfichier) dans le fichier C:\wamp\www\GCsystem2.0\system\class\uploadGc.class.php à la ligne 244
+07/07/2012 à 01:36 ! : Erreur n°8 (Undefined variable: erreur) dans le fichier C:\wamp\www\GCsystem2.0\system\class\generalGc.class.php à la ligne 89
+07/07/2012 à 01:36 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66
+07/07/2012 à 01:36 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database '8_legeekcafe'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:69
+Stack trace:
+#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(69): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 C:\wamp\www\GCsystem2.0\index.php(54): Gcsystem->connectDatabase(Array)
+#2 {main}
+07/07/2012 à 01:36 ! : Erreur n°8 (Undefined variable: sql_connect) dans le fichier C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php à la ligne 90
+07/07/2012 à 01:36 ! : Erreur n°8 (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\index.php à la ligne 89
+07/07/2012 à 01:36 ! : Erreur n°8 (Undefined index: monfichier) dans le fichier C:\wamp\www\GCsystem2.0\system\class\uploadGc.class.php à la ligne 244
+07/07/2012 à 01:36 ! : Erreur n°8 (Undefined variable: erreur) dans le fichier C:\wamp\www\GCsystem2.0\system\class\generalGc.class.php à la ligne 89
+07/07/2012 à 01:36 ! : Erreur n°8 (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\appDevGc.class.php à la ligne 66

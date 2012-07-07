@@ -27,3 +27,11 @@ Contenus externes :
 -----------
 
 * Utilisation des images de la barre de développement de symfony pendant la période de développement du Framework
+
+Documentation :
+-----------
+
+* Le GCsystem 2.0 étant encore en développement, aucune documentation n'est pour l'instant disponible, mais une documentation est en cours de rédaction en parallèle
+* Vous pouvez toujours lire le [cours de prise en main de la version 1.0 du GCsystem][1]
+
+[1]: http://www.legeekcafe.com/tutoriels-55-utiliser-le-gcsystem.html
