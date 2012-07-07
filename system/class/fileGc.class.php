@@ -111,6 +111,10 @@
 			}
 		}
 		
+		public function getFolder(){
+			return dirname($this->_filePath);
+		}
+		
 		public function setFile($filepath){
 			if($filepath == NULL) $filepath = 'empty.txt'; $this->_setFileDefault($filepath);
 			$filepath = strval($filepath);
@@ -189,6 +193,33 @@
 			}
 			else{
 				$this->_addError(self::NOACCESS);
+				return false;
+			}
+		}
+		
+		public function isWritable() {
+			if(is_writable($this->_filePath)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		
+		public function iseExecutable() {
+			if(is_executable($this->_filePath)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		
+		public function iseReadable() {
+			if(is_readable($this->_filePath)){
+				return true;
+			}
+			else{
 				return false;
 			}
 		}
