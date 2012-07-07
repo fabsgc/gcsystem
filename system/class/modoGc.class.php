@@ -11,8 +11,16 @@
 		
 		protected $_contenu                       ; //contenu à filtrer
 		protected $_maxWord                  = 10  ; //contenu à filtrer
-		protected $_insulte                  = array(
-			'salaud', 'merde', 'salope', 'pute', 'putain', 'fils de pute', 'enculé', 'connasse'); //array contenant toutes les erreurs enregistrées
+		protected $_insulte                  = array('Agnaflai', 'Amagan', 'Anani Sikerim', 'Anayin Ami', 'Anus De Poulpe', 'Arschloch', 'Artaïl', 'Aspirateur à Bites', 'Aspirateur à Muscadet',
+													 'Asshole', 'Ateye', 'Balafamouk', 'Balai De Chiottes', 'Bassine A Foutre', 'Bite Molle', 'Bleubite', 'Bordel', 'Bordel à Cul', 'Bouche à Pipe',
+													 'Bouffon', 'Bougre De Con', 'Bougre De Conne', 'Boursemolle', 'Boursouflure', 'Bouseux', 'Boz', 'Branleur', 'Butor', 'Cabron', 'Caja De Miera',
+													 'Chancreux', 'Chien D\'infidèle', 'Chien Galeux', 'Chieur', 'Clawi', 'Con', 'Conard', 'Connard', 'Connasse', 'Conne', 'Cono', 'Couille De Loup',
+													 'Couille De Moineau', 'Couille De Tétard', 'Couille Molle', 'Couillon', 'Crevard', 'Crevure', 'Crétin', 'Cul De Babouin', 'Cul Terreux', 
+													 'Degueulasse', 'Ducon', 'Dégénéré Chromozomique', 'Embrayage', 'Emmerdeur', 'Encule Ta Mère', 'Enculeur De Mouches', 'enculé', 'Enfant De Tainpu',
+													 'Face De Cul', 'Face De Pet', 'Face De Rat', 'Fils De Pute', 'Fouille Merde', 'Grognasse', 'Gros Con', 'Hijo De Puta', 'Lopette', 'Manche à Couille',
+													 'Mange Merde', 'Merde', 'Mist', 'Moudlabite', 'Pauvre Con', 'Pendejo', 'Perra', 'Petite Merde', 'Playboy De Superette', 'Pouffiasse', 'Putain',
+													 'Pute', 'Pute Au Rabais', 'Pétasse', 'Quéquette', 'Raclure De Bidet', 'Raclure De Chiotte', 'Sac à Merde', 'Safali', 'Salaud', 'Sale Pute', 'Saligaud',
+													 'Salopard', 'Salope', 'Sous Merde', 'Spermatozoide Avarié', 'Suce Bites', 'Trou De Balle', 'Trou Du Cul', 'Tête De Bite', 'Va Te Faire', 'Vieux Con'); //array contenant toutes les erreurs enregistrées
 		protected $_parseInsulte             = array();
 		protected $_i                        = array();
 		
@@ -31,14 +39,26 @@
 		}
 		
 		/**
-		 * Fonction de parsage du message
+		 * Fonction de parsage du message. Retourne soit true soit un array contenant la liste des insultes
 		 * @access	public
 		 * @return	array ou boolean
 		 * @since 2.0
 		*/
 		
 		public function parse(){
-			$this->_i = 0;
+			$this->_parseInsulte = array();
+			foreach($this->_insulte as $insulte){
+				if(preg_match('`'.preg_quote($insulte).'`i', $tihs->_contenu)){
+				
+				}
+			}
+			
+			if(count($this->_parseInsulte) == 0){
+				return $this->_parseInsulte;
+			}
+			else{
+				return true;
+			}
 		}
 		
 		/**

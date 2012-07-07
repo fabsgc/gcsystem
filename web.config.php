@@ -156,6 +156,9 @@ define('CLASS_OBJECT', CLASS_PATH.'objectGc.class.php');
 //class social
 define('CLASS_SOCIAL', CLASS_PATH.'socialGc.class.php');
 
+//autoload des class
+define('CLASS_AUTOLOAD', CLASS_PATH.'autoload.php');
+
 //GESHI
 define('GESHI', LIB_PATH.'geshi/geshi.php');
 
