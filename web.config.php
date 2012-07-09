@@ -66,6 +66,9 @@ define('LIB_PATH', SYSTEM_PATH.'lib/');
 //chemin d'accès fichiers de langues
 define('LANG_PATH', SYSTEM_PATH.'lang/');
 
+//chemin d'accès fichiers GCsysem
+define('GCSYSTEM_PATH', 'GCsystem/');
+
 //extension fichiers de langues
 define('LANG_EXT', '.xml');
 

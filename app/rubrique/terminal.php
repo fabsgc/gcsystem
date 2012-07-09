@@ -6,9 +6,9 @@
 		break;
 		
 		default:
-			$GLOBALS['rubrique']->setInfo(array('title'=>'é bijour', 'css'=>''));
+			$GLOBALS['rubrique']->setInfo(array('title'=>'Terminal - GCsystem', 'css'=>''));
 			echo $GLOBALS['rubrique']->affHeader();
-				$t= new templateGC('GCterminal', 'GCterminal', '0');
+				$t= new templateGC(GCSYSTEM_PATH.'GCterminal', 'GCterminal', '0');
 				if(ENVIRONMENT == 'development') $t->assign(array('moins' => 50, 'moins2'=>80));
 					else $t->assign(array('moins' => 0, 'moins2' => 30));
 				$t->show();

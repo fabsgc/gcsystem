@@ -10,13 +10,32 @@
 		protected $img;                //contient l'url de l'image
 		protected $imgGD;              //objet GD
 		
-		public function __construct($img){
-			$this->img = $img;
+		public function __construct($filepath){
+			if(is_file($filepath)){
+				$this->setFile($filepath);
+			}
+			else{
+				$this->_addError(self::NOACCESS);
+			}
 		}
 		
-		public function _setImg($img){
-			$this->img = $img;
-		}
+		public function setFile($filepath){
+			$filepath = strval($filepath);
+			if(is_file($filepath)){
+				$this->_setFilePath($filepath);
+				$this->_setFileName($filepath);
+				$this->_setFileExt($filepath);
+				$this->_setFileInfo($filepath);
+				$this->_setFileContent($filepath);
+				$this->_setFileChmod($filepath);
+				$this->_setFileChmod($filepath);
+				$this->_isExist = true;
+				$this->_setFileGd($filepath);
+			}
+			else{
+				$this->_addError(self::NOACCESS);
+			}
+		}	
 		
 		public function _fromTo($to){
 			switch ($this->img){

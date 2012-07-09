@@ -389,7 +389,7 @@
 		/* ---------- FONCTIONS ------------- */
 		
 		public function setMaintenance(){
-			$tpl = new templateGC('GCmaintenance', 'GCmaintenance', 0, $this->lang);				
+			$tpl = new templateGC(GCSYSTEM_PATH.'GCmaintenance', 'GCmaintenance', 0, $this->lang);				
 			$tpl->show();
 		}
 		

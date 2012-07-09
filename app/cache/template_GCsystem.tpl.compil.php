@@ -54,11 +54,11 @@
 		
 	</div>
 	<div id="GCsystem_right">
-		<h1><?php echo "welkom !"; ?></h1>
-		<p><?php echo "Welkom op u nieuw project GC-systeem, dank u voor hebben gekozen onze framework."; ?></p>
+		<h1><?php echo "Bienvenue !"; ?></h1>
+		<p><?php echo "Bienvenue dans votre nouveau projet GCsystem, merci d'avoir choisi notre framework."; ?></p>
 		<ul>
-			<li><a href=""><?php echo "lezen de documentatie"; ?></a></li>
-			<li><a href=""><?php echo "lezen de inleidende les"; ?></a></li>
+			<li><a href=""><?php echo "lire la documentation"; ?></a></li>
+			<li><a href=""><?php echo "lire le cours d'introduction"; ?></a></li>
 		</ul>
 	</div>
 </div>

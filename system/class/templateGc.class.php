@@ -62,7 +62,8 @@
 			if(isset($this->vars[$nom]) && !is_array($this->vars[$nom])){
 				array_push($error, 'Vous avez écrasé une variable par un array.');
 			}
-
+			
+			
 			if(strpos($nom, '.')){
 				$e = explode('.', $n);
 				$b = '$this->vars';

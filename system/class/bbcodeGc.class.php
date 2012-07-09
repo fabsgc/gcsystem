@@ -5,10 +5,10 @@
 	 * @description : class gérant le parsage des messages et l'affichage d'un éditeur plus ou moins avancé
 	 * @version : 2.0 bêta
 	*/
-	
+
 	class bbcodeGc{
 		use errorGc, langInstance;                                              //trait
-		
+
 		protected $_contenu                                     ; //contenu à parser
 		const TAGSTART                    = '['                 ; //constante contenant les tag pour la syntaxe
 		const TAGSTART2                   = '[/'                ;
@@ -18,21 +18,21 @@
 		const PARSETAGEND                 = '>'                 ;
 		const PARSETAGENDAUTO             = '/>'                ;
 		const BBCODE                      = 'bbcode'            ; //répertoire contenant les images
-		
+
 		protected $_id                                          ; //id uniq pour la création d'un formulaire de bbcode
 		protected $_name                                        ; //name pour la création d'un formulaire de bbcode
 		protected $_preview                  =true              ; //la prévisualisation est activée
 		protected $_previewInstantanee       =true              ; //la prévisualisation instantanée est activée
-		
-		protected $_bbcodeWidth              ='600px'            ; //largeur de l'éditeur
-		protected $_bbcodeHeight             ='250px'            ; //largeur de la zone de texte de l'éditeur
-		protected $_bbcodeBgColor            ='#9d9d9d'          ; //couleur de fond de l'éditeur
-		protected $_bbcodeButton             ='blue'             ; //couleur de la barre d'option et du bouton prévisualiser.
+
+		protected $_bbCodeWidth              ='600px'            ; //largeur de l'éditeur
+		protected $_bbCodeHeight             ='250px'            ; //largeur de la zone de texte de l'éditeur
+		protected $_bbCodeBgColor            ='#9d9d9d'          ; //couleur de fond de l'éditeur
+		protected $_bbCodeButton             ='blue'             ; //couleur de la barre d'option et du bouton prévisualiser.
 															      //valeur : button blue red green pinkish maroonish golden brownish 
 															      //grayish skinish yellowish goldenish pink violet orange seagreen personalize
-		protected $bbcodeButtonColor        = array()           ; //dans le cas de couleurs personnalisées
-		
-		protected $bbCode = array (
+		protected $_bbCodeButtonColor        = array()           ; //dans le cas de couleurs personnalisées
+
+		protected $_bbCode = array (
 			'abbr'   => array ('abbr title=&quot;(.*)&quot;', 'abbr', 'abbr title="$1"', 'abbr', '$2'),
 			'quote'  => array ('quote title=&quot;(.*)&quot;', 'quote', 'blockquote title="$1"', 'blockquote', '$2'),
 			'sup'    => array ('sup', 'sup', 'sup', 'sup', '$1'),
@@ -61,7 +61,7 @@
 			'police' => array ('font val=&quot;(.*)&quot;', 'font', 'span style="font-family: $1;"', 'span', '$1'),
 		);
 
-		protected $bbCodeSmiley = array (
+		protected $_bbCodeSmiley = array (
 			':)'       => array('smile.png', ':)'),
 			':D'       => array('heureux.png', ':D'), 
 			':p'       => array('langue.png', ':p'),
@@ -75,8 +75,8 @@
 			':think:'  => array('think.png', ':think:'),
 			':pleure:'     => array('pleure.png', ':pleure:')
 		);
-		
-		protected $bbCodeJs = array (
+
+		protected $_bbCodeJs = array (
 			'abbr'   => array ('abbr title="(.*)"', 'abbr', 'abbr title="$1"', 'abbr', '$2'),
 			'quote'  => array ('quote title="(.*)"', 'quote', 'blockquote title="$1"', 'blockquote', '$2'),
 			'sup'    => array ('sup', 'sup', 'sup', 'sup', '$1'),
@@ -104,10 +104,10 @@
 			'taille' => array ('size val="(.*)"', 'size', 'span style="font-size: $1em;"', 'span', '$2'),
 			'police' => array ('font val="(.*)"', 'font', 'span style="font-family: $1;"', 'span', '$2'),
 		);
-		
-		protected $bbCodeS = array ('ul', 'li', 'ol', 'table', 'tr', 'td', 'th');
-		
-		protected $bbCodeSJs = array (
+
+		protected $_bbCodeS = array ('ul', 'li', 'ol', 'table', 'tr', 'td', 'th');
+
+		protected $_bbCodeSJs = array (
 			'ul'    => array('ul'),
 			'li'    => array('li'), 
 			'ol'    => array('ol'), 
@@ -116,8 +116,8 @@
 			'td'    => array('td'), 
 			'th'    =>  array('th')
 		);
-		
-		protected $bbCodeEditor = array (
+
+		protected $_bbCodeEditor = array (
 			'strong' => array ('strong', 'strong', 'gras.png'),
 			'em'     => array ('em', 'em', 'italique.png'),
 			'ins'    => array ('ins', 'ins', 'souligne.png'),
@@ -144,20 +144,20 @@
 
 		public  function __construct($lang=""){
 			require_once(GESHI);
-			
+
 			$this->_langInstance;
 			$this->_createLangInstance();
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 		}
-		
+
 		protected function _createLangInstance(){
 			$this->_langInstance = new langGc($this->_lang);
 		}
-		
+
 		public function useLang($sentence){
 			return $this->_langInstance->loadSentence($sentence);
 		}
-		
+
 		public function parse($contenu){
 			//securite
 			$this->_contenu = preg_replace(
@@ -175,9 +175,9 @@
 				'script supprimé', 
 				$this->_contenu
 			);
-			
+
 			$this->_contenu = htmlentities($contenu);
-			
+
 			foreach($this->_bbcode as $cle => $valeur){
 				if($valeur[3]!=""){
 					$this->_contenu = preg_replace(
@@ -194,14 +194,14 @@
 					);
 				}
 			}
-			
+
 			foreach($this->_bbcodeS as $valeur){
 					$this->_contenu = preg_replace(
 						'`'.preg_quote(self::TAGSTART).$valeur.preg_quote(self::TAGEND).'`isU', 
 							self::PARSETAGSTART.$valeur.self::PARSETAGEND, 
 							$this->_contenu
 					);
-					
+
 					$this->_contenu = preg_replace(
 						'`'.preg_quote(self::TAGSTART2).$valeur.preg_quote(self::TAGEND).'`isU', 
 							self::PARSETAGSTART2.$valeur.self::PARSETAGEND, 
@@ -209,7 +209,7 @@
 					);
 
 			}
-			
+
 			foreach($this->_bbcodeSmiley as $cle => $valeur){
 				$this->_contenu = preg_replace(
 					'`'.preg_quote($cle).'`isU', 
@@ -217,7 +217,7 @@
 						$this->_contenu
 				);
 			}
-			
+
 			//balise non html
 			$this->_contenu = preg_replace_callback(
 				'`'.preg_quote(self::TAGSTART).'video'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'video'.preg_quote(self::TAGEND).'`isU', 
@@ -230,33 +230,33 @@
 			$this->_contenu =  preg_replace_callback(
 				'`\s((?:https?|ftp)://\S+?)(?=[]\).,;:!?]?(?:\s|\Z)|\Z)`isU', 
 				array('bbcodeGc', '_link'), $this->_contenu);
-		
+
 			$this->_contenu = nl2br($this->_contenu);
 			$this->_contenu = preg_replace('`><br />`isU', '>', $this->_contenu);
 			return $this->_contenu;
 		}
-		
+
 		public function setContenu($contenu){
 			$this->_contenu = $this->_contenu;
 		}
-		
+
 		public function setLang($Lang){
 			$this->_lang=$Lang;
 			$this->_langInstance->setLang($this->_lang);
 		} 
-		
+
 		public function setPreview($preview){
-			$this->preview=$preview;
+			$this->_preview=$preview;
 		} 
-		
+
 		public function setInstantane($preview){
-			$this->previewInstantanee=$preview;
+			$this->_previewInstantanee=$preview;
 		} 
-		
+
 		protected function _highlight($contenu){
 			$contenu[1] = html_entity_decode($contenu[1]);
 			$contenu[2] = html_entity_decode($contenu[2]);
-			
+
 			$code = new GeSHi($contenu[2], $contenu[1]);
 			$code->enable_line_numbers(GESHI_FANCY_LINE_NUMBERS, 2);
 			$code->set_line_style('background: #fefefe;', 'background: #f0f0f0;'); 
@@ -267,7 +267,7 @@
 				self::PARSETAGSTART.'div class="code_code"'.self::PARSETAGEND.$parse.self::PARSETAGSTART2.'div'.self::PARSETAGEND.
 				self::PARSETAGSTART2.'code'.self::PARSETAGEND;
 		}
-		
+
 		protected function _link($contenu){
 			if(strlen($contenu[1])>65){
 				return self::PARSETAGSTART.'a href="http://'.substr($contenu[1], 6,strlen($contenu[1])).'"'.self::PARSETAGEND.substr($contenu[1], 0,65).'...'.self::PARSETAGSTART2.'a'.self::PARSETAGEND; 
@@ -276,11 +276,11 @@
 				return self::PARSETAGSTART.'a href="http://'.substr($contenu[1], 6,strlen($contenu[1])).'"'.self::PARSETAGEND.$contenu[1].self::PARSETAGSTART2.'a'.self::PARSETAGEND;
 			}
 		}
-		
+
 		protected function _video($contenu){
 			$contenu[1] = html_entity_decode($contenu[1]);
 			$contenu[1] =  preg_replace('#&feature=related#isU', '', $contenu[1]);	
-			
+
 			if(preg_match('#youtube#isU',$contenu[1])){
 				if(preg_match('#www#isU',$contenu[1])){	
 					if(!preg_match('#gl=#isU',$contenu[1])){
@@ -329,75 +329,77 @@
 				return '<video controls="" width="500" src="'.$contenu[1].'" controls="controls"></video>';
 			}
 		}
-		
+
 		public function editor($contenu, $option = array()){
-			$this->id = 'id_'.uniqid();
-			$this->name = 'name_'.uniqid();
-			
+			$this->_id = 'id_'.uniqid();
+			$this->_name = 'name_'.uniqid();
+
 			foreach($option as $cle=>$info){
 				switch($cle){
 					case 'width':
-						$this->_bbcodeWidth = $info;
+						$this->_bbCodeWidth = $info;
 					break;
-					
+
 					case 'height':
-						$this->_bbcodeHeight = $info;
+						$this->_bbCodeHeight = $info;
 					break;
-					
+
 					case 'bgcolor':
-						$this->_bbcodeBgColor = $info;
+						$this->_bbCodeBgColor = $info;
 					break;
-					
+
 					case 'id':
-						$this->id = $info;
+						$this->_id = $info;
 					break;
-					
+
 					case 'name':
-						$this->name = $info;
+						$this->_name = $info;
 					break;
-					
+
 					case 'theme':
-						$this->_bbcodeButton = $info;
+						$this->_bbCodeButton = $info;
 					break;
-					
+
 					case 'preview':
-						$this->preview = $info;
+						$this->_preview = $info;
 					break;
-					
+
 					case 'instantane':
-						$this->previewInstantanee = $info;
+						$this->_previewInstantanee = $info;
 					break;
-					
+
 					case 'color' :
-						$this->_bbcodeButtonColor = $info;
+						$this->_bbCodeButtonColor = $info;
 					break;
 				}
 			}
-			
-			$tpl = new templateGC('GCbbcodeEditor', 'GCbbcodeEditor', 0, $this->_lang);
+
+			$tpl = new templateGC(GCSYSTEM_PATH.'GCbbcodeEditor', 'GCbbcodeEditor', 0, $this->_lang);
 			$tpl->assign(array(
 				'message' => $contenu,
-				'preview' => $this->preview,
-				'instantane' => $this->previewInstantanee,
-				'id' => $this->id,
-				'name' => $this->name,
-				'width' => $this->_bbcodeWidth,
-				'Twidth' => $this->_bbcodeWidth,
-				'height' => $this->_bbcodeHeight,
-				'bgcolor' => $this->_bbcodeBgColor,
-				'theme' => $this->_bbcodeButton,
-				'smiley' => $this->_bbcodeSmiley,
-				'bbcode' => $this->_bbcodeJs,
-				'imgpath' => IMG_PATH,
-				'bbCodeS' => $this->_bbcodeSJs,
-				'bbCodeEditor' => $this->_bbcodeEditor,
-				'color' => $this->_bbcodeButtonColor
+				'preview' => $this->_preview,
+				'instantane' => $this->_previewInstantanee,
+				'id' => $this->_id,
+				'name' => $this->_name,
+				'width' => $this->_bbCodeWidth,
+				'Twidth' => $this->_bbCodeWidth,
+				'height' => $this->_bbCodeHeight,
+				'bgcolor' => $this->_bbCodeBgColor,
+				'theme' => $this->_bbCodeButton,
+				'smiley' => $this->_bbCodeSmiley,
+				'bbcode' => $this->_bbCodeJs,
+				'imgpath' => IMG_PATH.GCSYSTEM_PATH,
+				'bbCodeS' => $this->_bbCodeSJs,
+				'bbCodeEditor' => $this->_bbCodeEditor,
+				'color' => $this->_bbCodeButtonColor
 			));
 			$tpl->show();
+			
+			print_r($this->_bbcodeButtonColor);
 		}
-		
+
 		public  function __desctuct(){
-		
+
 		}
 	}
 ?>

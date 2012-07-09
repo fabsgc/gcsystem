@@ -30,7 +30,7 @@
 	}
 	
 	div .button {
-		
+
 	}
 
 	.button, .option {
@@ -353,7 +353,7 @@
 		background-image: -ms-linear-gradient(top,#fe4df6,#e835de);
 		background-image: -o-linear-gradient(top,#fe4df6,#e835de);
 		background-image: linear-gradient(top,#fe4df6,#e835de);
-		
+
 		-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
 		-moz-box-shadow: 0 1px 1px rgba(0,0,0,.1);
 		box-shadow: 0 1px 1px rgba(0,0,0,.1);
@@ -380,7 +380,7 @@
 		background-image: -ms-linear-gradient(top,#c14Dfe,#a435e8);
 		background-image: -o-linear-gradient(top,#c14Dfe,#a435e8);
 		background-image: linear-gradient(top,#c14Dfe,#a435e8);
-		
+
 		-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
 		-moz-box-shadow: 0 1px 1px rgba(0,0,0,.1);
 		box-shadow: 0 1px 1px rgba(0,0,0,.1);
@@ -402,14 +402,14 @@
 
 	.button.orange:hover {
 		border: 1px solid #b7492f;
-		
+
 		background-color: #e85a35;
 		background-image: -webkit-linear-gradient(top,#fe754d,#e85a35);
 		background-image: -moz-linear-gradient(top,#fe754d,#e85a35);
 		background-image: -ms-linear-gradient(top,#fe754d,#e85a35);
 		background-image: -o-linear-gradient(top,#fe754d,#e85a35);
 		background-image: linear-gradient(top,#fe754d,#e85a35);
-		
+
 		-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
 		-moz-box-shadow: 0 1px 1px rgba(0,0,0,.1);
 		box-shadow: 0 1px 1px rgba(0,0,0,.1);
@@ -429,14 +429,14 @@
 
 	.button.seagreen:hover {
 		border: 1px solid #2fb7a2;
-		
+
 		background-color: #35e8d0;
 		background-image: -webkit-linear-gradient(top,#4dfee5,#35e8d0);
 		background-image: -moz-linear-gradient(top,#4dfee5,#35e8d0);
 		background-image: -ms-linear-gradient(top,#4dfee5,#35e8d0);
 		background-image: -o-linear-gradient(top,#4dfee5,#35e8d0);
 		background-image: linear-gradient(top,#4dfee5,#35e8d0);
-		
+
 		-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
 		-moz-box-shadow: 0 1px 1px rgba(0,0,0,.1);
 		box-shadow: 0 1px 1px rgba(0,0,0,.1);
@@ -532,9 +532,9 @@
 		<foreach var="$bbCodeS" as="$val">
 			field = field.replace(/\[<function name="html_entity_decode" string="$val[0]" />\]([\s\S]*?)\[\/<function name="html_entity_decode" string="$val[0]" />\]/g, '<<function name="html_entity_decode" string="$val[0]" />>$1</<function name="html_entity_decode" string="$val[0]" />>');
 		</foreach>
-		
+
 		field = field.replace('&gt;&lt;br \/&gt;', '>');
-		
+
 		document.getElementById('zone_{id}').innerHTML = field;
 		document.getElementById('zone_{id}').innerHTML = field;
 		document.getElementById('zone_{id}').scrollTop = 1000;
@@ -546,7 +546,7 @@
 	
 	function nl2br_js(myString) {
 		var regX = /\n/gi ;
-	
+
 		s = new String(myString);
 		s = s.replace(regX, "<br /> \n");
 		return s;

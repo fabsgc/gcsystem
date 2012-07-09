@@ -11,7 +11,7 @@
 			?>
 				<link href="asset/css/default.css" rel="stylesheet" type="text/css" media="screen, print, handheld" />
 			<?php
-			$tpl = new templateGC('GCtplGc_windowInfo', 'tplGc_windowInfo', 0, $lang);
+			$tpl = new templateGC(GCSYSTEM_PATH.'GCtplGc_windowInfo', 'tplGc_windowInfo', 0, $lang);
 			
 			$tpl->assign(array(
 				'title'=>$Title,
@@ -24,7 +24,7 @@
 		}
 		
 		public function blockInfo($Title, $Content, $Time, $Redirect, $lang="fr"){
-			$tpl = new templateGC('GCtplGc_blockInfo', 'tplGc_blockInfo', 0, $lang);
+			$tpl = new templateGC(GCSYSTEM_PATH.'GCtplGc_blockInfo', 'tplGc_blockInfo', 0, $lang);
 			
 			$tpl->assign(array(
 				'title'=>$Title,
