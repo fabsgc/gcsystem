@@ -30,6 +30,10 @@ if(CONNECTBDD == true) {$GLOBALS['base']=$GLOBALS['rubrique']->connectDatabase($
 
 $GLOBALS['rubrique']->GzipinitOutputFilter();
 
+/* --------------- function générique --------- */
+
+require_once(FUNCTION_GENERIQUE);
+
 switch(ENVIRONMENT){	
 	case 'development' :		
 		error_reporting(E_ALL | E_NOTICE);			

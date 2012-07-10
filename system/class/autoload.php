@@ -5,7 +5,6 @@
 	require_once(CLASS_LOG);
 	require_once(CLASS_EXCEPTION);
 	require_once(CLASS_CAPTCHA);
-	require_once(FUNCTION_GENERIQUE);
 	require_once(CLASS_FORMSGC);
 	require_once(CLASS_CACHE);
 	require_once(CLASS_TEMPLATE);
