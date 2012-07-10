@@ -204,6 +204,9 @@ define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
 //base du site (utile pour eviter les repetition et faciliter  les changements de bdd
 define('BDD', 'test');
 
+//base du site (utile pour eviter les repetition et faciliter  les changements de bdd
+define('CONNECTBDD', true);
+
 //charset
 define('CHARSET', 'iso-8859-15');
 

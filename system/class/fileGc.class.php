@@ -17,7 +17,7 @@
 		protected $_info                              = array();
 		protected $_isExist                           = false  ;
 		
-		const NOFILE   = 'Aucun fichier n\'a &eacute;t&eacute; difini'     ;
+		const NOFILE   = 'Aucun fichier n\'a été difini'     ;
 		const NOACCESS = 'le fichier n\'est pas accessible'                ;
 		const NOREAD   = 'le fichier n\'est pas lisible'                   ;
 		
@@ -36,6 +36,9 @@
 		
 		public function __construct($filepath){
 			if($filepath == NULL) { $filepath = 'empty.txt'; $this->_setFileDefault($filepath); }
+			if($filepath!=NULL && !is_file($filepath)) { $this->_setFileDefault($filepath); }
+			
+			$filepath = strval($filepath);
 			if(is_file($filepath)){
 				$this->setFile($filepath);
 			}
@@ -219,6 +222,8 @@
 		
 		public function setFile($filepath){
 			if($filepath == NULL) $filepath = 'empty.txt'; $this->_setFileDefault($filepath);
+			if($filepath!=NULL && !is_file($filepath)) { $this->_setFileDefault($filepath); }
+			
 			$filepath = strval($filepath);
 			if(is_file($filepath)){
 				$this->_setFilePath($filepath);
@@ -243,7 +248,7 @@
 		*/
 		
 		public function setChmod($chmod =self::CHMOD644){
-			chmod($thid->_filePath, $chmod);
+			chmod($this->_filePath, $chmod);
 			$this->_setFileChmod($this->_filePath);
 		}
 		

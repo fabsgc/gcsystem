@@ -24,7 +24,7 @@ $c = new TestErrorHandling();
 
 /* ---------- connexion SQL ----------------- */
 
-// $GLOBALS['base']=$GLOBALS['rubrique']->connectDatabase($db);
+if(CONNECTBDD == true) {$GLOBALS['base']=$GLOBALS['rubrique']->connectDatabase($db); }
 
 /* --------------- Gzip --------- */
 

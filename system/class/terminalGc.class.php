@@ -335,7 +335,7 @@
 			}
 		}
 		
-		public function mkmap($dir){
+		protected function _mkmap($dir){
 			$this->_dossier = opendir ($dir);
 		   
 			while ($this->_fichier = readdir ($this->_dossier)) {   

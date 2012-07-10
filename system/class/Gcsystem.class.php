@@ -67,7 +67,7 @@
 								$sql_connect[''.$d['database'].''] = new PDO('mysql:host='.$d['hostname'].';dbname='.$d['database'], $d['username'], $d['password']);
 							}
 							catch (PDOException $e){
-								$this->setErrorLog('errors.log', 'Une exception a été lancée. Message d\'erreur lors de la connexion à une base de données : '.$e.'');
+								$this->setErrorLog('errors_sql.log', 'Une exception a été lancée. Message d\'erreur lors de la connexion à une base de données : '.$e.'');
 							}	
 						break;
 						
@@ -81,7 +81,7 @@
 						break;
 						
 						default :
-							$this->setErrorLog('errors.log', 'L\'extension de cette connexion n\'est pas gérée');
+							$this->setErrorLog('errors_sql.log', 'L\'extension de cette connexion n\'est pas gérée');
 						break;
 					}
 				}
