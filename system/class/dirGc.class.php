@@ -57,9 +57,23 @@
 			return $this->_dirArbo;
 		}
 		
-		public function getSize(){
+		public function getSize($repertoire=""){
+			if($repertoire == "") { $repertoire = $this->_dirPath; }
 			if($this->_isExist == true){
-				return $this->_dirInfo['size'];
+				$racine = opendir($repertoire);
+				$poids = 0;
+				while($dossier = readdir($racine)){
+					if($dossier != '..' && $dossier != '.') {
+						if(is_dir($repertoire.'/'.$dossier)) {
+							$poids += $this->getSize($repertoire.'/'.$dossier);
+						} 
+						else {
+							$poids += filesize($repertoire.'/'.$dossier);
+						}
+					}
+				}
+				closedir($racine);
+				return $poids;
 			}
 			else{
 				$this->_addError(self::NODIR);
