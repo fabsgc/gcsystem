@@ -59,7 +59,10 @@
 		}
 		
 		public function init(){
+			$c = new TestErrorHandling(); 
 			$this->GzipinitOutputFilter();
+			
+			if(CONNECTBDD == true) {$GLOBALS['base']=$this->_connectDatabase($db); }
 			
 			switch(ENVIRONMENT){	
 				case 'development' :		
@@ -125,7 +128,7 @@
 				}
 				
 				if($rubrique!=""){
-					$this->setRubrique($rubrique);
+					$this->_setRubrique($rubrique);
 				}
 				else{
 					$this->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
@@ -134,7 +137,7 @@
 			}
 			else{
 				if(is_file(RUBRIQUE_PATH.'index.php')){ 
-					$this->setRubrique('index');
+					$this->_setRubrique('index');
 				}
 				else{ 
 					$this->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
@@ -145,7 +148,7 @@
 		
 		/* ---------- CONNEXION A LA BASE DE DONNEES --------- */
 		
-			public function connectDatabase($db){
+			protected function _connectDatabase($db){
 				foreach ($db as $d){
 					switch ($d['extension']){
 						case 'pdo':
@@ -195,7 +198,7 @@
 				unset($GLOBALS[''.$name.'']);
 			}
 			
-			public function setRubrique($rubrique){
+			private function _setRubrique($rubrique){
 				if(file_exists(SQL_PATH.$rubrique.SQL_EXT.'.php')){ require_once(SQL_PATH.$rubrique.SQL_EXT.'.php');}
 				if(file_exists(FORMS_PATH.$rubrique.FORMS_EXT.'.php')){ require_once(FORMS_PATH.$rubrique.FORMS_EXT.'.php'); }
 				if(file_exists(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php')){ require_once(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php');}

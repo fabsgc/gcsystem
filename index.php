@@ -17,12 +17,6 @@ require_once(CLASS_AUTOLOAD);
 $GLOBALS['appDevGc'] = new appDevGc();
 $GLOBALS['rubrique'] = new Gcsystem(); //constructeur
 
-/* ---------- gestion des erreurs (log) ----------- */
-$c = new TestErrorHandling(); 
-
-/* ---------- connexion SQL ----------------- */
-if(CONNECTBDD == true) {$GLOBALS['base']=$GLOBALS['rubrique']->connectDatabase($db); }
-
 /* ---------- démarrage de l'application ----------------- */
 $GLOBALS['rubrique']->init();
 
@@ -32,12 +26,8 @@ require_once(FUNCTION_GENERIQUE);
 /* ------ articulation du site web -------- */
 
 /* ------ appelez ici vos classes personnelles -------- */
-/* ------ appelez ici vos classes personnelles -------- */
+/* ------ -------- */
 
-if(MAINTENANCE==false){
-	$GLOBALS['rubrique']->route();
-}
-elseif(MAINTENANCE==true){
-	$GLOBALS['rubrique']->setMaintenance();
-}
+if(MAINTENANCE==false){ $GLOBALS['rubrique']->route(); }
+elseif(MAINTENANCE==true){ $GLOBALS['rubrique']->setMaintenance(); }
 if(ENVIRONMENT == 'development') $GLOBALS['appDevGc']->show();
