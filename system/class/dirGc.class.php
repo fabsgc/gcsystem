@@ -16,7 +16,7 @@
 		protected $_info                              = array();
 		protected $_isExist                           = false  ;
 		
-		const NODIR   = 'Aucun répertoire n\'a été difini'     ;
+		const NODIR    = 'Aucun répertoire n\'a été difini'    ;
 		const NOACCESS = 'le répertoire n\'est pas accessible' ;
 		const NOREAD   = 'le répertoire n\'est pas lisible'    ;
 		

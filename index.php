@@ -14,88 +14,30 @@ require_once('web.config.php');
 require_once(CLASS_AUTOLOAD);
 
 /* ---------- creation de la page -------------- */
-
 $GLOBALS['appDevGc'] = new appDevGc();
 $GLOBALS['rubrique'] = new Gcsystem(); //constructeur
 
 /* ---------- gestion des erreurs (log) ----------- */
-
 $c = new TestErrorHandling(); 
 
 /* ---------- connexion SQL ----------------- */
-
 if(CONNECTBDD == true) {$GLOBALS['base']=$GLOBALS['rubrique']->connectDatabase($db); }
 
-/* --------------- Gzip --------- */
+/* ---------- démarrage de l'application ----------------- */
+$GLOBALS['rubrique']->init();
 
-$GLOBALS['rubrique']->GzipinitOutputFilter();
-
-/* --------------- function générique --------- */
-
+/* --------------- fonctions générique --------- */
 require_once(FUNCTION_GENERIQUE);
-
-switch(ENVIRONMENT){	
-	case 'development' :		
-		error_reporting(E_ALL | E_NOTICE);			
-	break;
-
-	case 'production' :	
-		error_reporting(0);					
-	break;					
-}
-
-$GLOBALS['css']= array('default.css');
-$GLOBALS['js'] = array('script.js');
-
-/* ---------- protection des variables GET (faille XSS) -------------- */
-
-if(isset($_GET['rubrique'])) { $_GET['rubrique']=htmlentities($_GET['rubrique']); }
-if(isset($_GET['action'])) { $_GET['action']=htmlentities($_GET['action']); }
-if(isset($_GET['sousaction'])) { $_GET['sousaction']=htmlentities($_GET['sousaction']); }
-if(isset($_GET['id'])) { $_GET['id']=intval(htmlentities($_GET['id'])); }
-if(isset($_GET['page'])) { $_GET['page']=intval(htmlentities($_GET['page'])); }
-if(isset($_GET['search'])) { $_GET['search']=htmlentities($_GET['search']); }
-if(isset($_GET['design'])) { $_GET['design']=intval(htmlentities($_GET['design'])); }
-if(isset($_GET['menu'])) { $_GET['menu']=intval(htmlentities($_GET['menu'])); }
-if(isset($_GET['cat'])) { $_GET['cat']=intval(htmlentities($_GET['cat'])); }
-if(isset($_GET['soucat'])) { $_GET['soucat']=intval(htmlentities($_GET['soucat'])); }
-if(isset($_GET['token'])) { $_GET['token']=htmlentities($_GET['token']); }
-
-/* ------ enregistrement de la rubrique et de l'url -------- */
-
-$GLOBALS['rubrique']->setErrorLog('history.log','Page rewrite : http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].' rubrique : '.$_SERVER["SERVER_NAME"].$_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"].' / origine : '.$_SERVER['HTTP_REFERER'].' / IP : '.$_SERVER['REMOTE_ADDR']);
 
 /* ------ articulation du site web -------- */
 
 /* ------ appelez ici vos classes personnelles -------- */
-
-/* -------- -------- */
+/* ------ appelez ici vos classes personnelles -------- */
 
 if(MAINTENANCE==false){
-	if(isset($_GET['rubrique'])){
-		switch($_GET['rubrique']){
-			case 'terminal':
-				$GLOBALS['rubrique']->setRubrique('terminal');
-			break;
-
-			default:
-				$GLOBALS['rubrique']->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
-				$GLOBALS['rubrique']->setErrorLog('errors.log', 'The rubric '.$_GET['rubrique'].' were not found');
-			break;
-		}
-	}
-	else{
-		if(is_file(RUBRIQUE_PATH.'index.php')){ 
-			$GLOBALS['rubrique']->setRubrique('index');
-		} 
-		else { 
-			$GLOBALS['rubrique']->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
-			$GLOBALS['rubrique']->setErrorLog('errors.log', 'The rubric '.$_GET['rubrique'].' were not found');
-		}
-	}
+	$GLOBALS['rubrique']->route();
 }
 elseif(MAINTENANCE==true){
 	$GLOBALS['rubrique']->setMaintenance();
 }
-
 if(ENVIRONMENT == 'development') $GLOBALS['appDevGc']->show();

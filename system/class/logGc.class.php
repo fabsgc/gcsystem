@@ -63,7 +63,7 @@
 					$d = date("d/m/Y à H:i !",time());
 					$msg = sprintf("%s : Erreur n°%d (%s) dans le fichier %s à la ligne %d\n", $d, $errno, $errstr, $errfile, $errline);
 					
-					error_log($msg, 3, LOG_PATH."errors.log");
+					error_log($msg, 3, LOG_PATH."errors".LOG_EXT);
 					break;
 			}
 

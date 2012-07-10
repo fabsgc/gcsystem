@@ -34,7 +34,7 @@ define('IMG_PATH', ASSET_PATH.'image/');
 define('UPLOAD_PATH', ASSET_PATH.'upload/');
 
 //chemin d'accès fichiers de log
-define('LOG_PATH', APP_PATH.'log/');
+define('LOG_PATH', SYSTEM_PATH.'log/');
 
 //chemin d'accès fichiers de log
 define('CACHE_PATH', APP_PATH.'cache/');
@@ -54,6 +54,9 @@ define('SQL_PATH', APP_PATH.'sql/');
 //chemin d'accès des formulaires
 define('FORMS_PATH', APP_PATH.'forms/');
 
+//chemin d'accès aux fichiers de config du projet
+define('APP_CONFIG_PATH', APP_PATH.'config/');
+
 //chemin d'accès des templates
 define('TEMPLATE_PATH', APP_PATH.'template/');
 
@@ -71,6 +74,9 @@ define('GCSYSTEM_PATH', 'GCsystem/');
 
 //extension fichiers de langues
 define('LANG_EXT', '.xml');
+
+//extension fichiers de langues
+define('ROUTE_EXT', '.xml');
 
 // Définit l'extension des fichiers
 define('FILES_EXT', '.html');
@@ -177,6 +183,9 @@ define('FORMS_EXT', '.forms');
 //extension des fichiers de template
 define('TEMPLATE_EXT', '.tpl');
 
+//extension des fichiers de log
+define('LOG_EXT', '.log');
+
 //erreur script rubrique not found
 define('RUBRIQUE_NOT_FOUND', 'Une erreur relative au script s\'est produite.');
 
@@ -191,6 +200,9 @@ define('JQUERYFILE', JS_PATH.'jquery.min.js');
 define('JQUERYUIJS', JS_PATH.'jquery-ui.min.js');
 define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
 
+//chemin route
+define('ROUTE', APP_CONFIG_PATH.'routes'.ROUTE_EXT);
+
 /* --------------parametres de connexion a la base de donnees------------------*/
 
 // $db['bdd']['hostname'] = "localhost";
@@ -204,8 +216,8 @@ define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
 //base du site (utile pour eviter les repetition et faciliter  les changements de bdd
 define('BDD', 'test');
 
-//base du site (utile pour eviter les repetition et faciliter  les changements de bdd
-define('CONNECTBDD', true);
+//connexion à la bdd, true ou false
+define('CONNECTBDD', false);
 
 //charset
 define('CHARSET', 'iso-8859-15');
@@ -235,3 +247,7 @@ define('TERMINAL_MDP', 'mdp');
 
 /* mettre à true pour pouvoir utiliser jquery et jquery ui */
 define('JQUERY', true);
+
+/* mettre à true pour pouvoir utiliser jquery et jquery ui */
+define('SECUREGET', true);
+define('SECUREPOST', true);

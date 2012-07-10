@@ -29,6 +29,7 @@
 		protected $fbDescription               ;
 		protected $fbImage                     ;
 		protected $htmlType                    ;
+		protected $_domXml                     ;
 		
 		/* --- permet d'affiche le doctype et l'entete (avant la balise body) et </body></html> -- */
 		
@@ -57,6 +58,91 @@
 			if($lang==""){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
 		}
 		
+		public function init(){
+			$this->GzipinitOutputFilter();
+			
+			switch(ENVIRONMENT){	
+				case 'development' :		
+					error_reporting(E_ALL | E_NOTICE);			
+				break;
+
+				case 'production' :	
+					error_reporting(0);					
+				break;					
+			}
+			
+			if(SECUREGET == true && isset($_GET)){
+				foreach($_GET as $cle => $val){
+					$_GET[$cle] = htmlentities($val);
+				}
+			}
+			else{
+				if(isset($_GET['rubrique'])) { $_GET['rubrique']=htmlentities($_GET['rubrique']); }
+				if(isset($_GET['action'])) { $_GET['action']=htmlentities($_GET['action']); }
+				if(isset($_GET['sousaction'])) { $_GET['sousaction']=htmlentities($_GET['sousaction']); }
+				if(isset($_GET['id'])) { $_GET['id']=intval(htmlentities($_GET['id'])); }
+				if(isset($_GET['page'])) { $_GET['page']=intval(htmlentities($_GET['page'])); }
+				if(isset($_GET['search'])) { $_GET['search']=htmlentities($_GET['search']); }
+				if(isset($_GET['design'])) { $_GET['design']=intval(htmlentities($_GET['design'])); }
+				if(isset($_GET['menu'])) { $_GET['menu']=intval(htmlentities($_GET['menu'])); }
+				if(isset($_GET['cat'])) { $_GET['cat']=intval(htmlentities($_GET['cat'])); }
+				if(isset($_GET['soucat'])) { $_GET['soucat']=intval(htmlentities($_GET['soucat'])); }
+				if(isset($_GET['token'])) { $_GET['token']=htmlentities($_GET['token']); }
+			}
+			
+			if(SECUREPOST == true && isset($_GET)){
+				foreach($_GET as $cle => $val){
+					$_GET[$cle] = htmlentities($val);
+				}
+			}
+			
+			$this->setErrorLog('history','Page rewrite : http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].' rubrique : '.$_SERVER["SERVER_NAME"].$_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"].' / origine : '.$_SERVER['HTTP_REFERER'].' / IP : '.$_SERVER['REMOTE_ADDR']);
+			
+			$GLOBALS['css']= array('default.css');
+			$GLOBALS['js'] = array('script.js');
+		}
+		
+		public function route(){			
+			if(isset($_GET['rubrique'])){
+				$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
+				if($this->_domXml->load(ROUTE)){
+					$this->_addError('fichier ouvert : '.ROUTE);
+				}
+				else{
+					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
+				}
+				
+				$blog = $this->_domXml->getElementsByTagName('routes')->item(0);
+				$sentences = $blog->getElementsByTagName('route');
+				
+				foreach($sentences as $sentence){
+					if ($sentence->getAttribute("rubrique") == $_GET['rubrique']){
+						$rubrique =  $sentence->getAttribute("rubrique");
+					}
+					else{
+						$rubrique = "";
+					}
+				}
+				
+				if($rubrique!=""){
+					$this->setRubrique($rubrique);
+				}
+				else{
+					$this->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
+					$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
+				}
+			}
+			else{
+				if(is_file(RUBRIQUE_PATH.'index.php')){ 
+					$this->setRubrique('index');
+				}
+				else{ 
+					$this->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
+					$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
+				}
+			}
+		}
+		
 		/* ---------- CONNEXION A LA BASE DE DONNEES --------- */
 		
 			public function connectDatabase($db){
@@ -67,7 +153,7 @@
 								$sql_connect[''.$d['database'].''] = new PDO('mysql:host='.$d['hostname'].';dbname='.$d['database'], $d['username'], $d['password']);
 							}
 							catch (PDOException $e){
-								$this->setErrorLog('errors_sql.log', 'Une exception a été lancée. Message d\'erreur lors de la connexion à une base de données : '.$e.'');
+								$this->setErrorLog('errors_sql', 'Une exception a été lancée. Message d\'erreur lors de la connexion à une base de données : '.$e.'');
 							}	
 						break;
 						
@@ -81,7 +167,7 @@
 						break;
 						
 						default :
-							$this->setErrorLog('errors_sql.log', 'L\'extension de cette connexion n\'est pas gérée');
+							$this->setErrorLog('errors_sql', 'L\'extension de cette connexion n\'est pas gérée');
 						break;
 					}
 				}
@@ -499,7 +585,7 @@
 				include(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT);
 			} 
 			else { 
-				$this->setErrorLog('errors.log', 'Le template '.$nom_template.' n\'a pas été trouvé');
+				$this->setErrorLog('errors', 'Le template '.$nom_template.' n\'a pas été trouvé');
 			}
 		}
 		

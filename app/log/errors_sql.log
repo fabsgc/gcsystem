@@ -1,5 +1,0 @@
-10/07/2012 à 00:14 ! : Une exception a été lancée. Message d'erreur lors de la connexion à une base de données : exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database 'cacatest'' in C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php:67
-Stack trace:
-#0 C:\wamp\www\GCsystem2.0\system\class\Gcsystem.class.php(67): PDO->__construct('mysql:host=loca...', 'root', '')
-#1 C:\wamp\www\GCsystem2.0\index.php(27): Gcsystem->connectDatabase(Array)
-#2 {main}

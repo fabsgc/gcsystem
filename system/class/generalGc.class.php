@@ -37,7 +37,7 @@
 		}
 		
 		public function setErrorLog($file, $message){
-			$file = fopen(LOG_PATH.$file, "a+");
+			$file = fopen(LOG_PATH.$file.LOG_EXT, "a+");
 			fputs($file, date("d/m/Y à H:i ! : ",time()).$message."\n");
 		}
 		
