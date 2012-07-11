@@ -14,7 +14,7 @@ require_once('web.config.php');
 require_once(CLASS_AUTOLOAD);
 
 /* ---------- creation de la page -------------- */
-$GLOBALS['appDevGc'] = new appDevGc();
+$GLOBALS['appDevGc'] = new appDevGc('nl');
 $GLOBALS['rubrique'] = new Gcsystem('nl');
 
 /* ---------- démarrage de l'application ----------------- */

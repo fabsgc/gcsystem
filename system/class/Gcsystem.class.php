@@ -81,9 +81,9 @@
 				
 				$c = new TestErrorHandling(); 
 				
-				require_once(FUNCTION_GENERIQUE);
-				
 				if(CONNECTBDD == true) {$GLOBALS['base']=$this->_connectDatabase($db); }
+				
+				require_once(FUNCTION_GENERIQUE);
 				
 				if(SECUREGET == true && isset($_GET)){
 					foreach($_GET as $cle => $val){
