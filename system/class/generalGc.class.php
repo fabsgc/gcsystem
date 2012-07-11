@@ -38,7 +38,7 @@
 		
 		public function setErrorLog($file, $message){
 			$file = fopen(LOG_PATH.$file.LOG_EXT, "a+");
-			fputs($file, date("d/m/Y à H:i ! : ",time()).$message."\n");
+			fputs($file, date("d/m/Y à H:i:s ! : ",time()).$message."\n");
 		}
 		
 		public function sendMail($email, $message_html, $sujet, $envoyeur){
@@ -93,7 +93,7 @@
 		protected function _addError($error){
 			array_push($this->_error, $error);
 			$file = fopen(LOG_PATH.'system_errors'.LOG_EXT, "a+");
-			fputs($file, date("d/m/Y à H:i ! : ",time()).$error."\n");
+			fputs($file, date("d/m/Y à H:i:s ! : ",time()).' fichier '.__FILE__.' ligne '.__LINE__.' '.$error."\n");
 			fclose($file);
 		}
     }
