@@ -9,7 +9,7 @@
     class langGc{
 		use errorGc;                            //trait
 		
-		protected $_lang = 'fr'       ; // nom de la langue a utilise
+		protected $_lang = DEFAULTLANG; // nom de la langue a utilise
 		protected $_langFile = true   ; // indique si le fichier de langue est charge ou non
 		protected $_domXml            ; // contient l'object DomDocument natif de PHP, permet la lecture des fichiers de langues
 		protected $_sentence          ; // contient la phrase du fichier de langue à charger

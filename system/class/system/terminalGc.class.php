@@ -89,6 +89,7 @@
 							
 							if($rubrique == false){
 								$this->_markupXml = $this->_domXml->createElement('route');
+								$this->_markupXml->setAttribute("id", uniqid());
 								$this->_markupXml->setAttribute("url", "");
 								$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[2]);
 								$this->_markupXml->setAttribute("action", "");
@@ -253,6 +254,7 @@
 						
 									foreach($sentences as $sentence){
 										if ($sentence->getAttribute("rubrique") == $this->_commandExplode[2]){
+											$id = $sentence->getAttribute("id");
 											$url = $sentence->getAttribute("url");
 											$action = $sentence->getAttribute("action");
 											$vars = $sentence->getAttribute("vars");
@@ -260,6 +262,7 @@
 											$this->_nodeXml->removeChild($sentence);
 											
 											$this->_markupXml = $this->_domXml->createElement('route');
+											$this->_markupXml->setAttribute("id", $id);
 											$this->_markupXml->setAttribute("url", $url);
 											$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[3]);
 											$this->_markupXml->setAttribute("action", $action);
