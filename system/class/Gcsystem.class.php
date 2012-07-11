@@ -81,7 +81,7 @@
 				
 				$c = new TestErrorHandling(); 
 				
-				if(CONNECTBDD == true) {$GLOBALS['base']=$this->_connectDatabase($db); }
+				if(CONNECTBDD == true) { $GLOBALS['base']=$this->_connectDatabase($GLOBALS['db']); }
 				
 				require_once(FUNCTION_GENERIQUE);
 				

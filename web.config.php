@@ -220,11 +220,11 @@ define('APPCONFIG', APP_CONFIG_PATH.'app'.CONFIG_EXT);
 
 /* --------------parametres de connexion a la base de donnees------------------*/
 
-// $db['bdd']['hostname'] = "localhost";
-// $db['bdd']['username'] = "root";
-// $db['bdd']['password'] = "";
-// $db['bdd']['database'] = "test";
-// $db['bdd']['extension'] = "pdo";
+$GLOBALS['db']['bdd']['hostname'] = "localhost";
+$GLOBALS['db']['bdd']['username'] = "root";
+$GLOBALS['db']['bdd']['password'] = "";
+$GLOBALS['db']['bdd']['database'] = "test";
+$GLOBALS['db']['bdd']['extension'] = "pdo";
 
 /* -------------- CONSTANTE RELATIVE AU SITE OBLIGATOIRES MAIS MODIFIABLES ----------------- */
 
@@ -232,7 +232,7 @@ define('APPCONFIG', APP_CONFIG_PATH.'app'.CONFIG_EXT);
 define('BDD', 'test');
 
 //connexion à la bdd, true ou false
-define('CONNECTBDD', false);
+define('CONNECTBDD', true);
 
 //connexion à la bdd, true ou false
 define('REWRITE', true);
