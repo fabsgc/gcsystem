@@ -12,7 +12,7 @@
 		protected $_command                       ; //contenu à traiter
 		protected $_stream                       ; //contenu à afficher
 		protected $_commandExplode                ; //contenu à traiter
-		protected $_result                        = '/ <span style="color: red;">commande non reconnu. Tapez help pour avoir la liste des commandes valides</span>'; //resultat du traitement
+		protected $_result                        = '/ <span style="color: red;">commande non reconnu. Tapez <strong>help</strong> pour avoir la liste des commandes valides</span>'; //resultat du traitement
 		protected $_dossier                       ; //dossier
 		protected $_fichier                       ; //fichier
 		protected $_forbidden                     ; //fichier interdit
@@ -359,7 +359,10 @@
 					$this->_stream .= '<br />> clear';
 					$this->_stream .= '<br />> update';
 					$this->_stream .= '<br />> update updater';
-					$this->_stream .= '<br />> see log';
+					$this->_stream .= '<br />> see log nomdulogsansextansion';
+					$this->_stream .= '<br />> changepassword nouveaumdp';
+					$this->_stream .= '<br />> connect mdp';
+					$this->_stream .= '<br />> disconnect';
 					$this->_result = '<br />><span style="color: chartreuse;"> liste des commandes</span>';
 				}
 				elseif(preg_match('#update updater#', $this->_command)){
