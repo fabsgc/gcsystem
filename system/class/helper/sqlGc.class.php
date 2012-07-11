@@ -205,7 +205,15 @@
 				$this->_requete->execute();
 				
 				switch($fetch){
-					case self::PARAM_FETCH : $this->_data = $this->_requete->fetchAll(); break;
+					case self::PARAM_FETCH : 
+						$this->_data = $this->_requete->fetchAll(); 
+						
+						if(count($this->_data)==1){
+							$data = $this->_data[0];
+							$this->_data = array();
+							$this->_data =$data;
+						}
+					break;
 					case self::PARAM_FETCHCOLUMN : $this->_data = $this->_requete->fetchColumn(); break;
 					case self::PARAM_FETCHINSERT : $this->_data = true; break;
 					case self::PARAM_FETCHUPDATE : $this->_data = true; break;

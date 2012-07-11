@@ -77,6 +77,34 @@
 			mail($email,$sujet,$message,$header);
 			//==========		
 		}
+		
+		public function getIp(){
+			return $_SERVER['REMOTE_ADDR'];
+		}
+	
+		public function getQuery(){
+			return $_SERVER['QUERY_STRING'];
+		}
+		
+		public function getPhpSelf(){
+			return $_SERVER['PHP_SELF'];
+		}
+		
+		public function getHost(){
+			return $_SERVER['HTTP_HOST'];
+		}
+		
+		public function getUri(){
+			return $_SERVER['REQUEST_URI'];
+		}
+		
+		public function getReferer(){
+			return $_SERVER['HTTP_REFERER'];
+		}
+		
+		public function getServerName(){
+			return $_SERVER['SERVER_NAME'];
+		}
 	}
 	
 	trait errorGc{

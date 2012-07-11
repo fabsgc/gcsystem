@@ -9,26 +9,33 @@
 	class mailGc{
 		use errorGc;                           			    //trait
 		
-		protected $_destinataire                          ; //email du destinataire
-		protected $_message                               ; //message
+		protected $_passagLigne                            ; //passage à la ligne en fonction du destinataire
+		protected $_destinataire                = array() ; //email du destinataire
+		protected $_expediteur                            ; //email de l'expediteur
+		protected $_message                     = array() ; //message
 		protected $_piece                       = array() ; //liste des pièces jointes
 		
-		/**
-		 * Cr&eacute;e l'instance de la classe
-		 * @access	public
-		 * @return	void
-		 * @since 2.0
-		*/
-		
-		public  function __construct(){
+		public  function __construct($infos = array()){
+			foreach($infos as $info){
+				switch($info){
+					case 'mail_expediteur' :
+					break;
+					
+					case 'mail_destinataire':
+					break;
+					
+					case 'mail_destinataire':
+					break;
+					
+					case 'mail_format':
+					break;
+				}
+			}
 		}
 		
-		/**
-		 * Desctructeur
-		 * @access	public
-		 * @return	boolean
-		 * @since 2.0
-		*/
+		protected function _setPassageLigne(){
+		
+		}
 		
 		public  function __desctuct(){
 		
