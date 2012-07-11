@@ -450,7 +450,7 @@
 				}
 			}
 			
-			return '<?php echo \'<img src="http://gravatar.com/avatar/\'.md5("'.$m[1].'").\'?s='.$m[2].'&default=http://\'.$_SERVER[\'HTTP_HOST\'].\'/\'.FOLDER.\'/asset/image/GCsystem/empty_avatar.png" alt="avatar" />\'; ?>';
+			return '<?php echo \'http://gravatar.com/avatar/\'.md5("'.$m[1].'").\'?s='.$m[2].'&default=http://\'.$_SERVER[\'HTTP_HOST\'].\'/\'.FOLDER.\'/asset/image/GCsystem/empty_avatar.png\'; ?>';
 		}
 		
 		protected function parseUrlRegex(){
