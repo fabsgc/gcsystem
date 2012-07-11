@@ -90,95 +90,101 @@ define('FILES_EXT', '.html');
 //fonction generique
 define('FUNCTION_GENERIQUE', INCLUDE_PATH.'function.php');
 
-//class mere gerant l'application
-define('CLASS_GENERAL_INTERFACE', CLASS_PATH.'generalGc.class.php');
+//chemin class systeme
+define('CLASS_SYSTEM_PATH', 'system/');
+
+//chemin class helper
+define('CLASS_HELPER_PATH', 'helper/');
 
 //class mere gerant l'application
-define('CLASS_RUBRIQUE', CLASS_PATH.'Gcsystem.class.php');
+define('CLASS_GENERAL_INTERFACE', CLASS_PATH.CLASS_SYSTEM_PATH.'generalGc.class.php');
+
+//class mere gerant l'application
+define('CLASS_RUBRIQUE', CLASS_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php');
 
 //class gerant les log
-define('CLASS_LOG', CLASS_PATH.'logGc.class.php');
+define('CLASS_LOG', CLASS_PATH.CLASS_SYSTEM_PATH.'logGc.class.php');
 
 //class gerant les log
-define('CLASS_CACHE', CLASS_PATH.'cacheGc.class.php');
+define('CLASS_CACHE', CLASS_PATH.CLASS_SYSTEM_PATH.'cacheGc.class.php');
 
 //class gerant les captchas
-define('CLASS_CAPTCHA', CLASS_PATH.'captchaGc.class.php');
+define('CLASS_CAPTCHA', CLASS_PATH.CLASS_HELPER_PATH.'captchaGc.class.php');
 
 //class gerant des exceptions
-define('CLASS_EXCEPTION', CLASS_PATH.'exceptionGc.class.php');
+define('CLASS_EXCEPTION', CLASS_PATH.CLASS_SYSTEM_PATH.'exceptionGc.class.php');
 
 //class gerant les templates
-define('CLASS_TEMPLATE', CLASS_PATH.'templateGc.class.php');
+define('CLASS_TEMPLATE', CLASS_PATH.CLASS_SYSTEM_PATH.'templateGc.class.php');
 
 //class formsGC
 define('CLASS_FORMSGC', LIB_PATH.'FormsGC/formsGC.php');
 
 //class lang
-define('CLASS_LANG', CLASS_PATH.'langGc.class.php');
+define('CLASS_LANG', CLASS_PATH.CLASS_SYSTEM_PATH.'langGc.class.php');
 
 //class file
-define('CLASS_FILE', CLASS_PATH.'fileGc.class.php');
+define('CLASS_FILE', CLASS_PATH.CLASS_HELPER_PATH.'fileGc.class.php');
 
 //class dir
-define('CLASS_DIR', CLASS_PATH.'dirGc.class.php');
+define('CLASS_DIR', CLASS_PATH.CLASS_HELPER_PATH.'dirGc.class.php');
 
 //class picture
-define('CLASS_PICTURE', CLASS_PATH.'pictureGc.class.php');
+define('CLASS_PICTURE', CLASS_PATH.CLASS_HELPER_PATH.'pictureGc.class.php');
 
 //class sql
-define('CLASS_SQL', CLASS_PATH.'sqlGc.class.php');
+define('CLASS_SQL', CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php');
 
 //class appDevGc
-define('CLASS_appDevGc', CLASS_PATH.'appDevGc.class.php');
+define('CLASS_appDevGc', CLASS_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php');
 
 //class zip
-define('CLASS_ZIP', CLASS_PATH.'zipGc.class.php');
+define('CLASS_ZIP', CLASS_PATH.CLASS_HELPER_PATH.'zipGc.class.php');
 
 //class mail
-define('CLASS_MAIL', CLASS_PATH.'mailGc.class.php');
+define('CLASS_MAIL', CLASS_PATH.CLASS_HELPER_PATH.'mailGc.class.php');
 
 //class bbcode
-define('CLASS_BBCODE', CLASS_PATH.'bbcodeGc.class.php');
+define('CLASS_BBCODE', CLASS_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php');
 
 //class modo
-define('CLASS_MODO', CLASS_PATH.'modoGc.class.php');
+define('CLASS_MODO', CLASS_PATH.CLASS_HELPER_PATH.'modoGc.class.php');
 
 //class modo
-define('CLASS_TERMINAL', CLASS_PATH.'terminalGc.class.php');
+define('CLASS_TERMINAL', CLASS_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php');
 
 //class upload
-define('CLASS_UPDLOAD', CLASS_PATH.'uploadGc.class.php');
+define('CLASS_UPDLOAD', CLASS_PATH.CLASS_HELPER_PATH.'uploadGc.class.php');
 
 //class download
-define('CLASS_DOWNLOAD', CLASS_PATH.'downloadGc.class.php');
+define('CLASS_DOWNLOAD', CLASS_PATH.CLASS_HELPER_PATH.'downloadGc.class.php');
 
 //class date
-define('CLASS_DATE', CLASS_PATH.'dateGc.class.php');
+define('CLASS_DATE', CLASS_PATH.CLASS_HELPER_PATH.'dateGc.class.php');
 
 //class texte
-define('CLASS_TEXT', CLASS_PATH.'textGc.class.php');
+define('CLASS_TEXT', CLASS_PATH.CLASS_HELPER_PATH.'textGc.class.php');
 
 //class feed
-define('CLASS_FEED', CLASS_PATH.'feedGc.class.php');
+define('CLASS_FEED', CLASS_PATH.CLASS_HELPER_PATH.'feedGc.class.php');
 
 //class js
-define('CLASS_JS', CLASS_PATH.'jsGc.class.php');
+define('CLASS_JS', CLASS_PATH.CLASS_HELPER_PATH.'jsGc.class.php');
 
 //class object
-define('CLASS_OBJECT', CLASS_PATH.'objectGc.class.php');
+define('CLASS_OBJECT', CLASS_PATH.CLASS_HELPER_PATH.'objectGc.class.php');
 
 //class social
-define('CLASS_SOCIAL', CLASS_PATH.'socialGc.class.php');
+define('CLASS_SOCIAL', CLASS_PATH.CLASS_HELPER_PATH.'socialGc.class.php');
 
 //autoload des class
 define('CLASS_AUTOLOAD', CLASS_PATH.'autoload.php');
 
 //class gérant le fichier de config de l'application
-define('CLASS_CONFIG', CLASS_PATH.'configGc.class.php');
+define('CLASS_CONFIG', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php');
 
 //class gérant l'url rewrite
-define('CLASS_ROUTER', CLASS_PATH.'routerGc.class.php');
+define('CLASS_ROUTER', CLASS_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php');
 
 //GESHI
 define('GESHI', LIB_PATH.'geshi/geshi.php');

@@ -25,6 +25,4 @@
 	require_once(CLASS_DATE);
 	require_once(CLASS_TEXT); 
 	require_once(CLASS_FEED); 
-	require_once(CLASS_JS); 
-	require_once(CLASS_OBJECT); 
 	require_once(CLASS_SOCIAL);

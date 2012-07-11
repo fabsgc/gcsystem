@@ -33,7 +33,6 @@
 		}
 		
 		public function __destruct(){
-		}
-			
+		}	
 	}
 ?>

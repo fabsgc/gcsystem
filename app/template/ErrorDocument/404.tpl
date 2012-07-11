@@ -1,1 +1,1 @@
-<h1 style="text-align: center;">_(404notfound)_</h1>
+<h1 style="text-align: center;">{url} _(404notfound)_</h1>

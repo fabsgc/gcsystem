@@ -76,7 +76,7 @@
 						}
 					}
 					
-					$tpl = new templateGC(GCSYSTEM_PATH.'GCsystemDev', 'GCsystemDev', 0, $this->_lang);
+					$tpl = new templateGC(GCSYSTEM_PATH.'GCsystemDev', 'GCsystemDev', '10000', $this->_lang);
 					$tpl->assign(array(
 						'text'=>$this->useLang('appDevGc_temp'),
 						'IMG_PATH'=>IMG_PATH.GCSYSTEM_PATH,

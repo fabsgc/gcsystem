@@ -126,6 +126,9 @@
 		public function redirect404(){
 			$this->addHeader('HTTP/1.0 404 Not Found');
 			$t= new templateGC(ERRORDUOCUMENT_PATH.'404', '404', '0', $this->lang);
+			$t->assign(array(
+				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri()))
+			));
 			$t->show();
         }
 		
