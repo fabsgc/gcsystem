@@ -51,7 +51,7 @@
 <div id="GCsystem">
 	<div id="GCsystem_left">
 		<img src="asset/image/GCsystem/logo.png" alt="logo"/>
-		/# {{gravatar:fabieudimi@hotmail.fr:500}} #/
+		/#{{gravatar:$var:500}} #/
 	</div>
 	<div id="GCsystem_right">
 		<h1>_(bienvenue)_</h1>
@@ -61,4 +61,5 @@
 			<li><a href="">_(lirecours)_</a></li>
 		</ul>
 	</div>
+	/#{{url:4ffdb88d4b57d:$var,prout,$var2}}"/
 </div>

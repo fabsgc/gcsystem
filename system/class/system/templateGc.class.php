@@ -207,14 +207,15 @@
 	}
 	
 	class templateGcParser{
-		use errorGc, langInstance;                                              //trait
+		use errorGc, langInstance, urlRegex;                                              //trait
 		
 		protected $templateGC     ;
 		protected $contenu        ;
 		
+		
 		/// les balises à parser
 		protected $bal= array(
-			'vars'           => array('{', '}', '{$', '}', '{{', '}}', 'variable', '{{gravatar:', '}}'),  // vars
+			'vars'           => array('{', '}', '{$', '}', '{{', '}}', 'variable', '{{gravatar:', '}}', '{{url:', '}}'),  // vars
 			'include'        => array('include', 'file', 'cache'),                   // include
 			'cond'           => array('if', 'elseif', 'else', 'cond'),               // condition
 			'foreach'        => array('foreach', 'var', 'as', 'foreachelse'),        // boucle tableau
@@ -246,6 +247,7 @@
 			$this->contenu=$c;
 			$this->parseInclude();
 			$this->parseGravatar();
+			$this->parseUrlRegex();
 			$this->parseForeach();
 			$this->parseWhile();
 			$this->parseFor();
@@ -426,9 +428,53 @@
 		}
 		
 		protected function parseGravatar(){
-			$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][7]).'(.+):(.+)'.preg_quote($this->bal['vars'][8]).'`sU',
-			'<?php echo \'<img src="http://gravatar.com/avatar/\'.md5("$1").\'?s=$2&default=http://\'.$_SERVER[\'HTTP_HOST\'].\'/\'.FOLDER.\'/asset/image/empty_avatar.png" alt="avatar" />\'; ?>',
-			$this->contenu);
+			$this->contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][7]).'(.+):(.+)'.preg_quote($this->bal['vars'][8]).'`sU',
+			array('templateGcParser', 'parseGravatarCallback'), $this->contenu);
+		}
+		
+		protected function parseGravatarCallback($m){			
+			if(preg_match('#\$#', $m[1])){
+				foreach ($this->templateGC->vars as $cle => $val){
+					if(substr($m[1], 1, strlen($m[1])) == $cle){
+						$m[1] = preg_replace('`'.$cle.'`', $val, $m[1]);
+						$m[1] =  substr($m[1], 1, strlen($m[1]));
+					}
+				}
+			}
+			if(preg_match('#\$#', $m[2])){
+				foreach ($this->templateGC->vars as $cle => $val){
+					if(substr($m[2], 1, strlen($m[2])) == $cle){
+						$m[2] = preg_replace('`'.$cle.'`', $val, $m[2]);
+						$m[2] =  substr($var, 1, strlen($m[2]));
+					}
+				}
+			}
+			
+			return '<?php echo \'<img src="http://gravatar.com/avatar/\'.md5("'.$m[1].'").\'?s='.$m[2].'&default=http://\'.$_SERVER[\'HTTP_HOST\'].\'/\'.FOLDER.\'/asset/image/GCsystem/empty_avatar.png" alt="avatar" />\'; ?>';
+		}
+		
+		protected function parseUrlRegex(){
+			$this->contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][9]).'(.+):(.+)'.preg_quote($this->bal['vars'][10]).'`sU',
+			array('templateGcParser', 'parseUrlRegexCallback'), $this->contenu);
+		}
+		
+		protected function parseUrlRegexCallback($m){
+			$vars = explode(',', $m[2]);
+			$valeur = array();
+			foreach($vars as $var){
+				if(preg_match('#\$#', $var)){
+					foreach ($this->templateGC->vars as $cle => $val){
+						if(substr($var, 1, strlen($var)) == $cle){
+							$var = preg_replace('`'.$cle.'`', $val, $var);
+							array_push($valeur, substr($var, 1, strlen($var)));
+						}
+					}
+				}
+				else{
+					array_push($valeur, $var);
+				}
+			}
+			return $this->getUrl($m[1], $valeur);
 		}
 	}
 ?>

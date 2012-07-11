@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-15"?>
 <routes>
-    <route url="/" rubrique="index" action="" vars=""/>
-    <route url="/index\.html" rubrique="index" action="" vars=""/>
-    <route url="/terminal\.html" rubrique="terminal" action="" vars=""/>
+    <route id="index" url="/" rubrique="index" action="" vars=""/>
+    <route id="index2" url="/index\.html" rubrique="index" action="" vars=""/>
+    <route id="terminal" url="/terminal\.html" rubrique="terminal" action="" vars=""/>
     <route id="terminal_terminal" url="/terminal-terminal\.html" rubrique="terminal" action="terminal" vars=""/>
 	<route id="4ffdb88d4b57d" url="/cours-([0-9]+)-([0-9]+)-([a-z0-9._-]+)\.html" rubrique="test2" action="default" vars=""/>
 </routes>

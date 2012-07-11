@@ -52,6 +52,7 @@
 	<div id="GCsystem_left">
 		<img src="asset/image/GCsystem/logo.png" alt="logo"/>
 		
+		
 	</div>
 	<div id="GCsystem_right">
 		<h1><?php echo "Bienvenue !"; ?></h1>
@@ -61,4 +62,5 @@
 			<li><a href=""><?php echo "lire le cours d'introduction"; ?></a></li>
 		</ul>
 	</div>
+	cours-salutsalut-prout-bonsoir.html
 </div>

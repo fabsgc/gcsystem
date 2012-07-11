@@ -113,3 +113,59 @@
 			}
 		}
     }
+	
+	trait urlRegex{
+		public function getUrl($id, $var = array()){
+			if(REWRITE == true){
+				$domXml = new DomDocument('1.0', 'iso-8859-15');
+				if($domXml->load(ROUTE)){
+					$this->_addError('fichier ouvert : '.ROUTE);
+				}
+				else{
+					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
+				}
+				
+				$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
+				$markupXml = $nodeXml->getElementsByTagName('route');
+				
+				$rubrique = "";
+				
+				foreach($markupXml as $sentence){	
+					if ($sentence->getAttribute("id") == $id){
+						$url = preg_replace('#\((.*)\)#isU', '<($1)>',  $sentence->getAttribute("url"));
+						$urls = explode('<', $url);
+						$i=0;
+						foreach($urls as $url){
+							if(preg_match('#\)>#', $url)){
+								$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
+								$i++;
+							}
+							else{
+								$result.=$url;
+							}
+						}
+						$result = preg_replace('#\/#U', '', $result);
+						$result = preg_replace('#\\\.#U', '.', $result);
+						return $result;
+					}
+				}
+			}
+			else{
+				$url = preg_replace('#\((.*)\)#isU', '<($1)>',  $regex);
+				$urls = explode('<', $url);
+				$i=0;
+				foreach($urls as $url){
+					if(preg_match('#\)>#', $url)){
+					$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
+					$i++;
+					}
+					else{
+						$result.=$url;
+					}
+				}
+			  $result = preg_replace('#\/#U', '', $result);
+			  $result = preg_replace('#\\\.#U', '.', $result);
+			  return $result;
+			}
+		}
+	}

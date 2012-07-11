@@ -7,7 +7,7 @@
 	*/
 	
 	class Gcsystem{
-		use errorGc, langInstance, generalGc;                            //trait
+		use errorGc, langInstance, generalGc, urlRegex;                            //trait
 		/* --- infos d'en tete -- */
 		
 		protected $doctype                     ;
@@ -678,41 +678,6 @@
 		
 		public function getServerName(){
 			return $_SERVER['SERVER_NAME'];
-		}
-		
-		public function getUrl($id, $var = array()){
-			$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
-			if($this->_domXml->load(ROUTE)){
-				$this->_addError('fichier ouvert : '.ROUTE);
-			}
-			else{
-				$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
-			}
-			
-			$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
-			$this->_markupXml = $this->_nodeXml->getElementsByTagName('route');
-			
-			$rubrique = "";
-			
-			foreach($this->_markupXml as $sentence){	
-				if ($sentence->getAttribute("id") == $id){
-					$url = preg_replace('#\((.*)\)#isU', '<($1)>',  $sentence->getAttribute("url"));
-					$urls = explode('<', $url);
-					$i=0;
-					foreach($urls as $url){
-						if(preg_match('#\)>#', $url)){
-							$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
-							$i++;
-						}
-						else{
-							$result.=$url;
-						}
-					}
-					$result = preg_replace('#\/#U', '', $result);
-					$result = preg_replace('#\\\.#U', '.', $result);
-					echo $result;
-				}
-			}
 		}
 	}
 ?>
