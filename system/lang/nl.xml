@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-15" standalone="no" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <lang>
   <sentence id="windowinfo_Back">Terug</sentence>
   <sentence id="blockinfo_Back">Terug</sentence>
@@ -6,7 +6,7 @@
   <sentence id="content">Welkom op u nieuw project GC-systeem, dank u voor hebben gekozen onze framework.</sentence>
   <sentence id="liredoc">lezen de documentatie</sentence>
   <sentence id="lirecours">lezen de inleidende les</sentence>
-  <sentence id="appDevGc_temp">interface ontwikkeling is aan het zijn gecreëerd</sentence>
+  <sentence id="appDevGc_temp">interface ontwikkeling is aan het zijn gecre&#235;erd</sentence>
   <sentence id="maintenance">De website is op dit moment beschikbaar niet.</sentence>
   <sentence id="executiontime">tijd van of uitvoering</sentence>
   <sentence id="memoireuse">geheugen gebruikt</sentence>

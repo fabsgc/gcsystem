@@ -52,7 +52,7 @@
 		public function loadFile(){
 			if(is_file(LANG_PATH.$this->_lang.LANG_EXT)){
 				$this->_langFile=true;
-				$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
+				$this->_domXml = new DomDocument('1.0', 'utf-8');
 				if($this->_domXml->load(LANG_PATH.$this->_lang.LANG_EXT)){
 					$this->_langFile=true;
 					$this->_addError('fichier ouvert : '.$this->_lang);
@@ -66,7 +66,7 @@
 				$this->_addError('Le fichier de langue n\'a pas été trouvé, passage par la langue par défaut.');
 				$this->_lang = DEFAULTLANG;
 				$this->_langFile=true;
-				$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
+				$this->_domXml = new DomDocument('1.0', 'utf-8');
 				if($this->_domXml->load(LANG_PATH.$this->_lang.LANG_EXT)){
 					$this->_langFile=true;
 					$this->_addError('fichier ouvert : '.$this->_lang);

@@ -4,5 +4,3 @@ RewriteEngine On
 # Alors on ne réécrit pas l'URL
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php [QSA,L]
-
-ErrorDocument 404 index.php?rubrique=terminal
