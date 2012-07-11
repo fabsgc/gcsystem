@@ -250,7 +250,11 @@
 						
 									foreach($sentences as $sentence){
 										if ($sentence->getAttribute("rubrique") == $this->_commandExplode[2]){
-											$this->_nodeXml->removeChild($sentence);    
+											$this->_nodeXml->removeChild($sentence);
+											$this->_markupXml = $this->_domXml->createElement('route');
+											$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[3]);
+										
+											$this->_nodeXml->appendChild($this->_markupXml);
 										}
 									}
 									$this->_domXml->save(ROUTE);
@@ -259,34 +263,34 @@
 									$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
 								}
 								
-								if($this->_domXml->load(ROUTE)){
-									$this->_addError('fichier ouvert : '.ROUTE);
+								// if($this->_domXml->load(ROUTE)){
+									// $this->_addError('fichier ouvert : '.ROUTE);
 									
-									$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
-									$sentences = $this->_nodeXml->getElementsByTagName('route');
+									// $this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
+									// $sentences = $this->_nodeXml->getElementsByTagName('route');
 						
-									$rubrique = false;
+									// $rubrique = false;
 									
-									foreach($sentences as $sentence){
-										if ($sentence->getAttribute("rubrique") == $this->_commandExplode[3]){
-											$rubrique = true;
-										}
-									}
+									// foreach($sentences as $sentence){
+										// if ($sentence->getAttribute("rubrique") == $this->_commandExplode[3]){
+											// $rubrique = true;
+										// }
+									// }
 									
-									if($rubrique == false){
-										$this->_markupXml = $this->_domXml->createElement('route');
-										$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[3]);
+									// if($rubrique == false){
+										// $this->_markupXml = $this->_domXml->createElement('route');
+										// $this->_markupXml->setAttribute("rubrique", $this->_commandExplode[3]);
 									
-										$this->_nodeXml->appendChild($this->_markupXml);
-										$this->_domXml->save(ROUTE);
-									}
-									else{
-										$this->_addError('La rubrique '.$this->_commandExplode[3].' existe déjà');
-									}
-								}
-								else{
-									$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
-								}
+										// $this->_nodeXml->appendChild($this->_markupXml);
+										// $this->_domXml->save(ROUTE);
+									// }
+									// else{
+										// $this->_addError('La rubrique '.$this->_commandExplode[3].' existe déjà');
+									// }
+								// }
+								// else{
+									// $this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
+								// }
 
 								$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; r&#233;nomm&#233;e en <u>'.$this->_commandExplode[3].'</u></span>';
 							}

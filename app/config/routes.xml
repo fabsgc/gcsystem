@@ -2,4 +2,5 @@
 <routes>
     <route rubrique="index"/>
     <route rubrique="terminal"/>
-</routes>
+    
+<route rubrique="joula3"/></routes>
