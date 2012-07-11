@@ -15,6 +15,7 @@ Spécifications :
 * PHP 5.4 minimum
 * L'extension CURL activée pour pouvoir faire les mises à jour
 * Chmod en lecture écriture (755,777)
+* rewrite_module apache activé
 
 Installation :
 -----------
