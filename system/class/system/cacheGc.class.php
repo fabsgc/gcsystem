@@ -153,8 +153,7 @@
 		*/
 		
 		protected function _compress($val){
-			// return gzcompress($val,9);
-			return $val;
+			return gzcompress($val,9);
 		}
 		
 		/**
@@ -166,8 +165,7 @@
 		*/
 		
 		protected function _uncompress($val){
-			// return gzuncompress($val);
-			return $val;
+			return gzuncompress($val);
 		}
 	}
 ?>
