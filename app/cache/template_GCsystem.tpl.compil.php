@@ -55,7 +55,7 @@
 	</div>
 	<div id="GCsystem_right">
 		<h1><?php echo "Bienvenue !"; ?></h1>
-		<p><?php echo "Bienvenue dans votre nouveau projet GCsystem, merci d'avoir choisi notre framework."; ?></p>
+		<p><?php echo "Bienvenue dans votre nouveau projet GCsystem, merci d'avoir choisi notre framework pour développer votre application."; ?></p>
 		<ul>
 			<li><a href=""><?php echo "lire la documentation"; ?></a></li>
 			<li><a href=""><?php echo "lire le cours d'introduction"; ?></a></li>

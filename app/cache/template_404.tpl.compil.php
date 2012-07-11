@@ -1,1 +1,1 @@
-<h1 style="text-align: center;"><?php echo "404 error ייי"; ?></h1>
+<h1 style="text-align: center;"><?php echo "erreur 404"; ?></h1>

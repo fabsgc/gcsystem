@@ -4,7 +4,6 @@
 		$t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', '0');
 		$t->setShow(FALSE);
 		echo $t->show();
-		
 		echo USER_BONJOUR;
 		// $f = new dirGc('system/');
 		// echo $f->getSize();
