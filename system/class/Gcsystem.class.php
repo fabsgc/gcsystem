@@ -30,9 +30,13 @@
 		protected $fbImage                     ;
 		protected $htmlType                    ;
 		protected $_domXml                     ;
+		protected $_nodeXml                    ;
+		protected $_markupXml                  ;
 		
 		protected $_initInstance            = 0;
 		protected $_configInstance             ;
+		protected $_routerInstance             ;
+		protected $_routeInstance              ;
 		
 		/* --- permet d'affiche le doctype et l'entete (avant la balise body) et </body></html> -- */
 		
@@ -56,10 +60,8 @@
 			$this->css= array ('default.css');
 			$this->jsInFile = array('inpage.js');
 			$this->otherHeader = array();
-			$this->_langInstance;
-			$this->_createLangInstance();
 			if($lang==""){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
-			
+			$this->_createLangInstance();
 			$this->_configInstance = new configGc();
 		}
 		
@@ -117,7 +119,51 @@
 			}
 		}
 		
-		public function route(){			
+		public function addHeader($header){
+            header($header);
+        }
+		
+		public function redirect404(){
+			$this->addHeader('HTTP/1.0 404 Not Found');
+			$t= new templateGC(ERRORDUOCUMENT_PATH.'404', '404', '0', $this->lang);
+			$t->show();
+        }
+		
+		protected function _getRubrique(){
+			$this->_routerInstance = new routerGc($this);
+			$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
+			
+			if($this->_domXml->load(ROUTE))
+				$this->_addError('fichier ouvert : '.ROUTE);
+			else
+				$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
+				
+			$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
+			$routes = $this->_nodeXml->getElementsByTagName('route');
+			
+			foreach($routes as $route){
+				$vars = array();
+                
+                if ($route->hasAttribute('vars')){
+                    $vars = explode(',', $route->getAttribute('vars'));
+                }
+				
+				$this->_routerInstance->addRoute(new routeGc($route->getAttribute('url'), $route->getAttribute('rubrique'), $route->getAttribute('action'), $vars));
+			}
+			
+			if($matchedRoute = $this->_routerInstance->getRoute($this->getUri())){
+				$_GET = array_merge($_GET, $matchedRoute->vars());
+				$_GET['rubrique'] = $matchedRoute->module();
+				$_GET['action'] = $matchedRoute->action();
+			}
+			else{
+				$_GET['rubrique'] = "";
+			}
+		}
+		
+		public function route(){
+			if(REWRITE == true) { $this->_getRubrique(); }
+			
 			if(isset($_GET['rubrique'])){
 				$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
 				if($this->_domXml->load(ROUTE)){
@@ -127,12 +173,12 @@
 					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
 				}
 				
-				$blog = $this->_domXml->getElementsByTagName('routes')->item(0);
-				$sentences = $blog->getElementsByTagName('route');
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
+				$this->_markupXml = $this->_nodeXml->getElementsByTagName('route');
 				
 				$rubrique = "";
 				
-				foreach($sentences as $sentence){
+				foreach($this->_markupXml as $sentence){
 					if ($sentence->getAttribute("rubrique") == $_GET['rubrique']){
 						$rubrique =  $sentence->getAttribute("rubrique");
 					}
@@ -142,7 +188,7 @@
 					$this->_setRubrique($rubrique);
 				}
 				else{
-					$this->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
+					$this->redirect404();
 					$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
 				}
 			}
@@ -150,8 +196,8 @@
 				if(is_file(RUBRIQUE_PATH.'index.php')){ 
 					$this->_setRubrique('index');
 				}
-				else{ 
-					$this->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
+				else{
+					$this->redirect404();
 					$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
 				}
 			}

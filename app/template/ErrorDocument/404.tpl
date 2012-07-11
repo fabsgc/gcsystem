@@ -1,0 +1,1 @@
+<h1 style="text-align: center;">_(404notfound)_</h1>

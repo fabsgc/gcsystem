@@ -126,7 +126,7 @@
 				
 				$(function(){
 					var message = $('#terminal_input_write').val();
-					$.post("index.php?rubrique=terminal&action=terminal",
+					$.post("terminal-terminal.html",
 					{
 						message: message
 					},

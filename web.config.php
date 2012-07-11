@@ -72,6 +72,9 @@ define('LANG_PATH', SYSTEM_PATH.'lang/');
 //chemin d'accès fichiers GCsysem
 define('GCSYSTEM_PATH', 'GCsystem/');
 
+//chemin d'accès fichiers Error http
+define('ERRORDUOCUMENT_PATH', 'ErrorDocument/');
+
 //extension fichiers de langues
 define('LANG_EXT', '.xml');
 
@@ -171,8 +174,11 @@ define('CLASS_SOCIAL', CLASS_PATH.'socialGc.class.php');
 //autoload des class
 define('CLASS_AUTOLOAD', CLASS_PATH.'autoload.php');
 
-//class gérent le fichier de config de l'application
+//class gérant le fichier de config de l'application
 define('CLASS_CONFIG', CLASS_PATH.'configGc.class.php');
+
+//class gérant l'url rewrite
+define('CLASS_ROUTER', CLASS_PATH.'routerGc.class.php');
 
 //GESHI
 define('GESHI', LIB_PATH.'geshi/geshi.php');
@@ -228,6 +234,9 @@ define('BDD', 'test');
 //connexion à la bdd, true ou false
 define('CONNECTBDD', false);
 
+//connexion à la bdd, true ou false
+define('REWRITE', true);
+
 //charset
 define('CHARSET', 'iso-8859-15');
 
@@ -235,7 +244,7 @@ define('CHARSET', 'iso-8859-15');
 define('FAVICON_PATH', 'no');
 
 //dossier où est placé le framework à partir de la racine du répertoire. sous wamp ar exemple, www/GCsystem2.0
-define('FOLDER', 'GCsystem2.0');
+define('FOLDER', '/GCsystem2.0');
 
 //dossier où est placé le framework à partir de la racine du répertoire
 define('DEFAULTLANG', 'fr');

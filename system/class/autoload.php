@@ -1,6 +1,7 @@
 <?php
 	require_once(CLASS_GENERAL_INTERFACE);
 	require_once(CLASS_LANG);
+	require_once(CLASS_ROUTER);
 	require_once(CLASS_RUBRIQUE);
 	require_once(CLASS_CONFIG);
 	require_once(CLASS_LOG);
