@@ -15,7 +15,7 @@ require_once(CLASS_AUTOLOAD);
 
 /* ---------- creation de la page -------------- */
 $GLOBALS['appDevGc'] = new appDevGc();
-$GLOBALS['rubrique'] = new Gcsystem(); //constructeur
+$GLOBALS['rubrique'] = new Gcsystem();
 
 /* ---------- démarrage de l'application ----------------- */
 $GLOBALS['rubrique']->init();
@@ -23,7 +23,6 @@ $GLOBALS['rubrique']->init();
 /* ------ articulation du site web -------- */
 
 /* ------ appelez ici vos classes personnelles -------- */
-/* ------ -------- */
 
 if(MAINTENANCE==false){ $GLOBALS['rubrique']->route(); }
 elseif(MAINTENANCE==true){ $GLOBALS['rubrique']->setMaintenance(); }
