@@ -15,7 +15,7 @@
 		font-size: 0.95em;
 		color: white;
 		background-color: black;
-		margin-bottom : <?php echo htmlentities($moins2); ?>px;
+		margin-bottom : <?php echo ($moins2); ?>px;
 	}
 
 	#gc_terminal_top{

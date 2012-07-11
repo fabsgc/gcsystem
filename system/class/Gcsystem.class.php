@@ -31,6 +31,9 @@
 		protected $htmlType                    ;
 		protected $_domXml                     ;
 		
+		protected $_initInstance            = 0;
+		protected $_configInstance             ;
+		
 		/* --- permet d'affiche le doctype et l'entete (avant la balise body) et </body></html> -- */
 		
 		protected $header;
@@ -56,53 +59,62 @@
 			$this->_langInstance;
 			$this->_createLangInstance();
 			if($lang==""){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
+			
+			$this->_configInstance = new configGc();
 		}
 		
 		public function init(){
-			$c = new TestErrorHandling(); 
-			$this->GzipinitOutputFilter();
-			
-			if(CONNECTBDD == true) {$GLOBALS['base']=$this->_connectDatabase($db); }
-			
-			switch(ENVIRONMENT){	
-				case 'development' :		
-					error_reporting(E_ALL | E_NOTICE);			
-				break;
+			if($this->_initInstance == 0){
+				$this->GzipinitOutputFilter();
+				
+				switch(ENVIRONMENT){	
+					case 'development' :		
+						error_reporting(E_ALL | E_NOTICE);			
+					break;
 
-				case 'production' :	
-					error_reporting(0);					
-				break;					
-			}
-			
-			if(SECUREGET == true && isset($_GET)){
-				foreach($_GET as $cle => $val){
-					$_GET[$cle] = htmlentities($val);
+					case 'production' :	
+						error_reporting(0);					
+					break;					
 				}
-			}
-			else{
-				if(isset($_GET['rubrique'])) { $_GET['rubrique']=htmlentities($_GET['rubrique']); }
-				if(isset($_GET['action'])) { $_GET['action']=htmlentities($_GET['action']); }
-				if(isset($_GET['sousaction'])) { $_GET['sousaction']=htmlentities($_GET['sousaction']); }
-				if(isset($_GET['id'])) { $_GET['id']=intval(htmlentities($_GET['id'])); }
-				if(isset($_GET['page'])) { $_GET['page']=intval(htmlentities($_GET['page'])); }
-				if(isset($_GET['search'])) { $_GET['search']=htmlentities($_GET['search']); }
-				if(isset($_GET['design'])) { $_GET['design']=intval(htmlentities($_GET['design'])); }
-				if(isset($_GET['menu'])) { $_GET['menu']=intval(htmlentities($_GET['menu'])); }
-				if(isset($_GET['cat'])) { $_GET['cat']=intval(htmlentities($_GET['cat'])); }
-				if(isset($_GET['soucat'])) { $_GET['soucat']=intval(htmlentities($_GET['soucat'])); }
-				if(isset($_GET['token'])) { $_GET['token']=htmlentities($_GET['token']); }
-			}
-			
-			if(SECUREPOST == true && isset($_GET)){
-				foreach($_GET as $cle => $val){
-					$_GET[$cle] = htmlentities($val);
+				
+				$c = new TestErrorHandling(); 
+				
+				require_once(FUNCTION_GENERIQUE);
+				
+				if(CONNECTBDD == true) {$GLOBALS['base']=$this->_connectDatabase($db); }
+				
+				if(SECUREGET == true && isset($_GET)){
+					foreach($_GET as $cle => $val){
+						$_GET[$cle] = htmlentities($val);
+					}
 				}
+				else{
+					if(isset($_GET['rubrique'])) { $_GET['rubrique']=htmlentities($_GET['rubrique']); }
+					if(isset($_GET['action'])) { $_GET['action']=htmlentities($_GET['action']); }
+					if(isset($_GET['sousaction'])) { $_GET['sousaction']=htmlentities($_GET['sousaction']); }
+					if(isset($_GET['id'])) { $_GET['id']=intval(htmlentities($_GET['id'])); }
+					if(isset($_GET['page'])) { $_GET['page']=intval(htmlentities($_GET['page'])); }
+					if(isset($_GET['search'])) { $_GET['search']=htmlentities($_GET['search']); }
+					if(isset($_GET['design'])) { $_GET['design']=intval(htmlentities($_GET['design'])); }
+					if(isset($_GET['menu'])) { $_GET['menu']=intval(htmlentities($_GET['menu'])); }
+					if(isset($_GET['cat'])) { $_GET['cat']=intval(htmlentities($_GET['cat'])); }
+					if(isset($_GET['soucat'])) { $_GET['soucat']=intval(htmlentities($_GET['soucat'])); }
+					if(isset($_GET['token'])) { $_GET['token']=htmlentities($_GET['token']); }
+				}
+				
+				if(SECUREPOST == true && isset($_GET)){
+					foreach($_GET as $cle => $val){
+						$_GET[$cle] = htmlentities($val);
+					}
+				}
+				
+				$this->setErrorLog('history','Page rewrite : http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].' rubrique : '.$_SERVER["SERVER_NAME"].$_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"].' / origine : '.$_SERVER['HTTP_REFERER'].' / IP : '.$_SERVER['REMOTE_ADDR']);
+				
+				$GLOBALS['css']= array('default.css');
+				$GLOBALS['js'] = array('script.js');
+				
+				$this->_initInstance = 1;
 			}
-			
-			$this->setErrorLog('history','Page rewrite : http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].' rubrique : '.$_SERVER["SERVER_NAME"].$_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"].' / origine : '.$_SERVER['HTTP_REFERER'].' / IP : '.$_SERVER['REMOTE_ADDR']);
-			
-			$GLOBALS['css']= array('default.css');
-			$GLOBALS['js'] = array('script.js');
 		}
 		
 		public function route(){			
@@ -118,12 +130,11 @@
 				$blog = $this->_domXml->getElementsByTagName('routes')->item(0);
 				$sentences = $blog->getElementsByTagName('route');
 				
+				$rubrique = "";
+				
 				foreach($sentences as $sentence){
 					if ($sentence->getAttribute("rubrique") == $_GET['rubrique']){
 						$rubrique =  $sentence->getAttribute("rubrique");
-					}
-					else{
-						$rubrique = "";
 					}
 				}
 				
@@ -202,7 +213,7 @@
 				if(file_exists(SQL_PATH.$rubrique.SQL_EXT.'.php')){ require_once(SQL_PATH.$rubrique.SQL_EXT.'.php');}
 				if(file_exists(FORMS_PATH.$rubrique.FORMS_EXT.'.php')){ require_once(FORMS_PATH.$rubrique.FORMS_EXT.'.php'); }
 				if(file_exists(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php')){ require_once(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php');}
-				require_once(RUBRIQUE_PATH.$rubrique.'.php');
+				if(file_exists(RUBRIQUE_PATH.$rubrique.'.php')){ require_once(RUBRIQUE_PATH.$rubrique.'.php'); } else { $this->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); }
 			}
 		
 		/* ---------- SETTER --------- */
@@ -571,7 +582,7 @@
 			}
 			
 			return $this->header;			
-		}   
+		} 
 		
 		public function affFooter(){
 			$this->footer="  </body>\n</html>";

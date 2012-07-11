@@ -75,8 +75,11 @@ define('GCSYSTEM_PATH', 'GCsystem/');
 //extension fichiers de langues
 define('LANG_EXT', '.xml');
 
-//extension fichiers de langues
+//extension fichiers routes
 define('ROUTE_EXT', '.xml');
+
+//extension fichiers de config de l'pplication
+define('CONFIG_EXT', '.xml');
 
 // Définit l'extension des fichiers
 define('FILES_EXT', '.html');
@@ -168,6 +171,9 @@ define('CLASS_SOCIAL', CLASS_PATH.'socialGc.class.php');
 //autoload des class
 define('CLASS_AUTOLOAD', CLASS_PATH.'autoload.php');
 
+//class gérent le fichier de config de l'application
+define('CLASS_CONFIG', CLASS_PATH.'configGc.class.php');
+
 //GESHI
 define('GESHI', LIB_PATH.'geshi/geshi.php');
 
@@ -187,13 +193,13 @@ define('TEMPLATE_EXT', '.tpl');
 define('LOG_EXT', '.log');
 
 //erreur script rubrique not found
-define('RUBRIQUE_NOT_FOUND', 'Une erreur relative au script s\'est produite.');
+define('RUBRIQUE_NOT_FOUND', 'Une erreur relative au script s\'est produite. La rubrique demandée n\'a pas été trouvée');
 
 //erreur variabels manquantes
 define('RUBRIQUE_MISSING_PARAMETERS', 'Il manque des paramètre pour répondre à votre demande.');
 
 //erreur variabels manquantes
-define('ACTION_NOT_FOUND', 'La rubrique n\'existe pas.');
+define('ACTION_NOT_FOUND', 'L\'action demandée n\'a pas été trouvée.');
 
 /* fichier jquery */
 define('JQUERYFILE', JS_PATH.'jquery.min.js');
@@ -203,6 +209,9 @@ define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
 //chemin route
 define('ROUTE', APP_CONFIG_PATH.'routes'.ROUTE_EXT);
 
+//chemin fichier de config de l'pplication
+define('APPCONFIG', APP_CONFIG_PATH.'app'.CONFIG_EXT);
+
 /* --------------parametres de connexion a la base de donnees------------------*/
 
 // $db['bdd']['hostname'] = "localhost";
@@ -211,7 +220,7 @@ define('ROUTE', APP_CONFIG_PATH.'routes'.ROUTE_EXT);
 // $db['bdd']['database'] = "test";
 // $db['bdd']['extension'] = "pdo";
 
-/* -------------- CONSTANTE RELATIVE AU SITE ----------------- */
+/* -------------- CONSTANTE RELATIVE AU SITE OBLIGATOIRES MAIS MODIFIABLES ----------------- */
 
 //base du site (utile pour eviter les repetition et faciliter  les changements de bdd
 define('BDD', 'test');
@@ -225,14 +234,11 @@ define('CHARSET', 'iso-8859-15');
 //favicon
 define('FAVICON_PATH', 'no');
 
-//erreur acces interdit
-define('RUBRIQUE_FORBIDDEN', 'Vous n\'ête pas autorisé(e) à accéder à cette page.');
+//dossier où est placé le framework à partir de la racine du répertoire. sous wamp ar exemple, www/GCsystem2.0
+define('FOLDER', 'GCsystem2.0');
 
 //dossier où est placé le framework à partir de la racine du répertoire
-define('FOLDER', 'GCsystem');
-
-//dossier où est placé le framework à partir de la racine du répertoire
-define('DEFAULTLANG', 'nl');
+define('DEFAULTLANG', 'fr');
 
 /** Definit l'environnement dans lequel est effectué l'application :
 * development : erreurs affichées + barre de développement et présence d'un terminal

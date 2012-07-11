@@ -20,9 +20,6 @@ $GLOBALS['rubrique'] = new Gcsystem(); //constructeur
 /* ---------- démarrage de l'application ----------------- */
 $GLOBALS['rubrique']->init();
 
-/* --------------- fonctions générique --------- */
-require_once(FUNCTION_GENERIQUE);
-
 /* ------ articulation du site web -------- */
 
 /* ------ appelez ici vos classes personnelles -------- */

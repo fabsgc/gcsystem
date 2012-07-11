@@ -13,6 +13,6 @@
 		</a>
 	</div>
 	<if cond="$time > 0">
-		<meta http-equiv='Refresh' content='{time}"; URL="{redirect}"'>";
+		<meta http-equiv='Refresh' content='{time}; URL="{redirect}"'>";
 	</if>
 </div>

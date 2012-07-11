@@ -2,6 +2,7 @@
 	require_once(CLASS_GENERAL_INTERFACE);
 	require_once(CLASS_LANG);
 	require_once(CLASS_RUBRIQUE);
+	require_once(CLASS_CONFIG);
 	require_once(CLASS_LOG);
 	require_once(CLASS_EXCEPTION);
 	require_once(CLASS_CAPTCHA);

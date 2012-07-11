@@ -83,6 +83,7 @@
 		protected $_error              = array() ; //array contenant toutes les erreurs enregistrées
 		
 		public function showError(){
+			$erreur = "";
 			foreach($this->_error as $error){
 				$erreur .=$error."<br />";
 			}
@@ -91,6 +92,9 @@
 		
 		protected function _addError($error){
 			array_push($this->_error, $error);
+			$file = fopen(LOG_PATH.'system_errors'.LOG_EXT, "a+");
+			fputs($file, date("d/m/Y à H:i ! : ",time()).$error."\n");
+			fclose($file);
 		}
     }
 	
