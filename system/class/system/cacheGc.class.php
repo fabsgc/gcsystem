@@ -117,11 +117,10 @@
 		public function isDie(){
 			$rep = false;
 			if(!file_exists($this->_nameFile)){
-				$rep = false;
+				$rep = true;
 			}
 			else{
 				$time_ago = time() - filemtime($this->_nameFile);
-		 
 				if($time_ago > $this->_time){
 					$rep = true;
 				}
@@ -154,7 +153,8 @@
 		*/
 		
 		protected function _compress($val){
-			return gzcompress($val,9);
+			// return gzcompress($val,9);
+			return $val;
 		}
 		
 		/**
@@ -166,7 +166,8 @@
 		*/
 		
 		protected function _uncompress($val){
-			return gzuncompress($val);
+			// return gzuncompress($val);
+			return $val;
 		}
 	}
 ?>

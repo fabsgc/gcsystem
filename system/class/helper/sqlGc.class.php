@@ -199,8 +199,8 @@
 							}
 						}
 					}
-					
 				}
+				
 				$GLOBALS['appDevGc']->addSql('####################################');
 				$this->_requete->execute();
 				
@@ -211,7 +211,7 @@
 						if(count($this->_data)==1){
 							$data = $this->_data[0];
 							$this->_data = array();
-							$this->_data =$data;
+							$this->_data = $data;
 						}
 					break;
 					case self::PARAM_FETCHCOLUMN : $this->_data = $this->_requete->fetchColumn(); break;
