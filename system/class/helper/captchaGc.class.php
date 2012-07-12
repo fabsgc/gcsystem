@@ -76,7 +76,7 @@
 					break;
 					
 					case 'textposition' :
-						$this->_testPos = $valeur;
+						$this->_textPos = $valeur;
 					break;
 					
 					case 'background':
@@ -143,7 +143,8 @@
 					break;
 				}
 				
-				imagestring($this->_img, 4, $this->_textPos[0], $this->_textPos[1], $this->_mot, $this->_colorTextAllocate);
+				$this->_colorTextAllocate = imagecolorallocate($this->_img, $this->_textColor[0], $this->_textColor[1], $this->_textColor[2]);
+				imagestring($this->_img, $this->_textSize, $this->_textPos[0], $this->_textPos[1], $this->_mot, $this->_colorTextAllocate);
 			}
 			else{
 				$this->_img = imagecreate($this->_largeur, $this->_hauteur);
