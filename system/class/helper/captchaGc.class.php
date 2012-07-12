@@ -50,7 +50,7 @@
 			$this->_background = array(255,255,255);
 			$this->_font = false;
 			$this->_fontLink = "";
-			$this->_textColor = array(0,0,0);
+			$this->_textColor = array();
 			$this->_textSize = 5;
 			$this->_textPos = array(0,0);
 			$this->_hachure = false;
@@ -69,6 +69,9 @@
 					
 					case 'textcolor' :
 						$this->_textColor = $valeur;
+						$this->_textColor[0] = intval($this->_textColor[0]);
+						$this->_textColor[1] = intval($this->_textColor[1]);
+						$this->_textColor[2] = intval($this->_textColor[2]);
 					break;
 					
 					case 'textsize' :

@@ -51,11 +51,11 @@
 <div id="GCsystem">
 	<div id="GCsystem_left">
 		<img src="asset/image/GCsystem/logo.png" alt="logo"/>
-		<?php echo 'http://gravatar.com/avatar/'.md5("salutsalut").'?s=500&default=http://'.$_SERVER['HTTP_HOST'].'/'.FOLDER.'/asset/image/GCsystem/empty_avatar.png'; ?>
+		
 	</div>
 	<div id="GCsystem_right">
 		<h1><?php echo "Bienvenue !"; ?></h1>
-		<p><?php echo "Bienvenue dans votre nouveau projet GCsystem, merci d'avoir choisi notre framework pour développer votre application."; ?></p>
+		<p><?php echo "Bienvenue dans votre nouveau projet GCsystem, merci d'avoir choisi notre framework pour dÃ©velopper votre application."; ?></p>
 		<ul>
 			<li><a href=""><?php echo "lire la documentation"; ?></a></li>
 			<li><a href=""><?php echo "lire le cours d'introduction"; ?></a></li>

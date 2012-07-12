@@ -9,25 +9,53 @@
 	class mailGc{
 		use errorGc;                           			    //trait
 		
-		protected $_passagLigne                            ; //passage à la ligne en fonction du destinataire
-		protected $_destinataire                = array() ; //email du destinataire
-		protected $_expediteur                            ; //email de l'expediteur
-		protected $_message                     = array() ; //message
-		protected $_piece                       = array() ; //liste des pièces jointes
+		protected $_passagLigne                              ; //passage à la ligne en fonction du destinataire
+		protected $_expediteur                  = array()    ; //nom de l'expediteur et email de l'expediteur
+		protected $_reply                       = array()    ; //email de reponse et email de reponse
+		protected $_destinataire                = array()    ; //emails des destinataires
+		protected $_format                                   ; //format, html ou texte
+		protected $_message                     = array()    ; //message
+		protected $_piece                       = array()    ; //liste des pièces jointes
+		
+		const FORMATHTML                        ='text/html' ;
+		const FORMATTXT                         ='text/plain';
 		
 		public  function __construct($infos = array()){
-			foreach($infos as $info){
-				switch($info){
-					case 'mail_expediteur' :
+			foreach($infos as $cle => $info){
+				switch($cle){
+					case 'expediteur' :
 					break;
 					
-					case 'mail_destinataire':
+					case 'destinataire':
 					break;
 					
-					case 'mail_destinataire':
+					case 'reply':
+						if(is_array($info)){
+							$this->_reply = $info;
+						}
+						else{
+							$this->_reply = array('mail', 'mail@mail.com');
+						}
 					break;
 					
-					case 'mail_format':
+					case 'sujet':
+						$this->_sujet = $info;
+					break;
+					
+					case 'format':
+						switch($info){
+							case 'html' :
+								$this->_format = self::FORMATHTML;
+							break;
+							
+							case 'texte' :
+								$this->_format = self::FORMATTXT;
+							break;
+							
+							default:
+								$this->_format = self::FORMATTXT;
+							break;
+						}
 					break;
 				}
 			}
