@@ -51,7 +51,7 @@
 <div id="GCsystem">
 	<div id="GCsystem_left">
 		<img src="asset/image/GCsystem/logo.png" alt="logo"/>
-		
+		<?php echo 'http://gravatar.com/avatar/'.md5("salutsalut").'?s=500&default=http://'.$_SERVER['HTTP_HOST'].'/'.FOLDER.'/asset/image/GCsystem/empty_avatar.png'; ?>
 	</div>
 	<div id="GCsystem_right">
 		<h1><?php echo "Bienvenue !"; ?></h1>

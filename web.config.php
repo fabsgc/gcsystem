@@ -226,11 +226,11 @@ define('APPCONFIG', APP_CONFIG_PATH.'app'.CONFIG_EXT);
 
 /* --------------parametres de connexion a la base de donnees------------------*/
 
-$GLOBALS['db']['bdd']['hostname'] = "localhost";
-$GLOBALS['db']['bdd']['username'] = "root";
-$GLOBALS['db']['bdd']['password'] = "";
-$GLOBALS['db']['bdd']['database'] = "test";
-$GLOBALS['db']['bdd']['extension'] = "pdo";
+// $GLOBALS['db']['bdd']['hostname'] = "localhost";
+// $GLOBALS['db']['bdd']['username'] = "root";
+// $GLOBALS['db']['bdd']['password'] = "";
+// $GLOBALS['db']['bdd']['database'] = "test";
+// $GLOBALS['db']['bdd']['extension'] = "pdo";
 
 /* -------------- CONSTANTE RELATIVE AU SITE OBLIGATOIRES MAIS MODIFIABLES ----------------- */
 
@@ -238,13 +238,13 @@ $GLOBALS['db']['bdd']['extension'] = "pdo";
 define('BDD', 'test');
 
 //connexion à la bdd, true ou false
-define('CONNECTBDD', true);
+define('CONNECTBDD', false);
 
 //connexion à la bdd, true ou false
 define('REWRITE', true);
 
 //charset
-define('CHARSET', 'iso-8859-15');
+define('CHARSET', 'utf-8');
 
 //favicon
 define('FAVICON_PATH', 'no');
