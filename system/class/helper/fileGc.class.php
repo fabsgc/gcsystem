@@ -6,7 +6,7 @@
 	 * @version : 2.0 bêta
 	*/
 	
-    class fileGc{
+    class fileGc extends constMime{
 		use errorGc;                           				   //trait
 		
 		protected $_filePath                                   ;

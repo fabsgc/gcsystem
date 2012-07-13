@@ -67,7 +67,7 @@
 		
 		public function init(){
 			if($this->_initInstance == 0){
-				$this->GzipinitOutputFilter();
+				//$this->GzipinitOutputFilter();
 				
 				switch(ENVIRONMENT){	
 					case 'development' :		
