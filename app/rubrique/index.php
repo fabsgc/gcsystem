@@ -1,5 +1,5 @@
 <?php
-	$GLOBALS['rubrique']->setInfo(array('title'=>'GCsystem'));
+	$GLOBALS['rubrique']->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
 	echo $GLOBALS['rubrique']->affHeader();
 		$t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', '0');
 		$t->assign(array(
@@ -8,6 +8,7 @@
 		));
 		$t->setShow(FALSE);
 		echo $t->show();
+		
 		// echo $GLOBALS['rubrique']->getUrl('4ffdb88d4b57d', array('salut', '14', 'troisieme'));		
 		
 		// $mail = new mailGc(array(

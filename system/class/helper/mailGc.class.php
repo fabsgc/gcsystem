@@ -24,6 +24,7 @@
 		protected $_cc                          = array()                           ; //copie carbone
 		protected $_bcc                         = array()                           ; //copie carbone invisible
 		protected $_formatHtml                  = true                              ;
+		protected $_reception                   = array()                           ;
 		
 		const MSG_TEMPLATE                      = 0                                 ;
 		const MSG_TXT                           = 1                                 ;
@@ -78,6 +79,15 @@
 						}
 						else{
 							$this->_reply = array('mail', 'mail@mail.com');
+						}
+					break;
+					
+					case 'reception':
+						if(is_array($info)){
+							$this->_reception = $info;
+						}
+						else{
+							array_push($this->_bcc, $info);
 						}
 					break;
 					
@@ -204,6 +214,9 @@
 				}
 				foreach($this->_bcc as $bcc){
 					$header.= "Bcc: ".$bcc."".$this->_passageLigne;
+				}
+				foreach($this->_reception as $reception){
+					$header.= "DispositionNotificationTo: ".$reception."".$this->_passageLigne;
 				}
 				$header.= "Content-Type: ".$this->_fileTransfert.";".$this->_passageLigne." boundary=\"".$this->_boundary."\"".$this->_passageLigne;
 				//==========

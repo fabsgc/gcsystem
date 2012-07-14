@@ -68,7 +68,7 @@
 		public function init(){
 			if($this->_initInstance == 0){
 				//$this->GzipinitOutputFilter();
-				
+				header('Content-Type: text/html; charset='.CHARSET.''); 
 				switch(ENVIRONMENT){	
 					case 'development' :		
 						error_reporting(E_ALL | E_NOTICE);			
@@ -547,7 +547,7 @@
 			$this->header.="  <head>\n";
 			$this->header.="    <title>".($this->title)."</title>\n";
 			if($this->htmlType !='html5'){ $this->header.="    <meta http-equiv=\"Content-Type\" content=\"".$this->metaContentType."\" />\n"; }
-				else { $this->header.="    <meta charset=\"utf-8\" />"; }
+				else { $this->header.="    <meta charset=\"utf-8\" />\n"; }
 			$this->header.="    <meta http-equiv=\"content-language\" content=\"fr\"/>\n";
 			$this->header.="    <meta name=\"keywords\" content=\"".$this->metaKeyword."\"/>\n";
 			$this->header.="    <meta name=\"description\" content=\"".$this->metaDescription."\" />\n";

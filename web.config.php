@@ -221,6 +221,9 @@ define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
 //chemin route
 define('ROUTE', APP_CONFIG_PATH.'routes'.ROUTE_EXT);
 
+//chemin route
+define('MODOGCCONFIG', APP_CONFIG_PATH.'modoGc.xml');
+
 //chemin fichier de config de l'pplication
 define('APPCONFIG', APP_CONFIG_PATH.'app'.CONFIG_EXT);
 
@@ -244,7 +247,7 @@ define('CONNECTBDD', false);
 define('REWRITE', true);
 
 //charset
-define('CHARSET', 'utf-8');
+define('CHARSET', 'ISO-8859-1');
 
 //favicon
 define('FAVICON_PATH', 'no');

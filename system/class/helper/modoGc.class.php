@@ -11,21 +11,14 @@
 		
 		protected $_contenu                       ; //contenu à filtrer
 		protected $_maxWord                  = 10  ; //contenu à filtrer
-		protected $_insulte 				 = array('Agnaflai', 'Amagan', 'Anani Sikerim', 'Anayin Ami', 'Anus De Poulpe', 'Arschloch', 'Artaïl', 'Aspirateur à Bites', 'Aspirateur à Muscadet',
-													 'Asshole', 'Ateye', 'Balafamouk', 'Baptou', 'Balai De Chiottes', 'Bassine A Foutre', 'Bite Molle', 'Bit molle',
-													 'Bite de moll', 'Bit moll', 'Bleubite', 'Bordel', 'Bordel à Cul', 'Bordel de merde', 'Bordel de con', 'Bolosse', 'Bouche à Pipe',
-													 'Bouffon', 'Bougre De Con', 'Bougre De Conne', 'Boursemolle', 'Boursouflure', 'Bouseux', 'Boz', 'Branleur', 'Butor', 'Cabron', 'Caja De Miera',
-													 'Chancreux', 'Chien D\'infidèle', 'Chien Galeux', 'Chieur', 'Chiant', 'Clawi', 'Con', 'Conard', 'Connard', 'Connasse', 'Conne', 'Cono', 'Couille De Loup',
-													 'Couille De Moineau', 'Couille De Tétard', 'Couille Molle', 'Couillon', 'Crevard', 'Crevure', 'Crétin', 'Cul De Babouin', 'Cul Terreux',
-													 'Degueulasse', 'Ducon', 'Dégénéré Chromozomique', 'Embrayage', 'Emmerdeur', 'Encule Ta Mère', 'Enculeur De Mouches', 'enculé', 'Enfant De Tainpu',
-													 'Face de bite', 'Face de caca', 'Face De Cul', 'Face De Pet', 'Face De Rat', 'Fils De Pute', 'Fouille Merde', 'Grognasse', 'Gros Con', 'Hijo De Puta', 'Lopette', 'Manche à Couille',
-													 'Mange Merde', 'Merde', 'Mist', 'Moudlabite', 'Nike ta mère', 'Pauvre Con', 'Pendejo', 'Perra', 'Petite Merde',
-													 'Ptit con', 'Petit con', 'Playboy De Superette', 'Pouffiasse', 'Putain',
-													 'Pute', 'Put', 'Pute Au Rabais', 'Pétasse', 'Quéquette', 'Raclure De Bidet', 'Raclure De Chiotte', 'Sac à Merde', 'Safali', 'Salaud', 'Sale Pute', 'Sal pute', 'Sal put', 'Sale put', 'Sale con', 'Sal con', 'Sale connard', 'Sal connard', 'Sal conard', 'Sale connard', 'Sale conard', 'Saligaud',
-													 'Salopard', 'Salope', 'Sous Merde', 'Spermatozoide Avarié', 'Suce Bites', 'Trou De Balle', 'Trou Du Cul', 'Trou du kul', 'Trou du qu', 'Trou du ku', 'Trou de bite', 'Tête De Bite', 'Va Te Faire', 'Va te faire niker', 'Vieux Con');
+		protected $_insulte 				 = array();
 													//avec la participation de t1307
 		protected $_parseInsulte             = array();
 		protected $_i                        = array();
+		
+		protected $_domXml                        ; //pour la modification du fichier route
+		protected $_nodeXml                       ;
+		protected $_markupXml                     ;
 		
 		/**
 		 * Cr&eacute;e l'instance de la classe
@@ -37,8 +30,11 @@
 		*/
 		
 		public  function __construct($contenu, $maxword=0){
-			$this->_contenu = strval($contenu);
+			$this->_contenu = $this->_setAccent(strval($contenu));
 			$this->_maxWord = intval($maxword);
+			$this->_insulte = $this->_setInsulte();
+			
+			echo $this->_contenu;
 		}
 		
 		/**
@@ -163,6 +159,43 @@
 		
 		public function setMaxWord($max){
 			$this->_maxWord = intval($maxu);
+		}
+		
+		/**
+		 * Configuration du tableau de mot vulgaure
+		 * @access	public
+		 * @return	void
+		 * @since 2.0
+		*/
+		
+		protected function  _setInsulte(){
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			if($this->_domXml->load(MODOGCCONFIG)){
+				$this->_addError('fichier ouvert : '.MODOGCCONFIG);
+				
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('insultes')->item(0);
+				$sentences = $this->_nodeXml->getElementsByTagName('insulte');
+				
+				foreach($sentences as $sentence){
+					if ($sentence->getAttribute("rubrique") == $this->_commandExplode[2]){
+						if(CHARSET == strtolower('utf-8')) { $content =  utf8_encode($sentence->firstChild->nodeValue); }
+						else { $content =  utf8_decode($sentence->firstChild->nodeValue); }
+						array_push($this->_insulte, strtolower($content));
+					}
+				}
+				
+				print_r($this->_insulte);
+			}
+			else{
+				$this->_addError('Le fichier '.MODOGCCONFIG.' n\'a pas pu être ouvert');
+			}
+		}
+		
+		protected function  _setAccent($contenu){
+			$search = array ('@[éèêëÊË]@i','@[àâäÂÄ]@i','@[îïÎÏ]@i','@[ûùüÛÜ]@i','@[ôöÔÖ]@i','@[ç]@i');
+			$replace = array ('e','a','i','u','o','c');
+			$contenu = preg_replace($search, $replace, $contenu);
+			return strtolower($contenu);
 		}
 		
 		/**
