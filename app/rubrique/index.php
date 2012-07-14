@@ -9,6 +9,8 @@
 		$t->setShow(FALSE);
 		echo $t->show();
 		
+		// $f = new modoGc('chaîne');
+		
 		// echo $GLOBALS['rubrique']->getUrl('4ffdb88d4b57d', array('salut', '14', 'troisieme'));		
 		
 		// $mail = new mailGc(array(
@@ -32,6 +34,6 @@
 		// $sql->query('query1', 'SELECT * FROM news WHERE id=:id', 5);
 		
 		// $data = $sql->fetch('query1');
-	
+		
 		// print_r($data);
 	echo $GLOBALS['rubrique']->affFooter();

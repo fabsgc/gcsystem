@@ -104,9 +104,9 @@
 					if(isset($_GET['token'])) { $_GET['token']=htmlentities($_GET['token']); }
 				}
 				
-				if(SECUREPOST == true && isset($_GET)){
-					foreach($_GET as $cle => $val){
-						$_GET[$cle] = htmlentities($val);
+				if(SECUREPOST == true && isset($_POST)){
+					foreach($_POST as $cle => $val){
+						$_POST[$cle] = htmlentities($val);
 					}
 				}
 				

@@ -61,5 +61,5 @@
 			<li><a href="">_(lirecours)_</a></li>
 		</ul>
 	</div>
-	/#{{url:4ffdb88d4b57d:$var,prout,$var2}} #/
+	{{url:4ffdb88d4b57d:}}
 </div>
