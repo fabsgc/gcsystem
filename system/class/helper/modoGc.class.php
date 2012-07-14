@@ -9,16 +9,15 @@
 	class modoGc{
 		use errorGc;                            //trait
 		
-		protected $_contenu                       ; //contenu à filtrer
-		protected $_maxWord                  = 10  ; //contenu à filtrer
-		protected $_insulte 				 = array();
-													//avec la participation de t1307
+		protected $_contenu                           ; //contenu à filtrer
+		protected $_maxWord                  = 10     ; //contenu à filtrer
+		protected $_insulte 				 = array(); //avec la participation de t1307
 		protected $_parseInsulte             = array();
 		protected $_i                        = array();
 		
-		protected $_domXml                        ; //pour la modification du fichier route
-		protected $_nodeXml                       ;
-		protected $_markupXml                     ;
+		protected $_domXml                            ; //pour la modification du fichier route
+		protected $_nodeXml                           ;
+		protected $_markupXml                         ;
 		
 		/**
 		 * Cr&eacute;e l'instance de la classe
