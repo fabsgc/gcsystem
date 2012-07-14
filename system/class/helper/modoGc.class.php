@@ -11,7 +11,7 @@
 		
 		protected $_contenu                           ; //contenu à filtrer
 		protected $_maxWord                  = 10     ; //contenu à filtrer
-		protected $_insulte 				 = array(); //avec la participation de t1307
+		protected $_insulte                  = array(); //avec la participation de t1307
 		protected $_parseInsulte             = array();
 		protected $_i                        = array();
 		
