@@ -454,7 +454,7 @@
 		}
 		
 		protected function parseUrlRegex(){
-			if(preg_match('`'.preg_quote($this->bal['vars'][9]).'(.+):(.*)'.preg_quote($this->bal['vars'][10]).'`sU', $this->contenu);{
+			if(preg_match('`'.preg_quote($this->bal['vars'][9]).'(.+):(.*)'.preg_quote($this->bal['vars'][10]).'`sU', $this->contenu)){
 				$this->contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][9]).'(.+):(.*)'.preg_quote($this->bal['vars'][10]).'`sU',
 				array('templateGcParser', 'parseUrlRegexCallback'), $this->contenu);
 			}

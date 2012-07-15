@@ -1,24 +1,24 @@
 <style>
 	.gc_bbcode{
-		width : <?php echo htmlentities($width); ?>;
-		background-color : <?php echo htmlentities($bgcolor); ?>;
+		width : <?php echo ($width); ?>;
+		background-color : <?php echo ($bgcolor); ?>;
 		border-radius : 4px;
 		padding: 1px;
 		padding-right: 3px;
 		font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 	}
 	
-	textarea#<?php echo htmlentities($id); ?>{
+	textarea#<?php echo ($id); ?>{
 		border: none;
-		width: <?php echo htmlentities($width); ?>;
-		height: <?php echo htmlentities($height); ?>;
+		width: <?php echo ($width); ?>;
+		height: <?php echo ($height); ?>;
 		margin-bottom: -2px;
 		margin-top: 1px;
 		padding: 1px;
 	}
 	
 	.gc_bbcode_preview_zone{
-		width: <?php echo htmlentities($width); ?>;
+		width: <?php echo ($width); ?>;
 		padding: 0 1px 0 1px;
 		background-color: rgb(245,245,245);
 		border-bottom-left-radius : 4px;
@@ -490,7 +490,7 @@
 	}
 </style>
 <script>
-	function insertTag_<?php echo htmlentities($id); ?>(startTag, endTag, textareaId, tagType) {
+	function insertTag_<?php echo ($id); ?>(startTag, endTag, textareaId, tagType) {
 		var field  = document.getElementById(textareaId); 
 		var scroll = field.scrollTop;
 		field.focus();
@@ -516,18 +516,18 @@
 
 		field.scrollTop = scroll; // et on redéfinit le scroll.
 		
-		preview_<?php echo htmlentities($id); ?>('<?php echo htmlentities($id); ?>');
+		preview_<?php echo ($id); ?>('<?php echo ($id); ?>');
 	}
 	
-	function preview_<?php echo htmlentities($id); ?>(id){
-		field = nl2br_js(document.getElementById('<?php echo htmlentities($id); ?>').value);
+	function preview_<?php echo ($id); ?>(id){
+		field = nl2br_js(document.getElementById('<?php echo ($id); ?>').value);
 
 		<?php if(!empty($bbcode)) { foreach($bbcode as $val) { ?>
 			field = field.replace(/\[<?php echo (html_entity_decode("$val[0]")); ?>\]([\s\S]*?)\[\/<?php echo (html_entity_decode("$val[1]")); ?>\]/g, '<<?php echo (html_entity_decode("$val[2]")); ?>><?php echo ($val[4]); ?></<?php echo (html_entity_decode("$val[3]")); ?>>');
 		<?php }} ?>
 		<?php if(!empty($smiley)) { foreach($smiley as $val) { ?>
-			field = field.replace(/<?php echo (preg_quote("$val[1]")); ?> /g, '<img src="<?php echo htmlentities($imgpath); ?>bbcode/<?php echo ($val[0]); ?>" alt="<?php echo ($val[1]); ?>" /> ');
-			field = field.replace(/<?php echo (preg_quote("$val[1]")); ?>&lt;br \/&gt;/g, '<img src="<?php echo htmlentities($imgpath); ?>bbcode/<?php echo ($val[0]); ?>" alt="<?php echo ($val[1]); ?>" /><br />');
+			field = field.replace(/<?php echo (preg_quote("$val[1]")); ?> /g, '<img src="<?php echo ($imgpath); ?>bbcode/<?php echo ($val[0]); ?>" alt="<?php echo ($val[1]); ?>" /> ');
+			field = field.replace(/<?php echo (preg_quote("$val[1]")); ?>&lt;br \/&gt;/g, '<img src="<?php echo ($imgpath); ?>bbcode/<?php echo ($val[0]); ?>" alt="<?php echo ($val[1]); ?>" /><br />');
 		<?php }} ?>
 		<?php if(!empty($bbCodeS)) { foreach($bbCodeS as $val) { ?>
 			field = field.replace(/\[<?php echo (html_entity_decode("$val[0]")); ?>\]([\s\S]*?)\[\/<?php echo (html_entity_decode("$val[0]")); ?>\]/g, '<<?php echo (html_entity_decode("$val[0]")); ?>>$1</<?php echo (html_entity_decode("$val[0]")); ?>>');
@@ -535,13 +535,13 @@
 
 		field = field.replace('&gt;&lt;br \/&gt;', '>');
 
-		document.getElementById('zone_<?php echo htmlentities($id); ?>').innerHTML = field;
-		document.getElementById('zone_<?php echo htmlentities($id); ?>').innerHTML = field;
-		document.getElementById('zone_<?php echo htmlentities($id); ?>').scrollTop = 1000;
+		document.getElementById('zone_<?php echo ($id); ?>').innerHTML = field;
+		document.getElementById('zone_<?php echo ($id); ?>').innerHTML = field;
+		document.getElementById('zone_<?php echo ($id); ?>').scrollTop = 1000;
 	}
 	
-	function previewAjax_<?php echo htmlentities($id); ?>(id){
-		alert('<?php echo "vous devez écrire la fonction pour l\'utiliser"; ?>');
+	function previewAjax_<?php echo ($id); ?>(id){
+		alert('<?php echo "vous devez écrire la fonction pour l'utiliser"; ?>');
 	}
 	
 	function nl2br_js(myString) {
@@ -553,21 +553,21 @@
 	}
 </script>
 <div class="gc_bbcode">
-	<div class="gc_bbcode_option option <?php echo htmlentities($theme); ?>">
+	<div class="gc_bbcode_option option <?php echo ($theme); ?>">
 		<?php if(!empty($bbCodeEditor)) { foreach($bbCodeEditor as $val) { ?>
-			<img src="<?php echo htmlentities($imgpath); ?>bbcode/<?php echo ($val[2]); ?>" alt="<?php echo ($val[2]); ?>" onclick="insertTag_<?php echo htmlentities($id); ?>('[<?php echo (preg_quote("$val[0]")); ?>]', '[/<?php echo (preg_quote("$val[1]")); ?>]', '<?php echo htmlentities($id); ?>'); " />
+			<img src="<?php echo ($imgpath); ?>bbcode/<?php echo ($val[2]); ?>" alt="<?php echo ($val[2]); ?>" onclick="insertTag_<?php echo ($id); ?>('[<?php echo (preg_quote("$val[0]")); ?>]', '[/<?php echo (preg_quote("$val[1]")); ?>]', '<?php echo ($id); ?>'); " />
 		<?php }} ?>
 		<br />
 		<?php if(!empty($smiley)) { foreach($smiley as $val) { ?>
-			<img src="<?php echo htmlentities($imgpath); ?>bbcode/<?php echo ($val[0]); ?>" alt="<?php echo ($val[1]); ?>" onclick="insertTag_<?php echo htmlentities($id); ?>('<?php echo (preg_quote("$val[1]")); ?> ', '', '<?php echo htmlentities($id); ?>'); " />
+			<img src="<?php echo ($imgpath); ?>bbcode/<?php echo ($val[0]); ?>" alt="<?php echo ($val[1]); ?>" onclick="insertTag_<?php echo ($id); ?>('<?php echo (preg_quote("$val[1]")); ?> ', '', '<?php echo ($id); ?>'); " />
 		<?php }} ?>
 	</div>
-	<textarea id="<?php echo htmlentities($id); ?>" name="<?php echo htmlentities($name); ?>"<?php if($preview == true && $instantane == true) { ?> onKeyUp="preview_<?php echo htmlentities($id); ?>('<?php echo htmlentities($id); ?>');" <?php } ?> ><?php echo htmlentities($message); ?></textarea>
+	<textarea id="<?php echo ($id); ?>" name="<?php echo ($name); ?>"<?php if($preview == true && $instantane == true) { ?> onKeyUp="preview_<?php echo ($id); ?>('<?php echo ($id); ?>');" <?php } ?> ><?php echo ($message); ?></textarea>
 	<?php if($preview == true) { ?>
-		<div class="gc_bbcode_preview_button button <?php echo htmlentities($theme); ?>" onClick="previewAjax_<?php echo htmlentities($id); ?>('<?php echo htmlentities($id); ?>');">
+		<div class="gc_bbcode_preview_button button <?php echo ($theme); ?>" onClick="previewAjax_<?php echo ($id); ?>('<?php echo ($id); ?>');">
 			<?php echo "prévisualiser"; ?>
 		</div>
 	<?php } ?>
-	<div class="gc_bbcode_preview_zone" id="zone_<?php echo htmlentities($id); ?>">
+	<div class="gc_bbcode_preview_zone" id="zone_<?php echo ($id); ?>">
 	</div>
 </div>

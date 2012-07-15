@@ -6,10 +6,9 @@
 	 * @version : 2.0 bêta
 	*/
 	
-	class zipGc{
-		use errorGc;                                //trait
-		
-		protected $_file                          ; //chemin vers le fichier compressé
+	class zipGc extends fileGc{
+		protected $_zipContent                                      ;
+		protected $_zipFileContent                                  ;
 		
 		/**
 		 * Cr&eacute;e l'instance de la classe
@@ -19,7 +18,25 @@
 		 * @since 2.0
 		*/
 		
-		public  function __construct(){
+		public function __construct($filepath){
+			if(is_file($filepath) and zip_open($filepath)){
+				$this->setFile($filepath);
+			}
+			else{
+				$this->_addError(self::NOACCESS);
+			}
+		}
+		
+		public function getContentZip(){
+		
+		}
+		
+		public function getContentFileZip(){
+		
+		}
+		
+		public function putFileToFtp(){
+		
 		}
 		
 		/**
