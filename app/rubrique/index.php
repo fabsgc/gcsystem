@@ -9,8 +9,22 @@
 		$t->setShow(FALSE);
 		echo $t->show();
 
-		// $zip = new zipGc('CodeIgniter_2.1.0.zip');
-		// echo $zip->getFilePath();
+		// $zip = new zipGc('C:\wamp\www\GCsystem.zip');
+		//echo $zip->getFilePath();
+		// echo $zip->getFilesCompressedSize();
+		// print_r($zip->getContentZip());
+		// print_r($zip->getContentFileZip());
+		// $zip->putFileToFtp('test/', zipGc::NOPUTDIR, array());
+		// $zip->putFileToFtp('test/', zipGc::PUTDIR, array('css'));
+		// $zip->putFileToFtp('test/', zipGc::NOPUTDIR, array('php', 'css'));
 		
+		// foreach($zip->getFileCompressedSize() as $clé => $val){
+			// if(is_file($cle)){
+				// echo 'salope';
+			// }
+			// else{
+				// echo 'merde';
+			// }
+		// }	
 		
 	echo $GLOBALS['rubrique']->affFooter();
