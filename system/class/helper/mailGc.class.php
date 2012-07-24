@@ -2,25 +2,25 @@
 	/**
 	 * @file : mailGc.class.php
 	 * @author : fab@c++
-	 * @description : class générant des mails
-	 * @version : 2.0 bêta
+	 * @description : class gÃ©nÃ©rant des mails
+	 * @version : 2.0 bÃªta
 	*/
 	
 	class mailGc extends constMime{
 		use errorGc                                                                 ;
 		
-		protected $_passageLigne                = "\r\n"                            ; //passage à la ligne en fonction du destinataire
+		protected $_passageLigne                = "\r\n"                            ; //passage Ã  la ligne en fonction du destinataire
 		protected $_expediteur                  = array('mail', 'mail@mail.com')    ; //nom de l'expediteur et email de l'expediteur
 		protected $_reply                       = array('mail', 'mail@mail.com')    ; //email de reponse et email de reponse
 		protected $_destinataire                = array('mail@mail.com')            ; //emails des destinataires
 		protected $_message                     = array()                           ; //message
-		protected $_piece                       = array()                           ; //liste des pièces jointes
-		protected $_isPiece                     = false                             ; //le message contient des pièces jointes
+		protected $_piece                       = array()                           ; //liste des piÃ¨ces jointes
+		protected $_isPiece                     = false                             ; //le message contient des piÃ¨ces jointes
 		protected $_boundary                                                        ;
 		protected $_boundaryAlt                                                     ;
-		protected $_fileTransfert               = 'multipart/alternative'           ; //prévient du contenu qui va être envoyé
-		protected $_priority                    = '3'                               ; //prévient du contenu qui va être envoyé
-		protected $_charset                     = 'UTF-8'                           ; //charset à utiliser
+		protected $_fileTransfert               = 'multipart/alternative'           ; //prÃ©vient du contenu qui va Ãªtre envoyÃ©
+		protected $_priority                    = '3'                               ; //prÃ©vient du contenu qui va Ãªtre envoyÃ©
+		protected $_charset                     = 'UTF-8'                           ; //charset Ã  utiliser
 		protected $_cc                          = array()                           ; //copie carbone
 		protected $_bcc                         = array()                           ; //copie carbone invisible
 		protected $_formatHtml                  = true                              ;
@@ -29,7 +29,7 @@
 		const MSG_TEMPLATE                      = 0                                 ;
 		const MSG_TXT                           = 1                                 ;
 		
-		const PIECENAME                         = 'pièce jointe'                    ;
+		const PIECENAME                         = 'piÃ¨ce jointe'                    ;
 		
 		const FORMATHTML                            = true                          ;
 		const FORMATTEXT                            = false                         ;
@@ -153,7 +153,7 @@
 			array_push($this->_message, $message);
 		}
 		
-		public function addFile($file, $name='pièce jointe', $mime = self::EXT_TXT){
+		public function addFile($file, $name='piÃ¨ce jointe', $mime = self::EXT_TXT){
 			$this->_fileTransfert = 'multipart/mixed';
 			$this->_isPiece = true;
 			$file = new fileGc($file);
@@ -205,7 +205,7 @@
 			foreach($this->_destinataire as $destinataire){
 				$this->_passageLigne = $this->_setPassageLigne($destinataire);
 				
-				//=====Création du header de l'e-mail.
+				//=====CrÃ©ation du header de l'e-mail.
 				$header = "From: \"".$this->_expediteur[0]."\" <".$this->_expediteur[1].">".$this->_passageLigne;
 				$header.= "Reply-to: \"".$this->_reply[0]."\" <".$this->_reply[1].">".$this->_passageLigne;
 				$header.= "MIME-Version: 1.0".$this->_passageLigne;
@@ -221,7 +221,7 @@
 				$header.= "Content-Type: ".$this->_fileTransfert.";".$this->_passageLigne." boundary=\"".$this->_boundary."\"".$this->_passageLigne;
 				//==========
 				 
-				//=====Création du message.
+				//=====CrÃ©ation du message.
 				$message = $this->_passageLigne."--".$this->_boundary.$this->_passageLigne;
 				$message.= "Content-Type: multipart/alternative;".$this->_passageLigne." boundary=\"".$this->_boundaryAlt."\"".$this->_passageLigne;
 				$message.= $this->_passageLigne."--".$this->_boundaryAlt.$this->_passageLigne;

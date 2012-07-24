@@ -13,7 +13,7 @@
   <sentence id="fichierinclus">fichiers inclus</sentence>
   <sentence id="requetesql">requ&#234;te sql ex&#233;cut&#233;es</sentence>
   <sentence id="fichiertpl">fichier de template inclus.</sentence>
-  <sentence id="vargetpost">variable get et post.</sentence>
+  <sentence id="vargetpost">variable get, post, session et file.</sentence>
   <sentence id="bbcodepreview">pr&#233;visualiser</sentence>
   <sentence id="alertpreviewbbocde">vous devez &#233;crire la fonction pour l'utiliser</sentence>
   <sentence id="404notfound">erreur 404</sentence>

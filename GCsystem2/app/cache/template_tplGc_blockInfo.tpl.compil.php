@@ -1,18 +1,18 @@
 <div id="block_info">
 	<div id="block_info_header">
-		<?php echo htmlentities($title); ?>
+		<?php echo $title; ?>
 	</div>
 	<div id="block_info_content">
-		<?php echo htmlentities($content); ?>
+		<?php echo $content; ?>
 	</div>
 	<div id="block_info_footer">
-		<a href="<?php echo htmlentities($redirect); ?>">
+		<a href="<?php echo $redirect; ?>">
 			<div id="window_info_bouton">
 				<?php echo "Retour"; ?>
 			</div>
 		</a>
 	</div>
 	<?php if($time > 0) { ?>
-		<meta http-equiv='Refresh' content='<?php echo htmlentities($time); ?>; URL=<?php echo htmlentities($redirect); ?>'>";
+		<meta http-equiv='Refresh' content='<?php echo $time; ?>"; URL="<?php echo $redirect; ?>"'>";
 	<?php } ?>
 </div>

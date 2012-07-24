@@ -59,7 +59,7 @@
 		<ul>
 			<li><a href="">_(liredoc)_</a></li>
 			<li><a href="">_(lirecours)_</a></li>
+			<li><a href="{{url:terminal:}}">terminal</a></li>
 		</ul>
 	</div>
-	{{url:4ffdb88d4b57d:}}
 </div>

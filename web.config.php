@@ -5,8 +5,8 @@
 
  | @file : web.config.php
  | @author : fab@c++
- | @description : Configuration générale de l'application web et des connexions SQL
- | @version : 1.0 Bêta
+ | @description : Configuration gÃ©nÃ©rale de l'application web et des connexions SQL
+ | @version : 1.0 BÃªta
  
  | ------------------------------------------------------
  
@@ -21,58 +21,58 @@ define('APP_PATH', 'app/');
 //system
 define('SYSTEM_PATH', 'system/');
 
-//chemin d'accès fichiers css
+//chemin d'accÃ¨s fichiers css
 define('CSS_PATH', ASSET_PATH.'css/');
 
-//chemin d'accès fichiers javascript
+//chemin d'accÃ¨s fichiers javascript
 define('JS_PATH', ASSET_PATH.'js/');
 
-//chemin d'accès fichiers javascript
+//chemin d'accÃ¨s fichiers javascript
 define('IMG_PATH', ASSET_PATH.'image/');
 
-//chemin d'accès fichiers d'upload
+//chemin d'accÃ¨s fichiers d'upload
 define('UPLOAD_PATH', ASSET_PATH.'upload/');
 
-//chemin d'accès fichiers de log
+//chemin d'accÃ¨s fichiers de log
 define('LOG_PATH', SYSTEM_PATH.'log/');
 
-//chemin d'accès fichiers de log
+//chemin d'accÃ¨fichiers de log
 define('CACHE_PATH', APP_PATH.'cache/');
 
-//chemin d'accès fichiers divers
+//chemin d'accÃ¨s fichiers divers
 define('FILE_PATH', ASSET_PATH.'file/');
 
-//chemin d'accès rubriques (controleur)
+//chemin d'accÃ¨s rubriques (controleur)
 define('RUBRIQUE_PATH', APP_PATH.'rubrique/');
 
-//chemin d'accès des includes (vue+modele)
+//chemin d'accÃ¨s des includes (vue+modele)
 define('INCLUDE_PATH', APP_PATH.'include/');
 
-//chemin d'accès des includes (vue+modele)
+//chemin d'accÃ¨s des includes (vue+modele)
 define('SQL_PATH', APP_PATH.'sql/');
 
-//chemin d'accès des formulaires
+//chemin d'accÃ¨s des formulaires
 define('FORMS_PATH', APP_PATH.'forms/');
 
-//chemin d'accès aux fichiers de config du projet
+//chemin d'accÃ¨s aux fichiers de config du projet
 define('APP_CONFIG_PATH', APP_PATH.'config/');
 
-//chemin d'accès des templates
+//chemin d'accÃ¨s des templates
 define('TEMPLATE_PATH', APP_PATH.'template/');
 
-//chemin d'accès fichiers class
+//chemin d'accÃ¨s fichiers class
 define('CLASS_PATH', SYSTEM_PATH.'class/');
 
-//chemin d'accès librairies
+//chemin d'accÃ¨s librairies
 define('LIB_PATH', SYSTEM_PATH.'lib/');
 
-//chemin d'accès fichiers de langues
+//chemin d'accÃ¨s fichiers de langues
 define('LANG_PATH', SYSTEM_PATH.'lang/');
 
-//chemin d'accès fichiers GCsysem
+//chemin d'accÃ¨s fichiers GCsysem
 define('GCSYSTEM_PATH', 'GCsystem/');
 
-//chemin d'accès fichiers Error http
+//chemin d'accÃ¨s fichiers Error http
 define('ERRORDUOCUMENT_PATH', 'ErrorDocument/');
 
 //extension fichiers de langues
@@ -84,7 +84,7 @@ define('ROUTE_EXT', '.xml');
 //extension fichiers de config de l'pplication
 define('CONFIG_EXT', '.xml');
 
-// Définit l'extension des fichiers
+// DÃ©finit l'extension des fichiers
 define('FILES_EXT', '.html');
 
 //fonction generique
@@ -180,10 +180,10 @@ define('CLASS_SOCIAL', CLASS_PATH.CLASS_HELPER_PATH.'socialGc.class.php');
 //autoload des class
 define('CLASS_AUTOLOAD', CLASS_PATH.'autoload.php');
 
-//class gérant le fichier de config de l'application
+//class gÃ©rant le fichier de config de l'application
 define('CLASS_CONFIG', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php');
 
-//class gérant l'url rewrite
+//class gÃ©rant l'url rewrite
 define('CLASS_ROUTER', CLASS_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php');
 
 //GESHI
@@ -205,13 +205,13 @@ define('TEMPLATE_EXT', '.tpl');
 define('LOG_EXT', '.log');
 
 //erreur script rubrique not found
-define('RUBRIQUE_NOT_FOUND', 'Une erreur relative au script s\'est produite. La rubrique demandée n\'a pas été trouvée');
+define('RUBRIQUE_NOT_FOUND', 'Une erreur relative au script s\'est produite. La rubrique demandÃ©e n\'a pas Ã©tÃ© trouvÃ©e');
 
 //erreur variabels manquantes
-define('RUBRIQUE_MISSING_PARAMETERS', 'Il manque des paramètre pour répondre à votre demande.');
+define('RUBRIQUE_MISSING_PARAMETERS', 'Il manque des paramÃ¨tres pour rÃ©pondre Ã  votre demande.');
 
 //erreur variabels manquantes
-define('ACTION_NOT_FOUND', 'L\'action demandée n\'a pas été trouvée.');
+define('ACTION_NOT_FOUND', 'L\'action demandÃ©e n\'a pas Ã©tÃ© trouvÃ©e.');
 
 /* fichier jquery */
 define('JQUERYFILE', JS_PATH.'jquery.min.js');
@@ -240,27 +240,27 @@ define('APPCONFIG', APP_CONFIG_PATH.'app'.CONFIG_EXT);
 //base du site (utile pour eviter les repetition et faciliter  les changements de bdd
 define('BDD', 'test');
 
-//connexion à la bdd, true ou false
+//connexion Ã  la bdd, true ou false
 define('CONNECTBDD', false);
 
-//connexion à la bdd, true ou false
+//connexion Ã  la bdd, true ou false
 define('REWRITE', true);
 
 //charset
-define('CHARSET', 'ISO-8859-1');
+define('CHARSET', 'UTF-8');
 
 //favicon
 define('FAVICON_PATH', 'no');
 
-//dossier où est placé le framework à partir de la racine du répertoire. sous wamp ar exemple, www/GCsystem2.0
-define('FOLDER', '/GCsystem2.0');
+//dossier oÃ¹ est placÃ© le framework Ã  partir de la racine du rÃ©pertoire. sous wamp par exemple, /GCsystem2.0
+define('FOLDER', '/GCsystem');
 
-//dossier où est placé le framework à partir de la racine du répertoire
+//dossier oÃ¹ est placÃ© le framework Ã  partir de la racine du rÃ©pertoire
 define('DEFAULTLANG', 'fr');
 
-/** Definit l'environnement dans lequel est effectué l'application :
-* development : erreurs affichées + barre de développement et présence d'un terminal
-* production : erreurs non affichées **/
+/** Definit l'environnement dans lequel est effectuÃ© l'application :
+* development : erreurs affichÃ©es + barre de dÃ©veloppement et prÃ©sence d'un terminal
+* production : erreurs non affichÃ©es **/
 define('ENVIRONMENT', 'development');
 
 /* affiche le message de maintenance */
@@ -269,9 +269,9 @@ define('MAINTENANCE', false);
 /* mot de passe pour se connecter au terminal */
 define('TERMINAL_MDP', 'mdp');
 
-/* mettre à true pour pouvoir utiliser jquery et jquery ui */
+/* mettre Ã  true pour pouvoir utiliser jquery et jquery ui */
 define('JQUERY', true);
 
-/* mettre à true pour pouvoir utiliser jquery et jquery ui */
+/* mettre Ã  true pour sÃ©curiser les variables superglobales */
 define('SECUREGET', true);
 define('SECUREPOST', true);

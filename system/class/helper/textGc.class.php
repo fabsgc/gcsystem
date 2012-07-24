@@ -2,17 +2,17 @@
 	/**
 	 * @file : textGc.class.php
 	 * @author : fab@c++
-	 * @description : class gÃ©rant les text
-	 * @version : 2.0 bÃªta
+	 * @description : class gÃƒÂ©rant les text
+	 * @version : 2.0 bÃƒÂªta
 	*/
 	
 	class textGc{
 		use errorGc;                                  //trait
 		
 		protected $_texte                                   ;
-		protected $_accentSearch                = array ('@[éèêëÊË]@i','@[àâäÂÄ]@i','@[îïÎÏ]@i','@[ûùüÛÜ]@i','@[ôöÔÖ]@i','@[ç]@i');
+		protected $_accentSearch                = array ('@[Ã©Ã¨ÃªÃ«ÃŠÃ‹]@i','@[Ã Ã¢Ã¤Ã‚Ã„]@i','@[Ã®Ã¯ÃÃ]@i','@[Ã»Ã¹Ã¼Ã›Ãœ]@i','@[Ã´Ã¶Ã”Ã–]@i','@[Ã§]@i');
 		protected $_accentReplace               = array ('e','a','i','u','o','c');
-		protected $_urlSearch                   = array ('@[éèêëÊË]@i','@[àâäÂÄ]@i','@[îïÎÏ]@i','@[ûùüÛÜ]@i','@[ôöÔÖ]@i','@[ç]@i','@[ ]@i','@[^a-zA-Z0-9_]@');
+		protected $_urlSearch                   = array ('@[Ã©Ã¨ÃªÃ«ÃŠÃ‹]@i','@[Ã Ã¢Ã¤Ã‚Ã„]@i','@[Ã®Ã¯ÃÃ]@i','@[Ã»Ã¹Ã¼Ã›Ãœ]@i','@[Ã´Ã¶Ã”Ã–]@i','@[Ã§]@i','@[ ]@i','@[^a-zA-Z0-9_]@');
 		protected $_urlReplace                  = array ('e','a','i','u','o','c', ' ');
 		
 		/**

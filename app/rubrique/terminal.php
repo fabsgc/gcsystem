@@ -1,12 +1,12 @@
 <?php
 	switch($_GET['action']){
 		case 'terminal':
-			$terminal = new terminalGC(htmlentities($_POST['message']));
+			$terminal = new terminalGC($_POST['message']);
 			echo $terminal ->parse();
 		break;
 		
 		default:
-			$GLOBALS['rubrique']->setInfo(array('title'=>'Terminal - GCsystem', 'css'=>''));
+			$GLOBALS['rubrique']->setInfo(array('title'=>'Terminal - GCsystem', 'css'=>'', 'doctype'=>'html5'));
 			echo $GLOBALS['rubrique']->affHeader();
 				$t= new templateGC(GCSYSTEM_PATH.'GCterminal', 'GCterminal', '0');
 				if(ENVIRONMENT == 'development') $t->assign(array('moins' => 50, 'moins2'=>80));

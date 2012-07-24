@@ -2,8 +2,8 @@
 	/**
 	 * @file : configGc.class.php
 	 * @author : fab@c++
-	 * @description : class gérant le fichier de config de l'application
-	 * @version : 2.0 bêta
+	 * @description : class gÃ©rant le fichier de config de l'application
+	 * @version : 2.0 bÃªta
 	*/
 	
 	class configGc {
@@ -28,7 +28,7 @@
 				}
 			}
 			else{
-				$this->_addError('Le fichier '.APPCONFIG.' n\'a pas pu être ouvert');
+				$this->_addError('Le fichier '.APPCONFIG.' n\'a pas pu Ãªtre ouvert');
 			}
 		}
 		

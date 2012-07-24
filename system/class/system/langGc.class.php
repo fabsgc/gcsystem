@@ -3,7 +3,7 @@
 	 * @file : langGc.class.php
 	 * @author : fab@c++
 	 * @description : class permettant la gestion de plusieurs langues
-	 * @version : 2.0 bêta
+	 * @version : 2.0 bÃªta
 	*/
 	
     class langGc{
@@ -12,7 +12,7 @@
 		protected $_lang = DEFAULTLANG; // nom de la langue a utilise
 		protected $_langFile = true   ; // indique si le fichier de langue est charge ou non
 		protected $_domXml            ; // contient l'object DomDocument natif de PHP, permet la lecture des fichiers de langues
-		protected $_sentence          ; // contient la phrase du fichier de langue à charger
+		protected $_sentence          ; // contient la phrase du fichier de langue Ã  charger
 		protected $_content           ; // variable interm&eacute;diaire utilis&eacute;e dans loadSentence
 		
 		/**
@@ -38,7 +38,7 @@
 		
 		public function setLang($lang){
 			$this->_lang = $lang;
-			$this->_addError('fichier à ouvrir : '.$lang);
+			$this->_addError('fichier Ã  ouvrir : '.$lang);
 			$this->loadFile();
 		}
 		
@@ -59,7 +59,7 @@
 				}
 				else{
 					$this->_langFile=false;
-					$this->_addError('Le fichier de langue n\'a pas pu être ouvert.');
+					$this->_addError('Le fichier de langue n\'a pas pu Ãªtre ouvert.');
 				}
 			}
 			else{
@@ -99,7 +99,7 @@
 				}
 				
 				if($this->_content!=""){
-					return utf8_decode($this->_content);
+					return ($this->_content);
 				}
 				else{
 					return 'texte non trouv&#233;';

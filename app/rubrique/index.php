@@ -8,7 +8,6 @@
 		));
 		$t->setShow(FALSE);
 		echo $t->show();
-
 		// $zip = new zipGc('C:\wamp\www\GCsystem.zip');
 		//echo $zip->getFilePath();
 		// echo $zip->getFilesCompressedSize();
@@ -18,7 +17,7 @@
 		// $zip->putFileToFtp('test/', zipGc::PUTDIR, array('css'));
 		// $zip->putFileToFtp('test/', zipGc::NOPUTDIR, array('php', 'css'));
 		
-		// foreach($zip->getFileCompressedSize() as $clé => $val){
+		// foreach($zip->getFileCompressedSize() as $clÃ© => $val){
 			// if(is_file($cle)){
 				// echo 'salope';
 			// }

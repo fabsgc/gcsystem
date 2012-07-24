@@ -2,8 +2,8 @@
 	/**
 	 * @file : rubrique.class.php
 	 * @author : fab@c++
-	 * @description : class mËre de l'application
-	 * @version : 2.0 bÍta
+	 * @description : class m√®re de l'application
+	 * @version : 2.0 b√™ta
 	*/
 	
 	class Gcsystem{
@@ -139,7 +139,7 @@
 			if($this->_domXml->load(ROUTE))
 				$this->_addError('fichier ouvert : '.ROUTE);
 			else
-				$this->_addError('Le fichier '.ROUTE.' n\'a pas pu Ítre ouvert');
+				$this->_addError('Le fichier '.ROUTE.' n\'a pas pu √™tre ouvert');
 				
 			$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
 			$routes = $this->_nodeXml->getElementsByTagName('route');
@@ -173,7 +173,7 @@
 					$this->_addError('fichier ouvert : '.ROUTE);
 				}
 				else{
-					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu Ítre ouvert');
+					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu √™tre ouvert');
 				}
 				
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
@@ -216,7 +216,7 @@
 								$sql_connect[''.$d['database'].''] = new PDO('mysql:host='.$d['hostname'].';dbname='.$d['database'], $d['username'], $d['password']);
 							}
 							catch (PDOException $e){
-								$this->setErrorLog('errors_sql', 'Une exception a ÈtÈ lancÈe. Message d\'erreur lors de la connexion ‡ une base de donnÈes : '.$e.'');
+								$this->setErrorLog('errors_sql', 'Une exception a √©t√© lanc√©e. Message d\'erreur lors de la connexion √† une base de donn√©es : '.$e.'');
 							}	
 						break;
 						
@@ -230,7 +230,7 @@
 						break;
 						
 						default :
-							$this->setErrorLog('errors_sql', 'L\'extension de cette connexion n\'est pas gÈrÈe');
+							$this->setErrorLog('errors_sql', 'L\'extension de cette connexion n\'est pas g√©r√©e');
 						break;
 					}
 				}
@@ -648,7 +648,7 @@
 				include(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT);
 			} 
 			else { 
-				$this->setErrorLog('errors', 'Le template '.$nom_template.' n\'a pas ÈtÈ trouvÈ');
+				$this->setErrorLog('errors', 'Le template '.$nom_template.' n\'a pas √©t√© trouv√©');
 			}
 		}
 	}

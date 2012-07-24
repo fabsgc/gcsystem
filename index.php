@@ -6,7 +6,7 @@ session_start();
  | @file : index.php
  | @author : fab@c++
  | @description : Controlleur central de l'application
- | @version : 2.0 bêta
+ | @version : 2.0 bÃªta
  | ------------------------------------------------------
 \*/
 
@@ -17,7 +17,7 @@ require_once(CLASS_AUTOLOAD);
 $GLOBALS['appDevGc'] = new appDevGc();
 $GLOBALS['rubrique'] = new Gcsystem();
 
-/* ---------- démarrage de l'application ----------------- */
+/* ---------- dÃ©marrage de l'application ----------------- */
 $GLOBALS['rubrique']->init();
 
 /* ------ articulation du site web -------- */

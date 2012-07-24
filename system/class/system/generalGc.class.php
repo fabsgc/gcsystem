@@ -3,7 +3,7 @@
 	 * @file : generalGc.class.php
 	 * @author : fab@c++
 	 * @description : traits
-	 * @version : 2.0 bêta
+	 * @version : 2.0 bÃªta
 	*/
 
 	trait generalGc{
@@ -38,7 +38,7 @@
 		
 		public function setErrorLog($file, $message){
 			$file = fopen(LOG_PATH.$file.LOG_EXT, "a+");
-			fputs($file, date("d/m/Y à H:i:s ! : ",time()).$message."\n");
+			fputs($file, utf8_encode(date("d/m/Y \a H:i:s ! : ",time()).$message."\n"));
 		}
 		
 		public function sendMail($email, $message_html, $sujet, $envoyeur){
@@ -49,18 +49,18 @@
 				$passage_ligne = "\n";
 			}
 	 
-			//=====Création de la boundary
+			//=====CrÃ©ation de la boundary
 			$boundary = "-----=".md5(rand());
 			//==========
 			
-			//=====Création du header de l'e-mail.
+			//=====CrÃ©ation du header de l'e-mail.
 			$header = "From: \"".$envoyeur."\"<contact@legeekcafe.com>".$passage_ligne;
 			$header.= "Reply-to: \"".$envoyeur."\" <contact@legeekcafe.com>".$passage_ligne;
 			$header.= "MIME-Version: 1.0".$passage_ligne;
 			$header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
 			//==========
 			 
-			//=====Création du message.
+			//=====CrÃ©ation du message.
 			$message = $passage_ligne.$boundary.$passage_ligne;
 			
 			$message.= $passage_ligne."--".$boundary.$passage_ligne;
@@ -108,7 +108,7 @@
 	}
 	
 	trait errorGc{
-		protected $_error              = array() ; //array contenant toutes les erreurs enregistrées
+		protected $_error              = array() ; //array contenant toutes les erreurs enregistrÃ©es
 		
 		public function showError(){
 			$erreur = "";
@@ -121,7 +121,7 @@
 		protected function _addError($error){
 			array_push($this->_error, $error);
 			$file = fopen(LOG_PATH.'system_errors'.LOG_EXT, "a+");
-			fputs($file, date("d/m/Y à H:i:s ! : ",time()).' fichier '.__FILE__.' ligne '.__LINE__.' '.$error."\n");
+			fputs($file, utf8_encode(date("d/m/Y \a H:i:s ! : ",time()).' fichier '.__FILE__.' ligne '.__LINE__.' '.$error."\n"));
 			fclose($file);
 		}
     }
@@ -150,7 +150,7 @@
 					$this->_addError('fichier ouvert : '.ROUTE);
 				}
 				else{
-					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
+					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu Ãªtre ouvert');
 				}
 				
 				$nodeXml = $domXml->getElementsByTagName('routes')->item(0);

@@ -2,8 +2,8 @@
 	/**
 	 * @file : cacheGc.class.php
 	 * @author : fab@c++
-	 * @description : class gérant la mise en cache de façon générale
-	 * @version : 2.0 bêta
+	 * @description : class gÃ©rant la mise en cache de faÃ§on gÃ©nÃ©rale
+	 * @version : 2.0 bÃªta
 	*/
 	
 	class cacheGc{
@@ -12,15 +12,15 @@
 		protected $_name              ; //nom du cache
 		protected $_nameFile          ; //nom du fichier de cache
 		protected $_time              ; //temps de mise en cache
-		protected $_val               ; //contenu à mettre en cache
+		protected $_val               ; //contenu Ã  mettre en cache
 		
 		/**
-		 * Constructeur de la classe. Configure les paramètres necéssaires à la création d'un fichier de cache
+		 * Constructeur de la classe. Configure les paramÃ¨tres necÃ©ssaires Ã  la crÃ©ation d'un fichier de cache
 		 * @access	public
 		 * @return	void
 		 * @param string $name : nom du fichier de cache
 		 * @param string $val : contenu du fichier de cache<br />
-		 * @param int $time : temps de mise en cache du fichier. La valeur par défaut, 0 correspond à un fichier non mis en cache
+		 * @param int $time : temps de mise en cache du fichier. La valeur par dÃ©faut, 0 correspond Ã  un fichier non mis en cache
 		 * @since 2.0
 		*/
 		
@@ -32,7 +32,7 @@
 		}
 		
 		/**
-		 * Création du cache
+		 * CrÃ©ation du cache
 		 * @access	public
 		 * @return	void
 		 * @since 2.0
@@ -92,7 +92,7 @@
 		}
 		
 		/**
-		 * Récupération du cache
+		 * RÃ©cupÃ©ration du cache
 		 * @access	public
 		 * @return	void
 		 * @since 2.0
@@ -108,7 +108,7 @@
 		}
 	 
 		/**
-		 * Fonction permettant de savoir si le fichier de cache est périmé
+		 * Fonction permettant de savoir si le fichier de cache est pÃ©rimÃ©
 		 * @access	public
 		 * @return	void
 		 * @since 2.0
@@ -148,7 +148,7 @@
 		 * Compression du fichier de cache
 		 * @access	public
 		 * @return	void
-		 * @param string $val : contenu à compresser
+		 * @param string $val : contenu Ã  compresser
 		 * @since 2.0
 		*/
 		
@@ -157,10 +157,10 @@
 		}
 		
 		/**
-		 * Décompression du fichier de cache
+		 * DÃ©compression du fichier de cache
 		 * @access	public
 		 * @return	void
-		 * @param string $val : contenu à décompresser
+		 * @param string $val : contenu Ã  dÃ©compresser
 		 * @since 2.0
 		*/
 		

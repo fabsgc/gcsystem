@@ -2,14 +2,14 @@
 	/**
 	 * @file : bbcodeGc.class.php
 	 * @author : fab@c++
-	 * @description : class gérant le parsage des messages et l'affichage d'un éditeur plus ou moins avancé
-	 * @version : 2.0 bêta
+	 * @description : class gÃ©rant le parsage des messages et l'affichage d'un Ã©diteur plus ou moins avancÃ©
+	 * @version : 2.0 bÃªta
 	*/
 
 	class bbcodeGc{
 		use errorGc, langInstance;                                              //trait
 
-		protected $_contenu                                     ; //contenu à parser
+		protected $_contenu                                     ; //contenu Ã  parser
 		const TAGSTART                    = '['                 ; //constante contenant les tag pour la syntaxe
 		const TAGSTART2                   = '[/'                ;
 		const TAGEND                      = ']'                 ;
@@ -17,20 +17,20 @@
 		const PARSETAGSTART2              = '</'                ;
 		const PARSETAGEND                 = '>'                 ;
 		const PARSETAGENDAUTO             = '/>'                ;
-		const BBCODE                      = 'bbcode'            ; //répertoire contenant les images
+		const BBCODE                      = 'bbcode'            ; //rÃ©pertoire contenant les images
 
-		protected $_id                                          ; //id uniq pour la création d'un formulaire de bbcode
-		protected $_name                                        ; //name pour la création d'un formulaire de bbcode
-		protected $_preview                  =true              ; //la prévisualisation est activée
-		protected $_previewInstantanee       =true              ; //la prévisualisation instantanée est activée
+		protected $_id                                          ; //id uniq pour la crÃ©ation d'un formulaire de bbcode
+		protected $_name                                        ; //name pour la crÃ©ation d'un formulaire de bbcode
+		protected $_preview                  =true              ; //la prÃ©visualisation est activÃ©e
+		protected $_previewInstantanee       =true              ; //la prÃ©visualisation instantanÃ©e est activÃ©e
 
-		protected $_bbCodeWidth              ='600px'            ; //largeur de l'éditeur
-		protected $_bbCodeHeight             ='250px'            ; //largeur de la zone de texte de l'éditeur
-		protected $_bbCodeBgColor            ='#9d9d9d'          ; //couleur de fond de l'éditeur
-		protected $_bbCodeButton             ='blue'             ; //couleur de la barre d'option et du bouton prévisualiser.
+		protected $_bbCodeWidth              ='600px'            ; //largeur de l'Ã©diteur
+		protected $_bbCodeHeight             ='250px'            ; //largeur de la zone de texte de l'Ã©diteur
+		protected $_bbCodeBgColor            ='#9d9d9d'          ; //couleur de fond de l'Ã©diteur
+		protected $_bbCodeButton             ='blue'             ; //couleur de la barre d'option et du bouton prÃ©visualiser.
 															      //valeur : button blue red green pinkish maroonish golden brownish 
 															      //grayish skinish yellowish goldenish pink violet orange seagreen personalize
-		protected $_bbCodeButtonColor        = array()           ; //dans le cas de couleurs personnalisées
+		protected $_bbCodeButtonColor        = array()           ; //dans le cas de couleurs personnalisÃ©es
 
 		protected $_bbCode = array (
 			'abbr'   => array ('abbr title=&quot;(.*)&quot;', 'abbr', 'abbr title="$1"', 'abbr', '$2'),
@@ -71,7 +71,7 @@
 			':o'       => array('huh.png', ':o'),
 			':colere:' => array('mechant.png', ':colere'),
 			'^^'       => array('hihi.png', '^^'),
-			':-&deg;'  => array('siffle.png', ':-°'),
+			':-&deg;'  => array('siffle.png', ':-Â°'),
 			':think:'  => array('think.png', ':think:'),
 			':pleure:'     => array('pleure.png', ':pleure:')
 		);
@@ -162,17 +162,17 @@
 			//securite
 			$this->_contenu = preg_replace(
 				'`'.preg_quote(self::TAGSTART).'img'.preg_quote(self::TAGEND).'javascript:(.*)'.preg_quote(self::TAGSTART2).'img'.preg_quote(self::TAGEND).'`isU', 
-				'script supprimé', 
+				'script supprimÃ©', 
 				$this->_contenu
 			);
 			$this->_contenu = preg_replace(
 				'`'.preg_quote(self::TAGSTART).'a'.preg_quote(self::TAGEND).'javascript:(.*)'.preg_quote(self::TAGSTART2).'a'.preg_quote(self::TAGEND).'`isU', 
-				'script supprimé', 
+				'script supprimÃ©', 
 				$this->_contenu
 			);
 			$this->_contenu = preg_replace(
 				'`'.preg_quote(self::TAGSTART).'a url="javascript:(.*)"'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'a'.preg_quote(self::TAGEND).'`isU', 
-				'script supprimé', 
+				'script supprimÃ©', 
 				$this->_contenu
 			);
 

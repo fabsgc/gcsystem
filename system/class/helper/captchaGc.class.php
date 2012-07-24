@@ -2,8 +2,8 @@
 	/**
 	 * @file : captchaGc.class.php
 	 * @author : fab@c++
-	 * @description : class permettant la gÈnÈration de captcha personnalisÈe
-	 * @version : 2.0 bÍta
+	 * @description : class permettant la g√©n√©ration de captcha personnalis√©e
+	 * @version : 2.0 b√™ta
 	*/
 	
 	class captchaGC{
@@ -142,7 +142,7 @@
 					break;
 					
 					default :
-						$thisy->_addError('L\'extension n\est pas gÈrÈe');
+						$thisy->_addError('L\'extension n\est pas g√©r√©e');
 					break;
 				}
 				

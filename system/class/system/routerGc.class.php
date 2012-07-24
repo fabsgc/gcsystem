@@ -2,8 +2,8 @@
 	/**
 	 * @file : routeGc.class.php
 	 * @author : fab@c++
-	 * @description : class gérant l'url rewriting
-	 * @version : 2.0 bêta
+	 * @description : class gÃ©rant l'url rewriting
+	 * @version : 2.0 bÃªta
 	*/
 	
 	class routerGc{
@@ -26,16 +26,16 @@
 						$varsNames = $route->varsNames();
 						$listVars = array();
 						
-						// On créé un nouveau tableau clé/valeur
-						// (clé = nom de la variable, valeur = sa valeur)
+						// On crÃ©Ã© un nouveau tableau clÃ©/valeur
+						// (clÃ© = nom de la variable, valeur = sa valeur)
 						foreach ($varsValues as $key => $match){
-							// La première valeur contient entièrement la chaine capturée (voir la doc sur preg_match)
+							// La premiÃ¨re valeur contient entiÃ¨rement la chaine capturÃ©e (voir la doc sur preg_match)
 							if ($key !== 0){
 								$listVars[$varsNames[$key - 1]] = $match;
 							}
 						}
 						
-						// On assigne ce tableau de variables à la route
+						// On assigne ce tableau de variables Ã  la route
 						$route->setVars($listVars);
 					}
 					
@@ -43,7 +43,7 @@
 				}
 			}
 			
-			$this->_addError('Aucune route ne correspond à l\'URL');
+			$this->_addError('Aucune route ne correspond Ã  l\'URL');
 		}
 	}
 	

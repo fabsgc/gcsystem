@@ -2,8 +2,8 @@
 	/**
 	 * @file : zipGc.class.php
 	 * @author : fab@c++
-	 * @description : class gérant les fichiers compressés
-	 * @version : 2.0 bêta
+	 * @description : class gÃ©rant les fichiers compressÃ©s
+	 * @version : 2.0 bÃªta
 	*/
 	
 	class zipGc extends fileGc{
@@ -15,10 +15,10 @@
 		
 		const NOPUTDIR                                           = false;
 		const PUTDIR                                             = true ;
-		const NODIR   = 'le répertoire n\'existe pas'                   ;
+		const NODIR   = 'le rÃ©pertoire n\'existe pas'                   ;
 		
 		/**
-		 * Crée l'instance de la classe
+		 * CrÃ©e l'instance de la classe
 		 * @access	public
 		 * @return	void
 		 * @since 2.0

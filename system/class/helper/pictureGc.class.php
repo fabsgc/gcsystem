@@ -2,8 +2,8 @@
 	/**
 	 * @file : pictureGc.class.php
 	 * @author : fab@c++
-	 * @description : class fille de fileGc.class.php gÈrant les images
-	 * @version : 2.0 bÍta
+	 * @description : class fille de fileGc.class.php g√©rant les images
+	 * @version : 2.0 b√™ta
 	*/
 	
     class pictureGc extends fileGc{		
@@ -57,7 +57,7 @@
 					break;
 					
 					default :
-						$this->_addError('L\'extension n\'est pas gÈrÈe');
+						$this->_addError('L\'extension n\'est pas g√©r√©e');
 					break;
 				}
 		}
@@ -78,7 +78,7 @@
 					break;
 					
 					default :
-						$this->_addError('L\'extension n\'est pas gÈrÈe');
+						$this->_addError('L\'extension n\'est pas g√©r√©e');
 					break;
 				}
 		}
@@ -99,7 +99,7 @@
 					break;
 					
 					default :
-						$this->_addError('L\'extension n\'est pas gÈrÈe');
+						$this->_addError('L\'extension n\'est pas g√©r√©e');
 					break;
 				}
 		}

@@ -2,8 +2,8 @@
 	/**
 	 * @file : uploadGc.class.php
 	 * @author : fab@c++
-	 * @description : class gérant les uploads
-	 * @version : 2.0 bêta
+	 * @description : class gÃ©rant les uploads
+	 * @version : 2.0 bÃªta
 	*/
 	
 	class uploadGc{
@@ -14,16 +14,16 @@
 		protected $_tmpName                      ; //contient l\'adresse temporaire
 		protected $_size                         ; //contient le poids du fichier
 		protected $_extension                    ; //contient l\'extension du fichier
-		protected $_url                          ; //adresse du fichier une fois enregistré sur le serveur
-		protected $_validate            = false  ; //savoir si aucun problème n\'a été décelé à l\'envoi
-		protected $_checked             = array(); //savoir si la méthode checked a réussi (tableau de true/false)
-		protected $_checkedAnswer       = array(); //ce tableau contient la liste des erreurs détectés mais sous forme de chaine de caractères
+		protected $_url                          ; //adresse du fichier une fois enregistrÃ© sur le serveur
+		protected $_validate            = false  ; //savoir si aucun problÃ¨me n\'a Ã©tÃ© dÃ©celÃ© Ã  l\'envoi
+		protected $_checked             = array(); //savoir si la mÃ©thode checked a rÃ©ussi (tableau de true/false)
+		protected $_checkedAnswer       = array(); //ce tableau contient la liste des erreurs dÃ©tectÃ©s mais sous forme de chaine de caractÃ¨res
 		protected $_i                   = 0      ; //utile pour la fonction checkFile
 		
 		const NOFILE       = 'Une erreur est survenue lors de l\'envoie du fichier'  ;
 		const NOCONTRAINTE = 'Cette contrainte n\'existe pas'                        ;
-		const NOPARAM      = 'Le paramètre entré est incorrect'                      ;
-		const NODIR        = 'Ce répertoire n\'existe pas'                           ;
+		const NOPARAM      = 'Le paramÃ¨tre entrÃ© est incorrect'                      ;
+		const NODIR        = 'Ce rÃ©pertoire n\'existe pas'                           ;
 		
 		public  function __construct($name){
 			$this->_setUpload(strval($name));
@@ -197,7 +197,7 @@
 		}
 		
 		public function correctName($name){
-			$search = array ('@[éèêëÊË]@i','@[àâäÂÄ]@i','@[îïÎÏ]@i','@[ûùüÛÜ]@i','@[ôöÔÖ]@i','@[ç]@i','@[ ]@i','@[^a-zA-Z0-9_]@');
+			$search = array ('@[Ã©Ã¨ÃªÃ«ÃŠÃ‹]@i','@[Ã Ã¢Ã¤Ã‚Ã„]@i','@[Ã®Ã¯ÃÃ]@i','@[Ã»Ã¹Ã¼Ã›Ãœ]@i','@[Ã´Ã¶Ã”Ã–]@i','@[Ã§]@i','@[ ]@i','@[^a-zA-Z0-9_]@');
 			$replace = array ('e','a','i','u','o','c','_','');
 			return uniqid().preg_replace($search, $replace, $name);
 		}

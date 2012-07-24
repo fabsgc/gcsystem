@@ -3,15 +3,15 @@
 	 * @file : terminalGc.class.php
 	 * @author : fab@c++
 	 * @description : class g&eacute;rant les fichiers compress&#233;s
-	 * @version : 2.0 bêta
+	 * @version : 2.0 bÃªta
 	*/
 
 	class terminalGc{
 		use errorGc;                              //trait
 		
-		protected $_command                       ; //contenu à traiter
-		protected $_stream                       ; //contenu à afficher
-		protected $_commandExplode                ; //contenu à traiter
+		protected $_command                       ; //contenu Ã  traiter
+		protected $_stream                       ; //contenu Ã  afficher
+		protected $_commandExplode                ; //contenu Ã  traiter
 		protected $_result                        = '/ <span style="color: red;">commande non reconnu. Tapez <strong>help</strong> pour avoir la liste des commandes valides</span>'; //resultat du traitement
 		protected $_dossier                       ; //dossier
 		protected $_fichier                       ; //fichier
@@ -42,7 +42,7 @@
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
 				CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_FEED, CLASS_JS, CLASS_TEXT, CLASS_DATE, CLASS_DOWNLOAD, CLASS_UPDLOAD ,CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
 				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT, 
-			); // liste des fichiers systèmes à updater
+			); // liste des fichiers systÃ¨mes Ã  updater
 		}
 
 		public function parse(){
@@ -99,11 +99,11 @@
 								$this->_domXml->save(ROUTE);
 							}
 							else{
-								$this->_addError('La rubrique '.$this->_commandExplode[2].' existe déjà');
+								$this->_addError('La rubrique '.$this->_commandExplode[2].' existe dÃ©jÃ ');
 							}
 						}
 						else{
-							$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
+							$this->_addError('Le fichier '.ROUTE.' n\'a pas pu Ãªtre ouvert');
 						}
 					}
 					else{
@@ -145,7 +145,7 @@
 							$this->_domXml->save(ROUTE);
 						}
 						else{
-							$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
+							$this->_addError('Le fichier '.ROUTE.' n\'a pas pu Ãªtre ouvert');
 						}
 
 						$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; supprim&#233;e</span>';
@@ -210,7 +210,7 @@
 							}
 							else{
 								$this->_stream .= '<br />> '.TEMPLATE_PATH.$this->_commandExplode[3].TEMPLATE_EXT;
-								$this->_result = '<br />><span style="color: red;"> Un template porte d&#233;jà le même nom</span>';
+								$this->_result = '<br />><span style="color: red;"> Un template porte d&#233;jÃ  le mÃªme nom</span>';
 							}
 						}
 						else{
@@ -274,14 +274,14 @@
 									$this->_domXml->save(ROUTE);
 								}
 								else{
-									$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
+									$this->_addError('Le fichier '.ROUTE.' n\'a pas pu Ãªtre ouvert');
 								}
 
 								$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; r&#233;nomm&#233;e en <u>'.$this->_commandExplode[3].'</u></span>';
 							}
 							else{
 								$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[3].'.php';
-							$this->_result = '<br />><span style="color: red;"> Une rubrique porte d&#233;jà le même nom</span>';
+							$this->_result = '<br />><span style="color: red;"> Une rubrique porte d&#233;jÃ  le mÃªme nom</span>';
 							}
 						}
 						else{
@@ -406,7 +406,7 @@
 						
 						foreach($sauvegardes as $valeur){
 							if(strlen($valeur)>=10){
-								$search = array ('@[éèêëÊË]@i','@[àâäÂÄ]@i','@[îïÎÏ]@i','@[ûùüÛÜ]@i','@[ôöÔÖ]@i','@[ç]@i', '@°@');
+								$search = array ('@[Ã©Ã¨ÃªÃ«ÃŠÃ‹]@i','@[Ã Ã¢Ã¤Ã‚Ã„]@i','@[Ã®Ã¯ÃÃ]@i','@[Ã»Ã¹Ã¼Ã›Ãœ]@i','@[Ã´Ã¶Ã”Ã–]@i','@[Ã§]@i', '@Â°@');
 								$replace = array ('e','a','i','u','o','c', ' ');
 								$valeur = preg_replace($search, $replace, $valeur);
 								if($i == 0){

@@ -2,8 +2,8 @@
 	/**
 	 * @file : templateGc.class.php
 	 * @author : fab@c++
-	 * @description : class gérant le moteur de template
-	 * @version : 2.0 bêta
+	 * @description : class gÃ©rant le moteur de template
+	 * @version : 2.0 bÃªta
 	*/
 	
 	class templateGc{
@@ -11,14 +11,14 @@
 		
 		protected $_file               = ""         ;    //chemin vers le .tpl
 		protected $_fileCache          = ""         ;    //chemin vers le .compil.tpl
-		protected $_nom                = ""         ;    //nom du fichier compilé à créer
+		protected $_nom                = ""         ;    //nom du fichier compilÃ© Ã  crÃ©er
 		protected $_content            = ""         ;    //contenu du fichier de template
 		protected $_contentCompiled    = ""         ;    //contenu du fichier de template
 		public $vars                   = array()    ;    //ensemble des variables
-		protected $_refParser		   = null       ;    //contient une réfénrece vers l'instance du parser
+		protected $_refParser		   = null       ;    //contient une rÃ©fÃ©nrece vers l'instance du parser
 		protected $_variable		   = ""         ;    //contient des variables
 		protected $_timeCache		   = 0          ;    //contient le temps de mise en cache
-		protected $_timeFile		   = 0          ;    //contient la date de dernière modif du template
+		protected $_timeFile		   = 0          ;    //contient la date de derniÃ¨re modif du template
 		protected $_show		       = true       ;
 		
 		public  function __construct($file="", $nom="", $timecache=0, $lang=""){
@@ -35,8 +35,8 @@
 				$this->setParser();
 			} 
 			else{
-				array_push($error, 'le fichier de template spécifié n\'a pas été trouvé.');
-				$this->_addError("le fichier de template ne peut pas être lu");
+				array_push($error, 'le fichier de template spÃ©cifiÃ© n\'a pas Ã©tÃ© trouvÃ©.');
+				$this->_addError("le fichier de template ne peut pas Ãªtre lu");
 				$this->_nom=$nom;
 				$this->_timeCache=$timecache;
 				$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';
@@ -60,7 +60,7 @@
 
 		public  function assignArray($nom, $vars){
 			if(isset($this->vars[$nom]) && !is_array($this->vars[$nom])){
-				array_push($error, 'Vous avez écrasé une variable par un array.');
+				array_push($error, 'Vous avez Ã©crasÃ© une variable par un array.');
 			}
 			
 			
@@ -213,7 +213,7 @@
 		protected $contenu        ;
 		
 		
-		/// les balises à parser
+		/// les balises Ã  parser
 		protected $bal= array(
 			'vars'           => array('{', '}', '{$', '}', '{{', '}}', 'variable', '{{gravatar:', '}}', '{{url:', '}}'),  // vars
 			'include'        => array('include', 'file', 'cache'),                   // include

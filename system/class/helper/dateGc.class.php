@@ -2,8 +2,8 @@
 	/**
 	 * @file : dateGc.class.php
 	 * @author : fab@c++
-	 * @description : class gérant les dates
-	 * @version : 2.0 bêta
+	 * @description : class gÃ©rant les dates
+	 * @version : 2.0 bÃªta
 	*/
 	
 	class dateGc{
@@ -12,24 +12,24 @@
 		protected $_timestamp                        ; //timestamp
 		protected $_date                             ; //contient la date en date
 		protected $_i                                ; //compteur
-		protected $_ago                    = array() ; //tableau contenant la liste sous forme de année-mois-jour-heure-minute-seconde
-		protected $_age                    = array() ; //tableau contenant la liste sous forme de année-mois-jour-heure-minute-seconde
+		protected $_ago                    = array() ; //tableau contenant la liste sous forme de annÃ©e-mois-jour-heure-minute-seconde
+		protected $_age                    = array() ; //tableau contenant la liste sous forme de annÃ©e-mois-jour-heure-minute-seconde
 		protected $_dayMonth               = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31) ; //tableau contenant le nombre de jour pour chaque mois
 		
 		const NDAY                         = 6       ; //nombre de jour 0-6
 		protected $_dayLang                = array('fr' => array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'),
 		                                         'en' => array('Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'),
 		                                         'nl' => array('maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag'),
-		                                         'es' => array('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'),
+		                                         'es' => array('Lunes', 'Martes', 'MiÃ©rcoles', 'Jueves', 'Viernes', 'SÃ¡bado', 'Domingo'),
 		                                         'de' => array('Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'),
 		                                         'php'=> array('Mon', 'Thu', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'));
 		
 		const NMONTH                       = 11      ; //nombre de mois 0-11
-		protected $_monthLang              = array('fr' => array('janvier' ,'février' ,'mars' ,'avril' ,'mai' ,'juin' ,'juillet' ,'août' ,'septembre' ,'octobre' ,'novembre' ,'decembre'),
+		protected $_monthLang              = array('fr' => array('janvier' ,'fÃ©vrier' ,'mars' ,'avril' ,'mai' ,'juin' ,'juillet' ,'aoÃ»t' ,'septembre' ,'octobre' ,'novembre' ,'decembre'),
 		                                         'en' => array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
 		                                         'nl' => array('januari' ,'februari' ,'maart' ,'april' ,'mei' ,'juni' ,'juli' ,'augustus' ,'september' ,'oktober' ,'november' ,'december'),
 		                                         'es' => array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio??', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
-		                                         'de' => array('Januar', 'Februar', 'März', 'April', 'könnte', 'June', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'),
+		                                         'de' => array('Januar', 'Februar', 'MÃ¤rz', 'April', 'kÃ¶nnte', 'June', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'),
 		                                         'php'=> array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'));
 		
 		protected $_zones                  = array('UM12' => -12, 'UM11' => -11, 'UM10' => -10, 'UM95' => -9.5, 'UM9' => -9, 'UM8' => -8, 'UM7' => -7, 'UM6' => -6,
@@ -38,7 +38,7 @@
 												 'UP575' => +5.75, 'UP6' => +6, 'UP65' => +6.5, 'UP7' => +7, 'UP8' => +8, 'UP875' => +8.75, 'UP9' => +9, 'UP95' => +9.5,
 												 'UP10' => +10, 'UP105' => +10.5, 'UP11' => +11, 'UP115' => +11.5, 'UP12' => +12, 'UP1275' => +12.75, 'UP13' => +13, 'UP14' => +14);
 		
-		const PARAM_TIMESTAMP              =1;  //permet aux fonctions de gérer soit une date au format mktime stockée dans un tableau soit un timestamps normal
+		const PARAM_TIMESTAMP              =1;  //permet aux fonctions de gÃ©rer soit une date au format mktime stockÃ©e dans un tableau soit un timestamps normal
 		const PARAM_DATETIME               =2;
 		
 		const WEEK                         = 604800;
@@ -83,12 +83,12 @@
 		const DATE_HMS                           = 'h:i:s';
 		const DATE_HMSU                          = 'h:i:s:u';
 		
-		const DATE_COMPLETE_H_FR_1               = 'd/m/Y \à h\h';
-		const DATE_COMPLETE_H_FR_2               = 'j M Y \à h \h\e\u\r\e\(\s\)';
-		const DATE_COMPLETE_HM_FR_1              = 'd/m/Y \à h\h i\m';
-		const DATE_COMPLETE_HM_FR_2              = 'j M Y \à h \h\e\u\r\e\(\s\) i \m\i\n\u\t\e\(\s\)';
-		const DATE_COMPLETE_FR_1                 = 'd/m/Y \à h\h i\m s\s';
-		const DATE_COMPLETE_FR_2                 = 'j M Y \à h \h\e\u\r\e\(\s\) i \m\i\n\u\t\e\(\s\) s \s\e\c\o\n\d\e\(\s\)';
+		const DATE_COMPLETE_H_FR_1               = 'd/m/Y \Ã  h\h';
+		const DATE_COMPLETE_H_FR_2               = 'j M Y \Ã  h \h\e\u\r\e\(\s\)';
+		const DATE_COMPLETE_HM_FR_1              = 'd/m/Y \Ã  h\h i\m';
+		const DATE_COMPLETE_HM_FR_2              = 'j M Y \Ã  h \h\e\u\r\e\(\s\) i \m\i\n\u\t\e\(\s\)';
+		const DATE_COMPLETE_FR_1                 = 'd/m/Y \Ã  h\h i\m s\s';
+		const DATE_COMPLETE_FR_2                 = 'j M Y \Ã  h \h\e\u\r\e\(\s\) i \m\i\n\u\t\e\(\s\) s \s\e\c\o\n\d\e\(\s\)';
 		
 		const DATE_COMPLETE_H_NL_1               = 'd/m/Y \o\p h\u';
 		const DATE_COMPLETE_H_NL_2               = 'j M Y \o\p h \u\u\r';
@@ -233,13 +233,13 @@
 				return 'Il y a '.floor($diff/3600).'h et '.floor(($diff%3600)/60).'m';
 			}
 			else if($diff < 24*3600 && $diffDay == 0){
-				return 'Aujourd\'hui à '.date('H\hi', $time);
+				return 'Aujourd\'hui Ã Â '.date('H\hi', $time);
 			}
 			else if($diff < 48*3600 && $diffDay == 1){
-				return 'Hier à '.date('H\hi', $time);
+				return 'Hier Ã Â '.date('H\hi', $time);
 			}
 			else{
-				return 'Le '.date('d/m/Y', $time).' à '.date('H\hi', $time).'.';
+				return 'Le '.date('d/m/Y', $time).' Ã  '.date('H\hi', $time).'.';
 			}
 		}
 		

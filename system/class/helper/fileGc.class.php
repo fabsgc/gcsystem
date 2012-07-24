@@ -2,8 +2,8 @@
 	/**
 	 * @file : fileGc.class.php
 	 * @author : fab@c++
-	 * @description : class g&eacute;rant les op&eacute;rations sur les fichiers, très complète
-	 * @version : 2.0 bêta
+	 * @description : class g&eacute;rant les op&eacute;rations sur les fichiers, trÃ¨s complÃ¨te
+	 * @version : 2.0 bÃªta
 	*/
 	
     class fileGc extends constMime{
@@ -17,7 +17,7 @@
 		protected $_info                              = array();
 		protected $_isExist                           = false  ;
 		
-		const NOFILE   = 'Aucun fichier n\'a été difini'     ;
+		const NOFILE   = 'Aucun fichier n\'a Ã©tÃ© difini'     ;
 		const NOACCESS = 'le fichier n\'est pas accessible'                ;
 		const NOREAD   = 'le fichier n\'est pas lisible'                   ;
 		
@@ -97,14 +97,14 @@
 		 * Retourne les informations du fichier dans un array<br />
 		 *	0	dev	volume<br />
 		 *	1	ino	Num&eacute;ro d'inode (*)<br />
-		 *	2	mode	droit d'accès à l'inode<br />
+		 *	2	mode	droit d'accÃ¨s Ã  l'inode<br />
 		 *	3	nlink	nombre de liens<br />
 		 *	4	uid	userid du propri&eacute;taire (*)<br />
 		 *	5	gid	groupid du propri&eacute;taire (*)<br />
 		 *	6	rdev	type du volume, si le volume est une inode<br />
 		 *	7	size	taille en octets<br />
-		 *	8	atime	date de dernier accès (Unix timestamp)<br />
-		 *	9	mtime	date de dernière modification (Unix timestamp)<br />
+		 *	8	atime	date de dernier accÃ¨s (Unix timestamp)<br />
+		 *	9	mtime	date de derniÃ¨re modification (Unix timestamp)<br />
 		 *	10	ctime	date de dernier changement d'inode (Unix timestamp)<br />
 		 *	11	blksize	taille de bloc (**)<br />
 		 *	12	blocks	nombre de blocs de 512 octets allou&eacute;s (**)<br />
@@ -168,7 +168,7 @@
 		}
 		
 		/**
-		 * Retourne la date du dernier accès au fichier sous la forme d'un timestamp UNIX
+		 * Retourne la date du dernier accÃ¨s au fichier sous la forme d'un timestamp UNIX
 		 * @access	public
 		 * @return	int
 		 * @since 2.0
@@ -185,7 +185,7 @@
 		}
 		
 		/**
-		 * Retourne la date de la dernière modification du fichier sous la forme d'un timestamp UNIX
+		 * Retourne la date de la derniÃ¨re modification du fichier sous la forme d'un timestamp UNIX
 		 * @access	public
 		 * @return	int
 		 * @since 2.0
@@ -213,10 +213,10 @@
 		}
 		
 		/**
-		 * Configure le chemin vers le fichier. Si aucun chemin n'est spécifié, la valeur par défaut est empty.txt
+		 * Configure le chemin vers le fichier. Si aucun chemin n'est spÃ©cifiÃ©, la valeur par dÃ©faut est empty.txt
 		 * @access	public
 		 * @return	void
-		 * @param string $filepath : chemin d'accès vers le fichier
+		 * @param string $filepath : chemin d'accÃ¨s vers le fichier
 		 * @since 2.0
 		*/
 		
@@ -243,7 +243,7 @@
 		 * Configure le chmod du fichier
 		 * @access	public
 		 * @return	void
-		 * @param string $chmod : contient le chmod à appliquer au fichier. La valeur par défaut est 0644
+		 * @param string $chmod : contient le chmod Ã  appliquer au fichier. La valeur par dÃ©faut est 0644
 		 * @since 2.0
 		*/
 		
@@ -266,10 +266,10 @@
 		}
 		
 		/**
-		 * Déplace le fichier dans un autre répertoire. Le fichier de départ sera alors supprimé
+		 * DÃ©place le fichier dans un autre rÃ©pertoire. Le fichier de dÃ©part sera alors supprimÃ©
 		 * @access	public
 		 * @return	boolean
-		 * @param string $dir : répertoire o&ugrave; sera déplacé le fichier
+		 * @param string $dir : rÃ©pertoire o&ugrave; sera dÃ©placÃ© le fichier
 		 * @since 2.0
 		*/
 		
@@ -281,12 +281,12 @@
 						return true;
 					}
 					else{
-						$this->_addError('le fichier n\'a pas pu être d&eacute;plac&eacute; du r&eacute;pertoire original');
+						$this->_addError('le fichier n\'a pas pu Ãªtre d&eacute;plac&eacute; du r&eacute;pertoire original');
 						return false;
 					}
 				}
 				else{
-					$this->_addError('le fichier n\'a pas pu être d&eacute;plac&eacute;');
+					$this->_addError('le fichier n\'a pas pu Ãªtre d&eacute;plac&eacute;');
 					return false;
 				}
 			}
@@ -297,10 +297,10 @@
 		}
 		
 		/**
-		 * Copie le fichier dans un autre répertoire.
+		 * Copie le fichier dans un autre rÃ©pertoire.
 		 * @access	public
 		 * @return	boolean
-		 * @param string $dir : répertoire o&ugrave; sera copié le fichier
+		 * @param string $dir : rÃ©pertoire o&ugrave; sera copiÃ© le fichier
 		 * @since 2.0
 		*/
 		
@@ -310,7 +310,7 @@
 					return true;
 				}
 				else{
-					$this->_addError('le fichier n\'a pas pu être copi&eacute;');
+					$this->_addError('le fichier n\'a pas pu Ãªtre copi&eacute;');
 					return false;
 				}
 			}
@@ -324,7 +324,7 @@
 		 * Copie le contenu du fichier dans un autre fichier
 		 * @access	public
 		 * @return	boolean
-		 * @param string $file : fichier dans lequelle sera copié le contenu du fichier de départ
+		 * @param string $file : fichier dans lequelle sera copiÃ© le contenu du fichier de dÃ©part
 		 * @since 2.0
 		*/
 		
@@ -345,7 +345,7 @@
 		}
 		
 		/**
-		 * Permet de savoir si le fichier est accessible en écriture
+		 * Permet de savoir si le fichier est accessible en Ã©criture
 		 * @access	public
 		 * @return	boolean
 		 * @since 2.0
@@ -361,7 +361,7 @@
 		}
 		
 		/**
-		 * Permet de savoir si le fichier est exécutable
+		 * Permet de savoir si le fichier est exÃ©cutable
 		 * @access	public
 		 * @return	boolean
 		 * @since 2.0
@@ -393,10 +393,10 @@
 		}
 		
 		/**
-		 * Configure le fichier par défaut
+		 * Configure le fichier par dÃ©faut
 		 * @access	public
 		 * @return	void
-		 * @param string $file : chemin d'accès vers le fichier
+		 * @param string $file : chemin d'accÃ¨s vers le fichier
 		 * @since 2.0
 		*/
 		
@@ -406,10 +406,10 @@
 		}
 		
 		/**
-		 * Configure le chemin d'accès vers le fichier
+		 * Configure le chemin d'accÃ¨s vers le fichier
 		 * @access	public
 		 * @return	boolean
-		 * @param string $file : chemin d'accès vers le fichier
+		 * @param string $file : chemin d'accÃ¨s vers le fichier
 		 * @since 2.0
 		*/
 		
@@ -428,7 +428,7 @@
 		 * Configure le nom du fichier (avec son extension)
 		 * @access	public
 		 * @return	boolean
-		 * @param string $file : chemin d'accès vers le fichier
+		 * @param string $file : chemin d'accÃ¨s vers le fichier
 		 * @since 2.0
 		*/
 		
@@ -447,7 +447,7 @@
 		 * Configure l'extension du fichier
 		 * @access	public
 		 * @return	boolean
-		 * @param string $file : chemin d'accès vers le fichier
+		 * @param string $file : chemin d'accÃ¨s vers le fichier
 		 * @since 2.0
 		*/
 		
@@ -467,7 +467,7 @@
 		 * Configure le contenu du fichier
 		 * @access	public
 		 * @return	boolean
-		 * @param string $file : chemin d'accès vers le fichier
+		 * @param string $file : chemin d'accÃ¨s vers le fichier
 		 * @since 2.0
 		*/
 		
@@ -492,7 +492,7 @@
 		 * Configure les infos du fichier
 		 * @access	public
 		 * @return	boolean
-		 * @param string $file : chemin d'accès vers le fichier
+		 * @param string $file : chemin d'accÃ¨s vers le fichier
 		 * @since 2.0
 		*/
 		
@@ -511,7 +511,7 @@
 		 * Configure le chmod du fichier
 		 * @access	public
 		 * @return	boolean
-		 * @param string $file : chemin d'accès vers le fichier
+		 * @param string $file : chemin d'accÃ¨s vers le fichier
 		 * @since 2.0
 		*/
 		

@@ -2,21 +2,21 @@
 	/**
 	 * @file : sqlGc.class.php
 	 * @author : fab@c++
-	 * @description : class facilitant la gestion des requêtes SQL
-	 * @version : 2.0 bêta
+	 * @description : class facilitant la gestion des requÃªtes SQL
+	 * @version : 2.0 bÃªta
 	*/
 	
 	class sqlGc{
 		use errorGc;                                    //trait
 		
 		protected $_var            = array();       //liste des variables
-		protected $_query          = array();       //liste des requêtes
+		protected $_query          = array();       //liste des requÃªtes
 		protected $_bdd            = array();       //connexion sql
-		protected $_cache                   ;       //référence vers un objet de type cache
-		protected $_requete                 ;       //contient la requête sql
-		protected $_data                    ;       //contient les données
+		protected $_cache                   ;       //rÃ©fÃ©rence vers un objet de type cache
+		protected $_requete                 ;       //contient la requÃªte sql
+		protected $_data                    ;       //contient les donnÃ©es
 		
-		const PARAM_INT                 = 1;       //les paramètres des variables, en relation avec PDO::PARAM_
+		const PARAM_INT                 = 1;       //les paramÃ¨tres des variables, en relation avec PDO::PARAM_
 		const PARAM_BOOL                = 5;
 		const PARAM_NULL                = 0;
 		const PARAM_STR                 = 2;
@@ -29,7 +29,7 @@
 		 * Cr&eacute;e l'instance de la classe
 		 * @access	public
 		 * @return	void
-		 * @param PDO : référence vers un objet de type PDO
+		 * @param PDO : rÃ©fÃ©rence vers un objet de type PDO
 		 * @since 2.0
 		*/
 		
@@ -38,7 +38,7 @@
 		}
 		
 		/**
-		 * Récupération sous la forme d'un array des variables transmises à la classe
+		 * RÃ©cupÃ©ration sous la forme d'un array des variables transmises Ã  la classe
 		 * @access	public
 		 * @return	void
 		 * @since 2.0
@@ -49,7 +49,7 @@
 		}
 		
 		/**
-		 * Récupération sous la forme d'un array des requêtes sql transmises à la classe
+		 * RÃ©cupÃ©ration sous la forme d'un array des requÃªtes sql transmises Ã  la classe
 		 * @access	public
 		 * @return	void
 		 * @since 2.0
@@ -60,12 +60,12 @@
 		}
 		
 		/**
-		 * Ajout d'une nouvelle requête SQL
+		 * Ajout d'une nouvelle requÃªte SQL
 		 * @access	public
 		 * @return	void
-		 * @param string $nom : le nom de la requête. Si vous donnez un nom existant déjà dans l'instance, l'ancienne requête sera écrasée
-		 * @param string $query : Votre requête SQL avec la syntaxe de PDO (requête préparée)
-		 * @param string $time : Le temps de mise en cache de la requêt
+		 * @param string $nom : le nom de la requÃªte. Si vous donnez un nom existant dÃ©jÃ  dans l'instance, l'ancienne requÃªte sera Ã©crasÃ©e
+		 * @param string $query : Votre requÃªte SQL avec la syntaxe de PDO (requÃªte prÃ©parÃ©e)
+		 * @param string $time : Le temps de mise en cache de la requÃªt
 		 * @since 2.0
 		*/
 		
@@ -75,12 +75,12 @@
 		}
 		
 		/**
-		 * Configuration des variables à transmettre à la classe
+		 * Configuration des variables Ã  transmettre Ã  la classe
 		 * @access	public
 		 * @return	void
-		 * @param array $var : tableau contenant la liste des variables qui seront utilisées dans les requêtes<br />
+		 * @param array $var : tableau contenant la liste des variables qui seront utilisÃ©es dans les requÃªtes<br />
 		   premire syntaxe ex : array('id' => array(31, sqlGc::PARAM_INT), 'pass' => array("fuck", sqlGc::PARAM_STR))<br />
-		   deuxième syntaxe ex : array('id' => 31, 'pass' => "fuck") si le type de la variable n\'est pas défini grâce aux constantes de la classe, le type sera définie directement pas la classe
+		   deuxiÃ¨me syntaxe ex : array('id' => 31, 'pass' => "fuck") si le type de la variable n\'est pas dÃ©fini grÃ¢ce aux constantes de la classe, le type sera dÃ©finie directement pas la classe
 		 * @since 2.0
 		*/
 		
@@ -91,10 +91,10 @@
 		}
 		
 		/**
-		 * Exécution de la requête. Cette méthode retourne l'objet PDO juste après son exécution. (execute())
+		 * ExÃ©cution de la requÃªte. Cette mÃ©thode retourne l'objet PDO juste aprÃ¨s son exÃ©cution. (execute())
 		 * @access	public
 		 * @return	PDO
-		 * @param string $nom : nom de la requête à exécuter
+		 * @param string $nom : nom de la requÃªte Ã  exÃ©cuter
 		 * @since 2.0
 		*/
 		
@@ -129,7 +129,7 @@
 							break;
 							
 							default :
-								$this->_addError('type non géré');
+								$this->_addError('type non gÃ©rÃ©');
 							break;
 						}
 					}
@@ -140,16 +140,16 @@
 		}
 		
 		/**
-		 * Fetch de la requête. Cette méthode retourne plusieurs valeurs en fonctions des paramètres
+		 * Fetch de la requÃªte. Cette mÃ©thode retourne plusieurs valeurs en fonctions des paramÃ¨tres
 		 * @access	public
 		 * @return	array ou boolean
-		 * @param string $nom : nom de la requête à fetcher
-		 * @param string $fetch : type de fetch à réaliser. Il en existe 3 :<br />
-		   sqlGc::PARAM_FETCH         : correspondant au fetch de PDO. Prévu pour une requête de type SELECT<br />
-		   sqlGc::PARAM_FETCHCOLUMN   : correspondant au fetchcolumn de PDO. Prévu pour une requête de type SELECT COUNT<br />
-		   sqlGc::PARAM_FETCHINSERT   : Prévu pour une requête de type INSERT<br />
-		   sqlGc::PARAM_FETCHUPDATE   : Prévu pour une requête de type UPDATE<br />
-		   valeur par défaut : sqlGc::PARAM_FETCH
+		 * @param string $nom : nom de la requÃªte Ã  fetcher
+		 * @param string $fetch : type de fetch Ã  rÃ©aliser. Il en existe 3 :<br />
+		   sqlGc::PARAM_FETCH         : correspondant au fetch de PDO. PrÃ©vu pour une requÃªte de type SELECT<br />
+		   sqlGc::PARAM_FETCHCOLUMN   : correspondant au fetchcolumn de PDO. PrÃ©vu pour une requÃªte de type SELECT COUNT<br />
+		   sqlGc::PARAM_FETCHINSERT   : PrÃ©vu pour une requÃªte de type INSERT<br />
+		   sqlGc::PARAM_FETCHUPDATE   : PrÃ©vu pour une requÃªte de type UPDATE<br />
+		   valeur par dÃ©faut : sqlGc::PARAM_FETCH
 		 * @since 2.0
 		*/
 
@@ -194,7 +194,7 @@
 								break;
 								
 								default :
-									$this->_addError('type non géré');
+									$this->_addError('type non gÃ©rÃ©');
 								break;
 							}
 						}

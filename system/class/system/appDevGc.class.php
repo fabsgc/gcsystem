@@ -2,19 +2,19 @@
 	/**
 	 * @file : appDevGc.class.php
 	 * @author : fab@c++
-	 * @description : class à utiliser lors du développement de l'application
-	 * @version : 2.0 bêta
+	 * @description : class Ã  utiliser lors du dÃ©veloppement de l'application
+	 * @version : 2.0 bÃªta
 	*/
 	
 	class appDevGc{
 		use errorGc, langInstance;                                              //trait
 		
-		protected $_timeExec            ; //calcul du temps d'exécution
-		protected $_timeExecStart       ; //time de départ
+		protected $_timeExec            ; //calcul du temps d'exÃ©cution
+		protected $_timeExecStart       ; //time de dÃ©part
 		protected $_timeExecEnd         ; //time de fin
 		protected $_rubrique   = array(); //liste des rubrique
 		protected $_template   = array(); //liste des templates
-		protected $_sql        = array(); //liste des requêtes sql
+		protected $_sql        = array(); //liste des requÃªtes sql
 		protected $_arbo                ; //liste des fichiers inclus
 		protected $_show      = 0       ; //liste des fichiers inclus
 		protected $_setShow   = true    ; //liste des fichiers inclus

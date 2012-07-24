@@ -2,15 +2,15 @@
 	/**
 	 * @file : modoGc.class.php
 	 * @author : fab@c++
-	 * @description : class gérant le filtrage du contenu du site
-	 * @version : 2.0 bêta
+	 * @description : class gÃ©rant le filtrage du contenu du site
+	 * @version : 2.0 bÃªta
 	*/
 	
 	class modoGc{
 		use errorGc;                            //trait
 		
-		protected $_contenu                           ; //contenu à filtrer
-		protected $_maxWord                  = 10     ; //contenu à filtrer
+		protected $_contenu                           ; //contenu Ã  filtrer
+		protected $_maxWord                  = 10     ; //contenu Ã  filtrer
 		protected $_insulte                  = array(); //avec la participation de t1307
 		protected $_parseInsulte             = array();
 		protected $_i                        = array();
@@ -23,8 +23,8 @@
 		 * Cr&eacute;e l'instance de la classe
 		 * @access	public
 		 * @return	void
-		 * @param string $contenu : contenu à modérer
-		 * @param string $maxword : nombre maximum de mot toléré, une valeur de 0 entraîne un nombre illimité d'insultes toléré
+		 * @param string $contenu : contenu Ã  modÃ©rer
+		 * @param string $maxword : nombre maximum de mot tolÃ©rÃ©, une valeur de 0 entraÃ®ne un nombre illimitÃ© d'insultes tolÃ©rÃ©
 		 * @since 2.0
 		*/
 		
@@ -78,7 +78,7 @@
 			if($this->_i++ > $this->_maxWord){
 				$content = $this->_contenu;
 				foreach($this->_insulte as $insulte){
-					$content = preg_replace('`'.preg_quote($insulte).'`i', '***censuré***', $content);
+					$content = preg_replace('`'.preg_quote($insulte).'`i', '***censurÃ©***', $content);
 				}
 				return $content;
 			}
@@ -88,7 +88,7 @@
 		}
 		
 		/**
-		 * Récupération du contenu du message
+		 * RÃ©cupÃ©ration du contenu du message
 		 * @access	public
 		 * @return	void
 		 * @since 2.0
@@ -99,7 +99,7 @@
 		}
 		
 		/**
-		 * Récupération du nombre de mot vulgaire maximum
+		 * RÃ©cupÃ©ration du nombre de mot vulgaire maximum
 		 * @access	public
 		 * @return	void
 		 * @since 2.0
@@ -110,7 +110,7 @@
 		}
 		
 		/**
-		 * Récupération du tableau contenant les insultes détectées
+		 * RÃ©cupÃ©ration du tableau contenant les insultes dÃ©tectÃ©es
 		 * @access	public
 		 * @return	void
 		 * @since 2.0
@@ -121,7 +121,7 @@
 		}
 		
 		/**
-		 * Récupération du tableau contenant les insultes détectées en format html
+		 * RÃ©cupÃ©ration du tableau contenant les insultes dÃ©tectÃ©es en format html
 		 * @access	public
 		 * @return	void
 		 * @since 2.0
@@ -135,10 +135,10 @@
 		}
 		
 		/**
-		 * Configuration du contenu à modérer
+		 * Configuration du contenu Ã  modÃ©rer
 		 * @access	public
 		 * @return	void
-		 * @param string $contenu : contenu à modérer
+		 * @param string $contenu : contenu Ã  modÃ©rer
 		 * @since 2.0
 		*/
 		
@@ -149,10 +149,10 @@
 		}
 		
 		/**
-		 * Configuration du nombre de mot vulgaire toléré, une valeur de 0 entraîne un nombre illimité d'insultes toléré
+		 * Configuration du nombre de mot vulgaire tolÃ©rÃ©, une valeur de 0 entraÃ®ne un nombre illimitÃ© d'insultes tolÃ©rÃ©
 		 * @access	public
 		 * @return	void
-		 * @param string $max : nombre d'insultes toléré
+		 * @param string $max : nombre d'insultes tolÃ©rÃ©
 		 * @since 2.0
 		*/
 		
@@ -186,12 +186,12 @@
 				print_r($this->_insulte);
 			}
 			else{
-				$this->_addError('Le fichier '.MODOGCCONFIG.' n\'a pas pu être ouvert');
+				$this->_addError('Le fichier '.MODOGCCONFIG.' n\'a pas pu Ãªtre ouvert');
 			}
 		}
 		
 		protected function  _setAccent($contenu){
-			$search = array ('@[éèêëÊË]@i','@[àâäÂÄ]@i','@[îïÎÏ]@i','@[ûùüÛÜ]@i','@[ôöÔÖ]@i','@[ç]@i');
+			$search = array ('@[Ã©Ã¨ÃªÃ«ÃŠÃ‹]@i','@[Ã Ã¢Ã¤Ã‚Ã„]@i','@[Ã®Ã¯ÃÃ]@i','@[Ã»Ã¹Ã¼Ã›Ãœ]@i','@[Ã´Ã¶Ã”Ã–]@i','@[Ã§]@i');
 			$replace = array ('e','a','i','u','o','c');
 			$contenu = preg_replace($search, $replace, $contenu);
 			return strtolower($contenu);

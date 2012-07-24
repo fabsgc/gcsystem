@@ -162,7 +162,7 @@
 			$names=explode(',', $name);
 			foreach($names as $name){
 				foreach($this->field_array as $field){
-					$value=$field->return_array(); //$field contient un objet, on retourne tout ça sous forme de tableau
+					$value=$field->return_array(); //$field contient un objet, on retourne tout Ã§a sous forme de tableau
 					if($value[1]==$name){
 						$this->validateFunction($value);
 					}
@@ -172,7 +172,7 @@
 		
 		private  function validateFields(){
 			foreach($this->field_array as $field){
-				$value=$field->return_array(); //$field contient un objet, on retourne tout ça sous forme de tableau
+				$value=$field->return_array(); //$field contient un objet, on retourne tout Ã§a sous forme de tableau
 				$this->validateFunction($value);
 			}
 		
@@ -368,7 +368,7 @@
 							break;
 							
 							case 'noEspace' :
-								if($_POST[$value[1]]!="" AND preg_match('#[a-zA-Z0-9ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ\.\(\)\[\]\"\'\-,;:\/!\?]#isU', $_POST[$value[1]])){
+								if($_POST[$value[1]]!="" AND preg_match('#[a-zA-Z0-9Ã€ÃÃ‚ÃƒÃ„Ã…Ã Ã¡Ã¢Ã£Ã¤Ã¥Ã’Ã“Ã”Ã•Ã–Ã˜Ã²Ã³Ã´ÃµÃ¶Ã¸ÃˆÃ‰ÃŠÃ‹Ã¨Ã©ÃªÃ«Ã‡Ã§ÃŒÃÃŽÃÃ¬Ã­Ã®Ã¯Ã™ÃšÃ›ÃœÃ¹ÃºÃ»Ã¼Ã¿Ã‘Ã±\.\(\)\[\]\"\'\-,;:\/!\?]#isU', $_POST[$value[1]])){
 									array_push($this->valid, 'true');
 								}
 								elseif($_POST[$value[1]]!=""){
@@ -656,7 +656,7 @@
 							break;
 							
 							case 'noEspace' :
-								if($_POST[$value[1]]!="" AND preg_match('#[a-zA-Z0-9ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ\.\(\)\[\]\"\'\-,;:\/!\?]#isU', $_POST[$value[1]])){
+								if($_POST[$value[1]]!="" AND preg_match('#[a-zA-Z0-9Ã€ÃÃ‚ÃƒÃ„Ã…Ã Ã¡Ã¢Ã£Ã¤Ã¥Ã’Ã“Ã”Ã•Ã–Ã˜Ã²Ã³Ã´ÃµÃ¶Ã¸ÃˆÃ‰ÃŠÃ‹Ã¨Ã©ÃªÃ«Ã‡Ã§ÃŒÃÃŽÃÃ¬Ã­Ã®Ã¯Ã™ÃšÃ›ÃœÃ¹ÃºÃ»Ã¼Ã¿Ã‘Ã±\.\(\)\[\]\"\'\-,;:\/!\?]#isU', $_POST[$value[1]])){
 									array_push($this->valid, 'true');
 								}
 								elseif($_POST[$value[1]]!=""){
@@ -1424,7 +1424,7 @@
 							break;
 							
 							case 'noEspace' :
-								if($_POST[$value[1]]!="" AND preg_match('#[a-zA-Z0-9ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ\.\(\)\[\]\"\'\-,;:\/!\?]#isU', $_POST[$value[1]])){
+								if($_POST[$value[1]]!="" AND preg_match('#[a-zA-Z0-9Ã€ÃÃ‚ÃƒÃ„Ã…Ã Ã¡Ã¢Ã£Ã¤Ã¥Ã’Ã“Ã”Ã•Ã–Ã˜Ã²Ã³Ã´ÃµÃ¶Ã¸ÃˆÃ‰ÃŠÃ‹Ã¨Ã©ÃªÃ«Ã‡Ã§ÃŒÃÃŽÃÃ¬Ã­Ã®Ã¯Ã™ÃšÃ›ÃœÃ¹ÃºÃ»Ã¼Ã¿Ã‘Ã±\.\(\)\[\]\"\'\-,;:\/!\?]#isU', $_POST[$value[1]])){
 									array_push($this->valid, 'true');
 								}
 								elseif($_POST[$value[1]]!=""){

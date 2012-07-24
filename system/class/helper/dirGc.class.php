@@ -2,8 +2,8 @@
 	/**
 	 * @dir : dirGc.class.php
 	 * @author : fab@c++
-	 * @description : class gèrant les opérations sur les fichiers
-	 * @version : 2.0 bêta
+	 * @description : class gÃ¨rant les opÃ©rations sur les fichiers
+	 * @version : 2.0 bÃªta
 	*/
 	
     class dirGc{
@@ -16,9 +16,9 @@
 		protected $_info                              = array();
 		protected $_isExist                           = false  ;
 		
-		const NODIR    = 'Aucun répertoire n\'a été difini'    ;
-		const NOACCESS = 'le répertoire n\'est pas accessible' ;
-		const NOREAD   = 'le répertoire n\'est pas lisible'    ;
+		const NODIR    = 'Aucun rÃ©pertoire n\'a Ã©tÃ© difini'    ;
+		const NOACCESS = 'le rÃ©pertoire n\'est pas accessible' ;
+		const NOREAD   = 'le rÃ©pertoire n\'est pas lisible'    ;
 		
 		const CHMOD0644                                = 0644  ;
 		const CHMOD0755                                = 0755  ;
@@ -124,7 +124,7 @@
 							if(rename($src.'/'.$fichier, $dir.'/'.$fichier)){
 							}
 							else{
-								$this->_addError('le fichier '.$fichier.' n\'a pas pu être copié');
+								$this->_addError('le fichier '.$fichier.' n\'a pas pu Ãªtre copiÃ©');
 							}
 						} 
 					} 
@@ -154,7 +154,7 @@
 							if(copy($src.'/'.$fichier, $dir.'/'.$fichier)){
 							}
 							else{
-								$this->_addError('le fichier '.$fichier.' n\'a pas pu être copié');
+								$this->_addError('le fichier '.$fichier.' n\'a pas pu Ãªtre copiÃ©');
 							}
 						} 
 					} 

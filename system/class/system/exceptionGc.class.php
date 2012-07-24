@@ -2,8 +2,8 @@
 	/**
 	 * @file : exceptionGC.class.php
 	 * @author : fab@c++
-	 * @description : class gérant les exceptions
-	 * @version : 2.0 bêta
+	 * @description : class gÃ©rant les exceptions
+	 * @version : 2.0 bÃªta
 	*/
 	
     class ExceptionGc extends Exception{

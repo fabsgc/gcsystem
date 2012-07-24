@@ -2,8 +2,8 @@
 	/**
 	 * @file : socialGc.class.php
 	 * @author : fab@c++
-	 * @description : class gérant différents réseaux sociaux
-	 * @version : 2.0 bêta
+	 * @description : class gÃ©rant diffÃ©rents rÃ©seaux sociaux
+	 * @version : 2.0 bÃªta
 	*/
 	
 	class socialGc{

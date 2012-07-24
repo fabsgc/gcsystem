@@ -514,7 +514,7 @@
 			field.setSelectionRange(startSelection.length + startTag.length, startSelection.length + startTag.length + currentSelection.length);
 		} 
 
-		field.scrollTop = scroll; // et on redéfinit le scroll.
+		field.scrollTop = scroll; // et on redÃ©finit le scroll.
 		
 		preview_{id}('{id}');
 	}
