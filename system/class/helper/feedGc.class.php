@@ -73,6 +73,8 @@
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 				$this->_rssFileContent =  = curl_exec($ch);
 				curl_close($ch);
+				$this->_rssFile = $rss;
+				return true;
 			}
 			else{
 				return false;
