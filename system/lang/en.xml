@@ -13,7 +13,7 @@
   <sentence id="fichierinclus">included files</sentence>
   <sentence id="requetesql">sql queries executed</sentence>
   <sentence id="fichiertpl">templates files included.</sentence>
-  <sentence id="vargetpost">var get, post, session et file.</sentence>
+  <sentence id="vargetpost">var get, post, session et file</sentence>
   <sentence id="bbcodepreview">preview</sentence>
   <sentence id="alertpreviewbbocde">you must write the function to use it</sentence>
   <sentence id="404notfound">404 error</sentence>

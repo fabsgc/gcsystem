@@ -10,6 +10,7 @@
 		use errorGc;                            //trait
 		
 		protected $_rssFile                        = "";
+		protected $_rssFileContent                 = "";
 		protected $_rssRead                        = false  ;
 		
 		protected $_rssTitle                       = array();
@@ -64,7 +65,14 @@
 		
 		protected function _setRss($rss){
 			if(is_file($rss)){
-				
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $rss);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
+				curl_setopt($ch, CURLOPT_TIMEOUT, 4);
+				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+				$this->_rssFileContent =  = curl_exec($ch);
+				curl_close($ch);
 			}
 			else{
 				return false;

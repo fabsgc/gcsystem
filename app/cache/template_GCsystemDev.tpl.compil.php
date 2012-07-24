@@ -123,7 +123,7 @@
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 200px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>arbo.png" title="<?php echo "variable get, post, session et file."; ?>"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>arbo.png" title="<?php echo "variable get, post, session et file"; ?>"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone"  style="width: 169px;">
 			<?php echo (nl2br("$arbo")); ?>

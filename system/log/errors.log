@@ -17,3 +17,10 @@
 24/07/2012 a 16:47:06 ! : Erreur [8] (Undefined variable: result) dans le fichier C:\wamp\www\Gcsystem\system\class\system\generalGc.class.php a la ligne 172
 24/07/2012 a 17:00:37 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\Gcsystem\system\class\system\Gcsystem.class.php a la ligne 113
 24/07/2012 a 17:00:37 ! : Erreur [8] (Undefined variable: result) dans le fichier C:\wamp\www\Gcsystem\system\class\system\generalGc.class.php a la ligne 172
+24/07/2012 a 19:18:56 ! : Erreur [8] (Undefined variable: result) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 172
+24/07/2012 a 19:35:03 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php a la ligne 113
+24/07/2012 a 19:35:03 ! : The rubric  were not found
+24/07/2012 a 19:35:06 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php a la ligne 113
+24/07/2012 a 19:35:06 ! : Erreur [8] (Undefined variable: result) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 172
+24/07/2012 a 19:35:15 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php a la ligne 113
+24/07/2012 a 19:35:15 ! : Erreur [8] (Undefined variable: result) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 172
