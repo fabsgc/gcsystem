@@ -315,7 +315,7 @@
 		}
 		
 		public function showRss($rss){
-			if($rss!="" isset($this->_genRss[$rss])){
+			if($rss!="" && isset($this->_genRss[$rss])){
 			}
 			else{
 				$this->_addError('Ce flux rss n\'existe pas');
