@@ -63,6 +63,96 @@
 			}
 		}
 		
+		public function getRssTitle(){
+		}
+		
+		public function getRssLink(){
+		}
+
+		public function getRssDescription(){
+		}
+
+		public function getRssLanguage(){
+		}
+
+		public function getRssCopyright(){
+		}
+
+		public function getRssManagingEditor(){
+		}
+
+		public function getRssWebMaster(){
+		}
+
+		public function getRssPubDate(){
+		}
+
+		public function getRssLastBuildDate(){
+		}
+
+		public function getRssCategory(){
+		}
+
+		public function getRssGenerator(){
+		}
+
+		public function getRssDocs(){
+		}
+
+		public function getRssCloud(){
+		}
+
+		public function getRssTtl(){
+		}
+
+		public function getRssImage(){
+		}
+
+		public function getRssRating(){
+		}
+
+		public function getRssTextInput(){
+		}
+
+		public function getRssSkipHours(){
+		}
+
+		public function getRssSkipDays(){
+		}
+		
+		public function getItemTitle(){
+		}
+
+		public function getItemLink(){
+		}
+
+		public function getItemDescription(){
+		}
+
+		public function getItemAuthor(){
+		}
+
+		public function getItemCategory(){
+		}
+
+		public function getItemComments(){
+		}
+
+		public function getItemEnclosure(){
+		}
+
+		public function getItemGuid(){
+		}
+
+		public function getItemPubdate(){
+		}
+
+		public function getItemSource(){
+		}
+		
+		public function getRss(){
+		}
+		
 		protected function _setRss($rss){
 			if(is_file($rss)){
 				$ch = curl_init();
@@ -71,7 +161,7 @@
 				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
 				curl_setopt($ch, CURLOPT_TIMEOUT, 4);
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				$this->_rssFileContent =  = curl_exec($ch);
+				$this->_rssFileContent = curl_exec($ch);
 				curl_close($ch);
 				$this->_rssFile = $rss;
 				return true;
