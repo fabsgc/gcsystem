@@ -62,3 +62,90 @@
 25/07/2012 a 11:19:36 ! : Erreur [8] (Undefined variable: result) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 172
 25/07/2012 a 11:19:36 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
 25/07/2012 a 11:19:36 ! : Erreur [8] (Undefined variable: result) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 172
+25/07/2012 a 18:52:36 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 18:52:36 ! : Erreur [8] (Undefined variable: result) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 172
+25/07/2012 a 21:22:14 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 21:22:14 ! : Erreur [8] (Undefined variable: result) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 172
+25/07/2012 a 21:32:22 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 21:32:53 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 21:32:59 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 21:33:16 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 21:33:21 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 21:42:35 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 22:08:49 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 22:08:49 ! : Erreur [8] (Undefined variable: infos1) dans le fichier C:\wamp\www\GCsystem2.0\system\class\helper\feedGc.class.php a la ligne 95
+25/07/2012 a 22:08:57 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 22:08:59 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 22:53:16 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 22:53:16 ! : Erreur [8] (Undefined property: feedGc::$genRssI) dans le fichier C:\wamp\www\GCsystem2.0\system\class\helper\feedGc.class.php a la ligne 196
+25/07/2012 a 22:53:19 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 22:53:19 ! : Erreur [8] (Undefined property: feedGc::$genRssI) dans le fichier C:\wamp\www\GCsystem2.0\system\class\helper\feedGc.class.php a la ligne 196
+25/07/2012 a 22:54:36 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 22:55:13 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 22:58:30 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 22:58:40 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:00:39 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:03:16 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:03:40 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:03:41 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:03:42 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:03:42 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:03:43 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:04:12 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:04:42 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:04:47 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:04:55 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:05:30 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:19 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:19 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:20 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:20 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:20 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:20 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:20 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:20 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:21 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:21 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:21 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:22 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:23 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:23 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:06:25 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:07:23 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:07:24 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:07:24 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:07:24 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:08:20 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:21:13 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:21:14 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:21:41 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:21:42 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:21:42 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:21:43 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:21:56 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:22:47 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:22:48 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:27:42 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:28:07 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:28:16 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:28:42 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:28:42 ! : Erreur [8] (Use of undefined constant is_array - assumed 'is_array') dans le fichier C:\wamp\www\GCsystem2.0\system\class\helper\feedGc.class.php a la ligne 262
+25/07/2012 a 23:28:42 ! : Erreur [8] (Use of undefined constant is_array - assumed 'is_array') dans le fichier C:\wamp\www\GCsystem2.0\system\class\helper\feedGc.class.php a la ligne 262
+25/07/2012 a 23:28:50 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:28:50 ! : Erreur [8] (Use of undefined constant isarray - assumed 'isarray') dans le fichier C:\wamp\www\GCsystem2.0\system\class\helper\feedGc.class.php a la ligne 262
+25/07/2012 a 23:28:50 ! : Erreur [8] (Use of undefined constant isarray - assumed 'isarray') dans le fichier C:\wamp\www\GCsystem2.0\system\class\helper\feedGc.class.php a la ligne 262
+25/07/2012 a 23:29:28 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:29:28 ! : Erreur [8] (Use of undefined constant isarray - assumed 'isarray') dans le fichier C:\wamp\www\GCsystem2.0\system\class\helper\feedGc.class.php a la ligne 262
+25/07/2012 a 23:29:28 ! : Erreur [8] (Use of undefined constant isarray - assumed 'isarray') dans le fichier C:\wamp\www\GCsystem2.0\system\class\helper\feedGc.class.php a la ligne 262
+25/07/2012 a 23:29:47 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:29:47 ! : Erreur [8] (Use of undefined constant isarray - assumed 'isarray') dans le fichier C:\wamp\www\GCsystem2.0\system\class\helper\feedGc.class.php a la ligne 262
+25/07/2012 a 23:29:47 ! : Erreur [8] (Use of undefined constant isarray - assumed 'isarray') dans le fichier C:\wamp\www\GCsystem2.0\system\class\helper\feedGc.class.php a la ligne 262
+25/07/2012 a 23:29:49 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:29:49 ! : Erreur [8] (Use of undefined constant isarray - assumed 'isarray') dans le fichier C:\wamp\www\GCsystem2.0\system\class\helper\feedGc.class.php a la ligne 262
+25/07/2012 a 23:29:49 ! : Erreur [8] (Use of undefined constant isarray - assumed 'isarray') dans le fichier C:\wamp\www\GCsystem2.0\system\class\helper\feedGc.class.php a la ligne 262
+25/07/2012 a 23:29:58 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:30:09 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:30:48 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:31:09 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:31:29 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
+25/07/2012 a 23:31:45 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php a la ligne 113
