@@ -266,6 +266,9 @@ define('ENVIRONMENT', 'development');
 /* affiche le message de maintenance */
 define('MAINTENANCE', false);
 
+/* affiche la barre de dev ou non */
+define('DEVTOOL', true);
+
 /* mot de passe pour se connecter au terminal */
 define('TERMINAL_MDP', 'mdp');
 

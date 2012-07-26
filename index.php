@@ -26,4 +26,4 @@ $GLOBALS['rubrique']->init();
 
 if(MAINTENANCE==false){ $GLOBALS['rubrique']->route(); }
 elseif(MAINTENANCE==true){ $GLOBALS['rubrique']->setMaintenance(); }
-if(ENVIRONMENT == 'development') $GLOBALS['appDevGc']->show();
+if(ENVIRONMENT == 'development' &&  DEVTOOL == true && $GLOBALS['devtool'] == true) $GLOBALS['appDevGc']->show();

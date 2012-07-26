@@ -12,6 +12,8 @@
 		protected $_rssFile                        = ""     ;
 		protected $_rssFileContent                 = ""     ;
 		protected $_rssRead                        = false  ;
+		protected $_cache                                   ;
+		protected $_time                           = array();
 		
 		protected $_rssTitle                       = array();
 		protected $_rssLink                        = array();
@@ -45,12 +47,17 @@
 		protected $_itemSource                     = array();
 		
 		protected $_domXml                                  ;
+		protected $_channelXml                              ;
+		protected $_itemXml                                 ;
 		protected $_nodeXml                                 ;
 		protected $_markupXml                               ;
+		protected $_markup2Xml                              ;
+		protected $_textXml                                 ;
+		protected $_text2Xml                                ;
 		
-		protected $_genRss                         = array() ;
-		protected $_genRssOutput                   = ''      ;
-		protected $_genRssI                        = 0       ;
+		protected $_genRss                         = array();
+		protected $_genRssOutput                   = ''     ;
+		protected $_genRssI                        = 0      ;
 		
 		const NOFILE   = 'Aucun fichier rss n\'a été difini';
 		
@@ -69,7 +76,8 @@
 			}
 		}
 		
-		public function newRss($rss){
+		public function newRss($rss, $cache = 0){
+			$this->_time[$rss] = $cache;
 			if($rss!=""){
 				if(empty($this->_genRss[$rss])){
 					$this->_genRss[$rss] = array();
@@ -200,7 +208,6 @@
 		}
 		
 		public function addItem($rss, $markup = array()){
-			$this->_genRssI = 0;
 			$isarray = array();
 			if($rss!="" && is_array($markup) && isset($this->_genRss[$rss])){
 				foreach($markup as $value1){
@@ -316,6 +323,58 @@
 		
 		public function showRss($rss){
 			if($rss!="" && isset($this->_genRss[$rss])){
+				$this->_cache = new cacheGc($rss.'.feedGc', "", $this->_time[$rss]);
+			
+				if($this->_cache->isDie()){
+					$this->_domXml = new DomDocument('1.0', CHARSET);
+					
+					$this->_nodeXml = $this->_domXml->createElement("rss"); //On crée l élément racine
+					$this->_nodeXml->setAttribute("version", "2.0"); //On lui ajoute l attribut version (2.0)
+					$this->_nodeXml->setAttribute("encoding", CHARSET); //On lui ajoute l attribut version (2.0)
+					$this->_nodeXml = $this->_domXml->appendChild($this->_nodeXml); //On insère la racine dans le document
+					
+					$this->_channelXml = $this->_domXml->createElement("channel");//On crée un élément channel
+					$this->_channelXml = $this->_nodeXml->appendChild($this->_channelXml);//On ajoute cet élément à la racine
+					
+					foreach($this->_genRss[$rss]['header'] as $cle => $val){
+						$this->_markupXml = $this->_domXml->createElement($cle);//On crée un élément description
+						$this->_markupXml = $this->_channelXml->appendChild($this->_markupXml);//On ajoute cet élément au channel
+						
+						if(!is_array($val)){
+							$this->_textXml = $this->_domXml->createTextNode($val); //On crée un texte
+							$this->_textXml = $this->_markupXml->appendChild($this->_textXml); //On insère ce texte dans le noeud description
+						}
+						elseif(is_array($val)){
+							foreach($this->_genRss[$rss]['header'][$cle] as $cle2 => $val2){
+								$this->_markup2Xml = $this->_domXml->createElement($cle2);//On crée un élément description
+								$this->_markup2Xml = $this->_markupXml->appendChild($this->_markup2Xml);//On ajoute cet élément au channel
+								
+								$this->_text2Xml = $this->_domXml->createTextNode($val2); //On crée un texte
+								$this->_text2Xml = $this->_markup2Xml->appendChild($this->_text2Xml); //On insère ce texte dans le noeud description
+							}
+						}
+					}
+					
+					foreach($this->_genRss[$rss]['items'] as $cle => $val){
+						$this->_itemXml = $this->_domXml->createElement("item");
+						$this->_itemXml = $this->_channelXml->appendChild($this->_itemXml);
+						
+						foreach($val as $cle2 => $val2){
+							$this->_markup2Xml = $this->_domXml->createElement($cle2);//On crée un élément description
+							$this->_markup2Xml = $this->_itemXml->appendChild($this->_markup2Xml);//On ajoute cet élément au channel
+								
+							$this->_text2Xml = $this->_domXml->createTextNode($val2); //On crée un texte
+							$this->_text2Xml = $this->_markup2Xml->appendChild($this->_text2Xml); //On insère ce texte dans le noeud description
+						}
+					}
+					
+					$this->_cache->setVal($this->_domXml->saveXML());
+					$this->_cache->setCache();
+					return $this->_cache->getCache();
+				}
+				else{
+					return $this->_cache->getCache();
+				}
 			}
 			else{
 				$this->_addError('Ce flux rss n\'existe pas');

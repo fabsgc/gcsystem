@@ -72,7 +72,7 @@
 						$this->_stream .= '<br />> '.FORMS_PATH.$this->_commandExplode[2].FORMS_EXT.'.php';
 						$this->_result = '<br />> <span style="color: chartreuse;">la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; cr&#233;&#233;e</span>';
 						
-						$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
+						$this->_domXml = new DomDocument('1.0', CHARSET);
 						if($this->_domXml->load(ROUTE)){
 							$this->_addError('fichier ouvert : '.ROUTE);
 							

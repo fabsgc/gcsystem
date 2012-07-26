@@ -1,6 +1,6 @@
 <?php
-	$GLOBALS['rubrique']->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
-	echo $GLOBALS['rubrique']->affHeader();
+	// $GLOBALS['rubrique']->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
+	// echo $GLOBALS['rubrique']->affHeader();
 		// $t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', '0');
 		// $t->assign(array(
 			// 'var'=> 'salutsalut',
@@ -8,26 +8,12 @@
 		// ));
 		// $t->setShow(FALSE);
 		// echo $t->show();
-		// $zip = new zipGc('C:\wamp\www\GCsystem.zip');
-		//echo $zip->getFilePath();
-		// echo $zip->getFilesCompressedSize();
-		// print_r($zip->getContentZip());
-		// print_r($zip->getContentFileZip());
-		// $zip->putFileToFtp('test/', zipGc::NOPUTDIR, array());
-		// $zip->putFileToFtp('test/', zipGc::PUTDIR, array('css'));
-		// $zip->putFileToFtp('test/', zipGc::NOPUTDIR, array('php', 'css'));
-		
-		// foreach($zip->getFileCompressedSize() as $clé => $val){
-			// if(is_file($cle)){
-				// echo 'salope';
-			// }
-			// else{
-				// echo 'merde';
-			// }
-		// }	
-		
+			
+		header('Content-Type: text/xml');
+		header('Content-Type: application/xml');
+		$GLOBALS['rubrique']->setDevTool(false);
 		$feed = new feedGc();
-		$feed->newRss('new');
+		$feed->newRss('new', '10');
 		$feed->addHeader('new', array(
 			'title' => 'page test',
 			'link' => 'http://www.legeekcafe.com/',
@@ -41,17 +27,21 @@
 			'pubDate' => 'Wed, 25 Jul 2012 21:36:56 +0100'
 		));
 		
+		echo $_SERVER['HTTP_CONTENT_TYPE'];
+		
 		$feed->addItem('new', array(
 			array(
-				'title' => 'merde',
+				'title' => 'merde-dfmlo',
 				'link' => 'http://www.legeekcafe.com/news-240.html',
 				'guid' => 'http://www.legeekcafe.com/news-240.html',
-				'pubDate' => 'Sun, 15 Jul 2012 11:27:28 +0100'),
+				'pubDate' => 'Sun, 15 Jul 2012 11:27:28 +0100',
+				'description' => 'une appli xml'),
 			array(
 				'title' => 'merde2222',
 				'link' => 'http://www.legeekcafe.com/news-240.html',
 				'guid' => 'http://www.legeekcafe.com/news-240.html',
-				'pubDate' => 'Sun, 15 Jul 2012 11:27:28 +0100')
+				'pubDate' => 'Sun, 15 Jul 2012 11:27:28 +0100',
+				'description' => 'une appli xml é<br />'),
 		));
 		
 		$feed->addItem('new', 
@@ -59,9 +49,9 @@
 				'title' => 'merde4',
 				'link' => 'http://www.legeekcafe.com/news-240.html',
 				'guid' => 'http://www.legeekcafe.com/news-240.html',
-				'pubDate' => 'Sun, 15 Jul 2012 11:27:28 +0100')
+				'pubDate' => 'Sun, 15 Jul 2012 11:27:28 +0100',
+				'description' => 'une appli xml')
 		);
 		
-		print_r($feed->getGenRss());
-		
-	echo $GLOBALS['rubrique']->affFooter();
+		echo $feed->showRss('new');		
+	//echo $GLOBALS['rubrique']->affFooter();

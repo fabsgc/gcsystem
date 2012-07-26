@@ -38,6 +38,8 @@
 		protected $_routerInstance             ;
 		protected $_routeInstance              ;
 		
+		protected $_devTool              = true;
+		
 		/* --- permet d'affiche le doctype et l'entete (avant la balise body) et </body></html> -- */
 		
 		protected $header;
@@ -63,6 +65,12 @@
 			if($lang==""){ $this->lang=$this->getLangClient(); } else { $this->lang=$lang; }
 			$this->_createLangInstance();
 			$this->_configInstance = new configGc();
+			$GLOBALS['devtool'] = $this->_devTool;
+		}
+		
+		public function setDevTool($set){
+			$this->_devTool = $set;
+			$GLOBALS['devtool'] = $this->_devTool;
 		}
 		
 		public function init(){
