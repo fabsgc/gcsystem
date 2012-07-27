@@ -27,7 +27,6 @@
 		protected $_text2Xml                                ;
 		
 		protected $_genRss                         = array();
-		protected $_genRssOutput                   = ''     ;
 		protected $_genRssI                        = 0      ;
 		
 		const NOFILE   = 'Aucun fichier rss n\'a été difini';
