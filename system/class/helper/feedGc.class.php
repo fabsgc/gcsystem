@@ -7,44 +7,15 @@
 	*/
 	
 	class feedGc{
-		use errorGc;                            //trait
+		use errorGc                                         ;
 		
 		protected $_rssFile                        = ""     ;
 		protected $_rssFileContent                 = ""     ;
-		protected $_rssRead                        = false  ;
+		protected $_rssRead                        = array();
+		protected $_rssArray                       = array();
+		
 		protected $_cache                                   ;
 		protected $_time                           = array();
-		
-		protected $_rssTitle                       = array();
-		protected $_rssLink                        = array();
-		protected $_rssDescription                 = array();
-		protected $_rssLanguage                    = array();
-		protected $_rssCopyright                   = array();
-		protected $_rssManagingEditor              = array();
-		protected $_rssWebMaster                   = array();
-		protected $_rssPubDate                     = array();
-		protected $_rssLastBuildDate               = array();
-		protected $_rssCategory                    = array();
-		protected $_rssGenerator                   = array();
-		protected $_rssDocs                        = array();
-		protected $_rssCloud                       = array();
-		protected $_rssTtl                         = array();
-		protected $_rssImage                       = array();
-		protected $_rssRating                      = array();
-		protected $_rssTextInput                   = array();
-		protected $_rssSkipHours                   = array();
-		protected $_rssSkipDays                    = array();
-		
-		protected $_itemTitle                      = array();
-		protected $_itemLink                       = array();
-		protected $_itemDescription                = array();
-		protected $_itemAuthor                     = array();
-		protected $_itemCategory                   = array();
-		protected $_itemComments                   = array();
-		protected $_itemEnclosure                  = array();
-		protected $_itemGuid                       = array();
-		protected $_itemPubdate                    = array();
-		protected $_itemSource                     = array();
 		
 		protected $_domXml                                  ;
 		protected $_channelXml                              ;
@@ -68,12 +39,7 @@
 		 * @since 2.0
 		*/
 		
-		public  function __construct($rss = ""){
-			if($rss!=""){
-				if($this->_setRss($rss) == true){
-					$rssRead = true;
-				}
-			}
+		public  function __construct(){
 		}
 		
 		public function newRss($rss, $cache = 0){
@@ -328,29 +294,29 @@
 				if($this->_cache->isDie()){
 					$this->_domXml = new DomDocument('1.0', CHARSET);
 					
-					$this->_nodeXml = $this->_domXml->createElement("rss"); //On crée l élément racine
-					$this->_nodeXml->setAttribute("version", "2.0"); //On lui ajoute l attribut version (2.0)
-					$this->_nodeXml->setAttribute("encoding", CHARSET); //On lui ajoute l attribut version (2.0)
-					$this->_nodeXml = $this->_domXml->appendChild($this->_nodeXml); //On insère la racine dans le document
+					$this->_nodeXml = $this->_domXml->createElement("rss");
+					$this->_nodeXml->setAttribute("version", "2.0"); 
+					$this->_nodeXml->setAttribute("encoding", CHARSET); 
+					$this->_nodeXml = $this->_domXml->appendChild($this->_nodeXml); 
 					
-					$this->_channelXml = $this->_domXml->createElement("channel");//On crée un élément channel
-					$this->_channelXml = $this->_nodeXml->appendChild($this->_channelXml);//On ajoute cet élément à la racine
+					$this->_channelXml = $this->_domXml->createElement("channel");
+					$this->_channelXml = $this->_nodeXml->appendChild($this->_channelXml);
 					
 					foreach($this->_genRss[$rss]['header'] as $cle => $val){
-						$this->_markupXml = $this->_domXml->createElement($cle);//On crée un élément description
-						$this->_markupXml = $this->_channelXml->appendChild($this->_markupXml);//On ajoute cet élément au channel
+						$this->_markupXml = $this->_domXml->createElement($cle);
+						$this->_markupXml = $this->_channelXml->appendChild($this->_markupXml);
 						
 						if(!is_array($val)){
-							$this->_textXml = $this->_domXml->createTextNode($val); //On crée un texte
-							$this->_textXml = $this->_markupXml->appendChild($this->_textXml); //On insère ce texte dans le noeud description
+							$this->_textXml = $this->_domXml->createTextNode($val);
+							$this->_textXml = $this->_markupXml->appendChild($this->_textXml);
 						}
 						elseif(is_array($val)){
 							foreach($this->_genRss[$rss]['header'][$cle] as $cle2 => $val2){
-								$this->_markup2Xml = $this->_domXml->createElement($cle2);//On crée un élément description
-								$this->_markup2Xml = $this->_markupXml->appendChild($this->_markup2Xml);//On ajoute cet élément au channel
+								$this->_markup2Xml = $this->_domXml->createElement($cle2);
+								$this->_markup2Xml = $this->_markupXml->appendChild($this->_markup2Xml);
 								
-								$this->_text2Xml = $this->_domXml->createTextNode($val2); //On crée un texte
-								$this->_text2Xml = $this->_markup2Xml->appendChild($this->_text2Xml); //On insère ce texte dans le noeud description
+								$this->_text2Xml = $this->_domXml->createTextNode($val2);
+								$this->_text2Xml = $this->_markup2Xml->appendChild($this->_text2Xml);
 							}
 						}
 					}
@@ -386,12 +352,101 @@
 			return $this->_genRss;
 		}
 		
-		public function getRssTitle(){
-			if($this->_isExist == true){
-				if($this->_rssDescription != "")
-					return $this->_rssTitle;
-				else
+		public function addRss($nom, $rss){
+			if($nom!="" && $rss!=""){
+				if(empty($this->_rssArray[$nom])){
+					if(preg_match('#http:#isU', $rss) || is_file($rss)){
+						$ch = curl_init();
+						curl_setopt($ch, CURLOPT_URL, $rss);
+						curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+						curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+						curl_setopt($ch, CURLOPT_TIMEOUT, 2);
+						curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+						$this->_rssFileContent = curl_exec($ch);
+						$this->_rssFile = $rss;
+						curl_close($ch);
+
+						$this->_domXml = new DomDocument('1.0', CHARSET);
+						
+						if($this->_domXml->loadXML($this->_rssFileContent)){
+							$this->_addError('fichier ouvert : '.$this->_rssFile);
+							$this->_nodeXml = $this->_domXml->getElementsByTagName('rss')->item(0)->getElementsByTagName('channel')->item(0);
+
+							$this->_setRssHeader($nom, $this->_nodeXml);
+							$this->_setRssItem($nom, $this->_nodeXml);
+							$this->_rssRead[$nom] = true;
+							return true;
+						}
+						else{
+							$this->_addError('Le fichier '.$this->_rssFile.' n\'a pas pu être ouvert');
+							$his->_rssRead[$nom] = false;
+							return false;
+						}
+					}
+					else{
+						$his->_rssRead[$nom] = false;
+						return false;
+					}
+				}
+				else{
+					$this->_addError('Ce flux rss existe déjà');
 					return false;
+				}
+			}
+			else{
+				$this->_addError('Des erreurs sont présentes dans les paramètres de la fonction');
+				return false;
+			}
+		}
+		
+		public function _setRssHeader($nom, $rss){
+			$this->_rssArray[$nom]['header']['title'] = $rss->getElementsByTagName('title')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['link'] = $rss->getElementsByTagName('link')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['description'] = $rss->getElementsByTagName('description')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['language'] = $rss->getElementsByTagName('language')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['copyright'] = $rss->getElementsByTagName('copyright')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['managingEditor'] = $rss->getElementsByTagName('managingEditor')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['webMaster'] = $rss->getElementsByTagName('webMaster')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['pubDate'] = $rss->getElementsByTagName('pubDate')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['lastBuildDate'] = $rss->getElementsByTagName('lastBuildDate')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['category'] = $rss->getElementsByTagName('category')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['generator'] = $rss->getElementsByTagName('generator')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['docs'] = $rss->getElementsByTagName('docs')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['ttl'] = $rss->getElementsByTagName('ttl')->item(0)->nodeValue;
+			
+			$this->_rssArray[$nom]['header']['image']['title'] = $this->_markupeXml = $rss->getElementsByTagName('image')->item(0)->getElementsByTagName('title')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['image']['url'] = $this->_markupeXml = $rss->getElementsByTagName('image')->item(0)->getElementsByTagName('url')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['image']['link'] = $this->_markupeXml = $rss->getElementsByTagName('image')->item(0)->getElementsByTagName('link')->item(0)->nodeValue;			
+			
+			$this->_rssArray[$nom]['header']['rating'] = $this->_nodeXml->getElementsByTagName('rating')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['textInput'] = $this->_nodeXml->getElementsByTagName('textInput')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['skipDays'] = $this->_nodeXml->getElementsByTagName('skipDays')->item(0)->nodeValue;
+		}
+			
+		public function _setRssItem($nom, $rss){
+			foreach($rss->getElementsByTagName('item') as $cle => $val){
+				$this->_rssArray[$nom]['items']['item_'.$cle]['title'] = $val->getElementsByTagName('title')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['items']['item_'.$cle]['link'] = $val->getElementsByTagName('link')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['items']['item_'.$cle]['description'] = $val->getElementsByTagName('description')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['items']['item_'.$cle]['author'] = $val->getElementsByTagName('author')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['items']['item_'.$cle]['category'] = $val->getElementsByTagName('category')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['items']['item_'.$cle]['comments'] = $val->getElementsByTagName('comments')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['items']['item_'.$cle]['enclosure'] = $val->getElementsByTagName('enclosure')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['items']['item_'.$cle]['guid'] = $val->getElementsByTagName('guid')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['items']['item_'.$cle]['pubDate'] = $val->getElementsByTagName('pubDate')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['items']['item_'.$cle]['source'] = $val->getElementsByTagName('source')->item(0)->nodeValue;
+			}
+		}
+		
+		public function getRssTitle($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['title'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
+					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -399,12 +454,15 @@
 			}
 		}
 		
-		public function getRssLink(){
-			if($this->_isExist == true){
-				if($this->_rssDescription != "")
-					return $this->_rssLink;
-				else
+		public function getRssLink($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['link'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -412,12 +470,15 @@
 			}
 		}
 
-		public function getRssDescription(){
-			if($this->_isExist == true){
-				if($this->_rssDescription != "")
-					return $this->_rssDescription;
-				else
+		public function getRssDescription($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['description'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -425,12 +486,15 @@
 			}
 		}
 
-		public function getRssLanguage(){
-			if($this->_isExist == true){
-				if($this->_rssLanguage != "")
-					return $this->_rssLanguage;
-				else
+		public function getRssLanguage($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['language'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -438,12 +502,15 @@
 			}
 		}
 
-		public function getRssCopyright(){
-			if($this->_isExist == true){
-				if($this->_rssCopyright != "")
-					return $this->_rssCopyright;
-				else
+		public function getRssCopyright($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['copyright'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -451,12 +518,15 @@
 			}
 		}
 
-		public function getRssManagingEditor(){
-			if($this->_isExist == true){
-				if($this->_rssManagingEditor != "")
-					return $this->_rssManagingEditor;
-				else
+		public function getRssManagingEditor($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['managingEditor'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -464,12 +534,15 @@
 			}
 		}
 
-		public function getRssWebMaster(){
-			if($this->_isExist == true){
-				if($this->_rssWebMaster != "")
-					return $this->_rssWebMaster;
-				else
+		public function getRssWebMaster($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['webMaster'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -477,12 +550,15 @@
 			}
 		}
 
-		public function getRssPubDate(){
-			if($this->_isExist == true){
-				if($this->_rssPubDate != "")
-					return $this->_rssPubDate;
-				else
+		public function getRssPubDate($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['pubDate'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -490,12 +566,15 @@
 			}
 		}
 
-		public function getRssLastBuildDate(){
-			if($this->_isExist == true){
-				if($this->_rssLastBuildDate != "")
-					return $this->_rssLastBuildDate;
-				else
+		public function getRssLastBuildDate($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['lastBuildDate'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -503,12 +582,15 @@
 			}
 		}
 
-		public function getRssCategory(){
-			if($this->_isExist == true){
-				if($this->_rssCategory != "")
-					return $this->_rssCategory;
-				else
+		public function getRssCategory($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['category'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -516,12 +598,15 @@
 			}
 		}
 
-		public function getRssGenerator(){
-			if($this->_isExist == true){
-				if($this->_rssGenerator != "")
-					return $this->_rssGenerator;
-				else
+		public function getRssGenerator($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['generator'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -529,12 +614,15 @@
 			}
 		}
 
-		public function getRssDocs(){
-			if($this->_isExist == true){
-				if($this->_rssDocs != "")
-					return $this->_rssDocs;
-				else
+		public function getRssDocs($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['docs'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -542,12 +630,15 @@
 			}
 		}
 
-		public function getRssCloud(){
-			if($this->_isExist == true){
-				if($this->_rssCloud != "")
-					return $this->_rssCloud;
-				else
+		public function getRssCloud($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['cloud'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -555,12 +646,15 @@
 			}
 		}
 
-		public function getRssTtl(){
-			if($this->_isExist == true){
-				if($this->_rssTtl != "")
-					return $this->_rssTtl;
-				else
+		public function getRssTtl($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['ttl'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -568,12 +662,15 @@
 			}
 		}
 
-		public function getRssImage(){
-			if($this->_isExist == true){
-				if($this->_rssImage != "")
-					return $this->_rssImage;
-				else
+		public function getRssImage($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['image'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -581,12 +678,15 @@
 			}
 		}
 
-		public function getRssRating(){
-			if($this->_isExist == true){
-				if($this->_rssRating != "")
-					return $this->_rssRating;
-				else
+		public function getRssRating($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['rating'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -594,12 +694,15 @@
 			}
 		}
 
-		public function getRssTextInput(){
-			if($this->_isExist == true){
-				if($this->_rssTextInput != "")
-					return $this->_rssTextInput;
-				else
+		public function getRssTextInput($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['textInput'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -607,12 +710,15 @@
 			}
 		}
 
-		public function getRssSkipHours(){
-			if($this->_isExist == true){
-				if($this->_rssSkipHours != "")
-					return $this->_rssSkipHours;
-				else
+		public function getRssSkipHours($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['skipHours'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -620,142 +726,15 @@
 			}
 		}
 
-		public function getRssSkipDays(){
-			if($this->_isExist == true){
-				if($this->_rssSkipDays != "")
-					return $this->_rssSkipDays;
-				else
+		public function getRssSkipDays($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					return $this->_rssArray[$nom]['header']['skipDays'];
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
 					return false;
-			}
-			else{
-				$this->_addError(self::NOFILE);
-				return false;
-			}
-		}
-		
-		public function getItemTitle(){
-			if($this->_isExist == true){
-				if($this->_itemTitle != "")
-					return $this->_itemTitle;
-				else
-					return false;
-			}
-			else{
-				$this->_addError(self::NOFILE);
-				return false;
-			}
-		}
-
-		public function getItemLink(){
-			if($this->_isExist == true){
-				if($this->_itemLink != "")
-					return $this->_itemLink;
-				else
-					return false;
-			}
-			else{
-				$this->_addError(self::NOFILE);
-				return false;
-			}
-		}
-
-		public function getItemDescription(){
-			if($this->_isExist == true){
-				if($this->_itemDescription != "")
-					return $this->_itemDescription;
-				else
-					return false;
-			}
-			else{
-				$this->_addError(self::NOFILE);
-				return false;
-			}
-		}
-
-		public function getItemAuthor(){
-			if($this->_isExist == true){
-				if($this->_itemAuthor != "")
-					return $this->_itemAuthor;
-				else
-					return false;
-			}
-			else{
-				$this->_addError(self::NOFILE);
-				return false;
-			}
-		}
-
-		public function getItemCategory(){
-			if($this->_isExist == true){
-				if($this->_itemCategory != "")
-					return $this->_itemCategory;
-				else
-					return false;
-			}
-			else{
-				$this->_addError(self::NOFILE);
-				return false;
-			}
-		}
-
-		public function getItemComments(){
-			if($this->_isExist == true){
-				if($this->_itemComments != "")
-					return $this->_itemComments;
-				else
-					return false;
-			}
-			else{
-				$this->_addError(self::NOFILE);
-				return false;
-			}
-		}
-
-		public function getItemEnclosure(){
-			if($this->_isExist == true){
-				if($this->_itemEnclosure != "")
-					return $this->_itemClosure;
-				else
-					return false;
-			}
-			else{
-				$this->_addError(self::NOFILE);
-				return false;
-			}
-		}
-
-		public function getItemGuid(){
-			if($this->_isExist == true){
-				if($this->_itemGuid != "")
-					return $this->_itemGuid;
-				else
-					return false;
-			}
-			else{
-				$this->_addError(self::NOFILE);
-				return false;
-			}
-		}
-
-		public function getItemPubdate(){
-			if($this->_isExist == true){
-				if($this->_itemPubdate != "")
-					return $this->_itemPubdate;
-				else
-					return false;
-			}
-			else{
-				$this->_addError(self::NOFILE);
-				return false;
-			}
-		}
-
-		public function getItemSource(){
-			if($this->_isExist == true){
-				if($this->_itemSource != "")
-					return $this->_itemSource;
-				else
-					return false;
+				}
 			}
 			else{
 				$this->_addError(self::NOFILE);
@@ -763,144 +742,213 @@
 			}
 		}
 		
-		public function getRss(){
-		}
-		
-		protected function _setRss($rss){
-			if(is_file($rss)){
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, $rss);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
-				curl_setopt($ch, CURLOPT_TIMEOUT, 4);
-				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				$this->_rssFileContent = curl_exec($ch);
-				curl_close($ch);
-				$this->_rssFile = $rss;
-				
-				$this->_setRssTitle($this->_rssFileContent);
-				$this->_setRssLink($this->_rssFileContent);
-				$this->_setRssDescription($this->_rssFileContent);
-				$this->_setRssLanguage($this->_rssFileContent);
-				$this->_setRssCopyright($this->_rssFileContent);
-				$this->_setRssManagingEditor($this->_rssFileContent);
-				$this->_setRssWebMaster($this->_rssFileContent);
-				$this->_setRssPubDate($this->_rssFileContent);
-				$this->_setRssLastBuildDate($this->_rssFileContent);
-				$this->_setRssCategory($this->_rssFileContent);
-				$this->_setRssGenerator($this->_rssFileContent);
-				$this->_setRssDocs($this->_rssFileContent);
-				$this->_setRssCloud($this->_rssFileContent);
-				$this->_setRssTtl($this->_rssFileContent);
-				$this->_setRssImage($this->_rssFileContent);
-				$this->_setRssRating($this->_rssFileContent);
-				$this->_setRssTextInput($this->_rssFileContent);
-				$this->_setRssSkipHours($this->_rssFileContent);
-				$this->_setRssSkipDays($this->_rssFileContent);
-				$this->_setItemTitle($this->_rssFileContent);
-				$this->_setItemLink($this->_rssFileContent);
-				$this->_setItemDescription($this->_rssFileContent);
-				$this->_setItemAuthor($this->_rssFileContent);
-				$this->_setItemCategory($this->_rssFileContent);
-				$this->_setItemComments($this->_rssFileContent);
-				$this->_setItemEnclosure($this->_rssFileContent);
-				$this->_setItemGuid($this->_rssFileContent);
-				$this->_setItemPubdate($this->_rssFileContent);
-				$this->_setItemSource($this->_rssFileContent);
-				$this->_setRss($this->_rssFileContent);
-				
-				return true;
+		public function getItemTitle($nom){
+			$items = array();
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					foreach($this->_rssArray[$nom]['items'] as $cle => $val){
+						array_push($items, $val['title']);
+					}
+					return $items;
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
+					return false;
+				}
 			}
 			else{
+				$this->_addError(self::NOFILE);
+				return false;
+			}
+		}
+
+		public function getItemLink($nom){
+			$items = array();
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					foreach($this->_rssArray[$nom]['items'] as $cle => $val){
+						array_push($items, $val['link']);
+					}
+					return $items;
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
+					return false;
+				}
+			}
+			else{
+				$this->_addError(self::NOFILE);
+				return false;
+			}
+		}
+
+		public function getItemDescription($nom){
+			$items = array();
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					foreach($this->_rssArray[$nom]['items'] as $cle => $val){
+						array_push($items, $val['description']);
+					}
+					return $items;
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
+					return false;
+				}
+			}
+			else{
+				$this->_addError(self::NOFILE);
+				return false;
+			}
+		}
+
+		public function getItemAuthor($nom){
+			$items = array();
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					foreach($this->_rssArray[$nom]['items'] as $cle => $val){
+						array_push($items, $val['author']);
+					}
+					return $items;
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
+					return false;
+				}
+			}
+			else{
+				$this->_addError(self::NOFILE);
+				return false;
+			}
+		}
+
+		public function getItemCategory($nom){
+			$items = array();
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					foreach($this->_rssArray[$nom]['items'] as $cle => $val){
+						array_push($items, $val['category']);
+					}
+					return $items;
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
+					return false;
+				}
+			}
+			else{
+				$this->_addError(self::NOFILE);
+				return false;
+			}
+		}
+
+		public function getItemComments($nom){
+			$items = array();
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					foreach($this->_rssArray[$nom]['items'] as $cle => $val){
+						array_push($items, $val['comments']);
+					}
+					return $items;
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
+					return false;
+				}
+			}
+			else{
+				$this->_addError(self::NOFILE);
+				return false;
+			}
+		}
+
+		public function getItemEnclosure($nom){
+			$items = array();
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					foreach($this->_rssArray[$nom]['items'] as $cle => $val){
+						array_push($items, $val['enclosure']);
+					}
+					return $items;
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
+					return false;
+				}
+			}
+			else{
+				$this->_addError(self::NOFILE);
+				return false;
+			}
+		}
+
+		public function getItemGuid($nom){
+			$items = array();
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					foreach($this->_rssArray[$nom]['items'] as $cle => $val){
+						array_push($items, $val['guid']);
+					}
+					return $items;
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
+					return false;
+				}
+			}
+			else{
+				$this->_addError(self::NOFILE);
+				return false;
+			}
+		}
+
+		public function getItemPubdate($nom){
+			$items = array();
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					foreach($this->_rssArray[$nom]['items'] as $cle => $val){
+						array_push($items, $val['pubDate']);
+					}
+					return $items;
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
+					return false;
+				}
+			}
+			else{
+				$this->_addError(self::NOFILE);
+				return false;
+			}
+		}
+
+		public function getItemSource($nom){
+			$items = array();
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				if(isset($this->_rssArray[$nom])){
+					foreach($this->_rssArray[$nom]['items'] as $cle => $val){
+						array_push($items, $val['source']);
+					}
+					return $items;
+				}
+				else{
+					$this->_addError('Ce flux rss n\'existe pas');
+					return false;
+				}
+			}
+			else{
+				$this->_addError(self::NOFILE);
 				return false;
 			}
 		}
 		
-		public function _setRssTitle($rss){
-		}
-
-		public function _setRssLink($rss){
-		}
-
-		public function _setRssDescription($rss){
-		}
-
-		public function _setRssLanguage($rss){
-		}
-
-		public function _setRssCopyright($rss){
-		}
-
-		public function _setRssManagingEditor($rss){
-		}
-
-		public function _setRssWebMaster($rss){
-		}
-
-		public function _setRssPubDate($rss){
-		}
-
-		public function _setRssLastBuildDate($rss){
-		}
-
-		public function _setRssCategory($rss){
-		}
-
-		public function _setRssGenerator($rss){
-		}
-
-		public function _setRssDocs($rss){
-		}
-
-		public function _setRssCloud($rss){
-		}
-
-		public function _setRssTtl($rss){
-		}
-
-		public function _setRssImage($rss){
-		}
-
-		public function _setRssRating($rss){
-		}
-
-		public function _setRssTextInput($rss){
-		}
-
-		public function _setRssSkipHours($rss){
-		}
-
-		public function _setRssSkipDays($rss){
-		}
-
-		public function _setItemTitle($rss){
-		}
-
-		public function _setItemLink($rss){
-		}
-
-		public function _setItemDescription($rss){
-		}
-
-		public function _setItemAuthor($rss){
-		}
-
-		public function _setItemCategory($rss){
-		}
-
-		public function _setItemComments($rss){
-		}
-
-		public function _setItemEnclosure($rss){
-		}
-
-		public function _setItemGuid($rss){
-		}
-
-		public function _setItemPubdate($rss){
-		}
-
-		public function _setItemSource($rss){
+		public function getRss($nom){
+			if(isset($this->_rssRead[$nom]) && $this->_rssRead[$nom] == true){
+				return $this->_rssArray[$nom];
+			}
+			else{
+				return false;
+			}
 		}
 		
 		/**

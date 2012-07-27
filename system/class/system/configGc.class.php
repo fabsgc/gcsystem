@@ -14,7 +14,7 @@
 		protected $_markupXml          ;
 		
 		public function __construct(){
-			$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
+			$this->_domXml = new DomDocument('1.0', CHARSET);
 			if($this->_domXml->load(APPCONFIG)){
 				$this->_addError('fichier ouvert : '.ROUTE);
 				
