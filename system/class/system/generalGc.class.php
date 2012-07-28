@@ -224,6 +224,7 @@
 		const EXT_HTML                  = 'text/html'                                ;
 		const EXT_CSV                   = 'text/csv'                                 ;
 		const EXT_MPEGAUDIO             = 'audio/mpeg'                               ;
+		const EXT_MP3                   = 'audio/mpeg'                               ;
 		const EXT_RPL                   = 'audio/vnd.rn-realaudio'                   ;
 		const EXT_WAV                   = 'audio/x-wav'                              ;
 		const EXT_MPEG                  = 'video/mpeg'                               ;
@@ -239,4 +240,6 @@
 		const EXT_XLS2007               = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'           ;
 		const EXT_DOC2007               = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'     ;
 		const XUL                       = 'application/vnd.mozilla.xul+xml'                                             ;
+		CONST TAR                       = 'application/x-tar'                                                           ;
+		CONST TGZ                       = 'application/x-tar'                                                           ;
 	}

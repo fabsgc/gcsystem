@@ -1,18 +1,12 @@
 <?php
+	$class = new terminal();
 	switch($_GET['action']){
 		case 'terminal':
-			$terminal = new terminalGC($_POST['message']);
-			echo $terminal ->parse();
+			$class->commande();
 		break;
 		
 		default:
-			$GLOBALS['rubrique']->setInfo(array('title'=>'Terminal - GCsystem', 'css'=>'', 'doctype'=>'html5'));
-			echo $GLOBALS['rubrique']->affHeader();
-				$t= new templateGC(GCSYSTEM_PATH.'GCterminal', 'GCterminal', '0');
-				if(ENVIRONMENT == 'development') $t->assign(array('moins' => 50, 'moins2'=>80));
-					else $t->assign(array('moins' => 0, 'moins2' => 30));
-				$t->show();
-			echo $GLOBALS['rubrique']->affFooter();
+			$class->index();
 		break;
 	}
 ?>

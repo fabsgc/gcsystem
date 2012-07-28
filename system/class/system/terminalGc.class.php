@@ -179,7 +179,14 @@
 						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
 					}
 				}
-				elseif(preg_match('#list template#', $this->_command)){			
+				elseif(preg_match('#list template#', $this->_command)){
+					// if($dossier = opendir(TEMPLATE_PATH)){
+						// while(false !== ($fichier = readdir($dossier))){
+							// $this->_mkmap(TEMPLATE_PATH);
+						// }
+					// }
+					
+					
 					$this->_mkmap(TEMPLATE_PATH);
 					$this->_result = '<br />><span style="color: chartreuse;"> fichiers de template list&#233;s</span>';
 				}
@@ -459,19 +466,19 @@
 		}
 		
 		protected function _mkmap($dir){
-			$this->_dossier = opendir ($dir);
+			$dossier = opendir ($dir);
 		   
-			while ($this->_fichier = readdir ($this->_dossier)) {   
-				if ($this->_fichier != "." && $this->_fichier != "..") {           
-					if(filetype($dir.$this->_fichier) == 'dir'){               
-						$this->_mkmap($dir.$this->_fichier.'/');               
+			while ($fichier = readdir ($dossier)){
+				if ($fichier != "." && $fichier != ".."){
+					if(filetype($dir.$fichier) == 'dir'){
+						$this->_mkmap($dir.$fichier.'/');
 					}
-					elseif($this->_fichier!='.htaccess'){
-						$this->_stream .= '<br />> '.$dir.$this->_fichier.'';
+					elseif($fichier!='.htaccess'){
+						$this->_stream .= '<br />> '.$dir.$fichier.'';
 					}					
 				}       
 			}
-			closedir ($this->_dossier);    
+			closedir ($dossier);    
 		}
 
 		protected function _update(){
