@@ -1,4 +1,7 @@
 <style>
+	.pagination_first, .pagination_before, .pagination_list, .pagination_after, .pagination_last, .pagination_total{
+		display : inline-block;
+	}
 </style>
 <div class="pagination">
 	<?php if($paginationFirstLast == true && $paginationFirstBefore == true) { ?>
@@ -18,9 +21,16 @@
 		<?php }} ?>
 	</div>
 	<?php if($paginationBeforeAfter == true && $paginationLastAfter == true) { ?>
-		<div class="pagination_before"><a href="<?php echo ($urlafter); ?>"><?php echo "page suivante"; ?></a></div>
+		<div class="pagination_after"><a href="<?php echo ($urlafter); ?>"><?php echo "page suivante"; ?></a></div>
 	<?php } ?>
 	<?php if($paginationFirstLast == true && $paginationLastAfter == true) { ?>
 		<div class="pagination_last"><a href="<?php echo ($urllast); ?>"><?php echo "dernière page"; ?></a></div>
+	<?php } ?>
+	<?php if($totalpage == true) { ?>
+		<?php if($pageActuel != $nbrpage) { ?>
+			<div class="pagination_total"><a href="<?php echo ($urllast); ?>">(<?php echo ($nbrpage); ?>)</a></div>
+		<?php }else{ ?>
+			<div class="pagination_total">(<?php echo ($nbrpage); ?>)</div>
+		<?php } ?>
 	<?php } ?>
 </div>

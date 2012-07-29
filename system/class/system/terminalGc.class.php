@@ -180,15 +180,12 @@
 					}
 				}
 				elseif(preg_match('#list template#', $this->_command)){
-					// if($dossier = opendir(TEMPLATE_PATH)){
-						// while(false !== ($fichier = readdir($dossier))){
-							// $this->_mkmap(TEMPLATE_PATH);
-						// }
-					// }
-					
-					
 					$this->_mkmap(TEMPLATE_PATH);
 					$this->_result = '<br />><span style="color: chartreuse;"> fichiers de template list&#233;s</span>';
+				}
+				elseif(preg_match('#list cache#', $this->_command)){
+					$this->_mkmap(CACHE_PATH);
+					$this->_result = '<br />><span style="color: chartreuse;"> fichiers de cache list&#233;s</span>';
 				}
 				elseif(preg_match('#delete template (.+)#', $this->_command)){
 					if(!in_array(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT, $this->_forbidden)){

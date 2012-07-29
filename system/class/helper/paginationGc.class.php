@@ -17,6 +17,7 @@
 		
 		protected $_paginationFirstBefore = true   ;
 		protected $_paginationLastAfter   = true   ;
+		protected $_paginationTotalPage   = true   ;
 		
 		protected $_paginationList        = array();
 		protected $_paginationFirst       = array();
@@ -24,6 +25,8 @@
 		protected $_paginationBefore      = array();
 		protected $_paginationAfter       = array();
 		protected $_paginationCut         = false  ;
+		
+		protected $_data                  = array();
 	
 		/**
 		 * Crée l'instance de la classe
@@ -64,6 +67,10 @@
 						$this->_pageActuel = $val;
 					break;
 					
+					case 'totalPage':
+						$this->_paginationTotalPage = $val;
+					break;
+					
 					case 'cut':
 						$this->_paginationCut = $val;
 					break;
@@ -73,7 +80,7 @@
 			$this->_setData();
 		}
 		
-		protected function _setData(){
+		protected function _setData(){			
 			if($this->_pageActuel == "" || $this->_pageActuel < 1){
 				$this->_pageActuel = 1;
 			}
@@ -82,9 +89,6 @@
 			
 			if($this->_pageActuel > $this->_nbrPage){
 				$this->_pageActuel = $this->_nbrPage;
-			}
-			if($this->_pageActuel < 0){
-				$this->_pageActuel = 1;
 			}
 			if($this->_pageActuel == 1){
 				$this->_paginationFirstBefore = false;
@@ -141,6 +145,16 @@
 						}
 					}
 				}
+				else{
+					for($i = 1; $i<=$this->_nbrPage; $i++){
+						if($i == $this->_pageActuel){
+							$this->_paginationList[$i] = false;
+						}
+						else{
+							$this->_paginationList[$i] = preg_replace('#\{page\}#isU', $i, $this->_url);
+						}
+					}
+				}
 			}
 		}
 		
@@ -158,12 +172,25 @@
 				'urllast'                => preg_replace('#\{page\}#isU', $this->_nbrPage, $this->_url),
 				'urlbefore'              => preg_replace('#\{page\}#isU', $this->_pageActuel-1, $this->_url),
 				'urlafter'               => preg_replace('#\{page\}#isU', $this->_pageActuel+1, $this->_url),
-				'pagination'             => $this->_paginationList
+				'pagination'             => $this->_paginationList,
+				'totalpage'              => $this->_paginationTotalPage,
+				'nbrpage'                => $this->_nbrPage
 			));
 				
 			$tpl->show();
 			
 			return $this->_pageActuel;
+		}
+		
+		public function getData($data){
+			$this->_data = array();
+			for($i = ((($this->_byPage * $this->_pageActuel) - $this->_byPage)); $i<= (($this->_byPage * $this->_pageActuel)-1);$i++){
+				if(isset($data[$i])){
+					array_push($this->_data, $data[$i]);
+				}
+			}
+			
+			return $this->_data;
 		}
 		
 		/**

@@ -1,4 +1,7 @@
 <style>
+	.pagination_first, .pagination_before, .pagination_list, .pagination_after, .pagination_last, .pagination_total{
+		display : inline-block;
+	}
 </style>
 <div class="pagination">
 	<if cond="$paginationFirstLast == true && $paginationFirstBefore == true">
@@ -18,9 +21,16 @@
 		</foreach>
 	</div>
 	<if cond="$paginationBeforeAfter == true && $paginationLastAfter == true">
-		<div class="pagination_before"><a href="{urlafter}">_(pagination_after)_</a></div>
+		<div class="pagination_after"><a href="{urlafter}">_(pagination_after)_</a></div>
 	</if>
 	<if cond="$paginationFirstLast == true && $paginationLastAfter == true">
 		<div class="pagination_last"><a href="{urllast}">_(pagination_last)_</a></div>
+	</if>
+	<if cond="$totalpage == true">
+		<if cond="$pageActuel != $nbrpage">
+			<div class="pagination_total"><a href="{urllast}">({nbrpage})</a></div>
+		<else />
+			<div class="pagination_total">({nbrpage})</div>
+		</if>
 	</if>
 </div>
