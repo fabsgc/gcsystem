@@ -17,16 +17,21 @@
 			$this->getVar('sql')->setVar(array('id' => $this->getVar('id')));
 			$data = $this->getVar('sql')->fetch('nom');
 			$data = $this->getVar('sql')->fetch('nom2');
-			$data = $this->getVar('sql')->fetch('nom3');
-			$data = $this->getVar('sql')->fetch('nom4');
-			$data = $this->getVar('sql')->fetch('nom5');
 		}
 		
 		public function testForms(){
 			echo $this->getVar('forms')->showForms();
 		}
 		
-		public function devClass(){
-		
+		public function devPagination(){
+			$page = new paginationGc(array(
+				'url' => $this->getUrl('page2', array('{page}')),
+				'entry' => 50,
+				'pageActuel' => $_GET['page'],
+				'cut' => 8
+				)
+			);
+			
+			$page->show();
 		}
 	}

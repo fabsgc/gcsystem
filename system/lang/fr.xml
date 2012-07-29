@@ -19,4 +19,8 @@
   <sentence id="404">erreur 404 : page non trouvée</sentence>
   <sentence id="403">erreur 403 : accès interdit</sentence>
   <sentence id="500">erreur 500 : erreur interne au serveur</sentence>
+  <sentence id="pagination_first">première page</sentence>
+  <sentence id="pagination_before">page précédente</sentence>
+  <sentence id="pagination_after">page suivante</sentence>
+  <sentence id="pagination_last">dernière page</sentence>
 </lang>

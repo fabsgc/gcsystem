@@ -19,4 +19,8 @@
   <sentence id="404">404 error : niet gevonden</sentence>
   <sentence id="403">403 error : toegang verboden</sentence>
   <sentence id="500">500 error : internal server error</sentence>
+  <sentence id="pagination_first">eerste pagina</sentence>
+  <sentence id="pagination_before">vorige pagina</sentence>
+  <sentence id="pagination_after">volgende pagina</sentence>
+  <sentence id="pagination_last">laatste pagina</sentence>
 </lang>

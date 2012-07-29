@@ -27,3 +27,4 @@
 	require_once(CLASS_TEXT); 
 	require_once(CLASS_FEED); 
 	require_once(CLASS_SOCIAL);
+	require_once(CLASS_PAGINATION);

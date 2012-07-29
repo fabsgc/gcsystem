@@ -189,6 +189,9 @@ define('CLASS_CONFIG', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php');
 //class gérant l'url rewrite
 define('CLASS_ROUTER', CLASS_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php');
 
+//class gérant la pagination
+define('CLASS_PAGINATION', CLASS_PATH.CLASS_HELPER_PATH.'paginationGc.class.php');
+
 //GESHI
 define('GESHI', LIB_PATH.'geshi/geshi.php');
 

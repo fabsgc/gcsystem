@@ -17,6 +17,8 @@
 		protected $metaDescription    = ''                                       ;
 		protected $metaRobot          = 'index,follow'                           ;
 		protected $metaGoogleSite     = ''                                       ;
+		protected $metaAuthor         = ''                                       ;
+		protected $metaCopyright      = ''                                       ;
 		protected $openSearch         = ''                                       ;
 		protected $js                 = array('script.js')                       ;
 		protected $css                = array('default.css')                     ;
@@ -29,6 +31,7 @@
 		protected $fbDescription      = ''                                       ;
 		protected $fbImage            = ''                                       ;
 		protected $html5              = true                                     ;
+
 		protected $_domXml                                                       ;
 		protected $_nodeXml                                                      ;
 		protected $_markupXml                                                    ;
@@ -148,19 +151,27 @@
 					break;
 
 					case 'description':
-						$this->metadescription=$info;
+						$this->metaDescription=$info;
 					break;
 
 					case 'metarobot':
-						$this->metarobot=$info;
+						$this->metaRobot=$info;
 					break;
 
+					case 'metaauthor':
+						$this->metaAuthor=$info;
+					break;
+					
+					case 'metacopyright':
+						$this->metaCopyright=$info;
+					break;
+					
 					case 'metagooglesite':
-						$this->metagooglesite=$info;
+						$this->metaGoogleSite=$info;
 					break;
 
 					case 'opensearch':
-						$this->opensearch=$info;
+						$this->openSearch=$info;
 					break;
 
 					case 'js':
@@ -246,6 +257,12 @@
 			}
 			if($this->metaGoogleSite!=""){
 				$this->header.="    <meta name=\"google-site-verification\" content=\"".$this->metaGoogleSite."\" />\n";
+			}
+			if($this->metaAuthor!=""){
+				$this->header.="    <meta name=\"Author\" content=\"".$this->metaAuthor."\" />\n";
+			}
+			if($this->metaCopyright!=""){
+				$this->header.="    <meta name=\"Copyright\" content=\"".$this->metaCopyright."\" />\n";
 			}
 			if($this->openSearch!=""){
 				$this->header.="    <link href=\"".$this->openSearch."\"  rel=\"search\" type=\"application/opensearchdescription+xml\" title=\"open search\" />\n";
