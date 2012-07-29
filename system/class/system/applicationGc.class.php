@@ -33,7 +33,7 @@
 		protected $_nodeXml                                                      ;
 		protected $_markupXml                                                    ;
 		
-		protected $_devTool           = true;
+		protected $_devTool           = true                                     ;
 		
 		protected $_var               = array()                                  ;
 		
@@ -49,17 +49,14 @@
 			$this->_createLangInstance();
 		}
 		
-		public function addHeader($header){
-            header($header);
-        }
-		
-		public function redirect404(){
-			$this->addHeader('HTTP/1.0 404 Not Found');
-			$t= new templateGC(ERRORDUOCUMENT_PATH.'404', '404', '0', $this->_lang);
-			$t->assign(array(
-				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri()))
-			));
-			$t->show();
+		public function hydrate(array $donnees){
+            foreach ($donnees as $attribut => $valeur){
+                $methode = 'set'.ucfirst($attribut);
+                
+                if (is_callable(array($this, $methode))){
+                    $this->$methode($valeur);
+                }
+            }
         }
 			
 		protected function _createLangInstance(){
@@ -72,6 +69,12 @@
 		
 		public function setVar($nom, $val){
 			$this->_var[$nom] = $val;
+		}
+		
+		public function setVarArray($var){
+			foreach($var as $cle => $val){
+				$this->_var[$cle] = $val;
+			}
 		}
 		
 		public function getVar($nom){
@@ -207,8 +210,8 @@
 			}
 		}
 		
-		public function setLang($Lang){
-			$this->_lang=$Lang;
+		public function setLang($lang){
+			$this->_lang=$lang;
 			$this->_langInstance->setLang($this->_lang);
 		} 
 		
@@ -330,4 +333,3 @@
 			}
 		}
 	}
-?>

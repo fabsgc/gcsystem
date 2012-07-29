@@ -16,5 +16,7 @@
   <sentence id="vargetpost">variable get, post, session et file</sentence>
   <sentence id="bbcodepreview">pr&#233;visualiser</sentence>
   <sentence id="alertpreviewbbocde">vous devez &#233;crire la fonction pour l'utiliser</sentence>
-  <sentence id="404notfound">erreur 404</sentence>
+  <sentence id="404">erreur 404 : page non trouvée</sentence>
+  <sentence id="403">erreur 403 : accès interdit</sentence>
+  <sentence id="500">erreur 500 : erreur interne au serveur</sentence>
 </lang>

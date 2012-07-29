@@ -95,4 +95,3 @@
 		public  function __desctuct(){
 		}
 	}
-?>

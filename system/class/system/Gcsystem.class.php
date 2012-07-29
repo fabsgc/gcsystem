@@ -82,10 +82,7 @@
 					}
 				}
 				
-				$this->setErrorLog('history','Page rewrite : http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].' rubrique : '.$_SERVER["SERVER_NAME"].$_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"].' / origine : '.$_SERVER['HTTP_REFERER'].' / IP : '.$_SERVER['REMOTE_ADDR']);
-				
-				$GLOBALS['css']= array('default.css');
-				$GLOBALS['js'] = array('script.js');
+				$this->setErrorLog('history','Page rewrite : http://'.$this->getHost().$this->getUri().' rubrique : '.$this->getServerName().$this->getPhpSelf().'?'.$this->getQuery().' / origine : '.$this->getReferer().' / IP : '.$this->getIp());
 				
 				$this->_initInstance = 1;
 			}
@@ -185,7 +182,7 @@
 				switch ($d['extension']){
 					case 'pdo':
 						try{
-							$sql_connect[''.$d['database'].''] = new PDO('mysql:host='.$d['hostname'].';dbname='.$d['database'], $d['username'], $d['password']);
+							$sql_connect[''.$d['database'].''] = new PDO($d['sgbd'].':host='.$d['hostname'].';dbname='.$d['database'], $d['username'], $d['password']);
 						}
 						catch (PDOException $e){
 							$this->setErrorLog('errors_sql', 'Une exception a été lancée. Message d\'erreur lors de la connexion à une base de données : '.$e.'');
@@ -236,4 +233,3 @@
 			$tpl->show();
 		}
 	}
-?>

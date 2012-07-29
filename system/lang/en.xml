@@ -16,5 +16,7 @@
   <sentence id="vargetpost">var get, post, session et file</sentence>
   <sentence id="bbcodepreview">preview</sentence>
   <sentence id="alertpreviewbbocde">you must write the function to use it</sentence>
-  <sentence id="404notfound">404 error</sentence>
+  <sentence id="404">404 error : not found</sentence>
+  <sentence id="403">403 error : acces forbidden</sentence>
+  <sentence id="500">500 error : internal server error</sentence>
 </lang>

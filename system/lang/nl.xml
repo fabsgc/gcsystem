@@ -16,5 +16,7 @@
   <sentence id="vargetpost">var get, post, session en file</sentence>
   <sentence id="bbcodepreview">bekijken</sentence>
   <sentence id="alertpreviewbbocde">u moet schrijven het functie voor gebruiken het</sentence>
-  <sentence id="404notfound">404 error</sentence>
+  <sentence id="404">404 error : niet gevonden</sentence>
+  <sentence id="403">403 error : toegang verboden</sentence>
+  <sentence id="500">500 error : internal server error</sentence>
 </lang>

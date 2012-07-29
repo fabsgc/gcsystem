@@ -49,6 +49,17 @@
 		}
 		
 		/**
+		 * modification du DAO
+		 * @access	public
+		 * @return	void
+		 * @since 2.0
+		*/
+		
+		public function setBdd($bdd){
+			$this->_bdd = $bdd;
+		}
+		
+		/**
 		 * Récupération sous la forme d'un array des requêtes sql transmises à la classe
 		 * @access	public
 		 * @return	void
@@ -240,4 +251,3 @@
 		
 		}
 	}
-?>

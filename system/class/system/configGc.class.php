@@ -35,4 +35,3 @@
 		public function __destruct(){
 		}	
 	}
-?>

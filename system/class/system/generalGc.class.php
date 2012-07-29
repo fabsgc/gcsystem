@@ -105,6 +105,39 @@
 		public function getServerName(){
 			return $_SERVER['SERVER_NAME'];
 		}
+		
+		public function addHeader($header){
+            header($header);
+        }
+		
+		public function redirect404(){
+			$this->addHeader('HTTP/1.0 404 Not Found');
+			$t= new templateGC(ERRORDUOCUMENT_PATH.'404', '404', '0', $this->_lang);
+			$t->assign(array(
+				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri()))
+			));
+			$t->show();
+        }
+		
+		public function redirect500(){
+			$this->addHeader('HTTP/1.0 500 internal error');
+			$t= new templateGC(ERRORDUOCUMENT_PATH.'500', '500', '0', $this->_lang);
+			$t->assign(array(
+				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri()))
+			));
+			$t->show();
+			exit();
+        }
+		
+		public function redirect403(){
+			$this->addHeader('HTTP/1.0 403 Access Forbidden');
+			$t= new templateGC(ERRORDUOCUMENT_PATH.'403', '403', '0', $this->_lang);
+			$t->assign(array(
+				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri()))
+			));
+			$t->show();
+			exit();
+        }
 	}
 	
 	trait errorGc{
@@ -127,7 +160,7 @@
     }
 	
 	trait langInstance{
-		protected $_lang                                        ; //gestion des langues via des fichiers XML
+		protected $_lang                              = 'fr'    ; //gestion des langues via des fichiers XML
 		protected $_langInstance                                ; //instance de la class langGc
 		
 		public function getLangClient(){
@@ -157,6 +190,7 @@
 				$markupXml = $nodeXml->getElementsByTagName('route');
 				
 				$rubrique = "";
+				$result   = "";
 				
 				foreach($markupXml as $sentence){	
 					if ($sentence->getAttribute("id") == $id){

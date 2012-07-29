@@ -1,0 +1,1 @@
+<h1 style="text-align: center;">{url} _(500)_</h1>

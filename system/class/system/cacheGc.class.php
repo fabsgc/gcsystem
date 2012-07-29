@@ -168,4 +168,3 @@
 			return gzuncompress($val);
 		}
 	}
-?>

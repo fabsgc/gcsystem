@@ -20,10 +20,8 @@ $GLOBALS['rubrique'] = new Gcsystem();
 /* ---------- démarrage de l'application ----------------- */
 $GLOBALS['rubrique']->init();
 
-/* ------ articulation du site web -------- */
-
-/* ------ appelez ici vos classes personnelles -------- */
+/* ------ articulation du site web : appelez ici vos classes personnelles-------- */
 
 if(MAINTENANCE==false){ $GLOBALS['rubrique']->route(); }
 elseif(MAINTENANCE==true){ $GLOBALS['rubrique']->setMaintenance(); }
-if(ENVIRONMENT == 'development' &&  DEVTOOL == true && $GLOBALS['devtool'] == true) $GLOBALS['appDevGc']->show();
+if(ENVIRONMENT == 'development' &&  DEVTOOL == true && $GLOBALS['rubrique']->getDevTool() == true) $GLOBALS['appDevGc']->show();

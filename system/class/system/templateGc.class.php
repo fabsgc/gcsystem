@@ -483,4 +483,3 @@
 			return $this->getUrl($m[1], $valeur);
 		}
 	}
-?>
