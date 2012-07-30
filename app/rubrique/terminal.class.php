@@ -1,7 +1,7 @@
 <?php
 	class terminal extends applicationGc{
 		public function init(){
-
+		
 		}
 		
 		public function actionDefault(){

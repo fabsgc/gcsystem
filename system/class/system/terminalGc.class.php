@@ -7,7 +7,7 @@
 	*/
 
 	class terminalGc{
-		use errorGc;                              //trait
+		use errorGc, langInstance;                  //trait
 		
 		protected $_command                       ; //contenu à traiter
 		protected $_stream                        ; //contenu à afficher
@@ -23,7 +23,10 @@
 		protected $_nodeXml                       ;
 		protected $_markupXml                     ;
 
-		public  function __construct($command){
+		public  function __construct($command, $lang = 'fr'){
+			$this->_lang=$lang;
+			$this->_createLangInstance();
+			
 			$this->_commandExplode = explode(' ', trim($command));
 			$this->_command = '<span style="color: gold;"> '.$command.'</span>';
 			$this->_forbidden = array(
@@ -42,6 +45,14 @@
 				CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_FEED, CLASS_JS, CLASS_TEXT, CLASS_DATE, CLASS_DOWNLOAD, CLASS_UPDLOAD ,CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
 				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT, 
 			); // liste des fichiers systèmes à updater
+		}
+		
+		protected function _createLangInstance(){
+			$this->_langInstance = new langGc($this->_lang);
+		}
+		
+		public function useLang($sentence){
+			return $this->_langInstance->loadSentence($sentence);
 		}
 
 		public function parse(){
@@ -221,9 +232,9 @@
 						if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php')){
 							if(!is_file(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php')){
 								if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && !is_file(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php')){
-									rename(RUBRIQUE_PATH.$this->_commandExplode[2].'.php', RUBRIQUE_PATH.$this->_commandExplode[3].'.php');
-									$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php'.' -> '.RUBRIQUE_PATH.$this->_commandExplode[3].'.php';
-									$this->_result = '<br />><span style="color: chartreuse;"> le fichier <u>'.RUBRIQUE_PATH.$this->_commandExplode[2].'.php'.'</u> a bien &#233;t&#233; r&#233;nomm&#233; en <u>'.RUBRIQUE_PATH.$this->_commandExplode[3].'.php'.'</u></span>';
+									rename(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php');
+									$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php'.' -> '.RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php';
+									$this->_result = '<br />><span style="color: chartreuse;"> le fichier <u>'.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php'.'</u> a bien &#233;t&#233; r&#233;nomm&#233; en <u>'.RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php'.'</u></span>';
 								}
 								
 								$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
@@ -253,6 +264,13 @@
 										}
 									}
 									$this->_domXml->save(ROUTE);
+									
+									$data = file_get_contents(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php');
+									
+									$data = preg_replace('#class '.$this->_commandExplode[2].' extends applicationGc#isU',
+														  'class '.$this->_commandExplode[3].' extends applicationGc', $data);
+									
+									file_put_contents(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php', $data);
 								}
 								else{
 									$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');

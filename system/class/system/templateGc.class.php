@@ -7,7 +7,7 @@
 	*/
 	
 	class templateGc{
-		use errorGc, langInstance;                                    //trait
+		use errorGc, langInstance;                       //trait
 		
 		protected $_file               = ""         ;    //chemin vers le .tpl
 		protected $_fileCache          = ""         ;    //chemin vers le .compil.tpl
