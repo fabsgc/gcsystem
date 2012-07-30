@@ -111,7 +111,7 @@
         }
 		
 		public function redirect404(){
-			$this->addHeader('HTTP/1.0 404 Not Found');
+			$this->addHeader('HTTP/1.1 404 Not Found');
 			$t= new templateGC(ERRORDUOCUMENT_PATH.'404', '404', '0', $this->_lang);
 			$t->assign(array(
 				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri()))
@@ -120,7 +120,7 @@
         }
 		
 		public function redirect500(){
-			$this->addHeader('HTTP/1.0 500 internal error');
+			$this->addHeader('HTTP/1.1 500 internal error');
 			$t= new templateGC(ERRORDUOCUMENT_PATH.'500', '500', '0', $this->_lang);
 			$t->assign(array(
 				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri()))
@@ -130,7 +130,7 @@
         }
 		
 		public function redirect403(){
-			$this->addHeader('HTTP/1.0 403 Access Forbidden');
+			$this->addHeader('HTTP/1.1 403 Access Forbidden');
 			$t= new templateGC(ERRORDUOCUMENT_PATH.'403', '403', '0', $this->_lang);
 			$t->assign(array(
 				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri()))

@@ -51,7 +51,7 @@
 					break;
 					
 					case 'bypage':
-						$this->_byPage = $val;
+						$this->_byPage = intval($val);
 					break; 
 					
 					case 'entry':
@@ -59,12 +59,12 @@
 							$this->_entry = count($val);
 						}
 						else{
-							$this->_entry = $val;
+							$this->_entry = intval($val);
 						}
 					break;
 					
 					case 'pageActuel':
-						$this->_pageActuel = $val;
+						$this->_pageActuel = intval($val);
 					break;
 					
 					case 'totalPage':
@@ -72,7 +72,7 @@
 					break;
 					
 					case 'cut':
-						$this->_paginationCut = $val;
+						$this->_paginationCut = intval($val);
 					break;
 				}
 			}
