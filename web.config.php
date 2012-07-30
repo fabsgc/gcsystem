@@ -45,14 +45,8 @@ define('FILE_PATH', ASSET_PATH.'file/');
 //chemin d'accès rubriques (controleur)
 define('RUBRIQUE_PATH', APP_PATH.'rubrique/');
 
-//chemin d'accès des includes (vue+modele)
-define('INCLUDE_PATH', APP_PATH.'include/');
-
-//chemin d'accès des includes (vue+modele)
-define('SQL_PATH', APP_PATH.'sql/');
-
-//chemin d'accès des formulaires
-define('FORMS_PATH', APP_PATH.'forms/');
+//chemin d'accès rubriques (controleur)
+define('RUBRIQUE_EXT', '.class');
 
 //chemin d'accès aux fichiers de config du projet
 define('APP_CONFIG_PATH', APP_PATH.'config/');
@@ -69,11 +63,11 @@ define('LIB_PATH', SYSTEM_PATH.'lib/');
 //chemin d'accès fichiers de langues
 define('LANG_PATH', SYSTEM_PATH.'lang/');
 
-//chemin d'accès fichiers GCsysem
-define('GCSYSTEM_PATH', 'GCsystem/');
-
 //chemin d'accès fichiers Error http
 define('ERRORDUOCUMENT_PATH', 'ErrorDocument/');
+
+//chemin d'accès fichiers GCsysem
+define('GCSYSTEM_PATH', 'GCsystem/');
 
 //extension fichiers de langues
 define('LANG_EXT', '.xml');
@@ -88,7 +82,7 @@ define('CONFIG_EXT', '.xml');
 define('FILES_EXT', '.html');
 
 //fonction generique
-define('FUNCTION_GENERIQUE', INCLUDE_PATH.'function.php');
+define('FUNCTION_GENERIQUE', RUBRIQUE_PATH.'function.php');
 
 //chemin class systeme
 define('CLASS_SYSTEM_PATH', 'system/');
@@ -195,15 +189,6 @@ define('CLASS_PAGINATION', CLASS_PATH.CLASS_HELPER_PATH.'paginationGc.class.php'
 //GESHI
 define('GESHI', LIB_PATH.'geshi/geshi.php');
 
-//extension des fichiers de fonctions
-define('FUNCTION_EXT', '.function');
-
-//extension des fichiers de fonctions
-define('SQL_EXT', '.sql');
-
-//extension des fichiers de fonctions
-define('FORMS_EXT', '.forms');
-
 //extension des fichiers de template
 define('TEMPLATE_EXT', '.tpl');
 
@@ -260,7 +245,7 @@ define('CHARSET', 'UTF-8');
 define('FAVICON_PATH', 'no');
 
 //dossier où est placé le framework à partir de la racine du répertoire. sous wamp par exemple, /GCsystem2.0
-define('FOLDER', '/GCsystem2.0');
+define('FOLDER', '/GCsystem');
 
 //dossier où est placé le framework à partir de la racine du répertoire
 define('DEFAULTLANG', 'fr');

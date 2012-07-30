@@ -38,7 +38,8 @@
 		
 		protected $_devTool           = true                                     ;
 		
-		protected $_var               = array()                                  ;
+		protected $_var               = array()                                  ; //contient les variables que l'on passe depuis l'extérieur : obsolète
+		protected $bdd                                                           ; //contient la connexion sql
 		
 		/* --- permet d'affiche le doctype et l'entete (avant la balise body) et </body></html> -- */
 		
@@ -50,6 +51,40 @@
 		public  function __construct($lang=""){
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();
+			if(CONNECTBDD == true) {$this->bdd=$this->_connectDatabase($GLOBALS['db']); }
+		}
+		
+		public function init(){
+			
+		}
+		
+		protected function _connectDatabase($db){
+			foreach ($db as $d){
+				switch ($d['extension']){
+					case 'pdo':
+						try{
+							$sql_connect[''.$d['database'].''] = new PDO($d['sgbd'].':host='.$d['hostname'].';dbname='.$d['database'], $d['username'], $d['password']);
+						}
+						catch (PDOException $e){
+							$this->setErrorLog('errors_sql', 'Une exception a été lancée. Message d\'erreur lors de la connexion à une base de données : '.$e.'');
+						}	
+					break;
+					
+					case 'mysqli':
+						$sql_connect[''.$d['database'].''] = new mysqli($d['hostname'], $d['username'], $d['password'], $d['database']);
+					break;
+					
+					case 'mysql':
+						$sql_connect[''.$d['database'].''] = mysql_connect($d['hostname'], $d['username'], $d['password']);
+						$sql_connect[''.$d['database'].''] = mysql_select_db($d['database']);
+					break;
+					
+					default :
+						$this->setErrorLog('errors_sql', 'L\'extension de cette connexion n\'est pas gérée');
+					break;
+				}
+			}
+			return $sql_connect;
 		}
 		
 		public function hydrate(array $donnees){
@@ -240,7 +275,7 @@
 			$this->header.="    <title>".($this->title)."</title>\n";
 			if($this->html5 == false){ $this->header.="    <meta http-equiv=\"Content-Type\" content=\"".$this->metaContentType."\" />\n"; }
 				else { $this->header.="    <meta charset=\"utf-8\" />\n"; }
-			$this->header.="    <meta http-equiv=\"content-language\" content=\"fr\"/>\n";
+			if($this->html5 == false){ $this->header.="    <meta http-equiv=\"content-language\" content=\"".$this->_lang."\"/>\n"; }
 			$this->header.="    <meta name=\"keywords\" content=\"".$this->metaKeyword."\"/>\n";
 			$this->header.="    <meta name=\"description\" content=\"".$this->metaDescription."\" />\n";
 			$this->header.="    <meta name=\"robots\" content=\"".$this->metaRobot."\" />\n";

@@ -1,6 +1,9 @@
 <?php
 	class index extends applicationGc{
-		public function defaultIndex(){
+		public function init(){
+		}
+		
+		public function actionDefault(){
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
 			echo $this->affHeader();
 				$t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', '0');
@@ -13,17 +16,17 @@
 			echo $this->affFooter();
 		}
 		
-		public function testSql(){
+		public function actionSql(){
 			$this->getVar('sql')->setVar(array('id' => $this->getVar('id')));
 			$data = $this->getVar('sql')->fetch('nom');
 			$data = $this->getVar('sql')->fetch('nom2');
 		}
 		
-		public function testForms(){
+		public function actionForms(){
 			echo $this->getVar('forms')->showForms();
 		}
 		
-		public function devPagination(){
+		public function actionPagination(){
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
 			echo $this->affHeader();
 				$ar = array('Agnaflai', 'Amagan', 'Anani Sikerim', 'Anayin Ami', 'Anus De Poulpe', 'Arschloch', 'Artaïl', 'Aspirateur à Bites', 'Aspirateur à Muscadet',

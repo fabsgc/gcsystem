@@ -1,85 +1,118 @@
-30/07/2012 a 00:02:58 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:02:58 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:02:58 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:02:58 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:03:00 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:03:00 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:03:00 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:03:00 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:03:01 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:03:01 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:03:01 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:03:01 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:03:02 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:03:02 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:03:02 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:03:02 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:21:48 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102
-30/07/2012 a 00:21:49 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:21:49 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:21:49 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:21:49 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:21:50 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:21:50 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:21:50 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:21:50 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:21:50 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:21:50 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:21:50 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:21:50 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:21:51 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:21:51 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:21:51 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:21:51 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:22:02 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:22:02 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:22:03 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:22:03 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:22:04 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:22:04 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:22:04 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:22:04 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:23:11 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:23:11 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:23:11 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:11 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:14 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:23:14 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:23:14 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:14 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:15 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:23:15 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:23:15 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:15 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:16 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:23:16 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:23:16 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:16 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:16 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:23:16 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:23:16 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:16 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:17 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:23:17 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:23:17 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:17 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:17 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:23:17 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:23:17 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:17 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:20 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:23:20 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:23:20 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:20 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:23 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:23:23 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:23:23 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:23 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:23 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:23:23 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:23:23 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:23 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:25 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 494
-30/07/2012 a 00:23:25 ! : Erreur [8] (Undefined index: name) dans le fichier C:\wamp\www\GCsystem2.0\system\lib\FormsGC\formsGC.class.php a la ligne 495
-30/07/2012 a 00:23:25 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
-30/07/2012 a 00:23:25 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:37:56 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 12:38:06 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 12:38:23 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 12:42:19 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 12:42:23 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 12:42:23 ! : Erreur [8] (Undefined index: page) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.php a la ligne 48
+30/07/2012 a 12:42:23 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:23 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:26 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:26 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:28 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 12:42:28 ! : Erreur [8] (Undefined index: page) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.php a la ligne 48
+30/07/2012 a 12:42:28 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:28 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:29 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 12:42:29 ! : Erreur [8] (Undefined index: page) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.php a la ligne 48
+30/07/2012 a 12:42:29 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:29 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:30 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:30 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:32 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:32 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:33 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:33 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:33 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:33 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:34 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:34 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:35 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:35 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:36 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:36 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:37 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:37 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:38 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:42:38 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:51:14 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:51:14 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 12:51:17 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 12:51:44 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 12:51:46 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 12:52:13 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 12:52:22 ! : The rubric  were not found
+30/07/2012 a 12:52:25 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 12:52:28 ! : The rubric  were not found
+30/07/2012 a 12:52:29 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 12:52:41 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 14:00:06 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 14:00:06 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 14:00:07 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 14:00:07 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 14:00:08 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 14:00:08 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 14:00:09 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 14:00:09 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 14:00:10 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 14:00:10 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 14:00:12 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 14:00:12 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:08 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 15:28:17 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 15:28:17 ! : Erreur [8] (Undefined index: page) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 48
+30/07/2012 a 15:28:17 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:17 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:19 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:19 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:22 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:22 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:24 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:24 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:25 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:25 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:25 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:25 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:27 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:27 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:28 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:28 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:28 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:28:28 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:41:26 ! : Erreur [8] (Undefined variable: forms) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 4
+30/07/2012 a 15:41:26 ! : Erreur [8] (Undefined variable: sql) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 11
+30/07/2012 a 15:41:26 ! : Erreur [8] (Undefined variable: forms) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 4
+30/07/2012 a 15:41:26 ! : Erreur [8] (Undefined variable: sql) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 11
+30/07/2012 a 15:41:55 ! : Erreur [8] (Undefined variable: forms) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 4
+30/07/2012 a 15:41:55 ! : Erreur [8] (Undefined variable: sql) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 11
+30/07/2012 a 15:41:55 ! : Erreur [8] (Undefined variable: forms) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 4
+30/07/2012 a 15:41:55 ! : Erreur [8] (Undefined variable: sql) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 11
+30/07/2012 a 15:42:53 ! : Erreur [8] (Undefined variable: forms) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 4
+30/07/2012 a 15:42:53 ! : Erreur [8] (Undefined variable: sql) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 11
+30/07/2012 a 15:42:53 ! : Erreur [8] (Undefined variable: forms) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 4
+30/07/2012 a 15:42:53 ! : Erreur [8] (Undefined variable: sql) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 11
+30/07/2012 a 15:43:35 ! : Erreur [8] (Undefined variable: forms) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 4
+30/07/2012 a 15:43:35 ! : Erreur [8] (Undefined variable: sql) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 11
+30/07/2012 a 15:43:59 ! : Erreur [8] (Undefined variable: forms) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 4
+30/07/2012 a 15:43:59 ! : Erreur [8] (Undefined variable: sql) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCrubrique.tpl.compil.php a la ligne 11
+30/07/2012 a 15:55:51 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 15:55:51 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:10 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:10 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:11 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:11 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:12 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:12 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:12 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:12 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:12 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:12 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:12 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:12 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:12 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:12 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:13 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:04:13 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:34:00 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 16:34:00 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 102
+30/07/2012 a 16:34:00 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268
+30/07/2012 a 16:34:00 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 268

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <routes>
-    <route id="index" url="/" rubrique="index" action="" vars=""/>
-    <route id="page" url="/page.html" rubrique="index" action="" vars="page"/>
-    <route id="page2" url="/page-p([0-9]+)\.html" rubrique="index" action="" vars="page"/>
+    
+    <route id="index" url="/index.html" rubrique="index" action="" vars=""/>
+    
+    <route id="page2" url="/page-p([0-9]+)\.html" rubrique="index" action="pagination" vars="page"/>
     <route id="terminal" url="/terminal\.html" rubrique="terminal" action="" vars=""/>
     <route id="terminal_terminal" url="/terminal-terminal\.html" rubrique="terminal" action="terminal" vars=""/>
-	<route id="4ffdb88d4b57d" url="/cours-([0-9]+)-([0-9]+)-([a-z0-9._-]+)\.html" rubrique="test2" action="default" vars=""/>
-</routes>
+<route id="5016a826e0025" url="" rubrique="test" action="" vars=""/><route id="5016ab2632f0c" url="" rubrique="test8" action="" vars=""/><route id="5016ab43661b5" url="" rubrique="test9" action="" vars=""/><route id="5016ab7de7b3e" url="" rubrique="test2" action="" vars=""/><route id="5016ab9b4cb2d" url="" rubrique="test3" action="" vars=""/><route id="5016aba78aadf" url="" rubrique="test4" action="" vars=""/><route id="5016abbf5cb17" url="" rubrique="test5" action="" vars=""/><route id="5016abffb6a40" url="" rubrique="test6" action="" vars=""/></routes>

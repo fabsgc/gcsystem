@@ -1,6 +1,10 @@
 <?php
 	class terminal extends applicationGc{
-		public function index(){
+		public function init(){
+
+		}
+		
+		public function actionDefault(){
 			$this->setInfo(array('title'=>'Terminal - GCsystem', 'css'=>''));
 			echo $this->affHeader();
 				$t= new templateGC(GCSYSTEM_PATH.'GCterminal', 'GCterminal', '0');
@@ -10,7 +14,7 @@
 			echo $this->affFooter();
 		}
 		
-		public function commande(){
+		public function actionTerminal(){
 			$terminal = new terminalGC($_POST['message']);
 			echo $terminal->parse();
 		}

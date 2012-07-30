@@ -12,7 +12,7 @@
 		protected $_buttonFl              = true   ;
 		protected $_buttonNp              = true   ;
 		protected $_url                            ;
-		protected $_pageActuel            = 1      ;
+		protected $_pageActuel            = 0      ;
 		protected $_nbrPage               = 0      ;
 		
 		protected $_paginationFirstBefore = true   ;
@@ -80,7 +80,15 @@
 			$this->_setData();
 		}
 		
-		protected function _setData(){			
+		protected function _setData(){
+			if($this->_pageActuel == 0 || $this->_pageActuel == ""){
+				$linkDisabled = false;
+			}
+			else{
+				$linkDisabled = true;
+			}
+			
+			
 			if($this->_pageActuel == "" || $this->_pageActuel < 1){
 				$this->_pageActuel = 1;
 			}
@@ -99,7 +107,7 @@
 			
 			if($this->_paginationCut == false){
 				for($i = 1; $i<=$this->_nbrPage; $i++){
-					if($i == $this->_pageActuel){
+					if($i == $this->_pageActuel && $linkDisabled != false){
 						$this->_paginationList[$i] = false;
 					}
 					else{
@@ -117,7 +125,7 @@
 				
 				if(($this->_pageActuel - $this->_paginationCut) > 0 && ($this->_pageActuel + $this->_paginationCut) < $this->_nbrPage){
 					for($i = $this->_pageActuel - $this->_paginationCut; $i<=$this->_pageActuel + $this->_paginationCut; $i++){
-						if($i == $this->_pageActuel){
+						if($i == $this->_pageActuel && $linkDisabled != false){
 							$this->_paginationList[$i] = false;
 						}
 						else{
@@ -127,7 +135,7 @@
 				}
 				elseif(($this->_pageActuel - $this->_paginationCut) > 0 && ($this->_pageActuel + $this->_paginationCut) >= $this->_nbrPage){
 					for($i = $this->_pageActuel - $this->_paginationCut; $i<=$this->_nbrPage; $i++){
-						if($i == $this->_pageActuel){
+						if($i == $this->_pageActuel && $linkDisabled != false){
 							$this->_paginationList[$i] = false;
 						}
 						else{
@@ -137,7 +145,7 @@
 				}
 				elseif(($this->_pageActuel - $this->_paginationCut) <= 0 && ($this->_pageActuel + $this->_paginationCut) < $this->_nbrPage){
 					for($i = 1; $i<=$this->_pageActuel + $this->_paginationCut; $i++){
-						if($i == $this->_pageActuel){
+						if($i == $this->_pageActuel && $linkDisabled != false){
 							$this->_paginationList[$i] = false;
 						}
 						else{
@@ -147,7 +155,7 @@
 				}
 				else{
 					for($i = 1; $i<=$this->_nbrPage; $i++){
-						if($i == $this->_pageActuel){
+						if($i == $this->_pageActuel && $linkDisabled != false){
 							$this->_paginationList[$i] = false;
 						}
 						else{

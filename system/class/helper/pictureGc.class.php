@@ -37,7 +37,7 @@
 			}
 		}	
 		
-		public function _fromTo($to){
+		public function fromTo($to){
 			switch ($this->img){
 					case 'jpg':
 						case 'peg':
@@ -85,23 +85,65 @@
 		
 		public function size($sizeX, $sizeY){
 			switch ($this->extension){
-					case 'jpg':
-						case 'peg':
-					break;
+				case 'jpg':
+					case 'peg':
+				break;
 
-					case 'gif':
-					break;
-					
-					case 'png':
-					break;
-					
-					case 'bmp':
-					break;
-					
-					default :
-						$this->_addError('L\'extension n\'est pas gérée');
-					break;
-				}
+				case 'gif':
+				break;
+				
+				case 'png':
+				break;
+				
+				case 'bmp':
+				break;
+				
+				default :
+					$this->_addError('L\'extension n\'est pas gérée');
+				break;
+			}
+		}
+		
+		public function rotate($degree){
+			switch ($this->extension){
+				case 'jpg':
+					case 'peg':
+				break;
+
+				case 'gif':
+				break;
+				
+				case 'png':
+				break;
+				
+				case 'bmp':
+				break;
+				
+				default :
+					$this->_addError('L\'extension n\'est pas gérée');
+				break;
+			}
+		}
+		
+		public function waterMark($img){
+			switch ($this->extension){
+				case 'jpg':
+					case 'peg':
+				break;
+
+				case 'gif':
+				break;
+				
+				case 'png':
+				break;
+				
+				case 'bmp':
+				break;
+				
+				default :
+					$this->_addError('L\'extension n\'est pas gérée');
+				break;
+			}
 		}
 		
 		public function __destruct(){

@@ -53,8 +53,6 @@
 				
 				$c = new TestErrorHandling(); 
 				
-				if(CONNECTBDD == true) { $GLOBALS['base']=$this->_connectDatabase($GLOBALS['db']); }
-				
 				require_once(FUNCTION_GENERIQUE);
 				
 				if(SECUREGET == true && isset($_GET)){
@@ -157,7 +155,19 @@
 				}
 				
 				if($rubrique!=""){
-					$this->_setRubrique($rubrique);
+					if($this->_setRubrique($rubrique) == true){
+						$class = new $rubrique();
+						$class->init();
+						
+						if($_GET['action']!=""){
+							$action = 'action'.ucfirst($_GET['action']);
+							$class->$action();
+						}
+						elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
+							$action = 'actionDefault'.ucfirst($_GET['action']);
+							$class->$action();
+						}
+					}
 				}
 				else{
 					$this->redirect404();
@@ -165,7 +175,7 @@
 				}
 			}
 			else{
-				if(is_file(RUBRIQUE_PATH.'index.php')){ 
+				if(is_file(RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php')){ 
 					$this->_setRubrique('index');
 				}
 				else{
@@ -173,37 +183,6 @@
 					$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
 				}
 			}
-		}
-		
-		/* ---------- CONNEXION A LA BASE DE DONNEES --------- */
-		
-		protected function _connectDatabase($db){
-			foreach ($db as $d){
-				switch ($d['extension']){
-					case 'pdo':
-						try{
-							$sql_connect[''.$d['database'].''] = new PDO($d['sgbd'].':host='.$d['hostname'].';dbname='.$d['database'], $d['username'], $d['password']);
-						}
-						catch (PDOException $e){
-							$this->setErrorLog('errors_sql', 'Une exception a été lancée. Message d\'erreur lors de la connexion à une base de données : '.$e.'');
-						}	
-					break;
-					
-					case 'mysqli':
-						$sql_connect[''.$d['database'].''] = new mysqli($d['hostname'], $d['username'], $d['password'], $d['database']);
-					break;
-					
-					case 'mysql':
-						$sql_connect[''.$d['database'].''] = mysql_connect($d['hostname'], $d['username'], $d['password']);
-						$sql_connect[''.$d['database'].''] = mysql_select_db($d['database']);
-					break;
-					
-					default :
-						$this->setErrorLog('errors_sql', 'L\'extension de cette connexion n\'est pas gérée');
-					break;
-				}
-			}
-			return $sql_connect;
 		}
 			
 		protected function _createLangInstance(){
@@ -220,10 +199,14 @@
 		}
 		
 		private function _setRubrique($rubrique){
-			if(file_exists(SQL_PATH.$rubrique.SQL_EXT.'.php')){ require_once(SQL_PATH.$rubrique.SQL_EXT.'.php');}
-			if(file_exists(FORMS_PATH.$rubrique.FORMS_EXT.'.php')){ require_once(FORMS_PATH.$rubrique.FORMS_EXT.'.php'); }
-			if(file_exists(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php')){ require_once(INCLUDE_PATH.$rubrique.FUNCTION_EXT.'.php');}
-			if(file_exists(RUBRIQUE_PATH.$rubrique.'.php')){ require_once(RUBRIQUE_PATH.$rubrique.'.php'); } else { $this->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); }
+			if(file_exists(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php')){
+				require_once(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php');
+				return true;
+			} 
+			else{ 
+				$this->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
+				return false;
+			}
 		}
 		
 		/* ---------- FONCTIONS ------------- */

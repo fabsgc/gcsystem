@@ -1,0 +1,1 @@
+<h1 style="text-align: center;"><?php echo ($url); ?> <?php echo "erreur 404 : page non trouvée"; ?></h1>
