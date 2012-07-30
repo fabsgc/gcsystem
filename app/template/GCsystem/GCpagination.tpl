@@ -29,8 +29,6 @@
 	<if cond="$totalpage == true">
 		<if cond="$pageActuel != $nbrpage">
 			<div class="pagination_total"><a href="{urllast}">({nbrpage})</a></div>
-		<else />
-			<div class="pagination_total">({nbrpage})</div>
 		</if>
 	</if>
 </div>

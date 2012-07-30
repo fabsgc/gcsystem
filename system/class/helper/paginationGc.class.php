@@ -109,7 +109,7 @@
 			}
 			else{
 				if($this->_paginationCut > (($this->_nbrPage/2)-2)){
-					$this->_paginationCut = intval(($this->_nbrPage/2)-2);
+					$this->_paginationCut = intval(($this->_nbrPage/2));
 				}
 				if($this->_paginationCut < 1){
 					$this->_paginationCut = 1;

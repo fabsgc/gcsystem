@@ -29,8 +29,6 @@
 	<?php if($totalpage == true) { ?>
 		<?php if($pageActuel != $nbrpage) { ?>
 			<div class="pagination_total"><a href="<?php echo ($urllast); ?>">(<?php echo ($nbrpage); ?>)</a></div>
-		<?php }else{ ?>
-			<div class="pagination_total">(<?php echo ($nbrpage); ?>)</div>
 		<?php } ?>
 	<?php } ?>
 </div>
