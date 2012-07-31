@@ -6,4 +6,4 @@
     <route id="page2" url="/page-p([0-9]+)\.html" rubrique="index" action="pagination" vars="page"/>
     <route id="terminal" url="/terminal\.html" rubrique="terminal" action="" vars=""/>
     <route id="terminal_terminal" url="/terminal-terminal\.html" rubrique="terminal" action="terminal" vars=""/>
-</routes>
+<route id="5017af36c637f" url="" rubrique="test" action="" vars=""/></routes>

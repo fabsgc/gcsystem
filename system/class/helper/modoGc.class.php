@@ -31,9 +31,7 @@
 		public  function __construct($contenu, $maxword=0){
 			$this->_contenu = strval($contenu);
 			$this->_maxWord = intval($maxword);
-			$this->_insulte = $this->_setInsulte();
-			
-			print_r($this->_insulte);
+			$this->_setInsulte();
 		}
 		
 		/**
@@ -46,7 +44,7 @@
 		public function parse(){
 			$this->_parseInsulte = array();
 			foreach($this->_insulte as $insulte){
-				if(preg_match('`'.$this->_setAccent(preg_quote($insulte)).' `i', $this->_setAccent($this->_contenu))){
+				if(preg_match('`'.$this->_setAccent(preg_quote($insulte)).' `isU', $this->_setAccent($this->_contenu))){
 					array_push($this->_parseInsulte, $insulte);
 				}
 			}
@@ -70,7 +68,7 @@
 			$this->_i            = 0;
 			$this->_parseInsulte = array();
 			foreach($this->_insulte as $insulte){
-				if(preg_match('`'.preg_quote($insulte).' `i', $this->_contenu)){
+				if(preg_match('`'.preg_quote($insulte).'`isU', $this->_contenu)){
 					$this->_i++;
 				}
 			}
@@ -78,7 +76,7 @@
 			if($this->_i++ > $this->_maxWord){
 				$content = $this->_contenu;
 				foreach($this->_insulte as $insulte){
-					$content = preg_replace('`'.preg_quote($insulte).'`i', '***censuré***', $content);
+					$content = preg_replace('`'.preg_quote($insulte).'`i', ' ***censuré*** ', $content);
 				}
 				return $content;
 			}
@@ -177,13 +175,9 @@
 				
 				foreach($sentences as $sentence){
 					if ($sentence->getAttribute("rubrique") == $this->_commandExplode[2]){
-						if(CHARSET == strtolower('utf-8')) { $content =  utf8_encode($sentence->firstChild->nodeValue); }
-						else { $content =  utf8_decode($sentence->firstChild->nodeValue); }
-						array_push($this->_insulte, $content);
+						array_push($this->_insulte,$sentence->firstChild->nodeValue);
 					}
 				}
-				
-				print_r($this->_insulte);
 			}
 			else{
 				$this->_addError('Le fichier '.MODOGCCONFIG.' n\'a pas pu être ouvert');

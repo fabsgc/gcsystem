@@ -46,7 +46,13 @@ define('FILE_PATH', ASSET_PATH.'file/');
 define('RUBRIQUE_PATH', APP_PATH.'rubrique/');
 
 //chemin d'accès rubriques (controleur)
+define('MODEL_PATH', APP_PATH.'model/');
+
+//chemin d'accès rubriques (controleur)
 define('RUBRIQUE_EXT', '.class');
+
+//chemin d'accès rubriques (controleur)
+define('MODEL_EXT', '.model.class');
 
 //chemin d'accès aux fichiers de config du projet
 define('APP_CONFIG_PATH', APP_PATH.'config/');
@@ -95,6 +101,9 @@ define('CLASS_RUBRIQUE', CLASS_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php');
 
 //class application abstraite. gestion d'une page
 define('CLASS_APPLICATION', CLASS_PATH.CLASS_SYSTEM_PATH.'applicationGc.class.php');
+
+//class model abstraite. gestion des models
+define('CLASS_MODEL', CLASS_PATH.CLASS_SYSTEM_PATH.'modelGc.class.php');
 
 //class gerant les log
 define('CLASS_LOG', CLASS_PATH.CLASS_SYSTEM_PATH.'logGc.class.php');

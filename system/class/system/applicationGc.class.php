@@ -1,8 +1,8 @@
 <?php
 	/**
-	 * @file : rubrique.class.php
+	 * @file : applicationGc.class.php
 	 * @author : fab@c++
-	 * @description : class mère de l'application
+	 * @description : class gérant les contrôleurs. abstraite
 	 * @version : 2.0 bêta
 	*/
 	
@@ -40,6 +40,7 @@
 		
 		protected $_var               = array()                                  ; //contient les variables que l'on passe depuis l'extérieur : obsolète
 		protected $bdd                                                           ; //contient la connexion sql
+		protected $model                                                         ; //contient le model
 		
 		/* --- permet d'affiche le doctype et l'entete (avant la balise body) et </body></html> -- */
 		
@@ -52,10 +53,19 @@
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();
 			if(CONNECTBDD == true) {$this->bdd=$this->_connectDatabase($GLOBALS['db']); }
+			$this->_addError('Contrôleur '.$_GET['rubrique'].' initialisé');
 		}
 		
 		public function init(){
 			
+		}
+		
+		public function loadModel(){
+			$class = 'manager'.ucfirst($_GET['rubrique']);
+			if(class_exists($class)){	
+				$this->model = new $class($this->bdd, $this->_lang);
+				$this->_addError('Model '.$_GET['rubrique'].' initialisé');
+			}
 		}
 		
 		protected function _connectDatabase($db){

@@ -195,9 +195,13 @@
 		
 		private function _setRubrique($rubrique){
 			if(file_exists(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php')){
+				if(file_exists(MODEL_PATH.$rubrique.MODEL_EXT.'.php')){
+					require_once(MODEL_PATH.$rubrique.MODEL_EXT.'.php');
+				}
+				
 				require_once(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php');
 				return true;
-			} 
+			}
 			else{ 
 				$this->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
 				return false;

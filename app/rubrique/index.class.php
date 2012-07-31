@@ -1,6 +1,8 @@
 <?php
 	class index extends applicationGc{
 		public function init(){
+			$this->loadModel();
+			$this->model->actionDefault();
 		}
 		
 		public function actionDefault(){

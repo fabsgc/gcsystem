@@ -30,7 +30,7 @@
 			$this->_commandExplode = explode(' ', trim($command));
 			$this->_command = '<span style="color: gold;"> '.$command.'</span>';
 			$this->_forbidden = array(
-				FUNCTION_GENERIQUE, RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
+				MODEL_PATH.'terminal'.MODEL_EXT.'.php', MODEL_PATH.'index'.MODEL_EXT.'.php', FUNCTION_GENERIQUE, RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCrubrique'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
 				CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_FEED, CLASS_JS, CLASS_TEXT, CLASS_DATE, CLASS_DOWNLOAD, CLASS_UPDLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_APPDEVGC,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
@@ -76,20 +76,27 @@
 						découvrir la question qui y correspond.';	
 				}
 				if(preg_match('#add rubrique (.+)#', $this->_command)){
-					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden)){
-						echo RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php'.' / '.$this->_forbidden[0];
+					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden) && !in_array(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', $this->_forbidden)){
 						$monfichier = fopen(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', 'a');						
-						
 						$t= new templateGC(GCSYSTEM_PATH.'GCrubrique', 'GCrubrique', '0');
 						$t->assign(array(
 							'rubrique'=> $this->_commandExplode[2]
 						));
 						$t->setShow(FALSE);
+						fputs($monfichier, $t->show());
+						fclose($monfichier);
 						
+						$monfichier = fopen(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', 'a');						
+						$t= new templateGC(GCSYSTEM_PATH.'GCmodel', 'GCmodel', '0');
+						$t->assign(array(
+							'rubrique'=> ucfirst($this->_commandExplode[2])
+						));
+						$t->setShow(FALSE);
 						fputs($monfichier, $t->show());
 						fclose($monfichier);
 						
 						$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php';
+						$this->_stream .= '<br />> '.MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php';
 
 						$this->_result = '<br />> <span style="color: chartreuse;">la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; cr&#233;&#233;e</span>';
 						
@@ -159,10 +166,15 @@
 					}
 				}
 				elseif(preg_match('#delete rubrique (.+)#', $this->_command)){
-					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden)){
+					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden) && !in_array(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', $this->_forbidden)){
 						if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php')){
 							unlink(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php');
 							$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php';
+						}
+						
+						if(is_file(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
+							unlink(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php');
+							$this->_stream .= '<br />> '.MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php';
 						}
 						
 						$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
@@ -309,13 +321,19 @@
 					}
 				}
 				elseif(preg_match('#rename rubrique (.+) (.+)#', $this->_command)){
-					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden)){
-						if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php')){
-							if(!is_file(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php')){
+					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden) && !in_array(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', $this->_forbidden)){
+						if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') || is_file(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
+							if(!is_file(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php') || !is_file(MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php')){
 								if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && !is_file(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php')){
-									rename(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php');
-									$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php'.' -> '.RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php';
-									$this->_result = '<br />><span style="color: chartreuse;"> le fichier <u>'.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php'.'</u> a bien &#233;t&#233; r&#233;nomm&#233; en <u>'.RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php'.'</u></span>';
+									rename(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php');
+									$this->_stream .= '<br />> '.MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php'.' -> '.MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php';
+									
+									if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && !is_file(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php')){
+										rename(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php');
+										$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php'.' -> '.RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php';
+									}
+									
+									$this->_result = '<br />><span style="color: chartreuse;"> le fichier <u>'.MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php'.'</u> a bien &#233;t&#233; r&#233;nomm&#233; en <u>'.MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php'.'</u></span>';
 								}
 								
 								$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
@@ -375,6 +393,14 @@
 						while(false !== ($this->_fichier = readdir($this->_dossier))){
 							if(is_file(RUBRIQUE_PATH.$this->_fichier) && $this->_fichier!='.htaccess'){
 								$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_fichier.'';
+							}
+						}
+					}
+					if($this->_dossier = opendir(MODEL_PATH)){
+						$this->_stream .= '<br />>####################### RUBRIQUE';
+						while(false !== ($this->_fichier = readdir($this->_dossier))){
+							if(is_file(MODEL_PATH.$this->_fichier) && $this->_fichier!='.htaccess'){
+								$this->_stream .= '<br />> '.MODEL_PATH.$this->_fichier.'';
 							}
 						}
 					}
