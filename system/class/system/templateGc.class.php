@@ -14,7 +14,7 @@
 		protected $_nom                = ""         ;    //nom du fichier compilé à créer
 		protected $_content            = ""         ;    //contenu du fichier de template
 		protected $_contentCompiled    = ""         ;    //contenu du fichier de template
-		public $vars                   = array()    ;    //ensemble des variables
+		public    $vars                = array()    ;    //ensemble des variables
 		protected $_refParser		   = null       ;    //contient une réfénrece vers l'instance du parser
 		protected $_variable		   = ""         ;    //contient des variables
 		protected $_timeCache		   = 0          ;    //contient le temps de mise en cache

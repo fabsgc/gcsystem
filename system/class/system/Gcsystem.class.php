@@ -10,6 +10,7 @@
 		use errorGc, langInstance, generalGc, urlRegex, domGc;                            //trait
 		/* --- infos d'en tete -- */
 
+		protected $_output                     ;
 		protected $_configInstance             ;
 		protected $_routerInstance             ;
 		protected $_routeInstance              ;
@@ -140,17 +141,20 @@
 						$plugin = new pluginGc();
 						
 						if($this->_setRubrique($rubrique) == true){
-							$class = new $rubrique($this->_lang);
-							$class->init();
-							
-							if($_GET['action']!=""){
-								$action = 'action'.ucfirst($_GET['action']);
-								$class->$action();
-							}
-							elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
-								$action = 'actionDefault'.ucfirst($_GET['action']);
-								$class->$action();
-							}
+							ob_start ();
+								$class = new $rubrique($this->_lang);
+								$class->init();
+								
+								if($_GET['action']!=""){
+									$action = 'action'.ucfirst($_GET['action']);
+									$class->$action();
+								}
+								elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
+									$action = 'actionDefault'.ucfirst($_GET['action']);
+									$class->$action();
+								}
+							$this->_output = ob_get_contents();
+							ob_get_clean();
 						}
 						else{
 							$this->_addError('L\'instanciation du contrôleur de la rubrique '.$rubrique.' a échoué');
@@ -171,6 +175,10 @@
 					$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
 				}
 			}
+		}
+		
+		public function run(){
+			echo $this->_output;
 		}
 			
 		protected function _createLangInstance(){

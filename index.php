@@ -16,12 +16,10 @@ require_once(CLASS_AUTOLOAD);
 /* ---------- creation de la page -------------- */
 $GLOBALS['appDevGc'] = new appDevGc();
 $GLOBALS['rubrique'] = new Gcsystem();
-
-/* ---------- démarrage de l'application ----------------- */
 $GLOBALS['rubrique']->init();
 
 /* ------ articulation du site web : appelez ici vos classes personnelles-------- */
 
-if(MAINTENANCE==false){ $GLOBALS['rubrique']->route(); }
+if(MAINTENANCE==false){ $GLOBALS['rubrique']->route(); $GLOBALS['rubrique']->run(); }
 elseif(MAINTENANCE==true){ $GLOBALS['rubrique']->setMaintenance(); }
 if(ENVIRONMENT == 'development' &&  DEVTOOL == true && $GLOBALS['rubrique']->getDevTool() == true) $GLOBALS['appDevGc']->show();

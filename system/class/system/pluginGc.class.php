@@ -14,7 +14,6 @@
 		public function __construct(){
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			if($this->_domXml->load(PLUGIN)){
-				
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('plugins')->item(0);
 				$this->_markupXml = $this->_nodeXml->getElementsByTagName('plugin');
 
