@@ -1,4 +1,4 @@
-<variable var ="<?php
+<?php $var ="<?php
 	class ".$rubrique." extends applicationGc{
 		public ".'$forms'."                = array();
 		public ".'$sql'."                  = array();
@@ -11,5 +11,5 @@
 		
 		public function actionDefault(){
 		}
-	}" />
-{var}
+	}"; ?>
+<?php echo ($var); ?>

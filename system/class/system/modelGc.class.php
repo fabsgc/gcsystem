@@ -13,12 +13,11 @@
 		
 		public  function __construct($lang="", $bdd){
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
-			$this->_createLangInstance();
+			$this->_createLangInstance();			
 			if(CONNECTBDD == true) {$this->bdd=$bdd; }
 		}
 		
 		public function init(){
-			
 		}
 			
 		protected function _createLangInstance(){

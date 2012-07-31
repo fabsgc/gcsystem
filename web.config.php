@@ -77,12 +77,12 @@ define('PLUGIN', APP_PLUGIN_PATH.'plugin.xml');
 
 /* --------------parametres de connexion a la base de donnees------------------*/
 
-// $GLOBALS['db']['bdd']['hostname']  = "localhost";
-// $GLOBALS['db']['bdd']['username']  = "root";
-// $GLOBALS['db']['bdd']['password']  = "";
-// $GLOBALS['db']['bdd']['database']  = "test";
-// $GLOBALS['db']['bdd']['extension'] = "pdo";
-// $GLOBALS['db']['bdd']['sgbd']      = "mysql";
+$GLOBALS['db']['bdd']['hostname']  = "localhost";
+$GLOBALS['db']['bdd']['username']  = "root";
+$GLOBALS['db']['bdd']['password']  = "";
+$GLOBALS['db']['bdd']['database']  = "test";
+$GLOBALS['db']['bdd']['extension'] = "pdo";
+$GLOBALS['db']['bdd']['sgbd']      = "mysql";
 
 /* -------------- CONSTANTE RELATIVE AU SITE OBLIGATOIRES MAIS MODIFIABLES ----------------- */
 
@@ -90,7 +90,7 @@ define('PLUGIN', APP_PLUGIN_PATH.'plugin.xml');
 define('BDD', 'test');
 
 //connexion à la bdd, true ou false
-define('CONNECTBDD', false);
+define('CONNECTBDD', true);
 
 //connexion à la bdd, true ou false
 define('REWRITE', true);

@@ -57,7 +57,9 @@
 			$class = 'manager'.ucfirst($_GET['rubrique']);
 			if(class_exists($class)){	
 				$this->_addError('Model '.$_GET['rubrique'].' initialisé');
-				return new $class($this->bdd, $this->_lang);
+				$instance = new $class($this->_lang, $this->bdd);
+				$instance->init();
+				return $instance;
 			}
 		}
 		

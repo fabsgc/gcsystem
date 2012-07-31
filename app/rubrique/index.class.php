@@ -1,5 +1,10 @@
 <?php
-	class index extends applicationGc{	
+	class index extends applicationGc{
+		public $forms                = array();
+		public $sql                  = array();
+		public $model                         ;
+		public $bdd                           ;
+		
 		public function init(){
 			$this->model = $this->loadModel();
 			$this->model->actionDefault();
