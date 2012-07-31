@@ -7,11 +7,7 @@
 	*/
 	
 	class configGc {
-		use errorGc;                            //trait
-		
-		protected $_domXml             ;
-		protected $_nodeXml            ;
-		protected $_markupXml          ;
+		use errorGc, domGc;                            //trait
 		
 		public function __construct(){
 			$this->_domXml = new DomDocument('1.0', CHARSET);

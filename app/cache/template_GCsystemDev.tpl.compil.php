@@ -115,7 +115,7 @@
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>tpl.png" title="<?php echo "fichier de template inclus."; ?>"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>tpl.png" title="<?php echo "fichiers de template inclus"; ?>"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone" style="width: 219px;">
 			<?php echo ($tpl); ?>

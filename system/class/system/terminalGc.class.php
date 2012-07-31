@@ -7,7 +7,7 @@
 	*/
 
 	class terminalGc{
-		use errorGc, langInstance;                  //trait
+		use errorGc, langInstance, domGc;                  //trait
 		
 		protected $_command                       ; //contenu à traiter
 		protected $_stream                        ; //contenu à afficher
@@ -18,10 +18,6 @@
 		protected $_forbidden                     ; //fichier interdit
 		protected $_updateFile                    ; //fichier interdit
 		protected $_updateDir                     ; //fichier interdit
-		
-		protected $_domXml                        ; //pour la modification du fichier route
-		protected $_nodeXml                       ;
-		protected $_markupXml                     ;
 
 		public  function __construct($command, $lang = 'fr'){
 			$this->_lang=$lang;

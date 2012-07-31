@@ -23,4 +23,5 @@
   <sentence id="pagination_before">previous page</sentence>
   <sentence id="pagination_after">next page</sentence>
   <sentence id="pagination_last">last page</sentence>
+  <sentence id="rubriquenotfound">An error on the script occurred. The requested item was not found</sentence>
 </lang>

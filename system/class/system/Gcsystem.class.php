@@ -7,13 +7,9 @@
 	*/
 	
 	class Gcsystem{
-		use errorGc, langInstance, generalGc, urlRegex;                            //trait
+		use errorGc, langInstance, generalGc, urlRegex, domGc;                            //trait
 		/* --- infos d'en tete -- */
-		
-		protected $_domXml                     ;
-		protected $_nodeXml                    ;
-		protected $_markupXml                  ;
-		
+
 		protected $_configInstance             ;
 		protected $_routerInstance             ;
 		protected $_routeInstance              ;
@@ -39,7 +35,6 @@
 		
 		public function init(){
 			if($this->_initInstance == 0){
-				//$this->GzipinitOutputFilter();
 				header('Content-Type: text/html; charset='.CHARSET.''); 
 				switch(ENVIRONMENT){	
 					case 'development' :		
@@ -52,7 +47,6 @@
 				}
 				
 				$c = new TestErrorHandling(); 
-				
 				require_once(FUNCTION_GENERIQUE);
 				
 				if(SECUREGET == true && isset($_GET)){
@@ -63,14 +57,8 @@
 				else{
 					if(isset($_GET['rubrique'])) { $_GET['rubrique']=htmlentities($_GET['rubrique']); }
 					if(isset($_GET['action'])) { $_GET['action']=htmlentities($_GET['action']); }
-					if(isset($_GET['sousaction'])) { $_GET['sousaction']=htmlentities($_GET['sousaction']); }
 					if(isset($_GET['id'])) { $_GET['id']=intval(htmlentities($_GET['id'])); }
 					if(isset($_GET['page'])) { $_GET['page']=intval(htmlentities($_GET['page'])); }
-					if(isset($_GET['search'])) { $_GET['search']=htmlentities($_GET['search']); }
-					if(isset($_GET['design'])) { $_GET['design']=intval(htmlentities($_GET['design'])); }
-					if(isset($_GET['menu'])) { $_GET['menu']=intval(htmlentities($_GET['menu'])); }
-					if(isset($_GET['cat'])) { $_GET['cat']=intval(htmlentities($_GET['cat'])); }
-					if(isset($_GET['soucat'])) { $_GET['soucat']=intval(htmlentities($_GET['soucat'])); }
 					if(isset($_GET['token'])) { $_GET['token']=htmlentities($_GET['token']); }
 				}
 				
@@ -81,7 +69,6 @@
 				}
 				
 				$this->setErrorLog('history','Page rewrite : http://'.$this->getHost().$this->getUri().' rubrique : '.$this->getServerName().$this->getPhpSelf().'?'.$this->getQuery().' / origine : '.$this->getReferer().' / IP : '.$this->getIp());
-				
 				$this->_initInstance = 1;
 			}
 		}
@@ -126,10 +113,13 @@
 					$_GET['rubrique'] = "";
 				}
 			}
+			else{
+				$this->_addError('Le routage a échoué');
+			}
 		}
 		
 		public function route(){
-			if(REWRITE == true) { $this->_getRubrique(); }
+			if(REWRITE == true){ $this->_getRubrique(); }
 			
 			if(isset($_GET['rubrique'])){
 				$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
@@ -138,7 +128,7 @@
 					$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
 					$this->_markupXml = $this->_nodeXml->getElementsByTagName('route');
 					
-					$rubrique = "";
+					$rubrique = ""; //on initialise la variable
 					
 					foreach($this->_markupXml as $sentence){
 						if ($sentence->getAttribute("rubrique") == $_GET['rubrique']){
@@ -161,6 +151,9 @@
 								$action = 'actionDefault'.ucfirst($_GET['action']);
 								$class->$action();
 							}
+						}
+						else{
+							$this->_addError('L\'instanciation du contrôleur de la rubrique '.$rubrique.' a échoué');
 						}
 					}
 					else{
@@ -188,7 +181,7 @@
 			return $this->_langInstance->loadSentence($sentence);
 		}
 		
-		public function GzipinitOutputFilter() {
+		public function GzipinitOutputFilter(){
 			ob_start('ob_gzhandler');
 			register_shutdown_function('ob_end_flush');
 		}
@@ -198,17 +191,14 @@
 				if(file_exists(MODEL_PATH.$rubrique.MODEL_EXT.'.php')){
 					require_once(MODEL_PATH.$rubrique.MODEL_EXT.'.php');
 				}
-				
 				require_once(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php');
 				return true;
 			}
 			else{ 
-				$this->windowInfo('Erreur', RUBRIQUE_NOT_FOUND, 0, './'); 
+				$this->windowInfo('Erreur', $this->useLang('rubriquenotfound'), 0, './'); 
 				return false;
 			}
 		}
-		
-		/* ---------- FONCTIONS ------------- */
 		
 		public function setMaintenance(){
 			$tpl = new templateGC(GCSYSTEM_PATH.'GCmaintenance', 'GCmaintenance', 0, $this->_lang);				

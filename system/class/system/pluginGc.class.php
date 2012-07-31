@@ -7,11 +7,7 @@
 	*/
 	
 	class pluginGc {
-		use errorGc;                            //trait
-		
-		protected $_domXml             ;
-		protected $_nodeXml            ;
-		protected $_markupXml          ;
+		use errorGc, domGc;                            //trait
 		
 		protected $_include   = array();
 		

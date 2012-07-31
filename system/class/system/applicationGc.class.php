@@ -7,7 +7,7 @@
 	*/
 	
 	abstract class applicationGc{
-		use errorGc, langInstance, generalGc, urlRegex;                            //trait
+		use errorGc, langInstance, generalGc, urlRegex,domGc                ; //trait
 		/* --- infos d'en tete -- */
 		
 		protected $doctype            = "<!DOCTYPE html>\n<html lang=\"fr\">"    ;
@@ -31,17 +31,11 @@
 		protected $fbDescription      = ''                                       ;
 		protected $fbImage            = ''                                       ;
 		protected $html5              = true                                     ;
-
-		protected $_domXml                                                       ;
-		protected $_nodeXml                                                      ;
-		protected $_markupXml                                                    ;
 		
 		protected $_devTool           = true                                     ;
 		
 		protected $_var               = array()                                  ; //contient les variables que l'on passe depuis l'extérieur : obsolète
 		protected $bdd                                                           ; //contient la connexion sql
-		
-		/* --- permet d'affiche le doctype et l'entete (avant la balise body) et </body></html> -- */
 		
 		protected $header;
 		protected $footer;

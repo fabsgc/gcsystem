@@ -23,4 +23,5 @@
   <sentence id="pagination_before">vorige pagina</sentence>
   <sentence id="pagination_after">volgende pagina</sentence>
   <sentence id="pagination_last">laatste pagina</sentence>
+  <sentence id="rubriquenotfound">Een fout op het script is opgetreden. De door u opgevraagde item is niet gevonden</sentence>
 </lang>

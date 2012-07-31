@@ -7,13 +7,10 @@
 	*/
 	
     class langGc{
-		use errorGc;                            //trait
+		use errorGc, domGc;                            //trait
 		
 		protected $_lang = DEFAULTLANG; // nom de la langue a utilise
 		protected $_langFile = true   ; // indique si le fichier de langue est charge ou non
-		protected $_domXml            ; // contient l'object DomDocument natif de PHP, permet la lecture des fichiers de langues
-		protected $_sentence          ; // contient la phrase du fichier de langue à charger
-		protected $_content           ; // variable interm&eacute;diaire utilis&eacute;e dans loadSentence
 		
 		/**
 		 * Cr&eacute;e l'instance de la classe langue
@@ -51,7 +48,7 @@
 		public function loadFile(){
 			if(is_file(LANG_PATH.$this->_lang.LANG_EXT)){
 				$this->_langFile=true;
-				$this->_domXml = new DomDocument('1.0', 'utf-8');
+				$this->_domXml = new DomDocument('1.0', CHARSET);
 				if($this->_domXml->load(LANG_PATH.$this->_lang.LANG_EXT)){
 					$this->_langFile=true;
 				}
@@ -87,8 +84,7 @@
 				
 				foreach($sentences as $sentence){
 					if ($sentence->getAttribute("id") == $nom){
-						if(CHARSET == strtolower('utf-8')) { $this->_content =  utf8_encode($sentence->firstChild->nodeValue); }
-						else { $this->_content =  $sentence->firstChild->nodeValue; }
+						$this->_content =  $sentence->firstChild->nodeValue;
 					}
 				}
 				

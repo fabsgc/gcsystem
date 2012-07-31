@@ -7,7 +7,7 @@
 	*/
 	
 	class feedGc{
-		use errorGc                                         ;
+		use errorGc,domGc                              ;
 		
 		protected $_rssFile                        = ""     ;
 		protected $_rssFileContent                 = ""     ;
@@ -16,15 +16,6 @@
 		
 		protected $_cache                                   ;
 		protected $_time                           = array();
-		
-		protected $_domXml                                  ;
-		protected $_channelXml                              ;
-		protected $_itemXml                                 ;
-		protected $_nodeXml                                 ;
-		protected $_markupXml                               ;
-		protected $_markup2Xml                              ;
-		protected $_textXml                                 ;
-		protected $_text2Xml                                ;
 		
 		protected $_genRss                         = array();
 		protected $_genRssI                        = 0      ;
