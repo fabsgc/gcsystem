@@ -92,7 +92,7 @@
 					return ($this->_content);
 				}
 				else{
-					return 'texte non trouv&#233;';
+					return 'texte non trouvé';
 				}
 			}
 		}

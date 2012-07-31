@@ -1241,3 +1241,15 @@
 31/07/2012 a 19:14:06 ! : Erreur [8] (Use of undefined constant CLASS_BBCODE - assumed 'CLASS_BBCODE') dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\terminalGc.class.php a la ligne 41
 31/07/2012 a 19:14:06 ! : Erreur [8] (Use of undefined constant CLASS_MODO - assumed 'CLASS_MODO') dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\terminalGc.class.php a la ligne 41
 31/07/2012 a 19:40:38 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102
+31/07/2012 a 19:53:18 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102
+31/07/2012 a 19:59:16 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102
+31/07/2012 a 20:00:48 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102
+31/07/2012 a 20:00:50 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102
+31/07/2012 a 20:00:51 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102
+31/07/2012 a 20:00:51 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102
+31/07/2012 a 20:00:52 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102
+31/07/2012 a 20:00:52 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102
+31/07/2012 a 20:00:52 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102
+31/07/2012 a 20:00:53 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102
+31/07/2012 a 20:00:53 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102
+31/07/2012 a 20:00:53 ! : Erreur [8] (Undefined index: HTTP_REFERER) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\generalGc.class.php a la ligne 102

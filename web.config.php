@@ -12,168 +12,67 @@
  
 \*/
 
-//asset
+//chemins d'accès
 define('ASSET_PATH', 'asset/');
-
-//app
 define('APP_PATH', 'app/');
-
-//system
 define('SYSTEM_PATH', 'system/');
-
-//chemin d'accès fichiers css
 define('CSS_PATH', ASSET_PATH.'css/');
-
-//chemin d'accès fichiers javascript
 define('JS_PATH', ASSET_PATH.'js/');
-
-//chemin d'accès fichiers javascript
 define('IMG_PATH', ASSET_PATH.'image/');
-
-//chemin d'accès fichiers d'upload
 define('UPLOAD_PATH', ASSET_PATH.'upload/');
-
-//chemin d'accès fichiers de log
 define('LOG_PATH', SYSTEM_PATH.'log/');
-
-//chemin d'accèfichiers de log
 define('CACHE_PATH', APP_PATH.'cache/');
-
-//chemin d'accès fichiers divers
 define('FILE_PATH', ASSET_PATH.'file/');
-
-//chemin d'accès rubriques (controleur)
 define('RUBRIQUE_PATH', APP_PATH.'rubrique/');
-
-//chemin d'accès rubriques (controleur)
 define('MODEL_PATH', APP_PATH.'model/');
-
-//chemin d'accès rubriques (controleur)
-define('RUBRIQUE_EXT', '.class');
-
-//chemin d'accès rubriques (controleur)
-define('MODEL_EXT', '.model.class');
-
-//chemin d'accès aux fichiers de config du projet
 define('APP_CONFIG_PATH', APP_PATH.'config/');
-
-//chemin d'accès aux fichiers de plugins du projet
 define('APP_PLUGIN_PATH', APP_PATH.'config/');
-
-//chemin d'accès des templates
 define('TEMPLATE_PATH', APP_PATH.'template/');
-
-//chemin d'accès fichiers class
 define('CLASS_PATH', SYSTEM_PATH.'class/');
-
-//chemin d'accès librairies
 define('LIB_PATH', SYSTEM_PATH.'lib/');
-
-//chemin d'accès fichiers de langues
 define('LANG_PATH', SYSTEM_PATH.'lang/');
-
-//chemin d'accès fichiers Error http
 define('ERRORDUOCUMENT_PATH', 'ErrorDocument/');
-
-//chemin d'accès fichiers GCsysem
 define('GCSYSTEM_PATH', 'GCsystem/');
-
-//extension fichiers de langues
-define('LANG_EXT', '.xml');
-
-// Définit l'extension des fichiers
-define('FILES_EXT', '.html');
-
-//fonction generique
-define('FUNCTION_GENERIQUE', RUBRIQUE_PATH.'function.php');
-
-//chemin class systeme
 define('CLASS_SYSTEM_PATH', 'system/');
-
-//chemin class helper
 define('CLASS_HELPER_PATH', 'helper/');
 
-//class mere gerant l'application
+//extensions de fichier
+define('LANG_EXT', '.xml');
+define('FILES_EXT', '.html');
+define('TEMPLATE_EXT', '.tpl');
+define('LOG_EXT', '.log');
+define('RUBRIQUE_EXT', '.class');
+define('MODEL_EXT', '.model.class');
+
+//fonctions et class
+define('FUNCTION_GENERIQUE', RUBRIQUE_PATH.'function.php');
 define('CLASS_GENERAL_INTERFACE', CLASS_PATH.CLASS_SYSTEM_PATH.'generalGc.class.php');
-
-//class mere gerant l'application
 define('CLASS_RUBRIQUE', CLASS_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php');
-
-//class application abstraite. gestion d'une page
 define('CLASS_APPLICATION', CLASS_PATH.CLASS_SYSTEM_PATH.'applicationGc.class.php');
-
-//class model abstraite. gestion des models
 define('CLASS_MODEL', CLASS_PATH.CLASS_SYSTEM_PATH.'modelGc.class.php');
-
-//class gerant les log
 define('CLASS_LOG', CLASS_PATH.CLASS_SYSTEM_PATH.'logGc.class.php');
-
-//class gerant les log
 define('CLASS_CACHE', CLASS_PATH.CLASS_SYSTEM_PATH.'cacheGc.class.php');
-
-//class gerant des exceptions
 define('CLASS_EXCEPTION', CLASS_PATH.CLASS_SYSTEM_PATH.'exceptionGc.class.php');
-
-//class gerant les templates
 define('CLASS_TEMPLATE', CLASS_PATH.CLASS_SYSTEM_PATH.'templateGc.class.php');
-
-//class lang
 define('CLASS_LANG', CLASS_PATH.CLASS_SYSTEM_PATH.'langGc.class.php');
-
-//class appDevGc
 define('CLASS_APPDEVGC', CLASS_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php');
-
-//class modo
 define('CLASS_TERMINAL', CLASS_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php');
-
-//autoload des class
 define('CLASS_AUTOLOAD', CLASS_PATH.'autoload.php');
-
-//class gérant le fichier de config de l'application
 define('CLASS_CONFIG', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php');
-
-//class gérant les plugins à inclure
 define('CLASS_PLUGIN', CLASS_PATH.CLASS_SYSTEM_PATH.'pluginGc.class.php');
-
-//class gérant l'url rewrite
 define('CLASS_ROUTER', CLASS_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php');
-
-//class gérant la pagination
 define('CLASS_PAGINATION', CLASS_PATH.CLASS_HELPER_PATH.'paginationGc.class.php');
 
-//GESHI
+//lib
 define('GESHI', LIB_PATH.'geshi/geshi.php');
-
-//extension des fichiers de template
-define('TEMPLATE_EXT', '.tpl');
-
-//extension des fichiers de log
-define('LOG_EXT', '.log');
-
-//erreur script rubrique not found
-define('RUBRIQUE_NOT_FOUND', 'Une erreur relative au script s\'est produite. La rubrique demandée n\'a pas été trouvée');
-
-//erreur variabels manquantes
-define('RUBRIQUE_MISSING_PARAMETERS', 'Il manque des paramètres pour répondre à votre demande.');
-
-//erreur variabels manquantes
-define('ACTION_NOT_FOUND', 'L\'action demandée n\'a pas été trouvée.');
-
-/* fichier jquery */
 define('JQUERYFILE', JS_PATH.'jquery.min.js');
 define('JQUERYUIJS', JS_PATH.'jquery-ui.min.js');
 define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
 
-//chemin route
+//fichiers de config
 define('ROUTE', APP_CONFIG_PATH.'routes.xml');
-
-//chemin route
 define('MODOGCCONFIG', APP_CONFIG_PATH.'modoGc.xml');
-
-//chemin fichier de config de l'pplication
 define('APPCONFIG', APP_CONFIG_PATH.'app.xml');
-
-//chemin route
 define('PLUGIN', APP_PLUGIN_PATH.'plugin.xml');
 
 /* --------------parametres de connexion a la base de donnees------------------*/

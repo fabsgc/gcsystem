@@ -24,4 +24,6 @@
   <sentence id="pagination_after">next page</sentence>
   <sentence id="pagination_last">last page</sentence>
   <sentence id="rubriquenotfound">An error on the script occurred. The requested item was not found</sentence>
+  <sentence id="rubriquemissingparameters">Missing parameters to respond to your request</sentence>
+  <sentence id="actionnotfound">The requested action was not found</sentence>
 </lang>
