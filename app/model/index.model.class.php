@@ -3,14 +3,14 @@
 		protected $bdd                           ;
 		
 		public function init(){
+		}
+		
+		public function actionDefault(){
 			$sql = new sqlGc($this->bdd[BDD]);
 			$sql->query('nom', 'SELECT * FROM news');
 			
 			foreach($sql->fetch('nom') as $val){
 				echo $val['titre'].'<br />';
 			}
-		}
-		
-		public function actionDefault(){
 		}
 	}

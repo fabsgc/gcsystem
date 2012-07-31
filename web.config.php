@@ -90,7 +90,7 @@ $GLOBALS['db']['bdd']['sgbd']      = "mysql";
 define('BDD', 'test');
 
 //connexion à la bdd, true ou false
-define('CONNECTBDD', true);
+define('CONNECTBDD', false);
 
 //connexion à la bdd, true ou false
 define('REWRITE', true);

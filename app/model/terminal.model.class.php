@@ -1,6 +1,6 @@
 <?php
 	class managerTerminal extends modelGc{
-		public $bdd                           ;
+		protected $bdd                           ;
 		
 		public function init(){
 		}

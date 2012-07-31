@@ -1,9 +1,9 @@
 <?php
 	class terminal extends applicationGc{
-		public $forms                = array();
-		public $sql                  = array();
-		public $model                         ;
-		public $bdd                           ;
+		protected $forms                = array();
+		protected $sql                  = array();
+		protected $model                         ;
+		protected $bdd                           ;
 		
 		public function init(){
 			$this->model = $this->loadModel(); //chargement du model
