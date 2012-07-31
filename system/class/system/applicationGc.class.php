@@ -105,6 +105,10 @@
 			return $this->_langInstance->loadSentence($sentence);
 		}
 		
+		public function getLang(){
+			return $this->_lang;
+		}
+		
 		public function setVar($nom, $val){
 			$this->_var[$nom] = $val;
 		}
@@ -129,7 +133,18 @@
 				return false;
 		}
 		
-		/* ---------- SETTER --------- */
+		public function setDevTool($set){
+			$this->_devTool = $set;
+		}
+		
+		public function getDevTool($set){
+			return $this->_devTool;
+		}
+		
+		public function setLang($lang){
+			$this->_lang=$lang;
+			$this->_langInstance->setLang($this->_lang);
+		}
 		
 		public function setInfo($info=array()){
 			foreach($info as $cle=>$info){
@@ -256,19 +271,6 @@
 			}
 		}
 		
-		public function setLang($lang){
-			$this->_lang=$lang;
-			$this->_langInstance->setLang($this->_lang);
-		} 
-		
-		/* ---------- GETTER --------- */
-		
-		public  function __desctuct(){
-		
-		}
-		
-		/* ---------- FONCTIONS ------------- */
-		
 		public function affHeader(){
 			$this->header.=$this->doctype."\n";
 			$this->header.="  <head>\n";
@@ -383,5 +385,8 @@
 			else { 
 				$this->setErrorLog('errors', 'Le template '.$nom_template.' n\'a pas été trouvé');
 			}
+		}
+		
+		public  function __desctuct(){
 		}
 	}

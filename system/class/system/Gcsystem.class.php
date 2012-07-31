@@ -103,31 +103,28 @@
 			$this->_routerInstance = new routerGc($this);
 			$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
 			
-			if($this->_domXml->load(ROUTE))
-				$this->_addError('fichier ouvert : '.ROUTE);
-			else
-				$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
+			if($this->_domXml->load(ROUTE)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
+				$routes = $this->_nodeXml->getElementsByTagName('route');
 				
-			$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
-			$routes = $this->_nodeXml->getElementsByTagName('route');
-			
-			foreach($routes as $route){
-				$vars = array();
-                
-                if ($route->hasAttribute('vars')){
-                    $vars = explode(',', $route->getAttribute('vars'));
-                }
+				foreach($routes as $route){
+					$vars = array();
+					
+					if ($route->hasAttribute('vars')){
+						$vars = explode(',', $route->getAttribute('vars'));
+					}
+					
+					$this->_routerInstance->addRoute(new routeGc($route->getAttribute('url'), $route->getAttribute('rubrique'), $route->getAttribute('action'), $vars));
+				}
 				
-				$this->_routerInstance->addRoute(new routeGc($route->getAttribute('url'), $route->getAttribute('rubrique'), $route->getAttribute('action'), $vars));
-			}
-			
-			if($matchedRoute = $this->_routerInstance->getRoute($this->getUri())){
-				$_GET = array_merge($_GET, $matchedRoute->vars());
-				$_GET['rubrique'] = $matchedRoute->module();
-				$_GET['action'] = $matchedRoute->action();
-			}
-			else{
-				$_GET['rubrique'] = "";
+				if($matchedRoute = $this->_routerInstance->getRoute($this->getUri())){
+					$_GET = array_merge($_GET, $matchedRoute->vars());
+					$_GET['rubrique'] = $matchedRoute->module();
+					$_GET['action'] = $matchedRoute->action();
+				}
+				else{
+					$_GET['rubrique'] = "";
+				}
 			}
 		}
 		
@@ -136,43 +133,41 @@
 			
 			if(isset($_GET['rubrique'])){
 				$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
+				
 				if($this->_domXml->load(ROUTE)){
-					$this->_addError('fichier ouvert : '.ROUTE);
-				}
-				else{
-					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
-				}
-				
-				$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
-				$this->_markupXml = $this->_nodeXml->getElementsByTagName('route');
-				
-				$rubrique = "";
-				
-				foreach($this->_markupXml as $sentence){
-					if ($sentence->getAttribute("rubrique") == $_GET['rubrique']){
-						$rubrique =  $sentence->getAttribute("rubrique");
+					$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
+					$this->_markupXml = $this->_nodeXml->getElementsByTagName('route');
+					
+					$rubrique = "";
+					
+					foreach($this->_markupXml as $sentence){
+						if ($sentence->getAttribute("rubrique") == $_GET['rubrique']){
+							$rubrique =  $sentence->getAttribute("rubrique");
+						}
 					}
-				}
-				
-				if($rubrique!=""){
-					if($this->_setRubrique($rubrique) == true){
-						$class = new $rubrique();
-						$class->init();
+					
+					if($rubrique!=""){
+						$plugin = new pluginGc();
 						
-						if($_GET['action']!=""){
-							$action = 'action'.ucfirst($_GET['action']);
-							$class->$action();
-						}
-						elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
-							$action = 'actionDefault'.ucfirst($_GET['action']);
-							$class->$action();
+						if($this->_setRubrique($rubrique) == true){
+							$class = new $rubrique($this->_lang);
+							$class->init();
+							
+							if($_GET['action']!=""){
+								$action = 'action'.ucfirst($_GET['action']);
+								$class->$action();
+							}
+							elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
+								$action = 'actionDefault'.ucfirst($_GET['action']);
+								$class->$action();
+							}
 						}
 					}
-				}
-				else{
-					$this->redirect404();
-					$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
-				}
+					else{
+						$this->redirect404();
+						$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
+					}
+				}				
 			}
 			else{
 				if(is_file(RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php')){ 

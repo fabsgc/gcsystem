@@ -142,7 +142,7 @@
 					break;
 					
 					default :
-						$thisy->_addError('L\'extension n\est pas gérée');
+						$this->_addError('L\'extension n\est pas gérée');
 					break;
 				}
 				

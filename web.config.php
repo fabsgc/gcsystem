@@ -51,6 +51,9 @@ define('RUBRIQUE_EXT', '.class');
 //chemin d'accès aux fichiers de config du projet
 define('APP_CONFIG_PATH', APP_PATH.'config/');
 
+//chemin d'accès aux fichiers de plugins du projet
+define('APP_PLUGIN_PATH', APP_PATH.'config/');
+
 //chemin d'accès des templates
 define('TEMPLATE_PATH', APP_PATH.'template/');
 
@@ -71,12 +74,6 @@ define('GCSYSTEM_PATH', 'GCsystem/');
 
 //extension fichiers de langues
 define('LANG_EXT', '.xml');
-
-//extension fichiers routes
-define('ROUTE_EXT', '.xml');
-
-//extension fichiers de config de l'pplication
-define('CONFIG_EXT', '.xml');
 
 // Définit l'extension des fichiers
 define('FILES_EXT', '.html');
@@ -105,80 +102,29 @@ define('CLASS_LOG', CLASS_PATH.CLASS_SYSTEM_PATH.'logGc.class.php');
 //class gerant les log
 define('CLASS_CACHE', CLASS_PATH.CLASS_SYSTEM_PATH.'cacheGc.class.php');
 
-//class gerant les captchas
-define('CLASS_CAPTCHA', CLASS_PATH.CLASS_HELPER_PATH.'captchaGc.class.php');
-
 //class gerant des exceptions
 define('CLASS_EXCEPTION', CLASS_PATH.CLASS_SYSTEM_PATH.'exceptionGc.class.php');
 
 //class gerant les templates
 define('CLASS_TEMPLATE', CLASS_PATH.CLASS_SYSTEM_PATH.'templateGc.class.php');
 
-//class formsGC
-define('CLASS_FORMSGC', LIB_PATH.'FormsGC/formsGC.php');
-
 //class lang
 define('CLASS_LANG', CLASS_PATH.CLASS_SYSTEM_PATH.'langGc.class.php');
 
-//class file
-define('CLASS_FILE', CLASS_PATH.CLASS_HELPER_PATH.'fileGc.class.php');
-
-//class dir
-define('CLASS_DIR', CLASS_PATH.CLASS_HELPER_PATH.'dirGc.class.php');
-
-//class picture
-define('CLASS_PICTURE', CLASS_PATH.CLASS_HELPER_PATH.'pictureGc.class.php');
-
-//class sql
-define('CLASS_SQL', CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php');
-
 //class appDevGc
-define('CLASS_appDevGc', CLASS_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php');
-
-//class zip
-define('CLASS_ZIP', CLASS_PATH.CLASS_HELPER_PATH.'zipGc.class.php');
-
-//class mail
-define('CLASS_MAIL', CLASS_PATH.CLASS_HELPER_PATH.'mailGc.class.php');
-
-//class bbcode
-define('CLASS_BBCODE', CLASS_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php');
-
-//class modo
-define('CLASS_MODO', CLASS_PATH.CLASS_HELPER_PATH.'modoGc.class.php');
+define('CLASS_APPDEVGC', CLASS_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php');
 
 //class modo
 define('CLASS_TERMINAL', CLASS_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php');
-
-//class upload
-define('CLASS_UPDLOAD', CLASS_PATH.CLASS_HELPER_PATH.'uploadGc.class.php');
-
-//class download
-define('CLASS_DOWNLOAD', CLASS_PATH.CLASS_HELPER_PATH.'downloadGc.class.php');
-
-//class date
-define('CLASS_DATE', CLASS_PATH.CLASS_HELPER_PATH.'dateGc.class.php');
-
-//class texte
-define('CLASS_TEXT', CLASS_PATH.CLASS_HELPER_PATH.'textGc.class.php');
-
-//class feed
-define('CLASS_FEED', CLASS_PATH.CLASS_HELPER_PATH.'feedGc.class.php');
-
-//class js
-define('CLASS_JS', CLASS_PATH.CLASS_HELPER_PATH.'jsGc.class.php');
-
-//class object
-define('CLASS_OBJECT', CLASS_PATH.CLASS_HELPER_PATH.'objectGc.class.php');
-
-//class social
-define('CLASS_SOCIAL', CLASS_PATH.CLASS_HELPER_PATH.'socialGc.class.php');
 
 //autoload des class
 define('CLASS_AUTOLOAD', CLASS_PATH.'autoload.php');
 
 //class gérant le fichier de config de l'application
 define('CLASS_CONFIG', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php');
+
+//class gérant les plugins à inclure
+define('CLASS_PLUGIN', CLASS_PATH.CLASS_SYSTEM_PATH.'pluginGc.class.php');
 
 //class gérant l'url rewrite
 define('CLASS_ROUTER', CLASS_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php');
@@ -210,22 +156,25 @@ define('JQUERYUIJS', JS_PATH.'jquery-ui.min.js');
 define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
 
 //chemin route
-define('ROUTE', APP_CONFIG_PATH.'routes'.ROUTE_EXT);
+define('ROUTE', APP_CONFIG_PATH.'routes.xml');
 
 //chemin route
 define('MODOGCCONFIG', APP_CONFIG_PATH.'modoGc.xml');
 
 //chemin fichier de config de l'pplication
-define('APPCONFIG', APP_CONFIG_PATH.'app'.CONFIG_EXT);
+define('APPCONFIG', APP_CONFIG_PATH.'app.xml');
+
+//chemin route
+define('PLUGIN', APP_PLUGIN_PATH.'plugin.xml');
 
 /* --------------parametres de connexion a la base de donnees------------------*/
 
-$GLOBALS['db']['bdd']['hostname']  = "localhost";
-$GLOBALS['db']['bdd']['username']  = "root";
-$GLOBALS['db']['bdd']['password']  = "";
-$GLOBALS['db']['bdd']['database']  = "test";
-$GLOBALS['db']['bdd']['extension'] = "pdo";
-$GLOBALS['db']['bdd']['sgbd']      = "mysql";
+// $GLOBALS['db']['bdd']['hostname']  = "localhost";
+// $GLOBALS['db']['bdd']['username']  = "root";
+// $GLOBALS['db']['bdd']['password']  = "";
+// $GLOBALS['db']['bdd']['database']  = "test";
+// $GLOBALS['db']['bdd']['extension'] = "pdo";
+// $GLOBALS['db']['bdd']['sgbd']      = "mysql";
 
 /* -------------- CONSTANTE RELATIVE AU SITE OBLIGATOIRES MAIS MODIFIABLES ----------------- */
 

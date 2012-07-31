@@ -42,8 +42,6 @@
 					return $route;
 				}
 			}
-			
-			$this->_addError('Aucune route ne correspond à l\'URL');
 		}
 	}
 	

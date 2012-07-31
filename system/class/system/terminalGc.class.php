@@ -30,19 +30,19 @@
 			$this->_commandExplode = explode(' ', trim($command));
 			$this->_command = '<span style="color: gold;"> '.$command.'</span>';
 			$this->_forbidden = array(
-				RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
+				FUNCTION_GENERIQUE, RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCrubrique'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
-				CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_FEED, CLASS_JS, CLASS_TEXT, CLASS_DATE, CLASS_DOWNLOAD, CLASS_UPDLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
+				CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_FEED, CLASS_JS, CLASS_TEXT, CLASS_DATE, CLASS_DOWNLOAD, CLASS_UPDLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_APPDEVGC,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
 			);
 			$this->_updateFile = array(
-				RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
+				FUNCTION_GENERIQUE, RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
 				'web.config.php',
 				'index.php',
 				LIB_PATH.'FormsGC/formsGC.class.php', LIB_PATH.'FormsGC/formsGCValidator.class.php',
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCrubrique'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
-				CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_FEED, CLASS_JS, CLASS_TEXT, CLASS_DATE, CLASS_DOWNLOAD, CLASS_UPDLOAD ,CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_appDevGc,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
+				CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_FEED, CLASS_JS, CLASS_TEXT, CLASS_DATE, CLASS_DOWNLOAD, CLASS_UPDLOAD ,CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE,CLASS_CAPTCHA,CLASS_EXCEPTION,CLASS_TEMPLATE,CLASS_LANG,CLASS_FILE,CLASS_DIR,CLASS_PICTURE,CLASS_SQL,CLASS_APPDEVGC,CLASS_ZIP,CLASS_ZIP,CLASS_BBCODE,CLASS_MODO,CLASS_TERMINAL,
 				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT, 
 			); // liste des fichiers systèmes à updater
 		}
@@ -66,6 +66,15 @@
 				}
 			}
 			elseif(isset($_SESSION['GC_terminalMdp']) && $_SESSION['GC_terminalMdp']==1){
+				if(preg_match('#42(.+)#', $this->_command)){
+					$this->_result = '<br />> <span style="color: chartreuse;">La grande question sur la vie, l\'univers et le reste (en anglais : the Ultimate 
+						Question of Life, the Universe and Everything) est, dans l\'œuvre de Douglas Adams Le Guide du voyageur galactique, la question ultime sur 
+						le sens de la vie. Une réponse est proposée, le nombre 42 mais le problème est que personne n\'a jamais su la question précise. 
+						Dans l\'histoire, la réponse est cherchée par le super-ordinateur Pensées Profondes (Deep Thought en version originale — dans les anciennes 
+						éditions, Grand Compute Un). Cependant, il n\'était pas assez puissant pour fournir la question ultime après avoir trouvé la réponse 
+						(à la suite de 7,5 millions d\'années de calculs). La réponse de Pensées Profondes embarque les protagonistes dans une quête pour 
+						découvrir la question qui y correspond.';	
+				}
 				if(preg_match('#add rubrique (.+)#', $this->_command)){
 					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden)){
 						echo RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php'.' / '.$this->_forbidden[0];
@@ -85,9 +94,7 @@
 						$this->_result = '<br />> <span style="color: chartreuse;">la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; cr&#233;&#233;e</span>';
 						
 						$this->_domXml = new DomDocument('1.0', CHARSET);
-						if($this->_domXml->load(ROUTE)){
-							$this->_addError('fichier ouvert : '.ROUTE);
-							
+						if($this->_domXml->load(ROUTE)){							
 							$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
 							$sentences = $this->_nodeXml->getElementsByTagName('route');
 				
@@ -110,17 +117,45 @@
 								$this->_nodeXml->appendChild($this->_markupXml);
 								$this->_domXml->save(ROUTE);
 							}
-							else{
-								$this->_addError('La rubrique '.$this->_commandExplode[2].' existe déjà');
-							}
-						}
-						else{
-							$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
 						}
 					}
 					else{
 						$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php';
 						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
+					}
+				}
+				elseif(preg_match('#add plugin (.+)#', $this->_command)){
+					if(isset($this->_commandExplode[2]) && isset($this->_commandExplode[3]) && isset($this->_commandExplode[4]) && isset($this->_commandExplode[5]) && isset($this->_commandExplode[6])){
+						$this->_domXml = new DomDocument('1.0', CHARSET);
+						if($this->_domXml->load(PLUGIN)){							
+							$this->_nodeXml = $this->_domXml->getElementsByTagName('plugins')->item(0);
+							$sentences = $this->_nodeXml->getElementsByTagName('plugin');
+				
+							$rubrique = false;
+							
+							foreach($sentences as $sentence){
+								if ($sentence->getAttribute("rubrique") == $this->_commandExplode[2]){
+									$rubrique = true;
+								}
+							}
+							
+							if($rubrique == false){
+								$this->_markupXml = $this->_domXml->createElement('plugin');
+								$this->_markupXml->setAttribute("type", $this->_commandExplode[2]);
+								$this->_markupXml->setAttribute("name", $this->_commandExplode[3]);
+								$this->_markupXml->setAttribute("access", $this->_commandExplode[4]);
+								$this->_markupXml->setAttribute("enabled", $this->_commandExplode[5]);
+								$this->_markupXml->setAttribute("include", $this->_commandExplode[6]);
+							
+								$this->_nodeXml->appendChild($this->_markupXml);
+								$this->_domXml->save(PLUGIN);
+							}
+							
+							$this->_result = '<br />> <span style="color: chartreuse;">le plugin <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; ajouté</span>';
+						}
+					}
+					else{
+						$this->_result = '<br />><span style="color: red;"> Erreur de syntaxe</span>';
 					}
 				}
 				elseif(preg_match('#delete rubrique (.+)#', $this->_command)){
@@ -131,9 +166,8 @@
 						}
 						
 						$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
-						if($this->_domXml->load(ROUTE)){
-							$this->_addError('fichier ouvert : '.ROUTE);
-							
+						
+						if($this->_domXml->load(ROUTE)){							
 							$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
 							$sentences = $this->_nodeXml->getElementsByTagName('route');
 				
@@ -144,9 +178,6 @@
 							}
 							$this->_domXml->save(ROUTE);
 						}
-						else{
-							$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
-						}
 
 						$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; supprim&#233;e</span>';
 					}
@@ -154,6 +185,56 @@
 						$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php';
 						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
 					}
+				}
+				elseif(preg_match('#set plugin (.+)#', $this->_command)){
+					if(isset($this->_commandExplode[2]) && isset($this->_commandExplode[3]) && isset($this->_commandExplode[4]) && isset($this->_commandExplode[5]) && isset($this->_commandExplode[6])){
+						$this->_domXml = new DomDocument('1.0', CHARSET);
+						if($this->_domXml->load(PLUGIN)){					
+							if($this->_domXml->load(PLUGIN)){						
+								$this->_nodeXml = $this->_domXml->getElementsByTagName('plugins')->item(0);
+								$sentences = $this->_nodeXml->getElementsByTagName('plugin');
+					
+								foreach($sentences as $sentence){
+									if ($sentence->getAttribute("name") == $this->_commandExplode[3]){
+										$this->_nodeXml->removeChild($sentence);
+										
+										$this->_markupXml = $this->_domXml->createElement('plugin');
+										$this->_markupXml->setAttribute("type", $this->_commandExplode[2]);
+										$this->_markupXml->setAttribute("name", $this->_commandExplode[3]);
+										$this->_markupXml->setAttribute("access", $this->_commandExplode[4]);
+										$this->_markupXml->setAttribute("enabled", $this->_commandExplode[5]);
+										$this->_markupXml->setAttribute("include", $this->_commandExplode[6]);
+									
+										$this->_nodeXml->appendChild($this->_markupXml);
+										$this->_domXml->save(PLUGIN);
+									}
+								}
+								$this->_domXml->save(PLUGIN);
+							}
+							
+							$this->_result = '<br />> <span style="color: chartreuse;">le plugin <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; modifié</span>';
+						}
+					}
+					else{
+						$this->_result = '<br />><span style="color: red;"> Erreur de syntaxe</span>';
+					}
+				}
+				elseif(preg_match('#delete plugin (.+)#', $this->_command)){
+					$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
+					
+					if($this->_domXml->load(PLUGIN)){							
+						$this->_nodeXml = $this->_domXml->getElementsByTagName('plugins')->item(0);
+						$sentences = $this->_nodeXml->getElementsByTagName('plugin');
+				
+						foreach($sentences as $sentence){
+							if ($sentence->getAttribute("name") == $this->_commandExplode[2]){
+								$this->_nodeXml->removeChild($sentence);    
+							}
+						}
+						$this->_domXml->save(PLUGIN);
+					}
+
+					$this->_result = '<br />><span style="color: chartreuse;"> le plugin <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; supprim&#233;</span>';
 				}
 				elseif(preg_match('#add template (.+)#', $this->_command)){
 					if(!in_array(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT, $this->_forbidden)){
@@ -238,9 +319,7 @@
 								}
 								
 								$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
-								if($this->_domXml->load(ROUTE)){
-									$this->_addError('fichier ouvert : '.ROUTE);
-									
+								if($this->_domXml->load(ROUTE)){									
 									$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
 									$sentences = $this->_nodeXml->getElementsByTagName('route');
 						
@@ -272,15 +351,12 @@
 									
 									file_put_contents(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php', $data);
 								}
-								else{
-									$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
-								}
 
 								$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; r&#233;nomm&#233;e en <u>'.$this->_commandExplode[3].'</u></span>';
 							}
 							else{
 								$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php';
-							$this->_result = '<br />><span style="color: red;"> Une rubrique porte d&#233;jà le même nom</span>';
+								$this->_result = '<br />><span style="color: red;"> Une rubrique porte d&#233;jà le même nom</span>';
 							}
 						}
 						else{
@@ -341,9 +417,13 @@
 					$this->_stream .= '<br />> delete template nom';
 					$this->_stream .= '<br />> rename template nom nouveaunom';
 					$this->_stream .= '<br />> add class nom';
+					$this->_stream .= '<br />> add plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
+					$this->_stream .= '<br />> set plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
+					$this->_stream .= '<br />> delete plugin name';
 					$this->_stream .= '<br />> list template';
 					$this->_stream .= '<br />> list included';
 					$this->_stream .= '<br />> list rubrique';
+					$this->_stream .= '<br />> list cache';
 					$this->_stream .= '<br />> clear cache';
 					$this->_stream .= '<br />> clear log';
 					$this->_stream .= '<br />> clear';
@@ -353,6 +433,7 @@
 					$this->_stream .= '<br />> changepassword nouveaumdp';
 					$this->_stream .= '<br />> connect mdp';
 					$this->_stream .= '<br />> disconnect';
+					$this->_stream .= '<br />> help';
 					$this->_result = '<br />><span style="color: chartreuse;"> liste des commandes</span>';
 				}
 				elseif(preg_match('#update updater#', $this->_command)){

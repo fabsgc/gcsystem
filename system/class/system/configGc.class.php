@@ -15,9 +15,7 @@
 		
 		public function __construct(){
 			$this->_domXml = new DomDocument('1.0', CHARSET);
-			if($this->_domXml->load(APPCONFIG)){
-				$this->_addError('fichier ouvert : '.ROUTE);
-				
+			if($this->_domXml->load(APPCONFIG)){				
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('definitions')->item(0);
 				$this->_markupXml = $this->_nodeXml->getElementsByTagName('define');
 
@@ -26,9 +24,6 @@
 						define('USER_'.strtoupper(strval($sentence->getAttribute("id"))).'', strval($sentence->getAttribute("value")));
 					}
 				}
-			}
-			else{
-				$this->_addError('Le fichier '.APPCONFIG.' n\'a pas pu être ouvert');
 			}
 		}
 		

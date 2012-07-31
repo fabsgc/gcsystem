@@ -36,7 +36,6 @@
 			} 
 			else{
 				array_push($error, 'le fichier de template spécifié n\'a pas été trouvé.');
-				$this->_addError("le fichier de template ne peut pas être lu");
 				$this->_nom=$nom;
 				$this->_timeCache=$timecache;
 				$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';

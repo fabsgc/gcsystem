@@ -7,6 +7,8 @@
 	*/
 	
 	class paginationGc{
+		use errorGc, langInstance                  ;                         //trait
+		
 		protected $_byPage                = 2      ;
 		protected $_entry                          ;
 		protected $_buttonFl              = true   ;
@@ -35,7 +37,7 @@
 		 * @since 2.0
 		*/
 		
-		public function __construct($donnees = array()){
+		public function __construct($donnees = array(), $lang=""){
 			foreach($donnees as $cle => $val){
 				switch($cle){
 					case 'buttonFl':
@@ -78,6 +80,17 @@
 			}
 			
 			$this->_setData();
+			
+			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
+			$this->_createLangInstance();
+		}
+		
+		protected function _createLangInstance(){
+			$this->_langInstance = new langGc($this->_lang);
+		}
+		
+		public function useLang($sentence){
+			return $this->_langInstance->loadSentence($sentence);
 		}
 		
 		protected function _setData(){
@@ -168,7 +181,7 @@
 		
 		public function show(){
 			$rand = rand(0,2);
-			$tpl = new templateGc('GCsystem\GCpagination', 'pagination_'.$rand);
+			$tpl = new templateGc('GCsystem\GCpagination', 'pagination_'.$rand, 0,'en');
 			
 			$tpl->assign(array(
 				'paginationFirstLast'    => $this->_buttonFl,

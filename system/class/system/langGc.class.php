@@ -38,7 +38,6 @@
 		
 		public function setLang($lang){
 			$this->_lang = $lang;
-			$this->_addError('fichier à ouvrir : '.$lang);
 			$this->loadFile();
 		}
 		
@@ -55,25 +54,20 @@
 				$this->_domXml = new DomDocument('1.0', 'utf-8');
 				if($this->_domXml->load(LANG_PATH.$this->_lang.LANG_EXT)){
 					$this->_langFile=true;
-					$this->_addError('fichier ouvert : '.$this->_lang);
 				}
 				else{
 					$this->_langFile=false;
-					$this->_addError('Le fichier de langue n\'a pas pu être ouvert.');
 				}
 			}
 			else{
-				$this->_addError('Le fichier de langue n\'a pas &#233;t&#233; trouv&#233;, passage par la langue par d&#233;faut.');
 				$this->_lang = DEFAULTLANG;
 				$this->_langFile=true;
 				$this->_domXml = new DomDocument('1.0', CHARSET);
 				if($this->_domXml->load(LANG_PATH.$this->_lang.LANG_EXT)){
 					$this->_langFile=true;
-					$this->_addError('fichier ouvert : '.$this->_lang);
 				}
 				else{
 					$this->_langFile=false;
-					$this->_addError('Le fichier de langue n\'a pas pu &#234;tre ouvert.');
 				}
 			}
 		}
@@ -104,9 +98,6 @@
 				else{
 					return 'texte non trouv&#233;';
 				}
-			}
-			else{
-				$this->_addError('Le fichier de langue ne peut pas &#234;tre lu.');
 			}
 		}
 		
