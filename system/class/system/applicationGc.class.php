@@ -40,7 +40,6 @@
 		
 		protected $_var               = array()                                  ; //contient les variables que l'on passe depuis l'extérieur : obsolète
 		protected $bdd                                                           ; //contient la connexion sql
-		protected $model                                                         ; //contient le model
 		
 		/* --- permet d'affiche le doctype et l'entete (avant la balise body) et </body></html> -- */
 		
@@ -63,8 +62,8 @@
 		public function loadModel(){
 			$class = 'manager'.ucfirst($_GET['rubrique']);
 			if(class_exists($class)){	
-				$this->model = new $class($this->bdd, $this->_lang);
 				$this->_addError('Model '.$_GET['rubrique'].' initialisé');
+				return new $class($this->bdd, $this->_lang);
 			}
 		}
 		

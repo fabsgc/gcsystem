@@ -1,7 +1,11 @@
 <?php
 	class terminal extends applicationGc{
-		public function init(){
+		public $forms                = array();
+		public $sql                  = array();
+		public $model                         ;
 		
+		public function init(){
+			$this->model = $this->loadModel(); //chargement du model
 		}
 		
 		public function actionDefault(){
