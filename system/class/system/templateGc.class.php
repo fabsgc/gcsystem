@@ -286,7 +286,7 @@
 		
 		protected function parseIncludeCallback($m){
 			$file[1] = TEMPLATE_PATH.$m[1].TEMPLATE_EXT;
-			
+			$content = "";
 			if($this->templateGC->getFile() != $file[1]){
 				if(file_exists($file[1]) or is_readable($file[1])){
 					$t = new templateGc($m[1], 'tplInclude', 0);
