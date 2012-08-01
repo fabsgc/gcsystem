@@ -44,6 +44,10 @@
 			}
 		}
 		
+		public function getFile(){
+			return $this->_file;
+		}
+		
 		protected function _createLangInstance(){
 			$this->_langInstance = new langGc($this->_lang);
 		}
@@ -238,8 +242,8 @@
 			$this->_langInstance = new langGc($this->_lang);
 		}
 		
-		public function useLang($sentence){
-			return $this->_langInstance->loadSentence($sentence);
+		public function useLang($sentence, $var = array()){
+			return $this->_langInstance->loadSentence($sentence, $var);
 		}
 		
 		public function parse($c){
@@ -276,31 +280,22 @@
 		
 		protected function parseInclude(){
 			$this->contenu = preg_replace_callback(
-				'`<'.preg_quote($this->bal['include'][0]).' '.preg_quote($this->bal['include'][1]).'="(.+)" />`isU', 
-				array('templateGcParser','parseIncludeCallback'), $this->contenu);	
-				
-			$this->contenu=$this->parseIncludeChaine($this->contenu);
-		}
-		
-		protected function parseIncludeChaine($chaine){
-			$chaine = preg_replace_callback(
-				'`<'.preg_quote($this->bal['include'][0]).' '.preg_quote($this->bal['include'][1]).'="(.+)" />`isU', 
-				array('templateGcParser','parseIncludeCallback'), $chaine);	
-				
-				return $chaine;
+				'`<'.preg_quote($this->bal['include'][0]).' '.preg_quote($this->bal['include'][1]).'="(.+)"(.*)/>`isU', 
+				array('templateGcParser','parseIncludeCallback'), $this->contenu);
 		}
 		
 		protected function parseIncludeCallback($m){
-			foreach($m as $m){
-				//if($this->templateGC->file!=$m){
-					$m = TEMPLATE_PATH.$m.TEMPLATE_EXT;
-					if(file_exists($m) or is_readable($m)){
-						$handle = fopen($m, 'rb');
-						$content = fread($handle, filesize ($m));
-						fclose ($m);
-					}
-				//}
+			$file[1] = TEMPLATE_PATH.$m[1].TEMPLATE_EXT;
+			
+			if($this->templateGC->getFile() != $file[1]){
+				if(file_exists($file[1]) or is_readable($file[1])){
+					$t = new templateGc($m[1], 'tplInclude', 0);
+					$t->assign($this->templateGC->vars);
+					$t->setShow(false);
+					$content = $t->show();
+				}
 			}
+
 			return $content;
 		}
 		

@@ -77,14 +77,23 @@
 		 * @since 2.0
 		*/
 		
-		public function loadSentence($nom){
+		public function loadSentence($nom, $var = array()){
 			if($this->_langFile==true){
 				$blog = $this->_domXml->getElementsByTagName('lang')->item(0);
 				$sentences = $blog->getElementsByTagName('sentence');
 				
 				foreach($sentences as $sentence){
 					if ($sentence->getAttribute("id") == $nom){
-						$this->_content =  $sentence->firstChild->nodeValue;
+						if(count($var) < 1){
+							$this->_content = $sentence->firstChild->nodeValue;
+						}
+						else{
+							$this->_content = $sentence->firstChild->nodeValue;
+							
+							foreach($var as $cle => $val){
+								$this->_content = preg_replace('#\{'.$cle.'\}#isU', $val, $this->_content);
+							}
+						}
 					}
 				}
 				

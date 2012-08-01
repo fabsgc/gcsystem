@@ -4,6 +4,7 @@
     <route id="index" url="/index.html" rubrique="index" action="" vars=""/>
     <route id="page" url="/page.html" rubrique="index" action="pagination" vars="page"/>
     <route id="page2" url="/page-p([0-9]+)\.html" rubrique="index" action="pagination" vars="page"/>
+    <route id="template" url="/template.html" rubrique="index" action="template" vars="page"/>
     <route id="terminal" url="/terminal\.html" rubrique="terminal" action="" vars=""/>
     <route id="terminal_terminal" url="/terminal-terminal\.html" rubrique="terminal" action="terminal" vars=""/>
 </routes>

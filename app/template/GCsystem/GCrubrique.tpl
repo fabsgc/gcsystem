@@ -10,6 +10,7 @@
 		}
 		
 		public function actionDefault(){
+			".'$this'."->showDefault();
 		}
 	}" />
 {var}

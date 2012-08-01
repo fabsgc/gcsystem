@@ -33,6 +33,17 @@
 			echo $this->getVar('forms')->showForms();
 		}
 		
+		public function actionTemplate(){
+			$t = new templateGc('tpl1', 'tpl1', 0);
+			$t->assign(array(
+				'var'=> 'salutsalut',
+				'var2'=>'bonsoir',
+				'var3'=>'bonsoir numero 2',
+				'prout'=>'on dit prout'
+			));
+			$t->show();
+		}
+		
 		public function actionPagination(){
 			// $this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
 			// echo $this->affHeader();

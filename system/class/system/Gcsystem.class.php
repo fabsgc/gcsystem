@@ -146,11 +146,18 @@
 								$class->init();
 								
 								if($_GET['action']!=""){
-									$action = 'action'.ucfirst($_GET['action']);
-									$class->$action();
+									if(is_callable(array($rubrique, 'action'.$_GET['action']))){
+										$action = 'action'.ucfirst($_GET['action']);
+										$class->$action();
+									}
+									else{
+										$action = 'actionDefault';
+										$class->$action();
+										$this->_addError('L\'appel du contrôleur action'.ucfirst($_GET['action']).' de la rubrique '.$rubrique.' a échoué. Appel du contrôleur par défaut');
+									}
 								}
 								elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
-									$action = 'actionDefault'.ucfirst($_GET['action']);
+									$action = 'actionDefault';
 									$class->$action();
 								}
 							$this->_output = ob_get_contents();
@@ -185,8 +192,8 @@
 			$this->_langInstance = new langGc($this->_lang);
 		}
 		
-		public function useLang($sentence){
-			return $this->_langInstance->loadSentence($sentence);
+		public function useLang($sentence, $var = array()){
+			return $this->_langInstance->loadSentence($sentence, $var);
 		}
 		
 		public function GzipinitOutputFilter(){
@@ -203,7 +210,7 @@
 				return true;
 			}
 			else{ 
-				$this->windowInfo('Erreur', $this->useLang('rubriquenotfound'), 0, './'); 
+				$this->windowInfo('Erreur', $this->useLang('rubriquenotfound', array('rubrique' => $rubrique)), 0, './'); 
 				return false;
 			}
 		}

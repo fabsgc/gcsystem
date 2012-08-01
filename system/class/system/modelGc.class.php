@@ -24,8 +24,8 @@
 			$this->_langInstance = new langGc($this->_lang);
 		}
 		
-		public function useLang($sentence){
-			return $this->_langInstance->loadSentence($sentence);
+		public function useLang($sentence, $var = array()){
+			return $this->_langInstance->loadSentence($sentence, $var);
 		}
 		
 		public function getLang(){

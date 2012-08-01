@@ -154,8 +154,8 @@
 			$this->_langInstance = new langGc($this->_lang);
 		}
 
-		public function useLang($sentence){
-			return $this->_langInstance->loadSentence($sentence);
+		public function useLang($sentence, $var = array()){
+			return $this->_langInstance->loadSentence($sentence, $var);
 		}
 
 		public function parse($contenu){
@@ -388,7 +388,7 @@
 				'theme' => $this->_bbCodeButton,
 				'smiley' => $this->_bbCodeSmiley,
 				'bbcode' => $this->_bbCodeJs,
-				'imgpath' => IMG_PATH.GCSYSTEM_PATH,
+				'imgpath' => FOLDER.'/'.IMG_PATH.GCSYSTEM_PATH,
 				'bbCodeS' => $this->_bbCodeSJs,
 				'bbCodeEditor' => $this->_bbCodeEditor,
 				'color' => $this->_bbCodeButtonColor

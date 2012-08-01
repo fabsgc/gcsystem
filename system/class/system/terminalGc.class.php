@@ -47,8 +47,8 @@
 			$this->_langInstance = new langGc($this->_lang);
 		}
 		
-		public function useLang($sentence){
-			return $this->_langInstance->loadSentence($sentence);
+		public function useLang($sentence, $var = array()){
+			return $this->_langInstance->loadSentence($sentence, $var);
 		}
 
 		public function parse(){
@@ -112,7 +112,7 @@
 							if($rubrique == false){
 								$this->_markupXml = $this->_domXml->createElement('route');
 								$this->_markupXml->setAttribute("id", uniqid());
-								$this->_markupXml->setAttribute("url", "");
+								$this->_markupXml->setAttribute("url", "/".$this->_commandExplode[2]);
 								$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[2]);
 								$this->_markupXml->setAttribute("action", "");
 								$this->_markupXml->setAttribute("vars", "");
@@ -485,8 +485,8 @@
 						
 						foreach($sauvegardes as $valeur){
 							if(strlen($valeur)>=10){
-								$search = array ('@[éèêëÊË]@i','@[àâäÂÄ]@i','@[îïÎÏ]@i','@[ûùüÛÜ]@i','@[ôöÔÖ]@i','@[ç]@i', '@°@');
-								$replace = array ('e','a','i','u','o','c', ' ');
+								$search = array ();
+								$replace = array ();
 								$valeur = preg_replace($search, $replace, $valeur);
 								if($i == 0){
 									$this->_stream .= '<br />> <span style="color: chartreuse;">'.($valeur).'</span>';

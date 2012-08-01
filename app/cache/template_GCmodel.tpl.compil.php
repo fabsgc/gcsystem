@@ -1,6 +1,6 @@
 <?php $var ="<?php
 	class manager".$rubrique." extends modelGc{
-		public ".'$bdd'."                           ;
+		protected ".'$bdd'."                           ;
 		
 		public function init(){
 		}

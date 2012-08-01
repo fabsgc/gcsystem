@@ -42,18 +42,18 @@
 		
 		/* ---------- CONSTRUCTEURS --------- */
 		
-		public  function __construct($lang=""){
+		public function __construct($lang=""){
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();
 			if(CONNECTBDD == true) {$this->bdd=$this->_connectDatabase($GLOBALS['db']); }
 			$this->_addError('Contrôleur '.$_GET['rubrique'].' initialisé');
 		}
 		
-		public function init(){
+		protected function init(){
 			
 		}
 		
-		public function loadModel(){
+		protected function loadModel(){
 			$class = 'manager'.ucfirst($_GET['rubrique']);
 			if(class_exists($class)){	
 				$this->_addError('Model '.$_GET['rubrique'].' initialisé');
@@ -92,7 +92,7 @@
 			return $sql_connect;
 		}
 		
-		public function hydrate(array $donnees){
+		protected function hydrate(array $donnees){
             foreach ($donnees as $attribut => $valeur){
                 $methode = 'set'.ucfirst($attribut);
                 
@@ -106,52 +106,52 @@
 			$this->_langInstance = new langGc($this->_lang);
 		}
 		
-		public function useLang($sentence){
-			return $this->_langInstance->loadSentence($sentence);
+		protected function useLang($sentence, $var = array()){
+			return $this->_langInstance->loadSentence($sentence, $var);
 		}
 		
-		public function getLang(){
+		protected function getLang(){
 			return $this->_lang;
 		}
 		
-		public function setVar($nom, $val){
+		protected function setVar($nom, $val){
 			$this->_var[$nom] = $val;
 		}
 		
-		public function setVarArray($var){
+		protected function setVarArray($var){
 			foreach($var as $cle => $val){
 				$this->_var[$cle] = $val;
 			}
 		}
 		
-		public function getVar($nom){
+		protected function getVar($nom){
 			if(isset($this->_var[$nom]))
 				return $this->_var[$nom];
 			else
 				return false;
 		}
 		
-		public function unSetVar($nom){
+		protected function unSetVar($nom){
 			if(isset($this->_var[$nom]))
 				unset($this->_var[$nom]);
 			else
 				return false;
 		}
 		
-		public function setDevTool($set){
+		protected function setDevTool($set){
 			$this->_devTool = $set;
 		}
 		
-		public function getDevTool($set){
+		protected function getDevTool($set){
 			return $this->_devTool;
 		}
 		
-		public function setLang($lang){
+		protected function setLang($lang){
 			$this->_lang=$lang;
 			$this->_langInstance->setLang($this->_lang);
 		}
 		
-		public function setInfo($info=array()){
+		protected function setInfo($info=array()){
 			foreach($info as $cle=>$info){
 				switch($cle){
 					case'doctype':
@@ -276,7 +276,7 @@
 			}
 		}
 		
-		public function affHeader(){
+		protected function affHeader(){
 			$this->header.=$this->doctype."\n";
 			$this->header.="  <head>\n";
 			$this->header.="    <title>".($this->title)."</title>\n";
@@ -373,17 +373,25 @@
 			return $this->header;			
 		} 
 		
-		public function affFooter(){
+		protected function affFooter(){
 			$this->footer="  </body>\n</html>";
 			return $this->footer;
 		}
 		
-		public function genererToken(){
+		protected function genererToken(){
 			$token = uniqid(rand(), true);
 			return $token;
 		}
 		
-		public function affTemplate($nom_template){
+		protected function showDefault(){
+			$t= new templateGC(GCSYSTEM_PATH.'GCnewrubrique', 'GCrubrique', '0');
+			$t->assign(array(
+				'rubrique' => $_GET['rubrique']
+			));
+			$t->show();
+		}
+		
+		protected function affTemplate($nom_template){
 			if(is_file(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT)) { 
 				include(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT);
 			} 
@@ -392,6 +400,6 @@
 			}
 		}
 		
-		public  function __desctuct(){
+		public function __desctuct(){
 		}
 	}

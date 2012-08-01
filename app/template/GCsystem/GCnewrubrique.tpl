@@ -26,5 +26,5 @@
 	}
 </style>
 <div id="GCsystem">
-	<h1><?php echo ($rubrique); ?>::Default</h1>
+	<h1>{rubrique}::Default</h1>
 </div>
