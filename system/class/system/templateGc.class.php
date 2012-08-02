@@ -264,13 +264,15 @@
 			$this->parseFor();
 			$this->parsevarsExist();
 			$this->parsevars();
-			$this->parseVarAdd();
+			$this->parsevarFunc();
+			$this->parsevarAdd();
 			$this->parseCond();
 			$this->parseSwitch();
 			$this->parseCom();
 			$this->parseFunc();
 			$this->parseSpaghettis();
 			$this->parseLang();
+			$this->parseException();
 			return $this->_contenu;
 		}
 		
@@ -279,7 +281,11 @@
 				$variable = '$'.$cle.'='.$valeur.';';
 				$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).$this->_regexSpace.$cle.$this->_regexSpace.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($'.$cle.'); ?>', $this->_contenu);
 			}
-			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).$this->_regexSpace.'([\[\]A-Za-z0-9._-]+)'.$this->_regexSpace.$this->_regexSpace.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($$1); ?>', $this->_contenu);
+			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).$this->_regexSpace.'([\[\]A-Za-z0-9._-]+)'.$this->_regexSpace.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($$1); ?>', $this->_contenu);
+		}
+		
+		protected function parsevarFunc(){
+			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).$this->_regexSpace.'<(.+)>'.$this->_regexSpace.preg_quote($this->bal['vars'][1]).'`', '<?php echo <$1>; ?>', $this->_contenu);
 		}
 		
 		protected function parsevarsExist(){
@@ -357,7 +363,7 @@
 		}
 		
 		protected function parseFunc(){
-			$this->_contenu = preg_replace_callback('`<'.preg_quote($this->bal['function'][0]).$this->_regexSpaceR.preg_quote($this->bal['function'][1]).'="(\w+)"\s?(.*)?/?>`isU', array('templateGcParser', 'parseFuncCallback'), $this->_contenu);
+			$this->_contenu = preg_replace_callback('`<'.preg_quote($this->bal['function'][0]).$this->_regexSpaceR.preg_quote($this->bal['function'][1]).'="'.$this->_regexSpace.'(\w+)'.$this->_regexSpace.'"\s?(.*)?/?>`isU', array('templateGcParser', 'parseFuncCallback'), $this->_contenu);
 		}
 
 		protected function parseFuncCallback($m){
@@ -369,12 +375,7 @@
 			}
 			$args = substr($args, 0, strlen($args)-2);
 			
-			if(in_array($m[1], $this->_functionException)){
-				return '<?php '.$m[1].'('.$args.'); ?>';
-			}
-			else{
-				return '<?php echo ('.$m[1].'('.$args.')); ?>';
-			}
+			return '<?php ('.$m[1].'('.$args.')); ?>';
 		}
 		
 		protected function parseForeach(){
@@ -500,5 +501,12 @@
 				}
 			}
 			return $this->getUrl($m[1], $valeur);
+		}
+
+		protected function parseException(){
+			$this->_contenu = preg_replace('#'.preg_quote('; ?>; ?>').'#isU', '; ?>', $this->_contenu);
+			$this->_contenu = preg_replace('#'.preg_quote('<?php echo <?php').'#isU', '<?php echo', $this->_contenu);
+			$this->_contenu = preg_replace('#'.preg_quote('<?php').'(.*)'.preg_quote('= <?php').'#isU', '<?php$1=', $this->_contenu);
+			$this->_contenu = preg_replace('#'.preg_quote('?>').$this->_regexSpaceR.preg_quote('/>').'#isU', '?>', $this->_contenu);
 		}
 	}

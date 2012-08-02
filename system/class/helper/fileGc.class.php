@@ -18,8 +18,8 @@
 		protected $_isExist                           = false  ;
 		
 		const NOFILE   = 'Aucun fichier n\'a été difini'     ;
-		const NOACCESS = 'le fichier n\'est pas accessible'                ;
-		const NOREAD   = 'le fichier n\'est pas lisible'                   ;
+		const NOACCESS = 'le fichier n\'est pas accessible'  ;
+		const NOREAD   = 'le fichier n\'est pas lisible'     ;
 		
 		const CHMOD0644                              = 0644  ;
 		const CHMOD0755                              = 0755  ;
