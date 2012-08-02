@@ -48,6 +48,10 @@
 			return $this->_file;
 		}
 		
+		public function getTimeCache(){
+			return $this->_timeCache;
+		}
+		
 		protected function _createLangInstance(){
 			$this->_langInstance = new langGc($this->_lang);
 		}
@@ -212,28 +216,30 @@
 	class templateGcParser{
 		use errorGc, langInstance, urlRegex;                                              //trait
 		
-		protected $templateGC     ;
-		protected $contenu        ;
-		
+		protected $_templateGC                          ;
+		protected $_contenu                             ;
+		protected $_functionException = array('print_r');
+		protected $_regexSpace        = '\s*'         ;
+		protected $_regexSpaceR        = '\s+'         ;
 		
 		/// les balises à parser
 		protected $bal= array(
-			'vars'           => array('{', '}', '{$', '}', '{{', '}}', 'variable', '{{gravatar:', '}}', '{{url:', '}}'),  // vars
+			'vars'           => array('{', '}', '{$', '}', '{{', '}}', 'variable', '{{gravatar:', '}}', '{{url:', '}}', '{{def:', '}}'),  // vars
 			'include'        => array('include', 'file', 'cache'),                   // include
 			'cond'           => array('if', 'elseif', 'else', 'cond'),               // condition
 			'foreach'        => array('foreach', 'var', 'as', 'foreachelse'),        // boucle tableau
 			'function'       => array('function', 'name'),                           // fonction
 			'com'            => array('/#', '#/'),                                   // commentaire
 			'switch'         => array('switch', 'case', 'cond', 'default'),          // switch
-			'while'          => array('while', 'var'),                               // while
-			'for'            => array('for', 'var', 'boucle'),                       // for
+			'while'          => array('while', 'cond'),                              // while
+			'for'            => array('for', 'var', 'boucle', 'cond'),               // for
 			'spaghettis'     => array('continue', 'break', 'goto', 'from', 'to'),    // spaghettis
 			'lang'           => array('_(', ')_'));                                  // langue
 
 		protected $error;
 		
 		public  function __construct(templateGC &$tplGC, $lang = 'fr'){
-			$this->templateGC=$tplGC;
+			$this->_templateGC=$tplGC;
 			$this->_lang=$lang;
 			$this->_createLangInstance();
 		}
@@ -247,10 +253,12 @@
 		}
 		
 		public function parse($c){
-			$this->contenu=$c;
+			$this->_contenu=$c;
 			$this->parseInclude();
 			$this->parseGravatar();
 			$this->parseUrlRegex();
+			$this->parseDefine();
+			$this->parseDefineClass();
 			$this->parseForeach();
 			$this->parseWhile();
 			$this->parseFor();
@@ -263,47 +271,58 @@
 			$this->parseFunc();
 			$this->parseSpaghettis();
 			$this->parseLang();
-			return $this->contenu;
+			return $this->_contenu;
 		}
 		
 		protected function parsevars(){
-			foreach ($this->templateGC->vars as $cle => $valeur){
+			foreach ($this->_templateGC->vars as $cle => $valeur){
 				$variable = '$'.$cle.'='.$valeur.';';
-				$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).''.$cle.''.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($'.$cle.'); ?>', $this->contenu);
+				$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).$this->_regexSpace.$cle.$this->_regexSpace.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($'.$cle.'); ?>', $this->_contenu);
 			}
-			$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).'([\[\]A-Za-z0-9._-]+)'.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($$1); ?>', $this->contenu);
+			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).$this->_regexSpace.'([\[\]A-Za-z0-9._-]+)'.$this->_regexSpace.$this->_regexSpace.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($$1); ?>', $this->_contenu);
 		}
 		
 		protected function parsevarsExist(){
-			$this->contenu = preg_replace('`'.preg_quote($this->bal['vars'][2]).'([\[\]A-Za-z0-9\$\'._-]+)'.preg_quote($this->bal['vars'][3]).'`', '<?php echo ($1); ?>', $this->contenu);
+			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][2]).$this->_regexSpace.'([\[\]A-Za-z0-9\$\'._-]+)'.$this->_regexSpace.preg_quote($this->bal['vars'][3]).'`', '<?php echo ($1); ?>', $this->_contenu);
 		}
 		
 		protected function parseInclude(){
-			$this->contenu = preg_replace_callback(
-				'`<'.preg_quote($this->bal['include'][0]).' '.preg_quote($this->bal['include'][1]).'="(.+)"(.*)/>`isU', 
-				array('templateGcParser','parseIncludeCallback'), $this->contenu);
+			$this->_contenu = preg_replace_callback(
+				'`<'.preg_quote($this->bal['include'][0]).$this->_regexSpaceR.preg_quote($this->bal['include'][1]).'="(.+)"'.$this->_regexSpace.'/>`isU', 
+				array('templateGcParser','parseIncludeCallback'), $this->_contenu);
+		}
+		
+		protected function parseDefine(){
+			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][11]).'([\[\]A-Za-z0-9._-]+)'.preg_quote($this->bal['vars'][12]).'`sU', '<?php echo $1; ?>', $this->_contenu);
+		}
+
+		protected function parseDefineClass(){
+			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][4]).'(.+)::(.+)'.preg_quote($this->bal['vars'][5]).'`sU', '<?php echo $1::$2; ?>', $this->_contenu);
 		}
 		
 		protected function parseIncludeCallback($m){
 			$file[1] = TEMPLATE_PATH.$m[1].TEMPLATE_EXT;
 			$content = "";
-			if($this->templateGC->getFile() != $file[1]){
+			if($this->_templateGC->getFile() != $file[1]){
 				if(file_exists($file[1]) or is_readable($file[1])){
-					$t = new templateGc($m[1], 'tplInclude', 0);
-					$t->assign($this->templateGC->vars);
+					$t = new templateGc($m[1], 'tplInclude', $this->_templateGC->getTimeCache());
+					$t->assign($this->_templateGC->vars);
 					$t->setShow(false);
 					$content = $t->show();
 				}
+				else{
+					$this->addError('Le template '.$file[1].' n\'a pas pu être inclus');
+				}	
 			}
 
 			return $content;
 		}
 		
 		protected function parseCond(){
-			$this->contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['cond'][0]).' '.preg_quote($this->bal['cond'][3]).'="(.+)">`sU',
+			$this->_contenu = preg_replace(array(
+					'`<'.preg_quote($this->bal['cond'][0]).$this->_regexSpaceR.preg_quote($this->bal['cond'][3]).'="(.+)">`sU',
 					'`</'.preg_quote($this->bal['cond'][0]).'>`sU',
-					'`<'.preg_quote($this->bal['cond'][1]).' '.preg_quote($this->bal['cond'][3]).'="(.+)"\s?/?>`sU',
+					'`<'.preg_quote($this->bal['cond'][1]).$this->_regexSpaceR.preg_quote($this->bal['cond'][3]).'="(.+)"\s?/?>`sU',
 					'`<'.preg_quote($this->bal['cond'][2]).'\s?/?>`sU',
 				),array(
 					'<?php if(\1) { ?>',
@@ -311,12 +330,12 @@
 					'<?php }elseif(\1){ ?>',
 					'<?php }else{ ?>'
 				),
-				$this->contenu);
+				$this->_contenu);
 		}
 		
 		protected function parseSwitch(){
-			$this->contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['switch'][0]).' '.preg_quote($this->bal['switch'][2]).'="(.+)">`sU',
+			$this->_contenu = preg_replace(array(
+					'`<'.preg_quote($this->bal['switch'][0]).$this->_regexSpaceR.preg_quote($this->bal['switch'][2]).'="(.+)">`sU',
 					'`<'.preg_quote($this->bal['switch'][1]).'="(.+)">`sU',
 					'`</'.preg_quote($this->bal['switch'][1]).'>`sU',
 					'`</'.preg_quote($this->bal['switch'][0]).'>`sU',
@@ -330,18 +349,18 @@
 					'default : ?>',
 					'<?php break;'					
 				),
-				$this->contenu);
+				$this->_contenu);
 		}
 		
 		protected function parseCom(){
-			$this->contenu = preg_replace('`'.preg_quote($this->bal['com'][0]).'.+'.preg_quote($this->bal['com'][1]).'`isU', null, $this->contenu);
+			$this->_contenu = preg_replace('`'.preg_quote($this->bal['com'][0]).'.+'.preg_quote($this->bal['com'][1]).'`isU', null, $this->_contenu);
 		}
 		
 		protected function parseFunc(){
-			$this->contenu = preg_replace_callback('`<'.preg_quote($this->bal['function'][0]).' '.preg_quote($this->bal['function'][1]).'="(\w+)"\s?(.*)?/?>`isU', array('templateGcParser', 'parseFuncCallback'), $this->contenu);
+			$this->_contenu = preg_replace_callback('`<'.preg_quote($this->bal['function'][0]).$this->_regexSpaceR.preg_quote($this->bal['function'][1]).'="(\w+)"\s?(.*)?/?>`isU', array('templateGcParser', 'parseFuncCallback'), $this->_contenu);
 		}
 
-		protected static function parseFuncCallback($m){
+		protected function parseFuncCallback($m){
 			$args = '';
 			if($nb = preg_match_all('`(string|int|var)="(.+)"`U', $m[2], $arr)){
 				for($i=0; $i<$nb; $i++){
@@ -349,70 +368,76 @@
 				}
 			}
 			$args = substr($args, 0, strlen($args)-2);
-			return '<?php echo ('.$m[1].'('.$args.')); ?>';
+			
+			if(in_array($m[1], $this->_functionException)){
+				return '<?php '.$m[1].'('.$args.'); ?>';
+			}
+			else{
+				return '<?php echo ('.$m[1].'('.$args.')); ?>';
+			}
 		}
 		
 		protected function parseForeach(){
-			$this->contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['foreach'][0]).' '.preg_quote($this->bal['foreach'][1]).'="(.+)" '.preg_quote($this->bal['foreach'][2]).'="(.+)">`sU',
+			$this->_contenu = preg_replace(array(
+					'`<'.preg_quote($this->bal['foreach'][0]).$this->_regexSpaceR.preg_quote($this->bal['foreach'][1]).'="(.+)"'.$this->_regexSpaceR.preg_quote($this->bal['foreach'][2]).'="(.+)">`sU',
 					'`</'.preg_quote($this->bal['foreach'][0]).'>`sU',
-					'`<'.preg_quote($this->bal['foreach'][3]).' />`sU'
+					'`<'.preg_quote($this->bal['foreach'][3]).$this->_regexSpace.'/>`sU'
 				),array(
 					'<?php if(!empty($1)) { foreach(\1 as \2) { ?>',
 					'<?php }} ?>',
 					'<?php }} else { ?>'
 				),
-			$this->contenu);
+			$this->_contenu);
 		}
 		
 		protected function parseWhile(){
-			$this->contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['while'][0]).' '.preg_quote($this->bal['while'][1]).'="(.+)">`sU',
+			$this->_contenu = preg_replace(array(
+					'`<'.preg_quote($this->bal['while'][0]).$this->_regexSpaceR.preg_quote($this->bal['while'][1]).'="(.+)">`sU',
 					'`</'.preg_quote($this->bal['while'][0]).'>`sU'
 				),array(
 					'<?php while(\1) { ?>',
 					'<?php } ?>'
 				),
-			$this->contenu);
+			$this->_contenu);
 		}
 		
 		protected function parseFor(){
-			$this->contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['for'][0]).' '.preg_quote($this->bal['for'][1]).'="(.+)" '.preg_quote($this->bal['for'][2]).'="(.+)-(.+)-(.+)">`sU',
+			$this->_contenu = preg_replace(array(
+					'`<'.preg_quote($this->bal['for'][0]).$this->_regexSpaceR.preg_quote($this->bal['for'][1]).'="(.+)"'.$this->_regexSpaceR.preg_quote($this->bal['for'][3]).'="(.*)"'.$this->_regexSpaceR.preg_quote($this->bal['for'][2]).'="(.+)-(.+)-(.+)">`sU',
 					'`</'.preg_quote($this->bal['for'][0]).'>`sU'
 				),array(
-					'<?php for(\1=\2;\1<=\3;\1=\1+\4) { ?>',
+					'<?php for(\1=\3;\1\2\4;\1=\1+\5) { ?>',
 					'<?php } ?>'
 				),
-			$this->contenu);
+			$this->_contenu);
 		}
 		
 		protected function parseVarAdd(){
-			$this->contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['vars'][6]).' (.+) />`sU'
+			$this->_contenu = preg_replace(array(
+					'`<'.preg_quote($this->bal['vars'][6]).$this->_regexSpaceR.'(.+)'.$this->_regexSpace.'/>`sU'
 				),array(
 					'<?php $$1; ?>'
 				),
-			$this->contenu);
+			$this->_contenu);
 		}
 		
 		protected function parseSpaghettis(){
-			$this->contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['spaghettis'][0]).' />`sU',
-					'`<'.preg_quote($this->bal['spaghettis'][1]).' />`sU',
-					'`<'.preg_quote($this->bal['spaghettis'][2]).' '.preg_quote($this->bal['spaghettis'][3]).'="(.+)" />`sU',
-					'`<'.preg_quote($this->bal['spaghettis'][2]).' '.preg_quote($this->bal['spaghettis'][4]).'="(.+)" />`sU'
+			$this->_contenu = preg_replace(array(
+					'`<'.preg_quote($this->bal['spaghettis'][0]).$this->_regexSpace.'/>`sU',
+					'`<'.preg_quote($this->bal['spaghettis'][1]).$this->_regexSpace.'/>`sU',
+					'`<'.preg_quote($this->bal['spaghettis'][2]).$this->_regexSpaceR.preg_quote($this->bal['spaghettis'][3]).'="(.+)"/>`sU',
+					'`<'.preg_quote($this->bal['spaghettis'][2]).$this->_regexSpaceR.preg_quote($this->bal['spaghettis'][4]).'="(.+)"/>`sU'
 				),array(
 					'<?php continue; ?>',
 					'<?php break; ?>',
 					'<?php goto $1; ?>',
 					'<?php $1: ?>'
 				),
-			$this->contenu);
+			$this->_contenu);
 		}
 		
 		protected function parseLang(){
-			$this->contenu = preg_replace_callback('`'.preg_quote($this->bal['lang'][0]).'(.+)'.preg_quote($this->bal['lang'][1]).'`sU', array('templateGcParser', 'parseLangCallBack'), $this->contenu);
+			$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['lang'][0]).'(.+)'.preg_quote($this->bal['lang'][1]).'`sU', array('templateGcParser', 'parseLangCallBack'), $this->_contenu);
 		}
 		
 		protected function parseLangCallBack($m){
@@ -422,13 +447,13 @@
 		}
 		
 		protected function parseGravatar(){
-			$this->contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][7]).'(.+):(.+)'.preg_quote($this->bal['vars'][8]).'`sU',
-			array('templateGcParser', 'parseGravatarCallback'), $this->contenu);
+			$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][7]).'(.+):(.+)'.preg_quote($this->bal['vars'][8]).'`sU',
+			array('templateGcParser', 'parseGravatarCallback'), $this->_contenu);
 		}
 		
 		protected function parseGravatarCallback($m){			
 			if(preg_match('#\$#', $m[1])){
-				foreach ($this->templateGC->vars as $cle => $val){
+				foreach ($this->_templateGC->vars as $cle => $val){
 					if(substr($m[1], 1, strlen($m[1])) == $cle){
 						$m[1] = preg_replace('`'.$cle.'`', $val, $m[1]);
 						$m[1] =  substr($m[1], 1, strlen($m[1]));
@@ -436,7 +461,7 @@
 				}
 			}
 			if(preg_match('#\$#', $m[2])){
-				foreach ($this->templateGC->vars as $cle => $val){
+				foreach ($this->_templateGC->vars as $cle => $val){
 					if(substr($m[2], 1, strlen($m[2])) == $cle){
 						$m[2] = preg_replace('`'.$cle.'`', $val, $m[2]);
 						$m[2] =  substr($var, 1, strlen($m[2]));
@@ -448,13 +473,13 @@
 		}
 		
 		protected function parseUrlRegex(){
-			if(preg_match('`'.preg_quote($this->bal['vars'][9]).'(.+):(.*)'.preg_quote($this->bal['vars'][10]).'`sU', $this->contenu)){
-				$this->contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][9]).'(.+):(.*)'.preg_quote($this->bal['vars'][10]).'`sU',
-				array('templateGcParser', 'parseUrlRegexCallback'), $this->contenu);
+			if(preg_match('`'.preg_quote($this->bal['vars'][9]).'(.+):(.*)'.preg_quote($this->bal['vars'][10]).'`sU', $this->_contenu)){
+				$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][9]).'(.+):(.*)'.preg_quote($this->bal['vars'][10]).'`sU',
+				array('templateGcParser', 'parseUrlRegexCallback'), $this->_contenu);
 			}
 			else{
-				$this->contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][9]).'(.+)'.preg_quote($this->bal['vars'][10]).'`sU',
-				array('templateGcParser', 'parseUrlRegexCallback'), $this->contenu);
+				$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][9]).'(.+)'.preg_quote($this->bal['vars'][10]).'`sU',
+				array('templateGcParser', 'parseUrlRegexCallback'), $this->_contenu);
 			}
 		}
 		
@@ -463,7 +488,7 @@
 			$valeur = array();
 			foreach($vars as $var){
 				if(preg_match('#\$#', $var)){
-					foreach ($this->templateGC->vars as $cle => $val){
+					foreach ($this->_templateGC->vars as $cle => $val){
 						if(substr($var, 1, strlen($var)) == $cle){
 							$var = preg_replace('`'.$cle.'`', $val, $var);
 							array_push($valeur, substr($var, 1, strlen($var)));

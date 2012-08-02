@@ -3,3 +3,7 @@
 <p>houlahoualhoulahoulaouaiuof</p>
 
 {{url:template:}}
+
+<foreach var="$array" as="$val">
+  {val}
+</foreach>
