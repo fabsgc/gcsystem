@@ -3,6 +3,7 @@
 		protected $bdd                           ;
 		
 		public function init(){
+			//é
 		}
 		
 		public function actionDefault(){

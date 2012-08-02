@@ -223,7 +223,6 @@
 			}
 		}
 		
-		
 		protected function _setdirName($dir){
 			if(is_dir($dir)){
 				$this->_dirName = basename($dir);

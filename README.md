@@ -1,39 +1,39 @@
 Informations :
 -----------
 
-* Open-Source depuis sa création
-* Version  : 2.0.1 Bêta
-* Créateur : fab@c++
+* Open-Source depuis sa crÃ©ation
+* Version  : 2.0.1 BÃªta
+* CrÃ©ateur : fab@c++
 * Contributeurs actifs : Lucas5190, t1307
-* Description : framework php mvc de développement d'application web. 
-* Principe : Ce framework se base sur la notion de rubrique. Une rubrique regroupe donc un contrôleur, un modèle et une vue. 
-* Langues : Framework proposant par défaut 3 langues : français, anglais, néerlandais
+* Description : framework php mvc de dÃ©veloppement d'application web. 
+* Principe : Ce framework se base sur la notion de rubrique. Une rubrique regroupe donc un contrÃ´leur, un modÃ¨le et une vue. 
+* Langues : Framework proposant par dÃ©faut 3 langues : franÃ§ais, anglais, nÃ©erlandais
 
-Spécifications :
+SpÃ©cifications :
 -----------
 
 * PHP 5.4 minimum
-* L'extension CURL activée pour pouvoir faire les mises à jour et pouvoir lire des flux rss avec la classe feedGc
-* Chmod en lecture écriture (755,777)
-* rewrite_module apache activé
+* L'extension CURL activÃ©e pour pouvoir faire les mises Ã  jour et pouvoir lire des flux rss avec la classe feedGc
+* Chmod en lecture Ã©criture (755,777)
+* rewrite_module apache activÃ©
 
 Installation :
 -----------
 
-* téléchargez l'archive sur github
-* décompressez l'archive dans le répertoire désiré
-* dans le fichier web.config.php, modifiez la constante "FOLDER" et indiquez-y le répertoire où se trouve le framework. Par exemple : /GCsystem
+* tÃ©lÃ©chargez l'archive sur github
+* dÃ©compressez l'archive dans le rÃ©pertoire dÃ©sirÃ©
+* dans le fichier web.config.php, modifiez la constante "FOLDER" et indiquez-y le rÃ©pertoire oÃ¹ se trouve le framework. Par exemple : /GCsystem
 * chargez le fichier index.php
 
 Contenus externes :
 -----------
 
-* Utilisation des images de la barre de développement de symfony pendant la période de développement du Framework
+* Utilisation des images de la barre de dÃ©veloppement de symfony pendant la pÃ©riode de dÃ©veloppement du Framework
 
 Documentation :
 -----------
 
-* Le GCsystem 2.0 étant encore en développement, aucune documentation n'est pour l'instant disponible, mais une documentation est en cours de rédaction en parallèle
+* Le GCsystem 2.0 Ã©tant encore en dÃ©veloppement, aucune documentation n'est pour l'instant disponible, mais une documentation est en cours de rÃ©daction en parallÃ¨le
 * Vous pouvez toujours lire le [cours de prise en main de la version 1.0 du GCsystem][1]
 
 [1]: http://www.legeekcafe.com/tutoriels-55-utiliser-le-gcsystem.html

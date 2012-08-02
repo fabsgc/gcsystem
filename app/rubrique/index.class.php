@@ -7,7 +7,7 @@
 		
 		public function init(){
 			$this->model = $this->loadModel();
-			//$this->model->actionDefault();
+			//$this->model->actionDefault();		
 		}
 		
 		public function actionDefault(){
@@ -48,6 +48,17 @@
 		public function actionPagination(){
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
 			echo $this->affHeader();
+			
+			?>
+			<form action="#" method="get">
+				<p>
+					<input type="text" name="prenom" />
+					<input type="submit" value="Valider" />
+				</p>
+			</form>
+			<?php
+				echo $_GET['prenom'];
+			
 				$ar = array('Agnaflai', 'Amagan', 'Anani Sikerim', 'Anayin Ami', 'Anus De Poulpe', 'Arschloch', 'Artaïl', 'Aspirateur à Bites', 'Aspirateur à Muscadet',
 					 'Asshole', 'Ateye', 'Balafamouk', 'Baptou', 'Balai De Chiottes', 'Bassine A Foutre', 'Bite Molle', 'Bit molle',
 					 'Bite de moll', 'Bit moll', 'Bleubite', 'Bordel', 'Bordel à Cul', 'Bordel de merde', 'Bordel de con', 'Bolosse', 'Bouche à Pipe',

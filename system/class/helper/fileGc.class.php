@@ -17,14 +17,14 @@
 		protected $_info                              = array();
 		protected $_isExist                           = false  ;
 		
-		const NOFILE   = 'Aucun fichier n\'a été difini'     ;
-		const NOACCESS = 'le fichier n\'est pas accessible'  ;
-		const NOREAD   = 'le fichier n\'est pas lisible'     ;
+		const NOFILE   = 'Aucun fichier n\'a été difini'       ;
+		const NOACCESS = 'le fichier n\'est pas accessible'    ;
+		const NOREAD   = 'le fichier n\'est pas lisible'       ;
 		
-		const CHMOD0644                              = 0644  ;
-		const CHMOD0755                              = 0755  ;
-		const CHMOD0777                              = 0777  ;
-		const CHMOD0004                              = 0004  ;
+		const CHMOD0644                               = 0644   ;
+		const CHMOD0755                               = 0755   ;
+		const CHMOD0777                               = 0777   ;
+		const CHMOD0004                               = 0004   ;
 		
 		/**
 		 * Cr&eacute;e l'instance de la classe

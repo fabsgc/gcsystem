@@ -280,6 +280,5 @@
 		}
 		
 		public  function __desctuct(){
-		
 		}
 	}

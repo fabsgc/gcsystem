@@ -7,4 +7,4 @@
     <route id="template" url="/template.html" rubrique="index" action="template" vars="page"/>
     <route id="terminal" url="/terminal\.html" rubrique="terminal" action="" vars=""/>
     <route id="terminal_terminal" url="/terminal-terminal\.html" rubrique="terminal" action="terminal" vars=""/>
-</routes>
+<route id="501a856cdc094" url="/501a856cdb1c6fileeacuteeacuteeacuteccedilfcml" rubrique="501a856cdb1c6fileeacuteeacuteeacuteccedilfcml" action="" vars=""/><route id="501a85ad13ac3" url="/file&amp;eacute;&amp;eacute;&amp;eacute;&amp;ccedil;fcml" rubrique="file&amp;eacute;&amp;eacute;&amp;eacute;&amp;ccedil;fcml" action="" vars=""/><route id="501a8644d0907" url="/eacuteeacutefeacutexml" rubrique="eacuteeacutefeacutexml" action="" vars=""/></routes>

@@ -99,7 +99,12 @@
 		}
 		
 		public function getReferer(){
-			return $_SERVER['HTTP_REFERER'];
+			if(isset($_SERVER['HTTP_REFERER'])){
+				return $_SERVER['HTTP_REFERER'];
+			}
+			else{
+				return false;
+			}
 		}
 		
 		public function getServerName(){
@@ -151,10 +156,10 @@
 			return $erreur;
 		}
 		
-		protected function _addError($error){
+		protected function _addError($error, $fichier = __FILE__, $ligne = __LINE__){
 			array_push($this->_error, $error);
 			$file = fopen(LOG_PATH.'system_errors'.LOG_EXT, "a+");
-			fputs($file, date("d/m/Y \a H:i:s ! : ",time()).' fichier '.__FILE__.' ligne '.__LINE__.' '.$error."\n");
+			fputs($file, date("d/m/Y \a H:i:s ! : ",time()).' fichier '.$fichier.' ligne '.$ligne.' '.$error."\n");
 			fclose($file);
 		}
     }

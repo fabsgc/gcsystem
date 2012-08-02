@@ -7,7 +7,7 @@
 	*/
 
 	class terminalGc{
-		use errorGc, langInstance, domGc;                  //trait
+		use errorGc, langInstance, domGc, generalGc;                  //trait
 		
 		protected $_command                       ; //contenu à traiter
 		protected $_stream                        ; //contenu à afficher
@@ -72,6 +72,9 @@
 						découvrir la question qui y correspond.';	
 				}
 				if(preg_match('#add rubrique (.+)#', $this->_command)){
+					$this->_commandExplode[2] = $this->correctName(html_entity_decode(htmlspecialchars_decode($this->_commandExplode[2])));
+					$this->_commandExplode[2] = preg_replace('#\.#isU', '', $this->_commandExplode[2]);
+					
 					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden) && !in_array(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', $this->_forbidden)){
 						$monfichier = fopen(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', 'a');						
 						$t= new templateGC(GCSYSTEM_PATH.'GCrubrique', 'GCrubrique', '0');
@@ -580,6 +583,7 @@
 
 				$suppr = file_get_contents('web.config.php');
 				$suppr = preg_replace('`(.*)(parametres de connexion a la base de donnees)(.*)`is', '$1parametres de connexion a la base de donnees', $suppr);
+				
 				if($suppr!="" && $sauvegarde!=""){
 					file_put_contents('web.config.php', $suppr);
 					file_put_contents('web.config.php', $sauvegarde, FILE_APPEND);
@@ -587,6 +591,7 @@
 
 				$suppr2 = file_get_contents('index.php');
 				$suppr2 = preg_replace('`(.*)(articulation du site web)(.*)`is', '$1articulation du site web', $suppr2);
+				
 				if($suppr2!="" && $sauvegarde2!=""){
 					file_put_contents('index.php', $suppr2);
 					file_put_contents('index.php', $sauvegarde2, FILE_APPEND);
@@ -597,5 +602,55 @@
 			else{
 				return $contenu .= '<br />> <span style="color: red;">Vous devez activer l\'extension C_URL dans le php.ini pour pouvoir utiliser la fonction update';
 			}
+		}
+		
+		public function correctName($message){
+			$search = array ('@[éèêëÊË]@i','@[àâäÂÄ]@i','@[îïÎÏ]@i','@[ûùüÛÜ]@i','@[ôöÔÖ]@i','@[ç]@i','@[ ]@i','@[^a-zA-Z0-9_]@');
+			$replace = array ('e','a','i','u','o','c','_','');
+			
+			$message =  preg_replace('#Ã©#isU', 'é', $message);
+			$message =  preg_replace('#Ã¨#isU', 'è', $message);
+			$message =  preg_replace('#Ã§#isU', 'ç', $message);
+			$message =  preg_replace('#Ã#isU', 'à', $message);
+			$message =  preg_replace('#Ã¹#isU', 'ù', $message);
+			$message =  preg_replace('#Ã»#isU', 'û', $message);
+			$message =  preg_replace('#Ã¼#isU', 'ü', $message);
+			$message =  preg_replace('#Ã´#isU', 'ô', $message);
+			$message =  preg_replace('#Ã¶#isU', 'ö', $message);
+			$message =  preg_replace('#Ã®#isU', 'î', $message);
+			$message =  preg_replace('#Ã¯#isU', 'ï', $message);
+			$message =  preg_replace('#Â#isU', '', $message);
+			$message =  preg_replace('#Å“#isU', 'œ', $message);
+			$message =  preg_replace('#Å’#isU', 'Œ', $message);
+			$message =  preg_replace('#à #isU', 'à', $message);
+			$message =  preg_replace('#à¢#isU', 'â', $message);
+			$message =  preg_replace('#à‡#isU', 'Ç', $message);
+			$message =  preg_replace('#â€™#isU', '\'', $message);
+			$message =  preg_replace('#â‚¬#isU', '€', $message);
+			$message =  preg_replace('#à«#isU','ë', $message);
+			$message =  preg_replace('#â€¦#isU','...', $message);
+			
+			$message =  preg_replace('#à¹#isU','ù', $message);
+			$message =  preg_replace('#à»#isU','û', $message);
+			$message =  preg_replace('#à¼#isU','ü', $message);
+			$message =  preg_replace('#à´#isU','ô', $message);
+			$message =  preg_replace('#à¶#isU','ö', $message);
+			$message =  preg_replace('#à®#isU','î', $message);
+			$message =  preg_replace('#à¯#isU','ï', $message);
+			$message =  preg_replace('#àª#isU','ê', $message);
+			
+			$message =  preg_replace('#â„¢#isU','™', $message);
+			$message =  preg_replace('#à¡#isU','á', $message);
+			$message =  preg_replace('#à‰#isU','É', $message);
+			$message =  preg_replace('#àŠ#isU','Ê', $message);
+			$message =  preg_replace('#àˆ#isU','È', $message);
+			$message =  preg_replace('#à‹#isU','Ë', $message);
+			$message =  preg_replace('#à€#isU','À', $message);
+			$message =  preg_replace('#à„€#isU','Ä', $message);
+			$message =  trim($message);
+			
+			echo $message;
+			
+			return preg_replace($search, $replace, $message);
 		}
 	}

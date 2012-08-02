@@ -166,7 +166,6 @@
 		/**
 		 * Desctructeur
 		 * @access	public
-		 * @return	boolean
 		 * @since 2.0
 		*/
 		

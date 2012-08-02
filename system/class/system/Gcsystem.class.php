@@ -30,13 +30,14 @@
 			$this->_devTool = $set;
 		}
 		
-		public function getDevTool($set){
+		public function getDevTool(){
 			return $this->_devTool;
 		}
 		
 		public function init(){
 			if($this->_initInstance == 0){
-				header('Content-Type: text/html; charset='.CHARSET.''); 
+				$this->checkHeaderStream($this->getUri());
+			
 				switch(ENVIRONMENT){	
 					case 'development' :		
 						error_reporting(E_ALL | E_NOTICE);			
@@ -89,7 +90,7 @@
 		
 		protected function _getRubrique(){
 			$this->_routerInstance = new routerGc($this);
-			$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
+			$this->_domXml = new DomDocument('1.0', CHARSET);
 			
 			if($this->_domXml->load(ROUTE)){
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
@@ -105,7 +106,7 @@
 					$this->_routerInstance->addRoute(new routeGc($route->getAttribute('url'), $route->getAttribute('rubrique'), $route->getAttribute('action'), $vars));
 				}
 				
-				if($matchedRoute = $this->_routerInstance->getRoute($this->getUri())){
+				if($matchedRoute = $this->_routerInstance->getRoute(preg_replace('`\?'.preg_quote($this->getQuery()).'`isU', '', $this->getUri()))){
 					$_GET = array_merge($_GET, $matchedRoute->vars());
 					$_GET['rubrique'] = $matchedRoute->module();
 					$_GET['action'] = $matchedRoute->action();
@@ -115,7 +116,7 @@
 				}
 			}
 			else{
-				$this->_addError('Le routage a échoué');
+				$this->_addError('Le routage a échoué car le fichier "'.ROUTE.'" n\' pas pu être chargé', __FILE__, __LINE__);
 			}
 		}
 		
@@ -132,8 +133,8 @@
 					$rubrique = ""; //on initialise la variable
 					
 					foreach($this->_markupXml as $sentence){
-						if ($sentence->getAttribute("rubrique") == $_GET['rubrique']){
-							$rubrique =  $sentence->getAttribute("rubrique");
+						if ($sentence->getAttribute('rubrique') == $_GET['rubrique']){
+							$rubrique =  $sentence->getAttribute('rubrique');
 						}
 					}
 					
@@ -149,11 +150,12 @@
 									if(is_callable(array($rubrique, 'action'.$_GET['action']))){
 										$action = 'action'.ucfirst($_GET['action']);
 										$class->$action();
+										$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__);
 									}
 									else{
 										$action = 'actionDefault';
 										$class->$action();
-										$this->_addError('L\'appel du contrôleur action'.ucfirst($_GET['action']).' de la rubrique '.$rubrique.' a échoué. Appel du contrôleur par défaut');
+										$this->_addError('L\'appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel du contrôleur par défaut', __FILE__, __LINE__);
 									}
 								}
 								elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
@@ -164,7 +166,7 @@
 							ob_get_clean();
 						}
 						else{
-							$this->_addError('L\'instanciation du contrôleur de la rubrique '.$rubrique.' a échoué');
+							$this->_addError('L\'instanciation du contrôleur de la rubrique "'.$rubrique.'" a échoué', __FILE__, __LINE__);
 						}
 					}
 					else{
@@ -181,6 +183,32 @@
 					$this->redirect404();
 					$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
 				}
+			}
+		}
+		
+		public function checkHeaderStream($url){
+			$extension = explode('.', $url);
+			
+			switch($extension[count($extension)-1]){
+				case 'html':
+					header('Content-Type: text/html; charset='.CHARSET.'');	
+					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
+				break;
+				
+				case 'xml':
+					header('Content-Type: text/xml; charset='.CHARSET.'');
+					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
+				break;
+				
+				case 'json':
+					header('Content-Type: application/json; charset='.CHARSET.'');
+					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
+				break;
+				
+				default:
+					header('Content-Type: text/html; charset='.CHARSET.'');
+					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
+				break;
 			}
 		}
 		
@@ -205,12 +233,14 @@
 			if(file_exists(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php')){
 				if(file_exists(MODEL_PATH.$rubrique.MODEL_EXT.'.php')){
 					require_once(MODEL_PATH.$rubrique.MODEL_EXT.'.php');
+					$this->_addError('Chargement des fichiers "'.RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php" et "'.MODEL_PATH.$rubrique.MODEL_EXT.'.php"', __FILE__, __LINE__);
 				}
 				require_once(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php');
 				return true;
 			}
 			else{ 
 				$this->windowInfo('Erreur', $this->useLang('rubriquenotfound', array('rubrique' => $rubrique)), 0, './'); 
+				$this->_addError('Echec lors du chargement des fichiers "'.RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php" et "'.MODEL_PATH.$rubrique.MODEL_EXT.'.php"', __FILE__, __LINE__);
 				return false;
 			}
 		}

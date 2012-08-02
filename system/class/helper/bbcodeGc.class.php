@@ -7,7 +7,7 @@
 	*/
 
 	class bbcodeGc{
-		use errorGc, langInstance;                                              //trait
+		use errorGc, langInstance;                                //trait
 
 		protected $_contenu                                     ; //contenu à parser
 		const TAGSTART                    = '['                 ; //constante contenant les tag pour la syntaxe
@@ -24,10 +24,10 @@
 		protected $_preview                  =true              ; //la prévisualisation est activée
 		protected $_previewInstantanee       =true              ; //la prévisualisation instantanée est activée
 
-		protected $_bbCodeWidth              ='600px'            ; //largeur de l'éditeur
-		protected $_bbCodeHeight             ='250px'            ; //largeur de la zone de texte de l'éditeur
-		protected $_bbCodeBgColor            ='#9d9d9d'          ; //couleur de fond de l'éditeur
-		protected $_bbCodeButton             ='blue'             ; //couleur de la barre d'option et du bouton prévisualiser.
+		protected $_bbCodeWidth              ='600px'           ; //largeur de l'éditeur
+		protected $_bbCodeHeight             ='250px'           ; //largeur de la zone de texte de l'éditeur
+		protected $_bbCodeBgColor            ='#9d9d9d'         ; //couleur de fond de l'éditeur
+		protected $_bbCodeButton             ='blue'            ; //couleur de la barre d'option et du bouton prévisualiser.
 															      //valeur : button blue red green pinkish maroonish golden brownish 
 															      //grayish skinish yellowish goldenish pink violet orange seagreen personalize
 		protected $_bbCodeButtonColor        = array()           ; //dans le cas de couleurs personnalisées
@@ -144,7 +144,6 @@
 
 		public  function __construct($lang=""){
 			require_once(GESHI);
-
 			$this->_langInstance;
 			$this->_createLangInstance();
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
@@ -255,7 +254,9 @@
 
 		protected function _highlight($contenu){
 			$contenu[1] = html_entity_decode($contenu[1]);
+			$contenu[1] = htmlspecialchars_decode($contenu[1]);
 			$contenu[2] = html_entity_decode($contenu[2]);
+			$contenu[2] = htmlspecialchars_decode($contenu[2]);
 
 			$code = new GeSHi($contenu[2], $contenu[1]);
 			$code->enable_line_numbers(GESHI_FANCY_LINE_NUMBERS, 2);
@@ -279,7 +280,8 @@
 
 		protected function _video($contenu){
 			$contenu[1] = html_entity_decode($contenu[1]);
-			$contenu[1] =  preg_replace('#&feature=related#isU', '', $contenu[1]);	
+			$contenu[1] = htmlspecialchars_decode($contenu[1]);
+			$contenu[1] = preg_replace('#&feature=related#isU', '', $contenu[1]);	
 
 			if(preg_match('#youtube#isU',$contenu[1])){
 				if(preg_match('#www#isU',$contenu[1])){	

@@ -7,7 +7,7 @@
 	*/
 	
 	class TestErrorHandling { 
-		protected $error; 
+		protected $_error; 
 		
 		/**
 		 * Cr&eacute;e l'instance de la classe
@@ -17,8 +17,8 @@
 		*/
 		
 		public function __construct () { 
-			$this->error = new TestErrorHandler; 
-			set_error_handler( array($this->error, 'errorManager' ) ); 
+			$this->_error = new TestErrorHandler; 
+			set_error_handler( array($this->_error, 'errorManager' ) ); 
 		} 
 	} 
 

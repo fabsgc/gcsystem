@@ -26,7 +26,6 @@
 						$varsNames = $route->varsNames();
 						$listVars = array();
 						
-						// On créé un nouveau tableau clé/valeur
 						// (clé = nom de la variable, valeur = sa valeur)
 						foreach ($varsValues as $key => $match){
 							// La première valeur contient entièrement la chaine capturée (voir la doc sur preg_match)
@@ -35,7 +34,6 @@
 							}
 						}
 						
-						// On assigne ce tableau de variables à la route
 						$route->setVars($listVars);
 					}
 					

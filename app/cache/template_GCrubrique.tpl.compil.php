@@ -1,4 +1,4 @@
-<variable var ="<?php
+<?php $var ="<?php
 	/**
 	 * @info : contrôleur créé automatiquement par le GCsystem
 	*/
@@ -16,5 +16,5 @@
 		public function actionDefault(){
 			".'$this'."->showDefault();
 		}
-	}" />
-{var}
+	}"; ?>
+<?php echo ($var); ?>
