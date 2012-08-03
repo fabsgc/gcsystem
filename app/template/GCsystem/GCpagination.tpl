@@ -4,31 +4,31 @@
 	}
 </style>
 <div class="pagination">
-	<if cond="$paginationFirstLast == true && $paginationFirstBefore == true">
+	<gc:if cond="$paginationFirstLast == true && $paginationFirstBefore == true">
 		<div class="pagination_first"><a href="{urlfirst}">_(pagination_first)_</a></div>
-	</if>
-	<if cond="$paginationBeforeAfter == true && $paginationFirstBefore == true">
+	</gc:if>
+	<gc:if cond="$paginationBeforeAfter == true && $paginationFirstBefore == true">
 		<div class="pagination_before"><a href="{urlbefore}">_(pagination_before)_</a></div>
-	</if>
+	</gc:if>
 	
 	<div class="pagination_list">
-		<foreach var="$pagination" as="$cle => $val">
-			<if cond="$val != false">
+		<gc:foreach var="$pagination" as="$cle => $val">
+			<gc:if cond="$val != false">
 				<span class="link_active"><a href="{val}">{cle}</a></span>
-			<else />
+			<gc:else />
 				<span class="link_disabled">{cle}</span>
-			</if>
-		</foreach>
+			</gc:if>
+		</gc:foreach>
 	</div>
-	<if cond="$paginationBeforeAfter == true && $paginationLastAfter == true">
+	<gc:if cond="$paginationBeforeAfter == true && $paginationLastAfter == true">
 		<div class="pagination_after"><a href="{urlafter}">_(pagination_after)_</a></div>
-	</if>
-	<if cond="$paginationFirstLast == true && $paginationLastAfter == true">
+	</gc:if>
+	<gc:if cond="$paginationFirstLast == true && $paginationLastAfter == true">
 		<div class="pagination_last"><a href="{urllast}">_(pagination_last)_</a></div>
-	</if>
-	<if cond="$totalpage == true">
-		<if cond="$pageActuel != $nbrpage">
+	</gc:if>
+	<gc:if cond="$totalpage == true">
+		<gc:if cond="$pageActuel != $nbrpage">
 			<div class="pagination_total"><a href="{urllast}">({nbrpage})</a></div>
-		</if>
-	</if>
+		</gc:if>
+	</gc:if>
 </div>

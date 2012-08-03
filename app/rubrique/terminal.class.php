@@ -11,12 +11,12 @@
 		
 		public function actionDefault(){
 			$this->setInfo(array('title'=>'Terminal - GCsystem', 'css'=>''));
-			echo $this->affHeader();
+			echo $this->_showHeader();
 				$t= new templateGC(GCSYSTEM_PATH.'GCterminal', 'GCterminal', '0');
 				if(ENVIRONMENT == 'development') $t->assign(array('moins' => 50, 'moins2'=>80));
 					else $t->assign(array('moins' => 0, 'moins2' => 30));
 				$t->show();
-			echo $this->affFooter();
+			echo $this->showFooter();
 		}
 		
 		public function actionTerminal(){

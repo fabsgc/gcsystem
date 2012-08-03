@@ -31,12 +31,9 @@
 		protected $_fbDescription      = ''                                       ;
 		protected $_fbImage            = ''                                       ;
 		protected $_html5              = true                                     ;
-		
-		protected $_devTool           = true                                     ;
-		
-		protected $_var               = array()                                  ; //contient les variables que l'on passe depuis l'extérieur : obsolète
-		protected $bdd                                                           ; //contient la connexion sql
-		
+		protected $_devTool            = true                                     ;
+		protected $_var                = array()                                  ; //contient les variables que l'on passe depuis l'extérieur : obsolète
+		protected $bdd                                                            ; //contient la connexion sql
 		protected $_header;
 		protected $_footer;
 		
@@ -140,6 +137,7 @@
 		
 		protected function setDevTool($set){
 			$this->_devTool = $set;
+			$GLOBALS['appDevGc']->setShow($set);
 		}
 		
 		protected function getDevTool($set){
@@ -276,7 +274,7 @@
 			}
 		}
 		
-		protected function affHeader(){
+		protected function _showHeader(){
 			$this->_header.=$this->_doctype."\n";
 			$this->_header.="  <head>\n";
 			$this->_header.="    <title>".($this->_title)."</title>\n";
@@ -309,17 +307,14 @@
 			if($this->_openSearch!=""){
 				$this->_header.="    <link href=\"".$this->_openSearch."\"  rel=\"search\" type=\"application/opensearchdescription+xml\" title=\"open search\" />\n";
 			}
-			
 			if(is_file(FAVICON_PATH)){
 				$this->_header.="     <link rel=\"icon\" type=\"image/png\" href=\"".FAVICON_PATH."\" />\n";
 			}
-			
 			if(JQUERY==true){
 				$this->_header.="    <script type=\"text/javascript\" src=\"".JQUERYFILE."\" ></script> \n";
 				$this->_header.="    <script type=\"text/javascript\" src=\"".JQUERYUIJS."\" ></script> \n";
 				$this->_header.="    <link href=\"".JQUERYUICSS."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
 			}
-			
 			foreach($this->_js as $element){
 				if(is_file(JS_PATH.$element)){
 					$this->_header.="    <script type=\"text/javascript\" src=\"".JS_PATH.$element."\" ></script> \n";
@@ -335,7 +330,6 @@
 					$this->_header.="    <link href=\"".$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
 				}	
 			}
-			
 			foreach($this->_jsInFile as $element){
 				$this->_header.="    <script type=\"text/javascript\">\n";
 				if(is_file(JS_PATH.$element)){
@@ -345,7 +339,6 @@
 				}
 				$this->_header.="    </script>\n";
 			}
-			
 			foreach($this->_rss as $element){
 				if(is_file($element)){
 					$this->_header.="    <link rel=\"alternate\" type=\"application/rss+xml\" title=\"".$element."\" href=\"".$element."\" />\n";
@@ -354,7 +347,6 @@
 					$this->_header.="    <link rel=\"alternate\" type=\"application/rss+xml\" title=\"".$element."\" href=\"".$element."\" />\n";
 				}
 			}
-			
 			if($this->_otherHeader){
 				foreach($this->_otherHeader as $element){
 					$this->_header.="    ".$element."\n";
@@ -373,21 +365,18 @@
 			return $this->_header;			
 		} 
 		
-		protected function affFooter(){
+		protected function showFooter(){
 			$this->_footer="  </body>\n</html>";
 			return $this->_footer;
 		}
 		
-		protected function genererToken(){
-			$token = uniqid(rand(), true);
-			return $token;
+		protected function newToken(){
+			return uniqid(rand(), true);
 		}
 		
 		protected function showDefault(){
 			$t= new templateGC(GCSYSTEM_PATH.'GCnewrubrique', 'GCrubrique', '0');
-			$t->assign(array(
-				'rubrique' => $_GET['rubrique']
-			));
+			$t->assign(array('rubrique' => $_GET['rubrique']));
 			$t->show();
 		}
 		

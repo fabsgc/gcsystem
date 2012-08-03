@@ -12,7 +12,7 @@
 		
 		public function actionDefault(){
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
-			echo $this->affHeader();
+			echo $this->_showHeader();
 				$t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', '0');
 				$t->assign(array(
 					'var'=> 'salutsalut',
@@ -20,7 +20,7 @@
 				));
 				$t->setShow(FALSE);
 				echo $t->show();
-			echo $this->affFooter();
+			echo $this->showFooter();
 		}
 		
 		public function actionSql(){
@@ -31,6 +31,11 @@
 		
 		public function actionForms(){
 			echo $this->getVar('forms')->showForms();
+		}
+		
+		public function actionPicture(){
+			$this->setDevTool(false);
+			$img = new pictureGc('asset/image/GCsystem/logo300_6.png');
 		}
 		
 		public function actionTemplate(){
@@ -45,9 +50,13 @@
 			$t->show();
 		}
 		
+		public function actionContype(){
+		
+		}
+		
 		public function actionPagination(){
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
-			echo $this->affHeader();
+			echo $this->_showHeader();
 			
 			?>
 			<form action="#" method="get">
@@ -88,6 +97,6 @@
 				}
 				
 				$page->show();
-			echo $this->affFooter();
+			echo $this->showFooter();
 		}
 	}

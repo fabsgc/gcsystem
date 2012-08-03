@@ -26,69 +26,19 @@
 			$this->_configInstance = new configGc();
 		}
 		
-		public function setDevTool($set){
-			$this->_devTool = $set;
-		}
-		
-		public function getDevTool(){
-			return $this->_devTool;
-		}
-		
 		public function init(){
 			if($this->_initInstance == 0){
-				$this->checkHeaderStream($this->getUri());
-			
-				switch(ENVIRONMENT){	
-					case 'development' :		
-						error_reporting(E_ALL | E_NOTICE);			
-					break;
-
-					case 'production' :	
-						error_reporting(0);					
-					break;					
-				}
-				
-				$c = new TestErrorHandling(); 
-				require_once(FUNCTION_GENERIQUE);
-				
-				if(SECUREGET == true && isset($_GET)){
-					foreach($_GET as $cle => $val){
-						$_GET[$cle] = htmlentities($val);
-					}
-				}
-				else{
-					if(isset($_GET['rubrique'])) { $_GET['rubrique']=htmlentities($_GET['rubrique']); }
-					if(isset($_GET['action'])) { $_GET['action']=htmlentities($_GET['action']); }
-					if(isset($_GET['id'])) { $_GET['id']=intval(htmlentities($_GET['id'])); }
-					if(isset($_GET['page'])) { $_GET['page']=intval(htmlentities($_GET['page'])); }
-					if(isset($_GET['token'])) { $_GET['token']=htmlentities($_GET['token']); }
-				}
-				
-				if(SECUREPOST == true && isset($_POST)){
-					foreach($_POST as $cle => $val){
-						$_POST[$cle] = htmlentities($val);
-					}
-				}
-				
+				$this->_checkHeaderStream($this->getUri());
+				$this->_checkEnvironment();
+				$this->_checkError();
+				$this->_checkFunctionGenerique();
+				$this->_checkSecureVar();
 				$this->setErrorLog('history','Page rewrite : http://'.$this->getHost().$this->getUri().' rubrique : '.$this->getServerName().$this->getPhpSelf().'?'.$this->getQuery().' / origine : '.$this->getReferer().' / IP : '.$this->getIp());
 				$this->_initInstance = 1;
 			}
 		}
 		
-		public function addHeader($header){
-            header($header);
-        }
-		
-		public function redirect404(){
-			$this->addHeader('HTTP/1.0 404 Not Found');
-			$t= new templateGC(ERRORDUOCUMENT_PATH.'404', '404', '0', $this->_lang);
-			$t->assign(array(
-				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri()))
-			));
-			$t->show();
-        }
-		
-		protected function _getRubrique(){
+		private function _getRubrique(){
 			$this->_routerInstance = new routerGc($this);
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			
@@ -109,7 +59,7 @@
 				if($matchedRoute = $this->_routerInstance->getRoute(preg_replace('`\?'.preg_quote($this->getQuery()).'`isU', '', $this->getUri()))){
 					$_GET = array_merge($_GET, $matchedRoute->vars());
 					$_GET['rubrique'] = $matchedRoute->module();
-					$_GET['action'] = $matchedRoute->action();
+					$_GET['action']   = $matchedRoute->action();
 				}
 				else{
 					$_GET['rubrique'] = "";
@@ -186,49 +136,6 @@
 			}
 		}
 		
-		public function checkHeaderStream($url){
-			$extension = explode('.', $url);
-			
-			switch($extension[count($extension)-1]){
-				case 'html':
-					header('Content-Type: text/html; charset='.CHARSET.'');	
-					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
-				break;
-				
-				case 'xml':
-					header('Content-Type: text/xml; charset='.CHARSET.'');
-					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
-				break;
-				
-				case 'json':
-					header('Content-Type: application/json; charset='.CHARSET.'');
-					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
-				break;
-				
-				default:
-					header('Content-Type: text/html; charset='.CHARSET.'');
-					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
-				break;
-			}
-		}
-		
-		public function run(){
-			echo $this->_output;
-		}
-			
-		protected function _createLangInstance(){
-			$this->_langInstance = new langGc($this->_lang);
-		}
-		
-		public function useLang($sentence, $var = array()){
-			return $this->_langInstance->loadSentence($sentence, $var);
-		}
-		
-		public function GzipinitOutputFilter(){
-			ob_start('ob_gzhandler');
-			register_shutdown_function('ob_end_flush');
-		}
-		
 		private function _setRubrique($rubrique){
 			if(file_exists(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php')){
 				if(file_exists(MODEL_PATH.$rubrique.MODEL_EXT.'.php')){
@@ -239,9 +146,90 @@
 				return true;
 			}
 			else{ 
-				$this->windowInfo('Erreur', $this->useLang('rubriquenotfound', array('rubrique' => $rubrique)), 0, './'); 
+				$this->windowInfo('Erreur', $this->_useLang('rubriquenotfound', array('rubrique' => $rubrique)), 0, './'); 
 				$this->_addError('Echec lors du chargement des fichiers "'.RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php" et "'.MODEL_PATH.$rubrique.MODEL_EXT.'.php"', __FILE__, __LINE__);
 				return false;
+			}
+		}
+		
+		public function run(){
+			echo $this->_output;
+		}
+		
+		private function _checkHeaderStream($url){
+			$extension = explode('.', $url);
+			
+			switch($extension[count($extension)-1]){
+				case 'html':
+					header('Content-Type: text/html; charset='.CHARSET.'');	
+					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
+				break;
+				
+				case 'xml':
+					header('Content-Type: text/xml; charset='.CHARSET.'');
+					$GLOBALS['appDevGc']->setShow(false);
+					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
+				break;
+				
+				case 'json':
+					header('Content-Type: application/json; charset='.CHARSET.'');
+					$GLOBALS['appDevGc']->setShow(false);
+					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
+				break;
+				
+				default:
+					header('Content-Type: text/html; charset='.CHARSET.'');
+					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
+				break;
+			}
+		}
+			
+		private function _createLangInstance(){
+			$this->_langInstance = new langGc($this->_lang);
+		}
+		
+		private function _useLang($sentence, $var = array()){
+			return $this->_langInstance->loadSentence($sentence, $var);
+		}
+		
+		private function _checkEnvironment(){
+			switch(ENVIRONMENT){	
+				case 'development' :		
+					error_reporting(E_ALL | E_NOTICE);			
+				break;
+
+				case 'production' :	
+					error_reporting(0);					
+				break;					
+			}
+		}
+		
+		private function _checkError(){
+			$c = new TestErrorHandling(); 
+		}
+		
+		private function _checkFunctionGenerique(){
+			require_once(FUNCTION_GENERIQUE);
+		}
+		
+		private function _checkSecureVar(){
+			if(SECUREGET == true && isset($_GET)){
+				foreach($_GET as $cle => $val){
+					$_GET[$cle] = htmlentities($val);
+				}
+			}
+			else{
+				if(isset($_GET['rubrique'])){ $_GET['rubrique']=htmlentities($_GET['rubrique']); }
+				if(isset($_GET['action'])){ $_GET['action']=htmlentities($_GET['action']); }
+				if(isset($_GET['id'])){ $_GET['id']=intval(htmlentities($_GET['id'])); }
+				if(isset($_GET['page'])){ $_GET['page']=intval(htmlentities($_GET['page'])); }
+				if(isset($_GET['token'])){ $_GET['token']=htmlentities($_GET['token']); }
+			}
+			
+			if(SECUREPOST == true && isset($_POST)){
+				foreach($_POST as $cle => $val){
+					$_POST[$cle] = htmlentities($val);
+				}
 			}
 		}
 		

@@ -522,16 +522,16 @@
 	function preview_{id}(id){
 		field = nl2br_js(document.getElementById('{id}').value);
 
-		<foreach var="$bbcode" as="$val">
-			field = field.replace(/\[<function name="html_entity_decode" string="$val[0]" />\]([\s\S]*?)\[\/<function name="html_entity_decode" string="$val[1]" />\]/g, '<<function name="html_entity_decode" string="$val[2]" />>{val[4]}</<function name="html_entity_decode" string="$val[3]" />>');
-		</foreach>
-		<foreach var="$smiley" as="$val">
-			field = field.replace(/<function name="preg_quote" string="$val[1]"/> /g, '<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" /> ');
-			field = field.replace(/<function name="preg_quote" string="$val[1]"/>&lt;br \/&gt;/g, '<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" /><br />');
-		</foreach>
-		<foreach var="$bbCodeS" as="$val">
-			field = field.replace(/\[<function name="html_entity_decode" string="$val[0]" />\]([\s\S]*?)\[\/<function name="html_entity_decode" string="$val[0]" />\]/g, '<<function name="html_entity_decode" string="$val[0]" />>$1</<function name="html_entity_decode" string="$val[0]" />>');
-		</foreach>
+		<gc:foreach var="$bbcode" as="$val">
+			field = field.replace(/\[<gc:function name="html_entity_decode" string="$val[0]" />\]([\s\S]*?)\[\/<gc:function name="html_entity_decode" string="$val[1]" />\]/g, '<<gc:function name="html_entity_decode" string="$val[2]" />>{val[4]}</<gc:function name="html_entity_decode" string="$val[3]" />>');
+		</gc:foreach>
+		<gc:foreach var="$smiley" as="$val">
+			field = field.replace(/<gc:function name="preg_quote" string="$val[1]"/> /g, '<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" /> ');
+			field = field.replace(/<gc:function name="preg_quote" string="$val[1]"/>&lt;br \/&gt;/g, '<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" /><br />');
+		</gc:foreach>
+		<gc:foreach var="$bbCodeS" as="$val">
+			field = field.replace(/\[<gc:function name="html_entity_decode" string="$val[0]" />\]([\s\S]*?)\[\/<gc:function name="html_entity_decode" string="$val[0]" />\]/g, '<<gc:function name="html_entity_decode" string="$val[0]" />>$1</<gc:function name="html_entity_decode" string="$val[0]" />>');
+		</gc:foreach>
 
 		field = field.replace('&gt;&lt;br \/&gt;', '>');
 
@@ -554,20 +554,20 @@
 </script>
 <div class="gc_bbcode">
 	<div class="gc_bbcode_option option {theme}">
-		<foreach var="$bbCodeEditor" as="$val">
-			<img src="{imgpath}bbcode/{val[2]}" alt="{val[2]}" onclick="insertTag_{id}('[<function name="preg_quote" string="$val[0]"/>]', '[/<function name="preg_quote" string="$val[1]"/>]', '{id}'); " />
-		</foreach>
+		<gc:foreach var="$bbCodeEditor" as="$val">
+			<img src="{imgpath}bbcode/{val[2]}" alt="{val[2]}" onclick="insertTag_{id}('[<gc:function name="preg_quote" string="$val[0]"/>]', '[/<gc:function name="preg_quote" string="$val[1]"/>]', '{id}'); " />
+		</gc:foreach>
 		<br />
-		<foreach var="$smiley" as="$val">
-			<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" onclick="insertTag_{id}('<function name="preg_quote" string="$val[1]"/> ', '', '{id}'); " />
-		</foreach>
+		<gc:foreach var="$smiley" as="$val">
+			<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" onclick="insertTag_{id}('<gc:function name="preg_quote" string="$val[1]"/> ', '', '{id}'); " />
+		</gc:foreach>
 	</div>
 	<textarea id="{id}" name="{name}"<if cond="$preview == true && $instantane == true"> onKeyUp="preview_{id}('{id}');" </if> >{message}</textarea>
-	<if cond="$preview == true">
+	<gc:if cond="$preview == true">
 		<div class="gc_bbcode_preview_button button {theme}" onClick="previewAjax_{id}('{id}');">
 			_(bbcodepreview)_
 		</div>
-	</if>
+	</gc:if>
 	<div class="gc_bbcode_preview_zone" id="zone_{id}">
 	</div>
 </div>

@@ -219,8 +219,9 @@
 		protected $_templateGC                          ;
 		protected $_contenu                             ;
 		protected $_functionException = array('print_r');
-		protected $_regexSpace        = '\s*'         ;
-		protected $_regexSpaceR        = '\s+'         ;
+		protected $_regexSpace        = '\s*'           ;
+		protected $_regexSpaceR       = '\s+'           ;
+		protected $_name              = 'gc:'           ;
 		
 		/// les balises à parser
 		protected $bal= array(
@@ -294,7 +295,7 @@
 		
 		protected function _parseInclude(){
 			$this->_contenu = preg_replace_callback(
-				'`<'.preg_quote($this->bal['include'][0]).$this->_regexSpaceR.preg_quote($this->bal['include'][1]).'="(.+)"'.$this->_regexSpace.'/>`isU', 
+				'`<'.$this->_name.preg_quote($this->bal['include'][0]).$this->_regexSpaceR.preg_quote($this->bal['include'][1]).'="(.+)"'.$this->_regexSpace.'/>`isU', 
 				array('templateGcParser','_parseIncludeCallback'), $this->_contenu);
 		}
 		
@@ -326,10 +327,10 @@
 		
 		protected function _parseCond(){
 			$this->_contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['cond'][0]).$this->_regexSpaceR.preg_quote($this->bal['cond'][3]).'="(.+)">`sU',
-					'`</'.preg_quote($this->bal['cond'][0]).'>`sU',
-					'`<'.preg_quote($this->bal['cond'][1]).$this->_regexSpaceR.preg_quote($this->bal['cond'][3]).'="(.+)"\s?/?>`sU',
-					'`<'.preg_quote($this->bal['cond'][2]).'\s?/?>`sU',
+					'`<'.$this->_name.preg_quote($this->bal['cond'][0]).$this->_regexSpaceR.preg_quote($this->bal['cond'][3]).'="(.+)">`sU',
+					'`</'.$this->_name.preg_quote($this->bal['cond'][0]).'>`sU',
+					'`<'.$this->_name.''.preg_quote($this->bal['cond'][1]).$this->_regexSpaceR.preg_quote($this->bal['cond'][3]).'="(.+)"\s?/?>`sU',
+					'`<'.$this->_name.''.preg_quote($this->bal['cond'][2]).'\s?/?>`sU',
 				),array(
 					'<?php if(\1) { ?>',
 					'<?php } ?>',
@@ -341,12 +342,12 @@
 		
 		protected function _parseSwitch(){
 			$this->_contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['switch'][0]).$this->_regexSpaceR.preg_quote($this->bal['switch'][2]).'="(.+)">`sU',
-					'`<'.preg_quote($this->bal['switch'][1]).'="(.+)">`sU',
-					'`</'.preg_quote($this->bal['switch'][1]).'>`sU',
-					'`</'.preg_quote($this->bal['switch'][0]).'>`sU',
-					'`<'.preg_quote($this->bal['switch'][3]).'>`sU',
-					'`</'.preg_quote($this->bal['switch'][3]).'>`sU',
+					'`<'.$this->_name.preg_quote($this->bal['switch'][0]).$this->_regexSpaceR.preg_quote($this->bal['switch'][2]).'="(.+)">`sU',
+					'`<'.$this->_name.preg_quote($this->bal['switch'][1]).'="(.+)">`sU',
+					'`</'.$this->_name.preg_quote($this->bal['switch'][1]).'>`sU',
+					'`</'.$this->_name.preg_quote($this->bal['switch'][0]).'>`sU',
+					'`<'.$this->_name.preg_quote($this->bal['switch'][3]).'>`sU',
+					'`</'.$this->_name.preg_quote($this->bal['switch'][3]).'>`sU',
 				),array(
 					'<?php switch(\1) { ',
 					'case "\1" : ?>',
@@ -363,7 +364,7 @@
 		}
 		
 		protected function _parseFunc(){
-			$this->_contenu = preg_replace_callback('`<'.preg_quote($this->bal['function'][0]).$this->_regexSpaceR.preg_quote($this->bal['function'][1]).'="'.$this->_regexSpace.'(\w+)'.$this->_regexSpace.'"\s?(.*)?/?>`isU', array('templateGcParser', '_parseFuncCallback'), $this->_contenu);
+			$this->_contenu = preg_replace_callback('`<'.$this->_name.preg_quote($this->bal['function'][0]).$this->_regexSpaceR.preg_quote($this->bal['function'][1]).'="'.$this->_regexSpace.'(\w+)'.$this->_regexSpace.'"\s?(.*)?/?>`isU', array('templateGcParser', '_parseFuncCallback'), $this->_contenu);
 		}
 
 		protected function _parseFuncCallback($m){
@@ -380,9 +381,9 @@
 		
 		protected function _parseForeach(){
 			$this->_contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['foreach'][0]).$this->_regexSpaceR.preg_quote($this->bal['foreach'][1]).'="(.+)"'.$this->_regexSpaceR.preg_quote($this->bal['foreach'][2]).'="(.+)">`sU',
-					'`</'.preg_quote($this->bal['foreach'][0]).'>`sU',
-					'`<'.preg_quote($this->bal['foreach'][3]).$this->_regexSpace.'/>`sU'
+					'`<'.$this->_name.preg_quote($this->bal['foreach'][0]).$this->_regexSpaceR.preg_quote($this->bal['foreach'][1]).'="(.+)"'.$this->_regexSpaceR.preg_quote($this->bal['foreach'][2]).'="(.+)">`sU',
+					'`</'.$this->_name.preg_quote($this->bal['foreach'][0]).'>`sU',
+					'`<'.$this->_name.preg_quote($this->bal['foreach'][3]).$this->_regexSpace.'/>`sU'
 				),array(
 					'<?php if(!empty($1)) { foreach(\1 as \2) { ?>',
 					'<?php }} ?>',
@@ -393,8 +394,8 @@
 		
 		protected function _parseWhile(){
 			$this->_contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['while'][0]).$this->_regexSpaceR.preg_quote($this->bal['while'][1]).'="(.+)">`sU',
-					'`</'.preg_quote($this->bal['while'][0]).'>`sU'
+					'`<'.$this->_name.preg_quote($this->bal['while'][0]).$this->_regexSpaceR.preg_quote($this->bal['while'][1]).'="(.+)">`sU',
+					'`</'.$this->_name.preg_quote($this->bal['while'][0]).'>`sU'
 				),array(
 					'<?php while(\1) { ?>',
 					'<?php } ?>'
@@ -404,8 +405,8 @@
 		
 		protected function _parseFor(){
 			$this->_contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['for'][0]).$this->_regexSpaceR.preg_quote($this->bal['for'][1]).'="(.+)"'.$this->_regexSpaceR.preg_quote($this->bal['for'][3]).'="(.*)"'.$this->_regexSpaceR.preg_quote($this->bal['for'][2]).'="(.+)-(.+)-(.+)">`sU',
-					'`</'.preg_quote($this->bal['for'][0]).'>`sU'
+					'`<'.$this->_name.preg_quote($this->bal['for'][0]).$this->_regexSpaceR.preg_quote($this->bal['for'][1]).'="(.+)"'.$this->_regexSpaceR.preg_quote($this->bal['for'][3]).'="(.*)"'.$this->_regexSpaceR.preg_quote($this->bal['for'][2]).'="(.+)-(.+)-(.+)">`sU',
+					'`</'.$this->_name.preg_quote($this->bal['for'][0]).'>`sU'
 				),array(
 					'<?php for(\1=\3;\1\2\4;\1=\1+\5) { ?>',
 					'<?php } ?>'
@@ -415,7 +416,7 @@
 		
 		protected function _parseVarAdd(){
 			$this->_contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['vars'][6]).$this->_regexSpaceR.'(.+)'.$this->_regexSpace.'/>`sU'
+					'`<'.$this->_name.preg_quote($this->bal['vars'][6]).$this->_regexSpaceR.'(.+)'.$this->_regexSpace.'/>`sU'
 				),array(
 					'<?php $$1; ?>'
 				),
@@ -424,10 +425,10 @@
 		
 		protected function _parseSpaghettis(){
 			$this->_contenu = preg_replace(array(
-					'`<'.preg_quote($this->bal['spaghettis'][0]).$this->_regexSpace.'/>`sU',
-					'`<'.preg_quote($this->bal['spaghettis'][1]).$this->_regexSpace.'/>`sU',
-					'`<'.preg_quote($this->bal['spaghettis'][2]).$this->_regexSpaceR.preg_quote($this->bal['spaghettis'][3]).'="(.+)"/>`sU',
-					'`<'.preg_quote($this->bal['spaghettis'][2]).$this->_regexSpaceR.preg_quote($this->bal['spaghettis'][4]).'="(.+)"/>`sU'
+					'`<'.$this->_name.preg_quote($this->bal['spaghettis'][0]).$this->_regexSpace.'/>`sU',
+					'`<'.$this->_name.preg_quote($this->bal['spaghettis'][1]).$this->_regexSpace.'/>`sU',
+					'`<'.$this->_name.preg_quote($this->bal['spaghettis'][2]).$this->_regexSpaceR.preg_quote($this->bal['spaghettis'][3]).'="(.+)"/>`sU',
+					'`<'.$this->_name.preg_quote($this->bal['spaghettis'][2]).$this->_regexSpaceR.preg_quote($this->bal['spaghettis'][4]).'="(.+)"/>`sU'
 				),array(
 					'<?php continue; ?>',
 					'<?php break; ?>',

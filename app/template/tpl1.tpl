@@ -1,20 +1,20 @@
 <h1>template 1 {var2} { var3 }</h1><br />
-<include          file="tpl2" />
- <include file="tpl3" />
- <include file="tpl1" />
+<gc:include          file="tpl2" />
+ <gc:include file="tpl3" />
+ <gc:include file="tpl1" />
 
 {$ $_SESSION['GC_terminalMdp'] } salut
 
-{<function name="htmlspecialchars" string="éééééééééééééé" />}
-<function name="print_r" var="$array" />
-<variable name = 1111111111111111111111/>
+{<gc:function name="htmlspecialchars" string="éééééééééééééé" />}
+<gc:function name="print_r" var="$array" />
+<gc:variable name = 1111111111111111111111/>
 
-<variable name2 = <function name="htmlspecialchars" string="éééééééééééééé" />  />
+<gc:variable name2 = <gc:function name="htmlspecialchars" string="éééééééééééééé" /> />
 
 
-{<function name="htmlspecialchars" string="bonjour $name" />}
+{<gc:function name="htmlspecialchars" string="bonjour $name" />}
 
-{<function name=" htmlspecialchars" string="éééééééééééééé" />}
+{<gc:function name=" htmlspecialchars" string="éééééééééééééé" />}
 
 {name}
 
@@ -24,12 +24,12 @@
 
 {{fileGc::NOREAD}}
 
-<variable id = 4 />
+<gc:variable id = 4 />
 
 {id}
 
-<for var="$id" cond="<" boucle="0-15-1">
-</for>
+<gc:for var="$id" cond="<" boucle="0-15-1">
+</gc:for>
 
-<while cond="$id<15">
-</while>
+<gc:while cond="$id<15">
+</gc:while>

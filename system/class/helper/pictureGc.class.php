@@ -35,7 +35,7 @@
 			else{
 				$this->_addError(self::NOACCESS);
 			}
-		}	
+		}
 		
 		public function fromTo($to){
 			switch ($this->img){
@@ -57,7 +57,7 @@
 					break;
 					
 					default :
-						$this->_addError('L\'extension n\'est pas gérée');
+						$this->_addError('L\'extension n\'est pas gérée', __FILE__, __LINE__);
 					break;
 				}
 		}
@@ -78,7 +78,7 @@
 					break;
 					
 					default :
-						$this->_addError('L\'extension n\'est pas gérée');
+						$this->_addError('L\'extension n\'est pas gérée', __FILE__, __LINE__);
 					break;
 				}
 		}
@@ -99,7 +99,7 @@
 				break;
 				
 				default :
-					$this->_addError('L\'extension n\'est pas gérée');
+					$this->_addError('L\'extension n\'est pas gérée', __FILE__, __LINE__);
 				break;
 			}
 		}
@@ -120,7 +120,7 @@
 				break;
 				
 				default :
-					$this->_addError('L\'extension n\'est pas gérée');
+					$this->_addError('L\'extension n\'est pas gérée', __FILE__, __LINE__);
 				break;
 			}
 		}
@@ -141,9 +141,13 @@
 				break;
 				
 				default :
-					$this->_addError('L\'extension n\'est pas gérée');
+					$this->_addError('L\'extension n\'est pas gérée', __FILE__, __LINE__);
 				break;
 			}
+		}
+		
+		protected function _setFileGd($filepath){
+		
 		}
 		
 		public function __destruct(){

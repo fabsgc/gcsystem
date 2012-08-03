@@ -1,4 +1,4 @@
-<variable var ="<?php
+<gc:variable var ="<?php
 	/**
 	 * @info :manager créé automatiquement par le GCsystem
 	*/

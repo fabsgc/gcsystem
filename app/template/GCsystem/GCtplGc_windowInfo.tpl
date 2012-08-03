@@ -1,3 +1,4 @@
+<link href="{css}" rel="stylesheet" type="text/css" media="screen, print, handheld" />
 <div id="window_info">
 	<div id="window_info_header">
 		{title}

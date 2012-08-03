@@ -5,6 +5,8 @@
     <route id="page" url="/page.html" rubrique="index" action="pagination" vars="page"/>
     <route id="page2" url="/page-p([0-9]+)\.html" rubrique="index" action="pagination" vars="page"/>
     <route id="template" url="/template.html" rubrique="index" action="template" vars="page"/>
+    <route id="picture" url="/picture.html" rubrique="index" action="picture" vars=""/>
+    <route id="contype" url="/truc/contype.xml" rubrique="index" action="contype" vars=""/>
     <route id="terminal" url="/terminal\.html" rubrique="terminal" action="" vars=""/>
     <route id="terminal_terminal" url="/terminal-terminal\.html" rubrique="terminal" action="terminal" vars=""/>
-<route id="501a856cdc094" url="/501a856cdb1c6fileeacuteeacuteeacuteccedilfcml" rubrique="501a856cdb1c6fileeacuteeacuteeacuteccedilfcml" action="" vars=""/><route id="501a85ad13ac3" url="/file&amp;eacute;&amp;eacute;&amp;eacute;&amp;ccedil;fcml" rubrique="file&amp;eacute;&amp;eacute;&amp;eacute;&amp;ccedil;fcml" action="" vars=""/><route id="501a8644d0907" url="/eacuteeacutefeacutexml" rubrique="eacuteeacutefeacutexml" action="" vars=""/></routes>
+</routes>

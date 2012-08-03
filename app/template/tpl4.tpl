@@ -4,6 +4,6 @@
 
 {{url:template:}}
 
-<foreach var="$array" as="$val">
+<gc:foreach var="$array" as="$val">
   {val}
-</foreach>
+</gc:foreach>

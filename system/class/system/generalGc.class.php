@@ -7,10 +7,7 @@
 	*/
 
 	trait generalGc{
-		public function windowInfo($Title, $Content, $Time, $Redirect, $lang="fr"){
-			?>
-				<link href="<?php echo FOLDER; ?>/asset/css/default.css" rel="stylesheet" type="text/css" media="screen, print, handheld" />
-			<?php
+		public function windowInfo($Title, $Content, $Time, $Redirect, $lang='fr'){
 			$tpl = new templateGC(GCSYSTEM_PATH.'GCtplGc_windowInfo', 'tplGc_windowInfo', 0, $lang);
 			
 			$tpl->assign(array(
@@ -18,12 +15,13 @@
 				'content'=>$Content,
 				'redirect'=>$Redirect,
 				'time'=>$Time,
+				'css'=>FOLDER.'/asset/css/default.css'
 			));
 				
 			$tpl->show();
 		}
 		
-		public function blockInfo($Title, $Content, $Time, $Redirect, $lang="fr"){
+		public function blockInfo($Title, $Content, $Time, $Redirect, $lang='fr'){
 			$tpl = new templateGC(GCSYSTEM_PATH.'GCtplGc_blockInfo', 'tplGc_blockInfo', 0, $lang);
 			
 			$tpl->assign(array(
