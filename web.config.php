@@ -26,7 +26,6 @@ define('FILE_PATH', ASSET_PATH.'file/');
 define('RUBRIQUE_PATH', APP_PATH.'rubrique/');
 define('MODEL_PATH', APP_PATH.'model/');
 define('APP_CONFIG_PATH', APP_PATH.'config/');
-define('APP_PLUGIN_PATH', APP_PATH.'config/');
 define('TEMPLATE_PATH', APP_PATH.'template/');
 define('CLASS_PATH', SYSTEM_PATH.'class/');
 define('LIB_PATH', SYSTEM_PATH.'lib/');
@@ -57,6 +56,7 @@ define('CLASS_TEMPLATE', CLASS_PATH.CLASS_SYSTEM_PATH.'templateGc.class.php');
 define('CLASS_LANG', CLASS_PATH.CLASS_SYSTEM_PATH.'langGc.class.php');
 define('CLASS_APPDEVGC', CLASS_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php');
 define('CLASS_TERMINAL', CLASS_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php');
+define('CLASS_FIREWALL', CLASS_PATH.CLASS_SYSTEM_PATH.'firewallGc.class.php');
 define('CLASS_AUTOLOAD', CLASS_PATH.'autoload.php');
 define('CLASS_CONFIG', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php');
 define('CLASS_PLUGIN', CLASS_PATH.CLASS_SYSTEM_PATH.'pluginGc.class.php');
@@ -73,7 +73,8 @@ define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
 define('ROUTE', APP_CONFIG_PATH.'routes.xml');
 define('MODOGCCONFIG', APP_CONFIG_PATH.'modoGc.xml');
 define('APPCONFIG', APP_CONFIG_PATH.'app.xml');
-define('PLUGIN', APP_PLUGIN_PATH.'plugin.xml');
+define('PLUGIN', APP_CONFIG_PATH.'plugin.xml');
+define('FIREWALL', APP_CONFIG_PATH.'firewall.xml');
 
 /* --------------parametres de connexion a la base de donnees------------------*/
 
@@ -92,8 +93,11 @@ define('BDD', 'test');
 //connexion à la bdd, true ou false
 define('CONNECTBDD', false);
 
-//connexion à la bdd, true ou false
+//utilisation du routeur
 define('REWRITE', true);
+
+//utilisation du parefeu
+define('SECURITY', true);
 
 //charset
 define('CHARSET', 'UTF-8');

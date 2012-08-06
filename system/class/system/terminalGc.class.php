@@ -76,23 +76,27 @@
 					$this->_commandExplode[2] = preg_replace('#\.#isU', '', $this->_commandExplode[2]);
 					
 					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden) && !in_array(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', $this->_forbidden)){
-						$monfichier = fopen(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', 'a');						
-						$t= new templateGC(GCSYSTEM_PATH.'GCrubrique', 'GCrubrique', '0');
-						$t->assign(array(
-							'rubrique'=> $this->_commandExplode[2]
-						));
-						$t->setShow(FALSE);
-						fputs($monfichier, $t->show());
-						fclose($monfichier);
+						if(!is_file(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
+							$monfichier = fopen(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', 'a');						
+								$t= new templateGC(GCSYSTEM_PATH.'GCrubrique', 'GCrubrique', '0');
+								$t->assign(array(
+									'rubrique'=> $this->_commandExplode[2]
+								));
+								$t->setShow(FALSE);
+								fputs($monfichier, $t->show());
+							fclose($monfichier);
+						}
 						
-						$monfichier = fopen(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', 'a');						
-						$t= new templateGC(GCSYSTEM_PATH.'GCmodel', 'GCmodel', '0');
-						$t->assign(array(
-							'rubrique'=> ucfirst($this->_commandExplode[2])
-						));
-						$t->setShow(FALSE);
-						fputs($monfichier, $t->show());
-						fclose($monfichier);
+						if(!is_file(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
+							$monfichier = fopen(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', 'a');						
+								$t= new templateGC(GCSYSTEM_PATH.'GCmodel', 'GCmodel', '0');
+								$t->assign(array(
+									'rubrique'=> ucfirst($this->_commandExplode[2])
+								));
+								$t->setShow(FALSE);
+								fputs($monfichier, $t->show());
+							fclose($monfichier);
+						}
 						
 						$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php';
 						$this->_stream .= '<br />> '.MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php';
@@ -100,7 +104,7 @@
 						$this->_result = '<br />> <span style="color: chartreuse;">la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; cr&#233;&#233;e</span>';
 						
 						$this->_domXml = new DomDocument('1.0', CHARSET);
-						if($this->_domXml->load(ROUTE)){							
+						if($this->_domXml->load(ROUTE)){						
 							$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
 							$sentences = $this->_nodeXml->getElementsByTagName('route');
 				
@@ -114,14 +118,78 @@
 							
 							if($rubrique == false){
 								$this->_markupXml = $this->_domXml->createElement('route');
-								$this->_markupXml->setAttribute("id", uniqid());
-								$this->_markupXml->setAttribute("url", "/".$this->_commandExplode[2]);
+								$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
+								
+								if(isset($this->_commandExplode[3])){
+									$this->_markupXml->setAttribute("url", $this->_commandExplode[3]);
+								}
+								else{
+									$this->_markupXml->setAttribute("url", "/".$this->_commandExplode[2]);
+								}
+								
 								$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[2]);
-								$this->_markupXml->setAttribute("action", "");
-								$this->_markupXml->setAttribute("vars", "");
+								
+								if(isset($this->_commandExplode[4])){
+									if($this->_commandExplode[4] == 'empty'){
+										$this->_markupXml->setAttribute("action", '');
+									}
+									else{
+										$this->_markupXml->setAttribute("action", $this->_commandExplode[4]);
+									}
+								}
+								else{
+									$this->_markupXml->setAttribute("action", "");
+								}
+								
+								if(isset($this->_commandExplode[5])){
+									$this->_markupXml->setAttribute("vars", $this->_commandExplode[5]);
+								}
+								else{
+									$this->_markupXml->setAttribute("vars", '');
+								}
 							
 								$this->_nodeXml->appendChild($this->_markupXml);
 								$this->_domXml->save(ROUTE);
+							}
+						}
+						
+						$this->_domXml = new DomDocument('1.0', CHARSET);
+				
+						if($this->_domXml->load(FIREWALL)){
+							$this->_nodeXml = $this->_domXml->getElementsByTagName('security')->item(0);
+							$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewall')->item(0);
+							$this->_node3Xml = $this->_node2Xml->getElementsByTagName('access')->item(0);
+							
+							$sentences = $this->_node3Xml->getElementsByTagName('url');
+							
+							$rubrique = false;
+							
+							foreach($sentences as $sentence){
+								if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+									$rubrique = true;
+								}
+							}
+							
+							if($rubrique == false){
+								$this->_markupXml = $this->_domXml->createElement('url');
+								$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
+								
+								if(isset($this->_commandExplode[6])){
+									$this->_markupXml->setAttribute("connected", $this->_commandExplode[6]);
+								}
+								else{
+									$this->_markupXml->setAttribute("connected", '*');
+								}
+								
+								if(isset($this->_commandExplode[7])){
+									$this->_markupXml->setAttribute("access", $this->_commandExplode[7]);
+								}
+								else{
+									$this->_markupXml->setAttribute("access", '*');
+								}
+								
+								$this->_node3Xml->appendChild($this->_markupXml);
+								$this->_domXml->save(FIREWALL);
 							}
 						}
 					}
@@ -188,6 +256,23 @@
 								}
 							}
 							$this->_domXml->save(ROUTE);
+						}
+						
+						$this->_domXml = new DomDocument('1.0', CHARSET);
+				
+						if($this->_domXml->load(FIREWALL)){
+							$this->_nodeXml = $this->_domXml->getElementsByTagName('security')->item(0);
+							$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewall')->item(0);
+							$this->_node3Xml = $this->_node2Xml->getElementsByTagName('access')->item(0);
+							$sentences = $this->_node3Xml->getElementsByTagName('url');
+							
+							foreach($sentences as $sentence){
+								if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+									$this->_node3Xml->removeChild($sentence);    
+								}
+							}
+							
+							$this->_domXml->save(FIREWALL);
 						}
 
 						$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; supprim&#233;e</span>';
@@ -335,8 +420,9 @@
 									$this->_result = '<br />><span style="color: chartreuse;"> le fichier <u>'.MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php'.'</u> a bien &#233;t&#233; r&#233;nomm&#233; en <u>'.MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php'.'</u></span>';
 								}
 								
-								$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
-								if($this->_domXml->load(ROUTE)){									
+								$this->_domXml = new DomDocument('1.0', CHARSET);
+								
+								if($this->_domXml->load(ROUTE)){		
 									$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
 									$sentences = $this->_nodeXml->getElementsByTagName('route');
 						
@@ -346,28 +432,93 @@
 											$url = $sentence->getAttribute("url");
 											$action = $sentence->getAttribute("action");
 											$vars = $sentence->getAttribute("vars");
-											
 											$this->_nodeXml->removeChild($sentence);
 											
 											$this->_markupXml = $this->_domXml->createElement('route');
 											$this->_markupXml->setAttribute("id", $id);
-											$this->_markupXml->setAttribute("url", $url);
+
+											if(isset($this->_commandExplode[4])){
+												$this->_markupXml->setAttribute("url", $this->_commandExplode[4]);
+											}
+											else{
+												$this->_markupXml->setAttribute("url", $url);
+											}
+											
 											$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[3]);
-											$this->_markupXml->setAttribute("action", $action);
-											$this->_markupXml->setAttribute("vars", $vars);
-										
+											
+											if(isset($this->_commandExplode[5])){
+												if($this->_commandExplode[5] == 'empty'){
+													$this->_markupXml->setAttribute("action", '');
+												}
+												else{
+													$this->_markupXml->setAttribute("action", $this->_commandExplode[5]);
+												}
+											}
+											else{
+												$this->_markupXml->setAttribute("action", $action);
+											}
+											
+											if(isset($this->_commandExplode[6])){
+												$this->_markupXml->setAttribute("vars", $this->_commandExplode[6]);
+											}
+											else{
+												$this->_markupXml->setAttribute("vars", $vars);
+											}
+
 											$this->_nodeXml->appendChild($this->_markupXml);
+											$this->_domXml->save(ROUTE);
+											
+											
+											$this->_dom2Xml = new DomDocument('1.0', CHARSET);
+											if($this->_dom2Xml->load(FIREWALL)){
+												$this->_node4Xml = $this->_dom2Xml->getElementsByTagName('security')->item(0);
+												$this->_node5Xml = $this->_node4Xml->getElementsByTagName('firewall')->item(0);
+												$this->_node6Xml = $this->_node5Xml->getElementsByTagName('access')->item(0);
+												
+												$sentences2 = $this->_node6Xml->getElementsByTagName('url');
+												
+												foreach ($sentences2 as $sentence2){
+													if ($sentence2->getAttribute("id") == $id){
+														$connected = $sentence->getAttribute("connected");
+														$access = $sentence->getAttribute("access");
+														
+														$this->_node6Xml->removeChild($sentence2);
+														
+														$this->_markup2Xml = $this->_dom2Xml->createElement('url');
+														$this->_markup2Xml->setAttribute("id", $id);
+														
+														if(isset($this->_commandExplode[7])){
+															$this->_markup2Xml->setAttribute("connected", $this->_commandExplode[7]);
+														}
+														else{
+															$this->_markup2Xml->setAttribute("connected", $connected);
+														}
+														
+														if(isset($this->_commandExplode[8])){
+															$this->_markup2Xml->setAttribute("access", $this->_commandExplode[8]);
+														}
+														else{
+															$this->_markup2Xml->setAttribute("access", '*');
+														}
+														
+														$this->_node6Xml->appendChild($this->_markup2Xml);
+														$this->_dom2Xml->save(FIREWALL);
+													}
+												}
+											}
 										}
 									}
-									$this->_domXml->save(ROUTE);
-									
-									$data = file_get_contents(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php');
-									
-									$data = preg_replace('#class '.$this->_commandExplode[2].' extends applicationGc#isU',
-														  'class '.$this->_commandExplode[3].' extends applicationGc', $data);
-									
-									file_put_contents(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php', $data);
 								}
+								
+								$data = file_get_contents(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php');
+								$data = preg_replace('#class '.$this->_commandExplode[2].' extends applicationGc#isU',
+													  'class '.$this->_commandExplode[3].' extends applicationGc', $data);
+								file_put_contents(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php', $data);
+								
+								$data = file_get_contents(MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php');
+								$data = preg_replace('#class manager'.ucfirst($this->_commandExplode[2]).' extends modelGc#isU',
+													  'class manager'.ucfirst($this->_commandExplode[3]).' extends modelGc', $data);
+								file_put_contents(MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php', $data);
 
 								$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; r&#233;nomm&#233;e en <u>'.$this->_commandExplode[3].'</u></span>';
 							}
@@ -435,9 +586,12 @@
 					$this->_result = '<br />><span style="color: chartreuse;"> le log a bien &#233;t&#233; vid&#233;</span>';
 				}
 				elseif(preg_match('#help#', $this->_command)){
-					$this->_stream .= '<br />> add rubrique nom';
+					$this->_stream .= '<br />> add rubrique nom (url[lien] action[nom|empty] vars[getvar,getvar] connect[true|false] access[role1, role2]) facultatif';
 					$this->_stream .= '<br />> delete rubrique nom';
-					$this->_stream .= '<br />> rename rubrique nom nouveaunom';
+					$this->_stream .= '<br />> set rubrique nom nouveaunom (url[lien] action[nom|empty] vars[getvar,getvar] connect[true|false] access[role1, role2]) facultatif';
+					$this->_stream .= '<br />> add url id url rubrique action vars connected access';
+					$this->_stream .= '<br />> delete url id';
+					$this->_stream .= '<br />> set url id url rubrique action vars connected access';
 					$this->_stream .= '<br />> add template nom';
 					$this->_stream .= '<br />> delete template nom';
 					$this->_stream .= '<br />> rename template nom nouveaunom';
@@ -459,7 +613,7 @@
 					$this->_stream .= '<br />> connect mdp';
 					$this->_stream .= '<br />> disconnect';
 					$this->_stream .= '<br />> help';
-					$this->_result = '<br />><span style="color: chartreuse;"> liste des commandes</span>';
+					$this->_result  = '<br />><span style="color: chartreuse;"> liste des commandes</span>';
 				}
 				elseif(preg_match('#update updater#', $this->_command)){
 					$this->_stream .= $this->_updater();
@@ -648,8 +802,6 @@
 			$message =  preg_replace('#à€#isU','À', $message);
 			$message =  preg_replace('#à„€#isU','Ä', $message);
 			$message =  trim($message);
-			
-			echo $message;
 			
 			return preg_replace($search, $replace, $message);
 		}

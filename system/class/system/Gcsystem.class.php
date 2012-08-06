@@ -53,13 +53,14 @@
 						$vars = explode(',', $route->getAttribute('vars'));
 					}
 					
-					$this->_routerInstance->addRoute(new routeGc($route->getAttribute('url'), $route->getAttribute('rubrique'), $route->getAttribute('action'), $vars));
+					$this->_routerInstance->addRoute(new routeGc($route->getAttribute('url'), $route->getAttribute('rubrique'), $route->getAttribute('action'), $route->getAttribute('id'), $vars));
 				}
-				
+
 				if($matchedRoute = $this->_routerInstance->getRoute(preg_replace('`\?'.preg_quote($this->getQuery()).'`isU', '', $this->getUri()))){
 					$_GET = array_merge($_GET, $matchedRoute->vars());
 					$_GET['rubrique'] = $matchedRoute->module();
 					$_GET['action']   = $matchedRoute->action();
+					$_GET['pageid']   = $matchedRoute->id();
 				}
 				else{
 					$_GET['rubrique'] = "";
@@ -74,7 +75,7 @@
 			if(REWRITE == true){ $this->_getRubrique(); }
 			
 			if(isset($_GET['rubrique'])){
-				$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
+				$this->_domXml = new DomDocument('1.0', CHARSET);
 				
 				if($this->_domXml->load(ROUTE)){
 					$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
@@ -90,27 +91,33 @@
 					
 					if($rubrique!=""){
 						$plugin = new pluginGc();
-						
+						$_SESSION['token'] = 'kqsjnqkdjqskdsdlfkjsd';
+						$_SESSION['connected'] = 'true';
+						$_SESSION['statut'] = 2;
 						if($this->_setRubrique($rubrique) == true){
 							ob_start ();
 								$class = new $rubrique($this->_lang);
-								$class->init();
-								
-								if($_GET['action']!=""){
-									if(is_callable(array($rubrique, 'action'.$_GET['action']))){
-										$action = 'action'.ucfirst($_GET['action']);
-										$class->$action();
-										$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__);
+								if(SECURITY == false || $class->setFirewall() == true){
+									$class->init();
+									
+									if($_GET['action']!=""){
+										if(is_callable(array($rubrique, 'action'.$_GET['action']))){
+											$action = 'action'.ucfirst($_GET['action']);
+											$class->$action();
+											$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__);
+										}
+										else{
+											$action = 'actionDefault';
+											$class->$action();
+											$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__);
+										}
 									}
-									else{
+									elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
 										$action = 'actionDefault';
 										$class->$action();
-										$this->_addError('L\'appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel du contrôleur par défaut', __FILE__, __LINE__);
 									}
 								}
-								elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
-									$action = 'actionDefault';
-									$class->$action();
+								else{
 								}
 							$this->_output = ob_get_contents();
 							ob_get_clean();

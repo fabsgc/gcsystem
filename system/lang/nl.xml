@@ -26,4 +26,8 @@
   <sentence id="rubriquenotfound">Een fout op het script is opgetreden. De door u opgevraagde item ({rubrique}) was niet gevonden</sentence>
   <sentence id="rubriquemissingparameters">Ontbrekende parameters om te reageren op uw verzoek</sentence>  
   <sentence id="actionnotfound">De gevraagde actie ({action}) was niet gevonden</sentence>
+  <sentence id="firewallcsrftitle">CSRF fout ontdekt</sentence>
+  <sentence id="firewallcsrfcontent">Een fout in de parameters van de url heeft gedwongen de applicatie toegang te blokkeren naar deze pagina</sentence>
+  <sentence id="firewallforbiddentitle">toegang verboden</sentence>
+  <sentence id="firewallforbiddencontent">De toegang tot deze pagina is verboden</sentence>
 </lang>

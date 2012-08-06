@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<security>
+	<roles_hierarchy name="statut">
+		<role_hierarchy name="ROLE_BANNI"/>
+		<role_hierarchy name="ROLE_MEMBER"/>
+		<role_hierarchy name="ROLE_ADMIN"/>
+	</roles_hierarchy>
+	<firewall>
+		<config>
+			<login>
+				<source id="login" vars=""/>
+				<target id="login" vars=""/>
+			</login>
+			<forbidden template="GCsystem/GCtplGc_windowInfo"/>
+			<csrf name="token" template="GCsystem/GCtplGc_windowInfo" enabled="true"/>
+			<connect name="connected" yes="true" no="false"/>
+		</config>
+		<access>
+			<url id="index" connected="true" access="*"/>
+			<url id="index2" connected="true" access="ROLE_ADMIN"/>
+			<url id="index3" connected="*" access="*"/>
+			<url id="page" connected="*" access="*"/>
+			<url id="page2" connected="*" access="*"/>
+			<url id="template" connected="*" access="*"/>
+			<url id="picture" connected="*" access="*"/>
+			<url id="contype" connected="*" access="*"/>
+			<url id="terminal" connected="*" access="*"/>
+			<url id="terminal_terminal" connected="*" access="*"/>
+		<url id="test4" connected="true" access="ROLE_MEMBER,ROLE_ADMIN,ROLE_BANNI"/></access>
+	</firewall>
+</security>

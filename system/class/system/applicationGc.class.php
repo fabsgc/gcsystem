@@ -34,23 +34,37 @@
 		protected $_devTool            = true                                     ;
 		protected $_var                = array()                                  ; //contient les variables que l'on passe depuis l'extérieur : obsolète
 		protected $bdd                                                            ; //contient la connexion sql
-		protected $_header;
-		protected $_footer;
+		protected $_header                                                        ;
+		protected $_footer                                                        ;
+		protected $_firewall                                                      ;
 		
 		/* ---------- CONSTRUCTEURS --------- */
 		
-		public function __construct($lang=""){
+		final public function __construct($lang=""){
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
-			$this->_createLangInstance();
+			$this->_createLangInstance();	
 			if(CONNECTBDD == true) {$this->bdd=$this->_connectDatabase($GLOBALS['db']); }
 			$this->_addError('Contrôleur '.$_GET['rubrique'].' initialisé', __FILE__, __LINE__);
+			$this->_firewall = false;
 		}
 		
 		protected function init(){
 			
 		}
 		
-		protected function loadModel(){
+		final public function setFirewall(){
+			$this->_firewall = new firewallGc($this->_lang);
+			
+			if($this->_firewall->check()){
+				$this->_addError('Le parefeu n\'a identifié aucune erreur dans l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'], __FILE__, __LINE__);
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		
+		final protected function loadModel(){
 			$class = 'manager'.ucfirst($_GET['rubrique']);
 			if(class_exists($class)){	
 				$this->_addError('Model '.$_GET['rubrique'].' initialisé', __FILE__, __LINE__);
@@ -60,7 +74,7 @@
 			}
 		}
 		
-		protected function _connectDatabase($db){
+		final protected function _connectDatabase($db){
 			foreach ($db as $d){
 				switch ($d['extension']){
 					case 'pdo':
@@ -89,7 +103,7 @@
 			return $sql_connect;
 		}
 		
-		protected function hydrate(array $donnees){
+		final protected function hydrate(array $donnees){
             foreach ($donnees as $attribut => $valeur){
                 $methode = 'set'.ucfirst($attribut);
                 
@@ -99,15 +113,15 @@
             }
         }
 			
-		protected function _createLangInstance(){
+		final protected function _createLangInstance(){
 			$this->_langInstance = new langGc($this->_lang);
 		}
 		
-		protected function useLang($sentence, $var = array()){
+		final protected function useLang($sentence, $var = array()){
 			return $this->_langInstance->loadSentence($sentence, $var);
 		}
 		
-		protected function getLang(){
+		final protected function getLang(){
 			return $this->_lang;
 		}
 		
@@ -135,21 +149,21 @@
 				return false;
 		}
 		
-		protected function setDevTool($set){
+		final protected function setDevTool($set){
 			$this->_devTool = $set;
 			$GLOBALS['appDevGc']->setShow($set);
 		}
 		
-		protected function getDevTool($set){
+		final protected function getDevTool($set){
 			return $this->_devTool;
 		}
 		
-		protected function setLang($lang){
+		final protected function setLang($lang){
 			$this->_lang=$lang;
 			$this->_langInstance->setLang($this->_lang);
 		}
 		
-		protected function setInfo($info=array()){
+		final protected function setInfo($info=array()){
 			foreach($info as $cle=>$info){
 				switch($cle){
 					case'doctype':
@@ -274,7 +288,7 @@
 			}
 		}
 		
-		protected function _showHeader(){
+		final protected function _showHeader(){
 			$this->_header.=$this->_doctype."\n";
 			$this->_header.="  <head>\n";
 			$this->_header.="    <title>".($this->_title)."</title>\n";
@@ -365,22 +379,22 @@
 			return $this->_header;			
 		} 
 		
-		protected function showFooter(){
+		final protected function showFooter(){
 			$this->_footer="  </body>\n</html>";
 			return $this->_footer;
 		}
 		
-		protected function newToken(){
+		final protected function newToken(){
 			return uniqid(rand(), true);
 		}
 		
-		protected function showDefault(){
+		final protected function showDefault(){
 			$t= new templateGC(GCSYSTEM_PATH.'GCnewrubrique', 'GCrubrique', '0');
 			$t->assign(array('rubrique' => $_GET['rubrique']));
 			$t->show();
 		}
 		
-		protected function affTemplate($nom_template){
+		final protected function affTemplate($nom_template){
 			if(is_file(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT)) { 
 				include(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT);
 			} 

@@ -1,8 +1,27 @@
-03/08/2012 a 00:27:31 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 103 Appel du contrôleur "actionTerminal" de la rubrique "terminal" réussi
-03/08/2012 a 00:27:32 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/08/2012 a 00:27:35 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 165 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/08/2012 a 00:27:36 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 143 Chargement des fichiers "app/rubrique/terminal.class.php" et "app/model/terminal.model.class.php"
-03/08/2012 a 00:27:36 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 46 Contrôleur terminal initialisé
-03/08/2012 a 00:27:36 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 56 Model terminal initialisé
-03/08/2012 a 00:27:36 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 103 Appel du contrôleur "actionTerminal" de la rubrique "terminal" réussi
-03/08/2012 a 00:27:36 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+06/08/2012 a 01:51:16 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 107 Appel du contrôleur "actionTerminal" de la rubrique "terminal" réussi
+06/08/2012 a 01:51:16 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+06/08/2012 a 01:51:19 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 172 Content-Type : "Content-Type: text/html; charset=UTF-8"
+06/08/2012 a 01:51:19 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 150 Chargement des fichiers "app/rubrique/terminal.class.php" et "app/model/terminal.model.class.php"
+06/08/2012 a 01:51:19 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 47 Contrôleur terminal initialisé
+06/08/2012 a 01:51:19 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+06/08/2012 a 01:51:19 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 59 Le parefeu n'a identifié aucune erreur dans l'accès à la page terminal/terminal
+06/08/2012 a 01:51:19 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 70 Model terminal initialisé
+06/08/2012 a 01:51:19 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 107 Appel du contrôleur "actionTerminal" de la rubrique "terminal" réussi
+06/08/2012 a 01:51:19 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+06/08/2012 a 01:51:21 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 172 Content-Type : "Content-Type: text/html; charset=UTF-8"
+06/08/2012 a 01:51:21 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 150 Chargement des fichiers "app/rubrique/test1.class.php" et "app/model/test1.model.class.php"
+06/08/2012 a 01:51:21 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 47 Contrôleur test1 initialisé
+06/08/2012 a 01:51:21 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+06/08/2012 a 01:51:21 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 59 Le parefeu n'a identifié aucune erreur dans l'accès à la page test1/actionqsd
+06/08/2012 a 01:51:21 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 70 Model test1 initialisé
+06/08/2012 a 01:51:21 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCrubrique" a bien été chargé.
+06/08/2012 a 01:51:21 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 112 L'appel de l'action "actionActionqsd" de la rubrique "test1" a échoué. Appel de l'action par défaut "actionDefault"
+06/08/2012 a 01:51:21 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+06/08/2012 a 01:51:27 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 172 Content-Type : "Content-Type: text/html; charset=UTF-8"
+06/08/2012 a 01:51:27 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 150 Chargement des fichiers "app/rubrique/terminal.class.php" et "app/model/terminal.model.class.php"
+06/08/2012 a 01:51:27 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 47 Contrôleur terminal initialisé
+06/08/2012 a 01:51:27 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+06/08/2012 a 01:51:27 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 59 Le parefeu n'a identifié aucune erreur dans l'accès à la page terminal/terminal
+06/08/2012 a 01:51:27 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 70 Model terminal initialisé
+06/08/2012 a 01:51:28 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 107 Appel du contrôleur "actionTerminal" de la rubrique "terminal" réussi
+06/08/2012 a 01:51:28 ! :  fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.

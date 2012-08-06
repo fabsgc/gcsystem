@@ -13,7 +13,7 @@
 			</div>
 		</a>
 	</div>
-	<if cond="$time > 0">
+	<gc:if cond="$time > 0">
 		<meta http-equiv='Refresh' content='{time}; URL="{redirect}"'>";
-	</if>
+	</gc:if>
 </div>

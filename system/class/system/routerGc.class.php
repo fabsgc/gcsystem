@@ -48,14 +48,16 @@
 		
 		protected $action;
 		protected $module;
+		protected $id;
 		protected $url;
 		protected $varsNames;
 		protected $vars = array();
 		
-		public function __construct($url, $module, $action, array $varsNames){
+		public function __construct($url, $module, $action, $id, $varsNames = array()){
 			$this->setUrl($url);
 			$this->setModule($module);
 			$this->setAction($action);
+			$this->setId($id);
 			$this->setVarsNames($varsNames);
 		}
 		
@@ -75,6 +77,12 @@
 		public function setAction($action){
 			if (is_string($action)){
 				$this->action = $action;
+			}
+		}
+		
+		public function setId($id){
+			if (is_string($id)){
+				$this->id = $id;
 			}
 		}
 		
@@ -100,6 +108,10 @@
 		
 		public function action(){
 			return $this->action;
+		}
+		
+		public function id(){
+			return $this->id;
 		}
 		
 		public function url(){

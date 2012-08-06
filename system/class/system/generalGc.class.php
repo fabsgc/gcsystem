@@ -240,10 +240,14 @@
 		protected $_channelXml                              ;
 		protected $_itemXml                                 ;
 		protected $_nodeXml                                 ;
+		protected $_node2Xml                                ;
+		protected $_node3Xml                                ;
 		protected $_markupXml                               ;
 		protected $_markup2Xml                              ;
+		protected $_markup3Xml                              ;
 		protected $_textXml                                 ;
 		protected $_text2Xml                                ;
+		protected $_text3Xml                                ;
 	}
 	
 	abstract class constMime{
