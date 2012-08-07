@@ -11,7 +11,7 @@
 
 		protected $bdd                                ; //contient la connexion sql
 		
-		public  function __construct($lang="", $bdd){
+		final public  function __construct($lang="", $bdd){
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();			
 			if(CONNECTBDD == true) {$this->bdd=$bdd; }
@@ -20,19 +20,19 @@
 		public function init(){
 		}
 			
-		protected function _createLangInstance(){
+		final protected function _createLangInstance(){
 			$this->_langInstance = new langGc($this->_lang);
 		}
 		
-		public function useLang($sentence, $var = array()){
+		final protected function useLang($sentence, $var = array()){
 			return $this->_langInstance->loadSentence($sentence, $var);
 		}
 		
-		public function getLang(){
+		final protected function getLang(){
 			return $this->_lang;
 		}
 		
-		public function setLang($lang){
+		final protected function setLang($lang){
 			$this->_lang=$lang;
 			$this->_langInstance->setLang($this->_lang);
 		}

@@ -29,7 +29,7 @@
 				MODEL_PATH.'terminal'.MODEL_EXT.'.php', MODEL_PATH.'index'.MODEL_EXT.'.php', FUNCTION_GENERIQUE, RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCrubrique'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
-				CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE, CLASS_LOG, CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE,CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
+				CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE, CLASS_LOG, CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE,CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
 			);
 			$this->_updateFile = array(
 				FUNCTION_GENERIQUE, RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
@@ -38,7 +38,7 @@
 				LIB_PATH.'FormsGC/formsGC.class.php', LIB_PATH.'FormsGC/formsGCValidator.class.php',
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCrubrique'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
-				CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE, CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
+				CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE, CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
 				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT, 
 			); // liste des fichiers systèmes à updater
 		}
@@ -381,7 +381,7 @@
 						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
 					}
 				}
-				elseif(preg_match('#rename template (.+) (.+)#', $this->_command)){
+				elseif(preg_match('#set template (.+) (.+)#', $this->_command)){
 					if(!in_array(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT, $this->_forbidden)){
 						if(is_file(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT)){
 							if(!is_file(TEMPLATE_PATH.$this->_commandExplode[3].TEMPLATE_EXT)){
@@ -404,7 +404,7 @@
 						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
 					}
 				}
-				elseif(preg_match('#rename rubrique (.+) (.+)#', $this->_command)){
+				elseif(preg_match('#set rubrique (.+) (.+)#', $this->_command)){
 					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden) && !in_array(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', $this->_forbidden)){
 						if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') || is_file(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
 							if(!is_file(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php') || !is_file(MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php')){
@@ -537,6 +537,31 @@
 						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
 					}
 				}
+				elseif(preg_match('#add url#', $this->_command)){
+					//add url id url rubrique action vars connected access
+					
+					$this->_domXml = new DomDocument('1.0', CHARSET);
+					
+					if($this->_domXml->load(ROUTE)){		
+						$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
+						$sentences = $this->_nodeXml->getElementsByTagName('route');
+						
+						$exist = false;
+						
+						foreach($sentences as $sentence){
+							if ($sentence->getAttribute("rubrique") == $this->_commandExplode[2] || $sentence->getAttribute("id") == $this->_commandExplode[3]){
+								$exist = true;
+							}
+						}
+						
+						if($exist == false){
+							//$this->_result = '<br />><span style="color: red;"> Cette url ou cet id est déjà utilisé</span>';
+						}
+						else{
+							$this->_result = '<br />><span style="color: red;"> Cette url ou cet id est déjà utilisé</span>';
+						}
+					}
+				}
 				elseif(preg_match('#list rubrique#', $this->_command)){
 					if($this->_dossier = opendir(RUBRIQUE_PATH)){
 						$this->_stream .= '<br />>####################### RUBRIQUE';
@@ -587,14 +612,14 @@
 				}
 				elseif(preg_match('#help#', $this->_command)){
 					$this->_stream .= '<br />> add rubrique nom (url[lien] action[nom|empty] vars[getvar,getvar] connect[true|false] access[role1, role2]) facultatif';
-					$this->_stream .= '<br />> delete rubrique nom';
 					$this->_stream .= '<br />> set rubrique nom nouveaunom (url[lien] action[nom|empty] vars[getvar,getvar] connect[true|false] access[role1, role2]) facultatif';
+					$this->_stream .= '<br />> delete rubrique nom';
 					$this->_stream .= '<br />> add url id url rubrique action vars connected access';
-					$this->_stream .= '<br />> delete url id';
 					$this->_stream .= '<br />> set url id url rubrique action vars connected access';
+					$this->_stream .= '<br />> delete url id';
 					$this->_stream .= '<br />> add template nom';
+					$this->_stream .= '<br />> set template nom nouveaunom';
 					$this->_stream .= '<br />> delete template nom';
-					$this->_stream .= '<br />> rename template nom nouveaunom';
 					$this->_stream .= '<br />> add class nom';
 					$this->_stream .= '<br />> add plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
 					$this->_stream .= '<br />> set plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
@@ -609,6 +634,10 @@
 					$this->_stream .= '<br />> update';
 					$this->_stream .= '<br />> update updater';
 					$this->_stream .= '<br />> see log nomdulogsansextansion';
+					$this->_stream .= '<br />> see route';
+					$this->_stream .= '<br />> see plugin';
+					$this->_stream .= '<br />> see app';
+					$this->_stream .= '<br />> see firewall';
 					$this->_stream .= '<br />> changepassword nouveaumdp';
 					$this->_stream .= '<br />> connect mdp';
 					$this->_stream .= '<br />> disconnect';
@@ -633,33 +662,177 @@
 					file_put_contents('web.config.php', $sauvegarde);
 					$this->_result = '<br />><span style="color: chartreuse;"> Le mot de passe a bien &#233;t&#233; modifi&#233;'.$sauvegarde.'</span>';
 				}
-				elseif(preg_match('#see log (.+)#', $this->_command)){
-					if(is_file(LOG_PATH.$this->_commandExplode[2].LOG_EXT)){
-						$sauvegarde = file_get_contents(LOG_PATH.$this->_commandExplode[2].LOG_EXT);
-						$sauvegardes = explode("\n", $sauvegarde);
-						
-						$i = 0;
-						
-						foreach($sauvegardes as $valeur){
-							if(strlen($valeur)>=10){
-								$search = array ();
-								$replace = array ();
-								$valeur = preg_replace($search, $replace, $valeur);
-								if($i == 0){
-									$this->_stream .= '<br />> <span style="color: chartreuse;">'.($valeur).'</span>';
-									$i=1;
+				elseif(preg_match('#see (.+)#', $this->_command)){
+					switch($this->_commandExplode[1]){
+						case 'log':
+							if(is_file(LOG_PATH.$this->_commandExplode[2].LOG_EXT)){
+								$sauvegarde = file_get_contents(LOG_PATH.$this->_commandExplode[2].LOG_EXT);
+								$sauvegardes = explode("\n", $sauvegarde);
+								
+								$i = 0;
+								
+								foreach($sauvegardes as $valeur){
+									if(strlen($valeur)>=10){
+										$search = array ();
+										$replace = array ();
+										$valeur = preg_replace($search, $replace, $valeur);
+										if($i == 0){
+											$this->_stream .= '<br />> <span style="color: chartreuse;">'.($valeur).'</span>';
+											$i=1;
+										}
+										else{
+											$this->_stream .= '<br />> <span style="color: red;">'.($valeur).'</span>';
+											$i=0;
+										}	
+									}							
 								}
-								else{
-									$this->_stream .= '<br />> <span style="color: red;">'.($valeur).'</span>';
-									$i=0;
-								}	
-							}							
-						}
+								
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de log <strong>'.LOG_PATH.$this->_commandExplode[2].LOG_EXT.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+							}
+							else{
+								$this->_result = '<br />><span style="color: red;"> Le fichier de log <strong>'.LOG_PATH.$this->_commandExplode[2].LOG_EXT.'</strong> n\'existe pas</span>';
+							}
+						break;
 						
-						$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de log <strong>'.LOG_PATH.$this->_commandExplode[2].LOG_EXT.'</strong> a bien &#233;t&#233; affich&#233;</span>';
-					}
-					else{
-						$this->_result = '<br />><span style="color: red;"> Le fichier de log <strong>'.LOG_PATH.$this->_commandExplode[2].LOG_EXT.'</strong> n\'existe pas</span>';
+						case 'route':
+							if(is_file(ROUTE)){
+								$sauvegarde = file_get_contents(ROUTE);
+								echo $sauvegarde;
+								$sauvegardes = explode("\n", $sauvegarde);
+								
+								$i = 0;
+								
+								foreach($sauvegardes as $valeur){
+									if(strlen($valeur)>=5){
+										if($i == 0){
+											$this->_stream .= '<br />> <span style="color: chartreuse;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=1;
+										}
+										else{
+											$this->_stream .= '<br />> <span style="color: red;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=0;
+										}	
+									}							
+								}
+								
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de route <strong>'.ROUTE.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+							}
+							else{
+								$this->_result = '<br />><span style="color: red;"> Le fichier de route <strong>'.ROUTE.'</strong> n\'existe pas ce qui est étonnant à moins que vous n\'ayez désactivé le route via le framework</span>';
+							}
+						break;
+						
+						case 'plugin':
+							if(is_file(PLUGIN)){
+								$sauvegarde = file_get_contents(PLUGIN);
+								echo $sauvegarde;
+								$sauvegardes = explode("\n", $sauvegarde);
+								
+								$i = 0;
+								
+								foreach($sauvegardes as $valeur){
+									if(strlen($valeur)>=5){
+										if($i == 0){
+											$this->_stream .= '<br />> <span style="color: chartreuse;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=1;
+										}
+										else{
+											$this->_stream .= '<br />> <span style="color: red;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=0;
+										}	
+									}							
+								}
+								
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de plugins <strong>'.PLUGIN.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+							}
+							else{
+								$this->_result = '<br />><span style="color: red;"> Le fichier de plugins <strong>'.PLUGIN.'</strong> n\'existe pas. Vous devriez vite le récupérer</span>';
+							}
+						break;
+						
+						case 'app':
+							if(is_file(APPCONFIG)){
+								$sauvegarde = file_get_contents(APPCONFIG);
+								echo $sauvegarde;
+								$sauvegardes = explode("\n", $sauvegarde);
+								
+								$i = 0;
+								
+								foreach($sauvegardes as $valeur){
+									if(strlen($valeur)>=5){
+										if($i == 0){
+											$this->_stream .= '<br />> <span style="color: chartreuse;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=1;
+										}
+										else{
+											$this->_stream .= '<br />> <span style="color: red;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=0;
+										}	
+									}							
+								}
+								
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de config <strong>'.APPCONFIG.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+							}
+							else{
+								$this->_result = '<br />><span style="color: red;"> Le fichier de config <strong>'.APPCONFIG.'</strong> n\'existe pas. Vous devriez vite le récupérer</span>';
+							}
+						break;
+						
+						case 'app':
+							if(is_file(APPCONFIG)){
+								$sauvegarde = file_get_contents(APPCONFIG);
+								echo $sauvegarde;
+								$sauvegardes = explode("\n", $sauvegarde);
+								
+								$i = 0;
+								
+								foreach($sauvegardes as $valeur){
+									if(strlen($valeur)>=5){
+										if($i == 0){
+											$this->_stream .= '<br />> <span style="color: chartreuse;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=1;
+										}
+										else{
+											$this->_stream .= '<br />> <span style="color: red;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=0;
+										}	
+									}							
+								}
+								
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de config <strong>'.APPCONFIG.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+							}
+							else{
+								$this->_result = '<br />><span style="color: red;"> Le fichier de config <strong>'.APPCONFIG.'</strong> n\'existe pas. Vous devriez vite le récupérer</span>';
+							}
+						break;
+						
+						case 'firewall':
+							if(is_file(FIREWALL)){
+								$sauvegarde = file_get_contents(FIREWALL);
+								echo $sauvegarde;
+								$sauvegardes = explode("\n", $sauvegarde);
+								
+								$i = 0;
+								
+								foreach($sauvegardes as $valeur){
+									if(strlen($valeur)>=5){
+										if($i == 0){
+											$this->_stream .= '<br />> <span style="color: chartreuse;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=1;
+										}
+										else{
+											$this->_stream .= '<br />> <span style="color: red;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=0;
+										}	
+									}							
+								}
+								
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de sécurité <strong>'.FIREWALL.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+							}
+							else{
+								$this->_result = '<br />><span style="color: red;"> Le fichier de sécurité <strong>'.FIREWALL.'</strong> n\'existe pas. Vous devriez vite le récupérer si vous voulez disposer d\'un pare feu</span>';
+							}
+						break;
 					}
 				}
 				else{
