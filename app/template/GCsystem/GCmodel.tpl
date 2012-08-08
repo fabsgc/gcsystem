@@ -3,7 +3,7 @@
 	 * @info :manager créé automatiquement par le GCsystem
 	*/
 	
-	class manager".$rubrique." extends modelGc{
+	class manager".$rubrique." extends modelGc{	
 		protected ".'$bdd'."                           ;
 		
 		public function init(){

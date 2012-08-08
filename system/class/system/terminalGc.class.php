@@ -537,9 +537,8 @@
 						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
 					}
 				}
-				elseif(preg_match('#add url#', $this->_command)){
+				elseif(preg_match('#add url (.*) (.*) (.*) (.*) (.*) (.*) (.*)#', $this->_command)){
 					//add url id url rubrique action vars connected access
-					
 					$this->_domXml = new DomDocument('1.0', CHARSET);
 					
 					if($this->_domXml->load(ROUTE)){		
@@ -555,7 +554,7 @@
 						}
 						
 						if($exist == false){
-							//$this->_result = '<br />><span style="color: red;"> Cette url ou cet id est déjà utilisé</span>';
+							$this->_result = '<br />><span style="color: red;"> Cette url est dispo</span>';
 						}
 						else{
 							$this->_result = '<br />><span style="color: red;"> Cette url ou cet id est déjà utilisé</span>';
@@ -840,8 +839,8 @@
 				}
 			}
 			else{
-				$this->_stream .= '<span style="color: red;"> / erreur de connexion</span>';
-				$this->_result = '<br />><span style="color: red;"> Vous devez vous connecter gr&#226;ce au  mot de passe du fichier de config</span>';
+				//$this->_stream .= '><span style="color: red;"> Erreur de connexion</span>';
+				$this->_result = '<br />><span style="color: red;"> Erreur de connexion. Vous devez vous connecter gr&#226;ce au  mot de passe du fichier de config</span>';
 			}
 			
 			if($this->_stream!="")
