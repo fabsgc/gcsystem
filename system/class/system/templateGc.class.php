@@ -33,10 +33,10 @@
 				$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';
 				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 				$this->_setParser();
-				$this->_addError('le fichier de template "'.$this->_nom.'" a bien été chargé.', __FILE__, __LINE__);
+				$this->_addError('le fichier de template "'.$this->_nom.'" a bien été chargé.', __FILE__, __LINE__, INFORMATION);
 			} 
 			else{
-				$this->_addError('le fichier de template "'.$this->_nom.'" spécifié n\'a pas été trouvé.', __FILE__, __LINE__);
+				$this->_addError('le fichier de template "'.$this->_nom.'" spécifié n\'a pas été trouvé.', __FILE__, __LINE__, ERROR);
 				$this->_nom=$nom;
 				$this->_timeCache=$timecache;
 				$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';
@@ -68,7 +68,7 @@
 
 		public function assignArray($nom, $vars){
 			if(isset($this->vars[$nom]) && !is_array($this->vars[$nom])){
-				$this->_addError('Vous avez écrasé une variable par un array.', __FILE__, __LINE__);
+				$this->_addError('Vous avez écrasé "'.$nom.'" une variable par un array.', __FILE__, __LINE__, WARNING);
 			}
 			
 			if(strpos($nom, '.')){
@@ -282,7 +282,7 @@
 				$variable = '$'.$cle.'='.$valeur.';';
 				$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).$this->_regexSpace.$cle.$this->_regexSpace.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($'.$cle.'); ?>', $this->_contenu);
 			}
-			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).$this->_regexSpace.'([\[\]A-Za-z0-9._-]+)'.$this->_regexSpace.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($$1); ?>', $this->_contenu);
+			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).$this->_regexSpace.'([\[\]A-Za-z0-9\'._-]+)'.$this->_regexSpace.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($$1); ?>', $this->_contenu);
 		}
 		
 		protected function _parsevarFunc(){
@@ -318,7 +318,7 @@
 					$content = $t->show();
 				}
 				else{
-					$this->_addError('Le template '.$file[1].' n\'a pas pu être inclus', __FILE__, __LINE__);
+					$this->_addError('Le template '.$file[1].' n\'a pas pu être inclus', __FILE__, __LINE__, ERROR);
 				}	
 			}
 

@@ -11,5 +11,5 @@
     <route id="terminal" url="/terminal\.html" rubrique="terminal" action="" vars=""/>
     <route id="terminal_terminal" url="/terminal-terminal\.html" rubrique="terminal" action="terminal" vars=""/>
 	<route id="test4" url="/url-(.*)\.html" rubrique="test1" action="actionqsd" vars="token"/>  
-    
-<route id="monid" url="/madfpage-(.*).html" rubrique="marsdfubrique" action="vesdfras" vars="fsdsdffs,ssdfdf"/></routes>
+    <route id="monid" url="/madfpage-(.*).html" rubrique="marsdfubrique" action="vesdfras" vars="fsdsdffs,ssdfdf"/>
+<route id="urltestdebug" url="/urltestdebug.html" rubrique="index" action="actiontestdebug" vars=""/></routes>

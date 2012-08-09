@@ -101,6 +101,7 @@
 					return ($this->_content);
 				}
 				else{
+					$this->_addError('Le texte "'.$nom.'" n\'a pas été trouvé dans le fichier de lang "'.$this->$_lang.'"', __FILE__, __LINE__, ERROR);
 					return 'texte non trouvé';
 				}
 			}

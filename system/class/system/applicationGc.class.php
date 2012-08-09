@@ -44,7 +44,7 @@
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();	
 			if(CONNECTBDD == true) {$this->bdd=$this->_connectDatabase($GLOBALS['db']); }
-			$this->_addError('Contrôleur '.$_GET['rubrique'].' initialisé', __FILE__, __LINE__);
+			$this->_addError('Contrôleur '.$_GET['rubrique'].' initialisé', __FILE__, __LINE__, INFORMATION);
 			$this->_firewall = false;
 		}
 		
@@ -56,7 +56,7 @@
 			$this->_firewall = new firewallGc($this->_lang);
 			
 			if($this->_firewall->check()){
-				$this->_addError('Le parefeu n\'a identifié aucune erreur dans l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'], __FILE__, __LINE__);
+				$this->_addError('Le parefeu n\'a identifié aucune erreur dans l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'], __FILE__, __LINE__, INFORMATION);
 				return true;
 			}
 			else{
@@ -67,7 +67,7 @@
 		final protected function loadModel(){
 			$class = 'manager'.ucfirst($_GET['rubrique']);
 			if(class_exists($class)){	
-				$this->_addError('Model '.$_GET['rubrique'].' initialisé', __FILE__, __LINE__);
+				$this->_addError('Model '.$_GET['rubrique'].' initialisé', __FILE__, __LINE__, INFORMATION);
 				$instance = new $class($this->_lang, $this->bdd);
 				$instance->init();
 				return $instance;

@@ -27,7 +27,7 @@
 			<url id="terminal" connected="*" access="*"/>
 			<url id="terminal_terminal" connected="*" access="*"/>
 			<url id="test4" connected="true" access="ROLE_MEMBER,ROLE_ADMIN,ROLE_BANNI"/>
-			
-		<url id="monid" connected="true" access="*"/></access>
+			<url id="monid" connected="true" access="*"/>
+		<url id="urltestdebug" connected="*" access="*"/></access>
 	</firewall>
 </security>

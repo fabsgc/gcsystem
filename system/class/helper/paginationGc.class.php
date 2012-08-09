@@ -181,7 +181,7 @@
 		
 		public function show(){
 			$rand = rand(0,2);
-			$tpl = new templateGc('GCsystem\GCpagination', 'pagination_'.$rand, 0,'en');
+			$tpl = new templateGc('GCsystem\GCpagination', 'pagination_'.$rand, 0, $this->_lang);
 			
 			$tpl->assign(array(
 				'paginationFirstLast'    => $this->_buttonFl,

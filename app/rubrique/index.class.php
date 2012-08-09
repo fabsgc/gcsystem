@@ -53,6 +53,15 @@
 		public function actionContype(){
 		
 		}
+
+		public function actionActiontestdebug(){
+			$array = array(0 => array('id' => 'mon id'), 1 => array('id' => 'mon id2'));
+			$t = new templateGc('test', 'test', 0);
+			$t->assign(array(
+				'array' => $array
+			));
+			$t->show();
+		}
 		
 		public function actionPagination(){
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
@@ -88,7 +97,7 @@
 					'cut' => 8,
 					'bypage' => 10
 					)
-				);
+				,'fr');
 				
 				$page->show();
 				

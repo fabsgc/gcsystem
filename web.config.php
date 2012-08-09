@@ -61,7 +61,7 @@ define('CLASS_AUTOLOAD', CLASS_PATH.'autoload.php');
 define('CLASS_CONFIG', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php');
 define('CLASS_PLUGIN', CLASS_PATH.CLASS_SYSTEM_PATH.'pluginGc.class.php');
 define('CLASS_ROUTER', CLASS_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php');
-define('CLASS_PAGINATION', CLASS_PATH.CLASS_HELPER_PATH.'paginationGc.class.php');
+define('CLASS_ANTISPAM', CLASS_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php');
 
 //lib
 define('GESHI', LIB_PATH.'geshi/geshi.php');
@@ -75,6 +75,12 @@ define('MODOGCCONFIG', APP_CONFIG_PATH.'modoGc.xml');
 define('APPCONFIG', APP_CONFIG_PATH.'app.xml');
 define('PLUGIN', APP_CONFIG_PATH.'plugin.xml');
 define('FIREWALL', APP_CONFIG_PATH.'firewall.xml');
+define('ASPAM', APP_CONFIG_PATH.'antispam.xml');
+
+//logs messages
+define('WARNING', 'WARNING');
+define('ERROR', 'ERROR');
+define('INFORMATION', 'INFORMATION');
 
 /* --------------parametres de connexion a la base de donnees------------------*/
 
@@ -98,6 +104,9 @@ define('REWRITE', true);
 
 //utilisation du parefeu
 define('SECURITY', true);
+
+//utilisation de l'antispam
+define('ANTISPAM', true);
 
 //charset
 define('CHARSET', 'UTF-8');

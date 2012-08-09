@@ -13,3 +13,38 @@
 08/08/2012 a 02:28:03 ! : Erreur [8] (Undefined offset: 3) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\terminalGc.class.php a la ligne 552
 08/08/2012 a 02:28:03 ! : Erreur [8] (Undefined offset: 3) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\terminalGc.class.php a la ligne 552
 08/08/2012 a 23:45:36 ! : Erreur [8] (Undefined variable: rubrique) dans le fichier C:\wamp\www\GCsystem2.0\app\cache\template_GCclass.tpl.compil.php a la ligne 8
+09/08/2012 a 07:33:16 ! : The rubric  were not found
+09/08/2012 a 07:54:24 ! : Erreur [8] (Undefined variable: sentences) dans le fichier C:\wamp\www\GCsystem\system\class\system\terminalGc.class.php a la ligne 414
+09/08/2012 a 07:56:00 ! : Erreur [8] (Undefined variable: sentences) dans le fichier C:\wamp\www\GCsystem\system\class\system\terminalGc.class.php a la ligne 414
+09/08/2012 a 20:03:54 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem2.0\app\rubrique\index.class.php a la ligne 69
+09/08/2012 a 20:03:54 ! : Erreur [8] (Undefined index: page) dans le fichier C:\wamp\www\GCsystem2.0\app\rubrique\index.class.php a la ligne 87
+09/08/2012 a 20:03:54 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 20:03:54 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 20:03:58 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem2.0\app\rubrique\index.class.php a la ligne 69
+09/08/2012 a 20:03:58 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 20:03:58 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 20:04:00 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem2.0\app\rubrique\index.class.php a la ligne 69
+09/08/2012 a 20:04:00 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 20:04:00 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 20:07:28 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem2.0\app\rubrique\index.class.php a la ligne 69
+09/08/2012 a 20:07:28 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 20:07:28 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 20:11:13 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem2.0\app\rubrique\index.class.php a la ligne 69
+09/08/2012 a 20:11:13 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 20:11:13 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 20:19:31 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem2.0\app\rubrique\index.class.php a la ligne 69
+09/08/2012 a 20:19:31 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 20:19:31 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 20:19:31 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem2.0\app\rubrique\index.class.php a la ligne 69
+09/08/2012 a 20:19:31 ! : Erreur [8] (Undefined index: page) dans le fichier C:\wamp\www\GCsystem2.0\app\rubrique\index.class.php a la ligne 87
+09/08/2012 a 20:19:31 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 20:19:31 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 21:38:39 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 21:39:06 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 21:39:06 ! : Erreur [8] (Use of undefined constant id - assumed 'id') dans le fichier C:\wamp\www\GCsystem2.0\app\cache\template_test.tpl.compil.php a la ligne 2
+09/08/2012 a 21:39:06 ! : Erreur [8] (Use of undefined constant id - assumed 'id') dans le fichier C:\wamp\www\GCsystem2.0\app\cache\template_test.tpl.compil.php a la ligne 2
+09/08/2012 a 21:39:15 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 21:39:15 ! : Erreur [8] (Use of undefined constant id - assumed 'id') dans le fichier C:\wamp\www\GCsystem2.0\app\cache\template_test.tpl.compil.php a la ligne 2
+09/08/2012 a 21:39:15 ! : Erreur [8] (Use of undefined constant id - assumed 'id') dans le fichier C:\wamp\www\GCsystem2.0\app\cache\template_test.tpl.compil.php a la ligne 2
+09/08/2012 a 21:39:43 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 21:39:53 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282

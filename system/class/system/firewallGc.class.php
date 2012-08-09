@@ -20,7 +20,7 @@
 				$this->_domXml = new DomDocument('1.0', CHARSET);
 				
 				if($this->_domXml->load(FIREWALL)){
-					$this->_addError('le fichier '.FIREWALL.' a bien été chargé', __FILE__, __LINE__);
+					$this->_addError('le fichier '.FIREWALL.' a bien été chargé', __FILE__, __LINE__, INFORMATION);
 					$this->_setRoleHierarchy();
 					$this->_setFirewallConfigLoginSource();
 					$this->_setFirewallConfigLoginTarget();
@@ -31,12 +31,12 @@
 					$this->_setSession();
 				}
 				else{
-					$this->_addError('le fichier '.FIREWALL.' n\'a pas pu être chargé', __FILE__, __LINE__);
+					$this->_addError('le fichier '.FIREWALL.' n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
 					return true;
 				}
 			}
 			else{
-				$this->_addError('le mode routeur est désactivé. Le parefeu ne peut pas fonctionner', __FILE__, __LINE__);
+				$this->_addError('le mode routeur est désactivé. Le parefeu ne peut pas fonctionner', __FILE__, __LINE__, WARNING);
 				return true;
 			}
 		}
@@ -166,12 +166,12 @@
 											'css'=>FOLDER.'/asset/css/default.css'
 										));
 										$t -> show();
-										$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car son grade n\'est pas autorisé', __FILE__, __LINE__);
+										$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car son grade n\'est pas autorisé', __FILE__, __LINE__, ERROR);
 										return false;
 									}
 								}
 								else{
-									$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car il doit être connecté', __FILE__, __LINE__);
+									$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car il doit être connecté', __FILE__, __LINE__, ERROR);
 									//header('Location: '.$this->getUrl($this->_security['firewall']['config']['login']['source']['id'], $this->_security['firewall']['config']['login']['source']['vars']));
 									return false;
 								}
@@ -192,7 +192,7 @@
 											'css'=>FOLDER.'/asset/css/default.css'
 										));
 									$t -> show();
-									$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car il est connecté', __FILE__, __LINE__);
+									$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car il est connecté', __FILE__, __LINE__, ERROR);
 									return false;
 								}
 							break;
@@ -213,7 +213,7 @@
 							'css'=>FOLDER.'/asset/css/default.css'
 						));
 						$t -> show();
-						$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur : faille CSRF', __FILE__, __LINE__);
+						$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur : faille CSRF', __FILE__, __LINE__, ERROR);
 						return false;
 					}
 				}

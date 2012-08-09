@@ -16,9 +16,11 @@
 		protected $_dossier                       ; //dossier
 		protected $_fichier                       ; //fichier
 		protected $_forbidden                     ; //fichiers interdit
-		protected $_updateFile                    ; //fichiers interdit
+		protected $_updateFile                    ; //fichiers pour la mise à jour
 		protected $_updateDir                     ; //fichiers interdit
 		protected $_helperDefault                 ; //fichiers interdit
+		protected $_configIfNoExist               ; //liste des fichiers de config qui seront mis à jour dans le cas où il ne sont plus disponibles
+
 		public  function __construct($command, $lang = 'fr'){
 			$this->_lang=$lang;
 			$this->_createLangInstance();
@@ -29,7 +31,7 @@
 				MODEL_PATH.'terminal'.MODEL_EXT.'.php', MODEL_PATH.'index'.MODEL_EXT.'.php', FUNCTION_GENERIQUE, RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCrubrique'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
-				CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE, CLASS_LOG, CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE,CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
+				CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE, CLASS_LOG, CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE,CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
 			);
 
 			$this->_updateFile = array(
@@ -39,13 +41,22 @@
 				LIB_PATH.'FormsGC/formsGC.class.php', LIB_PATH.'FormsGC/formsGCValidator.class.php',
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCrubrique'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
-				CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE, CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
-				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT, 
+				CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE, CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
+				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT,
+				CLASS_PATH.CLASS_HELPER_PATH.'fileGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'pictureGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'uploadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'zipGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'captchaGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'dateGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'feedGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'mailGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'modoGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'paginationGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'socialGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'text.class.php'
 			); // liste des fichiers systèmes à updater
 		
 
-			$this->_helperDefault = $arrayName = array(
+			$this->_helperDefault = array(
 				'fileGc', 'downloadGc', 'pictureGc', 'uploadGc', 'zipGc', 'bbcodeGc', 'captchaGc', 'dateGc', 'feedGc', 'mailGc', 'modoGc', 'paginationGc', 'socialGc', 'sqlGc', 'textGc'
+			);
+
+			$this->_configIfNoExist = $arrayName = array(
+				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM
 			);
 		}
 
@@ -148,7 +159,12 @@
 								}
 								
 								if(isset($this->_commandExplode[5])){
-									$this->_markupXml->setAttribute("vars", $this->_commandExplode[5]);
+									if($this->_commandExplode[5] == 'empty'){
+										$this->_markupXml->setAttribute("vars", '');
+									}
+									else{
+										$this->_markupXml->setAttribute("vars", $this->_commandExplode[5]);
+									}
 								}
 								else{
 									$this->_markupXml->setAttribute("vars", '');
@@ -330,13 +346,17 @@
 				
 						foreach($sentences as $sentence){
 							if ($sentence->getAttribute("name") == $this->_commandExplode[2]){
-								$this->_nodeXml->removeChild($sentence);    
+								$this->_nodeXml->removeChild($sentence);
+
+								$this->_result = '<br />><span style="color: chartreuse;"> le plugin <u>'.$this->_commandExplode[2].'</u> a bien été modifié</span>';
+								continue;
+							}
+							else{
+								$this->_result = '<br />><span style="color: chartreuse;"> le plugin <u>'.$this->_commandExplode[2].'</u> n\'existe pas</span>';
 							}
 						}
 						$this->_domXml->save(PLUGIN);
 					}
-
-					$this->_result = '<br />><span style="color: chartreuse;"> le plugin <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; supprim&#233;</span>';
 				}
 				elseif(preg_match('#add template (.+)#', $this->_command)){
 					if(!in_array(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT, $this->_forbidden)){
@@ -350,7 +370,7 @@
 						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
 					}
 				}
-				elseif(preg_match('#add class (.+)#', $this->_command)){
+				elseif(preg_match('#add helper (.+)#', $this->_command)){
 					if(!is_file(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && !in_array($this->_commandExplode[2], $this->_helperDefault)){
 						$this->_domXml = new DomDocument('1.0', CHARSET);
 					
@@ -400,13 +420,40 @@
 					}
 				}
 				elseif(preg_match('#set class (.+)#', $this->_command)){
-					if(!is_file(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && !in_array($this->_commandExplode[2], $this->_helperDefault)){
+					if(is_file(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php')){
 						$this->_domXml = new DomDocument('1.0', CHARSET);
 					
 						if($this->_domXml->load(PLUGIN)){
 							$this->_nodeXml = $this->_domXml->getElementsByTagName('plugins')->item(0);
+							$sentences = $this->_nodeXml->getElementsByTagName('plugin');
 
-							
+							foreach($sentences as $sentence){
+								if ($sentence->getAttribute("name") == $this->_commandExplode[2]){
+									$this->_nodeXml->removeChild($sentence); 
+
+									$this->_markupXml = $this->_domXml->createElement('plugin');
+									$this->_markupXml->setAttribute("type", 'helper');
+									$this->_markupXml->setAttribute("name", $this->_commandExplode[2]);
+									$this->_markupXml->setAttribute("access", $this->_commandExplode[2].'.class.php');
+									if(isset($this->_commandExplode[3]) && ($this->_commandExplode[3] == 'true' || $this->_commandExplode[3] == 'false')){
+										$this->_markupXml->setAttribute("enabled", $this->_commandExplode[3]);
+									}
+									else{
+										$this->_markupXml->setAttribute("enabled", 'true');
+									}
+									if(isset($this->_commandExplode[4]) && ($this->_commandExplode[4] == '*' || preg_match('#yes\[(.+)\]#isU', $this->_commandExplode[4]) || preg_match('#no\[(.+)\]#isU', $this->_commandExplode[4]))){
+										$this->_markupXml->setAttribute("include", $this->_commandExplode[4]);
+									}
+									else{
+										$this->_markupXml->setAttribute("include", '*');
+									}
+								}
+							}
+							$this->_nodeXml->appendChild($this->_markupXml);
+							$this->_domXml->save(PLUGIN);
+
+							$this->_stream .= '<br />> '.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php';
+							$this->_result = '<br />><span style="color: chartreuse;"> le fichier class <u>'.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php'.'</u> a bien été modifié</span>';
 						}
 						else{
 							$this->_stream .= '<br />> '.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php';
@@ -551,7 +598,12 @@
 											}
 											
 											if(isset($this->_commandExplode[6])){
-												$this->_markupXml->setAttribute("vars", $this->_commandExplode[6]);
+												if($this->_commandExplode[6] == 'empty'){
+													$this->_markupXml->setAttribute("vars", '');
+												}
+												else{
+													$this->_markupXml->setAttribute("vars", $this->_commandExplode[6]);
+												}
 											}
 											else{
 												$this->_markupXml->setAttribute("vars", $vars);
@@ -651,7 +703,12 @@
 							$this->_markupXml->setAttribute("url", '/'.$this->_commandExplode[3]);
 							$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[4]);
 							$this->_markupXml->setAttribute("action", $this->_commandExplode[5]);
-							$this->_markupXml->setAttribute("vars", $this->_commandExplode[6]);
+							if($this->_commandExplode[6] != 'empty'){
+								$this->_markupXml->setAttribute("vars", $this->_commandExplode[6]);
+							}
+							else{
+								$this->_markupXml->setAttribute("vars", '');	
+							}
 							$this->_nodeXml->appendChild($this->_markupXml);
 							$this->_domXml->save(ROUTE);
 
@@ -846,18 +903,18 @@
 					$this->_result = '<br />><span style="color: chartreuse;"> le log a bien &#233;t&#233; vid&#233;</span>';
 				}
 				elseif(preg_match('#help#', $this->_command)){
-					$this->_stream .= '<br />> add rubrique nom (url[lien] action[nom|empty] vars[getvar,getvar] connect[true|false] access[role1, role2]) facultatif';
-					$this->_stream .= '<br />> set rubrique nom nouveaunom (url[lien] action[nom|empty] vars[getvar,getvar] connect[true|false] access[role1, role2]) facultatif';
+					$this->_stream .= '<br />> add rubrique nom (url[lien] action[nom|empty] vars[getvar,getvar|empty] connect[true|false|*] access[role1,role2|*]) facultatif';
+					$this->_stream .= '<br />> set rubrique nom nouveaunom (url[lien] action[nom|empty] vars[getvar,getvar|empty] connect[true|false|*] access[role1,role2|*]) facultatif';
 					$this->_stream .= '<br />> delete rubrique nom';
-					$this->_stream .= '<br />> add url id url rubrique action vars connected access';
-					$this->_stream .= '<br />> set url id url rubrique action vars connected access';
+					$this->_stream .= '<br />> add url id url rubrique action vars[vars,vars|empty] connected[true|false|*] access[ROLE1,ROLE2|*]';
+					$this->_stream .= '<br />> set url id url rubrique action vars[vars,vars|empty] connected[true|false|*] access[ROLE1,ROLE2|*]';
 					$this->_stream .= '<br />> delete url id';
 					$this->_stream .= '<br />> add template nom';
 					$this->_stream .= '<br />> set template nom nouveaunom';
 					$this->_stream .= '<br />> delete template nom';
-					$this->_stream .= '<br />> add class nom (enabled include)facultatif';
+					$this->_stream .= '<br />> add helper nom (enabled[true|false] include[*|no[rubrique,rubrique]|yes[rubrique,rubrique]])facultatif';
+					$this->_stream .= '<br />> set class nom enabled[true|false] include[*|no[rubrique,rubrique]|yes[rubrique,rubrique]]';
 					$this->_stream .= '<br />> delete class nom';
-					$this->_stream .= '<br />> set class nom enabled include';
 					$this->_stream .= '<br />> add plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
 					$this->_stream .= '<br />> set plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
 					$this->_stream .= '<br />> delete plugin name';
@@ -870,12 +927,14 @@
 					$this->_stream .= '<br />> clear';
 					$this->_stream .= '<br />> update';
 					$this->_stream .= '<br />> update updater';
-					$this->_stream .= '<br />> install folder';
+					$this->_stream .= '<br />> install rubrique folder';
+					$this->_stream .= '<br />> uninstall rubrique folder';
 					$this->_stream .= '<br />> see log nomdulogsansextansion';
 					$this->_stream .= '<br />> see route';
 					$this->_stream .= '<br />> see plugin';
 					$this->_stream .= '<br />> see app';
 					$this->_stream .= '<br />> see firewall';
+					$this->_stream .= '<br />> see antispam';
 					$this->_stream .= '<br />> changepassword nouveaumdp';
 					$this->_stream .= '<br />> connect mdp';
 					$this->_stream .= '<br />> disconnect';
@@ -1071,6 +1130,34 @@
 								$this->_result = '<br />><span style="color: red;"> Le fichier de sécurité <strong>'.FIREWALL.'</strong> n\'existe pas. Vous devriez vite le récupérer si vous voulez disposer d\'un pare feu</span>';
 							}
 						break;
+
+						case 'antispam':
+							if(is_file(ASPAM)){
+								$sauvegarde = file_get_contents(ASPAM);
+								echo $sauvegarde;
+								$sauvegardes = explode("\n", $sauvegarde);
+								
+								$i = 0;
+								
+								foreach($sauvegardes as $valeur){
+									if(strlen($valeur)>=5){
+										if($i == 0){
+											$this->_stream .= '<br />> <span style="color: chartreuse;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=1;
+										}
+										else{
+											$this->_stream .= '<br />> <span style="color: red;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=0;
+										}	
+									}							
+								}
+								
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de configuration de l\antispam <strong>'.ASPAM.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+							}
+							else{
+								$this->_result = '<br />><span style="color: red;"> Le fichier de configuration de l\antispam <strong>'.ASPAM.'</strong> n\'existe pas. Vous devriez vite le récupérer si vous voulez disposer d\'un système d\'anti spam</span>';
+							}
+						break;
 					}
 				}
 				else{
@@ -1161,6 +1248,25 @@
 					file_put_contents('index.php', $suppr2);
 					file_put_contents('index.php', $sauvegarde2, FILE_APPEND);
 				}
+
+				foreach($this->_configIfNoExist as $cle => $file){
+					if(is_file($file)){
+						$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
+						$fp = fopen($file, "w");
+						curl_setopt($ch, CURLOPT_FILE, $fp);
+						curl_setopt($ch, CURLOPT_HEADER, 0);
+						curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+						curl_exec($ch);
+						curl_close($ch);
+						fclose($fp);
+						$contenu .= '<br />> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
+					}
+				}
+
+
+				$this->_configIfNoExist = $arrayName = array(
+				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM
+			);
 
 				return $contenu;
 			}	

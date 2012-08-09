@@ -67,7 +67,7 @@
 				}
 			}
 			else{
-				$this->_addError('Le routage a échoué car le fichier "'.ROUTE.'" n\' pas pu être chargé', __FILE__, __LINE__);
+				$this->_addError('Le routage a échoué car le fichier "'.ROUTE.'" n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
 			}
 		}
 		
@@ -104,12 +104,12 @@
 										if(is_callable(array($rubrique, 'action'.$_GET['action']))){
 											$action = 'action'.ucfirst($_GET['action']);
 											$class->$action();
-											$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__);
+											$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__, INFORMATION);
 										}
 										else{
 											$action = 'actionDefault';
 											$class->$action();
-											$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__);
+											$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
 										}
 									}
 									elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
@@ -123,7 +123,7 @@
 							ob_get_clean();
 						}
 						else{
-							$this->_addError('L\'instanciation du contrôleur de la rubrique "'.$rubrique.'" a échoué', __FILE__, __LINE__);
+							$this->_addError('L\'instanciation du contrôleur de la rubrique "'.$rubrique.'" a échoué', __FILE__, __LINE__, ERROR);
 						}
 					}
 					else{
@@ -147,14 +147,14 @@
 			if(file_exists(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php')){
 				if(file_exists(MODEL_PATH.$rubrique.MODEL_EXT.'.php')){
 					require_once(MODEL_PATH.$rubrique.MODEL_EXT.'.php');
-					$this->_addError('Chargement des fichiers "'.RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php" et "'.MODEL_PATH.$rubrique.MODEL_EXT.'.php"', __FILE__, __LINE__);
+					$this->_addError('Chargement des fichiers "'.RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php" et "'.MODEL_PATH.$rubrique.MODEL_EXT.'.php"', __FILE__, __LINE__, INFORMATION);
 				}
 				require_once(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php');
 				return true;
 			}
 			else{ 
 				$this->windowInfo('Erreur', $this->_useLang('rubriquenotfound', array('rubrique' => $rubrique)), 0, './'); 
-				$this->_addError('Echec lors du chargement des fichiers "'.RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php" et "'.MODEL_PATH.$rubrique.MODEL_EXT.'.php"', __FILE__, __LINE__);
+				$this->_addError('Echec lors du chargement des fichiers "'.RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php" et "'.MODEL_PATH.$rubrique.MODEL_EXT.'.php"', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -169,24 +169,24 @@
 			switch($extension[count($extension)-1]){
 				case 'html':
 					header('Content-Type: text/html; charset='.CHARSET.'');	
-					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
+					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__, INFORMATION);
 				break;
 				
 				case 'xml':
 					header('Content-Type: text/xml; charset='.CHARSET.'');
 					$GLOBALS['appDevGc']->setShow(false);
-					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
+					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__, INFORMATION);
 				break;
 				
 				case 'json':
 					header('Content-Type: application/json; charset='.CHARSET.'');
 					$GLOBALS['appDevGc']->setShow(false);
-					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
+					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__, INFORMATION);
 				break;
 				
 				default:
 					header('Content-Type: text/html; charset='.CHARSET.'');
-					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__);
+					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__, INFORMATION);
 				break;
 			}
 		}

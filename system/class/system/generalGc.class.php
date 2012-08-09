@@ -154,10 +154,10 @@
 			return $erreur;
 		}
 		
-		protected function _addError($error, $fichier = __FILE__, $ligne = __LINE__){
+		protected function _addError($error, $fichier = __FILE__, $ligne = __LINE__, $type = INFORMATION){
 			array_push($this->_error, $error);
 			$file = fopen(LOG_PATH.'system_errors'.LOG_EXT, "a+");
-			fputs($file, date("d/m/Y \a H:i:s ! : ",time()).' fichier '.$fichier.' ligne '.$ligne.' '.$error."\n");
+			fputs($file, date("d/m/Y \a H:i:s ! : ",time()).'['.$type.'] fichier '.$fichier.' ligne '.$ligne.' '.$error."\n");
 			fclose($file);
 		}
     }
@@ -183,42 +183,43 @@
 			if(REWRITE == true){
 				$domXml = new DomDocument('1.0', 'iso-8859-15');
 				if($domXml->load(ROUTE)){
-					$this->_addError('fichier ouvert : '.ROUTE);
+					$this->_addError('fichier ouvert : '.ROUTE, __FILE__, __LINE__, INFORMATION);
+				
+					$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
+					$markupXml = $nodeXml->getElementsByTagName('route');
+					
+					$rubrique = "";
+					$result   = "";
+					
+					foreach($markupXml as $sentence){	
+						if ($sentence->getAttribute("id") == $id){
+							$url = preg_replace('#\((.*)\)#isU', '<($1)>',  $sentence->getAttribute("url"));
+							$urls = explode('<', $url);
+							$i=0;
+							foreach($urls as $url){
+								if(preg_match('#\)>#', $url)){
+									$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
+									$i++;
+								}
+								else{
+									$result.=$url;
+								}
+							}
+							$result = preg_replace('#\/#U', '', $result);
+							$result = preg_replace('#\\\.#U', '.', $result);
+							return $result;
+						}
+					}
 				}
 				else{
-					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert');
-				}
-				
-				$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
-				$markupXml = $nodeXml->getElementsByTagName('route');
-				
-				$rubrique = "";
-				$result   = "";
-				
-				foreach($markupXml as $sentence){	
-					if ($sentence->getAttribute("id") == $id){
-						$url = preg_replace('#\((.*)\)#isU', '<($1)>',  $sentence->getAttribute("url"));
-						$urls = explode('<', $url);
-						$i=0;
-						foreach($urls as $url){
-							if(preg_match('#\)>#', $url)){
-								$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
-								$i++;
-							}
-							else{
-								$result.=$url;
-							}
-						}
-						$result = preg_replace('#\/#U', '', $result);
-						$result = preg_replace('#\\\.#U', '.', $result);
-						return $result;
-					}
+					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert', __FILE__, __LINE__, ERROR);
 				}
 			}
 			else{
 				$url = preg_replace('#\((.*)\)#isU', '<($1)>',  $regex);
 				$urls = explode('<', $url);
 				$i=0;
+
 				foreach($urls as $url){
 					if(preg_match('#\)>#', $url)){
 					$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
@@ -228,9 +229,10 @@
 						$result.=$url;
 					}
 				}
-			  $result = preg_replace('#\/#U', '', $result);
-			  $result = preg_replace('#\\\.#U', '.', $result);
-			  return $result;
+
+			 	$result = preg_replace('#\/#U', '', $result);
+			 	$result = preg_replace('#\\\.#U', '.', $result);
+			 	return $result;
 			}
 		}
 	}

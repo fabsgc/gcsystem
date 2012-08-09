@@ -17,4 +17,5 @@
 	<plugin type="helper" name="textGc" access="textGc.class.php" enabled="true" include="*"/>
 	<plugin type="lib" name="formsGc" access="FormsGC/formsGC.php" enabled="true" include="*"/>
 	<plugin type="lib" name="geshi" access="geshi/formsGC.php" enabled="false" include="*"/>
+	<plugin type="helper" name="maclass" access="maclass.class.php" enabled="false" include="yes[no]"/>
 </plugins>
