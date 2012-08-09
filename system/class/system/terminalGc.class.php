@@ -15,10 +15,10 @@
 		protected $_result                        = '/ <span style="color: red;">commande non reconnu. Tapez <strong>help</strong> pour avoir la liste des commandes valides</span>'; //resultat du traitement
 		protected $_dossier                       ; //dossier
 		protected $_fichier                       ; //fichier
-		protected $_forbidden                     ; //fichier interdit
-		protected $_updateFile                    ; //fichier interdit
-		protected $_updateDir                     ; //fichier interdit
-
+		protected $_forbidden                     ; //fichiers interdit
+		protected $_updateFile                    ; //fichiers interdit
+		protected $_updateDir                     ; //fichiers interdit
+		protected $_helperDefault                 ; //fichiers interdit
 		public  function __construct($command, $lang = 'fr'){
 			$this->_lang=$lang;
 			$this->_createLangInstance();
@@ -31,6 +31,7 @@
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
 				CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE, CLASS_LOG, CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE,CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
 			);
+
 			$this->_updateFile = array(
 				FUNCTION_GENERIQUE, RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
 				'web.config.php',
@@ -41,8 +42,13 @@
 				CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE, CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
 				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT, 
 			); // liste des fichiers systèmes à updater
-		}
 		
+
+			$this->_helperDefault = $arrayName = array(
+				'fileGc', 'downloadGc', 'pictureGc', 'uploadGc', 'zipGc', 'bbcodeGc', 'captchaGc', 'dateGc', 'feedGc', 'mailGc', 'modoGc', 'paginationGc', 'socialGc', 'sqlGc', 'textGc'
+			);
+		}
+
 		protected function _createLangInstance(){
 			$this->_langInstance = new langGc($this->_lang);
 		}
@@ -244,7 +250,7 @@
 							$this->_stream .= '<br />> '.MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php';
 						}
 						
-						$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
+						$this->_domXml = new DomDocument('1.0', CHARSET);
 						
 						if($this->_domXml->load(ROUTE)){							
 							$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
@@ -316,7 +322,7 @@
 					}
 				}
 				elseif(preg_match('#delete plugin (.+)#', $this->_command)){
-					$this->_domXml = new DomDocument('1.0', 'iso-8859-15');
+					$this->_domXml = new DomDocument('1.0', CHARSET);
 					
 					if($this->_domXml->load(PLUGIN)){							
 						$this->_nodeXml = $this->_domXml->getElementsByTagName('plugins')->item(0);
@@ -345,15 +351,101 @@
 					}
 				}
 				elseif(preg_match('#add class (.+)#', $this->_command)){
-					if(!in_array(CLASS_PATH.$this->_commandExplode[2].'.class.php', $this->_forbidden)){
-						$monfichier = fopen(CLASS_PATH.$this->_commandExplode[2].'.class.php', 'a');
-						fclose($monfichier);
-						$this->_stream .= '<br />> '.CLASS_PATH.$this->_commandExplode[2].'.class.php';
-						$this->_result = '<br />><span style="color: chartreuse;"> le fichier class <u>'.CLASS_PATH.$this->_commandExplode[2].'.class.php'.'</u> a bien &#233;t&#233; cr&#233;&#233;</span>';
+					if(!is_file(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && !in_array($this->_commandExplode[2], $this->_helperDefault)){
+						$this->_domXml = new DomDocument('1.0', CHARSET);
+					
+						if($this->_domXml->load(PLUGIN)){
+							$this->_nodeXml = $this->_domXml->getElementsByTagName('plugins')->item(0);
+
+							$this->_markupXml = $this->_domXml->createElement('plugin');
+							$this->_markupXml->setAttribute("type", 'helper');
+							$this->_markupXml->setAttribute("name", $this->_commandExplode[2]);
+							$this->_markupXml->setAttribute("access", $this->_commandExplode[2].'.class.php');
+							if(isset($this->_commandExplode[3]) && ($this->_commandExplode[3] == 'true' || $this->_commandExplode[3] == 'false')){
+								$this->_markupXml->setAttribute("enabled", $this->_commandExplode[3]);
+							}
+							else{
+								$this->_markupXml->setAttribute("enabled", 'true');
+							}
+							if(isset($this->_commandExplode[4]) && ($this->_commandExplode[4] == '*' || preg_match('#yes\[(.+)\]#isU', $this->_commandExplode[4]) || preg_match('#no\[(.+)\]#isU', $this->_commandExplode[4]))){
+								$this->_markupXml->setAttribute("include", $this->_commandExplode[4]);
+							}
+							else{
+								$this->_markupXml->setAttribute("include", '*');
+							}
+							
+							$this->_nodeXml->appendChild($this->_markupXml);
+							$this->_domXml->save(PLUGIN);
+
+							$monfichier = fopen(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php', 'a');
+							  $t= new templateGC(GCSYSTEM_PATH.'GCclass', 'GCclass', '0');
+								$t->assign(array(
+									'nom'=> $this->_commandExplode[2]
+								));
+								$t->setShow(FALSE);
+								fputs($monfichier, $t->show());
+							fclose($monfichier);
+
+							$this->_stream .= '<br />> '.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php';
+							$this->_result = '<br />><span style="color: chartreuse;"> le fichier class <u>'.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php'.'</u> a bien &#233;t&#233; cr&#233;&#233;</span>';
+						}
+						else{
+							$this->_stream .= '<br />> '.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php';
+							$this->_result = '<br />><span style="color: red;"> Il semble que votre fichier '.PLUGIN.' ait un problème</span>';
+						}						
 					}
 					else{
-						$this->_stream .= '<br />> '.CLASS_PATH.$this->_commandExplode[2].'.class.php';
+						$this->_stream .= '<br />> '.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php';
 						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
+					}
+				}
+				elseif(preg_match('#set class (.+)#', $this->_command)){
+					if(!is_file(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && !in_array($this->_commandExplode[2], $this->_helperDefault)){
+						$this->_domXml = new DomDocument('1.0', CHARSET);
+					
+						if($this->_domXml->load(PLUGIN)){
+							$this->_nodeXml = $this->_domXml->getElementsByTagName('plugins')->item(0);
+
+							
+						}
+						else{
+							$this->_stream .= '<br />> '.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php';
+							$this->_result = '<br />><span style="color: red;"> Il semble que votre fichier '.PLUGIN.' ait un problème</span>';
+						}						
+					}
+					else{
+						$this->_stream .= '<br />> '.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php';
+						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
+					}
+				}
+				elseif(preg_match('#delete class (.+)#', $this->_command)){
+					if(is_file(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && !in_array($this->_commandExplode[2], $this->_helperDefault)){
+						$this->_domXml = new DomDocument('1.0', CHARSET);
+					
+					  if($this->_domXml->load(PLUGIN)){			
+							$this->_nodeXml = $this->_domXml->getElementsByTagName('plugins')->item(0);
+							$sentences = $this->_nodeXml->getElementsByTagName('plugin');
+				
+							foreach($sentences as $sentence){
+								if ($sentence->getAttribute("name") == $this->_commandExplode[2]){
+									$this->_nodeXml->removeChild($sentence); 
+								}
+							}
+							$this->_domXml->save(PLUGIN);
+
+							unlink(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php');
+
+							$this->_stream .= '<br />> '.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php';
+							$this->_result = '<br />><span style="color: chartreuse;"> le fichier class <u>'.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php'.'</u> a bien été supprimé du répertoire et du fichier de plugins</span>';
+						}
+						else{
+							$this->_stream .= '<br />> '.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php';
+							$this->_result = '<br />><span style="color: red;"> Il semble que votre fichier '.PLUGIN.' ait un problème</span>';
+						}	
+					}
+					else{
+						$this->_stream .= '<br />> '.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php';
+						$this->_result = '<br />><span style="color: red;"> La suppression de ce fichier est interdite</span>';
 					}
 				}
 				elseif(preg_match('#list template#', $this->_command)){
@@ -520,7 +612,7 @@
 													  'class manager'.ucfirst($this->_commandExplode[3]).' extends modelGc', $data);
 								file_put_contents(MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php', $data);
 
-								$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; r&#233;nomm&#233;e en <u>'.$this->_commandExplode[3].'</u></span>';
+								$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; modifiée en <u>'.$this->_commandExplode[3].'</u> et ses options ont été modifiées</span>';
 							}
 							else{
 								$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php';
@@ -554,11 +646,155 @@
 						}
 						
 						if($exist == false){
-							$this->_result = '<br />><span style="color: red;"> Cette url est dispo</span>';
+							$this->_markupXml = $this->_domXml->createElement('route');
+							$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
+							$this->_markupXml->setAttribute("url", '/'.$this->_commandExplode[3]);
+							$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[4]);
+							$this->_markupXml->setAttribute("action", $this->_commandExplode[5]);
+							$this->_markupXml->setAttribute("vars", $this->_commandExplode[6]);
+							$this->_nodeXml->appendChild($this->_markupXml);
+							$this->_domXml->save(ROUTE);
+
+							$this->_domXml = new DomDocument('1.0', CHARSET);
+				
+							if($this->_domXml->load(FIREWALL)){
+								$this->_nodeXml = $this->_domXml->getElementsByTagName('security')->item(0);
+								$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewall')->item(0);
+								$this->_node3Xml = $this->_node2Xml->getElementsByTagName('access')->item(0);
+								
+								$sentences = $this->_node3Xml->getElementsByTagName('url');
+								
+								$rubrique = false;
+								
+								foreach($sentences as $sentence){
+									if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+										$rubrique = true;
+									}
+								}
+								
+								if($rubrique == false){
+									$this->_markupXml = $this->_domXml->createElement('url');
+									$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
+									$this->_markupXml->setAttribute("connected", $this->_commandExplode[7]);
+									$this->_markupXml->setAttribute("access", $this->_commandExplode[8]);
+									
+									$this->_node3Xml->appendChild($this->_markupXml);
+									$this->_domXml->save(FIREWALL);
+								}
+							}
+
+							$this->_result = '<br />><span style="color: chartreuse;"> l\'url <u>'.$this->_commandExplode[3].'</u> d\'id <u>'.$this->_commandExplode[2].'</u> a bien été ajoutée au routeur et au parefeu</span>';
 						}
 						else{
 							$this->_result = '<br />><span style="color: red;"> Cette url ou cet id est déjà utilisé</span>';
 						}
+					}
+				}
+				elseif(preg_match('#set url (.*) (.*) (.*) (.*) (.*) (.*) (.*)#', $this->_command)){
+					//set url id url rubrique action vars connected access
+					$this->_domXml = new DomDocument('1.0', CHARSET);
+					
+					$route = false;
+
+					if($this->_domXml->load(ROUTE)){	
+						$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
+						$sentences = $this->_nodeXml->getElementsByTagName('route');
+				
+						foreach($sentences as $sentence){
+							if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+								$this->_nodeXml->removeChild($sentence); 
+
+								$this->_markupXml = $this->_domXml->createElement('route');
+								$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
+								$this->_markupXml->setAttribute("url", '/'.$this->_commandExplode[3]);
+								$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[4]);
+								$this->_markupXml->setAttribute("action", $this->_commandExplode[5]);
+								$this->_markupXml->setAttribute("vars", $this->_commandExplode[6]);
+								$this->_nodeXml->appendChild($this->_markupXml);
+
+								$route = true;
+								$this->_domXml->save(ROUTE);
+
+								$this->_domXml = new DomDocument('1.0', CHARSET);
+				
+								if($this->_domXml->load(FIREWALL)){
+									$this->_nodeXml = $this->_domXml->getElementsByTagName('security')->item(0);
+									$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewall')->item(0);
+									$this->_node3Xml = $this->_node2Xml->getElementsByTagName('access')->item(0);
+									
+									$sentences = $this->_node3Xml->getElementsByTagName('url');
+									
+									foreach($sentences as $sentence){
+										if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+											$this->_node3Xml->removeChild($sentence);
+
+											$this->_markupXml = $this->_domXml->createElement('url');
+											$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
+											$this->_markupXml->setAttribute("connected", $this->_commandExplode[7]);
+											$this->_markupXml->setAttribute("access", $this->_commandExplode[8]);
+											
+											$this->_node3Xml->appendChild($this->_markupXml);
+											$this->_domXml->save(FIREWALL);
+										}
+									}
+								}
+							}
+						}
+
+						if($route == true){
+							$this->_result = '<br />><span style="color: chartreuse"> L\'url d\'id <u>'.$this->_commandExplode[2].'</u> a bien été modifiée</span>';
+						}
+						else{
+							$this->_result = '<br />><span style="color: red"> Cette url n\'existe pas</span>';
+						}
+					}
+					else{
+						$this->_result = '<br />><span style="color: red"> Le fichier de route semble avoir un problème</span>';
+					}
+				}
+				elseif(preg_match('#delete url (.*)#', $this->_command)){
+					$this->_domXml = new DomDocument('1.0', CHARSET);
+						
+					if($this->_domXml->load(ROUTE)){			
+						$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
+						$sentences = $this->_nodeXml->getElementsByTagName('route');
+						
+						$route = false;
+
+						foreach($sentences as $sentence){
+							if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+								$this->_nodeXml->removeChild($sentence); 
+								$route = true;
+							}
+						}
+						$this->_domXml->save(ROUTE);
+
+						$this->_domXml = new DomDocument('1.0', CHARSET);
+
+						if($this->_domXml->load(FIREWALL)){
+							$this->_nodeXml = $this->_domXml->getElementsByTagName('security')->item(0);
+							$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewall')->item(0);
+							$this->_node3Xml = $this->_node2Xml->getElementsByTagName('access')->item(0);
+								
+							$sentences = $this->_node3Xml->getElementsByTagName('url');
+								
+							foreach($sentences as $sentence){
+								if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+									$this->_node3Xml->removeChild($sentence);
+									$this->_domXml->save(FIREWALL);
+								}
+							}
+						}
+
+						if($route == true){
+							$this->_result = '<br />><span style="color: chartreuse;"> L\'url d\'id <u>'.$this->_commandExplode[2].'</u> a bien été supprimée du fichier de route et du firewall</span>';
+						}
+						else{
+							$this->_result = '<br />><span style="color: red;"> Cette url n\'existe pas</span>';
+						}
+					}
+					else{
+						$this->_result = '<br />><span style="color: red"> Le fichier de route semble avoir un problème</span>';
 					}
 				}
 				elseif(preg_match('#list rubrique#', $this->_command)){
@@ -619,7 +855,9 @@
 					$this->_stream .= '<br />> add template nom';
 					$this->_stream .= '<br />> set template nom nouveaunom';
 					$this->_stream .= '<br />> delete template nom';
-					$this->_stream .= '<br />> add class nom';
+					$this->_stream .= '<br />> add class nom (enabled include)facultatif';
+					$this->_stream .= '<br />> delete class nom';
+					$this->_stream .= '<br />> set class nom enabled include';
 					$this->_stream .= '<br />> add plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
 					$this->_stream .= '<br />> set plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
 					$this->_stream .= '<br />> delete plugin name';
@@ -632,6 +870,7 @@
 					$this->_stream .= '<br />> clear';
 					$this->_stream .= '<br />> update';
 					$this->_stream .= '<br />> update updater';
+					$this->_stream .= '<br />> install folder';
 					$this->_stream .= '<br />> see log nomdulogsansextansion';
 					$this->_stream .= '<br />> see route';
 					$this->_stream .= '<br />> see plugin';

@@ -12,3 +12,4 @@
 08/08/2012 a 02:28:03 ! : Erreur [8] (Undefined offset: 3) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\terminalGc.class.php a la ligne 552
 08/08/2012 a 02:28:03 ! : Erreur [8] (Undefined offset: 3) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\terminalGc.class.php a la ligne 552
 08/08/2012 a 02:28:03 ! : Erreur [8] (Undefined offset: 3) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\terminalGc.class.php a la ligne 552
+08/08/2012 a 23:45:36 ! : Erreur [8] (Undefined variable: rubrique) dans le fichier C:\wamp\www\GCsystem2.0\app\cache\template_GCclass.tpl.compil.php a la ligne 8
