@@ -119,6 +119,6 @@
 			array_push($this->_sql, $val);
 		}
 		
-		public  function __desctuct(){
+		public  function __destruct(){
 		}
 	}

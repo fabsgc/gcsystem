@@ -37,6 +37,6 @@
 			$this->_langInstance->setLang($this->_lang);
 		}
 		
-		public  function __desctuct(){
+		public  function __destruct(){
 		}
 	}

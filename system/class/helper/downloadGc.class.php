@@ -92,6 +92,6 @@
 			exit();
 		}
 		
-		public  function __desctuct(){
+		public  function __destruct(){
 		}
 	}

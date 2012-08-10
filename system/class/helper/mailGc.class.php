@@ -257,6 +257,6 @@
 			return true;
 		}
 		
-		public  function __desctuct(){
+		public  function __destruct(){
 		}
 	}

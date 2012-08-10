@@ -30,4 +30,6 @@
   <sentence id="firewallcsrfcontent">An error in the parameters of the url has forced the application to block access to this page</sentence>
   <sentence id="firewallforbiddentitle">Access forbidden</sentence>
   <sentence id="firewallforbiddencontent">Access to this page is forbidden</sentence>
+  <sentence id="antispamerror">You have been identified as a spammer, your IP has been kicked</sentence>
+  <sentence id="antispamexplication">Your IP has exceeded the number of requests allowed on a given period. Please wait for this period has elapsed</sentence>
 </lang>

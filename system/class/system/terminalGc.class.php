@@ -465,7 +465,7 @@
 						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
 					}
 				}
-				elseif(preg_match('#delete class (.+)#', $this->_command)){
+				elseif(preg_match('#delete helper (.+)#', $this->_command)){
 					if(is_file(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && !in_array($this->_commandExplode[2], $this->_helperDefault)){
 						$this->_domXml = new DomDocument('1.0', CHARSET);
 					
@@ -914,7 +914,7 @@
 					$this->_stream .= '<br />> delete template nom';
 					$this->_stream .= '<br />> add helper nom (enabled[true|false] include[*|no[rubrique,rubrique]|yes[rubrique,rubrique]])facultatif';
 					$this->_stream .= '<br />> set class nom enabled[true|false] include[*|no[rubrique,rubrique]|yes[rubrique,rubrique]]';
-					$this->_stream .= '<br />> delete class nom';
+					$this->_stream .= '<br />> delete helper nom';
 					$this->_stream .= '<br />> add plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
 					$this->_stream .= '<br />> set plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
 					$this->_stream .= '<br />> delete plugin name';
@@ -929,6 +929,7 @@
 					$this->_stream .= '<br />> update updater';
 					$this->_stream .= '<br />> install rubrique folder';
 					$this->_stream .= '<br />> uninstall rubrique folder';
+					$this->_stream .= '<br />> recover config';
 					$this->_stream .= '<br />> see log nomdulogsansextansion';
 					$this->_stream .= '<br />> see route';
 					$this->_stream .= '<br />> see plugin';
@@ -958,6 +959,22 @@
 					$sauvegarde = preg_replace("`define\('TERMINAL_MDP', '(.+)'\)`isU", 'define(\'TERMINAL_MDP\', \''.$this->_commandExplode[1].'\')',  $sauvegarde);
 					file_put_contents('web.config.php', $sauvegarde);
 					$this->_result = '<br />><span style="color: chartreuse;"> Le mot de passe a bien &#233;t&#233; modifi&#233;'.$sauvegarde.'</span>';
+				}
+				elseif(preg_match('#recover config#', $this->_command)){
+					foreach($this->_configIfNoExist as $cle => $file){
+						if(!is_file($file)){
+							$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
+							$fp = fopen($file, "w");
+							curl_setopt($ch, CURLOPT_FILE, $fp);
+							curl_setopt($ch, CURLOPT_HEADER, 0);
+							curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+							curl_exec($ch);
+							curl_close($ch);
+							fclose($fp);
+							$contenu .= '<br />> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
+						}
+					}
+					$this->_result = '<br />><span style="color: chartreuse;"> Les fichiers de configurations perdus ont bien été remplacés'.$sauvegarde.'</span>';
 				}
 				elseif(preg_match('#see (.+)#', $this->_command)){
 					switch($this->_commandExplode[1]){
@@ -1075,34 +1092,6 @@
 							}
 						break;
 						
-						case 'app':
-							if(is_file(APPCONFIG)){
-								$sauvegarde = file_get_contents(APPCONFIG);
-								echo $sauvegarde;
-								$sauvegardes = explode("\n", $sauvegarde);
-								
-								$i = 0;
-								
-								foreach($sauvegardes as $valeur){
-									if(strlen($valeur)>=5){
-										if($i == 0){
-											$this->_stream .= '<br />> <span style="color: chartreuse;">'.(htmlspecialchars($valeur)).'</span>';
-											$i=1;
-										}
-										else{
-											$this->_stream .= '<br />> <span style="color: red;">'.(htmlspecialchars($valeur)).'</span>';
-											$i=0;
-										}	
-									}							
-								}
-								
-								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de config <strong>'.APPCONFIG.'</strong> a bien &#233;t&#233; affich&#233;</span>';
-							}
-							else{
-								$this->_result = '<br />><span style="color: red;"> Le fichier de config <strong>'.APPCONFIG.'</strong> n\'existe pas. Vous devriez vite le récupérer</span>';
-							}
-						break;
-						
 						case 'firewall':
 							if(is_file(FIREWALL)){
 								$sauvegarde = file_get_contents(FIREWALL);
@@ -1152,10 +1141,10 @@
 									}							
 								}
 								
-								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de configuration de l\antispam <strong>'.ASPAM.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de configuration de l\'antispam <strong>'.ASPAM.'</strong> a bien &#233;t&#233; affich&#233;</span>';
 							}
 							else{
-								$this->_result = '<br />><span style="color: red;"> Le fichier de configuration de l\antispam <strong>'.ASPAM.'</strong> n\'existe pas. Vous devriez vite le récupérer si vous voulez disposer d\'un système d\'anti spam</span>';
+								$this->_result = '<br />><span style="color: red;"> Le fichier de configuration de l\'antispam <strong>'.ASPAM.'</strong> n\'existe pas. Vous devriez vite le récupérer si vous voulez disposer d\'un système d\'anti spam</span>';
 							}
 						break;
 					}
@@ -1250,7 +1239,7 @@
 				}
 
 				foreach($this->_configIfNoExist as $cle => $file){
-					if(is_file($file)){
+					if(!is_file($file)){
 						$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
 						$fp = fopen($file, "w");
 						curl_setopt($ch, CURLOPT_FILE, $fp);
@@ -1262,7 +1251,6 @@
 						$contenu .= '<br />> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
 					}
 				}
-
 
 				$this->_configIfNoExist = $arrayName = array(
 				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM
@@ -1321,5 +1309,8 @@
 			$message =  trim($message);
 			
 			return preg_replace($search, $replace, $message);
+		}
+
+		public  function __destruct(){
 		}
 	}

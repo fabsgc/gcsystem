@@ -41,6 +41,9 @@
 				}
 			}
 		}
+
+		public  function __destruct(){
+		}
 	}
 	
 	class routeGc{
@@ -128,5 +131,8 @@
 		
 		public function varsNames(){
 			return $this->varsNames;
+		}
+
+		public  function __destruct(){
 		}
 	}

@@ -11,8 +11,14 @@
 				<source id="login" vars=""/>
 				<target id="login" vars=""/>
 			</login>
-			<forbidden template="GCsystem/GCtplGc_windowInfo"/>
-			<csrf name="token" template="GCsystem/GCtplGc_windowInfo" enabled="true"/>
+			<forbidden template="GCsystem/GCerror">
+				<variable type="lang" name="error" sentence="firewallforbiddentitle" />
+				<variable type="lang" name="explication" sentence="firewallforbiddencontent" />
+			</forbidden>
+			<csrf name="token" template="GCsystem/GCtplGc_windowInfo" enabled="true">
+				<variable type="lang" name="error" sentence="firewallcsrftitle" />
+				<variable type="lang" name="explication" sentence="firewallcsrfcontent" />
+			</csrf>
 			<connect name="connected" yes="true" no="false"/>
 		</config>
 		<access>
@@ -25,9 +31,7 @@
 			<url id="picture" connected="*" access="*"/>
 			<url id="contype" connected="*" access="*"/>
 			<url id="terminal" connected="*" access="*"/>
-			<url id="terminal_terminal" connected="*" access="*"/>
-			<url id="test4" connected="true" access="ROLE_MEMBER,ROLE_ADMIN,ROLE_BANNI"/>
-			<url id="monid" connected="true" access="*"/>
-		<url id="urltestdebug" connected="*" access="*"/></access>
+			<url id="terminal_terminal" connected="*" access="*"/>		
+		</access>
 	</firewall>
 </security>

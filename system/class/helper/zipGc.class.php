@@ -169,6 +169,6 @@
 		 * @since 2.0
 		*/
 		
-		public  function __desctuct(){
+		public  function __destruct(){
 		}
 	}

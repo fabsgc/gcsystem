@@ -167,4 +167,7 @@
 		protected function _uncompress($val){
 			return gzuncompress($val);
 		}
+
+		public  function __destruct(){
+		}
 	}

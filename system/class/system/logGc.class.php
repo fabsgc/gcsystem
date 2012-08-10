@@ -20,6 +20,9 @@
 			$this->_error = new TestErrorHandler; 
 			set_error_handler( array($this->_error, 'errorManager' ) ); 
 		} 
+
+		public  function __destruct(){
+		}
 	} 
 
 	class TestErrorHandler{

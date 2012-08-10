@@ -2,8 +2,10 @@
 <antispams>
 	<config>
 		<queryip number="500" duration="3600" />
-		<error template="GCsystem/GCspam">
-			<variable name="antispam" value="antispamGc" />
+		<error template="GCsystem/GCerror">
+			<variable type="var" name="antispam" value="antispamGc" />
+			<variable type="lang" name="error" sentence="antispamerror" />
+			<variable type="lang" name="explication" sentence="antispamexplication" />
 		</error>
 	</config>
 	<ips>

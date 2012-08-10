@@ -51,6 +51,7 @@
 				$this->_domXml = new DomDocument('1.0', CHARSET);
 				if($this->_domXml->load(LANG_PATH.$this->_lang.LANG_EXT)){
 					$this->_langFile=true;
+					$this->_addError('Le fichier de langue "'.LANG_PATH.$this->_lang.LANG_EXT.'" semble être endommagé, ou innacessible', __FILE__, __LINE__, ERROR);
 				}
 				else{
 					$this->_langFile=false;

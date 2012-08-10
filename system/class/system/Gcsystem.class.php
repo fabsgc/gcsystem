@@ -23,7 +23,6 @@
 		public  function __construct($lang=""){
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();
-			$this->_configInstance = new configGc();
 		}
 		
 		public function init(){
@@ -34,6 +33,7 @@
 				$this->_checkFunctionGenerique();
 				$this->_checkSecureVar();
 				$this->setErrorLog('history','Page rewrite : http://'.$this->getHost().$this->getUri().' rubrique : '.$this->getServerName().$this->getPhpSelf().'?'.$this->getQuery().' / origine : '.$this->getReferer().' / IP : '.$this->getIp());
+				$this->_configInstance = new configGc();
 				$this->_initInstance = 1;
 			}
 		}
@@ -243,5 +243,8 @@
 		public function setMaintenance(){
 			$tpl = new templateGC(GCSYSTEM_PATH.'GCmaintenance', 'GCmaintenance', 0, $this->_lang);				
 			$tpl->show();
+		}
+
+		public  function __destruct(){
 		}
 	}

@@ -279,6 +279,6 @@
 			$this->_extension = strtolower($extension['extension']);
 		}
 		
-		public  function __desctuct(){
+		public  function __destruct(){
 		}
 	}

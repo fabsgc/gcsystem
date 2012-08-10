@@ -211,6 +211,9 @@
 		public function setShow($show){
 			$this->_show = $show;
 		}
+
+		public  function __destruct(){
+		}
 	}
 	
 	class templateGcParser{
@@ -509,5 +512,8 @@
 			$this->_contenu = preg_replace('#'.preg_quote('<?php echo <?php').'#isU', '<?php echo', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('<?php').'(.*)'.preg_quote('= <?php').'#isU', '<?php$1=', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('?>').$this->_regexSpaceR.preg_quote('/>').'#isU', '?>', $this->_contenu);
+		}
+
+		public  function __destruct(){
 		}
 	}

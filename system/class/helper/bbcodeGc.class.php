@@ -400,7 +400,7 @@
 			print_r($this->_bbcodeButtonColor);
 		}
 
-		public  function __desctuct(){
+		public  function __destruct(){
 
 		}
 	}

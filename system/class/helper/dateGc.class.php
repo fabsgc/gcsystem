@@ -318,6 +318,6 @@
 			return $this->_langInstance->loadSentence($sentence, $var);
 		}
 		
-		public  function __desctuct(){
+		public  function __destruct(){
 		}
 	}

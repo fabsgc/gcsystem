@@ -48,3 +48,6 @@
 09/08/2012 a 21:39:15 ! : Erreur [8] (Use of undefined constant id - assumed 'id') dans le fichier C:\wamp\www\GCsystem2.0\app\cache\template_test.tpl.compil.php a la ligne 2
 09/08/2012 a 21:39:43 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
 09/08/2012 a 21:39:53 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 22:25:41 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 22:25:42 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php a la ligne 282
+09/08/2012 a 23:27:24 ! : The rubric  were not found

@@ -30,4 +30,6 @@
   <sentence id="firewallcsrfcontent">Une erreur dans les paramètres de l'url a contraint l'application à bloquer l'accès à cette page</sentence>
   <sentence id="firewallforbiddentitle">Accès interdit</sentence>
   <sentence id="firewallforbiddencontent">L'accès à cette page vous est interdit</sentence>
+  <sentence id="antispamerror">Vous avez été identifié comme spammeur, votre IP a été bloquée</sentence>
+  <sentence id="antispamexplication">Votre IP a dépassé le nombre de requête autorisée sur une période données. Veuillez patienter le temps que cette période soit écoulée</sentence>
 </lang>
