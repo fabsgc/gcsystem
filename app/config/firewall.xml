@@ -16,8 +16,8 @@
 				<variable type="lang" name="explication" sentence="firewallforbiddencontent" />
 			</forbidden>
 			<csrf name="token" template="GCsystem/GCtplGc_windowInfo" enabled="true">
-				<variable type="lang" name="error" sentence="firewallcsrftitle" />
-				<variable type="lang" name="explication" sentence="firewallcsrfcontent" />
+				<variable type="lang" name="error" value="firewallcsrftitle" />
+				<variable type="lang" name="explication" value="firewallcsrfcontent" />
 			</csrf>
 			<connect name="connected" yes="true" no="false"/>
 		</config>

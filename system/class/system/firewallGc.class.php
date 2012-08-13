@@ -29,6 +29,8 @@
 					$this->_setFirewallConfigConnect();
 					$this->_setFirewallAccess();
 					$this->_setSession();
+
+					print_r($this->_security);
 				}
 				else{
 					$this->_addError('le fichier '.FIREWALL.' n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
@@ -80,6 +82,14 @@
 			$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewall')->item(0);
 			$this->_markupXml = $this->_node2Xml->getElementsByTagName('config')->item(0);
 			$this->_security['firewall']['config']['forbidden']['template'] = $this->_markupXml->getElementsByTagName('forbidden')->item(0)->getAttribute('template');
+		
+			$this->_markup2Xml = $this->_markupXml-$this->_markupXml->getElementsByTagName('forbidden')->item(0)->getElementsByTagName('variable');
+
+			foreach ($this->_markup2Xml as $cle => $val) {
+				$this->_security['firewall']['config']['forbidden']['template']['variable'][$val->getAttribute('name')]['type'] = $val->getAttribute('type');
+				$this->_security['firewall']['config']['forbidden']['template']['variable'][$val->getAttribute('name')]['name'] = $val->getAttribute('name');
+				$this->_security['firewall']['config']['forbidden']['template']['variable'][$val->getAttribute('name')]['value'] = $val->getAttribute('value');
+			}
 		}
 		
 		protected function _setFirewallConfigcsrf(){
@@ -90,6 +100,15 @@
 			$this->_security['firewall']['config']['csrf']['enabled'] = $this->_markupXml->getElementsByTagName('csrf')->item(0)->getAttribute('enabled');
 			$this->_security['firewall']['config']['csrf']['template'] = $this->_markupXml->getElementsByTagName('csrf')->item(0)->getAttribute('template');
 			$this->_security['firewall']['config']['csrf']['name'] = $this->_markupXml->getElementsByTagName('csrf')->item(0)->getAttribute('name');
+			
+			$this->_markup2Xml = $this->_markupXml->getElementsByTagName('forbidden')->item(0);
+			$this->_markup3Xml = $this->_markup2Xml->getElementsByTagName('variable');
+
+			foreach ($this->_markup3Xml as $val) {
+				$this->_security['firewall']['config']['csrf']['template']['variable'][$val->getAttribute('name')]['type'] = $val->getAttribute('type');
+				$this->_security['firewall']['config']['csrf']['template']['variable'][$val->getAttribute('name')]['name'] = $val->getAttribute('name');
+				$this->_security['firewall']['config']['csrf']['template']['variable'][$val->getAttribute('name')]['value'] = $val->getAttribute('value');
+			}
 		}
 		
 		protected function _setFirewallConfigConnect(){
