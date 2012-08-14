@@ -160,6 +160,12 @@
 			fputs($file, date("d/m/Y \a H:i:s ! : ",time()).'['.$type.'] fichier '.$fichier.' ligne '.$ligne.' '.$error."\n");
 			fclose($file);
 		}
+
+		protected function _addErrorHr(){
+			$file = fopen(LOG_PATH.'system_errors'.LOG_EXT, "a+");
+			fputs($file, "##### ENF OF EXECUTION ####################################################################################################\n");
+			fclose($file);
+		}
     }
 	
 	trait langInstance{

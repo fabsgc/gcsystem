@@ -29,8 +29,6 @@
 					$this->_setFirewallConfigConnect();
 					$this->_setFirewallAccess();
 					$this->_setSession();
-
-					print_r($this->_security);
 				}
 				else{
 					$this->_addError('le fichier '.FIREWALL.' n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
@@ -81,11 +79,12 @@
 			$this->_nodeXml = $this->_domXml->getElementsByTagName('security')->item(0);
 			$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewall')->item(0);
 			$this->_markupXml = $this->_node2Xml->getElementsByTagName('config')->item(0);
-			$this->_security['firewall']['config']['forbidden']['template'] = $this->_markupXml->getElementsByTagName('forbidden')->item(0)->getAttribute('template');
+			$this->_security['firewall']['config']['forbidden']['template']['src'] = $this->_markupXml->getElementsByTagName('forbidden')->item(0)->getAttribute('template');
 		
-			$this->_markup2Xml = $this->_markupXml-$this->_markupXml->getElementsByTagName('forbidden')->item(0)->getElementsByTagName('variable');
+			$this->_markup2Xml = $this->_markupXml->getElementsByTagName('forbidden')->item(0);
+			$this->_markup3Xml = $this->_markup2Xml->getElementsByTagName('variable');
 
-			foreach ($this->_markup2Xml as $cle => $val) {
+			foreach ($this->_markup3Xml as $cle => $val) {
 				$this->_security['firewall']['config']['forbidden']['template']['variable'][$val->getAttribute('name')]['type'] = $val->getAttribute('type');
 				$this->_security['firewall']['config']['forbidden']['template']['variable'][$val->getAttribute('name')]['name'] = $val->getAttribute('name');
 				$this->_security['firewall']['config']['forbidden']['template']['variable'][$val->getAttribute('name')]['value'] = $val->getAttribute('value');
@@ -98,10 +97,10 @@
 			$this->_markup = $this->_node2Xml->getElementsByTagName('config')->item(0);
 			$this->_session[$this->_markupXml->getElementsByTagName('csrf')->item(0)->getAttribute('name')] = '';
 			$this->_security['firewall']['config']['csrf']['enabled'] = $this->_markupXml->getElementsByTagName('csrf')->item(0)->getAttribute('enabled');
-			$this->_security['firewall']['config']['csrf']['template'] = $this->_markupXml->getElementsByTagName('csrf')->item(0)->getAttribute('template');
+			$this->_security['firewall']['config']['csrf']['template']['src'] = $this->_markupXml->getElementsByTagName('csrf')->item(0)->getAttribute('template');
 			$this->_security['firewall']['config']['csrf']['name'] = $this->_markupXml->getElementsByTagName('csrf')->item(0)->getAttribute('name');
 			
-			$this->_markup2Xml = $this->_markupXml->getElementsByTagName('forbidden')->item(0);
+			$this->_markup2Xml = $this->_markupXml->getElementsByTagName('csrf')->item(0);
 			$this->_markup3Xml = $this->_markup2Xml->getElementsByTagName('variable');
 
 			foreach ($this->_markup3Xml as $val) {
@@ -176,15 +175,14 @@
 										return true;
 									}
 									else{
-										$t = new templateGc($this->_security['firewall']['config']['forbidden']['template'], 'GCfirewallForbiddenGrade', 0);
-										$t->assign(array(
-											'title'=>$this->useLang('firewallforbiddentitle'),
-											'content'=>$this->useLang('firewallforbiddencontent'),
-											'redirect'=>FOLDER,
-											'time'=>0,
-											'css'=>FOLDER.'/asset/css/default.css'
-										));
+										$t = new templateGc($this->_security['firewall']['config']['forbidden']['template']['src'], 'GCfirewallForbiddenGrade', 0);
+										
+										foreach($this->_security['firewall']['config']['forbidden']['template']['variable'] as $cle => $val){
+											$t->assign(array($cle=>$val));
+										}
+
 										$t -> show();
+
 										$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car son grade n\'est pas autorisé', __FILE__, __LINE__, ERROR);
 										return false;
 									}
@@ -202,15 +200,19 @@
 									return true;
 								}
 								else{
-									$t = new templateGc($this->_security['firewall']['config']['forbidden']['template'], 'GCfirewallForbiddenGrade', 0);
-										$t->assign(array(
-											'title'=>$this->useLang('firewallforbiddentitle'),
-											'content'=>$this->useLang('firewallforbiddencontent'),
-											'redirect'=>FOLDER,
-											'time'=>0,
-											'css'=>FOLDER.'/asset/css/default.css'
-										));
+									$t = new templateGc($this->_security['firewall']['config']['forbidden']['template']['src'], 'GCfirewallForbiddenGrade', 0);
+										
+									foreach($this->_security['firewall']['config']['forbidden']['template']['variable'] as $cle => $val){
+										if($val['type'] == 'var'){
+											$t->assign(array($val['name']=>$val['value']));
+										}
+										else{
+											$t->assign(array($val['name']=>$this->getUrl($val['value'])));
+										}
+									}
+
 									$t -> show();
+
 									$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car il est connecté', __FILE__, __LINE__, ERROR);
 									return false;
 								}
@@ -223,15 +225,19 @@
 						}
 					}
 					else{
-						$t = new templateGc($this->_security['firewall']['config']['csrf']['template'], 'GCfirewallCsrf', 0, $this->_lang);
-						$t->assign(array(
-							'title'=>$this->useLang('firewallcsrftitle'),
-							'content'=>$this->useLang('firewallcsrfcontent'),
-							'redirect'=>FOLDER,
-							'time'=>0,
-							'css'=>FOLDER.'/asset/css/default.css'
-						));
+						$t = new templateGc($this->_security['firewall']['config']['csrf']['template']['src'], 'GCfirewallForbiddenCsrf', 0, $this->_lang);
+										
+						foreach($this->_security['firewall']['config']['csrf']['template']['variable'] as $cle => $val){
+							if($val['type'] == 'var'){
+								$t->assign(array($val['name']=>$val['value']));
+							}
+							else{
+								$t->assign(array($val['name']=>$this->useLang($val['value'])));
+							}
+						}
+
 						$t -> show();
+
 						$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur : faille CSRF', __FILE__, __LINE__, ERROR);
 						return false;
 					}

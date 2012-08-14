@@ -37,6 +37,7 @@
 		protected $_header                                                        ;
 		protected $_footer                                                        ;
 		protected $_firewall                                                      ;
+		protected $_antispam                                                      ;
 		
 		/* ---------- CONSTRUCTEURS --------- */
 		
@@ -56,7 +57,19 @@
 			$this->_firewall = new firewallGc($this->_lang);
 			
 			if($this->_firewall->check()){
-				$this->_addError('Le parefeu n\'a identifié aucune erreur dans l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'], __FILE__, __LINE__, INFORMATION);
+				$this->_addError('Le parefeu n\'a identifié aucune erreur dans l\'accès à la rubrique '.$_GET['rubrique'].'/'.$_GET['action'], __FILE__, __LINE__, INFORMATION);
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+
+		final public function setAntispam(){
+			$this->_antispam = new antispamGc($this->_lang);
+			
+			if($this->_antispam->check()){
+				$this->_addError('L\'antispam a vérifié que l\'utilisateur n\'avait pas atteint son quota de requêtes', __FILE__, __LINE__, INFORMATION);
 				return true;
 			}
 			else{

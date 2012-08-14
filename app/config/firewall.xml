@@ -12,12 +12,12 @@
 				<target id="login" vars=""/>
 			</login>
 			<forbidden template="GCsystem/GCerror">
-				<variable type="lang" name="error" sentence="firewallforbiddentitle" />
-				<variable type="lang" name="explication" sentence="firewallforbiddencontent" />
+				<variable type="lang" name="error" value="firewallforbiddentitle"/>
+				<variable type="lang" name="explication" value="firewallforbiddencontent"/>
 			</forbidden>
-			<csrf name="token" template="GCsystem/GCtplGc_windowInfo" enabled="true">
-				<variable type="lang" name="error" value="firewallcsrftitle" />
-				<variable type="lang" name="explication" value="firewallcsrfcontent" />
+			<csrf name="token" template="GCsystem/GCerror" enabled="true">
+				<variable type="lang" name="error" value="firewallcsrftitle"/>
+				<variable type="lang" name="explication" value="firewallcsrfcontent"/>
 			</csrf>
 			<connect name="connected" yes="true" no="false"/>
 		</config>
@@ -32,6 +32,8 @@
 			<url id="contype" connected="*" access="*"/>
 			<url id="terminal" connected="*" access="*"/>
 			<url id="terminal_terminal" connected="*" access="*"/>		
+			<url id="urltoke" connected="*" access="*"/>
+			<url id="testdebug" connected="*" access="*"/>
 		</access>
 	</firewall>
 </security>

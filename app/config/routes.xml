@@ -10,4 +10,5 @@
     <route id="contype" url="/truc/contype.xml" rubrique="index" action="contype" vars=""/>
     <route id="terminal" url="/terminal\.html" rubrique="terminal" action="" vars=""/>
     <route id="terminal_terminal" url="/terminal-terminal\.html" rubrique="terminal" action="terminal" vars=""/>
+    <route id="urltoke" url="/urltoken-(.*).html" rubrique="index" action="actionContype" vars="token"/><route id="testdebug" url="/testdebug.html" rubrique="index" action="actiontestdebug" vars=""/>
 </routes>

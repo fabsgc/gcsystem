@@ -43,6 +43,7 @@
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			
 			if($this->_domXml->load(ROUTE)){
+				$this->_addError('Le fichier de route " '.ROUTE.'" a bien été charg', __FILE__, __LINE__, INFORMATION);
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
 				$routes = $this->_nodeXml->getElementsByTagName('route');
 				
@@ -98,23 +99,27 @@
 							ob_start ();
 								$class = new $rubrique($this->_lang);
 								if(SECURITY == false || $class->setFirewall() == true){
-									$class->init();
-									
-									if($_GET['action']!=""){
-										if(is_callable(array($rubrique, 'action'.$_GET['action']))){
-											$action = 'action'.ucfirst($_GET['action']);
-											$class->$action();
-											$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__, INFORMATION);
+									if(ANTISPAM == false || $class->setAntispam() == true){
+										$class->init();
+										
+										if($_GET['action']!=""){
+											if(is_callable(array($rubrique, 'action'.$_GET['action']))){
+												$action = 'action'.ucfirst($_GET['action']);
+												$class->$action();
+												$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__, INFORMATION);
+											}
+											else{
+												$action = 'actionDefault';
+												$class->$action();
+												$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
+											}
 										}
-										else{
+										elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
 											$action = 'actionDefault';
 											$class->$action();
-											$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
 										}
 									}
-									elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
-										$action = 'actionDefault';
-										$class->$action();
+									else{
 									}
 								}
 								else{
@@ -161,6 +166,7 @@
 		
 		public function run(){
 			echo $this->_output;
+			$this->_addErrorHr();
 		}
 		
 		private function _checkHeaderStream($url){
