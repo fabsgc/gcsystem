@@ -176,11 +176,9 @@
 									}
 									else{
 										$t = new templateGc($this->_security['firewall']['config']['forbidden']['template']['src'], 'GCfirewallForbiddenGrade', 0);
-										
 										foreach($this->_security['firewall']['config']['forbidden']['template']['variable'] as $cle => $val){
 											$t->assign(array($cle=>$val));
 										}
-
 										$t -> show();
 
 										$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car son grade n\'est pas autorisé', __FILE__, __LINE__, ERROR);
@@ -207,7 +205,7 @@
 											$t->assign(array($val['name']=>$val['value']));
 										}
 										else{
-											$t->assign(array($val['name']=>$this->getUrl($val['value'])));
+											$t->assign(array($val['name']=>$this->useLang($val['value'])));
 										}
 									}
 

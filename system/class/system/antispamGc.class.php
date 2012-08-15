@@ -9,7 +9,7 @@
 	class antispamGc{
 		use errorGc, langInstance, domGc, generalGc;                  //trait
 
-		protected $_firewall                       ;
+		protected $_antispam                       ;
 		
 		public  function __construct($lang=NULL){
 			if($lang==NULL){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
@@ -23,6 +23,8 @@
 					$this->_setConfigQuery();
 					$this->_setConfigError();
 					$this->_setIp();
+
+					print_r($this->_antispam);
 				}
 				else{
 					$this->_addError('le fichier '.ASPAM.' n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
@@ -37,16 +39,23 @@
 			$this->_nodeXml = $this->_domXml->getElementsByTagName('antispams')->item(0);
 			$this->_node2Xml = $this->_nodeXml->getElementsByTagName('queryip')->item(0);
 
-			$this->_firewall['antispams']['config']['queryip']['number'] = $this->_node2Xml->getAttribute('number');
-			$this->_firewall['antispams']['config']['queryip']['duration'] = $this->_node2Xml->getAttribute('duration');
+			$this->_antispam['antispams']['config']['queryip']['number'] = $this->_node2Xml->getAttribute('number');
+			$this->_antispam['antispams']['config']['queryip']['duration'] = $this->_node2Xml->getAttribute('duration');
 		}
 
 		protected function _setConfigError(){
 			$this->_nodeXml = $this->_domXml->getElementsByTagName('antispams')->item(0);
-			$this->_node2Xml = $this->_nodeXml->getElementsByTagName('queryip')->item(0);
+			$this->_node2Xml = $this->_nodeXml->getElementsByTagName('config')->item(0);
+			$this->_markupXml = $this->_node2Xml->getElementsByTagName('error')->item(0);
+			$this->_antispam['antispams']['config']['error']['template']['src'] = $this->_markupXml->getAttribute('template');
+		
+			$this->_markup3Xml = $this->_markupXml->getElementsByTagName('variable');
 
-			$this->_firewall['antispams']['config']['queryip']['number'] = $this->_node2Xml->getAttribute('number');
-			$this->_firewall['antispams']['config']['queryip']['duration'] = $this->_node2Xml->getAttribute('duration');
+			foreach ($this->_markup3Xml as $cle => $val) {
+				$this->_antispam['antispams']['config']['error']['template']['variable'][$val->getAttribute('name')]['type'] = $val->getAttribute('type');
+				$this->_antispam['antispams']['config']['error']['template']['variable'][$val->getAttribute('name')]['name'] = $val->getAttribute('name');
+				$this->_antispam['antispams']['config']['error']['template']['variable'][$val->getAttribute('name')]['value'] = $val->getAttribute('value');
+			}
 		}
 
 		protected function _setIp(){
@@ -55,15 +64,42 @@
 			$ips = $this->_node2Xml->getElementsByTagName('ip');
 
 			foreach ($ips as $cle => $val) {
-				$this->_firewall['antispams']['ips'][$val->getAttribute('ip')]['number'] = $val->getAttribute('number');
-				$this->_firewall['antispams']['ips'][$val->getAttribute('ip')]['since'] = $val->getAttribute('since');
-				$this->_firewall['antispams']['ips'][$val->getAttribute('ip')]['ip'] = $val->getAttribute('ip');
+				$this->_antispam['antispams']['ips'][$val->getAttribute('ip')]['number'] = $val->getAttribute('number');
+				$this->_antispam['antispams']['ips'][$val->getAttribute('ip')]['since'] = $val->getAttribute('since');
+				$this->_antispam['antispams']['ips'][$val->getAttribute('ip')]['ip'] = $val->getAttribute('ip');
 			}
 		}
 
 		public function check(){
-			if(isset($this->_firewall['antispams']['ips'][$this->getIp()])){
-				print_r($this->_firewall);
+			if(isset($this->_antispam['antispams']['ips'][$this->getIp()])){
+				if(($this->_antispam['antispams']['ips'][$this->getIp()]['since'] + $this->_antispam['antispams']['config']['queryip']['duration'] < time())){
+					$this->_updateIpXml();
+
+					return true;
+				}
+				else{
+					if($this->_antispam['antispams']['ips'][$this->getIp()]['number'] < $this->_antispam['antispams']['config']['queryip']['number']){
+						$this->_updateNumberXml($this->_antispam['antispams']['ips'][$this->getIp()]['number'] +1, $this->_antispam['antispams']['ips'][$this->getIp()]['since']);
+
+						return true;
+					}
+					else{
+						$t = new templateGc($this->_antispam['antispams']['config']['error']['template']['src'], 'GCantispamerror', 0);		
+						foreach($this->_antispam['antispams']['config']['error']['template']['variable'] as $cle => $val){
+							if($val['type'] == 'var'){
+								$t->assign(array($val['name']=>$val['value']));
+							}
+							else{
+								$t->assign(array($val['name']=>$this->useLang($val['value'])));
+							}
+						}
+						$t -> show();
+
+						$this->_addError($this->getIp() .' : L\'IP  a dépassé le nombre de requêtes autorisée sur une période donnée pour la page '.$_GET['rubrique'].'/'.$_GET['action'], __FILE__, __LINE__, ERROR);
+						return false;
+					}
+				}
+				
 			}
 			else{
 				$this->_setIpXml();
@@ -75,14 +111,62 @@
 			$this->_nodeXml = $this->_domXml->getElementsByTagName('antispams')->item(0);
 			$this->_node2Xml = $this->_nodeXml->getElementsByTagName('ips')->item(0);
 
-			$this->_firewall['antispams']['ips'][$this->getIp()]['number'] = 1;
-			$this->_firewall['antispams']['ips'][$this->getIp()]['since'] = time();
-			$this->_firewall['antispams']['ips'][$this->getIp()]['type'] = $this->getIp();
+			$this->_antispam['antispams']['ips'][$this->getIp()]['number'] = 1;
+			$this->_antispam['antispams']['ips'][$this->getIp()]['since'] = time();
+			$this->_antispam['antispams']['ips'][$this->getIp()]['type'] = $this->getIp();
 
 			$this->_markupXml = $this->_domXml->createElement('ip');
 			$this->_markupXml->setAttribute("ip", $this->getIp());
 			$this->_markupXml->setAttribute("number", 1);
-			$this->_markupXml->setAttribute("since", $this->_firewall['antispams']['ips'][$this->getIp()]['since']);
+			$this->_markupXml->setAttribute("since", $this->_antispam['antispams']['ips'][$this->getIp()]['since']);
+			$this->_node2Xml->appendChild($this->_markupXml);
+			$this->_domXml->save(ASPAM);
+		}
+
+		protected function _updateIpXml(){
+			$this->_nodeXml = $this->_domXml->getElementsByTagName('antispams')->item(0);
+			$this->_node2Xml = $this->_nodeXml->getElementsByTagName('ips')->item(0);
+			$sentences = $this->_node2Xml->getElementsByTagName('ip');
+
+			foreach($sentences as $sentence){
+				if ($sentence->getAttribute("ip") == $this->getIp()){
+					$this->_node2Xml->removeChild($sentence);    
+				}
+			}
+			$this->_domXml->save(ASPAM);
+
+			$this->_antispam['antispams']['ips'][$this->getIp()]['number'] = 1;
+			$this->_antispam['antispams']['ips'][$this->getIp()]['since'] = time();
+			$this->_antispam['antispams']['ips'][$this->getIp()]['type'] = $this->getIp();
+
+			$this->_markupXml = $this->_domXml->createElement('ip');
+			$this->_markupXml->setAttribute("ip", $this->getIp());
+			$this->_markupXml->setAttribute("number", 1);
+			$this->_markupXml->setAttribute("since", $this->_antispam['antispams']['ips'][$this->getIp()]['since']);
+			$this->_node2Xml->appendChild($this->_markupXml);
+			$this->_domXml->save(ASPAM);
+		}
+
+		protected function _updateNumberXml($number, $time){
+			$this->_nodeXml = $this->_domXml->getElementsByTagName('antispams')->item(0);
+			$this->_node2Xml = $this->_nodeXml->getElementsByTagName('ips')->item(0);
+			$sentences = $this->_node2Xml->getElementsByTagName('ip');
+
+			foreach($sentences as $sentence){
+				if ($sentence->getAttribute("ip") == $this->getIp()){
+					$this->_node2Xml->removeChild($sentence);    
+				}
+			}
+			$this->_domXml->save(ASPAM);
+
+			$this->_antispam['antispams']['ips'][$this->getIp()]['number'] = $number;
+			$this->_antispam['antispams']['ips'][$this->getIp()]['since'] = $time;
+			$this->_antispam['antispams']['ips'][$this->getIp()]['type'] = $this->getIp();
+
+			$this->_markupXml = $this->_domXml->createElement('ip');
+			$this->_markupXml->setAttribute("ip", $this->getIp());
+			$this->_markupXml->setAttribute("number", $number);
+			$this->_markupXml->setAttribute("since", $time);
 			$this->_node2Xml->appendChild($this->_markupXml);
 			$this->_domXml->save(ASPAM);
 		}
