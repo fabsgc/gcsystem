@@ -665,3 +665,15 @@
 15/08/2012 a 15:08:49 ! : [INFORMATION] fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 109 Appel du contrôleur "actionActiontestdebug" de la rubrique "index" réussi
 ##### ENF OF EXECUTION ####################################################################################################
 15/08/2012 a 15:08:49 ! : [INFORMATION] fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+15/08/2012 a 15:12:41 ! : [INFORMATION] fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 178 Content-Type : "Content-Type: text/html; charset=UTF-8"
+15/08/2012 a 15:12:41 ! : [INFORMATION] fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 46 Le fichier de route " app/config/routes.xml" a bien été charg
+15/08/2012 a 15:12:41 ! : [INFORMATION] fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 155 Chargement des fichiers "app/rubrique/index.class.php" et "app/model/index.model.class.php"
+15/08/2012 a 15:12:41 ! : [INFORMATION] fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 48 Contrôleur index initialisé
+15/08/2012 a 15:12:41 ! : [INFORMATION] fichier C:\wamp\www\GCsystem2.0\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+15/08/2012 a 15:12:41 ! : [INFORMATION] fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 60 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique index/actiontestdebug
+15/08/2012 a 15:12:42 ! : [INFORMATION] fichier C:\wamp\www\GCsystem2.0\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+15/08/2012 a 15:12:42 ! : [INFORMATION] fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 72 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+15/08/2012 a 15:12:42 ! : [INFORMATION] fichier C:\wamp\www\GCsystem2.0\system\class\system\applicationGc.class.php ligne 83 Model index initialisé
+15/08/2012 a 15:12:42 ! : [INFORMATION] fichier C:\wamp\www\GCsystem2.0\system\class\system\Gcsystem.class.php ligne 109 Appel du contrôleur "actionActiontestdebug" de la rubrique "index" réussi
+##### ENF OF EXECUTION ####################################################################################################
+15/08/2012 a 15:12:42 ! : [INFORMATION] fichier C:\wamp\www\GCsystem2.0\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
