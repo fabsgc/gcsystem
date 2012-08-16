@@ -52,15 +52,17 @@
 		protected $action;
 		protected $module;
 		protected $id;
+		protected $cache;
 		protected $url;
 		protected $varsNames;
 		protected $vars = array();
 		
-		public function __construct($url, $module, $action, $id, $varsNames = array()){
+		public function __construct($url, $module, $action, $id, $cache, $varsNames = array()){
 			$this->setUrl($url);
 			$this->setModule($module);
 			$this->setAction($action);
 			$this->setId($id);
+			$this->setCache($cache);
 			$this->setVarsNames($varsNames);
 		}
 		
@@ -87,6 +89,10 @@
 			if (is_string($id)){
 				$this->id = $id;
 			}
+		}
+
+		public function setCache($cache){
+			$this->cache = $cache;
 		}
 		
 		public function setModule($module){
@@ -115,6 +121,10 @@
 		
 		public function id(){
 			return $this->id;
+		}
+
+		public function cache(){
+			return $this->cache;
 		}
 		
 		public function url(){

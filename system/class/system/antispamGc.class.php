@@ -23,8 +23,6 @@
 					$this->_setConfigQuery();
 					$this->_setConfigError();
 					$this->_setIp();
-
-					print_r($this->_antispam);
 				}
 				else{
 					$this->_addError('le fichier '.ASPAM.' n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);

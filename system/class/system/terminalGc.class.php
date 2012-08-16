@@ -169,6 +169,18 @@
 								else{
 									$this->_markupXml->setAttribute("vars", '');
 								}
+
+								if(isset($this->_commandExplode[8])){
+									if(!is_int($this->_commandExplode[8] == 'empty') || $this->_commandExplode[8] < 0){
+										$this->_markupXml->setAttribute("cache", '0');
+									}
+									else{
+										$this->_markupXml->setAttribute("cache", $this->_commandExplode[8]);
+									}
+								}
+								else{
+									$this->_markupXml->setAttribute("cache", '0');
+								}
 							
 								$this->_nodeXml->appendChild($this->_markupXml);
 								$this->_domXml->save(ROUTE);
@@ -571,6 +583,7 @@
 											$url = $sentence->getAttribute("url");
 											$action = $sentence->getAttribute("action");
 											$vars = $sentence->getAttribute("vars");
+											$cache = $sentence->getAttribute("cache");
 											$this->_nodeXml->removeChild($sentence);
 											
 											$this->_markupXml = $this->_domXml->createElement('route');
@@ -608,6 +621,20 @@
 											else{
 												$this->_markupXml->setAttribute("vars", $vars);
 											}
+
+
+											if(isset($this->_commandExplode[9])){
+												if(!is_int($this->_commandExplode[9] == 'empty') || $this->_commandExplode[8] < 0){
+													$this->_markupXml->setAttribute("cache", '0');
+												}
+												else{
+													$this->_markupXml->setAttribute("cache", $this->_commandExplode[8]);
+												}
+											}
+											else{
+												$this->_markupXml->setAttribute("cache", '0');
+											}
+
 
 											$this->_nodeXml->appendChild($this->_markupXml);
 											$this->_domXml->save(ROUTE);
@@ -681,7 +708,7 @@
 						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
 					}
 				}
-				elseif(preg_match('#add url (.*) (.*) (.*) (.*) (.*) (.*) (.*)#', $this->_command)){
+				elseif(preg_match('#add url (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*)#', $this->_command)){
 					//add url id url rubrique action vars connected access
 					$this->_domXml = new DomDocument('1.0', CHARSET);
 					
@@ -709,6 +736,8 @@
 							else{
 								$this->_markupXml->setAttribute("vars", '');	
 							}
+
+							$this->_markupXml->setAttribute("cache", intval($this->_commandExplode[9]));
 							$this->_nodeXml->appendChild($this->_markupXml);
 							$this->_domXml->save(ROUTE);
 
@@ -747,7 +776,7 @@
 						}
 					}
 				}
-				elseif(preg_match('#set url (.*) (.*) (.*) (.*) (.*) (.*) (.*)#', $this->_command)){
+				elseif(preg_match('#set url (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*)#', $this->_command)){
 					//set url id url rubrique action vars connected access
 					$this->_domXml = new DomDocument('1.0', CHARSET);
 					
@@ -767,6 +796,7 @@
 								$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[4]);
 								$this->_markupXml->setAttribute("action", $this->_commandExplode[5]);
 								$this->_markupXml->setAttribute("vars", $this->_commandExplode[6]);
+								$this->_markupXml->setAttribute("cache", intval($this->_commandExplode[9]));
 								$this->_nodeXml->appendChild($this->_markupXml);
 
 								$route = true;
@@ -903,11 +933,11 @@
 					$this->_result = '<br />><span style="color: chartreuse;"> le log a bien &#233;t&#233; vid&#233;</span>';
 				}
 				elseif(preg_match('#help#', $this->_command)){
-					$this->_stream .= '<br />> add rubrique nom (url[lien] action[nom|empty] vars[getvar,getvar|empty] connect[true|false|*] access[role1,role2|*]) facultatif';
-					$this->_stream .= '<br />> set rubrique nom nouveaunom (url[lien] action[nom|empty] vars[getvar,getvar|empty] connect[true|false|*] access[role1,role2|*]) facultatif';
+					$this->_stream .= '<br />> add rubrique nom (url[lien] action[nom|empty] vars[getvar,getvar|empty] connect[true|false|*] access[role1,role2|*]  cache[secondes]) facultatif';
+					$this->_stream .= '<br />> set rubrique nom nouveaunom (url[lien] action[nom|empty] vars[getvar,getvar|empty] connect[true|false|*] access[role1,role2|*]  cache[secondes]) facultatif';
 					$this->_stream .= '<br />> delete rubrique nom';
-					$this->_stream .= '<br />> add url id url rubrique action vars[vars,vars|empty] connected[true|false|*] access[ROLE1,ROLE2|*]';
-					$this->_stream .= '<br />> set url id url rubrique action vars[vars,vars|empty] connected[true|false|*] access[ROLE1,ROLE2|*]';
+					$this->_stream .= '<br />> add url id url rubrique action vars[vars,vars|empty] connected[true|false|*] access[ROLE1,ROLE2|*] cache[secondes]';
+					$this->_stream .= '<br />> set url id url rubrique action vars[vars,vars|empty] connected[true|false|*] access[ROLE1,ROLE2|*]  cache[secondes]';
 					$this->_stream .= '<br />> delete url id';
 					$this->_stream .= '<br />> add template nom';
 					$this->_stream .= '<br />> set template nom nouveaunom';

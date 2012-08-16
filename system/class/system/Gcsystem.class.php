@@ -17,6 +17,9 @@
 		
 		protected $_initInstance               ;
 		protected $_devTool              = true;
+
+		protected $_cacheRoute           = 0   ;
+		protected $_cache                = null;
 		
 		/* ---------- CONSTRUCTEURS --------- */
 		
@@ -53,8 +56,8 @@
 					if ($route->hasAttribute('vars')){
 						$vars = explode(',', $route->getAttribute('vars'));
 					}
-					
-					$this->_routerInstance->addRoute(new routeGc($route->getAttribute('url'), $route->getAttribute('rubrique'), $route->getAttribute('action'), $route->getAttribute('id'), $vars));
+
+					$this->_routerInstance->addRoute(new routeGc($route->getAttribute('url'), $route->getAttribute('rubrique'), $route->getAttribute('action'), $route->getAttribute('id'), $route->getAttribute('cache'), $vars));
 				}
 
 				if($matchedRoute = $this->_routerInstance->getRoute(preg_replace('`\?'.preg_quote($this->getQuery()).'`isU', '', $this->getUri()))){
@@ -62,6 +65,7 @@
 					$_GET['rubrique'] = $matchedRoute->module();
 					$_GET['action']   = $matchedRoute->action();
 					$_GET['pageid']   = $matchedRoute->id();
+					$this->_cacheRoute      = $matchedRoute->cache();
 				}
 				else{
 					$_GET['rubrique'] = "";
@@ -95,28 +99,43 @@
 						$_SESSION['token'] = 'kqsjnqkdjqskdsdlfkjsd';
 						$_SESSION['connected'] = 'true';
 						$_SESSION['statut'] = 2;
-						if($this->_setRubrique($rubrique) == true){
-							ob_start ();
+
+						if($this->_cacheRoute > 0 && REWRITE == true){
+							if($this->_setRubrique($rubrique) == true){
 								$class = new $rubrique($this->_lang);
 								if(SECURITY == false || $class->setFirewall() == true){
 									if(ANTISPAM == false || $class->setAntispam() == true){
-										$class->init();
-										
-										if($_GET['action']!=""){
-											if(is_callable(array($rubrique, 'action'.$_GET['action']))){
-												$action = 'action'.ucfirst($_GET['action']);
-												$class->$action();
-												$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__, INFORMATION);
-											}
-											else{
-												$action = 'actionDefault';
-												$class->$action();
-												$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
-											}
+										$this->_cache = new cacheGc('page_'.preg_replace('#\/#isU', '-slash-', $this->getUri()), "", $this->_cacheRoute);
+
+										if($this->_cache->isDie()){
+											ob_start ();
+												$class->init();
+														
+												if($_GET['action']!=""){
+													if(is_callable(array($rubrique, 'action'.$_GET['action']))){
+														$action = 'action'.ucfirst($_GET['action']);
+														$class->$action();
+														$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__, INFORMATION);
+													}
+													else{
+														$action = 'actionDefault';
+														$class->$action();
+														$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
+													}
+												}
+												elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
+													$action = 'actionDefault';
+													$class->$action();
+												}
+											$this->_output = ob_get_contents();
+											ob_get_clean();
+
+											$this->_cache->setVal($this->_output);
+											$this->_cache->setCache();
+											$this->_output = $this->_cache->getCache();
 										}
-										elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
-											$action = 'actionDefault';
-											$class->$action();
+										else{
+											$this->_output = $this->_cache->getCache();
 										}
 									}
 									else{
@@ -124,11 +143,51 @@
 								}
 								else{
 								}
-							$this->_output = ob_get_contents();
-							ob_get_clean();
+							}
+							else{
+								$this->_addError('L\'instanciation du contrôleur de la rubrique "'.$rubrique.'" a échoué', __FILE__, __LINE__, ERROR);
+								$this->redirect404();
+								$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
+							}
 						}
 						else{
-							$this->_addError('L\'instanciation du contrôleur de la rubrique "'.$rubrique.'" a échoué', __FILE__, __LINE__, ERROR);
+							if($this->_setRubrique($rubrique) == true){
+								ob_start ();
+									$class = new $rubrique($this->_lang);
+									if(SECURITY == false || $class->setFirewall() == true){
+										if(ANTISPAM == false || $class->setAntispam() == true){
+											$class->init();
+											
+											if($_GET['action']!=""){
+												if(is_callable(array($rubrique, 'action'.$_GET['action']))){
+													$action = 'action'.ucfirst($_GET['action']);
+													$class->$action();
+													$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__, INFORMATION);
+												}
+												else{
+													$action = 'actionDefault';
+													$class->$action();
+													$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
+												}
+											}
+											elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
+												$action = 'actionDefault';
+												$class->$action();
+											}
+										}
+										else{
+										}
+									}
+									else{
+									}
+								$this->_output = ob_get_contents();
+								ob_get_clean();
+							}
+							else{
+								$this->_addError('L\'instanciation du contrôleur de la rubrique "'.$rubrique.'" a échoué', __FILE__, __LINE__, ERROR);
+								$this->redirect404();
+								$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
+							}
 						}
 					}
 					else{
