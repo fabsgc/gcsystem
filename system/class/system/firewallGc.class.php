@@ -29,6 +29,8 @@
 					$this->_setFirewallConfigConnect();
 					$this->_setFirewallAccess();
 					$this->_setSession();
+
+					//print_r($this->_security);
 				}
 				else{
 					$this->_addError('le fichier '.FIREWALL.' n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
@@ -39,6 +41,10 @@
 				$this->_addError('le mode routeur est désactivé. Le parefeu ne peut pas fonctionner', __FILE__, __LINE__, WARNING);
 				return true;
 			}
+		}
+
+		public function getFirewallArray(){
+			return $this->_security;
 		}
 		
 		public function check(){
