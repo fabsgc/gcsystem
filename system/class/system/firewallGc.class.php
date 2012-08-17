@@ -29,8 +29,6 @@
 					$this->_setFirewallConfigConnect();
 					$this->_setFirewallAccess();
 					$this->_setSession();
-
-					//print_r($this->_security);
 				}
 				else{
 					$this->_addError('le fichier '.FIREWALL.' n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
@@ -44,7 +42,202 @@
 		}
 
 		public function getFirewallArray(){
-			return $this->_security;
+			if(isset($this->_security)){
+				return $this->_security;
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallRole(){
+			if(isset($this->_security['roles_hierarchy'])){
+				return $this->_security['roles_hierarchy'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewall(){
+			if(isset($this->_security['firewall'])){
+				return $this->_security['firewall'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfig(){
+			if(isset($this->_security['firewall']['config'])){
+				return $this->_security['firewall']['config'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigLogin(){
+			if(isset($this->_security['firewall']['config']['login'])){
+				return $this->_security['firewall']['config']['login'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigLoginSource(){
+			if(isset($this->_security['firewall']['config']['login']['source'])){
+				return $this->_security['firewall']['config']['login']['source'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigLoginSourceId(){
+			if(isset($this->_security['firewall']['config']['login']['source']['id'])){
+				return $this->_security['firewall']['config']['login']['source']['id'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigLoginSourceVars(){
+			if(isset($this->_security['firewall']['config']['login']['source']['vars'])){
+				return $this->_security['firewall']['config']['login']['source']['vars'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigLoginTarget(){
+			if(isset($this->_security['firewall']['config']['login']['target'])){
+				return $this->_security['firewall']['config']['login']['target'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigLoginTargetId(){
+			if(isset($this->_security['firewall']['config']['login']['target']['id'])){
+				return $this->_security['firewall']['config']['login']['target']['id'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigLoginTargetVars(){
+			if(isset($this->_security['firewall']['config']['login']['target']['vars'])){
+				return $this->_security['firewall']['config']['login']['target']['vars'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigForbidden(){
+			if(isset($this->_security['firewall']['config']['forbidden'])){
+				return $this->_security['firewall']['config']['forbidden'];
+			}
+			else{
+				return false;
+			}
+		}
+
+
+		public function getFirewallConfigForbiddenTemplate(){
+			if(isset($this->_security['firewall']['config']['forbidden']['template'])){
+				return $this->_security['firewall']['config']['forbidden']['template'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigForbiddenTemplateSrc(){
+			if(isset($this->_security['firewall']['config']['forbidden']['template']['src'])){
+				return $this->_security['firewall']['config']['forbidden']['template']['src'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigForbiddenTemplateVars(){
+			if(isset($this->_security['firewall']['config']['forbidden']['template']['variable'])){
+				return $this->_security['firewall']['config']['forbidden']['template']['variable'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigCsrf(){
+			if(isset($this->_security['firewall']['config']['csrf'])){
+				return $this->_security['firewall']['config']['csrf'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigCsrfEnabled(){
+			if(isset($this->_security['firewall']['config']['csrf']['enabled'])){
+				return $this->_security['firewall']['config']['csrf']['enabled'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigCsrfTemplate(){
+			if(isset($this->_security['firewall']['config']['csrf']['template'])){
+				return $this->_security['firewall']['config']['csrf']['template'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigCsrfTemplateSrc(){
+			if(isset($this->_security['firewall']['config']['csrf']['template']['src'])){
+				return $this->_security['firewall']['config']['csrf']['template']['src'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConfigCsrfTemplateVars(){
+			if(isset($this->_security['firewall']['config']['csrf']['template']['variable'])){
+				return $this->_security['firewall']['config']['csrf']['template']['variable'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallConnect(){
+			if(isset($this->_security['firewall']['connect'])){
+				return $this->_security['firewall']['connect'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		public function getFirewallAccess(){
+			if(isset($this->_security['firewall']['access'])){
+				return $this->_security['firewall']['access'];
+			}
+			else{
+				return false;
+			}
 		}
 		
 		public function check(){

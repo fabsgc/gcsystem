@@ -415,6 +415,94 @@
 				$this->setErrorLog('errors', 'Le template '.$nom_template.' n\'a pas été trouvé');
 			}
 		}
+
+		final protected function getFirewallArray(){ 
+			return $this->_firewall->getFirewallArray(); 
+		}
+
+		final protected function getFirewallRole(){ 
+			return $this->_firewall->getFirewallRole(); 
+		}
+
+		final protected function getFirewall(){ 
+			return $this->_firewall->getFirewall(); 
+		}
+
+		final protected function getFirewallConfig(){ 
+			return $this->_firewall->getFirewallConfig(); 
+		}
+
+		final protected function getFirewallConfigLogin(){ 
+			return $this->_firewall->getFirewallConfigLogin(); 
+		}
+
+		final protected function getFirewallConfigLoginSource(){ 
+			return $this->_firewall->getFirewallConfigLoginSource(); 
+		}
+
+		final protected function getFirewallConfigLoginSourceId(){ 
+			return $this->_firewall->getFirewallConfigLoginSourceId(); 
+		}
+
+		final protected function getFirewallConfigLoginSourceVars(){ 
+			return $this->_firewall->getFirewallConfigLoginSourceVars(); 
+		}
+
+		final protected function getFirewallConfigLoginTarget(){ 
+			return $this->_firewall->getFirewallConfigLoginTarget(); 
+		}
+
+		final protected function getFirewallConfigLoginTargetId(){ 
+			return $this->_firewall->getFirewallConfigLoginTargetId(); 
+		}
+
+		final protected function getFirewallConfigLoginTargetVars(){ 
+			return $this->_firewall->getFirewallConfigLoginTargetVars(); 
+		}
+
+		final protected function getFirewallConfigForbidden(){ 
+			return $this->_firewall->getFirewallConfigForbidden(); 
+		}
+
+		final protected function getFirewallConfigForbiddenTemplate(){ 
+			return $this->_firewall->getFirewallConfigForbiddenTemplate(); 
+		}
+
+		final protected function getFirewallConfigForbiddenTemplateSrc(){ 
+			return $this->_firewall->getFirewallConfigForbiddenTemplateSrc(); 
+		}
+
+		final protected function getFirewallConfigForbiddenTemplateVars(){ 
+			return $this->_firewall->getFirewallConfigForbiddenTemplateVars(); 
+		}
+
+		final protected function getFirewallConfigCsrf(){ 
+			return $this->_firewall->getFirewallConfigCsrf(); 
+		}
+
+		final protected function getFirewallConfigCsrfEnabled(){ 
+			return $this->_firewall->getFirewallConfigCsrfEnabled(); 
+		}
+
+		final protected function getFirewallConfigCsrfTemplate(){ 
+			return $this->_firewall->getFirewallConfigCsrfTemplate(); 
+		}
+
+		final protected function getFirewallConfigCsrfTemplateSrc(){ 
+			return $this->_firewall->getFirewallConfigCsrfTemplateSrc(); 
+		}
+
+		final protected function getFirewallConfigCsrfTemplateVars(){ 
+			return $this->_firewall->getFirewallConfigCsrfTemplateVars(); 
+		}
+
+		final protected function getFirewallConnect(){ 
+			return $this->_firewall->getFirewallConnect(); 
+		}
+
+		final protected function getFirewallAccess(){ 
+			return $this->_firewall->getFirewallAccess(); 
+		}
 		
 		public function __desctuct(){
 		}

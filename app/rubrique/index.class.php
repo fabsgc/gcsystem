@@ -56,6 +56,7 @@
 
 		public function actionActiontestdebug(){
 			echo $this->getIp();
+			echo $this->getFirewallConfigLoginTargetId();
 		}
 		
 		public function actionPagination(){

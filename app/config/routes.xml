@@ -4,7 +4,7 @@
     <route id="index" url="/index.html" rubrique="index" action="" vars="" cache="10"/>
     <route id="index3" url="/index-(.*).html" rubrique="index" action="" vars="token" cache="10"/>
     <route id="page" url="/page.html" rubrique="index" action="pagination" vars="page" cache="10"/>
-    <route id="page2" url="/page-p([0-9]+)\.html" rubrique="index" action="pagination" vars="page" cache="10"/>
+    <route id="page2" url="/page-p([0-9]+)\.html" rubrique="index" action="pagination" vars="page" cache="30"/>
     <route id="template" url="/template.html" rubrique="index" action="template" vars="page" cache="10"/>
     <route id="picture" url="/picture.html" rubrique="index" action="picture" vars="" cache="10"/>
     <route id="contype" url="/truc/contype.xml" rubrique="index" action="contype" vars="" cache="0"/>
