@@ -23,8 +23,6 @@
 					$this->_setConfigQuery();
 					$this->_setConfigError();
 					$this->_setIp();
-
-					print_r($this->_antispam);
 				}
 				else{
 					$this->_addError('le fichier '.ASPAM.' n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
@@ -117,8 +115,8 @@
 		}
 
 		public function getAntispamConfigErrorTemplateVar($nom){
-			if(isset($this->_antispam['config']['error']['template']['variable'][$nom])){
-				return $this->_antispam['config']['error']['template']['variable'][$nom];
+			if(isset($this->_antispam['config']['error']['template']['variable'][''.$nom.''])){
+				return $this->_antispam['config']['error']['template']['variable'][''.$nom.''];
 			}
 			else{
 				return false;
@@ -126,8 +124,8 @@
 		}
 
 		public function getAntispamConfigErrorTemplateVarType($nom){
-			if(isset($this->_antispam['config']['error']['template']['variable'][$nom]['type'])){
-				return $this->_antispam['config']['error']['template']['variable'][$nom]['type'];
+			if(isset($this->_antispam['config']['error']['template']['variable'][''.$nom.'']['type'])){
+				return $this->_antispam['config']['error']['template']['variable'][''.$nom.'']['type'];
 			}
 			else{
 				return false;
@@ -135,8 +133,8 @@
 		}
 
 		public function getAntispamConfigErrorTemplateVarName($nom){
-			if(isset($this->_antispam['config']['error']['template']['variable'][$nom]['name'])){
-				return $this->_antispam['config']['error']['template']['variable'][$nom]['name'];
+			if(isset($this->_antispam['config']['error']['template']['variable'][''.$nom.'']['name'])){
+				return $this->_antispam['config']['error']['template']['variable'][''.$nom.'']['name'];
 			}
 			else{
 				return false;
@@ -144,8 +142,8 @@
 		}
 
 		public function getAntispamConfigErrorTemplateVarValue($nom){
-			if(isset($this->_antispam['config']['error']['template']['variable'][$nom]['value'])){
-				return $this->_antispam['config']['error']['template']['variable'][$nom]['value'];
+			if(isset($this->_antispam['config']['error']['template']['variable'][''.$nom.'']['value'])){
+				return $this->_antispam['config']['error']['template']['variable'][''.$nom.'']['value'];
 			}
 			else{
 				return false;
@@ -162,8 +160,8 @@
 		}
 
 		public function getAntispamIp($nom){
-			if(isset($this->_antispam['ips'][$nom])){
-				return $this->_antispam['ips'][$nom];
+			if(isset($this->_antispam['ips'][''.$nom.''])){
+				return $this->_antispam['ips'][''.$nom.''];
 			}
 			else{
 				return false;
@@ -171,8 +169,8 @@
 		}
 
 		public function getAntispamIpNumber($nom){
-			if(isset($this->_antispam['ips'][$nom]['number'])){
-				return $this->_antispam['ips'][$nom]['number'];
+			if(isset($this->_antispam['ips'][''.$nom.'']['number'])){
+				return $this->_antispam['ips'][''.$nom.'']['number'];
 			}
 			else{
 				return false;
@@ -180,8 +178,8 @@
 		}
 
 		public function getAntispamIpSince($nom){
-			if(isset($this->_antispam['ips'][$nom]['since'])){
-				return $this->_antispam['ips'][$nom]['since'];
+			if(isset($this->_antispam['ips'][''.$nom.'']['since'])){
+				return $this->_antispam['ips'][''.$nom.'']['since'];
 			}
 			else{
 				return false;
@@ -189,8 +187,8 @@
 		}
 
 		public function getAntispamIpIp($nom){
-			if(isset($this->_antispam['ips'][$nom]['ip'])){
-				return $this->_antispam['ips'][$nom]['ip'];
+			if(isset($this->_antispam['ips'][''.$nom.'']['ip'])){
+				return $this->_antispam['ips'][''.$nom.'']['ip'];
 			}
 			else{
 				return false;

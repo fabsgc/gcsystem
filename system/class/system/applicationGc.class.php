@@ -420,8 +420,8 @@
 			return $this->_firewall->getFirewallArray(); 
 		}
 
-		final protected function getFirewallRole(){ 
-			return $this->_firewall->getFirewallRole(); 
+		final protected function getFirewallRoles(){ 
+			return $this->_firewall->getFirewallRoles(); 
 		}
 
 		final protected function getFirewall(){ 

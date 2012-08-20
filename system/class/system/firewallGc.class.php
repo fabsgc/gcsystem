@@ -29,6 +29,8 @@
 					$this->_setFirewallConfigConnect();
 					$this->_setFirewallAccess();
 					$this->_setSession();
+
+					print_r($this->_security);
 				}
 				else{
 					$this->_addError('le fichier '.FIREWALL.' n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
@@ -50,9 +52,19 @@
 			}
 		}
 
-		public function getFirewallRole(){
+		public function getFirewallRoles(){
 			if(isset($this->_security['roles_hierarchy'])){
 				return $this->_security['roles_hierarchy'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		//ajout
+		public function getFirewallRole($nom){
+			if(isset($this->_security['roles_hierarchy'][''.$nom.''])){
+				return $this->_security['roles_hierarchy'][''.$nom.''];
 			}
 			else{
 				return false;
@@ -177,6 +189,46 @@
 			}
 		}
 
+		//ajout
+		public function getFirewallConfigForbiddenTemplateVar($nom){
+			if(isset($this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.''])){
+				return $this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.''];
+			}
+			else{
+				return false;
+			}
+		}
+
+		//ajout
+		public function getFirewallConfigForbiddenTemplateVarType($nom){
+			if(isset($this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.'']['type'])){
+				return $this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.'']['type'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		//ajout
+		public function getFirewallConfigForbiddenTemplateVarName($nom){
+			if(isset($this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.'']['name'])){
+				return $this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.'']['name'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		//ajout
+		public function getFirewallConfigForbiddenTemplateVarValue($nom){
+			if(isset($this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.'']['value'])){
+				return $this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.'']['value'];
+			}
+			else{
+				return false;
+			}
+		}
+
 		public function getFirewallConfigCsrf(){
 			if(isset($this->_security['firewall']['config']['csrf'])){
 				return $this->_security['firewall']['config']['csrf'];
@@ -216,6 +268,47 @@
 		public function getFirewallConfigCsrfTemplateVars(){
 			if(isset($this->_security['firewall']['config']['csrf']['template']['variable'])){
 				return $this->_security['firewall']['config']['csrf']['template']['variable'];
+			}
+			else{
+				return false;
+			}
+		}
+
+
+		//ajout
+		public function getFirewallConfigCsrfTemplateVar($nom){
+			if(isset($this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.''])){
+				return $this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.''];
+			}
+			else{
+				return false;
+			}
+		}
+
+		//ajout
+		public function getFirewallConfigCsrfTemplateVarType($nom){
+			if(isset($this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.'']['type'])){
+				return $this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.'']['type'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		//ajout
+		public function getFirewallConfigCsrfTemplateVarName($nom){
+			if(isset($this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.'']['name'])){
+				return $this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.'']['name'];
+			}
+			else{
+				return false;
+			}
+		}
+
+		//ajout
+		public function getFirewallConfigCsrfTemplateVarValue($nom){
+			if(isset($this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.'']['value'])){
+				return $this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.'']['value'];
 			}
 			else{
 				return false;
