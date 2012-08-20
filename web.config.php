@@ -115,7 +115,7 @@ define('CHARSET', 'UTF-8');
 define('FAVICON_PATH', 'no');
 
 //dossier où est placé le framework à partir de la racine du répertoire. sous wamp par exemple, /GCsystem2.0
-define('FOLDER', '/GCsystem2.0');
+define('FOLDER', '/GCsystem');
 
 //dossier où est placé le framework à partir de la racine du répertoire
 define('DEFAULTLANG', 'fr');

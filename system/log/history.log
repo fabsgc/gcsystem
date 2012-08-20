@@ -1,93 +1,12 @@
-16/08/2012 a 00:00:03 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/terminal-terminal.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/terminal.html / IP : 127.0.0.1
-16/08/2012 a 00:17:05 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 00:17:07 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 00:17:08 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 00:17:16 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 00:17:19 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 00:41:22 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 00:41:24 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 00:41:25 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 00:41:25 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 00:41:26 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 00:41:26 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 00:41:27 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 00:41:28 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:33:51 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:33:54 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p2.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page.html / IP : 127.0.0.1
-16/08/2012 a 20:33:55 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p3.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p2.html / IP : 127.0.0.1
-16/08/2012 a 20:33:56 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p4.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p3.html / IP : 127.0.0.1
-16/08/2012 a 20:33:57 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p5.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p4.html / IP : 127.0.0.1
-16/08/2012 a 20:33:57 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p6.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p5.html / IP : 127.0.0.1
-16/08/2012 a 20:33:58 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p7.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p6.html / IP : 127.0.0.1
-16/08/2012 a 20:34:01 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p7.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:34:03 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p7.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:34:05 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p8.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p7.html / IP : 127.0.0.1
-16/08/2012 a 20:34:06 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p9.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p8.html / IP : 127.0.0.1
-16/08/2012 a 20:34:07 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p10.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p9.html / IP : 127.0.0.1
-16/08/2012 a 20:34:08 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p11.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p10.html / IP : 127.0.0.1
-16/08/2012 a 20:34:09 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p12.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p11.html / IP : 127.0.0.1
-16/08/2012 a 20:34:10 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p13.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p12.html / IP : 127.0.0.1
-16/08/2012 a 20:34:56 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p13.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:34:58 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p13.html / IP : 127.0.0.1
-16/08/2012 a 20:35:01 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p13.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p14.html / IP : 127.0.0.1
-16/08/2012 a 20:35:08 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p12.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p13.html / IP : 127.0.0.1
-16/08/2012 a 20:35:12 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p12.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:36:04 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p13.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p12.html / IP : 127.0.0.1
-16/08/2012 a 20:36:05 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p13.html / IP : 127.0.0.1
-16/08/2012 a 20:36:07 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:36:38 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p13.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p14.html / IP : 127.0.0.1
-16/08/2012 a 20:36:41 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p13.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:36:51 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p13.html / IP : 127.0.0.1
-16/08/2012 a 20:36:52 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p13.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p14.html / IP : 127.0.0.1
-16/08/2012 a 20:36:55 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p13.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:37:18 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p13.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:37:20 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p13.html / IP : 127.0.0.1
-16/08/2012 a 20:37:22 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p13.html / IP : 127.0.0.1
-16/08/2012 a 20:37:23 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p13.html / IP : 127.0.0.1
-16/08/2012 a 20:37:24 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p13.html / IP : 127.0.0.1
-16/08/2012 a 20:37:25 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p13.html / IP : 127.0.0.1
-16/08/2012 a 20:37:26 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p13.html / IP : 127.0.0.1
-16/08/2012 a 20:37:48 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:37:50 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:37:51 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:37:51 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:37:52 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:37:52 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:37:53 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:37:53 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:37:53 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:37:54 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:37:54 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:37:54 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:38:52 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:38:54 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:39:06 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:39:08 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:39:08 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:39:09 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:39:10 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:39:10 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:39:11 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:40:12 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:40:19 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:40:21 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:40:22 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 20:40:23 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 21:00:40 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p13.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p14.html / IP : 127.0.0.1
-16/08/2012 a 21:00:43 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p13.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 23:29:58 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p14.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p13.html / IP : 127.0.0.1
-16/08/2012 a 23:30:01 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p13.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine : http://127.0.0.1:82/GCsystem2.0/page-p14.html / IP : 127.0.0.1
-16/08/2012 a 23:30:04 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/page-p13.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 23:34:39 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 23:34:41 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 23:44:38 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-16/08/2012 a 23:47:24 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-17/08/2012 a 00:55:58 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-17/08/2012 a 00:56:57 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-17/08/2012 a 01:07:12 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-17/08/2012 a 01:07:14 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-17/08/2012 a 01:08:21 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-17/08/2012 a 01:08:42 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-17/08/2012 a 01:08:49 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-17/08/2012 a 01:08:50 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
-17/08/2012 a 01:08:51 ! : Page rewrite : http://127.0.0.1:82/GCsystem2.0/testdebug.html rubrique : 127.0.0.1/GCsystem2.0/index.php? / origine :  / IP : 127.0.0.1
+20/08/2012 a 20:02:30 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+20/08/2012 a 20:03:05 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+20/08/2012 a 20:03:14 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+20/08/2012 a 20:03:16 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+20/08/2012 a 20:03:33 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+20/08/2012 a 20:04:44 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+20/08/2012 a 20:04:44 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+20/08/2012 a 20:04:45 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+20/08/2012 a 20:04:45 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+20/08/2012 a 20:04:46 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+20/08/2012 a 20:04:47 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+20/08/2012 a 20:04:47 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
