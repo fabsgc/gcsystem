@@ -142,7 +142,7 @@
 					break;
 					
 					default :
-						$this->_addError('L\'extension n\est pas gérée');
+						$this->_addError('L\'extension n\est pas gérée', __FILE__, __LINE__, ERROR);
 					break;
 				}
 				

@@ -16,7 +16,7 @@
 		protected $_urlReplace                  = array ('e','a','i','u','o','c', ' ');
 		
 		/**
-		 * Cr&eacute;e l'instance de la classe
+		 * Crée l'instance de la classe
 		 * @access	public
 		 * @return	void
 		 * @since 2.0

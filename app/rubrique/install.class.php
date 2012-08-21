@@ -3,9 +3,7 @@
 	 * @info : contrôleur créé automatiquement par le GCsystem
 	*/
 	
-	class test1 extends applicationGc{
-		protected $forms                = array();
-		protected $sql                  = array();
+	class install extends applicationGc{
 		protected $model                         ;
 		protected $bdd                           ;
 		

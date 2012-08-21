@@ -34,6 +34,6 @@
 			<url id="terminal_terminal" connected="*" access="*"/>		
 			<url id="urltoke" connected="*" access="*"/>
 			<url id="testdebug" connected="*" access="*"/>
-		</access>
+		<url id="test" connected="*" access="*"/><url id="test2" connected="*" access="*"/><url id="install" connected="*" access="*"/></access>
 	</firewall>
 </security>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <antispams>
 	<config>
-		<queryip number="6" duration="10"/>
+		<queryip number="10" duration="10"/>
 		<error template="GCsystem/GCerror">
 			<variable type="var" name="antispam" value="antispamGc"/>
 			<variable type="lang" name="error" value="antispamerror"/>
@@ -10,7 +10,7 @@
 	</config>
 	<ips>
 		<ip ip="81.56.19.30" number="50" since="1344516768"/>
+		<ip ip="127.0.0.1" number="4" since="1345165722"/>
 		
-		
-	<ip ip="127.0.0.1" number="4" since="1345165722"/><ip ip="::1" number="6" since="1345561371"/></ips>
+	<ip ip="::1" number="2" since="1345587835"/></ips>
 </antispams>

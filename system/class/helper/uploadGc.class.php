@@ -45,7 +45,7 @@
 								}
 							}
 							else{
-								$this->_addError(self::NOPARAM);
+								$this->_addError(self::NOPARAM, __FILE__, __LINE__, ERROR);
 								array_push($this->_checked, false);
 								array_push($this->_checkedAnswer, self::NOPARAM);
 							}
@@ -62,7 +62,7 @@
 								}
 							}
 							else{
-								$this->_addError(self::NOPARAM);
+								$this->_addError(self::NOPARAM, __FILE__, __LINE__, ERROR);
 								array_push($this->_checked, false);
 								array_push($this->_checkedAnswer, self::NOPARAM);
 							}
@@ -79,7 +79,7 @@
 								}
 							}
 							else{
-								$this->_addError(self::NOPARAM);
+								$this->_addError(self::NOPARAM, __FILE__, __LINE__, ERROR);
 								array_push($this->_checked, false);
 								array_push($this->_checkedAnswer, self::NOPARAM);
 							}
@@ -96,7 +96,7 @@
 								}
 							}
 							else{
-								$this->_addError(self::NOPARAM);
+								$this->_addError(self::NOPARAM, __FILE__, __LINE__, ERROR);
 								array_push($this->_checked, false);
 								array_push($this->_checkedAnswer, self::NOPARAM);
 							}
@@ -113,7 +113,7 @@
 								}
 							}
 							else{
-								$this->_addError(self::NOPARAM);
+								$this->_addError(self::NOPARAM, __FILE__, __LINE__, ERROR);
 								array_push($this->_checked, false);
 								array_push($this->_checkedAnswer, self::NOPARAM);
 							}
@@ -130,21 +130,21 @@
 								}
 							}
 							else{
-								$this->_addError(self::NOPARAM);
+								$this->_addError(self::NOPARAM, __FILE__, __LINE__, ERROR);
 								array_push($this->_checked, false);
 								array_push($this->_checkedAnswer, self::NOPARAM);
 							}
 						break;
 						
 						default:
-							$this->_addError(self::NOCONTRAINTE);
+							$this->_addError(self::NOCONTRAINTE, __FILE__, __LINE__, ERROR);
 						break;
 					}
 					$this->_i++;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 			
@@ -178,12 +178,12 @@
 					}
 				}
 				else{
-					$this->_addError(self::NOFILE);
+					$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NODIR);
+				$this->_addError(self::NODIR, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -250,7 +250,7 @@
 			}
 			else{
 				$this->_validate = false;
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 			}
 		}
 		

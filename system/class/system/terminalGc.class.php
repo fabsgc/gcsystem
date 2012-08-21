@@ -2,7 +2,7 @@
 	/**
 	 * @file : terminalGc.class.php
 	 * @author : fab@c++
-	 * @description : class g&eacute;rant les fichiers compress&#233;s
+	 * @description : class gérant les fichiers compressés
 	 * @version : 2.0 bêta
 	*/
 
@@ -31,7 +31,7 @@
 				MODEL_PATH.'terminal'.MODEL_EXT.'.php', MODEL_PATH.'index'.MODEL_EXT.'.php', FUNCTION_GENERIQUE, RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCrubrique'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
-				CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE, CLASS_LOG, CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE,CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
+				CLASS_INSTALL, CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE, CLASS_LOG, CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE,CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
 			);
 
 			$this->_updateFile = array(
@@ -41,7 +41,7 @@
 				LIB_PATH.'FormsGC/formsGC.class.php', LIB_PATH.'FormsGC/formsGCValidator.class.php',
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCrubrique'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
-				CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE, CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
+				CLASS_INSTALL, CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE, CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
 				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT,
 				CLASS_PATH.CLASS_HELPER_PATH.'fileGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'pictureGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'uploadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'zipGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php',
@@ -55,7 +55,7 @@
 				'fileGc', 'downloadGc', 'pictureGc', 'uploadGc', 'zipGc', 'bbcodeGc', 'captchaGc', 'dateGc', 'feedGc', 'mailGc', 'modoGc', 'paginationGc', 'socialGc', 'sqlGc', 'textGc'
 			);
 
-			$this->_configIfNoExist = $arrayName = array(
+			$this->_configIfNoExist = array(
 				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM
 			);
 		}
@@ -118,7 +118,7 @@
 						$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php';
 						$this->_stream .= '<br />> '.MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php';
 
-						$this->_result = '<br />> <span style="color: chartreuse;">la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; cr&#233;&#233;e</span>';
+						$this->_result = '<br />> <span style="color: chartreuse;">la rubrique <u>'.$this->_commandExplode[2].'</u> a bien été créée</span>';
 						
 						$this->_domXml = new DomDocument('1.0', CHARSET);
 						if($this->_domXml->load(ROUTE)){						
@@ -138,7 +138,7 @@
 								$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
 								
 								if(isset($this->_commandExplode[3])){
-									$this->_markupXml->setAttribute("url", $this->_commandExplode[3]);
+									$this->_markupXml->setAttribute("url", "/".$this->_commandExplode[3]);
 								}
 								else{
 									$this->_markupXml->setAttribute("url", "/".$this->_commandExplode[2]);
@@ -259,7 +259,7 @@
 								$this->_domXml->save(PLUGIN);
 							}
 							
-							$this->_result = '<br />> <span style="color: chartreuse;">le plugin <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; ajouté</span>';
+							$this->_result = '<br />> <span style="color: chartreuse;">le plugin <u>'.$this->_commandExplode[2].'</u> a bien été ajouté</span>';
 						}
 					}
 					else{
@@ -309,7 +309,7 @@
 							$this->_domXml->save(FIREWALL);
 						}
 
-						$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; supprim&#233;e</span>';
+						$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien été supprimée</span>';
 					}
 					else{
 						$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php';
@@ -342,7 +342,7 @@
 								$this->_domXml->save(PLUGIN);
 							}
 							
-							$this->_result = '<br />> <span style="color: chartreuse;">le plugin <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; modifié</span>';
+							$this->_result = '<br />> <span style="color: chartreuse;">le plugin <u>'.$this->_commandExplode[2].'</u> a bien été modifié</span>';
 						}
 					}
 					else{
@@ -375,7 +375,7 @@
 						$monfichier = fopen(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT, 'a');
 						fclose($monfichier);
 						$this->_stream .= '<br />> '.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT;
-						$this->_result = '<br />><span style="color: chartreuse;"> le template <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; cr&#233;&#233;</span>';
+						$this->_result = '<br />><span style="color: chartreuse;"> le template <u>'.$this->_commandExplode[2].'</u> a bien été créé</span>';
 					}
 					else{
 						$this->_stream .= '<br />> '.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT;
@@ -419,7 +419,7 @@
 							fclose($monfichier);
 
 							$this->_stream .= '<br />> '.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php';
-							$this->_result = '<br />><span style="color: chartreuse;"> le fichier class <u>'.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php'.'</u> a bien &#233;t&#233; cr&#233;&#233;</span>';
+							$this->_result = '<br />><span style="color: chartreuse;"> le fichier de class <u>'.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php'.'</u> a bien été créé</span>';
 						}
 						else{
 							$this->_stream .= '<br />> '.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php';
@@ -509,18 +509,18 @@
 				}
 				elseif(preg_match('#list template#', $this->_command)){
 					$this->_mkmap(TEMPLATE_PATH);
-					$this->_result = '<br />><span style="color: chartreuse;"> fichiers de template list&#233;s</span>';
+					$this->_result = '<br />><span style="color: chartreuse;"> fichiers de template listés</span>';
 				}
 				elseif(preg_match('#list cache#', $this->_command)){
 					$this->_mkmap(CACHE_PATH);
-					$this->_result = '<br />><span style="color: chartreuse;"> fichiers de cache list&#233;s</span>';
+					$this->_result = '<br />><span style="color: chartreuse;"> fichiers de cache listés</span>';
 				}
 				elseif(preg_match('#delete template (.+)#', $this->_command)){
 					if(!in_array(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT, $this->_forbidden)){
 						if(is_file(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT)){
 							unlink(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT);
 							$this->_stream .= '<br />> '.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT;
-							$this->_result = '<br />><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT.'</u> a bien &#233;t&#233; supprim&#233;</span>';
+							$this->_result = '<br />><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT.'</u> a bien été supprimé</span>';
 						}
 						else{
 							$this->_stream .= '<br />> '.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT;
@@ -538,11 +538,11 @@
 							if(!is_file(TEMPLATE_PATH.$this->_commandExplode[3].TEMPLATE_EXT)){
 								rename(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT, TEMPLATE_PATH.$this->_commandExplode[3].TEMPLATE_EXT);
 								$this->_stream .= '<br />> '.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT.' -> '.TEMPLATE_PATH.$this->_commandExplode[3].TEMPLATE_EXT;
-								$this->_result = '<br />><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT.'</u> a bien &#233;t&#233; r&#233;nomm&#233; en <u>'.TEMPLATE_PATH.$this->_commandExplode[3].'</u></span>';
+								$this->_result = '<br />><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT.'</u> a bien été renommé en <u>'.TEMPLATE_PATH.$this->_commandExplode[3].'</u></span>';
 							}
 							else{
 								$this->_stream .= '<br />> '.TEMPLATE_PATH.$this->_commandExplode[3].TEMPLATE_EXT;
-								$this->_result = '<br />><span style="color: red;"> Un template porte d&#233;jà le même nom</span>';
+								$this->_result = '<br />><span style="color: red;"> Un template porte déjà le même nom</span>';
 							}
 						}
 						else{
@@ -568,7 +568,7 @@
 										$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php'.' -> '.RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php';
 									}
 									
-									$this->_result = '<br />><span style="color: chartreuse;"> le fichier <u>'.MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php'.'</u> a bien &#233;t&#233; r&#233;nomm&#233; en <u>'.MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php'.'</u></span>';
+									$this->_result = '<br />><span style="color: chartreuse;"> le fichier <u>'.MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php'.'</u> a bien été renommé en <u>'.MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php'.'</u></span>';
 								}
 								
 								$this->_domXml = new DomDocument('1.0', CHARSET);
@@ -691,11 +691,11 @@
 													  'class manager'.ucfirst($this->_commandExplode[3]).' extends modelGc', $data);
 								file_put_contents(MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php', $data);
 
-								$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien &#233;t&#233; modifiée en <u>'.$this->_commandExplode[3].'</u> et ses options ont été modifiées</span>';
+								$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien été modifiée en <u>'.$this->_commandExplode[3].'</u> et ses options ont été modifiées</span>';
 							}
 							else{
 								$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php';
-								$this->_result = '<br />><span style="color: red;"> Une rubrique porte d&#233;jà le même nom</span>';
+								$this->_result = '<br />><span style="color: red;"> Une rubrique porte déjà le même nom</span>';
 							}
 						}
 						else{
@@ -902,13 +902,13 @@
 						}
 					}
 
-					$this->_result = '<br />><span style="color: chartreuse;"> fichiers de rubrique list&#233;s</span>';
+					$this->_result = '<br />><span style="color: chartreuse;"> fichiers de rubrique lisés</span>';
 				}
 				elseif(preg_match('#list included#', $this->_command)){				
 					foreach(get_included_files() as $val){
 						$this->_stream .= '<br />> '.$val;
 					}
-					$this->_result = '<br />><span style="color: chartreuse;"> fichiers inclus list&#233;s</span>';
+					$this->_result = '<br />><span style="color: chartreuse;"> fichiers inclus listés</span>';
 				}
 				elseif(preg_match('#clear cache#', $this->_command)){
 					if($this->_dossier = opendir(CACHE_PATH)){
@@ -919,7 +919,7 @@
 							}
 						}
 					}
-					$this->_result = '<br />><span style="color: chartreuse;"> le cache a bien &#233;t&#233; vid&#233;</span>';
+					$this->_result = '<br />><span style="color: chartreuse;"> le cache a bien été vidé</span>';
 				}
 				elseif(preg_match('#clear log#', $this->_command)){
 					if($this->_dossier = opendir(LOG_PATH)){
@@ -930,7 +930,7 @@
 							}
 						}
 					}
-					$this->_result = '<br />><span style="color: chartreuse;"> le log a bien &#233;t&#233; vid&#233;</span>';
+					$this->_result = '<br />><span style="color: chartreuse;"> le log a bien été vidé</span>';
 				}
 				elseif(preg_match('#help#', $this->_command)){
 					$this->_stream .= '<br />> add rubrique nom (url[lien] action[nom|empty] vars[getvar,getvar|empty] connect[true|false|*] access[role1,role2|*]  cache[secondes]) facultatif';
@@ -974,21 +974,21 @@
 				}
 				elseif(preg_match('#update updater#', $this->_command)){
 					$this->_stream .= $this->_updater();
-					$this->_result = '<br />><span style="color: chartreuse;"> updater &#226; jour</span><meta http-equiv="refresh" content="1; URL=#">';
+					$this->_result = '<br />><span style="color: chartreuse;"> updater à jour</span><meta http-equiv="refresh" content="1; URL=#">';
 				}
 				elseif(preg_match('#update#', $this->_command)){
 					$this->_stream .= $this->_update();
-					$this->_result = '<br />><span style="color: chartreuse;"> framework &#226; jour</span>';
+					$this->_result = '<br />><span style="color: chartreuse;"> framework à jour</span>';
 				}
 				elseif(preg_match('#disconnect#', $this->_command) && $this->_mdp==false){
-					$this->_result = '<br />><span style="color: chartreuse;"> Vous avez &#233;t&#233; d&#233;connect&#233;</span>';
+					$this->_result = '<br />><span style="color: chartreuse;"> Vous avez été déconnecté(e)</span>';
 					$_SESSION['GC_terminalMdp'] = 0;
 				}
 				elseif(preg_match('#changepassword (.+)#', $this->_command)){
 					$sauvegarde = file_get_contents('web.config.php');
 					$sauvegarde = preg_replace("`define\('TERMINAL_MDP', '(.+)'\)`isU", 'define(\'TERMINAL_MDP\', \''.$this->_commandExplode[1].'\')',  $sauvegarde);
 					file_put_contents('web.config.php', $sauvegarde);
-					$this->_result = '<br />><span style="color: chartreuse;"> Le mot de passe a bien &#233;t&#233; modifi&#233;'.$sauvegarde.'</span>';
+					$this->_result = '<br />><span style="color: chartreuse;"> Le mot de passe a bien été modifié'.$sauvegarde.'</span>';
 				}
 				elseif(preg_match('#recover config#', $this->_command)){
 					foreach($this->_configIfNoExist as $cle => $file){
@@ -1031,7 +1031,7 @@
 									}							
 								}
 								
-								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de log <strong>'.LOG_PATH.$this->_commandExplode[2].LOG_EXT.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de log <strong>'.LOG_PATH.$this->_commandExplode[2].LOG_EXT.'</strong> a bien été affiché</span>';
 							}
 							else{
 								$this->_result = '<br />><span style="color: red;"> Le fichier de log <strong>'.LOG_PATH.$this->_commandExplode[2].LOG_EXT.'</strong> n\'existe pas</span>';
@@ -1059,7 +1059,7 @@
 									}							
 								}
 								
-								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de route <strong>'.ROUTE.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de route <strong>'.ROUTE.'</strong> a bien été affiché</span>';
 							}
 							else{
 								$this->_result = '<br />><span style="color: red;"> Le fichier de route <strong>'.ROUTE.'</strong> n\'existe pas ce qui est étonnant à moins que vous n\'ayez désactivé le route via le framework</span>';
@@ -1087,7 +1087,7 @@
 									}							
 								}
 								
-								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de plugins <strong>'.PLUGIN.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de plugins <strong>'.PLUGIN.'</strong> a bien été affiché</span>';
 							}
 							else{
 								$this->_result = '<br />><span style="color: red;"> Le fichier de plugins <strong>'.PLUGIN.'</strong> n\'existe pas. Vous devriez vite le récupérer</span>';
@@ -1115,7 +1115,7 @@
 									}							
 								}
 								
-								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de config <strong>'.APPCONFIG.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de config <strong>'.APPCONFIG.'</strong> a bien été affiché</span>';
 							}
 							else{
 								$this->_result = '<br />><span style="color: red;"> Le fichier de config <strong>'.APPCONFIG.'</strong> n\'existe pas. Vous devriez vite le récupérer</span>';
@@ -1143,7 +1143,7 @@
 									}							
 								}
 								
-								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de sécurité <strong>'.FIREWALL.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de sécurité <strong>'.FIREWALL.'</strong> a bien été affiché</span>';
 							}
 							else{
 								$this->_result = '<br />><span style="color: red;"> Le fichier de sécurité <strong>'.FIREWALL.'</strong> n\'existe pas. Vous devriez vite le récupérer si vous voulez disposer d\'un pare feu</span>';
@@ -1171,7 +1171,7 @@
 									}							
 								}
 								
-								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de configuration de l\'antispam <strong>'.ASPAM.'</strong> a bien &#233;t&#233; affich&#233;</span>';
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de configuration de l\'antispam <strong>'.ASPAM.'</strong> a bien été affiché</span>';
 							}
 							else{
 								$this->_result = '<br />><span style="color: red;"> Le fichier de configuration de l\'antispam <strong>'.ASPAM.'</strong> n\'existe pas. Vous devriez vite le récupérer si vous voulez disposer d\'un système d\'anti spam</span>';
@@ -1185,7 +1185,7 @@
 			}
 			else{
 				//$this->_stream .= '><span style="color: red;"> Erreur de connexion</span>';
-				$this->_result = '<br />><span style="color: red;"> Erreur de connexion. Vous devez vous connecter gr&#226;ce au  mot de passe du fichier de config</span>';
+				$this->_result = '<br />><span style="color: red;"> Erreur de connexion. Vous devez vous connecter grâce au  mot de passe du fichier de config</span>';
 			}
 			
 			if($this->_stream!="")
@@ -1231,14 +1231,10 @@
 			if(function_exists('curl_init')){
 				$contenu = "";
 				$sauvegarde ="";
-				$sauvegarde2 ="";
 				$suppr = "";
-				$suppr2 = "";
 
 				$sauvegarde = file_get_contents('web.config.php');
 				$sauvegarde = preg_replace('`(.*)parametres de connexion a la base de donnees(.*)`isU', '$2', $sauvegarde);
-				$sauvegarde2 = file_get_contents('index.php');
-				$sauvegarde2 = preg_replace('`(.*)articulation du site web(.*)`isU', '$2', $sauvegarde2);
 
 				foreach($this->_updateFile as $file){				
 					$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
@@ -1260,14 +1256,6 @@
 					file_put_contents('web.config.php', $sauvegarde, FILE_APPEND);
 				}
 
-				$suppr2 = file_get_contents('index.php');
-				$suppr2 = preg_replace('`(.*)(articulation du site web)(.*)`is', '$1articulation du site web', $suppr2);
-				
-				if($suppr2!="" && $sauvegarde2!=""){
-					file_put_contents('index.php', $suppr2);
-					file_put_contents('index.php', $sauvegarde2, FILE_APPEND);
-				}
-
 				foreach($this->_configIfNoExist as $cle => $file){
 					if(!is_file($file)){
 						$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
@@ -1281,10 +1269,6 @@
 						$contenu .= '<br />> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
 					}
 				}
-
-				$this->_configIfNoExist = $arrayName = array(
-				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM
-			);
 
 				return $contenu;
 			}	

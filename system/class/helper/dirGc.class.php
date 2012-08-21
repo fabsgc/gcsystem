@@ -33,7 +33,7 @@
 				$this->setdir($dirpath);
 			}
 			else{
-				$this->_addError(self::NOACCESS);
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 			}
 		}
 		

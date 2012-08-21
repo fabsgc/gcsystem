@@ -30,7 +30,7 @@
 				$this->setFile($filepath);
 			}
 			else{
-				$this->_addError(self::NOACCESS);
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 			}
 		}
 		
@@ -47,7 +47,7 @@
 				return $this->_zipContent;
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -65,7 +65,7 @@
 				return $this->_zipContentFile;
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}			
 		}
@@ -103,12 +103,12 @@
 					return true;
 				}
 				else{
-					$this->_addError(self::NODIR);
+					$this->_addError(self::NODIR, __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -135,7 +135,7 @@
 				$this->_isExist = true;
 			}
 			else{
-				$this->_addError(self::NOACCESS);
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 			}
 		}
 		

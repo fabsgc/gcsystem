@@ -4,8 +4,6 @@
 	*/
 	
 	class ".$rubrique." extends applicationGc{
-		protected ".'$forms'."                = array();
-		protected ".'$sql'."                  = array();
 		protected ".'$model'."                         ;
 		protected ".'$bdd'."                           ;
 		

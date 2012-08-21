@@ -23,7 +23,7 @@
 		const NOFILE   = 'Aucun fichier rss n\'a été difini';
 		
 		/**
-		 * Cr&eacute;e l'instance de la classe
+		 * Crée l'instance de la classe
 		 * @access	public
 		 * @return	void
 		 * @since 2.0
@@ -42,12 +42,12 @@
 					return true;
 				}
 				else{
-					$this->_addError('Ce flux rss existe déjà');
+					$this->_addError('Ce flux rss existe déjà', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError('Des erreurs sont présentes dans les paramètres de la fonction');
+				$this->_addError('Des erreurs sont présentes dans les paramètres de la fonction', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -158,7 +158,7 @@
 				}
 			}
 			else{
-				$this->_addError('Des erreurs sont présentes dans les paramètres de la fonction');
+				$this->_addError('Des erreurs sont présentes dans les paramètres de la fonction', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -272,7 +272,7 @@
 				}
 			}
 			else{
-				$this->_addError('Des erreurs sont présentes dans les paramètres de la fonction');
+				$this->_addError('Des erreurs sont présentes dans les paramètres de la fonction', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -333,7 +333,7 @@
 				}
 			}
 			else{
-				$this->_addError('Ce flux rss n\'existe pas');
+				$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -359,7 +359,7 @@
 						$this->_domXml = new DomDocument('1.0', CHARSET);
 						
 						if($this->_domXml->loadXML($this->_rssFileContent)){
-							$this->_addError('fichier ouvert : '.$this->_rssFile);
+							$this->_addError('fichier ouvert : '.$this->_rssFile, __FILE__, __LINE__, ERROR);
 							$this->_nodeXml = $this->_domXml->getElementsByTagName('rss')->item(0)->getElementsByTagName('channel')->item(0);
 
 							$this->_setRssHeader($nom, $this->_nodeXml);
@@ -368,7 +368,7 @@
 							return true;
 						}
 						else{
-							$this->_addError('Le fichier '.$this->_rssFile.' n\'a pas pu être ouvert');
+							$this->_addError('Le fichier '.$this->_rssFile.' n\'a pas pu être ouvert', __FILE__, __LINE__, ERROR);
 							$his->_rssRead[$nom] = false;
 							return false;
 						}
@@ -379,12 +379,12 @@
 					}
 				}
 				else{
-					$this->_addError('Ce flux rss existe déjà');
+					$this->_addError('Ce flux rss existe déjà', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError('Des erreurs sont présentes dans les paramètres de la fonction');
+				$this->_addError('Des erreurs sont présentes dans les paramètres de la fonction', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -434,12 +434,12 @@
 					return $this->_rssArray[$nom]['header']['title'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -450,12 +450,12 @@
 					return $this->_rssArray[$nom]['header']['link'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -466,12 +466,12 @@
 					return $this->_rssArray[$nom]['header']['description'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -482,12 +482,12 @@
 					return $this->_rssArray[$nom]['header']['language'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -498,12 +498,12 @@
 					return $this->_rssArray[$nom]['header']['copyright'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -514,12 +514,12 @@
 					return $this->_rssArray[$nom]['header']['managingEditor'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -530,12 +530,12 @@
 					return $this->_rssArray[$nom]['header']['webMaster'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -546,12 +546,12 @@
 					return $this->_rssArray[$nom]['header']['pubDate'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -562,12 +562,12 @@
 					return $this->_rssArray[$nom]['header']['lastBuildDate'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -578,12 +578,12 @@
 					return $this->_rssArray[$nom]['header']['category'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -594,12 +594,12 @@
 					return $this->_rssArray[$nom]['header']['generator'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -610,12 +610,12 @@
 					return $this->_rssArray[$nom]['header']['docs'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -626,12 +626,12 @@
 					return $this->_rssArray[$nom]['header']['cloud'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -642,12 +642,12 @@
 					return $this->_rssArray[$nom]['header']['ttl'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -658,12 +658,12 @@
 					return $this->_rssArray[$nom]['header']['image'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -674,12 +674,12 @@
 					return $this->_rssArray[$nom]['header']['rating'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -690,12 +690,12 @@
 					return $this->_rssArray[$nom]['header']['textInput'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -706,12 +706,12 @@
 					return $this->_rssArray[$nom]['header']['skipHours'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -722,12 +722,12 @@
 					return $this->_rssArray[$nom]['header']['skipDays'];
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -742,12 +742,12 @@
 					return $items;
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -762,12 +762,12 @@
 					return $items;
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -782,12 +782,12 @@
 					return $items;
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -802,12 +802,12 @@
 					return $items;
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -822,12 +822,12 @@
 					return $items;
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -842,12 +842,12 @@
 					return $items;
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -862,12 +862,12 @@
 					return $items;
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -882,12 +882,12 @@
 					return $items;
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -902,12 +902,12 @@
 					return $items;
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -922,12 +922,12 @@
 					return $items;
 				}
 				else{
-					$this->_addError('Ce flux rss n\'existe pas');
+					$this->_addError('Ce flux rss n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}

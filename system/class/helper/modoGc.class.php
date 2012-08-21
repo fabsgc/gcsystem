@@ -16,7 +16,7 @@
 		protected $_i                        = array();
 		
 		/**
-		 * Cr&eacute;e l'instance de la classe
+		 * Crée l'instance de la classe
 		 * @access	public
 		 * @return	void
 		 * @param string $contenu : contenu à modérer
@@ -164,7 +164,7 @@
 		protected function  _setInsulte(){
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			if($this->_domXml->load(MODOGCCONFIG)){
-				$this->_addError('fichier ouvert : '.MODOGCCONFIG);
+				$this->_addError('fichier ouvert : '.MODOGCCONFIG, __FILE__, __LINE__, ERROR);
 				
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('insultes')->item(0);
 				$sentences = $this->_nodeXml->getElementsByTagName('insulte');
@@ -176,7 +176,7 @@
 				}
 			}
 			else{
-				$this->_addError('Le fichier '.MODOGCCONFIG.' n\'a pas pu être ouvert');
+				$this->_addError('Le fichier '.MODOGCCONFIG.' n\'a pas pu être ouvert', __FILE__, __LINE__, ERROR);
 			}
 		}
 		

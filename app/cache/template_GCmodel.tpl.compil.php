@@ -1,4 +1,4 @@
-<gc:variable var ="<?php
+<?php $var ="<?php
 	/**
 	 * @info :manager créé automatiquement par le GCsystem
 	*/
@@ -13,5 +13,5 @@
 		
 		public function actionDefault(){
 		}
-	}" />
-{var}
+	}"; ?>
+<?php echo ($var); ?>

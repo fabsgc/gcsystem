@@ -13,9 +13,9 @@
 		protected $_langFile = true   ; // indique si le fichier de langue est charge ou non
 		
 		/**
-		 * Cr&eacute;e l'instance de la classe langue
+		 * Crée l'instance de la classe langue
 		 * @access	public
-		 * @param string $lang : le nom de la lang qui sera charg&eacute;e
+		 * @param string $lang : le nom de la lang qui sera chargée
 		 * @return	void
 		 * @since 2.0
 		*/
@@ -26,9 +26,9 @@
 		}
 		
 		/**
-		 * Configure la langue qui sera utilis&eacute;e
+		 * Configure la langue qui sera utilisée
 		 * @access	public
-		 * @param string $lang : le nom de la lang qui sera charg&eacute;e
+		 * @param string $lang : le nom de la lang qui sera chargée
 		 * @return	void
 		 * @since 2.0
 		*/
@@ -78,7 +78,7 @@
 		/**
 		 * Charge une phrase contenue dans un des fichiers de langues du framework (./system/lang/) en fonction de la langue choisie
 		 * @access	public
-		 * @param string $nom : le nom de la phrase &agrave; charger. Il correspondant &agrave; l'attribut id dans le fichier XML de langue
+		 * @param string $nom : le nom de la phrase à charger. Il correspondant à l'attribut id dans le fichier XML de langue
 		 * @return	boolean
 		 * @since 2.0
 		*/

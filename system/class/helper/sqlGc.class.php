@@ -26,7 +26,7 @@
 		const PARAM_FETCHUPDATE         = 3;
 		
 		/**
-		 * Cr&eacute;e l'instance de la classe
+		 * Crée l'instance de la classe
 		 * @access	public
 		 * @return	void
 		 * @param PDO : référence vers un objet de type PDO
@@ -140,7 +140,7 @@
 							break;
 							
 							default :
-								$this->_addError('type non géré');
+								$this->_addError('type non géré', __FILE__, __LINE__, ERROR);
 							break;
 						}
 					}
@@ -205,7 +205,7 @@
 								break;
 								
 								default :
-									$this->_addError('type non géré');
+									$this->_addError('type non géré', __FILE__, __LINE__, ERROR);
 								break;
 							}
 						}
@@ -220,7 +220,7 @@
 					case self::PARAM_FETCHCOLUMN : $this->_data = $this->_requete->fetchColumn(); break;
 					case self::PARAM_FETCHINSERT : $this->_data = true; break;
 					case self::PARAM_FETCHUPDATE : $this->_data = true; break;
-					default : $this->_addError('cette constante n\'existe pas'); $this->_data=""; break;
+					default : $this->_addError('cette constante n\'existe pas', __FILE__, __LINE__, ERROR); $this->_data=""; break;
 				}
 				
 				switch($fetch){
@@ -231,7 +231,7 @@
 							return $this->_cache->getCache(); break;
 					case self::PARAM_FETCHINSERT : return true; break;
 					case self::PARAM_FETCHUPDATE : return true; break;
-					default : $this->_addError('cette constante n\'existe pas'); $this->_data=""; break;
+					default : $this->_addError('cette constante n\'existe pas', __FILE__, __LINE__, ERROR); $this->_data=""; break;
 				}
 			}
 			else{

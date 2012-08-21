@@ -245,7 +245,7 @@
 		
 		public function getTimeZone($zone='UM0'){
 			if($this->_zones[$zone]) return $this->_zones[$zone];
-				else $this->addError('fuseau inconnu'); return false;
+				else $this->addError('fuseau inconnu', __FILE__, __LINE__, ERROR); return false;
 		}
 		
 		public function isBissextile($time=NULL, $param = self::PARAM_TIMESTAMP){

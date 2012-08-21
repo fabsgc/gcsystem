@@ -2,7 +2,7 @@
 	/**
 	 * @file : fileGc.class.php
 	 * @author : fab@c++
-	 * @description : class g&eacute;rant les op&eacute;rations sur les fichiers, très complète
+	 * @description : class gérant les opérations sur les fichiers, très complète
 	 * @version : 2.0 bêta
 	*/
 	
@@ -27,7 +27,7 @@
 		const CHMOD0004                               = 0004   ;
 		
 		/**
-		 * Cr&eacute;e l'instance de la classe
+		 * Crée l'instance de la classe
 		 * @access	public
 		 * @param string $filepath : chemin complet ou relatif vers le fichier
 		 * @return	void
@@ -43,7 +43,7 @@
 				$this->setFile($filepath);
 			}
 			else{
-				$this->_addError(self::NOACCESS);
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 			}
 		}
 		
@@ -81,7 +81,7 @@
 		}
 		
 		/**
-		 * Retourne l'extension du fichier pass&eacute; en param&egrave;tre
+		 * Retourne l'extension du fichier passé en paramètre
 		 * @access	public
 		 * @param string $ext : chemin du fichier
 		 * @return	string
@@ -96,18 +96,18 @@
 		/**
 		 * Retourne les informations du fichier dans un array<br />
 		 *	0	dev	volume<br />
-		 *	1	ino	Num&eacute;ro d'inode (*)<br />
+		 *	1	ino	Numéro d'inode (*)<br />
 		 *	2	mode	droit d'accès à l'inode<br />
 		 *	3	nlink	nombre de liens<br />
-		 *	4	uid	userid du propri&eacute;taire (*)<br />
-		 *	5	gid	groupid du propri&eacute;taire (*)<br />
+		 *	4	uid	userid du propriétaire (*)<br />
+		 *	5	gid	groupid du propriétaire (*)<br />
 		 *	6	rdev	type du volume, si le volume est une inode<br />
 		 *	7	size	taille en octets<br />
 		 *	8	atime	date de dernier accès (Unix timestamp)<br />
 		 *	9	mtime	date de dernière modification (Unix timestamp)<br />
 		 *	10	ctime	date de dernier changement d'inode (Unix timestamp)<br />
 		 *	11	blksize	taille de bloc (**)<br />
-		 *	12	blocks	nombre de blocs de 512 octets allou&eacute;s (**)<br />
+		 *	12	blocks	nombre de blocs de 512 octets alloués (**)<br />
 		 * @access	public
 		 * @return	array
 		 * @since 2.0
@@ -202,7 +202,7 @@
 		}
 		
 		/**
-		 * Retourne le r&eacute;pertoire contenant le fichier
+		 * Retourne le répertoire contenant le fichier
 		 * @access	public
 		 * @return	string
 		 * @since 2.0
@@ -235,7 +235,7 @@
 				$this->_isExist = true;
 			}
 			else{
-				$this->_addError(self::NOACCESS);
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 			}
 		}
 		
@@ -269,7 +269,7 @@
 		 * Déplace le fichier dans un autre répertoire. Le fichier de départ sera alors supprimé
 		 * @access	public
 		 * @return	boolean
-		 * @param string $dir : répertoire o&ugrave; sera déplacé le fichier
+		 * @param string $dir : répertoire où sera déplacé le fichier
 		 * @since 2.0
 		*/
 		
@@ -281,17 +281,17 @@
 						return true;
 					}
 					else{
-						$this->_addError('le fichier n\'a pas pu être d&eacute;plac&eacute; du r&eacute;pertoire original');
+						$this->_addError('le fichier n\'a pas pu être déplcé; du répertoire original', __FILE__, __LINE__, ERROR);
 						return false;
 					}
 				}
 				else{
-					$this->_addError('le fichier n\'a pas pu être d&eacute;plac&eacute;');
+					$this->_addError('le fichier n\'a pas pu être déplacé', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -300,7 +300,7 @@
 		 * Copie le fichier dans un autre répertoire.
 		 * @access	public
 		 * @return	boolean
-		 * @param string $dir : répertoire o&ugrave; sera copié le fichier
+		 * @param string $dir : répertoire où sera copié le fichier
 		 * @since 2.0
 		*/
 		
@@ -310,12 +310,12 @@
 					return true;
 				}
 				else{
-					$this->_addError('le fichier n\'a pas pu être copi&eacute;');
+					$this->_addError('le fichier n\'a pas pu être copié', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOFILE);
+				$this->_addError(self::NOFILE, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -334,12 +334,12 @@
 					file_put_contents($file, $this->_fileContent);
 				}
 				else{
-					$this->_addError(self::NOAREAD);
+					$this->_addError(self::NOAREAD, __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOACCESS);
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -419,7 +419,7 @@
 				return true;
 			}
 			else{
-				$this->_addError(self::NOACCESS);
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -438,7 +438,7 @@
 				return true;
 			}
 			else{
-				$this->_addError(self::NOACCESS);
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -458,7 +458,7 @@
 				return true;
 			}
 			else{
-				$this->_addError(self::NOACCESS);
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -478,12 +478,12 @@
 					return true;
 				}
 				else{
-					$this->_addError(self::NOAREAD);
+					$this->_addError(self::NOAREAD, __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
-				$this->_addError(self::NOACCESS);
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -502,7 +502,7 @@
 				return true;
 			}
 			else{
-				$this->_addError(self::NOACCESS);
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -521,7 +521,7 @@
 				return true;
 			}
 			else{
-				$this->_addError(self::NOACCESS);
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}

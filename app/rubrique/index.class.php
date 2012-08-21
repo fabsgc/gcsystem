@@ -20,9 +20,6 @@
 				));
 				$t->setShow(FALSE);
 				echo $t->show();
-
-echo $this->getAntispamConfigQueryIpNumber();
-
 			echo $this->showFooter();
 		}
 		

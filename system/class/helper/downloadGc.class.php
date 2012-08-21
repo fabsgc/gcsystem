@@ -21,11 +21,11 @@
 		protected $_dateformat            = 'D, d M Y H:i:s'                           ;
 		
 		public function __construct($filepath, $filename, $fileext){
-			if($filepath == "") { $filepath = 'no'; $this->_succesParameters = false; $this->_addError('aucun fichier n\'a été spécifié. Le téléchargement ne pourra pas être lancé'); }
+			if($filepath == "") { $filepath = 'no'; $this->_succesParameters = false; $this->_addError('aucun fichier n\'a été spécifié. Le téléchargement ne pourra pas être lancé', __FILE__, __LINE__, ERROR); }
 			if($filename == "") { $filename = self::NAME_DEFAULT; }
 			
 			if(is_file($filepath)) $this->setFile($filepath, $filename, $fileext);
-				else $this->_addError(self::NOACCESS);
+				else $this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 		}
 		
 		public function getFileExt(){
@@ -48,7 +48,7 @@
 				$this->_isExist = true;
 			}
 			else{
-				$this->_addError(self::NOACCESS);
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 			}
 		}
 		
@@ -61,7 +61,7 @@
 			}
 			else{
 				$this->_fileExt = self::EXT_DEFAULT;
-				$this->_addError('L\'extension n\'est pas gérée pas la classe, le processus de téléchargement ne fonctionnera peut-être pas');
+				$this->_addError('L\'extension n\'est pas gérée pas la classe, le processus de téléchargement ne fonctionnera peut-être pas', __FILE__, __LINE__, ERROR);
 			}
 		}
 		

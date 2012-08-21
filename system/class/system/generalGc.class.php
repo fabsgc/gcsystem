@@ -211,7 +211,7 @@
 									$result.=$url;
 								}
 							}
-							$result = preg_replace('#\/#U', '', $result);
+							//$result = preg_replace('#\/#U', '', $result);
 							$result = preg_replace('#\\\.#U', '.', $result);
 							return $result;
 						}

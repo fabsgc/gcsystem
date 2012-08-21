@@ -10,7 +10,7 @@
 		use errorGc;                                    //trait
 		
 		/**
-		 * Cr&eacute;e l'instance de la classe
+		 * Crée l'instance de la classe
 		 * @access	public
 		 * @return	void
 		 * @since 2.0

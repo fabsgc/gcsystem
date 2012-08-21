@@ -3,7 +3,9 @@
 	 * @info :manager créé automatiquement par le GCsystem
 	*/
 	
-	class managerTest1 extends modelGc{
+	class managerInstall extends modelGc{
+		protected $forms                = array();
+		protected $sql                  = array();
 		protected $bdd                           ;
 		
 		public function init(){
