@@ -29,8 +29,6 @@
 					$this->_setFirewallConfigConnect();
 					$this->_setFirewallAccess();
 					$this->_setSession();
-
-					print_r($this->_security);
 				}
 				else{
 					$this->_addError('le fichier '.FIREWALL.' n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
@@ -61,7 +59,6 @@
 			}
 		}
 
-		//ajout
 		public function getFirewallRole($nom){
 			if(isset($this->_security['roles_hierarchy'][''.$nom.''])){
 				return $this->_security['roles_hierarchy'][''.$nom.''];

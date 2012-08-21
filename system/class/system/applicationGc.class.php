@@ -424,6 +424,10 @@
 			return $this->_firewall->getFirewallRoles(); 
 		}
 
+		final protected function getFirewallRole($nom = "empty"){ 
+			return $this->_firewall->getFirewallRole($nom); 
+		}
+
 		final protected function getFirewall(){ 
 			return $this->_firewall->getFirewall(); 
 		}
@@ -476,6 +480,22 @@
 			return $this->_firewall->getFirewallConfigForbiddenTemplateVars(); 
 		}
 
+		final protected function getFirewallConfigForbiddenTemplateVar($nom = "empty"){
+			return $this->_firewall->getFirewallConfigForbiddenTemplateVar($nom);
+		}
+
+		final protected function getFirewallConfigForbiddenTemplateVarType($nom = "empty"){
+			return $this->_firewall->getFirewallConfigForbiddenTemplateVarType($nom);
+		}
+
+		final protected function getFirewallConfigForbiddenTemplateVarName($nom = "empty"){
+			return $this->_firewall->getFirewallConfigForbiddenTemplateName($nom);
+		}
+
+		final protected function getFirewallConfigForbiddenTemplateVarValue($nom = "empty"){
+			return $this->_firewall->getFirewallConfigForbiddenTemplateVarValue($nom);
+		}
+
 		final protected function getFirewallConfigCsrf(){ 
 			return $this->_firewall->getFirewallConfigCsrf(); 
 		}
@@ -496,12 +516,100 @@
 			return $this->_firewall->getFirewallConfigCsrfTemplateVars(); 
 		}
 
+		final protected function getFirewallConfigCsrfTemplateVar($nom = "empty"){
+			return $this->_firewall->getFirewallConfigCsrfTemplateVar($nom);
+		}
+
+		final protected function getFirewallConfigCsrfTemplateVarType($nom = "empty"){
+			return $this->_firewall->getFirewallConfigCsrfTemplateVarType($nom);
+		}
+
+		final protected function getFirewallConfigCsrfTemplateVarName($nom = "empty"){
+			return $this->_firewall->getFirewallConfigCsrfTemplateName($nom);
+		}
+
+		final protected function getFirewallConfigCsrfTemplateVarValue($nom = "empty"){
+			return $this->_firewall->getFirewallConfigCsrfTemplateVarValue($nom);
+		}
+
 		final protected function getFirewallConnect(){ 
 			return $this->_firewall->getFirewallConnect(); 
 		}
 
 		final protected function getFirewallAccess(){ 
 			return $this->_firewall->getFirewallAccess(); 
+		}
+
+		final protected function getAntispamArray(){ 
+			return $this->_antispam->getAntispamArray();
+		}
+
+		final protected function getAntispamConfig(){ 
+			return $this->_antispam->getAntispamConfig();
+		}
+
+		final protected function getAntispamConfigQueryIp(){ 
+			return $this->_antispam->getAntispamConfigQueryIp();
+		}
+
+		final protected function getAntispamConfigQueryIpNumber(){ 
+			return $this->_antispam->getAntispamConfigQueryIpNumber();
+		}
+
+		final protected function getAntispamConfigQueryIpDuration(){ 
+			return $this->_antispam->getAntispamConfigQueryIpDuration();
+		}
+
+		final protected function getAntispamConfigError(){ 
+			return $this->_antispam->getAntispamConfigError();
+		}
+
+		final protected function getAntispamConfigErrorTemplate(){ 
+			return $this->_antispam->getAntispamConfigErrorTemplate();
+		}
+
+		final protected function getAntispamConfigErrorTemplateSrc(){
+			return $this->_antispam->getAntispamConfigErrorTemplateSrc();
+		}
+
+		final protected function getAntispamConfigErrorTemplateVars(){ 
+			return $this->_antispam->getAntispamConfigErrorTemplateVars();
+		}
+
+		final protected function getAntispamConfigErrorTemplateVar($nom = "empty"){ 
+			return $this->_antispam->getAntispamConfigErrorTemplateVar($nom);
+		}
+
+		final protected function getAntispamConfigErrorTemplateVarType($nom = "empty"){ 
+			return $this->_antispam->getAntispamConfigErrorTemplateVarType($nom);
+		}
+
+		final protected function getAntispamConfigErrorTemplateVarName($nom = "empty"){ 
+			return $this->_antispam->getAntispamConfigErrorTemplateVarName($nom);
+		}
+
+		final protected function getAntispamConfigErrorTemplateVarValue($nom = "empty"){ 
+			return $this->_antispam->getAntispamConfigErrorTemplateVarValue($nom);
+		}
+
+		final protected function getAntispamIps(){ 
+			return $this->_antispam->getAntispamIps();
+		}
+
+		final protected function getAntispamIp($nom = "empty"){ 
+			return $this->_antispam->getAntispamIp($nom);
+		}
+
+		final protected function getAntispamIpNumber($nom = "empty"){ 
+			return $this->_antispam->getAntispamIpNumber($nom);
+		}
+
+		final protected function getAntispamIpSince($nom = "empty"){ 
+			return $this->_antispam->getAntispamIpSince($nom);
+		}
+
+		final protected function getAntispamIpIp($nom = "empty"){ 
+			return $this->_antispam->getAntispamIpIp($nom);
 		}
 		
 		public function __desctuct(){
