@@ -141,3 +141,6 @@ define('JQUERY', true);
 /* mettre à true pour sécuriser les variables superglobales */
 define('SECUREGET', true);
 define('SECUREPOST', true);
+
+/* prefixe des constantes de l'utilisateur */
+define('CONST_APP_PREFIXE', 'USER_');

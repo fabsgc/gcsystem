@@ -59,7 +59,7 @@
 		<ul>
 			<li><a href=""><?php echo "lire la documentation"; ?></a></li>
 			<li><a href=""><?php echo "lire le cours d'introduction"; ?></a></li>
-			<li><a href="terminal.html">terminal</a></li>
+			<li><a href="/GCsystem/terminal.html">terminal</a></li>
 		</ul>
 	</div>
 </div>

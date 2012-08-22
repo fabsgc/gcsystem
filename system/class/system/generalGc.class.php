@@ -153,6 +153,27 @@
 			}
 			return $erreur;
 		}
+
+		public function __isset($nom){
+			$this->_addError('tentative de test "isset" sur un attribut "'.$nom.'" inaccessible', __FILE__,  __LINE__, ERROR);
+			return false;
+		}
+
+		public function __unset($nom){
+			$this->_addError('tentative de suppression de l:\'attribut "'.$nom.'" inaccessible', __FILE__,  __LINE__, ERROR);
+		}
+
+		public function __call($nom, $arguments){
+			$this->_addError('tentative d\'appel de la méthode "'.$nom.'" inaccessible avec les arguments '.implode(', ', $arguments), __FILE__,  __LINE__, ERROR);
+		}
+
+		public static function __callStatic($nom, $arguments){
+			$this->_addError('tentative d\'appel de la méthode "'.$nom.'" inaccessible dans un contexte statique avec les arguments '.implode(', ', $arguments), __FILE__,  __LINE__, ERROR);
+		}
+
+		public function __invoke($arguments){
+			$this->_addError('tentative d\'utilisation de l\'objet en tant que fonction avec les arguments '.implode(', ', $arguments), __FILE__,  __LINE__, ERROR);
+		}
 		
 		protected function _addError($error, $fichier = __FILE__, $ligne = __LINE__, $type = INFORMATION){
 			array_push($this->_error, $error);
@@ -213,7 +234,7 @@
 							}
 							//$result = preg_replace('#\/#U', '', $result);
 							$result = preg_replace('#\\\.#U', '.', $result);
-							return $result;
+							return FOLDER.$result;
 						}
 					}
 				}

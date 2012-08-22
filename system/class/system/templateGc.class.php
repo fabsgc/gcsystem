@@ -100,7 +100,7 @@
 		public function show(){
 			if($this->_show==true){
 				$GLOBALS['appDevGc']->addTemplate($this->_file);
-				if(is_file($this->_fileCache) && $this->_timeCache>0){
+				if(is_file($this->_fileCache) && $this->_timeCache>0 && file_exists($this->_fileCache) && is_readable($this->_fileCache)){
 					$this->_timeFile=filemtime($this->_fileCache);
 					if(($this->_timeFile+$this->_timeCache)>time()){
 						$handle = fopen($this->_fileCache, 'rb');
@@ -144,7 +144,7 @@
 			}
 			elseif($this->_show==false){
 				$GLOBALS['appDevGc']->addTemplate($this->_file);
-				if(is_file($this->_fileCache) && $this->_timeCache>0){
+				if(is_file($this->_fileCache) && $this->_timeCache>0 && file_exists($this->_fileCache) && is_readable($this->_fileCache)){
 					$this->_timeFile=filemtime($this->_fileCache);
 					if(($this->_timeFile+$this->_timeCache)>time()){
 						$handle = fopen($this->_fileCache, 'rb');

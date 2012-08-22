@@ -16,8 +16,8 @@
 				$this->_markupXml = $this->_nodeXml->getElementsByTagName('define');
 
 				foreach($this->_markupXml as $sentence){
-					if (!defined(strtoupper(strval($sentence->getAttribute("id"))))){
-						define('USER_'.strtoupper(strval($sentence->getAttribute("id"))).'', strval($sentence->getAttribute("value")));
+					if (!defined(strtoupper(CONST_APP_PREFIXE.strval($sentence->getAttribute("id"))))){
+						define(CONST_APP_PREFIXE.strtoupper(strval($sentence->getAttribute("id"))).'', strval($sentence->getAttribute("value")));
 					}
 				}
 			}

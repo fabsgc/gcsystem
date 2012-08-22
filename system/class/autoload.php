@@ -15,3 +15,4 @@
 	require_once(CLASS_TEMPLATE);
 	require_once(CLASS_APPDEVGC);
 	require_once(CLASS_TERMINAL);
+	require_once(CLASS_INSTALL);

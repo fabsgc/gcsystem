@@ -26,7 +26,7 @@
 		
 		public function __construct($filepath){
 			$filepath = strval($filepath);
-			if(is_file($filepath) and zip_open($filepath)){
+			if(is_file($filepath) && file_exists($filepath) && is_readable($filepath) and zip_open($filepath)){
 				$this->setFile($filepath);
 			}
 			else{
@@ -123,7 +123,7 @@
 		
 		public function setFile($filepath){
 			$filepath = strval($filepath);
-			if(is_file($filepath)){
+			if(is_file($filepath) && file_exists($filepath) && is_readable($filepath)){
 				$this->_setFilePath($filepath);
 				$this->_setFileName($filepath);
 				$this->_setFileExt($filepath);
@@ -161,6 +161,10 @@
 		
 		protected function _closeZip($filepath){
 			$this->_zip = zip_close($filepath);
+		}
+
+		public function getIsExist(){
+			return $this->_isExist;
 		}
 		
 		/**

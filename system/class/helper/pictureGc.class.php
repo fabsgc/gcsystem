@@ -11,7 +11,7 @@
 		protected $imgGD;              //objet GD
 		
 		public function __construct($filepath){
-			if(is_file($filepath)){
+			if(is_file($filepath) && file_exists($filepath) && is_readable($filepath)){
 				$this->setFile($filepath);
 			}
 			else{
@@ -21,7 +21,7 @@
 		
 		public function setFile($filepath){
 			$filepath = strval($filepath);
-			if(is_file($filepath)){
+			if(is_file($filepath) && file_exists($filepath) && is_readable($filepath)){
 				$this->_setFilePath($filepath);
 				$this->_setFileName($filepath);
 				$this->_setFileExt($filepath);

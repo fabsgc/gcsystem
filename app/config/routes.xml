@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <routes>  
     <route id="index" url="/" rubrique="index" action="" vars="" cache="10"/>
-    <route id="index" url="/index.html" rubrique="index" action="" vars="" cache="10"/>
+    <route id="index2" url="/index.html" rubrique="index" action="" vars="" cache="10"/>
     <route id="index3" url="/index-(.*).html" rubrique="index" action="" vars="token" cache="10"/>
     <route id="page" url="/page.html" rubrique="index" action="pagination" vars="page" cache="10"/>
     <route id="page2" url="/page-p([0-9]+)\.html" rubrique="index" action="pagination" vars="page" cache="30"/>

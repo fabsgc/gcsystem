@@ -332,14 +332,14 @@
 				$this->_header.="    <meta name=\"Copyright\" content=\"".$this->_metaCopyright."\" />\n";
 			}
 			if($this->_openSearch!=""){
-				if(is_file($this->_openSearch)){
+				if(is_file($this->_openSearch) && file_exists($this->_openSearch) && is_readable($this->_openSearch)){
 					$this->_header.="    <link href=\"".FOLDER.'/'.$this->_openSearch."\"  rel=\"search\" type=\"application/opensearchdescription+xml\" title=\"open search\" />\n";
 				}
 				else{
 					$this->_header.="    <link href=\"".$this->_openSearch."\"  rel=\"search\" type=\"application/opensearchdescription+xml\" title=\"open search\" />\n";
 				}
 			}
-			if(is_file(FAVICON_PATH)){
+			if(is_file(FAVICON_PATH) && file_exists(FAVICON_PATH) && is_readable(FAVICON_PATH)){
 				$this->_header.="     <link rel=\"icon\" type=\"image/png\" href=\"".FOLDER.'/'.FAVICON_PATH."\" />\n";
 			}
 			if(JQUERY==true){
@@ -348,7 +348,7 @@
 				$this->_header.="    <link href=\"".FOLDER.'/'.JQUERYUICSS."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
 			}
 			foreach($this->_js as $element){
-				if(is_file(JS_PATH.$element)){
+				if(is_file(JS_PATH.$element) && file_exists(JS_PATH.$element) && is_readable(JS_PATH.$element)){
 					$this->_header.="    <script type=\"text/javascript\" src=\"".FOLDER.'/'.JS_PATH.$element."\" ></script> \n";
 				}
 				else{
@@ -356,7 +356,7 @@
 				}
 			}
 			foreach($this->_css as $element){
-				if(is_file(CSS_PATH.$element)){
+				if(is_file(CSS_PATH.$element) && file_exists(CSS_PATH.$element) && is_readable(CSS_PATH.$element)){
 					$this->_header.="    <link href=\"".FOLDER.'/'.CSS_PATH.$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
 				}
 				else{
@@ -365,13 +365,8 @@
 			}
 			foreach($this->_jsInFile as $element){
 				$this->_header.="    <script type=\"text/javascript\">\n";
-				if(is_file(JS_PATH.$element)){
+				if(is_file(JS_PATH.$element) && file_exists(JS_PATH.$element) && is_readable(JS_PATH.$element)){
 					$fichier=FOLDER.'/'.JS_PATH.$element;
-					$contenu = fread(fopen($fichier, "r"), filesize($fichier));
-					$this->_header.="    ".$contenu."\n";
-				}
-				elseif(is_file($element) && is_readable($element)){
-					$fichier=$element;
 					$contenu = fread(fopen($fichier, "r"), filesize($fichier));
 					$this->_header.="    ".$contenu."\n";
 				}
@@ -419,7 +414,7 @@
 		}
 		
 		final protected function affTemplate($nom_template){
-			if(is_file(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT)) { 
+			if(is_file(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT) && file_exists(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT) && is_readable(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT)) { 
 				include(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT);
 			} 
 			else { 

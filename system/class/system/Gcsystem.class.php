@@ -96,9 +96,9 @@
 					
 					if($rubrique!=""){
 						$plugin = new pluginGc();
-						$_SESSION['token'] = 'kqsjnqkdjqskdsdlfkjsd';
+						//$_SESSION['token'] = 'kqsjnqkdjqskdsdlfkjsd';
 						$_SESSION['connected'] = 'true';
-						$_SESSION['statut'] = 2;
+						//$_SESSION['statut'] = 2;
 
 						if($this->_cacheRoute > 0 && REWRITE == true){
 							if($this->_setRubrique($rubrique) == true){
@@ -197,7 +197,7 @@
 				}				
 			}
 			else{
-				if(is_file(RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php')){ 
+				if(is_file(RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php') && file_exists(RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php') && is_readable(RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php')){ 
 					$this->_setRubrique('index');
 				}
 				else{

@@ -466,7 +466,12 @@
 									else{
 										$t = new templateGc($this->_security['firewall']['config']['forbidden']['template']['src'], 'GCfirewallForbiddenGrade', 0);
 										foreach($this->_security['firewall']['config']['forbidden']['template']['variable'] as $cle => $val){
-											$t->assign(array($cle=>$val));
+											if($val['type'] == 'var'){
+												$t->assign(array($val['name']=>$val['value']));
+											}
+											else{
+												$t->assign(array($val['name']=>$this->useLang($val['value'])));
+											}
 										}
 										$t -> show();
 
@@ -476,7 +481,7 @@
 								}
 								else{
 									$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car il doit être connecté', __FILE__, __LINE__, ERROR);
-									//header('Location: '.$this->getUrl($this->_security['firewall']['config']['login']['source']['id'], $this->_security['firewall']['config']['login']['source']['vars']));
+									header('Location: '.$this->getUrl($this->_security['firewall']['config']['login']['source']['id'], $this->_security['firewall']['config']['login']['source']['vars']));
 									return false;
 								}
 							break;
@@ -567,7 +572,7 @@
 		}
 		
 		protected function _checkRole(){
-			//renvoie true si le statut du membre est supérieur ou égal au statut minimal, false dans l'autre cas
+			//renvoie true si le statut du membre est présent dans la liste des statuts autorisés false dans l'autre cas
 			if((isset($_SESSION[$this->_security['roles_hierarchy']['name']]) && in_array($_SESSION[$this->_security['roles_hierarchy']['name']], $this->_security['firewall']['access']['url']['access'])) 
 				|| $this->_security['firewall']['access']['url']['access']['*'] == '*'){
 				return true;

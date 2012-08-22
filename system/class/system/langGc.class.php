@@ -46,7 +46,7 @@
 		*/
 		
 		public function loadFile(){
-			if(is_file(LANG_PATH.$this->_lang.LANG_EXT)){
+			if(is_file(LANG_PATH.$this->_lang.LANG_EXT) && file_exists(LANG_PATH.$this->_lang.LANG_EXT) && is_readable(LANG_PATH.$this->_lang.LANG_EXT)){
 				$this->_langFile=true;
 				$this->_domXml = new DomDocument('1.0', CHARSET);
 				if($this->_domXml->load(LANG_PATH.$this->_lang.LANG_EXT)){

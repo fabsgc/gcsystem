@@ -24,7 +24,7 @@
 			if($filepath == "") { $filepath = 'no'; $this->_succesParameters = false; $this->_addError('aucun fichier n\'a été spécifié. Le téléchargement ne pourra pas être lancé', __FILE__, __LINE__, ERROR); }
 			if($filename == "") { $filename = self::NAME_DEFAULT; }
 			
-			if(is_file($filepath)) $this->setFile($filepath, $filename, $fileext);
+			if(is_file($filepath) && file_exists($filepath) && is_readable($filepath)) $this->setFile($filepath, $filename, $fileext);
 				else $this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 		}
 		
@@ -37,7 +37,7 @@
 		}
 		
 		public function setFile($filepath, $filename="nom", $fileext=downloadGc::EXT_DEFAULT){
-			if(is_file($filepath)){
+			if(is_file($filepath) && file_exists($filepath) && is_readable($filepath)){
 				$this->_setFilePath($filepath);
 				$this->_setFileName($filepath);
 				$this->_setFileExt($fileext);

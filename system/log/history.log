@@ -1036,3 +1036,196 @@
 21/08/2012 a 22:23:54 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
 21/08/2012 a 22:23:55 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
 21/08/2012 a 22:23:58 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 12:48:02 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 12:48:05 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 12:48:06 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 14:15:17 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 14:15:25 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 14:15:25 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 14:15:50 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 14:15:59 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 14:16:11 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 14:16:13 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine : http://localhost:82/GCsystem/install / IP : ::1
+22/08/2012 a 14:17:01 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine :  / IP : ::1
+22/08/2012 a 14:19:07 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine :  / IP : ::1
+22/08/2012 a 14:19:31 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine :  / IP : ::1
+22/08/2012 a 14:22:36 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine :  / IP : ::1
+22/08/2012 a 14:23:15 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine :  / IP : ::1
+22/08/2012 a 14:23:29 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine :  / IP : ::1
+22/08/2012 a 14:24:03 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine :  / IP : ::1
+22/08/2012 a 14:24:05 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine : http://localhost:82/GCsystem/install?page= / IP : ::1
+22/08/2012 a 14:24:07 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine : http://localhost:82/GCsystem/install?page= / IP : ::1
+22/08/2012 a 14:24:08 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine : http://localhost:82/GCsystem/install?page= / IP : ::1
+22/08/2012 a 14:24:21 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine : http://localhost:82/GCsystem/install?page= / IP : ::1
+22/08/2012 a 14:24:22 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install?page= / IP : ::1
+22/08/2012 a 14:24:24 ! : Page rewrite : http://localhost:82/GCsystem/install?page=maj rubrique : localhost/GCsystem/index.php?page=maj / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 14:24:24 ! : Page rewrite : http://localhost:82/GCsystem/install?page=plugin rubrique : localhost/GCsystem/index.php?page=plugin / origine : http://localhost:82/GCsystem/install?page=maj / IP : ::1
+22/08/2012 a 14:24:25 ! : Page rewrite : http://localhost:82/GCsystem/install?page=config rubrique : localhost/GCsystem/index.php?page=config / origine : http://localhost:82/GCsystem/install?page=plugin / IP : ::1
+22/08/2012 a 14:24:26 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install?page=config / IP : ::1
+22/08/2012 a 14:24:26 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 14:25:45 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 14:25:57 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 14:25:59 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install?page=addnews / IP : ::1
+22/08/2012 a 14:26:00 ! : Page rewrite : http://localhost:82/GCsystem/install?page=maj rubrique : localhost/GCsystem/index.php?page=maj / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 14:26:00 ! : Page rewrite : http://localhost:82/GCsystem/install?page=backliste rubrique : localhost/GCsystem/index.php?page=backliste / origine : http://localhost:82/GCsystem/install?page=maj / IP : ::1
+22/08/2012 a 14:26:01 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=backliste / IP : ::1
+22/08/2012 a 14:26:02 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install?page=addnews / IP : ::1
+22/08/2012 a 14:26:03 ! : Page rewrite : http://localhost:82/GCsystem/install?page=maj rubrique : localhost/GCsystem/index.php?page=maj / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 14:26:06 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine :  / IP : ::1
+22/08/2012 a 14:26:56 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine :  / IP : ::1
+22/08/2012 a 14:27:23 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine :  / IP : ::1
+22/08/2012 a 14:27:38 ! : Page rewrite : http://localhost:82/GCsystem/install?page= rubrique : localhost/GCsystem/index.php?page= / origine :  / IP : ::1
+22/08/2012 a 14:27:40 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page= / IP : ::1
+22/08/2012 a 14:27:41 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install?page=addnews / IP : ::1
+22/08/2012 a 14:27:41 ! : Page rewrite : http://localhost:82/GCsystem/install?page=maj rubrique : localhost/GCsystem/index.php?page=maj / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 14:27:42 ! : Page rewrite : http://localhost:82/GCsystem/install?page=plugin rubrique : localhost/GCsystem/index.php?page=plugin / origine : http://localhost:82/GCsystem/install?page=maj / IP : ::1
+22/08/2012 a 14:27:42 ! : Page rewrite : http://localhost:82/GCsystem/install?page=config rubrique : localhost/GCsystem/index.php?page=config / origine : http://localhost:82/GCsystem/install?page=plugin / IP : ::1
+22/08/2012 a 14:27:45 ! : Page rewrite : http://localhost:82/GCsystem/install? rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 14:31:07 ! : Page rewrite : http://localhost:82/GCsystem/install? rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 14:47:39 ! : Page rewrite : http://localhost:82/GCsystem/install? rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 14:47:47 ! : Page rewrite : http://localhost:82/GCsystem/install? rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 14:47:57 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install? / IP : ::1
+22/08/2012 a 14:53:13 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install? / IP : ::1
+22/08/2012 a 14:53:25 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install? / IP : ::1
+22/08/2012 a 14:53:43 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install? / IP : ::1
+22/08/2012 a 14:53:59 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install? / IP : ::1
+22/08/2012 a 14:54:01 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 14:54:02 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install?page=addnews / IP : ::1
+22/08/2012 a 14:54:03 ! : Page rewrite : http://localhost:82/GCsystem/install?page=maj rubrique : localhost/GCsystem/index.php?page=maj / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 14:54:03 ! : Page rewrite : http://localhost:82/GCsystem/install?page=plugin rubrique : localhost/GCsystem/index.php?page=plugin / origine : http://localhost:82/GCsystem/install?page=maj / IP : ::1
+22/08/2012 a 14:54:04 ! : Page rewrite : http://localhost:82/GCsystem/install?page=config rubrique : localhost/GCsystem/index.php?page=config / origine : http://localhost:82/GCsystem/install?page=plugin / IP : ::1
+22/08/2012 a 14:54:13 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=config / IP : ::1
+22/08/2012 a 14:54:23 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=config / IP : ::1
+22/08/2012 a 14:54:25 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install?page=addnews / IP : ::1
+22/08/2012 a 14:54:26 ! : Page rewrite : http://localhost:82/GCsystem/admin.php rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 14:54:28 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install?page=addnews / IP : ::1
+22/08/2012 a 14:54:29 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 14:54:30 ! : Page rewrite : http://localhost:82/GCsystem/install?page=maj rubrique : localhost/GCsystem/index.php?page=maj / origine : http://localhost:82/GCsystem/install?page=addnews / IP : ::1
+22/08/2012 a 14:54:31 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install?page=maj / IP : ::1
+22/08/2012 a 14:54:35 ! : Page rewrite : http://localhost:82/GCsystem/install?page=config rubrique : localhost/GCsystem/index.php?page=config / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 14:54:35 ! : Page rewrite : http://localhost:82/GCsystem/install?page=plugin rubrique : localhost/GCsystem/index.php?page=plugin / origine : http://localhost:82/GCsystem/install?page=config / IP : ::1
+22/08/2012 a 14:54:36 ! : Page rewrite : http://localhost:82/GCsystem/install?page=maj rubrique : localhost/GCsystem/index.php?page=maj / origine : http://localhost:82/GCsystem/install?page=plugin / IP : ::1
+22/08/2012 a 14:54:37 ! : Page rewrite : http://localhost:82/GCsystem/install?page=upload rubrique : localhost/GCsystem/index.php?page=upload / origine : http://localhost:82/GCsystem/install?page=maj / IP : ::1
+22/08/2012 a 14:54:39 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 14:54:44 ! : Page rewrite : http://localhost:82/GCsystem/admin.php rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/install?page=addnews / IP : ::1
+22/08/2012 a 14:54:46 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 15:45:03 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 15:45:42 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 15:45:45 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 15:45:46 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 15:45:47 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 15:45:47 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 15:45:48 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 15:48:49 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 15:48:54 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:48:57 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:49:18 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:49:41 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:49:43 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:50:28 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:51:19 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:51:20 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:51:33 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:51:47 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:51:48 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:52:12 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:52:12 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:52:20 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:53:44 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:55:17 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 15:55:36 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:14 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:15 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:15 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:15 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:16 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:16 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:16 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:16 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:17 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:17 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:17 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:18 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:40 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:05:41 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:06:55 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:06:56 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 16:06:57 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 17:02:38 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 17:04:00 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 17:04:22 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 17:04:23 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 17:04:35 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 17:04:49 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 17:05:03 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 17:05:33 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 17:07:16 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 17:07:25 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 19:47:26 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 19:47:47 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 19:47:49 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 19:47:49 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 19:47:50 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 19:47:50 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 19:47:51 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 19:47:51 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 19:47:51 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 19:47:52 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 19:47:52 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 19:47:53 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 19:47:53 ! : Page rewrite : http://localhost:82/GCsystem/install?page=addnews rubrique : localhost/GCsystem/index.php?page=addnews / origine : http://localhost:82/GCsystem/install?page=upload / IP : ::1
+22/08/2012 a 20:26:08 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 20:26:43 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 20:26:45 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 20:27:11 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 20:27:13 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 20:33:45 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 20:35:12 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 20:35:14 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 20:36:54 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 20:36:54 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 20:37:18 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 20:37:27 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 20:51:08 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:02:37 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:02:46 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:04:02 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:18:08 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:18:09 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:18:36 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:18:45 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:18:46 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:18:54 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:26:32 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:26:33 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:26:48 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:26:57 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:27:16 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:27:36 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:27:54 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:33:18 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:35:13 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:35:16 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:35:21 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:35:26 ! : Page rewrite : http://localhost:82/GCsystem/index.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:35:30 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:35:32 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:35:37 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:35:38 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:35:39 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:35:40 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:39:56 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:43:34 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:44:19 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:44:22 ! : Page rewrite : http://localhost:82/GCsystem/terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/ / IP : ::1
+22/08/2012 a 21:44:25 ! : Page rewrite : http://localhost:82/GCsystem/terminal-terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/terminal.html / IP : ::1
+22/08/2012 a 21:44:29 ! : Page rewrite : http://localhost:82/GCsystem/terminal-terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/terminal.html / IP : ::1
+22/08/2012 a 21:44:43 ! : Page rewrite : http://localhost:82/GCsystem/terminal-terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/terminal.html / IP : ::1
+22/08/2012 a 21:51:07 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 21:51:10 ! : Page rewrite : http://localhost:82/GCsystem/terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/ / IP : ::1
+22/08/2012 a 21:54:08 ! : Page rewrite : http://localhost:82/GCsystem/terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/ / IP : ::1
+22/08/2012 a 21:54:11 ! : Page rewrite : http://localhost:82/GCsystem/terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/ / IP : ::1
+22/08/2012 a 21:54:13 ! : Page rewrite : http://localhost:82/GCsystem/terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/ / IP : ::1
+22/08/2012 a 22:00:02 ! : Page rewrite : http://localhost:82/GCsystem/terminal-terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/terminal.html / IP : ::1
+22/08/2012 a 22:02:35 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+22/08/2012 a 22:02:57 ! : Page rewrite : http://localhost:82/GCsystem/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1

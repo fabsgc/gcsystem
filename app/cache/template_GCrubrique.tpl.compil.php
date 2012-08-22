@@ -1,30 +1,18 @@
-<style>
-	body{
-		background-color: #EFEFEF;
-		font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
-		font-size: 0.95em;
-	}
-		
-	#GCsystem{
-		width: 810px;
-		height: 80px;
-		background-color: white;
-		border: 1px solid #DFDFDF;
-		-moz-border-radius: 16px;
-		-webkit-border-radius: 16px;
-		border-radius: 16px;
-		margin-bottom: 20px;
-		word-wrap: break-word;
-		position:absolute; 
-		top:200px; 
-		left:50%; 
-		margin-left:-400px; 
-	}
+<?php $var ="<?php
+	/**
+	 * @info : contrôleur créé automatiquement par le GCsystem
+	*/
 	
-	h1{
-		text-align: center;
-	}
-</style>
-<div id="GCsystem">
-	<h1><?php echo ($rubrique); ?>::Default</h1>
-</div>
+	class ".$rubrique." extends applicationGc{
+		protected ".'$model'."                         ;
+		protected ".'$bdd'."                           ;
+		
+		public function init(){
+			".'$this->model = $this->loadModel();'." //chargement du model
+		}
+		
+		public function actionDefault(){
+			".'$this'."->showDefault();
+		}
+	}"; ?>
+<?php echo ($var); ?>

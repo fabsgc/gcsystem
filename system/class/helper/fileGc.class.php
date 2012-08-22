@@ -36,10 +36,10 @@
 		
 		public function __construct($filepath){
 			if($filepath == NULL) { $filepath = 'empty.txt'; $this->_setFileDefault($filepath); }
-			if($filepath!=NULL && !is_file($filepath)) { $this->_setFileDefault($filepath); }
+			if($filepath!=NULL && !is_file($filepath) && file_exists($filepath) && is_readable($filepath)) { $this->_setFileDefault($filepath); }
 			
 			$filepath = strval($filepath);
-			if(is_file($filepath)){
+			if(is_file($filepath) && file_exists($filepath) && is_readable($filepath)){
 				$this->setFile($filepath);
 			}
 			else{
@@ -222,10 +222,10 @@
 		
 		public function setFile($filepath){
 			if($filepath == NULL) $filepath = 'empty.txt'; $this->_setFileDefault($filepath);
-			if($filepath!=NULL && !is_file($filepath)) { $this->_setFileDefault($filepath); }
+			if($filepath!=NULL && !is_file($filepath) && file_exists($filepath) && is_readable($filepath)) { $this->_setFileDefault($filepath); }
 			
 			$filepath = strval($filepath);
-			if(is_file($filepath)){
+			if(is_file($filepath) && file_exists($filepath) && is_readable($filepath)){
 				$this->_setFilePath($filepath);
 				$this->_setFileName($filepath);
 				$this->_setFileExt($filepath);
@@ -329,7 +329,7 @@
 		*/
 		
 		public function contentTo($file){
-			if(is_file($file)){
+			if(is_file($file) && file_exists($file) && is_readable($file)){
 				if(is_readable($file)){
 					file_put_contents($file, $this->_fileContent);
 				}
@@ -414,7 +414,7 @@
 		*/
 		
 		protected function _setFilePath($file){
-			if(is_file($file)){
+			if(is_file($file) && file_exists($file) && is_readable($file)){
 				$this->_filePath = $file;
 				return true;
 			}
@@ -433,7 +433,7 @@
 		*/
 		
 		protected function _setFileName($file){
-			if(is_file($file)){
+			if(is_file($file) && file_exists($file) && is_readable($file)){
 				$this->_fileName = basename($file);
 				return true;
 			}
@@ -452,7 +452,7 @@
 		*/
 		
 		protected function _setFileExt($file){
-			if(is_file($file)){
+			if(is_file($file) && file_exists($file) && is_readable($file)){
 				$extension = explode('.', basename($file));
 				$this->_fileExt = $extension[count($extension)-1];
 				return true;
@@ -472,7 +472,7 @@
 		*/
 		
 		protected function _setFileContent($file){
-			if(is_file($file)){
+			if(is_file($file) && file_exists($file) && is_readable($file)){
 				if(is_readable($file)){
 					$this->_fileContent = file_get_contents($file);
 					return true;
@@ -497,7 +497,7 @@
 		*/
 		
 		protected function _setFileInfo($file){
-			if(is_file($file)){
+			if(is_file($file) && file_exists($file) && is_readable($file)){
 				$this->_fileInfo = stat($file);
 				return true;
 			}
@@ -516,7 +516,7 @@
 		*/
 		
 		protected function _setFileChmod($file){
-			if(is_file($file)){
+			if(is_file($file) && file_exists($file) && is_readable($file)){
 				$this->_fileChmod = substr(sprintf('%o', fileperms($file)), -4);;
 				return true;
 			}

@@ -93,7 +93,7 @@
 					$this->_commandExplode[2] = preg_replace('#\.#isU', '', $this->_commandExplode[2]);
 					
 					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden) && !in_array(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', $this->_forbidden)){
-						if(!is_file(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
+						if(!file_exists(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
 							$monfichier = fopen(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', 'a');						
 								$t= new templateGC(GCSYSTEM_PATH.'GCrubrique', 'GCrubrique', '0');
 								$t->assign(array(
@@ -104,7 +104,7 @@
 							fclose($monfichier);
 						}
 						
-						if(!is_file(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
+						if(!file_exists(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
 							$monfichier = fopen(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', 'a');						
 								$t= new templateGC(GCSYSTEM_PATH.'GCmodel', 'GCmodel', '0');
 								$t->assign(array(
@@ -268,12 +268,12 @@
 				}
 				elseif(preg_match('#delete rubrique (.+)#', $this->_command)){
 					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden) && !in_array(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', $this->_forbidden)){
-						if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php')){
+						if(file_exists(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && is_readable(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php')){
 							unlink(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php');
 							$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php';
 						}
 						
-						if(is_file(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
+						if(file_exists(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php') && is_readable(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
 							unlink(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php');
 							$this->_stream .= '<br />> '.MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php';
 						}
@@ -383,7 +383,7 @@
 					}
 				}
 				elseif(preg_match('#add helper (.+)#', $this->_command)){
-					if(!is_file(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && !in_array($this->_commandExplode[2], $this->_helperDefault)){
+					if(!file_exists(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && !in_array($this->_commandExplode[2], $this->_helperDefault)){
 						$this->_domXml = new DomDocument('1.0', CHARSET);
 					
 						if($this->_domXml->load(PLUGIN)){
@@ -432,7 +432,7 @@
 					}
 				}
 				elseif(preg_match('#set class (.+)#', $this->_command)){
-					if(is_file(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php')){
+					if(is_file(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && file_exists(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && is_readable(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && !in_array($this->_commandExplode[2], $this->_helperDefault)){
 						$this->_domXml = new DomDocument('1.0', CHARSET);
 					
 						if($this->_domXml->load(PLUGIN)){
@@ -478,7 +478,7 @@
 					}
 				}
 				elseif(preg_match('#delete helper (.+)#', $this->_command)){
-					if(is_file(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && !in_array($this->_commandExplode[2], $this->_helperDefault)){
+					if(is_file(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && file_exists(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && is_readable(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && !in_array($this->_commandExplode[2], $this->_helperDefault)){
 						$this->_domXml = new DomDocument('1.0', CHARSET);
 					
 					  if($this->_domXml->load(PLUGIN)){			
@@ -517,14 +517,14 @@
 				}
 				elseif(preg_match('#delete template (.+)#', $this->_command)){
 					if(!in_array(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT, $this->_forbidden)){
-						if(is_file(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT)){
+						if(is_file(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT) && file_exists(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT) && is_readable(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT)){
 							unlink(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT);
 							$this->_stream .= '<br />> '.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT;
 							$this->_result = '<br />><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT.'</u> a bien été supprimé</span>';
 						}
 						else{
 							$this->_stream .= '<br />> '.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT;
-							$this->_result = '<br />><span style="color: red;"> Ce template n\'existe pas</span>';
+							$this->_result = '<br />><span style="color: red;"> Ce template n\'existe pas ou n\'est pas accessible</span>';
 						}
 					}
 					else{
@@ -534,8 +534,8 @@
 				}
 				elseif(preg_match('#set template (.+) (.+)#', $this->_command)){
 					if(!in_array(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT, $this->_forbidden)){
-						if(is_file(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT)){
-							if(!is_file(TEMPLATE_PATH.$this->_commandExplode[3].TEMPLATE_EXT)){
+						if(is_file(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT) && file_exists(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT) && is_readable(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT)){
+							if(!file_exists(TEMPLATE_PATH.$this->_commandExplode[3].TEMPLATE_EXT)){
 								rename(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT, TEMPLATE_PATH.$this->_commandExplode[3].TEMPLATE_EXT);
 								$this->_stream .= '<br />> '.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT.' -> '.TEMPLATE_PATH.$this->_commandExplode[3].TEMPLATE_EXT;
 								$this->_result = '<br />><span style="color: chartreuse;"> le template <u>'.TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT.'</u> a bien été renommé en <u>'.TEMPLATE_PATH.$this->_commandExplode[3].'</u></span>';
@@ -557,13 +557,13 @@
 				}
 				elseif(preg_match('#set rubrique (.+) (.+)#', $this->_command)){
 					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden) && !in_array(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', $this->_forbidden)){
-						if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') || is_file(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
-							if(!is_file(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php') || !is_file(MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php')){
-								if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && !is_file(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php')){
+						if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php')  && file_exists(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && is_readable(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') || is_file(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php') && file_exists(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && is_readable(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php')){
+							if(!file_exists(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php') || !file_exists(MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php')){
+								if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php')  && file_exists(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && is_readable(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && !file_exists(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php')){
 									rename(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php');
 									$this->_stream .= '<br />> '.MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php'.' -> '.MODEL_PATH.$this->_commandExplode[3].MODEL_EXT.'.php';
 									
-									if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && !is_file(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php')){
+									if(is_file(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && file_exists(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && is_readable(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && !file_exists(RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php')){
 										rename(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php');
 										$this->_stream .= '<br />> '.RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php'.' -> '.RUBRIQUE_PATH.$this->_commandExplode[3].RUBRIQUE_EXT.'.php';
 									}
@@ -913,7 +913,7 @@
 				elseif(preg_match('#clear cache#', $this->_command)){
 					if($this->_dossier = opendir(CACHE_PATH)){
 						while(false !== ($this->_fichier = readdir($this->_dossier))){
-							if(is_file(CACHE_PATH.$this->_fichier) && $this->_fichier!='.htaccess'){
+							if(is_file(CACHE_PATH.$this->_fichier) && $this->_fichier!='.htaccess' && file_exists(CACHE_PATH.$this->_fichier) && is_readable(CACHE_PATH.$this->_fichier)){
 								unlink(CACHE_PATH.$this->_fichier);
 								$this->_stream .= '<br />> '.CACHE_PATH.$this->_fichier.'';
 							}
@@ -924,7 +924,7 @@
 				elseif(preg_match('#clear log#', $this->_command)){
 					if($this->_dossier = opendir(LOG_PATH)){
 						while(false !== ($this->_fichier = readdir($this->_dossier))){
-							if(is_file(LOG_PATH.$this->_fichier)){
+							if(is_file(LOG_PATH.$this->_fichier) && file_exists(LOG_PATH.$this->_fichier) && is_readable(LOG_PATH.$this->_fichier)){
 								unlink(LOG_PATH.$this->_fichier);
 								$this->_stream .= '<br />> '.LOG_PATH.$this->_fichier.LOG_EXT;
 							}
@@ -992,7 +992,7 @@
 				}
 				elseif(preg_match('#recover config#', $this->_command)){
 					foreach($this->_configIfNoExist as $cle => $file){
-						if(!is_file($file)){
+						if(!file_exists($file)){
 							$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
 							$fp = fopen($file, "w");
 							curl_setopt($ch, CURLOPT_FILE, $fp);
@@ -1009,7 +1009,7 @@
 				elseif(preg_match('#see (.+)#', $this->_command)){
 					switch($this->_commandExplode[1]){
 						case 'log':
-							if(is_file(LOG_PATH.$this->_commandExplode[2].LOG_EXT)){
+							if(is_file(LOG_PATH.$this->_commandExplode[2].LOG_EXT) && file_exists(LOG_PATH.$this->_commandExplode[2].LOG_EXT) && is_readable(LOG_PATH.$this->_commandExplode[2].LOG_EXT)){
 								$sauvegarde = file_get_contents(LOG_PATH.$this->_commandExplode[2].LOG_EXT);
 								$sauvegardes = explode("\n", $sauvegarde);
 								
@@ -1039,7 +1039,7 @@
 						break;
 						
 						case 'route':
-							if(is_file(ROUTE)){
+							if(is_file(ROUTE) && file_exists(ROUTE) && is_readable(ROUTE)){
 								$sauvegarde = file_get_contents(ROUTE);
 								echo $sauvegarde;
 								$sauvegardes = explode("\n", $sauvegarde);
@@ -1067,7 +1067,7 @@
 						break;
 						
 						case 'plugin':
-							if(is_file(PLUGIN)){
+							if(is_file(PLUGIN) && file_exists(PLUGIN) && is_readable(PLUGIN)){
 								$sauvegarde = file_get_contents(PLUGIN);
 								echo $sauvegarde;
 								$sauvegardes = explode("\n", $sauvegarde);
@@ -1095,7 +1095,7 @@
 						break;
 						
 						case 'app':
-							if(is_file(APPCONFIG)){
+							if(is_file(APPCONFIG) && file_exists(APPCONFIG) && is_readable(APPCONFIG)){
 								$sauvegarde = file_get_contents(APPCONFIG);
 								echo $sauvegarde;
 								$sauvegardes = explode("\n", $sauvegarde);
@@ -1123,7 +1123,7 @@
 						break;
 						
 						case 'firewall':
-							if(is_file(FIREWALL)){
+							if(is_file(FIREWALL) && file_exists(FIREWALL) && is_readable(FIREWALL)){
 								$sauvegarde = file_get_contents(FIREWALL);
 								echo $sauvegarde;
 								$sauvegardes = explode("\n", $sauvegarde);
@@ -1151,7 +1151,7 @@
 						break;
 
 						case 'antispam':
-							if(is_file(ASPAM)){
+							if(is_file(ASPAM) && file_exists(ASPAM) && is_readable(ASPAM)){
 								$sauvegarde = file_get_contents(ASPAM);
 								echo $sauvegarde;
 								$sauvegardes = explode("\n", $sauvegarde);
@@ -1257,7 +1257,7 @@
 				}
 
 				foreach($this->_configIfNoExist as $cle => $file){
-					if(!is_file($file)){
+					if(!file_exists($file)){
 						$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
 						$fp = fopen($file, "w");
 						curl_setopt($ch, CURLOPT_FILE, $fp);
