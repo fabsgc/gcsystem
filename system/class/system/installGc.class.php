@@ -13,11 +13,29 @@
 		protected $_zip                              ;
 		protected $_zipContent              = array(); 
 		protected $_conflit                 = true   ; //true = pas de conflits, false = conflits
+		protected $_forbiddenFile           = array();
+		protected $_forbiddenDir            = array();
 
 		public  function __construct($file = '', $lang = 'fr'){
 			$this->_setFile($file);
+
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();
+
+			$this->_forbiddenFile = array(
+				ROUTE, MODOCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, 
+				MODEL_PATH.'index'.MODEL_EXT.'.php', MODEL_PATH.'terminal'.MODEL_EXT.'.php',
+				RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php', FUNCTION_GENERIQUE,
+				
+			);
+
+			$this->_forbiddenDir = array(
+				'system/class/system/', 'system/class/lang/', 'system/class/log/', 'asset/image/GCsystem',
+				'asset/'
+		}
+
+		public function getConflit(){
+			return $this->_conflit;
 		}
 
 		public function check(){
@@ -26,11 +44,21 @@
 
 				//on check si le fichier install.xml est valide
 				$this->_domXml = new DomDocument('1.0', CHARSET);
-
 				if($this->_domXml->loadXml($this->_zipContent['install.xml'])){
 					//on check les conflits dans les fichiers à installer
 					foreach ($this->_zipContent as $key => $value) {
-						
+						if(is_file($key) && file_exists($key)){
+							$this->_conflit = false;
+							$this->_addError('le fichier '.$key.' existe déjà dans le projet courant. Le remplacer risque de provoquer des disfonctionnement. ', __FILE__, __LINE__, ERROR);
+						}
+						elseif(is_file($key) && !file_exists($key)){
+							$this->_conflit = false;
+							$this->_addError('le fichier '.$key.' existe déjà dans le projet courant. Le remplacer risque de provoquer des disfonctionnement. ', __FILE__, __LINE__, ERROR);
+						}
+						elseif(is_file($key) && !file_exists($key)){
+							$this->_conflit = false;
+							$this->_addError('le fichier '.$key.' existe déjà dans le projet courant. Le remplacer risque de provoquer des disfonctionnement. ', __FILE__, __LINE__, ERROR);
+						}
 					}
 
 					//on check les conflits dans les paramètres des fichiers de config
@@ -44,6 +72,8 @@
 				}
 			}
 			else{
+				$this->_conflit = false;
+				$this->_addError('le fichier zip est endommagé ou inaccessible. L\'installation de la rubrique a échouée', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}

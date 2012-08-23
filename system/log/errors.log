@@ -339,3 +339,6 @@
 22/08/2012 a 17:07:16 ! : Erreur [8] (Undefined index: *) dans le fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php a la ligne 579
 22/08/2012 a 17:07:25 ! : Erreur [8] (Undefined index: *) dans le fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php a la ligne 579
 22/08/2012 a 21:35:26 ! : Erreur [8] (Undefined index: *) dans le fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php a la ligne 577
+23/08/2012 a 11:54:44 ! : Erreur [8] (Use of undefined constant install - assumed 'install') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 30
+23/08/2012 a 11:54:44 ! : Erreur [8] (Use of undefined constant xml - assumed 'xml') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 30
+23/08/2012 a 11:54:44 ! : Erreur [8] (Undefined index: installxml) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 30

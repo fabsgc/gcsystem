@@ -15,7 +15,7 @@
 		protected $_result                        = '/ <span style="color: red;">commande non reconnu. Tapez <strong>help</strong> pour avoir la liste des commandes valides</span>'; //resultat du traitement
 		protected $_dossier                       ; //dossier
 		protected $_fichier                       ; //fichier
-		protected $_forbidden                     ; //fichiers interdit
+		protected $_forbidden                     ; //fichiers interdits
 		protected $_updateFile                    ; //fichiers pour la mise à jour
 		protected $_updateDir                     ; //fichiers interdit
 		protected $_helperDefault                 ; //fichiers interdit
@@ -32,6 +32,13 @@
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCrubrique'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
 				CLASS_INSTALL, CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE, CLASS_LOG, CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE,CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
+				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT,
+				CLASS_PATH.CLASS_HELPER_PATH.'fileGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'pictureGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'uploadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'zipGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'captchaGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'dateGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'feedGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'mailGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'modoGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'paginationGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'socialGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'text.class.php',
+				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM
 			);
 
 			$this->_updateFile = array(

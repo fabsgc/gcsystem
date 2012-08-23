@@ -16,6 +16,5 @@
 			$install = new installGc('installtest.zip', $this->_lang);
 			$install->check();
 			echo $install->showError();
-			echo USER_BONJOUR;
 		}
 	}
