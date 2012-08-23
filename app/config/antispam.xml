@@ -12,5 +12,5 @@
 		<ip ip="81.56.19.30" number="50" since="1344516768"/>
 		
 		
-	<ip ip="127.0.0.1" number="1" since="1345722608"/><ip ip="::1" number="1" since="1345724310"/></ips>
+	<ip ip="127.0.0.1" number="1" since="1345722608"/><ip ip="::1" number="3" since="1345762082"/></ips>
 </antispams>

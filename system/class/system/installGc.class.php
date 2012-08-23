@@ -25,13 +25,14 @@
 			$this->_forbiddenFile = array(
 				ROUTE, MODOCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, 
 				MODEL_PATH.'index'.MODEL_EXT.'.php', MODEL_PATH.'terminal'.MODEL_EXT.'.php',
-				RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php', FUNCTION_GENERIQUE,
-				
+				RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php', FUNCTION_GENERIQUE
+
 			);
 
 			$this->_forbiddenDir = array(
 				'system/class/system/', 'system/class/lang/', 'system/class/log/', 'asset/image/GCsystem',
 				'asset/'
+			);
 		}
 
 		public function getConflit(){

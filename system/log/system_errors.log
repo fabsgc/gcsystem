@@ -1296,3 +1296,40 @@
 23/08/2012 a 12:18:30 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php ligne 54 le fichier README.md existe déjà dans le projet courant. Le remplacer risque de provoquer des disfonctionnement. 
 ##### ENF OF EXECUTION ####################################################################################################
 23/08/2012 a 12:18:30 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+23/08/2012 a 22:48:02 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
+23/08/2012 a 22:48:02 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 49 Le fichier de route " app/config/routes.xml" a bien été charg
+23/08/2012 a 22:48:02 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/index.class.php" et "app/model/index.model.class.php"
+23/08/2012 a 22:48:02 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 48 Contrôleur index initialisé
+23/08/2012 a 22:48:02 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+23/08/2012 a 22:48:02 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 60 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique index/
+23/08/2012 a 22:48:02 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+23/08/2012 a 22:48:02 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 72 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+23/08/2012 a 22:48:02 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 83 Model index initialisé
+23/08/2012 a 22:48:02 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystem" a bien été chargé.
+23/08/2012 a 22:48:02 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php ligne 213 fichier ouvert : app/config/routes.xml
+##### ENF OF EXECUTION ####################################################################################################
+23/08/2012 a 22:48:02 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+23/08/2012 a 22:48:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 237 Content-Type : "Content-Type: text/html; charset=UTF-8"
+23/08/2012 a 22:48:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 49 Le fichier de route " app/config/routes.xml" a bien été charg
+23/08/2012 a 22:48:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/terminal.class.php" et "app/model/terminal.model.class.php"
+23/08/2012 a 22:48:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 48 Contrôleur terminal initialisé
+23/08/2012 a 22:48:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+23/08/2012 a 22:48:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 60 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique terminal/
+23/08/2012 a 22:48:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+23/08/2012 a 22:48:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 72 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+23/08/2012 a 22:48:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 83 Model terminal initialisé
+23/08/2012 a 22:48:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCterminal" a bien été chargé.
+##### ENF OF EXECUTION ####################################################################################################
+23/08/2012 a 22:48:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+23/08/2012 a 22:48:08 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 237 Content-Type : "Content-Type: text/html; charset=UTF-8"
+23/08/2012 a 22:48:08 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 49 Le fichier de route " app/config/routes.xml" a bien été charg
+23/08/2012 a 22:48:08 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/terminal.class.php" et "app/model/terminal.model.class.php"
+23/08/2012 a 22:48:08 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 48 Contrôleur terminal initialisé
+23/08/2012 a 22:48:08 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+23/08/2012 a 22:48:08 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 60 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique terminal/terminal
+23/08/2012 a 22:48:08 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+23/08/2012 a 22:48:08 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 72 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+23/08/2012 a 22:48:08 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 83 Model terminal initialisé
+23/08/2012 a 22:48:08 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 165 Appel du contrôleur "actionTerminal" de la rubrique "terminal" réussi
+##### ENF OF EXECUTION ####################################################################################################
+23/08/2012 a 22:48:08 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
