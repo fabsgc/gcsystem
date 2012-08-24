@@ -58,7 +58,7 @@
 				$this->_setZip($this->_filePath);
 				
 				while ($zip_entry = zip_read($this->_zip)){
-					$this->_zipContentFile[zip_entry_name($zip_entry)] = zip_entry_read($zip_entry);
+					$this->_zipContentFile[zip_entry_name($zip_entry)] = zip_entry_read($zip_entry, 900000);
 				}
 				
 				$this->_closeZip($this->_filePath);
@@ -80,7 +80,7 @@
 						if($option == zipGc::NOPUTDIR){
 							if(in_array((substr(zip_entry_name($zip_entry),-3)), $filter) || count($filter)==0){
 								if(!preg_match('#\/$#i', zip_entry_name($zip_entry))){
-									file_put_contents($dir.basename(zip_entry_name($zip_entry)), zip_entry_read($zip_entry));
+									file_put_contents($dir.basename(zip_entry_name($zip_entry)), zip_entry_read($zip_entry, 900000));
 									echo $dir.basename(zip_entry_name($zip_entry)).'<br />';
 								}							
 							}
@@ -93,7 +93,7 @@
 							}
 							else{
 								if(in_array((substr(zip_entry_name($zip_entry),-3)), $filter) || count($filter)==0){
-									file_put_contents($dir.zip_entry_name($zip_entry), zip_entry_read($zip_entry));
+									file_put_contents($dir.zip_entry_name($zip_entry), zip_entry_read($zip_entry, 900000));
 								}
 							}
 						}

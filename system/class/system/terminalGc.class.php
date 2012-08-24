@@ -38,7 +38,7 @@
 				CLASS_PATH.CLASS_HELPER_PATH.'captchaGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'dateGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'feedGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'mailGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'modoGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'paginationGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'socialGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'text.class.php',
-				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM
+				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED
 			);
 
 			$this->_updateFile = array(
@@ -63,7 +63,7 @@
 			);
 
 			$this->_configIfNoExist = array(
-				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM
+				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED
 			);
 		}
 
@@ -973,6 +973,7 @@
 					$this->_stream .= '<br />> see app';
 					$this->_stream .= '<br />> see firewall';
 					$this->_stream .= '<br />> see antispam';
+					$this->_stream .= '<br />> see installed';
 					$this->_stream .= '<br />> changepassword nouveaumdp';
 					$this->_stream .= '<br />> connect mdp';
 					$this->_stream .= '<br />> disconnect';
@@ -1063,13 +1064,41 @@
 											$this->_stream .= '<br />> <span style="color: red;">'.(htmlspecialchars($valeur)).'</span>';
 											$i=0;
 										}	
-									}							
+									}
 								}
 								
 								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier de route <strong>'.ROUTE.'</strong> a bien été affiché</span>';
 							}
 							else{
-								$this->_result = '<br />><span style="color: red;"> Le fichier de route <strong>'.ROUTE.'</strong> n\'existe pas ce qui est étonnant à moins que vous n\'ayez désactivé le route via le framework</span>';
+								$this->_result = '<br />><span style="color: red;"> Le fichier de route <strong>'.ROUTE.'</strong> n\'existe pas ce qui est étonnant</span>';
+							}
+						break;
+
+						case 'installed':
+							if(is_file(INSTALLED) && file_exists(INSTALLED) && is_readable(INSTALLED)){
+								$sauvegarde = file_get_contents(INSTALLED);
+								echo $sauvegarde;
+								$sauvegardes = explode("\n", $sauvegarde);
+								
+								$i = 0;
+								
+								foreach($sauvegardes as $valeur){
+									if(strlen($valeur)>=5){
+										if($i == 0){
+											$this->_stream .= '<br />> <span style="color: chartreuse;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=1;
+										}
+										else{
+											$this->_stream .= '<br />> <span style="color: red;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=0;
+										}	
+									}
+								}
+								
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier listant les plugins installés <strong>'.INSTALLED.'</strong> a bien été affiché</span>';
+							}
+							else{
+								$this->_result = '<br />><span style="color: red;"> Le fichier listant les plugins installés <strong>'.INSTALLED.'</strong> n\'existe pas ce qui est étonnant</span>';
 							}
 						break;
 						
