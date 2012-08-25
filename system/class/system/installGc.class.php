@@ -219,31 +219,167 @@
 				$return = true;
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
 				$this->_node2Xml = $this->_nodeXml->getElementsByTagName('routes')->item(0);
-				$this->_markup = $this->_node2Xml->getElementsByTagName('routes')->item(0);
 				
 				//on check la balise routes
-				if(!is_object($this->_markup)){
+				if(!is_object($this->_node2Xml)){
 					$this->_conflit = false;
 					$this->_addError('la section routes du fichier install.xml est endommagée.', __FILE__, __LINE__, ERROR);
 					$return = false;
 				}
+				else{
+					$this->_markupXml = $this->_node2Xml->getElementsByTagName('route');
+
+					if(is_object($this->_markupXml)){
+						foreach($this->_markupXml as $sentence){
+							if($sentence->hasAttribute('id') && $sentence->hasAttribute('url') && $sentence->hasAttribute('rubrique') 
+								&& $sentence->hasAttribute('action') && $sentence->hasAttribute('vars') && $sentence->hasAttribute('cache')
+							){
+							}
+							else{
+								$this->_conflit = false;
+								$this->_addError('la section route n°'.$key.' de la section routes du fichier install.xml possède des attributs incorrects.', __FILE__, __LINE__, ERROR);
+								$return = false;
+							}
+						}
+					}
+				}
+
+				$this->_node2Xml = $this->_nodeXml->getElementsByTagName('apps')->item(0);
+				
+				//on check la balise apps
+				if(!is_object($this->_node2Xml)){
+					$this->_conflit = false;
+					$this->_addError('la section apps du fichier install.xml est endommagée.', __FILE__, __LINE__, ERROR);
+					$return = false;
+				}
+				else{
+					$this->_markupXml = $this->_node2Xml->getElementsByTagName('app');
+
+					if(is_object($this->_markupXml)){
+						foreach($this->_markupXml as $key=>$sentence){
+							if($sentence->hasAttribute('id') && $sentence->hasAttribute('value')){
+							}
+							else{
+								$this->_conflit = false;
+								$this->_addError('la section app n°'.$key.' de la section apps du fichier install.xml possède des attributs incorrects.', __FILE__, __LINE__, ERROR);
+								$return = false;
+							}
+						}
+					}
+				}
+
+				$this->_node2Xml = $this->_nodeXml->getElementsByTagName('plugins')->item(0);
+				
+				//on check la balise plugins
+				if(!is_object($this->_node2Xml)){
+					$this->_conflit = false;
+					$this->_addError('la section plugins du fichier install.xml est endommagée.', __FILE__, __LINE__, ERROR);
+					$return = false;
+				}
+				else{
+					$this->_markupXml = $this->_node2Xml->getElementsByTagName('plugin');
+
+					if(is_object($this->_node2Xml)){
+						foreach($this->_markupXml as $sentence){
+							if($sentence->hasAttribute('type') && ($sentence->getAttribute('type') == 'helper' || $sentence->getAttribute('type') == 'lib') 
+								&& $sentence->hasAttribute('name') && $sentence->hasAttribute('access') && $sentence->hasAttribute('enabled') && $sentence->hasAttribute('include')
+							){
+								if(!preg_match('#[\.class\.php]$#isU', strval($sentence->getAttribute('access')))){
+									$this->_conflit = false;
+									$this->_addError('les sections plugin de la section plugins du fichier install.xml possèdent des attributs incorrect.', __FILE__, __LINE__, ERROR);
+									$return = false;
+								}
+							}
+							else{
+								$this->_conflit = false;
+								$this->_addError('les sections plugin de la section plugins du fichier install.xml possèdent des attributs incorrect.', __FILE__, __LINE__, ERROR);
+								$return = false;
+							}
+						}
+					}
+				}
+
+				$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewalls')->item(0);
+				
+				//on check la balise firewals
+				if(!is_object($this->_node2Xml)){
+					$this->_conflit = false;
+					$this->_addError('la section firewalls du fichier install.xml est endommagée.', __FILE__, __LINE__, ERROR);
+					$return = false;
+				}
+				else{
+					$this->_markupXml = $this->_node2Xml->getElementsByTagName('firewall');
+					if(is_object($this->_markupXml)){
+						foreach($this->_markupXml as $key=>$sentence){
+							if($sentence->hasAttribute('id') && $sentence->hasAttribute('connected') && ($sentence->getAttribute('connected') == 'true' || $sentence->getAttribute('connected') == 'false')){
+							}
+							else{
+								$this->_conflit = false;
+								$this->_addError('la section firewall n°'.$key.' de la section firewalls du fichier install.xml possède des attributs incorrects.', __FILE__, __LINE__, ERROR);
+								$return = false;
+							}
+						}
+					}
+				}
+
+				$this->_node2Xml = $this->_nodeXml->getElementsByTagName('sqls')->item(0);
+				
+				//on check la balise sqls
+				if(!is_object($this->_node2Xml)){
+					$this->_conflit = false;
+					$this->_addError('la section sqls du fichier install.xml est endommagée.', __FILE__, __LINE__, ERROR);
+					$return = false;
+				}
+
+				$this->_node2Xml = $this->_nodeXml->getElementsByTagName('langs')->item(0);
+				
+				//on check la balise langs
+				if(!is_object($this->_node2Xml)){
+					$this->_conflit = false;
+					$this->_addError('la section langs du fichier install.xml est endommagée.', __FILE__, __LINE__, ERROR);
+					$return = false;
+				}
+				else{
+					$this->_markupXml = $this->_node2Xml->getElementsByTagName('sentence');
+					if(is_object($this->_markupXml)){
+						foreach($this->_markupXml as $key=>$sentence){
+							if($sentence->hasAttribute('id')){
+								if($sentence->hasChildNodes()){
+									$this->_markup2Xml = $sentence->getElementsByTagName('lang');
+									foreach($this->_markup2Xml as $key2=>$sentence2){
+										if($sentence2->hasAttribute('lang')){
+										}
+										else{
+											$this->_conflit = false;
+											$this->_addError('la section lang n°'.$key2.' de la section sentence n°'.$key.' de la section langs du fichier install.xml possède des attributs incorrects.', __FILE__, __LINE__, ERROR);
+											$return = false;
+										}
+									}
+								}
+							}
+							else{
+								$this->_conflit = false;
+								$this->_addError('la section sentence n°'.$key.' de la section langs du fichier install.xml possède des attributs incorrects.', __FILE__, __LINE__, ERROR);
+								$return = false;
+							}
+						}
+					}
+				}
+
+				$this->_node2Xml = $this->_nodeXml->getElementsByTagName('readme')->item(0);
+				
+				//on check la balise readme
+				if(!is_object($this->_node2Xml)){
+					$this->_conflit = false;
+					$this->_addError('la section readme du fichier install.xml est endommagée.', __FILE__, __LINE__, ERROR);
+					$return = false;
+				}
+
+				return $return;
 			}
 			else{
 				return false;
 			}
-			
-
-			//on check la balise apps
-
-			//on check la balise plugins
-
-			//on check la balise firewalss
-
-			//on check la balise sqls
-
-			//on check la balise langs
-
-			//on check la balise readme
 		}
 
 		protected function _checkIsInstalled(){
