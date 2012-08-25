@@ -37,6 +37,6 @@
 			<url id="test" connected="*" access="*"/>
 			<url id="test2" connected="*" access="*"/>
 			<url id="install" connected="*" access="*"/>
-		</access>
+		<url id="test4" connected="*" access="*"/></access>
 	</firewall>
 </security>

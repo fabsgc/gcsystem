@@ -6,7 +6,7 @@
   <sentence id="content">Welkom op u nieuw project GC-systeem, dank u voor hebben gekozen onze framework.</sentence>
   <sentence id="liredoc">lezen de documentatie</sentence>
   <sentence id="lirecours">lezen de inleidende les</sentence>
-  <sentence id="appDevGc_temp">interface ontwikkeling is aan het zijn gecre&#235;erd</sentence>
+  <sentence id="appDevGc_temp">interface ontwikkeling is aan het zijn gecreerd</sentence>
   <sentence id="maintenance">De website is op dit moment beschikbaar niet.</sentence>
   <sentence id="executiontime">tijd van of uitvoering</sentence>
   <sentence id="memoireuse">geheugen gebruikt</sentence>
@@ -30,6 +30,6 @@
   <sentence id="firewallcsrfcontent">Een fout in de parameters van de url heeft gedwongen de applicatie toegang te blokkeren naar deze pagina</sentence>
   <sentence id="firewallforbiddentitle">toegang verboden</sentence>
   <sentence id="firewallforbiddencontent">De toegang tot deze pagina is verboden</sentence>
-  <sentence id="antispamerror">U heeft geïdentificeerd als een spammer, is uw IP is geschopt/sentence>
-  <sentence id="antispamexplication">Uw IP is hoger dan het aantal aanvragen toegestaan ​​op een bepaalde periode. Wacht tot deze periode is verstreken</sentence>
+  <sentence id="antispamerror">U heeft geïdentificeerd als een spammer, is uw IP is geschopt</sentence>
+  <sentence id="antispamexplication">Uw IP is hoger dan het aantal aanvragen toegestaan op een bepaalde periode. Wacht tot deze periode is verstreken</sentence>
 </lang>

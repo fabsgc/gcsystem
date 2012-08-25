@@ -13,7 +13,7 @@
 		
 		public function actionDefault(){
 			//$this->showDefault();
-			$install = new installGc('installtest.zip', $this->_lang);
+			$install = new installGc('installtest.zip', null, $this->_lang);
 			$install->check();
 			echo $install->showError();
 

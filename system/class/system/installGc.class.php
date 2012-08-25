@@ -19,11 +19,12 @@
 		protected $_authorizedDir           = array();
 		protected $_id                      = ''     ;
 		protected $_name                    = ''     ;
+		protected $_bdd                     = null   ;
 
 		protected $_readMe                  = ''     ;
 
-		public  function __construct($file = '', $lang = 'fr'){
-			$this->_setFile($file);
+		public  function __construct($file = '', $bdd,  $lang = 'fr'){
+			$this->_setFile($file, $bdd);
 
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();
@@ -178,6 +179,9 @@
 
 									//firewalls
 									$this->_checkConfigFirewalls();
+
+									//langs
+									$this->_checkConfigLangs();
 
 									//sqls
 									$this->_checkConfigSqls();
@@ -452,6 +456,7 @@
 							&& strlen($key) >= strlen($value2) 
 							&& !in_array($key, $this->_forbiddenCreateDir) 
 							&& strlen($value2) >= $this->_checkCreateLongDirs($key)
+							&& !preg_match('#^system\/lib\/(.*)#isU', $key)
 						){
 							$this->_conflit = false;
 							$this->_addError('le répertoire '.$key.' veut être ajouté dans le répertoire '.$value2.' qui est un répertoire système. Un plugin n\'est pas en droit d\'y ajouter des répertoires', __FILE__, __LINE__, ERROR);
@@ -480,23 +485,135 @@
 		}
 
 		protected function _checkConfigRoutes(){
+			//on ouvre la section routes du install.xml puis on vérifie que y a aucun conflit avec d'autres route sur l'id et l'url
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 
+			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(ROUTE)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('routes')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('route');
+
+				$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('routes')->item(0);
+				$this->_node2Xml = $this->_node2Xml->getElementsByTagName('route');
+
+				foreach($this->_nodeXml as $key => $value){
+					foreach ($this->_node2Xml as $key2 => $value2) {
+						if($value->getAttribute('id') == $value2->getAttribute('id')){
+							$this->_conflit = false;
+							$this->_addError('l\'id de route '.$value->getAttribute('id').' de la section n°'.$key.' du route est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+						}
+
+						if($value->getAttribute('url') == $value2->getAttribute('url')){
+							$this->_conflit = false;
+							$this->_addError('l\'url de route "'.$value->getAttribute('url').'" de la section n°'.$key.' du route est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+						}
+					}
+				}
+			}
 		}
 
 		protected function _checkConfigApp(){
+			//on ouvre app.xml et on vérifie si certaines define ne sont pas déjà prises
+			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(APP)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('apps')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('app');
 
+				$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('definitions')->item(0);
+				$this->_node2Xml = $this->_node2Xml->getElementsByTagName('define');
+
+				foreach($this->_nodeXml as $key => $value){
+					foreach ($this->_node2Xml as $key2 => $value2) {
+						if($value->getAttribute('id') == $value2->getAttribute('id')){
+							$this->_conflit = false;
+							$this->_addError('l\'id de define "'.$value->getAttribute('id').'" de la section n°'.$key.' est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+						}
+					}
+				}
+			}
 		}
 
 		protected function _checkConfigPlugins(){
+			//on ouvre plugins.xml et on vérifie si name et access ne sont pas déjà pris
+			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(PLUGIN)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('plugins')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('plugin');
 
+				$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('plugins')->item(0);
+				$this->_node2Xml = $this->_node2Xml->getElementsByTagName('plugin');
+
+				foreach($this->_nodeXml as $key => $value){
+					foreach ($this->_node2Xml as $key2 => $value2) {
+						if($value->getAttribute('name') == $value2->getAttribute('name')){
+							$this->_conflit = false;
+							$this->_addError('le nom de plugin '.$value->getAttribute('name').' de la section n°'.$key.' est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+						}
+
+						if($value->getAttribute('access') == $value2->getAttribute('access')){
+							$this->_conflit = false;
+							$this->_addError('l\'accès du plugin "'.$value->getAttribute('access').'" de la section n°'.$key.' est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+						}
+					}
+				}
+			}
 		}
 
 		protected function _checkConfigFirewalls(){
+			//on ouvre firewall.xml et on vérifie access id n'existe pas déjà
+			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(FIREWALL)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('firewalls')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('firewall');
 
+				$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('security')->item(0);
+				$this->_node2Xml = $this->_node2Xml->getElementsByTagName('firewall')->item(0);
+				$this->_node2Xml = $this->_node2Xml->getElementsByTagName('access')->item(0);
+				$this->_node2Xml = $this->_node2Xml->getElementsByTagName('url');
+
+				foreach($this->_nodeXml as $key => $value){
+					foreach ($this->_node2Xml as $key2 => $value2) {
+						if($value->getAttribute('id') == $value2->getAttribute('id')){
+							$this->_conflit = false;
+							$this->_addError('l\'id du parefeu "'.$value->getAttribute('id').'" de la section n°'.$key.' est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+						}
+					}
+				}
+			}
+		}
+
+		protected function _checkConfigLangs(){
+			//on ouvre [lang].xml si il existe et on vérifie si sentence n'existe pas déjà
+			if($this->_domXml->loadXml($this->_zipContent['install.xml'])){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('langs')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('sentence');
+
+				foreach($this->_nodeXml as $key => $value){
+					$langsFile = $this->_mkmap(LANG_PATH);
+
+					foreach ($langsFile as $file){
+						if($this->_dom2Xml->load($file)){
+							
+							$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('lang')->item(0);
+							$this->_node2Xml = $this->_node2Xml->getElementsByTagName('sentence');
+
+							foreach($this->_node2Xml as $key2 => $value2){
+
+								if($value->getAttribute('id') == $value2->getAttribute('id')){
+									$this->_conflit = false;
+									$this->_addError('l\'id de la phrase "'.$value->getAttribute('id').'" de la section n°'.$key.' est déjà utilisé par le projet dans le fichier de lang "'.$file.'". Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 
 		protected function _checkConfigSqls(){
-
+			//je ne sais pas encore ^^
 		}
 
 		public function install(){
@@ -507,12 +624,8 @@
 			}
 		}
 
-		public function uninstall(){
-			if($this->_zip->getIsExist()==true && $this->_conflit == true){
-			}
-			else{
-				return false;
-			}
+		public function uninstall($id){
+			
 		}
 
 		protected function _createLangInstance(){
@@ -525,6 +638,25 @@
 
 		protected function _setFile($file){
 			$this->_zip = new zipGc($file);
+		}
+
+		protected function _mkmap($dir){
+			$dossier = opendir ($dir);
+		   	$result  = array()       ;
+
+			while ($fichier = readdir ($dossier)){
+				if ($fichier != "." && $fichier != ".."){
+					if(filetype($dir.$fichier) == 'dir'){
+						$this->_mkmap($dir.$fichier.'/');
+					}
+					elseif($fichier!='.htaccess'){
+						array_push($result, $dir.$fichier);
+					}					
+				}       
+			}
+			closedir ($dossier);
+
+			return $result;
 		}
 
 		public  function __destruct(){

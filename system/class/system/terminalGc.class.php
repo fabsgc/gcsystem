@@ -901,7 +901,7 @@
 						}
 					}
 					if($this->_dossier = opendir(MODEL_PATH)){
-						$this->_stream .= '<br />>####################### RUBRIQUE';
+						$this->_stream .= '<br />>####################### MODEL';
 						while(false !== ($this->_fichier = readdir($this->_dossier))){
 							if(is_file(MODEL_PATH.$this->_fichier) && $this->_fichier!='.htaccess'){
 								$this->_stream .= '<br />> '.MODEL_PATH.$this->_fichier.'';
