@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <installed>
-   <install id="63575037e28aa7a420.67532104_" name="installtest">
-      <files>
-      </files>
-      <xml>
-      </xml>
-   </install>
-</installed>
+<install id="22662503a6463b6c706.64500547" name="installtest"><files></files><xml><routes><route id="installtest" url="/installtest" rubrique="installtest" action="" vars="" cache="10"/></routes><apps><app id="installtest" value="installtestvalue"/></apps><plugins><plugin type="helper" name="installtestGc" access="installtestGc.class.php" enabled="true" include="*"/></plugins><firewalls><firewall id="installtest" connected="true" access="*"/></firewalls><sqls><sql>CREATE TABLE t (c CHAR(20) CHARACTER SET utf8 COLLATE utf8_bin);</sql><sql>CREATE TABLE ttest (c CHAR(20) CHARACTER SET utf8 COLLATE utf8_bin);</sql></sqls><langs><sentence id="installtest"><lang lang="fr">installtest fr</lang><lang lang="en">installtest en</lang><lang lang="nl">installtest nl</lang><lang lang="de">installtest de</lang></sentence></langs><readme>
+      Informations :
+      -----------
+
+      * zip de test pour installer une class
+   </readme></xml></install></installed>

@@ -11,7 +11,8 @@
 		
 		protected $_file                             ;
 		protected $_zip                              ;
-		protected $_zipContent              = array(); 
+		protected $_zipContent              = array();
+		protected $_xmlContent              = array(); 
 		protected $_conflit                 = true   ; //true = pas de conflits, false = conflits
 		protected $_forbiddenFile           = array();
 		protected $_forbiddenDir            = array();
@@ -110,33 +111,21 @@
 		protected function _getNameId(){
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			if($this->_domXml->loadXml($this->_zipContent['install.xml'])){
-				$id = $this->_domXml->getElementsByTagName('install')->item(0)->getAttribute("id");
-				if($this->_domXml->load(INSTALLED)){
-					$return = true;
-					$this->_nodeXml = $this->_domXml->getElementsByTagName('installed')->item(0);
-					$this->_markupXml = $this->_nodeXml->getElementsByTagName('install');
-					foreach($this->_markupXml as $sentence){
-						if ($sentence->hasAttribute('id') && $sentence->hasAttribute('name')
-							&& preg_match('#^(([0-9a-zA-Z]{18})[\.]([0-9a-zA-Z]{8}))#isU', strval($sentence->getAttribute("id"))) 
-							&& strlen($sentence->getAttribute("id")) == 28
-							&& strval($sentence->getAttribute("name")) != ''
-						){
-						
-							$return = true;
-							$this->_id = $sentence->getAttribute("id");
-							$this->_name = $sentence->getAttribute("name");
-						}
-						else{
-							$this->_conflit = false;
-							$return = false;
-						}
-					}
+				$this->_id = $this->_domXml->getElementsByTagName('install')->item(0)->getAttribute("id");
+				$this->_name = $this->_domXml->getElementsByTagName('install')->item(0)->getAttribute("name");
 
-					return $return;
+				if(preg_match('#^(([0-9a-zA-Z]{19})[\.]([0-9a-zA-Z]{8}))#isU', $this->_id) 
+					&& strlen($this->_id) == 28
+					&& strval($this->_name) != ''
+				){
+					$return = true;
 				}
 				else{
-					return false;
+					$this->_conflit = false;
+					$return = false;
 				}
+
+				return $return;
 			}
 			else{
 				return false;
@@ -235,10 +224,19 @@
 					$this->_markupXml = $this->_node2Xml->getElementsByTagName('route');
 
 					if(is_object($this->_markupXml)){
-						foreach($this->_markupXml as $sentence){
+						foreach($this->_markupXml as $key => $sentence){
 							if($sentence->hasAttribute('id') && $sentence->hasAttribute('url') && $sentence->hasAttribute('rubrique') 
 								&& $sentence->hasAttribute('action') && $sentence->hasAttribute('vars') && $sentence->hasAttribute('cache')
 							){
+								//on stocke toutes les données dans un array pour pouvoir les utiliser plus tard à l'installation
+								$this->_xmlContent['routes'][$key] = array(
+									'id' => $sentence->getAttribute('id'),
+									'url' => $sentence->getAttribute('url'),
+									'rubrique' =>  $sentence->getAttribute('rubrique'),
+									'action' => $sentence->getAttribute('action'),
+									'vars' =>  $sentence->getAttribute('vars'),
+									'cache' => $sentence->getAttribute('cache')
+								);
 							}
 							else{
 								$this->_conflit = false;
@@ -263,6 +261,11 @@
 					if(is_object($this->_markupXml)){
 						foreach($this->_markupXml as $key=>$sentence){
 							if($sentence->hasAttribute('id') && $sentence->hasAttribute('value')){
+								//on stocke toutes les données dans un array pour pouvoir les utiliser plus tard à l'installation
+								$this->_xmlContent['apps'][$key] = array(
+									'id' => $sentence->getAttribute('id'),
+									'value' => $sentence->getAttribute('value')
+								);
 							}
 							else{
 								$this->_conflit = false;
@@ -285,19 +288,28 @@
 					$this->_markupXml = $this->_node2Xml->getElementsByTagName('plugin');
 
 					if(is_object($this->_node2Xml)){
-						foreach($this->_markupXml as $sentence){
+						foreach($this->_markupXml as $key => $sentence){
 							if($sentence->hasAttribute('type') && ($sentence->getAttribute('type') == 'helper' || $sentence->getAttribute('type') == 'lib') 
 								&& $sentence->hasAttribute('name') && $sentence->hasAttribute('access') && $sentence->hasAttribute('enabled') && $sentence->hasAttribute('include')
 							){
 								if(!preg_match('#[\.class\.php]$#isU', strval($sentence->getAttribute('access')))){
 									$this->_conflit = false;
-									$this->_addError('les sections plugin de la section plugins du fichier install.xml possèdent des attributs incorrect.', __FILE__, __LINE__, ERROR);
+									$this->_addError('la section plugin n°'.$key.' de la section plugins du fichier install.xml possède des attributs incorrect.', __FILE__, __LINE__, ERROR);
 									$return = false;
+								}else{
+									//on stocke toutes les données dans un array pour pouvoir les utiliser plus tard à l'installation
+									$this->_xmlContent['plugins'][$key] = array(
+										'type' => $sentence->getAttribute('type'),
+										'name' => $sentence->getAttribute('name'),
+										'access' =>  $sentence->getAttribute('access'),
+										'enabled' => $sentence->getAttribute('enabled'),
+										'include' =>  $sentence->getAttribute('include')
+									);
 								}
 							}
 							else{
 								$this->_conflit = false;
-								$this->_addError('les sections plugin de la section plugins du fichier install.xml possèdent des attributs incorrect.', __FILE__, __LINE__, ERROR);
+								$this->_addError('la section plugin n°'.$key.' de la section plugins du fichier install.xml possède des attributs incorrect.', __FILE__, __LINE__, ERROR);
 								$return = false;
 							}
 						}
@@ -316,7 +328,13 @@
 					$this->_markupXml = $this->_node2Xml->getElementsByTagName('firewall');
 					if(is_object($this->_markupXml)){
 						foreach($this->_markupXml as $key=>$sentence){
-							if($sentence->hasAttribute('id') && $sentence->hasAttribute('connected') && ($sentence->getAttribute('connected') == 'true' || $sentence->getAttribute('connected') == 'false')){
+							if($sentence->hasAttribute('id') && $sentence->hasAttribute('connected') && $sentence->hasAttribute('access') && ($sentence->getAttribute('connected') == 'true' || $sentence->getAttribute('connected') == 'false')){
+								//on stocke toutes les données dans un array pour pouvoir les utiliser plus tard à l'installation
+								$this->_xmlContent['firewalls'][$key] = array(
+									'id' => $sentence->getAttribute('id'),
+									'connected' => $sentence->getAttribute('connected'),
+									'access' =>  $sentence->getAttribute('access')
+								);
 							}
 							else{
 								$this->_conflit = false;
@@ -335,6 +353,17 @@
 					$this->_addError('la section sqls du fichier install.xml est endommagée.', __FILE__, __LINE__, ERROR);
 					$return = false;
 				}
+				else{
+					$this->_markupXml = $this->_node2Xml->getElementsByTagName('sql');
+					if(is_object($this->_markupXml)){
+						foreach($this->_markupXml as $key=>$sentence){
+							//on stocke toutes les données dans un array pour pouvoir les utiliser plus tard à l'installation
+							$this->_xmlContent['sqls'][$key] = array(
+								'value' => $sentence->nodeValue
+							);
+						}
+					}
+				}
 
 				$this->_node2Xml = $this->_nodeXml->getElementsByTagName('langs')->item(0);
 				
@@ -349,10 +378,15 @@
 					if(is_object($this->_markupXml)){
 						foreach($this->_markupXml as $key=>$sentence){
 							if($sentence->hasAttribute('id')){
+
+								//on stocke toutes les données dans un array pour pouvoir les utiliser plus tard à l'installation
+								$this->_xmlContent['langs'][$key]['id'] = $sentence->getAttribute('id');
+
 								if($sentence->hasChildNodes()){
 									$this->_markup2Xml = $sentence->getElementsByTagName('lang');
 									foreach($this->_markup2Xml as $key2=>$sentence2){
 										if($sentence2->hasAttribute('lang')){
+											$this->_xmlContent['langs'][$key]['sentence'][$sentence2->getAttribute('lang')] = $sentence2->nodeValue;
 										}
 										else{
 											$this->_conflit = false;
@@ -378,6 +412,10 @@
 					$this->_conflit = false;
 					$this->_addError('la section readme du fichier install.xml est endommagée.', __FILE__, __LINE__, ERROR);
 					$return = false;
+				}
+				else{
+					//on stocke toutes les données dans un array pour pouvoir les utiliser plus tard à l'installation
+					$this->_xmlContent['readme'] = $this->_node2Xml->nodeValue;
 				}
 
 				return $return;
@@ -562,6 +600,11 @@
 							$this->_conflit = false;
 							$this->_addError('l\'accès du plugin "'.$value->getAttribute('access').'" de la section n°'.$key.' est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
 						}
+
+						if($value->getAttribute('name') == $value2->getAttribute('name')){
+							$this->_conflit = false;
+							$this->_addError('le nom du plugin "'.$value->getAttribute('access').'" de la section n°'.$key.' est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+						}
 					}
 
 					switch($value->getAttribute('type')){
@@ -651,12 +694,12 @@
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
 				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('sqls')->item(0);
 
-				if($this->_nodeXml->hasChildNodes() && (is_object($this->_bdd) || $this->_bddName == null)){
+				if($this->_nodeXml->hasChildNodes() && (!is_object($this->_bdd) || $this->_bddName == null)){
 					$this->_conflit = false;
 					$this->_addError('La connexion sql entrée en paramètre n\'est pas valide. Le plugin ne peut pas exécuter les requêtes necéssaires.', __FILE__, __LINE__, ERROR);
 				}
 				
-				if(!is_object($this->_bdd) && $this->_bddName != null){
+				if(is_object($this->_bdd) && $this->_bddName != null){
 					//dans les fichiers de rubriques et manager, on corrige ça : $this->bdd[mauvaiseconnexion]
 					foreach ($this->_zipContent as $key => $value) {
 						if(preg_match('#(\.class\.php)$#isU', $key) && preg_match('#^app\/(.*)$#isU', $key)){
@@ -688,6 +731,9 @@
 					//sqls
 					$this->_installConfigSqls();
 
+				//installed
+				$this->_installConfigInstalled();
+
 				//on installe les nouveaux fichiers
 				$this->_installFiles();
 			}
@@ -697,37 +743,310 @@
 		}
 
 		protected function _installConfigRoutes(){
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 
+			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(ROUTE)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('routes')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('route');
+
+				$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('routes')->item(0);
+
+				foreach($this->_nodeXml as $key => $value){
+					$this->_markup2Xml = $this->_dom2Xml->createElement('route');
+					$this->_markup2Xml->setAttribute("id", $value->getAttribute('id'));
+					$this->_markup2Xml->setAttribute("url", $value->getAttribute('url'));
+					$this->_markup2Xml->setAttribute("rubrique", $value->getAttribute('rubrique'));
+					$this->_markup2Xml->setAttribute("action", $value->getAttribute('action'));
+					$this->_markup2Xml->setAttribute("vars", $value->getAttribute('vars'));
+					$this->_markup2Xml->setAttribute("cache", $value->getAttribute('cache'));
+
+					$this->_node2Xml->appendChild($this->_markup2Xml);
+				}
+
+				$this->_dom2Xml->save(ROUTE);
+			}
 		}
 
 		protected function _installConfigApp(){
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 
+			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(APPCONFIG)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('apps')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('app');
+
+				$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('definitions')->item(0);
+
+				foreach($this->_nodeXml as $key => $value){
+					$this->_markup2Xml = $this->_dom2Xml->createElement('define');
+					$this->_markup2Xml->setAttribute("id", $value->getAttribute('id'));
+					$this->_markup2Xml->setAttribute("value", $value->getAttribute('value'));
+					$this->_node2Xml->appendChild($this->_markup2Xml);
+				}
+
+				$this->_dom2Xml->save(APPCONFIG);
+			}
 		}
 
 		protected function _installConfigPlugins(){
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 
+			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(PLUGIN)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('plugins')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('plugin');
+
+				$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('plugins')->item(0);
+
+				foreach($this->_nodeXml as $key => $value){
+					$this->_markup2Xml = $this->_dom2Xml->createElement('plugin');
+					$this->_markup2Xml->setAttribute("type", $value->getAttribute('type'));
+					$this->_markup2Xml->setAttribute("name", $value->getAttribute('name'));
+					$this->_markup2Xml->setAttribute("access", $value->getAttribute('access'));
+					$this->_markup2Xml->setAttribute("enabled", $value->getAttribute('enabled'));
+					$this->_markup2Xml->setAttribute("include", $value->getAttribute('include'));
+					$this->_node2Xml->appendChild($this->_markup2Xml);
+				}
+
+				$this->_dom2Xml->save(PLUGIN);
+			}
 		}
 
 		protected function _installConfigFirewalls(){
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 
+			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(FIREWALL)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('firewalls')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('firewall');
+
+				$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('security')->item(0);
+				$this->_node2Xml = $this->_node2Xml->getElementsByTagName('firewall')->item(0);
+				$this->_node2Xml = $this->_node2Xml->getElementsByTagName('access')->item(0);
+
+				foreach($this->_nodeXml as $key => $value){
+					$this->_markup2Xml = $this->_dom2Xml->createElement('url');
+					$this->_markup2Xml->setAttribute("id", $value->getAttribute('id'));
+					$this->_markup2Xml->setAttribute("connected", $value->getAttribute('connected'));
+					$this->_markup2Xml->setAttribute("access", $value->getAttribute('access'));
+					$this->_node2Xml->appendChild($this->_markup2Xml);
+				}
+
+				$this->_dom2Xml->save(FIREWALL);
+			}
 		}
 
 		protected function _installConfigLangs(){
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
+			$id = '';
 
+			if($this->_domXml->loadXml($this->_zipContent['install.xml'])){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('langs')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('sentence');
+
+				foreach($this->_nodeXml as $key => $value){
+					$id = $value->getAttribute('id');
+
+					$this->_markupXml = $value->getElementsByTagName('lang');
+
+					foreach ($this->_markupXml as $key2 => $value2){
+						if(!file_exists(LANG_PATH.$value2->getAttribute('lang').LANG_EXT)){
+							$monfichier = fopen(LANG_PATH.$value2->getAttribute('lang').LANG_EXT, 'a');						
+								$t= new templateGC(GCSYSTEM_PATH.'GClang', 'GClang', '0');
+								$t->setShow(FALSE);
+								fputs($monfichier, $t->show());
+							fclose($monfichier);
+						}
+
+						if($this->_dom2Xml->load(LANG_PATH.$value2->getAttribute('lang').LANG_EXT)){
+							$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('lang')->item(0);
+
+							$this->_markup2Xml = $this->_dom2Xml->createElement('sentence');
+							$this->_markup2Xml->setAttribute("id", $id);
+							$texte = $this->_dom2Xml->createTextNode($value2->nodeValue);
+							$this->_markup2Xml->appendChild($texte);
+							$this->_node2Xml->appendChild($this->_markup2Xml);
+						}
+
+						$this->_dom2Xml->save(LANG_PATH.$value2->getAttribute('lang').LANG_EXT);
+					}
+				}
+			}
 		}
 
 		protected function _installConfigSqls(){
+			$query = new sqlGc($this->_bdd);
 
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$id = '';
+
+			if($this->_domXml->loadXml($this->_zipContent['install.xml'])){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('sqls')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('sql');
+
+				foreach ($this->_nodeXml as $key => $value) {
+					$query->query($key, $value->nodeValue);
+					$query->fetch($key, sqlGc::PARAM_NORETURN);
+				}
+			}
 		}
 
 		protected function _installFiles(){
+			$this->_domXml = new DomDocument('1.0', CHARSET);
 
+			if($this->_domXml->load(INSTALLED)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('installed')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('install');
+
+				foreach ($this->_nodeXml as $key => $value) {
+					if($value->getAttribute('id') == $this->_id){
+
+						$this->_markupXml = $value->getElementsByTagName('files')->item(0);
+
+						foreach ($this->_zipContent as $key2 => $value2) {
+							if(preg_match('#[\/]$#isU', strval($key2)) && $key2 != 'install.xml'){
+								//c'est un dossier, on va l'ajouter si il n'existe pas déjà
+								
+								if(!is_dir($key2)){
+									mkdir($key2);
+
+									$file = $this->_domXml->createElement('file');
+									$file->setAttribute("path", $key2);
+
+									$this->_markupXml->appendChild($file);
+								}
+							}
+						}
+
+						foreach ($this->_zipContent as $key2 => $value2) {
+							if(!preg_match('#[\/]$#isU', strval($key2)) && $key != 'install.xml'){
+								//c'est un fichier, on va l'ajouter si il n'existe pas déjà
+
+								if(!is_file($key2) && !file_exists($key2)){
+									$monfichier = fopen($key2, 'a');							
+										fputs($monfichier, $value2);
+									fclose($monfichier);
+
+									$file = $this->_domXml->createElement('file');
+									$file->setAttribute("path", $key2);
+
+									$this->_markupXml->appendChild($file);
+								}
+							}
+						}
+
+						$this->_domXml->save(INSTALLED);
+					}
+				}
+			}
+		}
+
+		protected function _installConfigInstalled(){
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			if($this->_domXml->load(INSTALLED)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('installed')->item(0);
+				$this->_markupXml = $this->_domXml->createElement('install', '');
+				$this->_markupXml->setAttribute("id", $this->_id);
+				$this->_markupXml->setAttribute("name", $this->_name);
+					$file = $this->_domXml->createElement('files', '');
+					$this->_markupXml->appendChild($file);
+					$xml = $this->_domXml->createElement('xml');
+
+					//ajouter les config du route
+					$routes = $this->_domXml->createElement('routes');
+					foreach ($this->_xmlContent['routes'] as $key => $value) {
+						$route = $this->_domXml->createElement('route');
+						$route->setAttribute('id', $value['id']);
+						$route->setAttribute('url', $value['url']);
+						$route->setAttribute('rubrique', $value['rubrique']);
+						$route->setAttribute('action', $value['action']);
+						$route->setAttribute('vars', $value['vars']);
+						$route->setAttribute('cache', $value['cache']);
+						$routes->appendChild($route);
+					}
+					$xml->appendChild($routes);
+
+					//ajouter les config de app
+					$routes = $this->_domXml->createElement('apps');
+					foreach ($this->_xmlContent['apps'] as $key => $value) {
+						$route = $this->_domXml->createElement('app');
+						$route->setAttribute('id', $value['id']);
+						$route->setAttribute('value', $value['value']);
+						$routes->appendChild($route);
+					}
+					$xml->appendChild($routes);
+
+					//ajouter les config de plugin
+					$routes = $this->_domXml->createElement('plugins');
+					foreach ($this->_xmlContent['plugins'] as $key => $value) {
+						$route = $this->_domXml->createElement('plugin');
+						$route->setAttribute('type', $value['type']);
+						$route->setAttribute('name', $value['name']);
+						$route->setAttribute('access', $value['access']);
+						$route->setAttribute('enabled', $value['enabled']);
+						$route->setAttribute('include', $value['include']);
+						$routes->appendChild($route);
+					}
+					$xml->appendChild($routes);
+
+					//ajouter les config du firewall
+					$routes = $this->_domXml->createElement('firewalls');
+					foreach ($this->_xmlContent['firewalls'] as $key => $value) {
+						$route = $this->_domXml->createElement('firewall');
+						$route->setAttribute('id', $value['id']);
+						$route->setAttribute('connected', $value['connected']);
+						$route->setAttribute('access', $value['access']);
+						$routes->appendChild($route);
+					}
+					$xml->appendChild($routes);
+
+					//ajouter les config du sql
+					$routes = $this->_domXml->createElement('sqls');
+					foreach ($this->_xmlContent['sqls'] as $key => $value) {
+						$route = $this->_domXml->createElement('sql', $value['value']);
+						$routes->appendChild($route);
+					}
+					$xml->appendChild($routes);
+
+					//ajouter les config du sql
+					$routes = $this->_domXml->createElement('langs');
+					foreach ($this->_xmlContent['langs'] as $key => $value) {
+						$route = $this->_domXml->createElement('sentence');
+						$route->setAttribute('id', $value['id']);
+
+						foreach ($value['sentence'] as $key2 => $value2) {
+							$route2 = $this->_domXml->createElement('lang', $value2);
+							$route2->setAttribute('lang', $key2);
+							$route->appendChild($route2);
+						}
+
+						$routes->appendChild($route);
+					}
+					$xml->appendChild($routes);
+
+					//ajouter les config du readme
+					$routes = $this->_domXml->createElement('readme', $this->_xmlContent['readme']);
+					$xml->appendChild($routes);
+
+					$this->_markupXml->appendChild($xml);
+
+				$this->_nodeXml->appendChild($this->_markupXml);
+				$this->_domXml->save(INSTALLED);
+			}
 		}
 
 		public function uninstall($id){
 			$this->_domXml = new DomDocument('1.0', CHARSET);
-			if($this->_domXml->loadXml(INSTALLED){
-				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+			if($this->_domXml->loadXml(INSTALLED)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('installed')->item(0);
 			}
 			else{
 				$this->_addError('Le fichier de désinstallation '.INSTALLED.' est endommagé.', __FILE__, __LINE__, ERROR);

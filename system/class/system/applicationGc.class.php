@@ -301,7 +301,7 @@
 			}
 		}
 		
-		final protected function _showHeader(){
+		final protected function showHeader(){
 			$this->_header.=$this->_doctype."\n";
 			$this->_header.="  <head>\n";
 			$this->_header.="    <title>".($this->_title)."</title>\n";

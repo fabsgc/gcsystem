@@ -24,6 +24,7 @@
 		const PARAM_FETCHCOLUMN         = 1;
 		const PARAM_FETCHINSERT         = 2;
 		const PARAM_FETCHUPDATE         = 3;
+		const PARAM_NORETURN            = 4;
 		
 		/**
 		 * Crée l'instance de la classe
@@ -164,7 +165,7 @@
 		 * @since 2.0
 		*/
 
-		public function  fetch($nom, $fetch = self::PARAM_FETCH){
+		public function fetch($nom, $fetch = self::PARAM_FETCH){
 			$this->_cache = new cacheGc($nom.'.sql', "", $this->time[''.$nom.'']);
 			
 			if($this->_cache->isDie() || $fetch == self::PARAM_FETCHINSERT){
@@ -220,6 +221,7 @@
 					case self::PARAM_FETCHCOLUMN : $this->_data = $this->_requete->fetchColumn(); break;
 					case self::PARAM_FETCHINSERT : $this->_data = true; break;
 					case self::PARAM_FETCHUPDATE : $this->_data = true; break;
+					case self::PARAM_NORETURN : $this->_data = true; break;
 					default : $this->_addError('cette constante n\'existe pas', __FILE__, __LINE__, ERROR); $this->_data=""; break;
 				}
 				
@@ -231,6 +233,7 @@
 							return $this->_cache->getCache(); break;
 					case self::PARAM_FETCHINSERT : return true; break;
 					case self::PARAM_FETCHUPDATE : return true; break;
+					case self::PARAM_NORETURN : return true; break;
 					default : $this->_addError('cette constante n\'existe pas', __FILE__, __LINE__, ERROR); $this->_data=""; break;
 				}
 			}

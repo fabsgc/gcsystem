@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <lang>
   <sentence id="windowinfo_Back">Retour</sentence>
   <sentence id="blockinfo_Back">Retour</sentence>
   <sentence id="bienvenue">Bienvenue !</sentence>
-  <sentence id="content">Bienvenue dans votre nouveau projet GCsystem, merci d'avoir choisi notre framework pour d&#233;velopper votre application.</sentence>
+  <sentence id="content">Bienvenue dans votre nouveau projet GCsystem, merci d'avoir choisi notre framework pour développer votre application.</sentence>
   <sentence id="liredoc">lire la documentation</sentence>
   <sentence id="lirecours">lire le cours d'introduction</sentence>
-  <sentence id="appDevGc_temp">interface de d&#233;veloppement en cours de cr&#233;ation</sentence>
+  <sentence id="appDevGc_temp">interface de développement en cours de création</sentence>
   <sentence id="maintenance">Le site web est pour l'instant indisponible.</sentence>
-  <sentence id="executiontime">temps d'ex&#233;cution</sentence>
-  <sentence id="memoireuse">m&#233;moire utilis&#233;e</sentence>
+  <sentence id="executiontime">temps d'exécution</sentence>
+  <sentence id="memoireuse">mémoire utilisée</sentence>
   <sentence id="fichierinclus">fichiers inclus</sentence>
-  <sentence id="requetesql">requ&#234;te sql ex&#233;cut&#233;es</sentence>
+  <sentence id="requetesql">requête sql exécutées</sentence>
   <sentence id="fichiertpl">fichiers de template inclus</sentence>
   <sentence id="vargetpost">variable get, post, session et file</sentence>
-  <sentence id="bbcodepreview">pr&#233;visualiser</sentence>
-  <sentence id="alertpreviewbbocde">vous devez &#233;crire la fonction pour l'utiliser</sentence>
+  <sentence id="bbcodepreview">prévisualiser</sentence>
+  <sentence id="alertpreviewbbocde">vous devez écrire la fonction pour l'utiliser</sentence>
   <sentence id="404">erreur 404 : page non trouvée</sentence>
   <sentence id="403">erreur 403 : accès interdit</sentence>
   <sentence id="500">erreur 500 : erreur interne au serveur</sentence>
