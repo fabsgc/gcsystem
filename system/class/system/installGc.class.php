@@ -20,11 +20,12 @@
 		protected $_id                      = ''     ;
 		protected $_name                    = ''     ;
 		protected $_bdd                     = null   ;
+		protected $_bddName                 = null   ;
 
 		protected $_readMe                  = ''     ;
 
-		public  function __construct($file = '', $bdd,  $lang = 'fr'){
-			$this->_setFile($file, $bdd);
+		public  function __construct($file = '', $bdd = null, $bddname = null, $lang = 'fr'){
+			$this->_setFile($file, $bdd, $bddname);
 
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();
@@ -515,7 +516,10 @@
 
 		protected function _checkConfigApp(){
 			//on ouvre app.xml et on vérifie si certaines define ne sont pas déjà prises
-			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(APP)){
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
+
+			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(APPCONFIG)){
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
 				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('apps')->item(0);
 				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('app');
@@ -536,6 +540,9 @@
 
 		protected function _checkConfigPlugins(){
 			//on ouvre plugins.xml et on vérifie si name et access ne sont pas déjà pris
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
+
 			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(PLUGIN)){
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
 				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('plugins')->item(0);
@@ -556,12 +563,31 @@
 							$this->_addError('l\'accès du plugin "'.$value->getAttribute('access').'" de la section n°'.$key.' est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
 						}
 					}
+
+					switch($value->getAttribute('type')){
+						case 'lib':
+							if(isset($this->_zipContent[LIB_PATH.$value->getAttribute('access')])){
+								$this->_conflit = false;
+								$this->_addError('la lib "'.LIB_PATH.$value->getAttribute('access').' n\'existe pas', __FILE__, __LINE__, ERROR);
+							}
+						break;
+
+						case 'helper':
+							if(isset($this->_zipConten[CLASS_PATH.CLASS_HELPER_PATH.$value->getAttribute('access')])){
+								$this->_conflit = false;
+								$this->_addError('le helper "'.CLASS_PATH.CLASS_HELPER_PATH.$value->getAttribute('access').'" n\'existe pas', __FILE__, __LINE__, ERROR);
+							}
+						break;
+					}
 				}
 			}
 		}
 
 		protected function _checkConfigFirewalls(){
 			//on ouvre firewall.xml et on vérifie access id n'existe pas déjà
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
+
 			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(FIREWALL)){
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
 				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('firewalls')->item(0);
@@ -585,6 +611,9 @@
 
 		protected function _checkConfigLangs(){
 			//on ouvre [lang].xml si il existe et on vérifie si sentence n'existe pas déjà
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
+
 			if($this->_domXml->loadXml($this->_zipContent['install.xml'])){
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
 				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('langs')->item(0);
@@ -613,19 +642,96 @@
 		}
 
 		protected function _checkConfigSqls(){
-			//je ne sais pas encore ^^
+			//modifier condition pour la prod, mais en dev, la co sql est trop lente
+			//on check juste si la co sql est valide
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
+
+			if($this->_domXml->loadXml($this->_zipContent['install.xml'])){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('sqls')->item(0);
+
+				if($this->_nodeXml->hasChildNodes() && (is_object($this->_bdd) || $this->_bddName == null)){
+					$this->_conflit = false;
+					$this->_addError('La connexion sql entrée en paramètre n\'est pas valide. Le plugin ne peut pas exécuter les requêtes necéssaires.', __FILE__, __LINE__, ERROR);
+				}
+				
+				if(!is_object($this->_bdd) && $this->_bddName != null){
+					//dans les fichiers de rubriques et manager, on corrige ça : $this->bdd[mauvaiseconnexion]
+					foreach ($this->_zipContent as $key => $value) {
+						if(preg_match('#(\.class\.php)$#isU', $key) && preg_match('#^app\/(.*)$#isU', $key)){
+							$this->_zipContent[$key] = preg_replace('#\$this\->bdd\[(.*)\]#isU', '$$this->bdd[\''.$this->_bddName.'\']', $value);
+						}
+					}
+				}
+			}
 		}
 
 		public function install(){
 			if($this->_zip->getIsExist()==true && $this->_conflit == true){
+				//on remplit les fichiers de configs
+					//routes
+					$this->_installConfigRoutes();
+
+					//apps
+					$this->_installConfigApp();
+
+					//plugins
+					$this->_installConfigPlugins();
+
+					//firewalls
+					$this->_installConfigFirewalls();
+
+					//langs
+					$this->_installConfigLangs();
+
+					//sqls
+					$this->_installConfigSqls();
+
+				//on installe les nouveaux fichiers
+				$this->_installFiles();
 			}
 			else{
 				return false;
 			}
 		}
 
+		protected function _installConfigRoutes(){
+
+		}
+
+		protected function _installConfigApp(){
+
+		}
+
+		protected function _installConfigPlugins(){
+
+		}
+
+		protected function _installConfigFirewalls(){
+
+		}
+
+		protected function _installConfigLangs(){
+
+		}
+
+		protected function _installConfigSqls(){
+
+		}
+
+		protected function _installFiles(){
+
+		}
+
 		public function uninstall($id){
-			
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			if($this->_domXml->loadXml(INSTALLED){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+			}
+			else{
+				$this->_addError('Le fichier de désinstallation '.INSTALLED.' est endommagé.', __FILE__, __LINE__, ERROR);
+			}
 		}
 
 		protected function _createLangInstance(){
@@ -636,8 +742,10 @@
 			return $this->_langInstance->loadSentence($sentence, $var);
 		}
 
-		protected function _setFile($file){
+		protected function _setFile($file, $bdd, $bddname){
 			$this->_zip = new zipGc($file);
+			$this->_bdd = $bdd;
+			$this->_bddName = $bddname;
 		}
 
 		protected function _mkmap($dir){

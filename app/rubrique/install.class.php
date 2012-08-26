@@ -13,8 +13,9 @@
 		
 		public function actionDefault(){
 			//$this->showDefault();
-			$install = new installGc('installtest.zip', null, $this->_lang);
+			$install = new installGc('installtest.zip', $this->bdd['test'], 'test', $this->_lang);
 			$install->check();
+			$install->install();
 			echo $install->showError();
 
 			function _mkmap($dir){

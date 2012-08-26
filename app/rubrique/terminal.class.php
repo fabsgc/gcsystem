@@ -24,4 +24,3 @@
 			echo $terminal->parse();
 		}
 	}
-?>

@@ -974,6 +974,7 @@
 					$this->_stream .= '<br />> see firewall';
 					$this->_stream .= '<br />> see antispam';
 					$this->_stream .= '<br />> see installed';
+					$this->_stream .= '<br />> see file nom';
 					$this->_stream .= '<br />> changepassword nouveaumdp';
 					$this->_stream .= '<br />> connect mdp';
 					$this->_stream .= '<br />> disconnect';
@@ -1013,6 +1014,33 @@
 						}
 					}
 					$this->_result = '<br />><span style="color: chartreuse;"> Les fichiers de configurations perdus ont bien été remplacés'.$sauvegarde.'</span>';
+				}
+				elseif(preg_match('#see file (.+)#', $this->_command)){
+					if(is_file($this->_commandExplode[2]) && file_exists($this->_commandExplode[2]) && is_readable($this->_commandExplode[2])){
+						$sauvegarde = file_get_contents($this->_commandExplode[2]);
+						$sauvegardes = explode("\n", $sauvegarde);
+								
+						$i = 0;
+								
+						foreach($sauvegardes as $key => $valeur){
+							$search = array ();
+							$replace = array ();
+							$valeur = preg_replace($search, $replace, $valeur);
+							if($i == 0){
+								$this->_stream .= '<br />> '.$key.'. <span style="color: chartreuse;">'.($valeur).'</span>';
+								$i=1;
+							}
+							else{
+								$this->_stream .= '<br />> '.$key.'. <span style="color: red;">'.($valeur).'</span>';
+								$i=0;
+							}							
+						}
+
+						$this->_result = '<br />><span style="color: chartreuse;"> Le fichier <strong>'.$this->_commandExplode[2].'</strong> a bien été affiché</span>';
+					}
+					else{
+						$this->_result = '<br />><span style="color: red;"> Le fichier <strong>'.$this->_commandExplode[2].'</strong> n\'existe pas.</span>';
+					}
 				}
 				elseif(preg_match('#see (.+)#', $this->_command)){
 					switch($this->_commandExplode[1]){
