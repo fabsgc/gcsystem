@@ -100,7 +100,12 @@
 			);
 
 			$this->_authorizedDir = array(
-				LIB_PATH
+				LIB_PATH,
+				FILE_PATH,
+				IMG_PATH,
+				CSS_PATH,
+				JS_PATH,
+				TEMPLATE_PATH
 			);
 		}
 
@@ -893,6 +898,10 @@
 				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('sql');
 
 				foreach ($this->_nodeXml as $key => $value) {
+					$value->nodeValue = preg_replace(
+						array('#&lt;#isU', '#&gt;#isU', '#&quot;#isU', '#&#39;#isU'), 
+						array('<', '>', '"', "'"),
+					$value->nodeValue);
 					$query->query($key, $value->nodeValue);
 					$query->fetch($key, sqlGc::PARAM_NORETURN);
 				}

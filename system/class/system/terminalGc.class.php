@@ -264,9 +264,46 @@
 							
 								$this->_nodeXml->appendChild($this->_markupXml);
 								$this->_domXml->save(PLUGIN);
+
+								$this->_result = '<br />> <span style="color: chartreuse;">le plugin <u>'.$this->_commandExplode[2].'</u> a bien été ajouté</span>';
+							}
+							else{
+								$this->_result = '<br />> <span style="color: chartreuse;">le plugin <u>'.$this->_commandExplode[2].'</u> existe déjà</span>';
+							}
+						}
+					}
+					else{
+						$this->_result = '<br />><span style="color: red;"> Erreur de syntaxe</span>';
+					}
+				}
+				elseif(preg_match('#add define (.+) (.+)#', $this->_command)){
+					if(isset($this->_commandExplode[2]) && isset($this->_commandExplode[3])){
+						$this->_domXml = new DomDocument('1.0', CHARSET);
+						if($this->_domXml->load(APPCONFIG)){							
+							$this->_nodeXml = $this->_domXml->getElementsByTagName('definitions')->item(0);
+							$sentences = $this->_nodeXml->getElementsByTagName('define');
+				
+							$rubrique = false;
+							
+							foreach($sentences as $sentence){
+								if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+									$rubrique = true;
+								}
 							}
 							
-							$this->_result = '<br />> <span style="color: chartreuse;">le plugin <u>'.$this->_commandExplode[2].'</u> a bien été ajouté</span>';
+							if($rubrique == false){
+								$this->_markupXml = $this->_domXml->createElement('define');
+								$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
+								$this->_markupXml->setAttribute("value", $this->_commandExplode[3]);
+							
+								$this->_nodeXml->appendChild($this->_markupXml);
+								$this->_domXml->save(APPCONFIG);
+
+								$this->_result = '<br />> <span style="color: chartreuse;">la constante utilisateur <u>'.$this->_commandExplode[2].'</u> a bien été ajoutée</span>';
+							}
+							else{
+								$this->_result = '<br />> <span style="color: red;">la constante utilisateur <u>'.$this->_commandExplode[2].'</u> existe déjà</span>';
+							}
 						}
 					}
 					else{
@@ -325,31 +362,66 @@
 				}
 				elseif(preg_match('#set plugin (.+)#', $this->_command)){
 					if(isset($this->_commandExplode[2]) && isset($this->_commandExplode[3]) && isset($this->_commandExplode[4]) && isset($this->_commandExplode[5]) && isset($this->_commandExplode[6])){
-						$this->_domXml = new DomDocument('1.0', CHARSET);
-						if($this->_domXml->load(PLUGIN)){					
-							if($this->_domXml->load(PLUGIN)){						
-								$this->_nodeXml = $this->_domXml->getElementsByTagName('plugins')->item(0);
-								$sentences = $this->_nodeXml->getElementsByTagName('plugin');
+						$this->_domXml = new DomDocument('1.0', CHARSET);		
+						
+						if($this->_domXml->load(PLUGIN)){						
+							$this->_nodeXml = $this->_domXml->getElementsByTagName('plugins')->item(0);
+							$sentences = $this->_nodeXml->getElementsByTagName('plugin');
 					
-								foreach($sentences as $sentence){
-									if ($sentence->getAttribute("name") == $this->_commandExplode[3]){
-										$this->_nodeXml->removeChild($sentence);
-										
-										$this->_markupXml = $this->_domXml->createElement('plugin');
-										$this->_markupXml->setAttribute("type", $this->_commandExplode[2]);
-										$this->_markupXml->setAttribute("name", $this->_commandExplode[3]);
-										$this->_markupXml->setAttribute("access", $this->_commandExplode[4]);
-										$this->_markupXml->setAttribute("enabled", $this->_commandExplode[5]);
-										$this->_markupXml->setAttribute("include", $this->_commandExplode[6]);
+							foreach($sentences as $sentence){
+								if ($sentence->getAttribute("name") == $this->_commandExplode[3]){
+									$this->_nodeXml->removeChild($sentence);
 									
-										$this->_nodeXml->appendChild($this->_markupXml);
-										$this->_domXml->save(PLUGIN);
-									}
+									$this->_markupXml = $this->_domXml->createElement('plugin');
+									$this->_markupXml->setAttribute("type", $this->_commandExplode[2]);
+									$this->_markupXml->setAttribute("name", $this->_commandExplode[3]);
+									$this->_markupXml->setAttribute("access", $this->_commandExplode[4]);
+									$this->_markupXml->setAttribute("enabled", $this->_commandExplode[5]);
+									$this->_markupXml->setAttribute("include", $this->_commandExplode[6]);
+									
+									$this->_nodeXml->appendChild($this->_markupXml);
 								}
-								$this->_domXml->save(PLUGIN);
 							}
-							
+							$this->_domXml->save(PLUGIN);
+
 							$this->_result = '<br />> <span style="color: chartreuse;">le plugin <u>'.$this->_commandExplode[2].'</u> a bien été modifié</span>';
+						}
+					}
+					else{
+						$this->_result = '<br />><span style="color: red;"> Erreur de syntaxe</span>';
+					}
+				}
+				elseif(preg_match('#set define (.+)#', $this->_command)){
+					if(isset($this->_commandExplode[2])){
+						$this->_domXml = new DomDocument('1.0', CHARSET);		
+						
+						if($this->_domXml->load(APPCONFIG)){				
+							$this->_nodeXml = $this->_domXml->getElementsByTagName('definitions')->item(0);
+							$sentences = $this->_nodeXml->getElementsByTagName('define');
+							
+							$this->_result = '<br />> <span style="color: red;">cette constante utilisateur <u>'.$this->_commandExplode[2].'</u> n\'existe pas</span>';
+
+							foreach($sentences as $sentence){
+								if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+									$value = $sentence->getAttribute("value");
+									$this->_nodeXml->removeChild($sentence);
+										
+									$this->_markupXml = $this->_domXml->createElement('define');
+									$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
+									
+									if(isset($this->_commandExplode[3])){
+										$this->_markupXml->setAttribute("value", $this->_commandExplode[3]);
+									}
+									else{
+										$this->_markupXml->setAttribute("value", $this->_commandExplode[3]);
+									}
+									
+									$this->_nodeXml->appendChild($this->_markupXml);
+
+									$this->_result = '<br />> <span style="color: chartreuse;">la constante utilisateur <u>'.$this->_commandExplode[2].'</u> a bien été modifiée</span>';
+								}
+							}
+							$this->_domXml->save(APPCONFIG);
 						}
 					}
 					else{
@@ -955,6 +1027,9 @@
 					$this->_stream .= '<br />> add plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
 					$this->_stream .= '<br />> set plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
 					$this->_stream .= '<br />> delete plugin name';
+					$this->_stream .= '<br />> add define nom valeur';
+					$this->_stream .= '<br />> set define nom nouveaunom valeur';
+					$this->_stream .= '<br />> delete define nom';
 					$this->_stream .= '<br />> list template';
 					$this->_stream .= '<br />> list included';
 					$this->_stream .= '<br />> list rubrique';
