@@ -16,4 +16,4 @@
     <route id="test2" url="/test/ajax" rubrique="test" action="ajax" vars="" cache="0"/>
 	<route id="install" url="/install" rubrique="install" action="" vars="" cache="0"/>
 	<route id="test4" url="/url-test4" rubrique="index" action="test" vars="" cache="0"/>
-</routes>
+<route id="installtest" url="/installtest" rubrique="installtest" action="" vars="" cache="10"/></routes>

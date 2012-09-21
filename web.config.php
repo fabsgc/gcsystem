@@ -63,6 +63,7 @@ define('CLASS_PLUGIN', CLASS_PATH.CLASS_SYSTEM_PATH.'pluginGc.class.php');
 define('CLASS_ROUTER', CLASS_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php');
 define('CLASS_ANTISPAM', CLASS_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php');
 define('CLASS_INSTALL', CLASS_PATH.CLASS_SYSTEM_PATH.'installGc.class.php');
+define('CLASS_CRON', CLASS_PATH.CLASS_SYSTEM_PATH.'cronGc.class.php');
 
 //lib
 define('GESHI', LIB_PATH.'geshi/geshi.php');
@@ -78,6 +79,7 @@ define('PLUGIN', APP_CONFIG_PATH.'plugin.xml');
 define('FIREWALL', APP_CONFIG_PATH.'firewall.xml');
 define('ASPAM', APP_CONFIG_PATH.'antispam.xml');
 define('INSTALLED', APP_CONFIG_PATH.'installed.xml');
+define('CRON', APP_CONFIG_PATH.'cron.xml');
 
 //logs messages
 define('WARNING', 'WARNING');
@@ -99,7 +101,7 @@ $GLOBALS['db']['bdd']['sgbd']      = "mysql";
 define('BDD', 'test');
 
 //connexion à la bdd, true ou false
-define('CONNECTBDD', true);
+define('CONNECTBDD', false);
 
 //utilisation du routeur
 define('REWRITE', true);

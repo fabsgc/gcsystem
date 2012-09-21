@@ -58,6 +58,10 @@
 			echo $this->getIp();
 			echo $this->getFirewallConfigLoginTargetId();
 		}
+
+		public function actionCron(){
+			echo 'trou du cul';
+		}
 		
 		public function actionPagination(){
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));

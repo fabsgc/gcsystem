@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<crons>
+   <cron rubrique="index" action="cron" time="1000" executed="1348250670"/>
+</crons>

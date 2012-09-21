@@ -25,6 +25,8 @@
 
 		protected $_readMe                  = ''     ;
 
+		protected $_conflitUninstall        = true   ; //true = pas de conflits, false = conflits
+
 		public  function __construct($file = '', $bdd = null, $bddname = null, $lang = 'fr'){
 			$this->_setFile($file, $bdd, $bddname);
 
@@ -33,7 +35,7 @@
 
 			//fichiers dont la modification est interdite
 			$this->_forbiddenFile = array(
-				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED,
+				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED, CRON,
 				MODEL_PATH.'index'.MODEL_EXT.'.php', MODEL_PATH.'terminal'.MODEL_EXT.'.php', 
 				RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php', FUNCTION_GENERIQUE,
 				TEMPLATE_PATH.ERRORDUOCUMENT_PATH.'403'.TEMPLATE_EXT, TEMPLATE_PATH.ERRORDUOCUMENT_PATH.'404'.TEMPLATE_EXT, TEMPLATE_PATH.ERRORDUOCUMENT_PATH.'500'.TEMPLATE_EXT,
@@ -72,6 +74,7 @@
 				SYSTEM_PATH.CLASS_SYSTEM_PATH.'langGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'logGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'modelGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'pluginGc.class.php',
 				SYSTEM_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'templateGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php', LANG_PATH.'en.xml', LANG_PATH.'fr.xml',
 				LANG_PATH.'nl.xml',
+				CLASS_CRON, CLASS_INSTALL, CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE, CLASS_LOG, CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE,CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
 			);
 			
 			//répertoires existants où il est interdit de créer des fichiers ou de toucher à des fichiers
@@ -111,6 +114,18 @@
 
 		public function getConflit(){
 			return $this->_conflit;
+		}
+
+		public function getConflitUninstall(){
+			return $this->_conflitUninstall;
+		}
+
+		public function getError(){
+			return $this->_error;
+		}
+
+		public function getReadMe(){
+			return $this->_xmlContent['readme'];
 		}
 
 		protected function _getNameId(){
@@ -936,7 +951,7 @@
 						}
 
 						foreach ($this->_zipContent as $key2 => $value2) {
-							if(!preg_match('#[\/]$#isU', strval($key2)) && $key != 'install.xml'){
+							if(!preg_match('#[\/]$#isU', strval($key2)) && $key2 != 'install.xml'){
 								//c'est un fichier, on va l'ajouter si il n'existe pas déjà
 
 								if(!is_file($key2) && !file_exists($key2)){
@@ -1052,13 +1067,37 @@
 			}
 		}
 
-		public function uninstall($id){
+		public function checkUninstall($id){
 			$this->_domXml = new DomDocument('1.0', CHARSET);
-			if($this->_domXml->loadXml(INSTALLED)){
+			if($this->_domXml->load(INSTALLED)){
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('installed')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('install');
+
+				$plugin = false;
+
+				foreach ($this->_nodeXml as $key => $value){
+					if($value->getAttribute('id') == $id){
+						$plugin = true;
+					}
+				}
+
+				if($plugin == false){
+					$this->_conflitUninstall = false;
+					$this->_addError('Le plugin d\'id '.$id.' n\'existe pas', __FILE__, __LINE__, ERROR);
+				}
 			}
 			else{
-				$this->_addError('Le fichier de désinstallation '.INSTALLED.' est endommagé.', __FILE__, __LINE__, ERROR);
+				$this->_conflitUninstall = false;
+				$this->_addError('Le fichier de désinstallation '.INSTALLED.' est endommagé', __FILE__, __LINE__, ERROR);
+			}
+		}
+
+		public function uninstall($id){
+			if($this->getConflitUninstall() == true){
+
+			}
+			else{
+				return false;
 			}
 		}
 

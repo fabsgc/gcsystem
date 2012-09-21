@@ -16,3 +16,4 @@
 	require_once(CLASS_APPDEVGC);
 	require_once(CLASS_TERMINAL);
 	require_once(CLASS_INSTALL);
+	require_once(CLASS_CRON);

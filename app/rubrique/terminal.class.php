@@ -20,7 +20,7 @@
 		}
 		
 		public function actionTerminal(){
-			$terminal = new terminalGC($_POST['message']);
+			$terminal = new terminalGC($_POST['message'], $this->bdd);
 			echo $terminal->parse();
 		}
 	}

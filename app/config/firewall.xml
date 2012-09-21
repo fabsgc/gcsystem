@@ -38,6 +38,6 @@
 			<url id="test2" connected="*" access="*"/>
 			<url id="install" connected="*" access="*"/>
 			<url id="test4" connected="*" access="*"/>
-		</access>
+		<url id="installtest" connected="true" access="*"/></access>
 	</firewall>
 </security>

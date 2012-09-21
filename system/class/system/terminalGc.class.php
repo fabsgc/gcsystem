@@ -20,9 +20,11 @@
 		protected $_updateDir                     ; //fichiers interdit
 		protected $_helperDefault                 ; //fichiers interdit
 		protected $_configIfNoExist               ; //liste des fichiers de config qui seront mis à jour dans le cas où il ne sont plus disponibles
+		protected $_bdd                           ; //connexion sql
 
-		public  function __construct($command, $lang = 'fr'){
+		public  function __construct($command, $bdd, $lang = 'fr'){
 			$this->_lang=$lang;
+			$this->_bdd=$bdd;
 			$this->_createLangInstance();
 			
 			$this->_commandExplode = explode(' ', trim($command));
@@ -31,14 +33,14 @@
 				MODEL_PATH.'terminal'.MODEL_EXT.'.php', MODEL_PATH.'index'.MODEL_EXT.'.php', FUNCTION_GENERIQUE, RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCrubrique'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
-				CLASS_INSTALL, CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE, CLASS_LOG, CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE,CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
+				CLASS_CRON, CLASS_INSTALL, CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE, CLASS_LOG, CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE,CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
 				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT,
 				CLASS_PATH.CLASS_HELPER_PATH.'fileGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'pictureGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'uploadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'zipGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'captchaGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'dateGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'feedGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'mailGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'modoGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'paginationGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'socialGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'text.class.php',
-				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED
+				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED, CRON
 			);
 
 			$this->_updateFile = array(
@@ -48,7 +50,7 @@
 				LIB_PATH.'FormsGC/formsGC.class.php', LIB_PATH.'FormsGC/formsGCValidator.class.php',
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCrubrique'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
-				CLASS_INSTALL, CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE, CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
+				CLASS_CRON, CLASS_INSTALL, CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE, CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
 				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT,
 				CLASS_PATH.CLASS_HELPER_PATH.'fileGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'pictureGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'uploadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'zipGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php',
@@ -63,7 +65,7 @@
 			);
 
 			$this->_configIfNoExist = array(
-				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED
+				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED, CRON
 			);
 		}
 
@@ -1011,6 +1013,68 @@
 					}
 					$this->_result = '<br />><span style="color: chartreuse;"> le log a bien été vidé</span>';
 				}
+				elseif(preg_match('#install rubrique (.*) (.*)#', $this->_command)){
+					$install = new installGc($this->_commandExplode[2], $this->_bdd[''.$this->_commandExplode[3].''], $this->_commandExplode[3], $this->_lang);
+					$install->check();
+
+					if($install->getConflit() == true){
+						$install->install();
+
+						$this->_stream .= '<br />> <span style="color: chartreuse;">'.($install->getReadMe()).'</span>';
+						$this->_result = '<br />><span style="color: chartreuse;"> Le plugin '.$this->_commandExplode[2].' a bien été installé</span>';
+					}
+					else{
+						$i = 0;
+								
+						foreach($install->getError() as $valeur){
+							if(strlen($valeur)>=10){
+								$search = array ();
+								$replace = array ();
+								$valeur = preg_replace($search, $replace, $valeur);
+								if($i == 0){
+									$this->_stream .= '<br />> <span style="color: chartreuse;">'.($valeur).'</span>';
+									$i=1;
+								}
+								else{
+									$this->_stream .= '<br />> <span style="color: red;">'.($valeur).'</span>';
+									$i=0;
+								}	
+							}							
+						}
+
+						$this->_result = '<br />><span style="color: red;"> Le plugin '.$this->_commandExplode[2].' n\'a pas pu être installé</span>';
+					}
+				}
+				elseif(preg_match('#uninstall rubrique (.*)#', $this->_command)){
+					$install = new installGc();
+					$install->checkUninstall($this->_commandExplode[2]);
+
+					if($install->getConflitUninstall() == true){
+						$install->uninstall($this->_commandExplode[2]);
+						$this->_result = '<br />><span style="color: chartreuse;"> Le plugin d\'id '.$this->_commandExplode[2].' a bien été désinstallé</span>';
+					}
+					else{
+						$i = 0;
+								
+						foreach($install->getError() as $valeur){
+							if(strlen($valeur)>=10){
+								$search = array ();
+								$replace = array ();
+								$valeur = preg_replace($search, $replace, $valeur);
+								if($i == 0){
+									$this->_stream .= '<br />> <span style="color: chartreuse;">'.($valeur).'</span>';
+									$i=1;
+								}
+								else{
+									$this->_stream .= '<br />> <span style="color: red;">'.($valeur).'</span>';
+									$i=0;
+								}	
+							}							
+						}
+
+						$this->_result = '<br />><span style="color: red;"> Le plugin d\'id '.$this->_commandExplode[2].' n\'a pas pu être désinstallé</span>';
+					}
+				}
 				elseif(preg_match('#help#', $this->_command)){
 					$this->_stream .= '<br />> add rubrique nom (url[lien] action[nom|empty] vars[getvar,getvar|empty] connect[true|false|*] access[role1,role2|*]  cache[secondes]) facultatif';
 					$this->_stream .= '<br />> set rubrique nom nouveaunom (url[lien] action[nom|empty] vars[getvar,getvar|empty] connect[true|false|*] access[role1,role2|*]  cache[secondes]) facultatif';
@@ -1039,8 +1103,8 @@
 					$this->_stream .= '<br />> clear';
 					$this->_stream .= '<br />> update';
 					$this->_stream .= '<br />> update updater';
-					$this->_stream .= '<br />> install rubrique folder';
-					$this->_stream .= '<br />> uninstall rubrique folder';
+					$this->_stream .= '<br />> install rubrique folder base';
+					$this->_stream .= '<br />> uninstall rubrique id';
 					$this->_stream .= '<br />> recover config';
 					$this->_stream .= '<br />> see log nomdulogsansextansion';
 					$this->_stream .= '<br />> see route';
