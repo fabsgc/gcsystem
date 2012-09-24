@@ -12,7 +12,7 @@
 		
 		public function actionDefault(){
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
-			echo $this->_showHeader();
+			echo $this->showHeader();
 				$t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', '0');
 				$t->assign(array(
 					'var'=> 'salutsalut',
@@ -61,11 +61,17 @@
 
 		public function actionCron(){
 			echo 'trou du cul';
+			$_SESSION['trouducul'] = 'salut ducon';
 		}
 		
+		public function actionCron2(){
+			echo 'trou du cul';
+			$_SESSION['trouducul2'] = 'salut ducon';
+		}
+
 		public function actionPagination(){
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
-			echo $this->_showHeader();
+			echo $this->showHeader();
 			
 			?>
 			<form action="#" method="get">

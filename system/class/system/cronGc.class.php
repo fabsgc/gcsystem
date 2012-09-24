@@ -16,10 +16,46 @@
 				$this->_markupXml = $this->_nodeXml->getElementsByTagName('cron');
 
 				foreach($this->_markupXml as $sentence){
-					if ($sentence->getAttribute("executed") < (time + $sentence->getAttribute("time"))){
-						
+					if (($sentence->getAttribute("executed") + $sentence->getAttribute("time")) < (time())){
+						$sentence->setAttribute("executed", time());
+						$this->_domXml->save(CRON);
+						//le cron doit être réexécuté : on le reexecute et on
+						$rubrique = $sentence->getAttribute("rubrique");
+						$this->_setRubrique($sentence->getAttribute("rubrique")); //on inclut les fichiers necéssaire à l'utilisation d'une rubrique
+						$class = new $rubrique($this->_lang);
+						ob_start ();
+							$class->init();
+							if(is_callable(array($rubrique, 'action'.ucfirst($sentence->getAttribute("action"))))){
+								$action = 'action'.ucfirst($sentence->getAttribute("action"));
+								$class->$action();
+								$this->_addError('CRON : Appel du contrôleur "action'.ucfirst($sentence->getAttribute("action")).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__, INFORMATION);
+							}
+							else{
+								$this->_addError('CRON : L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué.', __FILE__, __LINE__, WARNING);
+							}
+						$this->_output = ob_get_contents();
+						ob_get_clean();
 					}
 				}
+			}
+			else{
+				$this->_addError('Le fichier des tâches crons "'.CRON.'" n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
+			}
+		}
+
+		private function _setRubrique($rubrique){
+			if(file_exists(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php')){
+				if(file_exists(MODEL_PATH.$rubrique.MODEL_EXT.'.php')){
+					require_once(MODEL_PATH.$rubrique.MODEL_EXT.'.php');
+					$this->_addError('CRON : Chargement des fichiers "'.RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php" et "'.MODEL_PATH.$rubrique.MODEL_EXT.'.php"', __FILE__, __LINE__, INFORMATION);
+				}
+				require_once(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php');
+				return true;
+			}
+			else{ 
+				$this->_addError($this->_useLang('CRON : rubriquenotfound', array('rubrique' => $rubrique)), __FILE__, __LINE__, ERROR);
+				$this->_addError('CRON : Echec lors du chargement des fichiers "'.RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php" et "'.MODEL_PATH.$rubrique.MODEL_EXT.'.php"', __FILE__, __LINE__, ERROR);
+				return false;
 			}
 		}
 		

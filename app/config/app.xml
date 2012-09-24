@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<definitions>
+<definitions value="vald">
 	<define id="bonjour" value="salutlespoux"/>
-<define id="installtest" value="installtestvalue"/></definitions>
+	<define id="installtest" value="installtestvalue"/>
+	<define id="prout" value="vald"/>
+</definitions>

@@ -13,7 +13,7 @@
 		
 		public function actionDefault(){
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
-			echo $this->_showHeader();
+			echo $this->showHeader();
 			$_SESSION['test'] = 1
 			?>
 				<script type="text/javascript">

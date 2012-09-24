@@ -1,6 +1,467 @@
-11/09/2012 a 13:37:59 ! : Erreur [4096] (Object of class installtest could not be converted to string) dans le fichier C:\wamp\www\GCsystem\app\rubrique\installtest.class.php a la ligne 16
-11/09/2012 a 13:37:59 ! : Erreur [8] (Object of class installtest to string conversion) dans le fichier C:\wamp\www\GCsystem\app\rubrique\installtest.class.php a la ligne 16
-11/09/2012 a 13:37:59 ! : Erreur [8] (Undefined variable: Object) dans le fichier C:\wamp\www\GCsystem\app\rubrique\installtest.class.php a la ligne 16
-11/09/2012 a 13:37:59 ! : Erreur [8] (Trying to get property of non-object) dans le fichier C:\wamp\www\GCsystem\app\rubrique\installtest.class.php a la ligne 16
-21/09/2012 a 18:47:20 ! : The rubric  were not found
-21/09/2012 a 18:47:33 ! : The rubric  were not found
+24/09/2012 a 18:21:34 ! : Erreur [8] (Use of undefined constant time - assumed 'time') dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 19
+24/09/2012 a 18:22:22 ! : Erreur [8] (Use of undefined constant time - assumed 'time') dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 19
+24/09/2012 a 18:22:23 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 78
+24/09/2012 a 18:22:23 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:22:23 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:22:55 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 78
+24/09/2012 a 18:22:55 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:22:55 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:40:49 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 22
+24/09/2012 a 18:40:49 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:40:49 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 78
+24/09/2012 a 18:40:49 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:40:49 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:42:14 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 22
+24/09/2012 a 18:42:14 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:42:14 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:42:14 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 79
+24/09/2012 a 18:42:14 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:42:14 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:42:30 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 22
+24/09/2012 a 18:42:30 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:42:30 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:42:31 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 22
+24/09/2012 a 18:42:31 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:42:31 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:49:32 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 22
+24/09/2012 a 18:49:32 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:49:32 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:49:32 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 22
+24/09/2012 a 18:49:32 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:49:32 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:49:32 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 18:49:32 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:49:32 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:52:38 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 24
+24/09/2012 a 18:52:38 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:52:38 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:52:38 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 24
+24/09/2012 a 18:52:38 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:52:38 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:52:38 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 18:52:38 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:52:38 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:52:48 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 24
+24/09/2012 a 18:52:48 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:52:48 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:52:48 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 24
+24/09/2012 a 18:52:48 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:52:48 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:52:53 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 24
+24/09/2012 a 18:52:53 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:52:53 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:52:53 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 24
+24/09/2012 a 18:52:53 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:52:53 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:57:05 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:57:05 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:57:05 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:57:05 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:57:05 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:57:05 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:57:05 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 18:57:05 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:57:05 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:57:10 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:57:10 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:57:10 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:57:10 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:57:10 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:57:10 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:57:14 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:57:14 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:57:14 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:57:14 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:57:14 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:57:14 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:57:15 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:57:15 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:57:15 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:57:15 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:57:15 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:57:15 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:57:15 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:57:15 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:57:15 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:57:15 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:57:15 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:57:15 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:57:47 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:57:47 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:57:47 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:57:47 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:57:47 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:57:47 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:57:47 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 18:57:47 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:57:47 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:58:39 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:58:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:58:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:58:39 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:58:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:58:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:58:39 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 18:58:39 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:58:39 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 18:58:45 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:58:45 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:58:45 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 18:58:45 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 18:58:45 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 18:58:45 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 19:00:50 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 19:00:50 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 19:00:50 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 19:00:50 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 19:00:50 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 19:00:50 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 19:00:54 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 19:00:54 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 19:00:54 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 19:53:13 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 19:53:13 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 19:53:13 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 19:53:13 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 19:53:13 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 19:53:13 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 19:53:13 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 19:53:13 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 19:53:13 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 19:53:21 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 19:53:21 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 19:53:21 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 19:53:24 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 19:53:24 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 19:53:24 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 19:53:27 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 19:53:27 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 19:53:27 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:01:33 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:01:33 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:01:33 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:01:34 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 20:01:34 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 20:01:34 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 20:01:39 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:01:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:01:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:01:43 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:01:43 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:01:43 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:01:46 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:01:46 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:01:46 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:01:59 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:01:59 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:01:59 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:02:09 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:02:09 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:02:09 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:02:10 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 20:02:10 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 20:02:10 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 20:02:11 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:02:11 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:02:11 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:03:04 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:03:04 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:03:04 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:03:05 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 20:03:05 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 20:03:05 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 20:03:06 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:03:06 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:03:06 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:03:28 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:03:28 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:03:28 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:03:30 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:03:30 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:03:30 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:03:32 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:03:32 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:03:32 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:03:37 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:03:37 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:03:37 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:04:31 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:04:31 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:04:31 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:04:31 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 20:04:31 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 20:04:31 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 20:04:38 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:04:38 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:04:38 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:04:40 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:04:40 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:04:40 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:04:42 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:04:42 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:04:42 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:19:27 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:19:27 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:19:27 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:19:27 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:19:27 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:19:27 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:19:32 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:19:32 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:19:32 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:19:39 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:19:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:19:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:20:01 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:20:01 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:20:01 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:24:07 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:24:07 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:24:07 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:28:35 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:28:35 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:28:35 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:28:45 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:28:45 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:28:45 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:31:24 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:31:24 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:31:24 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:31:33 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:31:33 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:31:33 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:31:38 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:31:38 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:31:38 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:31:38 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 20:31:38 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 20:31:38 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 20:31:47 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:31:47 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:31:47 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:33:24 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:33:24 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:33:24 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:33:34 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:33:34 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:33:34 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:34:13 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:34:13 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:34:13 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:35:02 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:35:02 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:35:02 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:35:12 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:35:12 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:35:12 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:35:29 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:35:29 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:35:29 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:35:41 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:35:41 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:35:41 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:43:47 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:43:47 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:43:47 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:43:47 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:43:47 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:43:47 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:44:54 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:44:54 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:44:54 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:46:18 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:46:18 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:46:18 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:46:18 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 20:46:18 ! : Erreur [8] (Undefined index: page) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 102
+24/09/2012 a 20:46:18 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 20:46:18 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 20:46:22 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:46:22 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:46:22 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:47:26 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:47:26 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:47:26 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:47:54 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:47:54 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:47:54 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:48:07 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:48:07 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:48:07 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:48:12 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:48:12 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:48:12 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:48:26 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:48:26 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:48:26 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 20:59:11 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 20:59:11 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 20:59:11 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:00:40 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:00:40 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:00:40 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:00:40 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:00:40 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:00:40 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:06:07 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:06:07 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:06:07 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:06:52 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:06:52 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:06:52 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:12:48 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:12:48 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:12:48 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:13:40 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:13:40 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:13:40 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:14:04 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:14:04 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:14:04 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:14:26 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:14:26 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:14:26 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:15:48 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:15:48 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:15:48 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:15:58 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:15:58 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:15:58 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:16:25 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:16:25 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:16:25 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:16:44 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:16:44 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:16:44 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:18:48 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:18:48 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:18:48 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:18:48 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:18:48 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:18:48 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:18:53 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:18:53 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:18:53 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:19:06 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:19:06 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:19:06 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:20:02 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:20:02 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:20:02 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:20:05 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:20:05 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:20:05 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:20:19 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:20:19 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:20:19 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:20:39 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:20:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:20:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:21:33 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:21:33 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:21:33 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:21:36 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:21:36 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:21:36 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:21:56 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:21:56 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:21:56 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:22:46 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:22:46 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:22:46 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:23:06 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:23:06 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:23:06 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:25:07 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:25:07 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:25:07 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:25:16 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:25:16 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:25:16 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:26:32 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:26:32 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:26:32 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:26:36 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:26:36 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:26:36 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:26:50 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:26:50 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:26:50 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:26:57 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:26:57 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:26:57 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:27:00 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:27:00 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:27:00 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:35:39 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:35:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:35:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:35:39 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:35:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:35:39 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:35:39 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 84
+24/09/2012 a 21:35:39 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 21:35:39 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 285
+24/09/2012 a 21:37:49 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:37:49 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:37:49 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:37:54 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:37:54 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:37:54 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:37:54 ! : Erreur [8] (Use of undefined constant fichier - assumed 'fichier') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 285
+24/09/2012 a 21:37:54 ! : Erreur [8] (Use of undefined constant fichier - assumed 'fichier') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 285
+24/09/2012 a 21:38:34 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:38:34 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:38:34 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:38:34 ! : Erreur [8] (Use of undefined constant fichier - assumed 'fichier') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 286
+24/09/2012 a 21:38:34 ! : Erreur [8] (Use of undefined constant fichier - assumed 'fichier') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 286
+24/09/2012 a 21:39:10 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:39:10 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:39:10 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:39:11 ! : Erreur [8] (Use of undefined constant fichier - assumed 'fichier') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 287
+24/09/2012 a 21:39:11 ! : Erreur [8] (Use of undefined constant fichier - assumed 'fichier') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 287
+24/09/2012 a 21:39:29 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:39:29 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:39:29 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:39:29 ! : Erreur [8] (Use of undefined constant fichier - assumed 'fichier') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 288
+24/09/2012 a 21:39:29 ! : Erreur [8] (Use of undefined constant fichier - assumed 'fichier') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 288
+24/09/2012 a 21:40:10 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:40:10 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:40:10 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:40:10 ! : Erreur [8] (Use of undefined constant fichier - assumed 'fichier') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 288
+24/09/2012 a 21:40:10 ! : Erreur [8] (Use of undefined constant fichier - assumed 'fichier') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 288
+24/09/2012 a 21:40:19 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:40:19 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:40:19 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:40:19 ! : Erreur [8] (Use of undefined constant fichier - assumed 'fichier') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 288
+24/09/2012 a 21:40:19 ! : Erreur [8] (Use of undefined constant fichier - assumed 'fichier') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 288
+24/09/2012 a 21:40:33 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:40:33 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:40:33 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:47:50 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:47:50 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:47:50 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:48:02 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:48:02 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:48:02 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:48:28 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:48:28 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:48:28 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:52:30 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:52:30 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:52:30 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:52:30 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:52:30 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:52:30 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:52:54 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:52:54 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:52:54 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:57:52 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:57:52 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:57:52 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:57:55 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:57:55 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:57:55 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81
+24/09/2012 a 21:57:57 ! : Erreur [8] (Undefined property: cronGc::$_lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\cronGc.class.php a la ligne 25
+24/09/2012 a 21:57:57 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 48
+24/09/2012 a 21:57:57 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 81

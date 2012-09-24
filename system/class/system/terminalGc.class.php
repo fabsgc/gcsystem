@@ -8,7 +8,7 @@
 
 	class terminalGc{
 		use errorGc, langInstance, domGc, generalGc;                  //trait
-		
+
 		protected $_command                       ; //contenu à traiter
 		protected $_stream                        ; //contenu à afficher
 		protected $_commandExplode                ; //contenu à traiter
@@ -137,7 +137,7 @@
 							$rubrique = false;
 							
 							foreach($sentences as $sentence){
-								if ($sentence->getAttribute("rubrique") == $this->_commandExplode[2]){
+								if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
 									$rubrique = true;
 								}
 							}
@@ -312,6 +312,12 @@
 						$this->_result = '<br />><span style="color: red;"> Erreur de syntaxe</span>';
 					}
 				}
+				elseif(preg_match('#add cron (.+) (.+) (.+) (.+)#', $this->_command)){
+				}
+				elseif(preg_match('#set cron (.+) (.+) (.+) (.+)#', $this->_command)){
+				}
+				elseif(preg_match('#delete cron (.+)#', $this->_command)){
+				}
 				elseif(preg_match('#delete rubrique (.+)#', $this->_command)){
 					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden) && !in_array(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', $this->_forbidden)){
 						if(file_exists(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php') && is_readable(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php')){
@@ -329,30 +335,23 @@
 						if($this->_domXml->load(ROUTE)){							
 							$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
 							$sentences = $this->_nodeXml->getElementsByTagName('route');
-				
+
 							foreach($sentences as $sentence){
-								if ($sentence->getAttribute("rubrique") == $this->_commandExplode[2]){
-									$this->_nodeXml->removeChild($sentence);    
+								if($sentence->getAttribute('rubrique') == $this->_commandExplode[2]){
+									$this->_dom2Xml = new DomDocument('1.0', CHARSET);
+
+									if($this->_dom2Xml->load(FIREWALL)){
+										$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('security')->item(0);
+										$this->_node2Xml = $this->_node2Xml->getElementsByTagName('firewall')->item(0);
+										$this->_node2Xml = $this->_node2Xml->getElementsByTagName('access')->item(0);
+										$sentences2 = $this->_node2Xml->getElementsByTagName('url');
+
+										$this->_removeChild(FIREWALL, $this->_dom2Xml, $this->_node2Xml, $sentences2, "id", $sentence->getAttribute('id'));
+									}
 								}
 							}
-							$this->_domXml->save(ROUTE);
-						}
-						
-						$this->_domXml = new DomDocument('1.0', CHARSET);
-				
-						if($this->_domXml->load(FIREWALL)){
-							$this->_nodeXml = $this->_domXml->getElementsByTagName('security')->item(0);
-							$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewall')->item(0);
-							$this->_node3Xml = $this->_node2Xml->getElementsByTagName('access')->item(0);
-							$sentences = $this->_node3Xml->getElementsByTagName('url');
-							
-							foreach($sentences as $sentence){
-								if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
-									$this->_node3Xml->removeChild($sentence);    
-								}
-							}
-							
-							$this->_domXml->save(FIREWALL);
+
+							$this->_removeChild(ROUTE, $this->_domXml, $this->_nodeXml, $sentences, "rubrique", $this->_commandExplode[2]);
 						}
 
 						$this->_result = '<br />><span style="color: chartreuse;"> la rubrique <u>'.$this->_commandExplode[2].'</u> a bien été supprimée</span>';
@@ -372,16 +371,11 @@
 					
 							foreach($sentences as $sentence){
 								if ($sentence->getAttribute("name") == $this->_commandExplode[3]){
-									$this->_nodeXml->removeChild($sentence);
-									
-									$this->_markupXml = $this->_domXml->createElement('plugin');
-									$this->_markupXml->setAttribute("type", $this->_commandExplode[2]);
-									$this->_markupXml->setAttribute("name", $this->_commandExplode[3]);
-									$this->_markupXml->setAttribute("access", $this->_commandExplode[4]);
-									$this->_markupXml->setAttribute("enabled", $this->_commandExplode[5]);
-									$this->_markupXml->setAttribute("include", $this->_commandExplode[6]);
-									
-									$this->_nodeXml->appendChild($this->_markupXml);
+									$sentence->setAttribute("type", $this->_commandExplode[2]);
+									$sentence->setAttribute("name", $this->_commandExplode[3]);
+									$sentence->setAttribute("access", $this->_commandExplode[4]);
+									$sentence->setAttribute("enabled", $this->_commandExplode[5]);
+									$sentence->setAttribute("include", $this->_commandExplode[6]);
 								}
 							}
 							$this->_domXml->save(PLUGIN);
@@ -405,20 +399,9 @@
 
 							foreach($sentences as $sentence){
 								if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
-									$value = $sentence->getAttribute("value");
-									$this->_nodeXml->removeChild($sentence);
-										
-									$this->_markupXml = $this->_domXml->createElement('define');
-									$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
-									
 									if(isset($this->_commandExplode[3])){
-										$this->_markupXml->setAttribute("value", $this->_commandExplode[3]);
-									}
-									else{
-										$this->_markupXml->setAttribute("value", $this->_commandExplode[3]);
-									}
-									
-									$this->_nodeXml->appendChild($this->_markupXml);
+										$sentence->setAttribute("value", $this->_commandExplode[3]);
+									}							
 
 									$this->_result = '<br />> <span style="color: chartreuse;">la constante utilisateur <u>'.$this->_commandExplode[2].'</u> a bien été modifiée</span>';
 								}
@@ -512,7 +495,7 @@
 						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
 					}
 				}
-				elseif(preg_match('#set class (.+)#', $this->_command)){
+				elseif(preg_match('#set helper (.+)#', $this->_command)){
 					if(is_file(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && file_exists(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && is_readable(CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php') && !in_array($this->_commandExplode[2], $this->_helperDefault)){
 						$this->_domXml = new DomDocument('1.0', CHARSET);
 					
@@ -522,27 +505,24 @@
 
 							foreach($sentences as $sentence){
 								if ($sentence->getAttribute("name") == $this->_commandExplode[2]){
-									$this->_nodeXml->removeChild($sentence); 
 
-									$this->_markupXml = $this->_domXml->createElement('plugin');
-									$this->_markupXml->setAttribute("type", 'helper');
-									$this->_markupXml->setAttribute("name", $this->_commandExplode[2]);
-									$this->_markupXml->setAttribute("access", $this->_commandExplode[2].'.class.php');
+									$sentence->setAttribute("type", 'helper');
+									$sentence->setAttribute("name", $this->_commandExplode[2]);
+									$sentence->setAttribute("access", $this->_commandExplode[2].'.class.php');
 									if(isset($this->_commandExplode[3]) && ($this->_commandExplode[3] == 'true' || $this->_commandExplode[3] == 'false')){
-										$this->_markupXml->setAttribute("enabled", $this->_commandExplode[3]);
+										$sentence->setAttribute("enabled", $this->_commandExplode[3]);
 									}
 									else{
-										$this->_markupXml->setAttribute("enabled", 'true');
+										$sentence->setAttribute("enabled", 'true');
 									}
 									if(isset($this->_commandExplode[4]) && ($this->_commandExplode[4] == '*' || preg_match('#yes\[(.+)\]#isU', $this->_commandExplode[4]) || preg_match('#no\[(.+)\]#isU', $this->_commandExplode[4]))){
-										$this->_markupXml->setAttribute("include", $this->_commandExplode[4]);
+										$sentence->setAttribute("include", $this->_commandExplode[4]);
 									}
 									else{
-										$this->_markupXml->setAttribute("include", '*');
+										$sentence->setAttribute("include", '*');
 									}
 								}
 							}
-							$this->_nodeXml->appendChild($this->_markupXml);
 							$this->_domXml->save(PLUGIN);
 
 							$this->_stream .= '<br />> '.CLASS_PATH.CLASS_HELPER_PATH.$this->_commandExplode[2].'.class.php';
@@ -660,104 +640,9 @@
 						
 									foreach($sentences as $sentence){
 										if ($sentence->getAttribute("rubrique") == $this->_commandExplode[2]){
-											$id = $sentence->getAttribute("id");
-											$url = $sentence->getAttribute("url");
-											$action = $sentence->getAttribute("action");
-											$vars = $sentence->getAttribute("vars");
-											$cache = $sentence->getAttribute("cache");
-											$this->_nodeXml->removeChild($sentence);
-											
-											$this->_markupXml = $this->_domXml->createElement('route');
-											$this->_markupXml->setAttribute("id", $id);
-
-											if(isset($this->_commandExplode[4])){
-												$this->_markupXml->setAttribute("url", $this->_commandExplode[4]);
-											}
-											else{
-												$this->_markupXml->setAttribute("url", $url);
-											}
-											
-											$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[3]);
-											
-											if(isset($this->_commandExplode[5])){
-												if($this->_commandExplode[5] == 'empty'){
-													$this->_markupXml->setAttribute("action", '');
-												}
-												else{
-													$this->_markupXml->setAttribute("action", $this->_commandExplode[5]);
-												}
-											}
-											else{
-												$this->_markupXml->setAttribute("action", $action);
-											}
-											
-											if(isset($this->_commandExplode[6])){
-												if($this->_commandExplode[6] == 'empty'){
-													$this->_markupXml->setAttribute("vars", '');
-												}
-												else{
-													$this->_markupXml->setAttribute("vars", $this->_commandExplode[6]);
-												}
-											}
-											else{
-												$this->_markupXml->setAttribute("vars", $vars);
-											}
-
-
-											if(isset($this->_commandExplode[9])){
-												if(!is_int($this->_commandExplode[9] == 'empty') || $this->_commandExplode[8] < 0){
-													$this->_markupXml->setAttribute("cache", '0');
-												}
-												else{
-													$this->_markupXml->setAttribute("cache", $this->_commandExplode[8]);
-												}
-											}
-											else{
-												$this->_markupXml->setAttribute("cache", '0');
-											}
-
-
-											$this->_nodeXml->appendChild($this->_markupXml);
+											$sentence->setAttribute("rubrique", $this->_commandExplode[3]);
 											$this->_domXml->save(ROUTE);
-											
-											
-											$this->_dom2Xml = new DomDocument('1.0', CHARSET);
-											if($this->_dom2Xml->load(FIREWALL)){
-												$this->_node4Xml = $this->_dom2Xml->getElementsByTagName('security')->item(0);
-												$this->_node5Xml = $this->_node4Xml->getElementsByTagName('firewall')->item(0);
-												$this->_node6Xml = $this->_node5Xml->getElementsByTagName('access')->item(0);
-												
-												$sentences2 = $this->_node6Xml->getElementsByTagName('url');
-												
-												foreach ($sentences2 as $sentence2){
-													if ($sentence2->getAttribute("id") == $id){
-														$connected = $sentence->getAttribute("connected");
-														$access = $sentence->getAttribute("access");
-														
-														$this->_node6Xml->removeChild($sentence2);
-														
-														$this->_markup2Xml = $this->_dom2Xml->createElement('url');
-														$this->_markup2Xml->setAttribute("id", $id);
-														
-														if(isset($this->_commandExplode[7])){
-															$this->_markup2Xml->setAttribute("connected", $this->_commandExplode[7]);
-														}
-														else{
-															$this->_markup2Xml->setAttribute("connected", $connected);
-														}
-														
-														if(isset($this->_commandExplode[8])){
-															$this->_markup2Xml->setAttribute("access", $this->_commandExplode[8]);
-														}
-														else{
-															$this->_markup2Xml->setAttribute("access", '*');
-														}
-														
-														$this->_node6Xml->appendChild($this->_markup2Xml);
-														$this->_dom2Xml->save(FIREWALL);
-													}
-												}
-											}
+
 										}
 									}
 								}
@@ -869,18 +754,15 @@
 				
 						foreach($sentences as $sentence){
 							if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
-								$this->_nodeXml->removeChild($sentence); 
-
-								$this->_markupXml = $this->_domXml->createElement('route');
-								$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
-								$this->_markupXml->setAttribute("url", '/'.$this->_commandExplode[3]);
-								$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[4]);
-								$this->_markupXml->setAttribute("action", $this->_commandExplode[5]);
-								$this->_markupXml->setAttribute("vars", $this->_commandExplode[6]);
-								$this->_markupXml->setAttribute("cache", intval($this->_commandExplode[9]));
-								$this->_nodeXml->appendChild($this->_markupXml);
+								$sentence->setAttribute("id", $this->_commandExplode[2]);
+								$sentence->setAttribute("url", '/'.$this->_commandExplode[3]);
+								$sentence->setAttribute("rubrique", $this->_commandExplode[4]);
+								$sentence->setAttribute("action", $this->_commandExplode[5]);
+								$sentence->setAttribute("vars", $this->_commandExplode[6]);
+								$sentence->setAttribute("cache", intval($this->_commandExplode[9]));
 
 								$route = true;
+
 								$this->_domXml->save(ROUTE);
 
 								$this->_domXml = new DomDocument('1.0', CHARSET);
@@ -894,14 +776,9 @@
 									
 									foreach($sentences as $sentence){
 										if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
-											$this->_node3Xml->removeChild($sentence);
-
-											$this->_markupXml = $this->_domXml->createElement('url');
-											$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
-											$this->_markupXml->setAttribute("connected", $this->_commandExplode[7]);
-											$this->_markupXml->setAttribute("access", $this->_commandExplode[8]);
-											
-											$this->_node3Xml->appendChild($this->_markupXml);
+											$sentence->setAttribute("id", $this->_commandExplode[2]);
+											$sentence->setAttribute("connected", $this->_commandExplode[7]);
+											$sentence->setAttribute("access", $this->_commandExplode[8]);
 											$this->_domXml->save(FIREWALL);
 										}
 									}
@@ -1076,8 +953,8 @@
 					}
 				}
 				elseif(preg_match('#help#', $this->_command)){
-					$this->_stream .= '<br />> add rubrique nom (url[lien] action[nom|empty] vars[getvar,getvar|empty] connect[true|false|*] access[role1,role2|*]  cache[secondes]) facultatif';
-					$this->_stream .= '<br />> set rubrique nom nouveaunom (url[lien] action[nom|empty] vars[getvar,getvar|empty] connect[true|false|*] access[role1,role2|*]  cache[secondes]) facultatif';
+					$this->_stream .= '<br />> add rubrique nom (l\'url par défaut est le nom de la rubrique; cette url sera créée à condition que l\'id (nom) ne soit pas déjà utilisé';
+					$this->_stream .= '<br />> set rubrique nom nouveaunom';
 					$this->_stream .= '<br />> delete rubrique nom';
 					$this->_stream .= '<br />> add url id url rubrique action vars[vars,vars|empty] connected[true|false|*] access[ROLE1,ROLE2|*] cache[secondes]';
 					$this->_stream .= '<br />> set url id url rubrique action vars[vars,vars|empty] connected[true|false|*] access[ROLE1,ROLE2|*]  cache[secondes]';
@@ -1086,7 +963,7 @@
 					$this->_stream .= '<br />> set template nom nouveaunom';
 					$this->_stream .= '<br />> delete template nom';
 					$this->_stream .= '<br />> add helper nom (enabled[true|false] include[*|no[rubrique,rubrique]|yes[rubrique,rubrique]])facultatif';
-					$this->_stream .= '<br />> set class nom enabled[true|false] include[*|no[rubrique,rubrique]|yes[rubrique,rubrique]]';
+					$this->_stream .= '<br />> set helper nom enabled[true|false] include[*|no[rubrique,rubrique]|yes[rubrique,rubrique]]';
 					$this->_stream .= '<br />> delete helper nom';
 					$this->_stream .= '<br />> add plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
 					$this->_stream .= '<br />> set plugin type[helper/lib] name access[acces depuis le dossier lib ou helper] enabled[true/false] include[*/no[rubrique,rubrique]/yes[rubrique,rubrique]';
@@ -1094,6 +971,9 @@
 					$this->_stream .= '<br />> add define nom valeur';
 					$this->_stream .= '<br />> set define nom nouveaunom valeur';
 					$this->_stream .= '<br />> delete define nom';
+					$this->_stream .= '<br />> add cron id rubrique action time';
+					$this->_stream .= '<br />> set cron id rubrique action time';
+					$this->_stream .= '<br />> delete cron id';
 					$this->_stream .= '<br />> list template';
 					$this->_stream .= '<br />> list included';
 					$this->_stream .= '<br />> list rubrique';

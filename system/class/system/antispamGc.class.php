@@ -239,7 +239,7 @@
 				}
 				else{
 					if($this->_antispam['antispams']['ips'][$this->getIp()]['number'] < $this->_antispam['antispams']['config']['queryip']['number']){
-						$this->_updateNumberXml($this->_antispam['antispams']['ips'][$this->getIp()]['number'] +1, $this->_antispam['antispams']['ips'][$this->getIp()]['since']);
+						$this->_updateNumberXml($this->_antispam['antispams']['ips'][$this->getIp()]['number']+1, $this->_antispam['antispams']['ips'][$this->getIp()]['since']);
 
 						return true;
 					}
@@ -288,22 +288,17 @@
 			$this->_node2Xml = $this->_nodeXml->getElementsByTagName('ips')->item(0);
 			$sentences = $this->_node2Xml->getElementsByTagName('ip');
 
-			foreach($sentences as $sentence){
-				if ($sentence->getAttribute("ip") == $this->getIp()){
-					$this->_node2Xml->removeChild($sentence);    
-				}
-			}
-			$this->_domXml->save(ASPAM);
-
 			$this->_antispam['antispams']['ips'][$this->getIp()]['number'] = 1;
 			$this->_antispam['antispams']['ips'][$this->getIp()]['since'] = time();
 			$this->_antispam['antispams']['ips'][$this->getIp()]['type'] = $this->getIp();
 
-			$this->_markupXml = $this->_domXml->createElement('ip');
-			$this->_markupXml->setAttribute("ip", $this->getIp());
-			$this->_markupXml->setAttribute("number", 1);
-			$this->_markupXml->setAttribute("since", $this->_antispam['antispams']['ips'][$this->getIp()]['since']);
-			$this->_node2Xml->appendChild($this->_markupXml);
+			foreach($sentences as $sentence){
+				if ($sentence->getAttribute("ip") == $this->getIp()){
+					$sentence->setAttribute("ip", $this->getIp());
+					$sentence->setAttribute("number", 1);
+					$sentence->setAttribute("since", $this->_antispam['antispams']['ips'][$this->getIp()]['since']);
+				}
+			}
 			$this->_domXml->save(ASPAM);
 		}
 
@@ -312,22 +307,17 @@
 			$this->_node2Xml = $this->_nodeXml->getElementsByTagName('ips')->item(0);
 			$sentences = $this->_node2Xml->getElementsByTagName('ip');
 
-			foreach($sentences as $sentence){
-				if ($sentence->getAttribute("ip") == $this->getIp()){
-					$this->_node2Xml->removeChild($sentence);    
-				}
-			}
-			$this->_domXml->save(ASPAM);
-
 			$this->_antispam['antispams']['ips'][$this->getIp()]['number'] = $number;
 			$this->_antispam['antispams']['ips'][$this->getIp()]['since'] = $time;
 			$this->_antispam['antispams']['ips'][$this->getIp()]['type'] = $this->getIp();
 
-			$this->_markupXml = $this->_domXml->createElement('ip');
-			$this->_markupXml->setAttribute("ip", $this->getIp());
-			$this->_markupXml->setAttribute("number", $number);
-			$this->_markupXml->setAttribute("since", $time);
-			$this->_node2Xml->appendChild($this->_markupXml);
+			foreach($sentences as $sentence){
+				if ($sentence->getAttribute("ip") == $this->getIp()){
+					$sentence->setAttribute("ip", $this->getIp());
+					$sentence->setAttribute("number", $number);
+					$sentence->setAttribute("since", $time);
+				}
+			}
 			$this->_domXml->save(ASPAM);
 		}
 		

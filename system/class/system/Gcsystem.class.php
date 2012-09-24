@@ -12,6 +12,7 @@
 
 		protected $_output                     ;
 		protected $_configInstance             ;
+		protected $_cronInstance               ;
 		protected $_routerInstance             ;
 		protected $_routeInstance              ;
 		
@@ -37,6 +38,7 @@
 				$this->_checkSecureVar();
 				$this->setErrorLog('history','Page rewrite : http://'.$this->getHost().$this->getUri().' rubrique : '.$this->getServerName().$this->getPhpSelf().'?'.$this->getQuery().' / origine : '.$this->getReferer().' / IP : '.$this->getIp());
 				$this->_configInstance = new configGc();
+				$this->_cronInstance  = new cronGc();
 				$this->_initInstance = 1;
 			}
 		}
@@ -101,7 +103,7 @@
 						//$_SESSION['statut'] = 2;
 
 						if($this->_cacheRoute > 0 && REWRITE == true){
-							if($this->_setRubrique($rubrique) == true){
+							if($this->_setRubrique($rubrique) == true){  //on inclut les fichiers necéssaire à l'utilisation d'une rubrique
 								$class = new $rubrique($this->_lang);
 								if(SECURITY == false || $class->setFirewall() == true){
 									if(ANTISPAM == false || $class->setAntispam() == true){
