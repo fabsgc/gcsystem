@@ -281,7 +281,7 @@
 				elseif(preg_match('#add define (.+) (.+)#', $this->_command)){
 					if(isset($this->_commandExplode[2]) && isset($this->_commandExplode[3])){
 						$this->_domXml = new DomDocument('1.0', CHARSET);
-						if($this->_domXml->load(APPCONFIG)){							
+						if($this->_domXml->load(APPCONFIG)){
 							$this->_nodeXml = $this->_domXml->getElementsByTagName('definitions')->item(0);
 							$sentences = $this->_nodeXml->getElementsByTagName('define');
 				
@@ -313,10 +313,78 @@
 					}
 				}
 				elseif(preg_match('#add cron (.+) (.+) (.+) (.+)#', $this->_command)){
+					$this->_domXml = new DomDocument('1.0', CHARSET);
+					if($this->_domXml->load(CRON)){
+						$this->_nodeXml = $this->_domXml->getElementsByTagName('crons')->item(0);
+						$sentences = $this->_nodeXml->getElementsByTagName('cron');
+				
+						$rubrique = false;
+						
+						foreach($sentences as $sentence){
+							if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+								$rubrique = true;
+							}
+						}
+
+						if($rubrique == false){
+								$this->_markupXml = $this->_domXml->createElement('cron');
+								$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
+								$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[3]);
+								$this->_markupXml->setAttribute("action", $this->_commandExplode[4]);
+								$this->_markupXml->setAttribute("time", $this->_commandExplode[5]);
+								$this->_markupXml->setAttribute("executed", '');
+							
+								$this->_nodeXml->appendChild($this->_markupXml);
+								$this->_domXml->save(CRON);
+
+								$this->_result = '<br />> <span style="color: chartreuse;">le cron (rubrique <u>'.$this->_commandExplode[3].'</u> / action <u>'.$this->_commandExplode[3].'</u>) a bien été ajoutée</span>';
+							}
+							else{
+								$this->_result = '<br />> <span style="color: red;">le cron <u>'.$this->_commandExplode[2].'</u> existe déjà</span>';
+							}
+					}
+
 				}
 				elseif(preg_match('#set cron (.+) (.+) (.+) (.+)#', $this->_command)){
+					$this->_domXml = new DomDocument('1.0', CHARSET);
+					if($this->_domXml->load(CRON)){
+						$this->_nodeXml = $this->_domXml->getElementsByTagName('crons')->item(0);
+						$sentences = $this->_nodeXml->getElementsByTagName('cron');
+						
+						$this->_result = '<br />> <span style="color: red;">le cron d\'id <u>'.$this->_commandExplode[2].'</u> n\'existe pas</span>';
+
+						foreach($sentences as $sentence){
+							if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+								$sentence->setAttribute("id", $this->_commandExplode[2]);
+								$sentence->setAttribute("rubrique", $this->_commandExplode[3]);
+								$sentence->setAttribute("action", $this->_commandExplode[4]);
+								$sentence->setAttribute("time", $this->_commandExplode[5]);
+								$sentence->setAttribute("executed", '');
+
+								$this->_domXml->save(CRON);
+
+								$this->_result = '<br />> <span style="color: chartreuse;">le cron d\'id <u>'.$this->_commandExplode[2].'</u> a bien été modifié </span>';
+							}
+						}
+					}
 				}
 				elseif(preg_match('#delete cron (.+)#', $this->_command)){
+					$this->_domXml = new DomDocument('1.0', CHARSET);
+					if($this->_domXml->load(CRON)){
+						$this->_nodeXml = $this->_domXml->getElementsByTagName('crons')->item(0);
+						$sentences = $this->_nodeXml->getElementsByTagName('cron');
+						
+						$this->_result = '<br />> <span style="color: red;">le cron d\'id <u>'.$this->_commandExplode[2].'</u> n\'existe pas</span>';
+
+						foreach($sentences as $sentence){
+							if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+								$this->_nodeXml->removeChild($sentence);
+								$this->_domXml->save(CRON);
+
+								$this->_result = '<br />> <span style="color: chartreuse;">le cron d\'id <u>'.$this->_commandExplode[2].'</u> a bien été modifié </span>';
+							}
+						}
+					}
 				}
 				elseif(preg_match('#delete rubrique (.+)#', $this->_command)){
 					if(!in_array(RUBRIQUE_PATH.$this->_commandExplode[2].RUBRIQUE_EXT.'.php', $this->_forbidden) && !in_array(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', $this->_forbidden)){

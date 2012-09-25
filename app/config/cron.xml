@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <crons>
-   <cron id="cron" rubrique="index" action="cron" time="1" executed="1348523877"/>
-   <cron id="contr2" rubrique="index" action="cron2" time="1000" executed="1348523550"/>
-</crons>
+   <cron id="cron" rubrique="index" action="cron" time="1" executed="1348606071"/>
+   <cron id="contr2" rubrique="index" action="cron2" time="1000" executed="1348605417"/>
+<cron id="monid" rubrique="index2" action="action2" time="5" executed="1348606071"/></crons>

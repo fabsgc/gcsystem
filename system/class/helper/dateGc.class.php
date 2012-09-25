@@ -314,7 +314,7 @@
 			$this->_langInstance = new langGc($this->_lang);
 		}
 			
-		protected function _useLang($sentence, $var = array()){
+		protected function useLang($sentence, $var = array()){
 			return $this->_langInstance->loadSentence($sentence, $var);
 		}
 		

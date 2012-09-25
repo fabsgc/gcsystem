@@ -219,7 +219,7 @@
 				return true;
 			}
 			else{ 
-				$this->_addError($this->_useLang('rubriquenotfound', array('rubrique' => $rubrique)), __FILE__, __LINE__, ERROR);
+				$this->_addError($this->useLang('rubriquenotfound', array('rubrique' => $rubrique)), __FILE__, __LINE__, ERROR);
 				$this->_addError('Echec lors du chargement des fichiers "'.RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php" et "'.MODEL_PATH.$rubrique.MODEL_EXT.'.php"', __FILE__, __LINE__, ERROR);
 				return false;
 			}
@@ -262,7 +262,7 @@
 			$this->_langInstance = new langGc($this->_lang);
 		}
 		
-		private function _useLang($sentence, $var = array()){
+		private function useLang($sentence, $var = array()){
 			return $this->_langInstance->loadSentence($sentence, $var);
 		}
 		
