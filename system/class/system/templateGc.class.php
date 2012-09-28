@@ -508,6 +508,8 @@
 		}
 
 		protected function _parseException(){
+			$this->_contenu = preg_replace('#'.preg_quote('{<?php').'#isU', '<?php', $this->_contenu);
+			$this->_contenu = preg_replace('#'.preg_quote('; ?>}').'#isU', '; ?>', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('; ?>; ?>').'#isU', '; ?>', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('<?php echo <?php').'#isU', '<?php echo', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('<?php').'(.*)'.preg_quote('= <?php').'#isU', '<?php$1=', $this->_contenu);

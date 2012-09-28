@@ -62,4 +62,9 @@
 			<li><a href="/GCsystem/terminal.html">terminal</a></li>
 		</ul>
 	</div>
+<?php echo (FilterTitle("SALUT5")); ?>
+	projet-<?php echo (FilterTitle("SALUT1")); ?>.html -------- projet <?php (strtolower("SALUT1")); ?>
+
 </div>
+
+<?php echo ($fs); ?> <?php echo ($qsd); ?>

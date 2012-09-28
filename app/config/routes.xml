@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <routes>  
-    <route id="index" url="/" rubrique="index" action="" vars="" cache="10"/>
+    <route id="index" url="/" rubrique="index" action="" vars="" cache="0"/>
     <route id="index2" url="/index.html" rubrique="index" action="" vars="" cache="10"/>
     <route id="index3" url="/index-(.*).html" rubrique="index" action="" vars="token" cache="10"/>
     <route id="page" url="/page.html" rubrique="index" action="pagination" vars="page" cache="10"/>
@@ -17,4 +17,4 @@
 	<route id="install" url="/install" rubrique="install" action="" vars="" cache="0"/>
 	<route id="test4" url="/url-test4" rubrique="index" action="test" vars="" cache="0"/>
     <route id="installtest" url="/installtest" rubrique="installtest" action="" vars="" cache="10"/>   
-</routes>
+<route id="montruc" url="/montruc" rubrique="montruc" action="" vars="" cache="0"/></routes>

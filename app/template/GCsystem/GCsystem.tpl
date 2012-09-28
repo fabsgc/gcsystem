@@ -62,4 +62,9 @@
 			<li><a href="{{url:terminal:}}">terminal</a></li>
 		</ul>
 	</div>
+{<gc:function name="FilterTitle" string="SALUT5"/>}
+	projet-{<gc:function name="FilterTitle" string="SALUT1"/>}.html -------- projet {<gc:function name="strtolower" string="SALUT1"/>}
+
 </div>
+
+{fs} {qsd}

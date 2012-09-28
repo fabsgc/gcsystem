@@ -2,14 +2,14 @@
 <antispams>
 	<config>
 		<queryip number="10" duration="10"/>
-		<error template="GCsystem/GCerror" ip="127.0.0.1" number="10" since="1348516985">
+		<error template="GCsystem/GCerror">
 			<variable type="var" name="antispam" value="antispamGc"/>
 			<variable type="lang" name="error" value="antispamerror"/>
 			<variable type="lang" name="explication" value="antispamexplication"/>
 		</error>
 	</config>
 	<ips>
-		<ip ip="::1" number="1" since="1348605411"/>
-		<ip ip="127.0.0.1" number="6" since="1348606065"/>
+		<ip ip="::1" number="1" since="1348867262"/>
+		<ip ip="127.0.0.1" number="1" since="1348870853"/>
 	</ips>
 </antispams>

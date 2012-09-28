@@ -39,6 +39,6 @@
 			<url id="install" connected="*" access="*"/>
 			<url id="test4" connected="*" access="*"/>
 			<url id="installtest" connected="true" access="*"/>
-		</access>
+		<url id="montruc" connected="*" access="*"/></access>
 	</firewall>
 </security>
