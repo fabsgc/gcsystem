@@ -289,7 +289,7 @@
 		}
 		
 		protected function _parsevarFunc(){
-			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).$this->_regexSpace.'<(.+)>'.$this->_regexSpace.preg_quote($this->bal['vars'][1]).'`', '<?php echo <$1>; ?>', $this->_contenu);
+			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).$this->_regexSpace.'<(.+)>'.$this->_regexSpace.preg_quote($this->bal['vars'][1]).'`isU', '<?php echo <$1>; ?>', $this->_contenu);
 		}
 		
 		protected function _parsevarsExist(){
@@ -508,8 +508,6 @@
 		}
 
 		protected function _parseException(){
-			$this->_contenu = preg_replace('#'.preg_quote('{<?php').'#isU', '<?php', $this->_contenu);
-			$this->_contenu = preg_replace('#'.preg_quote('; ?>}').'#isU', '; ?>', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('; ?>; ?>').'#isU', '; ?>', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('<?php echo <?php').'#isU', '<?php echo', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('<?php').'(.*)'.preg_quote('= <?php').'#isU', '<?php$1=', $this->_contenu);

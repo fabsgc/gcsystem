@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <crons>
- 	<cron id="cron" rubrique="index" action="cron" time="1" executed="1348870853"/>
-  	<cron id="contr2" rubrique="index" action="cron2" time="1000" executed="1348870805"/>
-	<cron id="monid" rubrique="index2" action="action2" time="5" executed="1348870853"/>
+ 	<cron id="cron" rubrique="index" action="cron" time="1" executed="1348911669"/>
+  	<cron id="contr2" rubrique="index" action="cron2" time="1000" executed="1348911234"/>
+	<cron id="monid" rubrique="index2" action="action2" time="5" executed="1348911669"/>
 </crons>

@@ -63,7 +63,8 @@
 		</ul>
 	</div>
 {<gc:function name="FilterTitle" string="SALUT5"/>}
-	projet-{<gc:function name="FilterTitle" string="SALUT1"/>}.html -------- projet {<gc:function name="strtolower" string="SALUT1"/>}
+	projet-{<gc:function name="FilterTitle" string="SALUT1"/>}.html -------- projet {<gc:function name="strtolower" string="SALUT1"/>} 
+	{<gc:function name="strtolower" string="sdfFFFFFFFF"/>}
 
 </div>
 

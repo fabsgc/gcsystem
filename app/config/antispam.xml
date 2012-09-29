@@ -10,6 +10,6 @@
 	</config>
 	<ips>
 		<ip ip="::1" number="1" since="1348867262"/>
-		<ip ip="127.0.0.1" number="1" since="1348870853"/>
+		<ip ip="127.0.0.1" number="1" since="1348911669"/>
 	</ips>
 </antispams>

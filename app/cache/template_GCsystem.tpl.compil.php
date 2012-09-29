@@ -63,7 +63,8 @@
 		</ul>
 	</div>
 <?php echo (FilterTitle("SALUT5")); ?>
-	projet-<?php echo (FilterTitle("SALUT1")); ?>.html -------- projet <?php (strtolower("SALUT1")); ?>
+	projet-<?php echo (FilterTitle("SALUT1")); ?>.html -------- projet <?php echo (strtolower("SALUT1")); ?> 
+	<?php echo (strtolower("sdfFFFFFFFF")); ?>
 
 </div>
 
