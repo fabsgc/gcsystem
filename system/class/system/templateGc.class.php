@@ -7,7 +7,7 @@
 	*/
 	
 	class templateGc{
-		use errorGc, langInstance;                       //trait
+		use errorGc, langInstance, urlRegex;                       //trait
 		
 		protected $_file               = ""         ;    //chemin vers le .tpl
 		protected $_fileCache          = ""         ;    //chemin vers le .compil.tpl
@@ -258,6 +258,7 @@
 		
 		public function parse($c){
 			$this->_contenu=$c;
+			$this->_parsevarAdd();
 			$this->_parseInclude();
 			$this->_parseGravatar();
 			$this->_parseUrlRegex();
@@ -269,7 +270,6 @@
 			$this->_parsevarsExist();
 			$this->_parsevars();
 			$this->_parsevarFunc();
-			$this->_parsevarAdd();
 			$this->_parseCond();
 			$this->_parseSwitch();
 			$this->_parseCom();
@@ -416,14 +416,24 @@
 				),
 			$this->_contenu);
 		}
-		
+	
 		protected function _parseVarAdd(){
-			$this->_contenu = preg_replace(array(
-					'`<'.$this->_name.preg_quote($this->bal['vars'][6]).$this->_regexSpaceR.'(.+)'.$this->_regexSpace.'/>`sU'
-				),array(
-					'<?php $$1; ?>'
-				),
+			$this->_contenu = preg_replace_callback(
+				'`<'.$this->_name.preg_quote($this->bal['vars'][6]).$this->_regexSpaceR.'(.+)=(.+)'.$this->_regexSpace.'/>`sU',
+				array('templateGcParser', '_parseVarAddCallBack'),
 			$this->_contenu);
+			
+		}
+
+		protected function _parseVarAddCallBack($m){
+			ob_start ();
+				eval('echo '.$m[2].';');
+			$out = ob_get_contents();
+			ob_get_clean();
+			
+			//$this->_templateGC->vars[$m[1]] = $out;
+
+			return "<?php $".$m[1]."=".$m[2]."; ?>";
 		}
 		
 		protected function _parseSpaghettis(){
@@ -494,9 +504,12 @@
 			foreach($vars as $var){
 				if(preg_match('#\$#', $var)){
 					foreach ($this->_templateGC->vars as $cle => $val){
-						if(substr($var, 1, strlen($var)) == $cle){
-							$var = preg_replace('`'.$cle.'`', $val, $var);
-							array_push($valeur, substr($var, 1, strlen($var)));
+						if(substr($var, 1, strlen($var)) == $cle && !in_array($var, $valeur)){
+							array_push($valeur, '$'.$cle);
+						}
+						
+						if(!in_array($var, $valeur)){
+							array_push($valeur, $var);
 						}
 					}
 				}
@@ -504,7 +517,18 @@
 					array_push($valeur, $var);
 				}
 			}
-			return $this->getUrl($m[1], $valeur);
+
+			$array .= 'array(';
+
+			foreach($valeur as $val){
+				$array.=''.$val.',';
+			}
+
+			$array .= ')';
+
+			$array = preg_replace('#,\)#isU', ')', $array);
+
+			return '<?php echo $this->getUrl(\''.$m[1].'\', '.$array.'); ?>';
 		}
 
 		protected function _parseException(){
@@ -512,6 +536,8 @@
 			$this->_contenu = preg_replace('#'.preg_quote('<?php echo <?php').'#isU', '<?php echo', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('<?php').'(.*)'.preg_quote('= <?php').'#isU', '<?php$1=', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('?>').$this->_regexSpaceR.preg_quote('/>').'#isU', '?>', $this->_contenu);
+
+			//print_r($this->_templateGC->vars);
 		}
 
 		public  function __destruct(){

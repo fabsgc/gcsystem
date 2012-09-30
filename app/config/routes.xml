@@ -17,4 +17,5 @@
 	<route id="install" url="/install" rubrique="install" action="" vars="" cache="0"/>
 	<route id="test4" url="/url-test4" rubrique="index" action="test" vars="" cache="0"/>
     <route id="installtest" url="/installtest" rubrique="installtest" action="" vars="" cache="10"/>   
-<route id="montruc" url="/montruc" rubrique="montruc" action="" vars="" cache="0"/></routes>
+<route id="montruc" url="/montruc" rubrique="montruc" action="" vars="" cache="0"/>
+<route id="apropos" url="/apropos.html" rubrique="index" action="actionAPropos" vars="" cache="0"/></routes>

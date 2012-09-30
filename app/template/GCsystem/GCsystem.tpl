@@ -59,13 +59,16 @@
 		<ul>
 			<li><a href="">_(liredoc)_</a></li>
 			<li><a href="">_(lirecours)_</a></li>
-			<li><a href="{{url:terminal:}}">terminal</a></li>
+
 		</ul>
 	</div>
-{<gc:function name="FilterTitle" string="SALUT5"/>}
+ {<gc:function name="FilterTitle" string="SALUT5"/>}
 	projet-{<gc:function name="FilterTitle" string="SALUT1"/>}.html -------- projet {<gc:function name="strtolower" string="SALUT1"/>} 
 	{<gc:function name="strtolower" string="sdfFFFFFFFF"/>}
-
+	<gc:variable mavar="1"/>
+	<gc:variable mavara=45/>
+	<gc:variable truc=strtolower('Machin')/>
+	<br />{{url:index3:$truc,$sdfjkh}}
 </div>
 
 {fs} {qsd}

@@ -59,13 +59,16 @@
 		<ul>
 			<li><a href=""><?php echo "lire la documentation"; ?></a></li>
 			<li><a href=""><?php echo "lire le cours d'introduction"; ?></a></li>
-			<li><a href="/GCsystem/terminal.html">terminal</a></li>
+
 		</ul>
 	</div>
-<?php echo (FilterTitle("SALUT5")); ?>
+ <?php echo (FilterTitle("SALUT5")); ?>
 	projet-<?php echo (FilterTitle("SALUT1")); ?>.html -------- projet <?php echo (strtolower("SALUT1")); ?> 
 	<?php echo (strtolower("sdfFFFFFFFF")); ?>
-
+	<?php $mavar="1"; ?>
+	<?php $mavara=45; ?>
+	<?php $truc=strtolower('Machin'); ?>
+	<br /><?php echo $this->getUrl('index3', array($truc,$sdfjkh)); ?>
 </div>
 
 <?php echo ($fs); ?> <?php echo ($qsd); ?>
