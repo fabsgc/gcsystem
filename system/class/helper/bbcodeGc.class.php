@@ -390,7 +390,7 @@
 				'theme' => $this->_bbCodeButton,
 				'smiley' => $this->_bbCodeSmiley,
 				'bbcode' => $this->_bbCodeJs,
-				'imgpath' => FOLDER.'/'.IMG_PATH.GCSYSTEM_PATH,
+				'imgpath' => IMG_PATH.GCSYSTEM_PATH,
 				'bbCodeS' => $this->_bbCodeSJs,
 				'bbCodeEditor' => $this->_bbCodeEditor,
 				'color' => $this->_bbCodeButtonColor

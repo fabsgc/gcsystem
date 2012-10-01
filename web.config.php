@@ -16,9 +16,6 @@
 define('ASSET_PATH', 'asset/');
 define('APP_PATH', 'app/');
 define('SYSTEM_PATH', 'system/');
-define('CSS_PATH', ASSET_PATH.'css/');
-define('JS_PATH', ASSET_PATH.'js/');
-define('UPLOAD_PATH', ASSET_PATH.'upload/');
 define('LOG_PATH', SYSTEM_PATH.'log/');
 define('CACHE_PATH', APP_PATH.'cache/');
 define('FILE_PATH', ASSET_PATH.'file/');
@@ -66,9 +63,6 @@ define('CLASS_CRON', CLASS_PATH.CLASS_SYSTEM_PATH.'cronGc.class.php');
 
 //lib
 define('GESHI', LIB_PATH.'geshi/geshi.php');
-define('JQUERYFILE', JS_PATH.'jquery.min.js');
-define('JQUERYUIJS', JS_PATH.'jquery-ui.min.js');
-define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
 
 //fichiers de config
 define('ROUTE', APP_CONFIG_PATH.'routes.xml');
@@ -147,4 +141,11 @@ define('SECUREPOST', true);
 /* prefixe des constantes de l'utilisateur */
 define('CONST_APP_PREFIXE', 'USER_');
 
+/* à ne pas modifier */
 define('IMG_PATH', FOLDER.'/'.ASSET_PATH.'image/');
+define('CSS_PATH', FOLDER.'/'.ASSET_PATH.'css/');
+define('JS_PATH', FOLDER.'/'.ASSET_PATH.'js/');
+define('UPLOAD_PATH', FOLDER.'/'.ASSET_PATH.'upload/');
+define('JQUERYFILE', JS_PATH.'jquery.min.js');
+define('JQUERYUIJS', JS_PATH.'jquery-ui.min.js');
+define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');

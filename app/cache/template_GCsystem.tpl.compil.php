@@ -51,7 +51,7 @@
 <div id="GCsystem">
 	<div id="GCsystem_left">
 		<img src="asset/image/GCsystem/logo.png" alt="logo"/>
-		
+		 <?php echo 'http://gravatar.com/avatar/'.md5("salutsalut").'?s=500&default=http://'.$_SERVER['HTTP_HOST'].''.IMG_PATH.'GCsystem/empty_avatar.png'; ?> 
 	</div>
 	<div id="GCsystem_right">
 		<h1><?php echo "Bienvenue !"; ?></h1>
@@ -59,7 +59,7 @@
 		<ul>
 			<li><a href=""><?php echo "lire la documentation"; ?></a></li>
 			<li><a href=""><?php echo "lire le cours d'introduction"; ?></a></li>
-
+			<li><a href="<?php echo $this->getUrl('terminal', array()); ?>">terminal</a>
 		</ul>
 	</div>
  <?php echo (FilterTitle("SALUT5")); ?>

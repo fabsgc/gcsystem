@@ -343,13 +343,13 @@
 				$this->_header.="     <link rel=\"icon\" type=\"image/png\" href=\"".FOLDER.'/'.FAVICON_PATH."\" />\n";
 			}
 			if(JQUERY==true){
-				$this->_header.="    <script type=\"text/javascript\" src=\"".FOLDER.'/'.JQUERYFILE."\" ></script> \n";
-				$this->_header.="    <script type=\"text/javascript\" src=\"".FOLDER.'/'.JQUERYUIJS."\" ></script> \n";
-				$this->_header.="    <link href=\"".FOLDER.'/'.JQUERYUICSS."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+				$this->_header.="    <script type=\"text/javascript\" src=\"".JQUERYFILE."\" ></script> \n";
+				$this->_header.="    <script type=\"text/javascript\" src=\"".JQUERYUIJS."\" ></script> \n";
+				$this->_header.="    <link href=\"".JQUERYUICSS."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
 			}
 			foreach($this->_js as $element){
 				if(is_file(JS_PATH.$element) && file_exists(JS_PATH.$element) && is_readable(JS_PATH.$element)){
-					$this->_header.="    <script type=\"text/javascript\" src=\"".FOLDER.'/'.JS_PATH.$element."\" ></script> \n";
+					$this->_header.="    <script type=\"text/javascript\" src=\"".JS_PATH.$element."\" ></script> \n";
 				}
 				else{
 					$this->_header.="    <script type=\"text/javascript\" src=\"".$element."\" ></script> \n";
@@ -357,7 +357,7 @@
 			}
 			foreach($this->_css as $element){
 				if(is_file(CSS_PATH.$element) && file_exists(CSS_PATH.$element) && is_readable(CSS_PATH.$element)){
-					$this->_header.="    <link href=\"".FOLDER.'/'.CSS_PATH.$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+					$this->_header.="    <link href=\"".CSS_PATH.$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
 				}
 				else{
 					$this->_header.="    <link href=\"".$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
@@ -366,7 +366,7 @@
 			foreach($this->_jsInFile as $element){
 				$this->_header.="    <script type=\"text/javascript\">\n";
 				if(is_file(JS_PATH.$element) && file_exists(JS_PATH.$element) && is_readable(JS_PATH.$element)){
-					$fichier=FOLDER.'/'.JS_PATH.$element;
+					$fichier=JS_PATH.$element;
 					$contenu = fread(fopen($fichier, "r"), filesize($fichier));
 					$this->_header.="    ".$contenu."\n";
 				}
@@ -374,7 +374,7 @@
 			}
 			foreach($this->_rss as $element){
 				if(is_file($element)){
-					$this->_header.="    <link rel=\"alternate\" type=\"application/rss+xml\" title=\"".FOLDER.'/'.$element."\" href=\"".$element."\" />\n";
+					$this->_header.="    <link rel=\"alternate\" type=\"application/rss+xml\" title=\"".$element."\" href=\"".$element."\" />\n";
 				}
 				else{
 					$this->_header.="    <link rel=\"alternate\" type=\"application/rss+xml\" title=\"".$element."\" href=\"".$element."\" />\n";

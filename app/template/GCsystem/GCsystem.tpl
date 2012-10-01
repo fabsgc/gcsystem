@@ -51,7 +51,7 @@
 <div id="GCsystem">
 	<div id="GCsystem_left">
 		<img src="asset/image/GCsystem/logo.png" alt="logo"/>
-		/# {{gravatar:$var:500}} #/
+		 {{gravatar:$var:500}} 
 	</div>
 	<div id="GCsystem_right">
 		<h1>_(bienvenue)_</h1>
@@ -59,7 +59,7 @@
 		<ul>
 			<li><a href="">_(liredoc)_</a></li>
 			<li><a href="">_(lirecours)_</a></li>
-
+			<li><a href="{{url:terminal:}}">terminal</a>
 		</ul>
 	</div>
  {<gc:function name="FilterTitle" string="SALUT5"/>}

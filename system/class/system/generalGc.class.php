@@ -15,7 +15,7 @@
 				'content'=>$Content,
 				'redirect'=>$Redirect,
 				'time'=>$Time,
-				'css'=>FOLDER.'/asset/css/default.css'
+				'css'=>'/asset/css/default.css'
 			));
 				
 			$tpl->show();
