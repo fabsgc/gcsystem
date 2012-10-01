@@ -79,7 +79,7 @@
 					$tpl = new templateGC(GCSYSTEM_PATH.'GCsystemDev', 'GCsystemDev', '10000', $this->_lang);
 					$tpl->assign(array(
 						'text'=>$this->useLang('appDevGc_temp'),
-						'IMG_PATH'=>FOLDER.'/'.IMG_PATH.GCSYSTEM_PATH,
+						'IMG_PATH'=>IMG_PATH.GCSYSTEM_PATH,
 						'timeexec' => round($this->_timeExecEnd,2),
 						'http' => $rubrique,
 						'tpl' => $template,

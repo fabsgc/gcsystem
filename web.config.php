@@ -18,7 +18,6 @@ define('APP_PATH', 'app/');
 define('SYSTEM_PATH', 'system/');
 define('CSS_PATH', ASSET_PATH.'css/');
 define('JS_PATH', ASSET_PATH.'js/');
-define('IMG_PATH', ASSET_PATH.'image/');
 define('UPLOAD_PATH', ASSET_PATH.'upload/');
 define('LOG_PATH', SYSTEM_PATH.'log/');
 define('CACHE_PATH', APP_PATH.'cache/');
@@ -147,3 +146,5 @@ define('SECUREPOST', true);
 
 /* prefixe des constantes de l'utilisateur */
 define('CONST_APP_PREFIXE', 'USER_');
+
+define('IMG_PATH', FOLDER.'/'.ASSET_PATH.'image/');
