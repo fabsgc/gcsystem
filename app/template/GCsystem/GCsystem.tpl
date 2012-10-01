@@ -69,6 +69,7 @@
 	<gc:variable mavara=45/>
 	<gc:variable truc=strtolower('Machin')/>
 	<br />{{url:index3:$truc,$sdfjkh}}
+	{{php: echo 'salut';}}
 </div>
 
 {fs} {qsd}

@@ -69,6 +69,7 @@
 	<?php $mavara=45; ?>
 	<?php $truc=strtolower('Machin'); ?>
 	<br /><?php echo $this->getUrl('index3', array($truc,$sdfjkh)); ?>
+	<?php echo 'salut'; ?>
 </div>
 
 <?php echo ($fs); ?> <?php echo ($qsd); ?>

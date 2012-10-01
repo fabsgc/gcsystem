@@ -228,7 +228,7 @@
 		
 		/// les balises à parser
 		protected $bal= array(
-			'vars'           => array('{', '}', '{$', '}', '{{', '}}', 'variable', '{{gravatar:', '}}', '{{url:', '}}', '{{def:', '}}'),  // vars
+			'vars'           => array('{', '}', '{$', '}', '{{', '}}', 'variable', '{{gravatar:', '}}', '{{url:', '}}', '{{def:', '}}', '{{php:',  '}}'),  // vars
 			'include'        => array('include', 'file', 'cache'),                   // include
 			'cond'           => array('if', 'elseif', 'else', 'cond'),               // condition
 			'foreach'        => array('foreach', 'var', 'as', 'foreachelse'),        // boucle tableau
@@ -258,6 +258,7 @@
 		
 		public function parse($c){
 			$this->_contenu=$c;
+			$this->_parsevarsPhp();
 			$this->_parsevarAdd();
 			$this->_parseInclude();
 			$this->_parseGravatar();
@@ -294,6 +295,10 @@
 		
 		protected function _parsevarsExist(){
 			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][2]).$this->_regexSpace.'([\[\]A-Za-z0-9\$\'._-]+)'.$this->_regexSpace.preg_quote($this->bal['vars'][3]).'`', '<?php echo ($1); ?>', $this->_contenu);
+		}
+
+		protected function _parsevarsPhp(){
+			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][13]).$this->_regexSpace.'(.+)'.$this->_regexSpace.preg_quote($this->bal['vars'][14]).'`', '<?php $1 ?>', $this->_contenu);
 		}
 		
 		protected function _parseInclude(){
