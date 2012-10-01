@@ -112,33 +112,31 @@
 		public function addHeader($header){
             header($header);
         }
+
+        public function errorHttp($error, $titre){
+        	$t= new templateGC(ERRORDUOCUMENT_PATH.'httpError', $error, '0', $this->_lang);
+        	$t->setShow(false);
+			$t->assign(array(
+				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri())),
+				'message' => $titre
+			));
+			return $t->show();
+        }
 		
 		public function redirect404(){
 			$this->addHeader('HTTP/1.1 404 Not Found');
-			$t= new templateGC(ERRORDUOCUMENT_PATH.'404', '404', '0', $this->_lang);
-			$t->assign(array(
-				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri()))
-			));
-			$t->show();
+			echo $this->errorHttp('404', $this->useLang('404'));
         }
 		
 		public function redirect500(){
 			$this->addHeader('HTTP/1.1 500 internal error');
-			$t= new templateGC(ERRORDUOCUMENT_PATH.'500', '500', '0', $this->_lang);
-			$t->assign(array(
-				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri()))
-			));
-			$t->show();
+			echo $this->errorHttp('500', $this->useLang('500'));
 			exit();
         }
 		
 		public function redirect403(){
 			$this->addHeader('HTTP/1.1 403 Access Forbidden');
-			$t= new templateGC(ERRORDUOCUMENT_PATH.'403', '403', '0', $this->_lang);
-			$t->assign(array(
-				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri()))
-			));
-			$t->show();
+			echo $this->errorHttp('403', $this->useLang('403'));
 			exit();
         }
 	}
@@ -232,7 +230,7 @@
 									$result.=$url;
 								}
 							}
-							//$result = preg_replace('#\/#U', '', $result);
+
 							$result = preg_replace('#\\\.#U', '.', $result);
 							return FOLDER.$result;
 						}

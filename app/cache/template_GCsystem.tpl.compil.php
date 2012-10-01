@@ -73,3 +73,6 @@
 </div>
 
 <?php echo ($fs); ?> <?php echo ($qsd); ?>
+
+<gc:include file="GCsystem/GCspam">
+</gc:include>

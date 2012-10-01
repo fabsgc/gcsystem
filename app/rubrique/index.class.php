@@ -9,7 +9,7 @@
 			$this->model = $this->loadModel();
 			//$this->model->actionDefault();		
 		}
-		
+
 		public function actionDefault(){
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
 			echo $this->showHeader();

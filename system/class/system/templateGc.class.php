@@ -260,7 +260,6 @@
 			$this->_contenu=$c;
 			$this->_parsevarsPhp();
 			$this->_parsevarAdd();
-			$this->_parseInclude();
 			$this->_parseGravatar();
 			$this->_parseUrlRegex();
 			$this->_parseDefine();
@@ -301,12 +300,6 @@
 			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][13]).$this->_regexSpace.'(.+)'.$this->_regexSpace.preg_quote($this->bal['vars'][14]).'`', '<?php $1 ?>', $this->_contenu);
 		}
 		
-		protected function _parseInclude(){
-			$this->_contenu = preg_replace_callback(
-				'`<'.$this->_name.preg_quote($this->bal['include'][0]).$this->_regexSpaceR.preg_quote($this->bal['include'][1]).'="(.+)"'.$this->_regexSpace.'/>`isU', 
-				array('templateGcParser','_parseIncludeCallback'), $this->_contenu);
-		}
-		
 		protected function _parseDefine(){
 			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][11]).'([\[\]A-Za-z0-9._-]+)'.preg_quote($this->bal['vars'][12]).'`sU', '<?php echo $1; ?>', $this->_contenu);
 		}
@@ -315,6 +308,12 @@
 			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][4]).'(.+)::(.+)'.preg_quote($this->bal['vars'][5]).'`sU', '<?php echo $1::$2; ?>', $this->_contenu);
 		}
 		
+		protected function _parseInclude(){
+			$this->_contenu = preg_replace_callback(
+				'`<'.$this->_name.preg_quote($this->bal['include'][0]).$this->_regexSpaceR.preg_quote($this->bal['include'][1]).'="(.+)"'.$this->_regexSpace.'/>`isU', 
+				array('templateGcParser','_parseIncludeCallback'), $this->_contenu);
+		}
+
 		protected function _parseIncludeCallback($m){
 			$file[1] = TEMPLATE_PATH.$m[1].TEMPLATE_EXT;
 			$content = "";

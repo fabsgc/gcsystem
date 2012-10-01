@@ -73,3 +73,6 @@
 </div>
 
 {fs} {qsd}
+
+<gc:include file="GCsystem/GCspam">
+</gc:include>
