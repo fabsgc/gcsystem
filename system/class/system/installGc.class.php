@@ -35,7 +35,7 @@
 
 			//fichiers dont la modification est interdite
 			$this->_forbiddenFile = array(
-				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED, CRON,
+				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED, CRON, ERRORPERSO,
 				MODEL_PATH.'index'.MODEL_EXT.'.php', MODEL_PATH.'terminal'.MODEL_EXT.'.php', 
 				RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php', RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php', FUNCTION_GENERIQUE,
 				TEMPLATE_PATH.ERRORDUOCUMENT_PATH.'403'.TEMPLATE_EXT, TEMPLATE_PATH.ERRORDUOCUMENT_PATH.'404'.TEMPLATE_EXT, TEMPLATE_PATH.ERRORDUOCUMENT_PATH.'500'.TEMPLATE_EXT,
@@ -65,16 +65,15 @@
 				IMG_PATH.'jquery/ui-icons_cd0a0a_256x240.png',
 				JS_PATH.'index.html', JS_PATH.'inpage.js', JS_PATH.'jquery-ui.min.js', JS_PATH.'jquery.min.js', JS_PATH.'script.js',
 				SYSTEM_PATH.'.htaccess', SYSTEM_PATH.'class/autoload.php', SYSTEM_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'captchaGc.class.php',
-				SYSTEM_PATH.CLASS_HELPER_PATH.'dateGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'dirGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'feedGc.class.php',
+				SYSTEM_PATH.CLASS_HELPER_PATH.'errorpersoGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'dateGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'dirGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'feedGc.class.php',
 				SYSTEM_PATH.CLASS_HELPER_PATH.'fileGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'mailGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'modoGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'paginationGc.class.php',
 				SYSTEM_PATH.CLASS_HELPER_PATH.'pictureGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'socialGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'textGc.class.php',
 				SYSTEM_PATH.CLASS_HELPER_PATH.'uploadGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'zipGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php',
 				SYSTEM_PATH.CLASS_SYSTEM_PATH.'applicationGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'cacheGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'configGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'exceptionGc.class.php',
 				SYSTEM_PATH.CLASS_SYSTEM_PATH.'firewallGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'generalGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'installGc.class.php',
 				SYSTEM_PATH.CLASS_SYSTEM_PATH.'langGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'logGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'modelGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'pluginGc.class.php',
-				SYSTEM_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'templateGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php', LANG_PATH.'en.xml', LANG_PATH.'fr.xml',
-				LANG_PATH.'nl.xml',
-				CLASS_CRON, CLASS_INSTALL, CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE, CLASS_LOG, CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE,CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
+				SYSTEM_PATH.CLASS_SYSTEM_PATH.'backupGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'templateGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php', LANG_PATH.'en.xml', LANG_PATH.'fr.xml',
+				LANG_PATH.'nl.xml'
 			);
 			
 			//répertoires existants où il est interdit de créer des fichiers ou de toucher à des fichiers

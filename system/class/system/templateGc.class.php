@@ -259,6 +259,7 @@
 		public function parse($c){
 			$this->_contenu=$c;
 			$this->_parsevarsPhp();
+			$this->_parseInclude();
 			$this->_parsevarAdd();
 			$this->_parseGravatar();
 			$this->_parseUrlRegex();

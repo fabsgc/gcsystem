@@ -348,7 +348,7 @@
 				$this->_header.="    <link href=\"".JQUERYUICSS."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
 			}
 			foreach($this->_js as $element){
-				if(is_file(JS_PATH.$element) && file_exists(JS_PATH.$element) && is_readable(JS_PATH.$element)){
+				if(!preg_match('#http:#isU', JS_PATH.$element)){
 					$this->_header.="    <script type=\"text/javascript\" src=\"".JS_PATH.$element."\" ></script> \n";
 				}
 				else{
@@ -356,7 +356,7 @@
 				}
 			}
 			foreach($this->_css as $element){
-				if(is_file(CSS_PATH.$element) && file_exists(CSS_PATH.$element) && is_readable(CSS_PATH.$element)){
+				if(!preg_match('#http:#isU', JS_PATH.$element)){
 					$this->_header.="    <link href=\"".CSS_PATH.$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
 				}
 				else{
@@ -365,7 +365,7 @@
 			}
 			foreach($this->_jsInFile as $element){
 				$this->_header.="    <script type=\"text/javascript\">\n";
-				if(is_file(JS_PATH.$element) && file_exists(JS_PATH.$element) && is_readable(JS_PATH.$element)){
+				if(!preg_match('#http:#isU', JS_PATH.$element)){
 					$fichier=JS_PATH.$element;
 					$contenu = fread(fopen($fichier, "r"), filesize($fichier));
 					$this->_header.="    ".$contenu."\n";

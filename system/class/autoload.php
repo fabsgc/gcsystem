@@ -17,3 +17,4 @@
 	require_once(CLASS_TERMINAL);
 	require_once(CLASS_INSTALL);
 	require_once(CLASS_CRON);
+	require_once(CLASS_BACKUP);

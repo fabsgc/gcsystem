@@ -60,6 +60,7 @@ define('CLASS_ROUTER', CLASS_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php');
 define('CLASS_ANTISPAM', CLASS_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php');
 define('CLASS_INSTALL', CLASS_PATH.CLASS_SYSTEM_PATH.'installGc.class.php');
 define('CLASS_CRON', CLASS_PATH.CLASS_SYSTEM_PATH.'cronGc.class.php');
+define('CLASS_BACKUP', CLASS_PATH.CLASS_SYSTEM_PATH.'backupGc.class.php');
 
 //lib
 define('GESHI', LIB_PATH.'geshi/geshi.php');
@@ -69,10 +70,11 @@ define('ROUTE', APP_CONFIG_PATH.'routes.xml');
 define('MODOGCCONFIG', APP_CONFIG_PATH.'modoGc.xml');
 define('APPCONFIG', APP_CONFIG_PATH.'app.xml');
 define('PLUGIN', APP_CONFIG_PATH.'plugin.xml');
-define('FIREWALL', APP_CONFIG_PATH.'firewall.xml');
+define('FIREWALL', APP_CONFIG_PATH.'firewallGc.xml');
 define('ASPAM', APP_CONFIG_PATH.'antispam.xml');
 define('INSTALLED', APP_CONFIG_PATH.'installed.xml');
 define('CRON', APP_CONFIG_PATH.'cron.xml');
+define('ERRORPERSO', APP_CONFIG_PATH.'errorpersoGc.xml');
 
 //logs messages
 define('WARNING', 'WARNING');

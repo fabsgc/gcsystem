@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<errorperso>
+	<config>
+		<backurldefault id="index" vars=""/>
+		<templatedefault nom="GCsystem/GCerrorperso" />
+	</config>
+	<errors>
+		<error id="1" template="GCsystem/GCerrorperso">
+			<var id="var1" type="var">une erreur</var>
+			<var id="var2" type="lang">idlang</var>
+		</error>
+	</errors>
+</errorperso>

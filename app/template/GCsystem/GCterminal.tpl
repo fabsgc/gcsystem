@@ -157,7 +157,7 @@
 </script>
 <div id="gc_terminal">
 	<div id="gc_terminal_top">
-		<div id="gc_terminal_top_titre">Terminal - GCsystem</div>
+		<div id="gc_terminal_top_titre">_(terminaltitre)_</div>
 	</div>
 	<div id="gc_terminal_top_content">
 		<div id="terminal_read">
