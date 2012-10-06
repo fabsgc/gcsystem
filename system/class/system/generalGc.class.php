@@ -182,7 +182,7 @@
 
 		protected function _addErrorHr(){
 			$file = fopen(LOG_PATH.'system_errors'.LOG_EXT, "a+");
-			fputs($file, "##### ENF OF EXECUTION ####################################################################################################\n");
+			fputs($file, "##### END OF EXECUTION ####################################################################################################\n");
 			fclose($file);
 		}
     }

@@ -298,7 +298,7 @@
 		}
 
 		protected function _parsevarsPhp(){
-			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][13]).$this->_regexSpace.'(.+)'.$this->_regexSpace.preg_quote($this->bal['vars'][14]).'`', '<?php $1 ?>', $this->_contenu);
+			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][13]).'(.*)'.preg_quote($this->bal['vars'][14]).'`isU', '<?php $1 ?>', $this->_contenu);
 		}
 		
 		protected function _parseDefine(){
