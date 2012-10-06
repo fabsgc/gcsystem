@@ -20,6 +20,10 @@
 				));
 				$t->setShow(FALSE);
 				echo $t->show();
+
+				$modo = new modoGc('sale pute ta salope de mère va enculer ce fils de pute', 1);
+				echo $modo->censure();
+
 			echo $this->showFooter();
 		}
 		

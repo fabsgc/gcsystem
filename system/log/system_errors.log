@@ -12,3 +12,50 @@
 05/10/2012 a 21:55:29 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php ligne 211 fichier ouvert : app/config/routes.xml
 ##### END OF EXECUTION ####################################################################################################
 05/10/2012 a 21:55:29 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+06/10/2012 a 22:22:18 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 256 Content-Type : "Content-Type: text/html; charset=UTF-8"
+06/10/2012 a 22:22:18 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
+06/10/2012 a 22:22:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 256 Content-Type : "Content-Type: text/html; charset=UTF-8"
+06/10/2012 a 22:22:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
+06/10/2012 a 22:22:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 216 Chargement des fichiers "app/rubrique/index.class.php" et "app/model/index.model.class.php"
+06/10/2012 a 22:22:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 48 Contrôleur index initialisé
+06/10/2012 a 22:22:35 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 34 le fichier app/config/firewallGc.xml n'a pas pu être chargé
+06/10/2012 a 22:22:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 60 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique index/
+06/10/2012 a 22:22:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+06/10/2012 a 22:22:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 72 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+06/10/2012 a 22:22:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 83 Model index initialisé
+06/10/2012 a 22:22:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystem" a bien été chargé.
+06/10/2012 a 22:22:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php ligne 211 fichier ouvert : app/config/routes.xml
+06/10/2012 a 22:22:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php ligne 211 fichier ouvert : app/config/routes.xml
+06/10/2012 a 22:22:35 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\helper\modoGc.class.php ligne 174 fichier ouvert : app/config/modoGc.xml
+##### END OF EXECUTION ####################################################################################################
+06/10/2012 a 22:22:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+06/10/2012 a 22:23:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 256 Content-Type : "Content-Type: text/html; charset=UTF-8"
+06/10/2012 a 22:23:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
+06/10/2012 a 22:23:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 216 Chargement des fichiers "app/rubrique/index.class.php" et "app/model/index.model.class.php"
+06/10/2012 a 22:23:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 48 Contrôleur index initialisé
+06/10/2012 a 22:23:57 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 34 le fichier app/config/firewallGc.xml n'a pas pu être chargé
+06/10/2012 a 22:23:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 60 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique index/
+06/10/2012 a 22:23:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+06/10/2012 a 22:23:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 72 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+06/10/2012 a 22:23:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 83 Model index initialisé
+06/10/2012 a 22:23:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystem" a bien été chargé.
+06/10/2012 a 22:23:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php ligne 211 fichier ouvert : app/config/routes.xml
+06/10/2012 a 22:23:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php ligne 211 fichier ouvert : app/config/routes.xml
+06/10/2012 a 22:23:57 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\helper\modoGc.class.php ligne 176 fichier ouvert : app/config/modoGc.xml
+##### END OF EXECUTION ####################################################################################################
+06/10/2012 a 22:23:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+06/10/2012 a 22:24:30 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 256 Content-Type : "Content-Type: text/html; charset=UTF-8"
+06/10/2012 a 22:24:30 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
+06/10/2012 a 22:24:30 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 216 Chargement des fichiers "app/rubrique/index.class.php" et "app/model/index.model.class.php"
+06/10/2012 a 22:24:30 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 48 Contrôleur index initialisé
+06/10/2012 a 22:24:30 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 34 le fichier app/config/firewallGc.xml n'a pas pu être chargé
+06/10/2012 a 22:24:30 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 60 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique index/
+06/10/2012 a 22:24:30 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+06/10/2012 a 22:24:30 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 72 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+06/10/2012 a 22:24:30 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 83 Model index initialisé
+06/10/2012 a 22:24:30 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystem" a bien été chargé.
+06/10/2012 a 22:24:30 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php ligne 211 fichier ouvert : app/config/routes.xml
+06/10/2012 a 22:24:30 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php ligne 211 fichier ouvert : app/config/routes.xml
+06/10/2012 a 22:24:30 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\helper\modoGc.class.php ligne 176 fichier ouvert : app/config/modoGc.xml
+##### END OF EXECUTION ####################################################################################################
+06/10/2012 a 22:24:30 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.

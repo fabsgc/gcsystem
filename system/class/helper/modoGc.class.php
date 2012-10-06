@@ -72,7 +72,16 @@
 			if($this->_i++ > $this->_maxWord){
 				$content = $this->_contenu;
 				foreach($this->_insulte as $insulte){
-					$content = preg_replace('`'.preg_quote($insulte).'`i', ' ***censuré*** ', $content);
+					$firstLetter = substr($insulte,0,1);
+					$lastLetter = substr($insulte,strlen($insulte)-1,1);
+
+					$censure="";
+
+					for($i=0;$i<strlen($insulte);$i++){
+						$censure.="*";
+					}
+
+					$content = preg_replace('`'.preg_quote($insulte).'`i', $firstLetter.$censure.$lastLetter, $content);
 				}
 				return $content;
 			}
