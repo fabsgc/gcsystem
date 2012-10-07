@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <style>
 	body{
 		background-color: #EFEFEF;
@@ -49,7 +48,7 @@
 		text-align: justify;
 	}
 </style>
-/#<div id="GCsystem">
+<div id="GCsystem">
 	<div id="GCsystem_left">
 		<img src="asset/image/GCsystem/logo.png" alt="logo"/>
 		 {{gravatar:$var:500}} 
@@ -72,7 +71,7 @@
 	<br />{{url:index3:$truc,$sdfjkh}}
 	{{php: 
 	echo 'salusdfsdjfsdkjfht';}}
-</div>#/
+</div>
 
 {fs} {qsd}
 

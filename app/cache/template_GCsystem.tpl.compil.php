@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <style>
 	body{
 		background-color: #EFEFEF;
@@ -49,7 +48,30 @@
 		text-align: justify;
 	}
 </style>
-
+<div id="GCsystem">
+	<div id="GCsystem_left">
+		<img src="asset/image/GCsystem/logo.png" alt="logo"/>
+		 <?php echo 'http://gravatar.com/avatar/'.md5("salutsalut").'?s=500&default=http://'.$_SERVER['HTTP_HOST'].''.IMG_PATH.'GCsystem/empty_avatar.png'; ?> 
+	</div>
+	<div id="GCsystem_right">
+		<h1><?php echo "Bienvenue !"; ?></h1>
+		<p><?php echo "Bienvenue dans votre nouveau projet GCsystem, merci d'avoir choisi notre framework pour développer votre application."; ?></p>
+		<ul>
+			<li><a href=""><?php echo "lire la documentation"; ?></a></li>
+			<li><a href=""><?php echo "lire le cours d'introduction"; ?></a></li>
+			<li><a href="<?php echo $this->getUrl('terminal', array()); ?>">terminal</a>
+		</ul>
+	</div>
+ <?php echo (FilterTitle("SALUT5")); ?>
+	projet-<?php echo (FilterTitle("SALUT1")); ?>.html -------- projet <?php echo (strtolower("SALUT1")); ?> 
+	<?php echo (strtolower("sdfFFFFFFFF")); ?>
+	<?php $mavar="1"; ?>
+	<?php $mavara=45; ?>
+	<?php $truc=strtolower('Machin'); ?>
+	<br /><?php echo $this->getUrl('index3', array($truc,$sdfjkh)); ?>
+	<?php  
+	echo 'salusdfsdjfsdkjfht'; ?>
+</div>
 
 <?php echo ($fs); ?> <?php echo ($qsd); ?>
 
