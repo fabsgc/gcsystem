@@ -2525,3 +2525,4 @@
 07/10/2012 a 09:40:51 ! : Erreur [8] (Undefined property: modoGc::$_commandExplode) dans le fichier C:\wamp\www\GCsystem\system\class\helper\modoGc.class.php a la ligne 182
 07/10/2012 a 10:01:02 ! : Erreur [8] (Undefined property: terminalGc::$sentence) dans le fichier C:\wamp\www\GCsystem\system\class\system\terminalGc.class.php a la ligne 478
 07/10/2012 a 11:21:45 ! : Erreur [8] (Undefined variable: contenu) dans le fichier C:\wamp\www\GCsystem\system\class\helper\mailGc.class.php a la ligne 203
+07/10/2012 a 11:51:07 ! : Erreur [8] (Undefined property: index::$_cache) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 40
