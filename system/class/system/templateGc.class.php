@@ -52,6 +52,10 @@
 		public function getTimeCache(){
 			return $this->_timeCache;
 		}
+
+		public function getFileCache(){
+			return $this->_fileCache;
+		}
 		
 		protected function _createLangInstance(){
 			$this->_langInstance = new langGc($this->_lang);
@@ -225,6 +229,7 @@
 		protected $_regexSpace        = '\s*'           ;
 		protected $_regexSpaceR       = '\s+'           ;
 		protected $_name              = 'gc:'           ;
+		protected $_includeI          = 0               ;
 		
 		/// les balises à parser
 		protected $bal= array(
@@ -320,10 +325,15 @@
 			$content = "";
 			if($this->_templateGC->getFile() != $file[1]){
 				if(file_exists($file[1]) or is_readable($file[1])){
-					$t = new templateGc($m[1], 'tplInclude', $this->_templateGC->getTimeCache());
+					$t = new templateGc($m[1], 'tplInclude_'.$this->_includeI.'_', $this->_templateGC->getTimeCache());
 					$t->assign($this->_templateGC->vars);
 					$t->setShow(false);
-					$content = $t->show();
+
+					if(is_file($t->getFileCache()) && is_readable($t->getFileCache())){
+						$content = file_get_contents($t->getFileCache());
+					}
+
+					$this->_includeI++;
 				}
 				else{
 					$this->_addError('Le template '.$file[1].' n\'a pas pu être inclus', __FILE__, __LINE__, ERROR);

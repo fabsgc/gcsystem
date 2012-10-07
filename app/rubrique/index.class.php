@@ -13,7 +13,7 @@
         public function actionDefault(){
             $this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
             echo $this->showHeader();
-            /*  $t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', '0');
+                $t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', '0');
                 $t->assign(array(
                     'var'=> 'salutsalut',
                     'var2'=>'bonsoir'
@@ -21,13 +21,7 @@
                 $t->setShow(FALSE);
                 echo $t->show();
 
-                $modo = new modoGc('sale pute ta salope de mère va enculer ce fils de pute', 1);
-                echo $modo->censure();
-
-                echo USER_PROUT;
-*/
-
-$cache = new cacheGc('twitter', "", 10);
+/*$cache = new cacheGc('twitter', "", 10);
 
 if($cache->isDie()){
     $twitter = curl_init();
@@ -48,7 +42,7 @@ if($cache->isDie()){
 }
 else{
     echo $cache->getCache();
-}
+}*/
             echo $this->showFooter();
         }
         

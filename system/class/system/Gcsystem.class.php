@@ -31,6 +31,7 @@
 		
 		public function init(){
 			if($this->_initInstance == 0){
+				$this->_checkOffShortag();
 				$this->_checkHeaderStream($this->getUri());
 				$this->_checkEnvironment();
 				$this->_checkError();
@@ -256,6 +257,10 @@
 					$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__, INFORMATION);
 				break;
 			}
+		}
+
+		private function _checkOffShortag(){
+			short_open_tag(FALSE);
 		}
 			
 		private function _createLangInstance(){
