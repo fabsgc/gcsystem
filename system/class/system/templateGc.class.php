@@ -328,8 +328,8 @@
 					$t = new templateGc($m[1], 'tplInclude_'.$this->_includeI.'_', $this->_templateGC->getTimeCache());
 					$t->assign($this->_templateGC->vars);
 					$t->setShow(false);
-
-					if(is_file($t->getFileCache()) && is_readable($t->getFileCache())){
+					$t->show();
+					if(file_get_contents($t->getFileCache())){
 						$content = file_get_contents($t->getFileCache());
 					}
 
