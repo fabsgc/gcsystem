@@ -199,6 +199,7 @@
 		}
 		
 		public function send(){
+			$contenu = '';
 			//=====Envoi de l'e-mail.
 			foreach($this->_message as $message){ $contenu .=$message; }
 			

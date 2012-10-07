@@ -381,7 +381,7 @@
 							break;
 							
 							case 'whitoutEspace' :
-								if(!preg_match('#\S#isU', $_POST[$value[1]])){
+								if(!preg_match('#\s#isU', $_POST[$value[1]])){
 									array_push($this->valid, 'true');
 								}
 								elseif($_POST[$value[1]]!=""){
@@ -669,7 +669,7 @@
 							break;
 							
 							case 'WhitoutEspace' :
-								if(!preg_match('#\S#isU', $_POST[$value[1]])){
+								if(!preg_match('#\s#isU', $_POST[$value[1]])){
 									array_push($this->valid, 'true');
 								}
 								elseif($_POST[$value[1]]!=""){
@@ -1437,7 +1437,7 @@
 							break;
 							
 							case 'whitoutEspace' :
-								if(!preg_match('#\S#isU', $_POST[$value[1]])){
+								if(!preg_match('#\s#isU', $_POST[$value[1]])){
 									array_push($this->valid, 'true');
 								}
 								elseif($_POST[$value[1]]!=""){

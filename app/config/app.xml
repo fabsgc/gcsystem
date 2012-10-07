@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <definitions value="vald">
-	<define id="bonjour" value="salutlespoux"/>
-	<define id="installtest" value="installtestvalue"/>
-	<define id="prout" value="vald"/>
+	<define id="bonjour">salutlespoux</define>
+	<define id="installtest">installtestvalue</define>
+	<define id="prout">installtestvalue</define>
+	<define id="machin">machinemachinesdfsdfa</define>
 </definitions>

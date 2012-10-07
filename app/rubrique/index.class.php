@@ -13,7 +13,7 @@
 		public function actionDefault(){
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
 			echo $this->showHeader();
-				$t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', '0');
+			/*	$t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', '0');
 				$t->assign(array(
 					'var'=> 'salutsalut',
 					'var2'=>'bonsoir'
@@ -24,7 +24,37 @@
 				$modo = new modoGc('sale pute ta salope de mère va enculer ce fils de pute', 1);
 				echo $modo->censure();
 
+				echo USER_PROUT;
+*/
 			echo $this->showFooter();
+				$this->forms['forms_contact'] = new formsGC(array('name' => 'contact', 'action' => '#', 'method' => 'post'));
+				$this->forms['forms_contact']->addFieldset('Contact');
+				$this->forms['forms_contact']->addInputText('Contact', "", "text", array('name'=>"nom", 'value'=>"", 'maxlenght'=>10000, 'placeholder' => 'Nom'),  1);
+				$this->forms['forms_contact']->addInputText('Contact', "", "text", array('name'=>"prenom", 'value'=>"", 'maxlenght'=>10000, 'placeholder' => 'Prénom'),  1);
+			  	$this->forms['forms_contact']->addInputText('Contact', "", "email", array('name'=>"email", 'value'=>"", 'maxlenght'=>10000, 'placeholder' => 'Email'),  1);
+				$this->forms['forms_contact']->addTextarea('Contact', '', "", array('name'=>'message', 'id'=>'textarea', 'cols'=>60, 'rows'=>40, 'placeholder' => 'Message'), 1);
+				$this->forms['forms_contact']->addSubmitReset("Contact", array('value'=>'Envoyer'), 0);
+
+				$this->forms['validate_contact'] = new formsGCValidator('post');
+				$this->forms['validate_contact']->addfield('input', 'nom', 'nom', array('different' => '', 'noEspace'=>'', 'isAlphaNum'=>''), array('Vous devez choisir un nom', 'Votre nom ne peut pas commencer par un espace', 'Seuls les caractères alphanumériques sont autorisés'));
+				$this->forms['validate_contact']->addfield('input', 'prenom', 'prenom', array('different' => '', 'noEspace'=>'', 'isAlphaNum'=>''), array('Vous devez choisir un prenom', 'Votre prenom ne peut pas commencer par un espace', 'Seuls les caractères alphanumériques sont autorisés'));
+				$this->forms['validate_contact']->addfield('input', 'email', 'email', array('different' => '', 'whitoutEspace'=>'', 'isMail'=>''), array('Vous devez donner une adresse email', 'Une adresse mail ne peut pas contenir d\'espaces', 'Veuiller saisir une adresse mail valide'));
+
+				if(isset($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['message'])){
+				    if($this->forms['validate_contact']->ValidateForm()==true){
+						$this->email['email_contact'] = new mailGc(array('expediteur' => $_POST['email'], 'destinataire' => 'mathiaduzero99@gmail.com', 'sujet' => 'Team-code - Contact'));
+						$this->email['email_contact']->addText($_POST['message']);
+						$this->email['email_contact']->send();
+						echo 'L\'email a bien été envoyé !';
+                    }
+                    else{
+                        echo $this->forms['validate_contact']->showErrorBlock(0, 'inscription'.FILES_EXT);
+                        echo $this->forms['forms_contact']->showForms();
+                    }
+                } 
+                else {
+				    echo $this->forms['forms_contact']->showForms();
+                }
 		}
 		
 		public function actionSql(){

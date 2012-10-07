@@ -304,8 +304,7 @@
 							if($rubrique == false){
 								$this->_markupXml = $this->_domXml->createElement('define');
 								$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
-								$this->_markupXml->setAttribute("value", $this->_commandExplode[3]);
-							
+								$this->_markupXml->appendChild($this->_domXml->createTextNode($this->_commandExplode[3]));
 								$this->_nodeXml->appendChild($this->_markupXml);
 								$this->_domXml->save(APPCONFIG);
 
@@ -463,7 +462,7 @@
 						$this->_result = '<br />><span style="color: red;"> Erreur de syntaxe</span>';
 					}
 				}
-				elseif(preg_match('#set define (.+)#', $this->_command)){
+				elseif(preg_match('#set define (.+) (.*)#', $this->_command)){
 					if(isset($this->_commandExplode[2])){
 						$this->_domXml = new DomDocument('1.0', CHARSET);		
 						
@@ -476,7 +475,7 @@
 							foreach($sentences as $sentence){
 								if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
 									if(isset($this->_commandExplode[3])){
-										$sentence->setAttribute("value", $this->_commandExplode[3]);
+										$sentence->appendChild($this->_domXml->createTextNode($this->_commandExplode[3]));
 									}							
 
 									$this->_result = '<br />> <span style="color: chartreuse;">la constante utilisateur <u>'.$this->_commandExplode[2].'</u> a bien été modifiée</span>';
