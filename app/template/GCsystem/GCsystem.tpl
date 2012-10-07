@@ -77,6 +77,3 @@
 {fs} {qsd}
 
 <gc:include file="test" />
-
-<br />machinetest<br /><br />
-<gc:include file="test" />

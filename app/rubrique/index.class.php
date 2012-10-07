@@ -43,6 +43,9 @@ if($cache->isDie()){
 else{
     echo $cache->getCache();
 }*/
+echo CLASS_CRON;
+
+echo USER_TESTT;
             echo $this->showFooter();
         }
         

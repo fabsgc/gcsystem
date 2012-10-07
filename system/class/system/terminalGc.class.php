@@ -35,15 +35,15 @@
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
 				CLASS_CRON, CLASS_INSTALL, CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE, CLASS_LOG, CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE,CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
 				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT,
-				SYSTEM_PATH.CLASS_HELPER_PATH.'errorpersoGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'captchaGc.class.php',
-				SYSTEM_PATH.CLASS_HELPER_PATH.'dateGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'dirGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'feedGc.class.php',
-				SYSTEM_PATH.CLASS_HELPER_PATH.'fileGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'mailGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'modoGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'paginationGc.class.php',
-				SYSTEM_PATH.CLASS_HELPER_PATH.'pictureGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'socialGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'textGc.class.php',
-				SYSTEM_PATH.CLASS_HELPER_PATH.'uploadGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'zipGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php',
-				SYSTEM_PATH.CLASS_SYSTEM_PATH.'applicationGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'cacheGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'configGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'exceptionGc.class.php',
-				SYSTEM_PATH.CLASS_SYSTEM_PATH.'firewallGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'generalGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'installGc.class.php',
-				SYSTEM_PATH.CLASS_SYSTEM_PATH.'langGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'logGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'modelGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'pluginGc.class.php',
-				SYSTEM_PATH.CLASS_SYSTEM_PATH.'backupGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'templateGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'errorpersoGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'captchaGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'dateGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'dirGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'feedGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'fileGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'mailGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'modoGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'paginationGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'pictureGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'socialGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'textGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'uploadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'zipGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php',
+				CLASS_PATH.CLASS_SYSTEM_PATH.'applicationGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'cacheGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'exceptionGc.class.php',
+				CLASS_PATH.CLASS_SYSTEM_PATH.'firewallGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'generalGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'installGc.class.php',
+				CLASS_PATH.CLASS_SYSTEM_PATH.'langGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'logGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'modelGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'pluginGc.class.php',
+				CLASS_PATH.CLASS_SYSTEM_PATH.'backupGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'templateGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php',
 				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED, CRON, ERRORPERSO
 			);
 
@@ -60,15 +60,16 @@
 				TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,
 				CLASS_BACKUP, CLASS_CRON, CLASS_INSTALL, CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_APPLICATION, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL_INTERFACE,CLASS_RUBRIQUE,CLASS_LOG,CLASS_CACHE, CLASS_EXCEPTION, CLASS_TEMPLATE, CLASS_LANG, CLASS_APPDEVGC, CLASS_TERMINAL,
 				LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT,
-				SYSTEM_PATH.CLASS_HELPER_PATH.'errorpersoGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'captchaGc.class.php',
-				SYSTEM_PATH.CLASS_HELPER_PATH.'dateGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'dirGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'feedGc.class.php',
-				SYSTEM_PATH.CLASS_HELPER_PATH.'fileGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'mailGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'modoGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'paginationGc.class.php',
-				SYSTEM_PATH.CLASS_HELPER_PATH.'pictureGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'socialGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'textGc.class.php',
-				SYSTEM_PATH.CLASS_HELPER_PATH.'uploadGc.class.php', SYSTEM_PATH.CLASS_HELPER_PATH.'zipGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php',
-				SYSTEM_PATH.CLASS_SYSTEM_PATH.'applicationGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'cacheGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'configGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'exceptionGc.class.php',
-				SYSTEM_PATH.CLASS_SYSTEM_PATH.'firewallGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'generalGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'installGc.class.php',
-				SYSTEM_PATH.CLASS_SYSTEM_PATH.'langGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'logGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'modelGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'pluginGc.class.php',
-				SYSTEM_PATH.CLASS_SYSTEM_PATH.'backupGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'templateGc.class.php', SYSTEM_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'errorpersoGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'captchaGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'dateGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'dirGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'feedGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'fileGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'mailGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'modoGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'paginationGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'pictureGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'socialGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'textGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'uploadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'zipGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php',
+				CLASS_PATH.CLASS_SYSTEM_PATH.'applicationGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'cacheGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'exceptionGc.class.php',
+				CLASS_PATH.CLASS_SYSTEM_PATH.'firewallGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'generalGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'installGc.class.php',
+				CLASS_PATH.CLASS_SYSTEM_PATH.'langGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'logGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'modelGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'pluginGc.class.php',
+				CLASS_PATH.CLASS_SYSTEM_PATH.'backupGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'templateGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php',
+				CLASS_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php'
 			); // liste des fichiers systèmes à updater
 		
 
@@ -77,7 +78,7 @@
 			);
 
 			$this->_configIfNoExist = array(
-				ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED, CRON, ERRORPERSO
+				//ROUTE, MODOGCCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED, CRON, ERRORPERSO
 			);
 		}
 
@@ -392,7 +393,25 @@
 								$this->_nodeXml->removeChild($sentence);
 								$this->_domXml->save(CRON);
 
-								$this->_result = '<br />> <span style="color: chartreuse;">le cron d\'id <u>'.$this->_commandExplode[2].'</u> a bien été modifié </span>';
+								$this->_result = '<br />> <span style="color: chartreuse;">le cron d\'id <u>'.$this->_commandExplode[2].'</u> a bien été supprimé </span>';
+							}
+						}
+					}
+				}
+				elseif(preg_match('#delete define (.+)#', $this->_command)){
+					$this->_domXml = new DomDocument('1.0', CHARSET);
+					if($this->_domXml->load(APPCONFIG)){
+						$this->_nodeXml = $this->_domXml->getElementsByTagName('definitions')->item(0);
+						$sentences = $this->_nodeXml->getElementsByTagName('define');
+						
+						$this->_result = '<br />> <span style="color: red;">la constante d\'id <u>'.$this->_commandExplode[2].'</u> n\'existe pas</span>';
+
+						foreach($sentences as $sentence){
+							if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+								$this->_nodeXml->removeChild($sentence);
+								$this->_domXml->save(APPCONFIG);
+
+								$this->_result = '<br />> <span style="color: chartreuse;">la constante d\'id <u>'.$this->_commandExplode[2].'</u> a bien été supprimé </span>';
 							}
 						}
 					}
@@ -1429,13 +1448,14 @@
 				foreach($this->_updateFile as $file){				
 					$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
 					$fp = fopen($file, "w");
+					$headers = curl_getinfo($ch, CURLINFO_HEADER_OUT);
 					curl_setopt($ch, CURLOPT_FILE, $fp);
 					curl_setopt($ch, CURLOPT_HEADER, 0);
 					curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 					curl_exec($ch);
 					curl_close($ch);
 					fclose($fp);
-					$contenu .= '<br />> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
+					$contenu .= '<br />> <span style="color: chartreuse;">'.$file.' : '.$headers.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
 				}
 
 				$suppr = file_get_contents('web.config.php');
@@ -1446,17 +1466,20 @@
 					file_put_contents('web.config.php', $sauvegarde, FILE_APPEND);
 				}
 
+				/*###############################*/
+
 				foreach($this->_configIfNoExist as $cle => $file){
 					if(!file_exists($file)){
 						$ch = curl_init('https://raw.github.com/fabsgc/GCsystem/master/'.$file);
 						$fp = fopen($file, "w");
+						$headers = curl_getinfo($ch, CURLINFO_HEADER_OUT);
 						curl_setopt($ch, CURLOPT_FILE, $fp);
 						curl_setopt($ch, CURLOPT_HEADER, 0);
 						curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 						curl_exec($ch);
 						curl_close($ch);
 						fclose($fp);
-						$contenu .= '<br />> <span style="color: chartreuse;">'.$file.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
+						$contenu .= '<br />> <span style="color: chartreuse;">'.$file.' : '.$headers.'</span> -> <span style="color: red;">https://raw.github.com/fabsgc/GCsystem/master/'.$file.'</span>';
 					}
 				}
 

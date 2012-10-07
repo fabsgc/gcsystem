@@ -17,7 +17,7 @@
 
 				foreach($this->_markupXml as $sentence){
 					if (!defined(strtoupper(CONST_APP_PREFIXE.strval($sentence->getAttribute("id"))))){
-						define(CONST_APP_PREFIXE.strtoupper(strval($sentence->getAttribute("id"))).'', strval($sentence->nodeValue));
+						define(CONST_APP_PREFIXE.strtoupper(strval($sentence->getAttribute("id"))).'', htmlspecialchars_decode(strval($sentence->nodeValue)));
 					}
 				}
 			}
