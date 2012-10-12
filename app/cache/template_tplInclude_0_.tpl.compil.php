@@ -1,6 +1,6 @@
 <?php 
 
-$cache = new cacheGc('twitter', "", 10);
+/*$cache = new cacheGc('twitter', "", 10);
 
 if($cache->isDie()){
     $twitter = curl_init();
@@ -10,17 +10,17 @@ if($cache->isDie()){
     $content = curl_exec($twitter);
      
     if($content==false){
-      echo 'Curl error #'.curl_errno($twitter).': ' . curl_error($twitter);
-      echo $cache->getCache();
+      //echo 'Curl error #'.curl_errno($twitter).': ' . curl_error($twitter);
+      //echo $cache->getCache();
     }
     else{
       $cache->setVal($content);
       $cache->setCache($content);
-      echo $cache->getCache();
+      //echo $cache->getCache();
     }
 }
 else{
-    echo $cache->getCache();
-}
+    //echo $cache->getCache();
+}*/
 
  ?>

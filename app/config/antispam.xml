@@ -9,7 +9,7 @@
 		</error>
 	</config>
 	<ips>
-		<ip ip="::1" number="1" since="1349647319"/>
+		<ip ip="::1" number="2" since="1350005353"/>
 		<ip ip="127.0.0.1" number="1" since="1349022915"/>
 	</ips>
 </antispams>

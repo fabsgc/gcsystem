@@ -6,8 +6,12 @@
 	</config>
 	<errors>
 		<error id="1" template="GCsystem/GCerrorperso">
-			<var id="var1" type="var">une erreur</var>
-			<var id="var2" type="lang">idlang</var>
+			<var id="var1" type="var">
+				une erreur
+			</var>
+			<var id="var2" type="lang" id="idlang">
+				<varlang nom="var">machin</varlang>
+			</var>
 		</error>
 	</errors>
 </errorperso>

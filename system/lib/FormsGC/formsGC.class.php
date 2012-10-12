@@ -677,6 +677,10 @@
 				case 'button':
 					$this->GCtypeButton.="<input type=\"".$type."\" ";
 				break;
+
+				case 'submit':
+					$this->GCtypeButton.="<input type=\"".$type."\" ";
+				break;
 				
 				default:
 					$this->GCtypeButton.="<input type=\"button\" ";

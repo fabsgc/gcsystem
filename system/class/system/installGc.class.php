@@ -28,7 +28,7 @@
 		protected $_conflitUninstall        = true   ; //true = pas de conflits, false = conflits
 
 		public  function __construct($file = '', $bdd = null, $bddname = null, $lang = 'fr'){
-			$this->_setFile($file, $bdd, $bddname);
+			if($file!=''){$this->_setFile($file, $bdd, $bddname); }
 
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();
@@ -1075,19 +1075,32 @@
 				$plugin = false;
 
 				foreach ($this->_nodeXml as $key => $value){
-					if($value->getAttribute('id') == $id){
+					if($value->getAttribute('id') == $id){ //l'id existe \o/
 						$plugin = true;
+						$this->_node2Xml = $value->getElementsByTagName('files')->item(0);
+						$this->_node2Xml = $this->_node2Xml->getElementsByTagName('file');
+
+						foreach ($this->_node2Xml as $key2 => $value2){ // on vérifie si on a le droit de supprimer le fichier
+							if(in_array($this->_node2Xml->getAttribute('path'), $this->_forbiddenFile)){
+								$this->_conflitUninstall = false;
+								$this->_addError('La désinstallation veut supprimer un fichier système : '.$this->_node2Xml->getAttribute('path'), __FILE__, __LINE__, ERROR);
+								
+								//une regex ensuite sur les forbiddenDir
+							}
+						}
 					}
 				}
 
 				if($plugin == false){
 					$this->_conflitUninstall = false;
 					$this->_addError('Le plugin d\'id '.$id.' n\'existe pas', __FILE__, __LINE__, ERROR);
+					return false;
 				}
 			}
 			else{
 				$this->_conflitUninstall = false;
 				$this->_addError('Le fichier de désinstallation '.INSTALLED.' est endommagé', __FILE__, __LINE__, ERROR);
+				return false;
 			}
 		}
 

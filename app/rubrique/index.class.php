@@ -13,13 +13,17 @@
         public function actionDefault(){
             $this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
             echo $this->showHeader();
-                $t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', '0');
+
+            $install = new installGc();
+            $install->checkUninstall('22662503a6463b6c706.64500547');
+            echo $install->showError();
+               /* $t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', '0');
                 $t->assign(array(
                     'var'=> 'salutsalut',
                     'var2'=>'bonsoir'
                 ));
                 $t->setShow(FALSE);
-                echo $t->show();
+                echo $t->show();*/
 
 /*$cache = new cacheGc('twitter', "", 10);
 
@@ -43,9 +47,9 @@ if($cache->isDie()){
 else{
     echo $cache->getCache();
 }*/
-echo CLASS_CRON;
+//echo CLASS_CRON;
 
-echo USER_TESTT;
+//echo USER_TESTT;
             echo $this->showFooter();
         }
         

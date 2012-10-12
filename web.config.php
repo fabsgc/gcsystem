@@ -70,7 +70,7 @@ define('ROUTE', APP_CONFIG_PATH.'routes.xml');
 define('MODOGCCONFIG', APP_CONFIG_PATH.'modoGc.xml');
 define('APPCONFIG', APP_CONFIG_PATH.'app.xml');
 define('PLUGIN', APP_CONFIG_PATH.'plugin.xml');
-define('FIREWALL', APP_CONFIG_PATH.'firewallGc.xml');
+define('FIREWALL', APP_CONFIG_PATH.'firewall.xml');
 define('ASPAM', APP_CONFIG_PATH.'antispam.xml');
 define('INSTALLED', APP_CONFIG_PATH.'installed.xml');
 define('CRON', APP_CONFIG_PATH.'cron.xml');
