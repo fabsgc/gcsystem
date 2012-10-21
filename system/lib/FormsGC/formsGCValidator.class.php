@@ -201,7 +201,7 @@
 					$_POST['annee_'.$value[1]]=$_GET['annee_'.$value[1]];
 				}
 			}
-			
+
 			switch($value[0]){
 				case 'input':
 					foreach($value[3] as $contraint => $contraint_valeur){
@@ -415,7 +415,12 @@
 								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
 								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
 								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
-
+								echo $sql;
+								echo '<br />';
+								echo $contrainte;
+								echo '<br />';
+								echo $valeur;
+								echo '<br />';
 								$query = $this->bdd->query(''.$sql.'');
 								$query = $query->fetchColumn();
 								

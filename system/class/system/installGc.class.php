@@ -1081,9 +1081,9 @@
 						$this->_node2Xml = $this->_node2Xml->getElementsByTagName('file');
 
 						foreach ($this->_node2Xml as $key2 => $value2){ // on vérifie si on a le droit de supprimer le fichier
-							if(in_array($this->_node2Xml->getAttribute('path'), $this->_forbiddenFile)){
+							if(in_array($value2->getAttribute('path'), $this->_forbiddenFile)){
 								$this->_conflitUninstall = false;
-								$this->_addError('La désinstallation veut supprimer un fichier système : '.$this->_node2Xml->getAttribute('path'), __FILE__, __LINE__, ERROR);
+								$this->_addError('La désinstallation veut supprimer un fichier système : '.$value2->getAttribute('path'), __FILE__, __LINE__, ERROR);
 								
 								//une regex ensuite sur les forbiddenDir
 							}

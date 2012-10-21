@@ -421,7 +421,7 @@
 					$this->_security['firewall']['access']['url']['connected'] = $val->getAttribute('connected');
 					$access = explode(',', $val->getAttribute('access'));
 					$this->_id = $val->getAttribute('id');
-					
+
 					if(count($access) > 0){
 						foreach($access as $cle => $val){
 							if($val == '*'){
@@ -573,8 +573,9 @@
 		
 		protected function _checkRole(){
 			//renvoie true si le statut du membre est présent dans la liste des statuts autorisés false dans l'autre cas
-			if((isset($_SESSION[$this->_security['roles_hierarchy']['name']]) && in_array($_SESSION[$this->_security['roles_hierarchy']['name']], $this->_security['firewall']['access']['url']['access'])) 
-				|| $this->_security['firewall']['access']['url']['access']['*'] == '*'){
+			if((isset($_SESSION[''.$this->_security['roles_hierarchy']['name'].'']) 
+				&& in_array($_SESSION[$this->_security['roles_hierarchy']['name']], $this->_security['firewall']['access']['url']['access'])) 
+				|| (isset($this->_security['firewall']['access']['url']['access']['*']) && $this->_security['firewall']['access']['url']['access']['*'] == '*')){
 				return true;
 			}
 			else{
