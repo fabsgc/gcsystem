@@ -415,12 +415,7 @@
 								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
 								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
 								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
-								echo $sql;
-								echo '<br />';
-								echo $contrainte;
-								echo '<br />';
-								echo $valeur;
-								echo '<br />';
+
 								$query = $this->bdd->query(''.$sql.'');
 								$query = $query->fetchColumn();
 								
