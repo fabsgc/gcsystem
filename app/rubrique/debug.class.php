@@ -55,4 +55,13 @@
                 echo $this->forms['forms_inscription']->showForms();
             }
 		}
+
+		public function actionInstall(){
+			$install = new installGc();
+            if($install->checkUninstall('22662503a6463b6c706.64500547')){
+            	$install->uninstall();
+            }else{
+            	echo $install->showError();
+            }
+		}
 	}

@@ -136,6 +136,9 @@ define('TERMINAL_MDP', 'mdp');
 /* mettre à true pour pouvoir utiliser jquery et jquery ui */
 define('JQUERY', true);
 
+/* mettre à true pour pouvoir utiliser less */
+define('LESS', true);
+
 /* mettre à true pour sécuriser les variables superglobales */
 define('SECUREGET', true);
 define('SECUREPOST', true);
@@ -151,3 +154,4 @@ define('UPLOAD_PATH', FOLDER.'/'.ASSET_PATH.'upload/');
 define('JQUERYFILE', JS_PATH.'jquery.min.js');
 define('JQUERYUIJS', JS_PATH.'jquery-ui.min.js');
 define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
+define('LESSFILE', JS_PATH.'less-1.3.1.min.js');

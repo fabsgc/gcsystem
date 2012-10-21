@@ -153,3 +153,45 @@
 21/10/2012 a 20:06:18 ! : Page rewrite : http://localhost:82/GCsystem/debug rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/debug / IP : ::1
 21/10/2012 a 20:06:40 ! : Page rewrite : http://localhost:82/GCsystem/debug rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/debug / IP : ::1
 21/10/2012 a 20:16:04 ! : Page rewrite : http://localhost:82/GCsystem/debug rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/debug / IP : ::1
+21/10/2012 a 21:13:15 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:13:15 ! : Page rewrite : http://localhost:82/GCsystem/1 rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/ / IP : ::1
+21/10/2012 a 21:13:17 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:13:17 ! : Page rewrite : http://localhost:82/GCsystem/1 rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/ / IP : ::1
+21/10/2012 a 21:13:43 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:13:49 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:24:54 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:25:07 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:25:19 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:31:00 ! : Page rewrite : http://localhost:82/GCsystem/terminal.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:31:42 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:31:44 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:31:58 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:32:10 ! : Page rewrite : http://localhost:82/GCsystem/ rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:33:31 ! : Page rewrite : http://localhost:82/GCsystem/terminal-terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/terminal.html / IP : ::1
+21/10/2012 a 21:33:53 ! : Page rewrite : http://localhost:82/GCsystem/terminal-terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/terminal.html / IP : ::1
+21/10/2012 a 21:34:08 ! : Page rewrite : http://localhost:82/GCsystem/terminal-terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/terminal.html / IP : ::1
+21/10/2012 a 21:34:26 ! : Page rewrite : http://localhost:82/GCsystem/terminal-terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/terminal.html / IP : ::1
+21/10/2012 a 21:34:46 ! : Page rewrite : http://localhost:82/GCsystem/terminal.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:34:47 ! : Page rewrite : http://localhost:82/GCsystem/terminal-terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/terminal.html / IP : ::1
+21/10/2012 a 21:34:51 ! : Page rewrite : http://localhost:82/GCsystem/terminal-terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/terminal.html / IP : ::1
+21/10/2012 a 21:41:31 ! : Page rewrite : http://localhost:82/GCsystem/terminal-terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/terminal.html / IP : ::1
+21/10/2012 a 21:41:47 ! : Page rewrite : http://localhost:82/GCsystem/terminal-terminal.html rubrique : localhost/GCsystem/index.php? / origine : http://localhost:82/GCsystem/terminal.html / IP : ::1
+21/10/2012 a 21:42:04 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:42:15 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:44:19 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:45:12 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:46:10 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:49:33 ! : Page rewrite : http://localhost:82/GCsystem/terminal.html rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:52:51 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:53:04 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:53:12 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:56:02 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:56:50 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:57:36 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:57:53 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:58:02 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:59:35 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 21:59:39 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 22:00:05 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 22:00:39 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1
+21/10/2012 a 22:04:15 ! : Page rewrite : http://localhost:82/GCsystem/debug/install rubrique : localhost/GCsystem/index.php? / origine :  / IP : ::1

@@ -1084,8 +1084,13 @@
 							if(in_array($value2->getAttribute('path'), $this->_forbiddenFile)){
 								$this->_conflitUninstall = false;
 								$this->_addError('La désinstallation veut supprimer un fichier système : '.$value2->getAttribute('path'), __FILE__, __LINE__, ERROR);
-								
-								//une regex ensuite sur les forbiddenDir
+							}
+
+							foreach ($this->_forbiddenDir as $key => $value) { //on vérifie si on ne supprime pas des fichiers situés dans des répertoires interdits
+								if(preg_match('#'.$value2->getAttribute('path').'#isU', $value)){
+									$this->_conflitUninstall = false;
+									$this->_addError('La désinstallation veut supprimer un fichier système : '.$value2->getAttribute('path'), __FILE__, __LINE__, ERROR);
+								}
 							}
 						}
 					}

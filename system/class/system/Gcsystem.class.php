@@ -64,10 +64,10 @@
 
 				if($matchedRoute = $this->_routerInstance->getRoute(preg_replace('`\?'.preg_quote($this->getQuery()).'`isU', '', $this->getUri()))){
 					$_GET = array_merge($_GET, $matchedRoute->vars());
-					$_GET['rubrique'] = $matchedRoute->module();
-					$_GET['action']   = $matchedRoute->action();
-					$_GET['pageid']   = $matchedRoute->id();
-					$this->_cacheRoute      = $matchedRoute->cache();
+					$_GET['rubrique']  = $matchedRoute->module();
+					$_GET['action']    = $matchedRoute->action();
+					$_GET['pageid']    = $matchedRoute->id();
+					$this->_cacheRoute = $matchedRoute->cache();
 				}
 				else{
 					$_GET['rubrique'] = "";
@@ -102,7 +102,7 @@
 						$_SESSION['connected'] = 'true';
 						//$_SESSION['statut'] = 2;
 
-						if($this->_cacheRoute > 0 && REWRITE == true){
+						if($this->_cacheRoute > 0 && REWRITE == true){ //le cache de la page est supérieur à 0 secondes
 							if($this->_setRubrique($rubrique) == true){  //on inclut les fichiers necéssaire à l'utilisation d'une rubrique
 								$class = new $rubrique($this->_lang);
 								if(SECURITY == false || $class->setFirewall() == true){
@@ -114,7 +114,7 @@
 												$class->init();
 														
 												if($_GET['action']!=""){
-													if(is_callable(array($rubrique, 'action'.$_GET['action']))){
+													if(method_exists($class, 'action'.ucfirst($_GET['action']))){
 														$action = 'action'.ucfirst($_GET['action']);
 														$class->$action();
 														$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__, INFORMATION);
@@ -125,7 +125,7 @@
 														$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
 													}
 												}
-												elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
+												elseif($_GET['action']=="" && method_exists($class, 'action'.ucfirst($_GET['action']))){
 													$action = 'actionDefault';
 													$class->$action();
 												}
@@ -159,9 +159,9 @@
 									if(SECURITY == false || $class->setFirewall() == true){
 										if(ANTISPAM == false || $class->setAntispam() == true){
 											$class->init();
-											
+
 											if($_GET['action']!=""){
-												if(is_callable(array($rubrique, 'action'.$_GET['action']))){
+												if(method_exists($class, 'action'.ucfirst($_GET['action']))){
 													$action = 'action'.ucfirst($_GET['action']);
 													$class->$action();
 													$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__, INFORMATION);
@@ -172,7 +172,7 @@
 													$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
 												}
 											}
-											elseif($_GET['action']=="" && is_callable(array($rubrique, 'actionDefault'))){
+											elseif($_GET['action']=="" && method_exists($class, 'action'.ucfirst($_GET['action']))){
 												$action = 'actionDefault';
 												$class->$action();
 											}

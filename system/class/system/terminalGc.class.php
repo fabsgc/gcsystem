@@ -772,7 +772,7 @@
 						$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
 					}
 				}
-				elseif(preg_match('#add url (.*) (.*) (.*) (.*) (.*) (.*) (.*) (.*)#', $this->_command)){
+				elseif(preg_match('#add url (.*) (.*) (.*) (.*)#', $this->_command)){
 					//add url id url rubrique action vars connected access
 					$this->_domXml = new DomDocument('1.0', CHARSET);
 					
@@ -794,42 +794,52 @@
 							$this->_markupXml->setAttribute("url", '/'.$this->_commandExplode[3]);
 							$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[4]);
 							$this->_markupXml->setAttribute("action", $this->_commandExplode[5]);
-							if($this->_commandExplode[6] != 'empty'){
+							if(isset($this->_commandExplode[6]) && $this->_commandExplode[6] != 'empty'){
 								$this->_markupXml->setAttribute("vars", $this->_commandExplode[6]);
 							}
 							else{
 								$this->_markupXml->setAttribute("vars", '');	
 							}
 
-							$this->_markupXml->setAttribute("cache", intval($this->_commandExplode[9]));
+							if(isset($this->_commandExplode[9])){
+								$this->_markupXml->setAttribute("cache", intval($this->_commandExplode[9]));
+							}
+							else{
+								$this->_markupXml->setAttribute("cache", 0);
+							}
+
 							$this->_nodeXml->appendChild($this->_markupXml);
 							$this->_domXml->save(ROUTE);
 
-							$this->_domXml = new DomDocument('1.0', CHARSET);
-				
-							if($this->_domXml->load(FIREWALL)){
-								$this->_nodeXml = $this->_domXml->getElementsByTagName('security')->item(0);
-								$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewall')->item(0);
-								$this->_node3Xml = $this->_node2Xml->getElementsByTagName('access')->item(0);
-								
-								$sentences = $this->_node3Xml->getElementsByTagName('url');
-								
-								$rubrique = false;
-								
-								foreach($sentences as $sentence){
-									if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
-										$rubrique = true;
-									}
-								}
-								
-								if($rubrique == false){
-									$this->_markupXml = $this->_domXml->createElement('url');
-									$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
-									$this->_markupXml->setAttribute("connected", $this->_commandExplode[7]);
-									$this->_markupXml->setAttribute("access", $this->_commandExplode[8]);
+
+							if(isset($this->_commandExplode[7])){ //inutile de creer une ligne dans firewall si on y met rien
+								$this->_domXml = new DomDocument('1.0', CHARSET);
+					
+								if($this->_domXml->load(FIREWALL)){
+									$this->_nodeXml = $this->_domXml->getElementsByTagName('security')->item(0);
+									$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewall')->item(0);
+									$this->_node3Xml = $this->_node2Xml->getElementsByTagName('access')->item(0);
 									
-									$this->_node3Xml->appendChild($this->_markupXml);
-									$this->_domXml->save(FIREWALL);
+									$sentences = $this->_node3Xml->getElementsByTagName('url');
+									
+									$rubrique = false;
+									
+									foreach($sentences as $sentence){
+										if ($sentence->getAttribute("id") == $this->_commandExplode[2]){
+											$rubrique = true;
+										}
+									}
+									
+									if($rubrique == false){
+										$this->_markupXml = $this->_domXml->createElement('url');
+										$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
+
+										$this->_markupXml->setAttribute("connected", $this->_commandExplode[7]);
+										$this->_markupXml->setAttribute("access", $this->_commandExplode[8]);
+										
+										$this->_node3Xml->appendChild($this->_markupXml);
+										$this->_domXml->save(FIREWALL);
+									}
 								}
 							}
 

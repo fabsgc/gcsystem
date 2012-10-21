@@ -347,6 +347,9 @@
 				$this->_header.="    <script type=\"text/javascript\" src=\"".JQUERYUIJS."\" ></script> \n";
 				$this->_header.="    <link href=\"".JQUERYUICSS."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
 			}
+			if(LESS==true){
+				$this->_header.="    <script type=\"text/javascript\" src=\"".LESSFILE."\" ></script> \n";
+			}
 			foreach($this->_js as $element){
 				if(!preg_match('#http:#isU', JS_PATH.$element)){
 					$this->_header.="    <script type=\"text/javascript\" src=\"".JS_PATH.$element."\" ></script> \n";
