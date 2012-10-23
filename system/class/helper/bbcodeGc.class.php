@@ -222,10 +222,17 @@
 				'`'.preg_quote(self::TAGSTART).'video'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'video'.preg_quote(self::TAGEND).'`isU', 
 				array('bbcodeGc', '_video'), $this->_contenu
 			);
-			$this->_contenu = preg_replace_callback(
+			/*$this->_contenu = preg_replace_callback(
 				'`'.preg_quote(self::TAGSTART).'code type=&quot;(.*)&quot;'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'code'.preg_quote(self::TAGEND).'`isU', 
 				array('bbcodeGc', '_highlight'), $this->_contenu
+			);*/
+
+
+			$this->_contenu = preg_replace(
+				'`'.preg_quote(self::TAGSTART).'code type=&quot;(.*)&quot;'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'code'.preg_quote(self::TAGEND).'`isU', 
+				'<script type="syntaxhighlighter" class="brush: $1"><![CDATA[$2]]></script>', $this->_contenu
 			);
+
 			$this->_contenu =  preg_replace_callback(
 				'`\s((?:https?|ftp)://\S+?)(?=[]\).,;:!?]?(?:\s|\Z)|\Z)`isU', 
 				array('bbcodeGc', '_link'), $this->_contenu);
@@ -396,8 +403,6 @@
 				'color' => $this->_bbCodeButtonColor
 			));
 			$tpl->show();
-			
-			print_r($this->_bbcodeButtonColor);
 		}
 
 		public  function __destruct(){

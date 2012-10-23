@@ -102,7 +102,7 @@
 						$_SESSION['connected'] = 'true';
 						//$_SESSION['statut'] = 2;
 
-						if($this->_cacheRoute > 0 && REWRITE == true){ //le cache de la page est supérieur à 0 secondes
+						if($this->_cacheRoute > 0){ //le cache de la page est supérieur à 0 secondes et le rewrite activé
 							if($this->_setRubrique($rubrique) == true){  //on inclut les fichiers necéssaire à l'utilisation d'une rubrique
 								$class = new $rubrique($this->_lang);
 								if(SECURITY == false || $class->setFirewall() == true){
@@ -125,7 +125,7 @@
 														$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
 													}
 												}
-												elseif($_GET['action']=="" && method_exists($class, 'action'.ucfirst($_GET['action']))){
+												elseif($_GET['action']==""){
 													$action = 'actionDefault';
 													$class->$action();
 												}
@@ -172,7 +172,7 @@
 													$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
 												}
 											}
-											elseif($_GET['action']=="" && method_exists($class, 'action'.ucfirst($_GET['action']))){
+											elseif($_GET['action']==""){
 												$action = 'actionDefault';
 												$class->$action();
 											}

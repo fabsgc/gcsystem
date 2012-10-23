@@ -23,7 +23,7 @@
 		</config>
 		<access>
 			<url id="index" connected="true" access="*"/>
-			<url id="index2" connected="true" access="ROLE_ADMIN"/>
+			<url id="index2" connected="true" access="*"/>
 			<url id="index3" connected="*" access="*"/>
 			<url id="page" connected="*" access="*"/>
 			<url id="page2" connected="*" access="*"/>

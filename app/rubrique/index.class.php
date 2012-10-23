@@ -19,7 +19,7 @@
                     'var2'=>'bonsoir'
                 ));
                 $t->setShow(FALSE);
-                echo $t->show();
+            echo $t->show();
 
                 $cache = new cacheGc('twitter', "", 10);
 

@@ -139,6 +139,9 @@ define('JQUERY', true);
 /* mettre à true pour pouvoir utiliser less */
 define('LESS', true);
 
+/* mettre à true pour pouvoir utiliser le colorateur syntaxique */
+define('SYNTAXHIGHLIGHTER', true);
+
 /* mettre à true pour sécuriser les variables superglobales */
 define('SECUREGET', true);
 define('SECUREPOST', true);
@@ -151,7 +154,15 @@ define('IMG_PATH', FOLDER.'/'.ASSET_PATH.'image/');
 define('CSS_PATH', FOLDER.'/'.ASSET_PATH.'css/');
 define('JS_PATH', FOLDER.'/'.ASSET_PATH.'js/');
 define('UPLOAD_PATH', FOLDER.'/'.ASSET_PATH.'upload/');
-define('JQUERYFILE', JS_PATH.'jquery.min.js');
-define('JQUERYUIJS', JS_PATH.'jquery-ui.min.js');
-define('JQUERYUICSS', CSS_PATH.'jquery-ui.css');
-define('LESSFILE', JS_PATH.'less-1.3.1.min.js');
+
+define('JQUERYFILE', JS_PATH.'jquery/jquery.min.js');
+define('JQUERYUIJS', JS_PATH.'jquery/jquery-ui.min.js');
+define('JQUERYUICSS', CSS_PATH.'jquery/jquery-ui.css');
+
+define('LESSFILE', JS_PATH.'less/less-1.3.1.min.js');
+
+define('SHIGHLIGHTER', JS_PATH.'syntaxhighligher/');
+define('SHIGHLIGHTER_SHCORE_CSS', CSS_PATH.'syntaxhighligher/shCore.css');
+define('SHIGHLIGHTER_SHCOREDEFAULT_CSS', CSS_PATH.'syntaxhighligher/shCoreDefault.css');
+define('SHIGHLIGHTER_SHCORE_JS', JS_PATH.'syntaxhighligher/shCore.js');
+define('SHIGHLIGHTER_AUTOLOADER_JS', JS_PATH.'syntaxhighligher/shAutoloader.js');

@@ -350,6 +350,21 @@
 			if(LESS==true){
 				$this->_header.="    <script type=\"text/javascript\" src=\"".LESSFILE."\" ></script> \n";
 			}
+			if(SYNTAXHIGHLIGHTER==true){
+				$this->_header.="    <link href=\"".SHIGHLIGHTER_SHCORE_CSS."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+				$this->_header.="    <link href=\"".SHIGHLIGHTER_SHCOREDEFAULT_CSS."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+				$this->_header.="    <script type=\"text/javascript\" src=\"".SHIGHLIGHTER_SHCORE_JS."\" ></script> \n";
+				$this->_header.="    <script type=\"text/javascript\" src=\"".SHIGHLIGHTER_AUTOLOADER_JS."\" ></script> \n";
+
+				$dossier = opendir ('asset/js/syntaxhighligher/language/');
+
+				while ($fichier = readdir ($dossier)){
+					if ($fichier != "." && $fichier != ".." && !preg_match('#index#isU', $fichier)){
+						$this->_header.="    <script type=\"text/javascript\" src=\"".SHIGHLIGHTER.'language/'.$fichier."\" ></script> \n";
+					}       
+				}
+				closedir ($dossier);
+			}
 			foreach($this->_js as $element){
 				if(!preg_match('#http:#isU', JS_PATH.$element)){
 					$this->_header.="    <script type=\"text/javascript\" src=\"".JS_PATH.$element."\" ></script> \n";
@@ -402,7 +417,10 @@
 		} 
 		
 		final protected function showFooter(){
-			$this->_footer="  </body>\n</html>";
+			$this->_footer.="    <script type=\"text/javascript\">";
+			$this->_footer.="      SyntaxHighlighter.all()";
+			$this->_footer.="    </script>";
+			$this->_footer.="  </body>\n</html>";
 			return $this->_footer;
 		}
 		

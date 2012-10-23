@@ -64,4 +64,14 @@
             	echo $install->showError();
             }
 		}
+
+		public function actionSyntaxhighlighter(){
+			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
+			echo $this->showHeader();
+			$bbcode = new bbcodeGc();
+			$bbcode-> editor('[code type="php"]salut[/code]');
+
+			echo $bbcode->parse('[code type="php"]salut[/code]');
+			echo $this->showFooter();
+		}
 	}

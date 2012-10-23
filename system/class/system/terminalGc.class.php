@@ -1443,7 +1443,7 @@
 					}					
 				}       
 			}
-			closedir ($dossier);    
+			closedir ($dossier);
 		}
 
 		protected function _update(){

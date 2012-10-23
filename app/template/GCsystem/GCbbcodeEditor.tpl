@@ -523,25 +523,31 @@
 		field = nl2br_js(document.getElementById('{id}').value);
 
 		<gc:foreach var="$bbcode" as="$val">
-			field = field.replace(/\[<gc:function name="html_entity_decode" string="$val[0]" />\]([\s\S]*?)\[\/<gc:function name="html_entity_decode" string="$val[1]" />\]/g, '<<gc:function name="html_entity_decode" string="$val[2]" />>{val[4]}</<gc:function name="html_entity_decode" string="$val[3]" />>');
+			field = field.replace(/\[{<gc:function name="html_entity_decode" string="$val[0]" />}\]([\s\S]*?)\[\/{<gc:function name="html_entity_decode" string="$val[1]" />}\]/g, '<{<gc:function name="html_entity_decode" string="$val[2]" />}>{val[4]}</{<gc:function name="html_entity_decode" string="$val[3]" />}>');
 		</gc:foreach>
 		<gc:foreach var="$smiley" as="$val">
-			field = field.replace(/<gc:function name="preg_quote" string="$val[1]"/> /g, '<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" /> ');
-			field = field.replace(/<gc:function name="preg_quote" string="$val[1]"/>&lt;br \/&gt;/g, '<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" /><br />');
+			field = field.replace(/{<gc:function name="preg_quote" string="$val[1]"/>} /g, '<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" /> ');
+			field = field.replace(/{<gc:function name="preg_quote" string="$val[1]"/>}&lt;br \/&gt;/g, '<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" /><br />');
 		</gc:foreach>
 		<gc:foreach var="$bbCodeS" as="$val">
-			field = field.replace(/\[<gc:function name="html_entity_decode" string="$val[0]" />\]([\s\S]*?)\[\/<gc:function name="html_entity_decode" string="$val[0]" />\]/g, '<<gc:function name="html_entity_decode" string="$val[0]" />>$1</<gc:function name="html_entity_decode" string="$val[0]" />>');
+			field = field.replace(/\[{<gc:function name="html_entity_decode" string="$val[0]" />}\]([\s\S]*?)\[\/{<gc:function name="html_entity_decode" string="$val[0]" />}\]/g, '<{<gc:function name="html_entity_decode" string="$val[0]" />}>$1</{<gc:function name="html_entity_decode" string="$val[0]" />}>');
 		</gc:foreach>
 
+		field = field.replace(/\[code type="([\s\S]*?)"\]([\s\S]*?)\[\/code\]/g,
+			'<script type="syntaxhighlighter" class="brush: $1"><![CDATA[$2]]><\/script>');
+
 		field = field.replace('&gt;&lt;br \/&gt;', '>');
+
 
 		document.getElementById('zone_{id}').innerHTML = field;
 		document.getElementById('zone_{id}').innerHTML = field;
 		document.getElementById('zone_{id}').scrollTop = 1000;
+
+		SyntaxHighlighter.highlight();
 	}
 	
-	function previewAjax_{id}(id){
-		alert('_(alertpreviewbbocde)_');
+	function previewAjax_{id}(){
+		alert("_(alertpreviewbbocde)_");
 	}
 	
 	function nl2br_js(myString) {
@@ -555,16 +561,16 @@
 <div class="gc_bbcode">
 	<div class="gc_bbcode_option option {theme}">
 		<gc:foreach var="$bbCodeEditor" as="$val">
-			<img src="{imgpath}bbcode/{val[2]}" alt="{val[2]}" onclick="insertTag_{id}('[<gc:function name="preg_quote" string="$val[0]"/>]', '[/<gc:function name="preg_quote" string="$val[1]"/>]', '{id}'); " />
+			<img src="{imgpath}bbcode/{val[2]}" alt="{val[2]}" onclick="insertTag_{id}('[{<gc:function name="preg_quote" string="$val[0]"/>}]', '[/{<gc:function name="preg_quote" string="$val[1]"/>}]', '{id}'); " />
 		</gc:foreach>
 		<br />
 		<gc:foreach var="$smiley" as="$val">
-			<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" onclick="insertTag_{id}('<gc:function name="preg_quote" string="$val[1]"/> ', '', '{id}'); " />
+			<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" onclick="insertTag_{id}('{<gc:function name="preg_quote" string="$val[1]"/>} ', '', '{id}'); " />
 		</gc:foreach>
 	</div>
-	<textarea id="{id}" name="{name}"<if cond="$preview == true && $instantane == true"> onKeyUp="preview_{id}('{id}');" </if> >{message}</textarea>
+	<textarea id="{id}" name="{name}"<gc:if cond="$preview == true && $instantane == true"> onKeyUp="preview_{id}('{id}');" </gc:if> >{message}</textarea>
 	<gc:if cond="$preview == true">
-		<div class="gc_bbcode_preview_button button {theme}" onClick="previewAjax_{id}('{id}');">
+		<div class="gc_bbcode_preview_button button {theme}" onClick="previewAjax_{id}();">
 			_(bbcodepreview)_
 		</div>
 	</gc:if>
