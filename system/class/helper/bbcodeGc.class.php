@@ -23,6 +23,7 @@
 		protected $_name                                        ; //name pour la création d'un formulaire de bbcode
 		protected $_preview                  =true              ; //la prévisualisation est activée
 		protected $_previewInstantanee       =true              ; //la prévisualisation instantanée est activée
+		protected $_previewAjax              =true              ; //la prévisualisation ajax est activée
 
 		protected $_bbCodeWidth              ='600px'           ; //largeur de l'éditeur
 		protected $_bbCodeHeight             ='250px'           ; //largeur de la zone de texte de l'éditeur
@@ -143,7 +144,6 @@
 		);
 
 		public  function __construct($lang=""){
-			require_once(GESHI);
 			$this->_langInstance;
 			$this->_createLangInstance();
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
@@ -177,7 +177,7 @@
 
 			$this->_contenu = htmlentities($contenu);
 
-			foreach($this->_bbcode as $cle => $valeur){
+			foreach($this->_bbCode as $cle => $valeur){
 				if($valeur[3]!=""){
 					$this->_contenu = preg_replace(
 						'`'.preg_quote(self::TAGSTART).$valeur[0].preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).$valeur[1].preg_quote(self::TAGEND).'`isU', 
@@ -194,7 +194,7 @@
 				}
 			}
 
-			foreach($this->_bbcodeS as $valeur){
+			foreach($this->_bbCodeS as $valeur){
 					$this->_contenu = preg_replace(
 						'`'.preg_quote(self::TAGSTART).$valeur.preg_quote(self::TAGEND).'`isU', 
 							self::PARSETAGSTART.$valeur.self::PARSETAGEND, 
@@ -209,7 +209,7 @@
 
 			}
 
-			foreach($this->_bbcodeSmiley as $cle => $valeur){
+			foreach($this->_bbCodeSmiley as $cle => $valeur){
 				$this->_contenu = preg_replace(
 					'`'.preg_quote($cle).'`isU', 
 						self::PARSETAGSTART.'img src="'.IMG_PATH.'bbcode/'.$valeur[0].'" alt="'.$valeur[1].'" '.self::PARSETAGENDAUTO.' ', 
@@ -222,11 +222,6 @@
 				'`'.preg_quote(self::TAGSTART).'video'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'video'.preg_quote(self::TAGEND).'`isU', 
 				array('bbcodeGc', '_video'), $this->_contenu
 			);
-			/*$this->_contenu = preg_replace_callback(
-				'`'.preg_quote(self::TAGSTART).'code type=&quot;(.*)&quot;'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'code'.preg_quote(self::TAGEND).'`isU', 
-				array('bbcodeGc', '_highlight'), $this->_contenu
-			);*/
-
 
 			$this->_contenu = preg_replace(
 				'`'.preg_quote(self::TAGSTART).'code type=&quot;(.*)&quot;'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'code'.preg_quote(self::TAGEND).'`isU', 
@@ -237,8 +232,8 @@
 				'`\s((?:https?|ftp)://\S+?)(?=[]\).,;:!?]?(?:\s|\Z)|\Z)`isU', 
 				array('bbcodeGc', '_link'), $this->_contenu);
 
-			$this->_contenu = nl2br($this->_contenu);
-			$this->_contenu = preg_replace('`><br />`isU', '>', $this->_contenu);
+			//$this->_contenu = nl2br($this->_contenu);
+			$this->_contenu = preg_replace('`><br \/>`isU', '>', $this->_contenu);
 			return $this->_contenu;
 		}
 
@@ -257,23 +252,6 @@
 
 		public function setInstantane($preview){
 			$this->_previewInstantanee=$preview;
-		} 
-
-		protected function _highlight($contenu){
-			$contenu[1] = html_entity_decode($contenu[1]);
-			$contenu[1] = htmlspecialchars_decode($contenu[1]);
-			$contenu[2] = html_entity_decode($contenu[2]);
-			$contenu[2] = htmlspecialchars_decode($contenu[2]);
-
-			$code = new GeSHi($contenu[2], $contenu[1]);
-			$code->enable_line_numbers(GESHI_FANCY_LINE_NUMBERS, 2);
-			$code->set_line_style('background: #fefefe;', 'background: #f0f0f0;'); 
-			$code->enable_keyword_links(false);
-			$parse = $code->parse_code();
-			return self::PARSETAGSTART.'code'.self::PARSETAGEND.
-				self::PARSETAGSTART.'div class="code_nom"'.self::PARSETAGEND.$contenu[1].self::PARSETAGSTART2.'div'.self::PARSETAGEND.
-				self::PARSETAGSTART.'div class="code_code"'.self::PARSETAGEND.$parse.self::PARSETAGSTART2.'div'.self::PARSETAGEND.
-				self::PARSETAGSTART2.'code'.self::PARSETAGEND;
 		}
 
 		protected function _link($contenu){
@@ -377,6 +355,10 @@
 						$this->_previewInstantanee = $info;
 					break;
 
+					case 'previewAjax':
+						$this->_previewAjax = $info;
+					break;
+
 					case 'color' :
 						$this->_bbCodeButtonColor = $info;
 					break;
@@ -388,6 +370,7 @@
 				'message' => $contenu,
 				'preview' => $this->_preview,
 				'instantane' => $this->_previewInstantanee,
+				'previewAjax' => $this->_previewAjax,
 				'id' => $this->_id,
 				'name' => $this->_name,
 				'width' => $this->_bbCodeWidth,

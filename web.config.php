@@ -62,9 +62,6 @@ define('CLASS_INSTALL', CLASS_PATH.CLASS_SYSTEM_PATH.'installGc.class.php');
 define('CLASS_CRON', CLASS_PATH.CLASS_SYSTEM_PATH.'cronGc.class.php');
 define('CLASS_BACKUP', CLASS_PATH.CLASS_SYSTEM_PATH.'backupGc.class.php');
 
-//lib
-define('GESHI', LIB_PATH.'geshi/geshi.php');
-
 //fichiers de config
 define('ROUTE', APP_CONFIG_PATH.'routes.xml');
 define('MODOGCCONFIG', APP_CONFIG_PATH.'modoGc.xml');

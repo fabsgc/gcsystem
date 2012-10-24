@@ -69,9 +69,21 @@
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
 			echo $this->showHeader();
 			$bbcode = new bbcodeGc();
-			$bbcode-> editor('[code type="php"]salut[/code]');
+			$bbcode-> editor('[code type="php"]salut [strong]salut[/strong] 
 
-			echo $bbcode->parse('[code type="php"]salut[/code]');
+[quote title="dddddd"]dd[/quote]
+
+[/code][strong]salut[/strong]');
+
+			echo $bbcode->parse('[code type="css"].css{
+
+
+<script>alert(\'salut\');</script> [a url="zz"]zzzzzzzzz[/a] [font val="courier"]salut[/font]
+<br />
+"
+}[/code]
+[a url="sa"]sa[/a]
+dfqsdqsdf <br />ssdfsdf [font val="courier"]salut[/font] [quote title="dddddd"]dd[/quote] [strong]aaaa[/strong]');
 			echo $this->showFooter();
 		}
 	}

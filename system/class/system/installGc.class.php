@@ -84,7 +84,7 @@
 				CLASS_PATH.CLASS_SYSTEM_PATH,
 				LANG_PATH,
 				LOG_PATH,
-				LIB_PATH.'FormsGC/', LIB_PATH.'geshi/'
+				LIB_PATH.'FormsGC/'
 			);
 
 			//répertoires où il est interdit de créer de nouveaux répertoires
@@ -98,7 +98,7 @@
 				SYSTEM_PATH, CLASS_PATH, CLASS_PATH.CLASS_SYSTEM_PATH, CLASS_PATH.CLASS_HELPER_PATH,
 				LANG_PATH,
 				LOG_PATH,
-				LIB_PATH.'FormsGC/', LIB_PATH.'geshi/'
+				LIB_PATH.'FormsGC/'
 			);
 
 			$this->_authorizedDir = array(
