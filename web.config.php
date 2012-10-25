@@ -160,6 +160,6 @@ define('LESSFILE', JS_PATH.'less/less-1.3.1.min.js');
 
 define('SHIGHLIGHTER', JS_PATH.'syntaxhighligher/');
 define('SHIGHLIGHTER_SHCORE_CSS', CSS_PATH.'syntaxhighligher/shCore.css');
-define('SHIGHLIGHTER_SHCOREDEFAULT_CSS', CSS_PATH.'syntaxhighligher/shCoreDefault.css');
+define('SHIGHLIGHTER_SHCOREDEFAULT_CSS', CSS_PATH.'syntaxhighligher/shCoreMidnight.css');
 define('SHIGHLIGHTER_SHCORE_JS', JS_PATH.'syntaxhighligher/shCore.js');
 define('SHIGHLIGHTER_AUTOLOADER_JS', JS_PATH.'syntaxhighligher/shAutoloader.js');

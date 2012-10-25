@@ -73,17 +73,31 @@
 
 [quote title="dddddd"]dd[/quote]
 
-[/code][strong]salut[/strong]');
+[/code][strong]salut[/strong]', array(
+		'theme' => 'red'
+	));
 
 			echo $bbcode->parse('[code type="css"].css{
 
 
-<script>alert(\'salut\');</script> [a url="zz"]zzzzzzzzz[/a] [font val="courier"]salut[/font]
-<br />
+
+				
+<script>alert(\'salut\');</script> [a url="zz"]zzzzzzzzz[/a]
+http://localhost:82/GCsystem/asset/image/GCsystem/bbcode/code.png
+<br /
 "
+<a href="http://dddd">aaaaaaaaa</a>
 }[/code]
 [a url="sa"]sa[/a]
-dfqsdqsdf <br />ssdfsdf [font val="courier"]salut[/font] [quote title="dddddd"]dd[/quote] [strong]aaaa[/strong]');
+
+
+
+
+<a href="http://dddd" > aaaaaaaaa</a>
+dfqsdqsdf <br />[font val="courier"]salut[/font] 
+http://localhost:82/GCsystem/asset/image/GCsystem/bbcode/code.png
+
+salut');
 			echo $this->showFooter();
 		}
 	}

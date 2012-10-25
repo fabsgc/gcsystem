@@ -1,24 +1,24 @@
 <style>
 	.gc_bbcode{
-		width : {width};
-		background-color : {bgcolor};
+		width : <?php echo ($width); ?>;
+		background-color : <?php echo ($bgcolor); ?>;
 		border-radius : 4px;
 		padding: 1px;
 		padding-right: 3px;
 		font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 	}
 	
-	textarea#{id}{
+	textarea#<?php echo ($id); ?>{
 		border: none;
-		width: {width};
-		height: {height};
+		width: <?php echo ($width); ?>;
+		height: <?php echo ($height); ?>;
 		margin-bottom: -2px;
 		margin-top: 1px;
 		padding: 1px;
 	}
 	
 	.gc_bbcode_preview_zone{
-		width: {width};
+		width: <?php echo ($width); ?>;
 		padding: 0 1px 0 1px;
 		background-color: rgb(245,245,245);
 		border-bottom-left-radius : 4px;
@@ -444,25 +444,25 @@
 	
 	/* Personnalize */
 	.button.personnalize, .option.personnalize {
-		background-color: #{color[0]};
-		background-image: -webkit-linear-gradient(top,#{color[0]}, #{color[1]});
-		background-image: -moz-linear-gradient(top,#{color[0]}, #{color[1]});
-		background-image: -ms-linear-gradient(top,#{color[0]}, #{color[1]});
-		background-image: -o-linear-gradient(top,#{color[0]}, #{color[1]});
-		background-image: linear-gradient(top,#{color[0]}, #{color[1]});
+		background-color: #<?php echo ($color[0]); ?>;
+		background-image: -webkit-linear-gradient(top,#<?php echo ($color[0]); ?>, #<?php echo ($color[1]); ?>);
+		background-image: -moz-linear-gradient(top,#<?php echo ($color[0]); ?>, #<?php echo ($color[1]); ?>);
+		background-image: -ms-linear-gradient(top,#<?php echo ($color[0]); ?>, #<?php echo ($color[1]); ?>);
+		background-image: -o-linear-gradient(top,#<?php echo ($color[0]); ?>, #<?php echo ($color[1]); ?>);
+		background-image: linear-gradient(top,#<?php echo ($color[0]); ?>, #<?php echo ($color[1]); ?>);
 
-		border: 1px solid #{color[0]};
+		border: 1px solid #<?php echo ($color[0]); ?>;
 	}
 	
 	.button.personnalize:hover {
-		border: 1px solid #{color[0]};
+		border: 1px solid #<?php echo ($color[0]); ?>;
 		
-		background-color: #{color[0]};
-		background-image: -webkit-linear-gradient(top,#{color[0]},#{color[1]});
-		background-image: -moz-linear-gradient(top,#{color[0]},#{color[1]});
-		background-image: -ms-linear-gradient(top,#{color[0]},#{color[1]});
-		background-image: -o-linear-gradient(top,#{color[0]},#{color[1]});
-		background-image: linear-gradient(top,#{color[0]},#{color[1]});
+		background-color: #<?php echo ($color[0]); ?>;
+		background-image: -webkit-linear-gradient(top,#<?php echo ($color[0]); ?>,#<?php echo ($color[1]); ?>);
+		background-image: -moz-linear-gradient(top,#<?php echo ($color[0]); ?>,#<?php echo ($color[1]); ?>);
+		background-image: -ms-linear-gradient(top,#<?php echo ($color[0]); ?>,#<?php echo ($color[1]); ?>);
+		background-image: -o-linear-gradient(top,#<?php echo ($color[0]); ?>,#<?php echo ($color[1]); ?>);
+		background-image: linear-gradient(top,#<?php echo ($color[0]); ?>,#<?php echo ($color[1]); ?>);
 		
 		-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
 		-moz-box-shadow: 0 1px 1px rgba(0,0,0,.1);
@@ -490,7 +490,7 @@
 	}
 </style>
 <script>
-	function insertTag_{id}(startTag, endTag, textareaId, tagType) {
+	function insertTag_<?php echo ($id); ?>(startTag, endTag, textareaId, tagType) {
 		var field  = document.getElementById(textareaId); 
 		var scroll = field.scrollTop;
 		field.focus();
@@ -516,41 +516,41 @@
 
 		field.scrollTop = scroll; // et on redéfinit le scroll.
 		
-		preview_{id}('{id}');
+		preview_<?php echo ($id); ?>('<?php echo ($id); ?>');
 	}
 	
-	function preview_{id}(id){
-		field = nl2br_js(document.getElementById('{id}').value);
+	function preview_<?php echo ($id); ?>(id){
+		field = nl2br_js(document.getElementById('<?php echo ($id); ?>').value);
 
-		<gc:foreach var="$bbcode" as="$val">
-			{{php: $val[0] = preg_replace('#"#isU', '&quot;', $val[0]);}}
-			field = field.replace(/\[{val[0]}\]([\s\S]*?)\[\/{<gc:function name="html_entity_decode" string="$val[1]" />}\]/g, '<{<gc:function name="html_entity_decode" string="$val[2]" />}>{val[4]}</{<gc:function name="html_entity_decode" string="$val[3]" />}>');
-		</gc:foreach>
-		<gc:foreach var="$smiley" as="$val">
-			{{php: $val = preg_replace('#"#isU', '&quot;', $val);}}
-			field = field.replace(/{<gc:function name="preg_quote" string="$val[1]"/>} /g, '<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" /> ');
-			field = field.replace(/{<gc:function name="preg_quote" string="$val[1]"/>}&lt;br \/&gt;/g, '<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" /><br />');
-		</gc:foreach>
-		<gc:foreach var="$bbCodeS" as="$val">
-			{{php: $val[0] = preg_replace('#"#isU', '&quot;', $val[0]);}}
-			field = field.replace(/\[{<gc:function name="html_entity_decode" string="$val[0]" />}\]([\s\S]*?)\[\/{<gc:function name="html_entity_decode" string="$val[0]" />}\]/g, '<{<gc:function name="html_entity_decode" string="$val[0]" />}>$1</{<gc:function name="html_entity_decode" string="$val[0]" />}>');
-		</gc:foreach>
+		<?php if(!empty($bbcode)) { foreach($bbcode as $val) { ?>
+			<?php  $val[0] = preg_replace('#"#isU', '&quot;', $val[0]); ?>
+			field = field.replace(/\[<?php echo ($val[0]); ?>\]([\s\S]*?)\[\/<?php echo (html_entity_decode("$val[1]")); ?>\]/g, '<<?php echo (html_entity_decode("$val[2]")); ?>><?php echo ($val[4]); ?></<?php echo (html_entity_decode("$val[3]")); ?>>');
+		<?php }} ?>
+		<?php if(!empty($smiley)) { foreach($smiley as $val) { ?>
+			<?php  $val = preg_replace('#"#isU', '&quot;', $val); ?>
+			field = field.replace(/<?php echo (preg_quote("$val[1]")); ?> /g, '<img src="<?php echo ($imgpath); ?>bbcode/<?php echo ($val[0]); ?>" alt="<?php echo ($val[1]); ?>" /> ');
+			field = field.replace(/<?php echo (preg_quote("$val[1]")); ?>&lt;br \/&gt;/g, '<img src="<?php echo ($imgpath); ?>bbcode/<?php echo ($val[0]); ?>" alt="<?php echo ($val[1]); ?>" /><br />');
+		<?php }} ?>
+		<?php if(!empty($bbCodeS)) { foreach($bbCodeS as $val) { ?>
+			<?php  $val[0] = preg_replace('#"#isU', '&quot;', $val[0]); ?>
+			field = field.replace(/\[<?php echo (html_entity_decode("$val[0]")); ?>\]([\s\S]*?)\[\/<?php echo (html_entity_decode("$val[0]")); ?>\]/g, '<<?php echo (html_entity_decode("$val[0]")); ?>>$1</<?php echo (html_entity_decode("$val[0]")); ?>>');
+		<?php }} ?>
 
 		field = field.replace(/\[code type=&quot;([\s\S]*?)&quot;\]([\s\S]*?)\[\/code\]/g,
 			'<pre type="syntaxhighlighter" class="brush: $1; auto-links: false">$2<\/pre>');
 
 		
 
-		document.getElementById('zone_{id}').innerHTML = field;
-		document.getElementById('zone_{id}').scrollTop = 1000;
+		document.getElementById('zone_<?php echo ($id); ?>').innerHTML = field;
+		document.getElementById('zone_<?php echo ($id); ?>').scrollTop = 1000;
 		SyntaxHighlighter.config.bloggerMode = true;
 		SyntaxHighlighter.highlight();
-		document.getElementById('zone_{id}').innerHTML = UrlCliquable(document.getElementById('zone_{id}').innerHTML);
-		document.getElementById('zone_{id}').scrollTop = 1000;
+		document.getElementById('zone_<?php echo ($id); ?>').innerHTML = UrlCliquable(document.getElementById('zone_<?php echo ($id); ?>').innerHTML);
+		document.getElementById('zone_<?php echo ($id); ?>').scrollTop = 1000;
 	}
 	
-	function previewAjax_{id}(){
-		alert("_(alertpreviewbbocde)_");
+	function previewAjax_<?php echo ($id); ?>(){
+		alert("<?php echo "vous devez écrire la fonction pour l'utiliser"; ?>");
 	}
 	
 	function nl2br_js(myString) {
@@ -635,26 +635,26 @@
 	}
 </script>
 <div class="gc_bbcode">
-	<div class="gc_bbcode_option option {theme}">
-		<gc:foreach var="$bbCodeEditor" as="$val">
-			<img src="{imgpath}bbcode/{val[2]}" alt="{val[2]}" onclick="insertTag_{id}('[{<gc:function name="preg_quote" string="$val[0]"/>}]', '[/{<gc:function name="preg_quote" string="$val[1]"/>}]', '{id}'); " />
-		</gc:foreach>
+	<div class="gc_bbcode_option option <?php echo ($theme); ?>">
+		<?php if(!empty($bbCodeEditor)) { foreach($bbCodeEditor as $val) { ?>
+			<img src="<?php echo ($imgpath); ?>bbcode/<?php echo ($val[2]); ?>" alt="<?php echo ($val[2]); ?>" onclick="insertTag_<?php echo ($id); ?>('[<?php echo (preg_quote("$val[0]")); ?>]', '[/<?php echo (preg_quote("$val[1]")); ?>]', '<?php echo ($id); ?>'); " />
+		<?php }} ?>
 		<br />
-		<gc:foreach var="$smiley" as="$val">
-			<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" onclick="insertTag_{id}('{<gc:function name="preg_quote" string="$val[1]"/>} ', '', '{id}'); " />
-		</gc:foreach>
+		<?php if(!empty($smiley)) { foreach($smiley as $val) { ?>
+			<img src="<?php echo ($imgpath); ?>bbcode/<?php echo ($val[0]); ?>" alt="<?php echo ($val[1]); ?>" onclick="insertTag_<?php echo ($id); ?>('<?php echo (preg_quote("$val[1]")); ?> ', '', '<?php echo ($id); ?>'); " />
+		<?php }} ?>
 	</div>
-	<textarea id="{id}" name="{name}"<gc:if cond="$preview == true && $instantane == true"> onKeyUp="preview_{id}('{id}');" </gc:if> >{message}</textarea>
-	<gc:if cond="$preview == true && $previewAjax == true">
-		<div class="gc_bbcode_preview_button button {theme}" onClick="previewAjax_{id}();">
-			_(bbcodepreview)_
+	<textarea id="<?php echo ($id); ?>" name="<?php echo ($name); ?>"<?php if($preview == true && $instantane == true) { ?> onKeyUp="preview_<?php echo ($id); ?>('<?php echo ($id); ?>');" <?php } ?> ><?php echo ($message); ?></textarea>
+	<?php if($preview == true && $previewAjax == true) { ?>
+		<div class="gc_bbcode_preview_button button <?php echo ($theme); ?>" onClick="previewAjax_<?php echo ($id); ?>();">
+			<?php echo "prévisualiser"; ?>
 		</div>
-	</gc:if>
-	<gc:if cond="$preview == true && $previewAjax == false && $instantane == false">
-		<div class="gc_bbcode_preview_button button {theme}" onClick="preview_{id}('{id}');">
-			_(bbcodepreview)_
+	<?php } ?>
+	<?php if($preview == true && $previewAjax == false && $instantane == false) { ?>
+		<div class="gc_bbcode_preview_button button <?php echo ($theme); ?>" onClick="preview_<?php echo ($id); ?>('<?php echo ($id); ?>');">
+			<?php echo "prévisualiser"; ?>
 		</div>
-	</gc:if>
-	<div class="gc_bbcode_preview_zone" id="zone_{id}">
+	<?php } ?>
+	<div class="gc_bbcode_preview_zone" id="zone_<?php echo ($id); ?>">
 	</div>
 </div>

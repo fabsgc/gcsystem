@@ -223,16 +223,18 @@
 				array('bbcodeGc', '_video'), $this->_contenu
 			);
 
-			$this->_contenu = preg_replace(
+			$this->_contenu = nl2br($this->_contenu);
+
+			$this->_contenu = preg_replace_callback(
 				'`'.preg_quote(self::TAGSTART).'code type=&quot;(.*)&quot;'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'code'.preg_quote(self::TAGEND).'`isU', 
-				'<script type="syntaxhighlighter" class="brush: $1"><![CDATA[$2]]></script>', $this->_contenu
+				array('bbcodeGc', '_code'), $this->_contenu
 			);
 
-			$this->_contenu =  preg_replace_callback(
+			/*$this->_contenu =  preg_replace_callback(
 				'`\s((?:https?|ftp)://\S+?)(?=[]\).,;:!?]?(?:\s|\Z)|\Z)`isU', 
-				array('bbcodeGc', '_link'), $this->_contenu);
+				array('bbcodeGc', '_link'), $this->_contenu);*/
 
-			//$this->_contenu = nl2br($this->_contenu);
+			
 			$this->_contenu = preg_replace('`><br \/>`isU', '>', $this->_contenu);
 			return $this->_contenu;
 		}
@@ -252,6 +254,12 @@
 
 		public function setInstantane($preview){
 			$this->_previewInstantanee=$preview;
+		}
+
+		protected function _code($contenu){
+			$contenu[2] = preg_replace("/\<br\s*\/?\>\n/i", "\n", $contenu[2]);
+			
+			return '<script type="syntaxhighlighter" class="brush: '.$contenu[1].'; auto-links: false"><![CDATA['.$contenu[2].']]></script>';
 		}
 
 		protected function _link($contenu){
