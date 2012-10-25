@@ -31,7 +31,7 @@
 		protected $_bbCodeButton             ='blue'            ; //couleur de la barre d'option et du bouton prévisualiser.
 															      //valeur : button blue red green pinkish maroonish golden brownish 
 															      //grayish skinish yellowish goldenish pink violet orange seagreen personalize
-		protected $_bbCodeButtonColor        = array()           ; //dans le cas de couleurs personnalisées
+		protected $_bbCodeButtonColor        = array('0,0,0','255,255,255')           ; //dans le cas de couleurs personnalisées
 
 		protected $_bbCode = array (
 			'abbr'   => array ('abbr title=&quot;(.*)&quot;', 'abbr', 'abbr title="$1"', 'abbr', '$2'),
@@ -259,7 +259,7 @@
 		protected function _code($contenu){
 			$contenu[2] = preg_replace("/\<br\s*\/?\>\n/i", "\n", $contenu[2]);
 			
-			return '<script type="syntaxhighlighter" class="brush: '.$contenu[1].'; auto-links: false"><![CDATA['.$contenu[2].']]></script>';
+			return '<script type="syntaxhighlighter" class="brush: '.$contenu[1].'; auto-links: false;"><![CDATA['.$contenu[2].']]></script>';
 		}
 
 		protected function _link($contenu){

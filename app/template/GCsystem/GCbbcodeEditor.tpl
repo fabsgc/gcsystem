@@ -98,6 +98,8 @@
 		-moz-box-shadow: 0 1px 1px rgba(0,0,0,.1);
 		box-shadow: 0 1px 1px rgba(0,0,0,.1);
 	}
+
+	/* red */
 	
 	.button.red,.option.red {
 		background-color: #D14836;
@@ -241,7 +243,7 @@
 
 	/* goldenish */
 
-	.button.goldenish, .option.goldenfish {
+	.button.goldenish, .option.goldenish {
 		background-color: #3D9400;
 		background-image: -webkit-linear-gradient(top,#777726,#62621e);
 		background-image: -moz-linear-gradient(top,#777726,#62621e);

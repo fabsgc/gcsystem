@@ -74,14 +74,20 @@
 [quote title="dddddd"]dd[/quote]
 
 [/code][strong]salut[/strong]', array(
-		'theme' => 'red'
+		'theme' => 'grayish'
 	));
 
-			echo $bbcode->parse('[code type="css"].css{
+			echo $bbcode->parse('[code type="php"]<?php
+  class maClass extends classMere{
+    private $_var = true;
 
+   public function __construct(){
+   }
+  }
+?>[/code]
 
+[code type="css"].css{
 
-				
 <script>alert(\'salut\');</script> [a url="zz"]zzzzzzzzz[/a]
 http://localhost:82/GCsystem/asset/image/GCsystem/bbcode/code.png
 <br /
@@ -89,9 +95,6 @@ http://localhost:82/GCsystem/asset/image/GCsystem/bbcode/code.png
 <a href="http://dddd">aaaaaaaaa</a>
 }[/code]
 [a url="sa"]sa[/a]
-
-
-
 
 <a href="http://dddd" > aaaaaaaaa</a>
 dfqsdqsdf <br />[font val="courier"]salut[/font] 

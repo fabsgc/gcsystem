@@ -418,7 +418,7 @@
 		
 		final protected function showFooter(){
 			$this->_footer.="    <script type=\"text/javascript\">";
-			$this->_footer.="      SyntaxHighlighter.config.bloggerMode = true;";
+			$this->_footer.="      SyntaxHighlighter.config.stripBrs = false;";
 			$this->_footer.="      SyntaxHighlighter.all();";
 			$this->_footer.="    </script>";
 			$this->_footer.="  </body>\n</html>";
