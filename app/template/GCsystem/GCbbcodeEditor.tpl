@@ -492,7 +492,7 @@
 	}
 </style>
 <script>
-	function insertTag_{id}(startTag, endTag, textareaId, tagType) {
+	function bbCodeGcInsertTag_{id}(startTag, endTag, textareaId, tagType) {
 		var field  = document.getElementById(textareaId); 
 		var scroll = field.scrollTop;
 		field.focus();
@@ -518,11 +518,11 @@
 
 		field.scrollTop = scroll; // et on redéfinit le scroll.
 		
-		preview_{id}('{id}');
+		bbCodeGcPreview_{id}('{id}');
 	}
 	
-	function preview_{id}(id){
-		field = nl2br_js(document.getElementById('{id}').value);
+	function bbCodeGcPreview_{id}(id){
+		field = bbCodeGcNl2brJs(document.getElementById('{id}').value);
 
 		<gc:foreach var="$bbcode" as="$val">
 			{{php: $val[0] = preg_replace('#"#isU', '&quot;', $val[0]);}}
@@ -541,50 +541,126 @@
 		field = field.replace(/\[code type=&quot;([\s\S]*?)&quot;\]([\s\S]*?)\[\/code\]/g,
 			'<pre type="syntaxhighlighter" class="brush: $1; auto-links: false">$2<\/pre>');
 
-		
+		while(field.match(/\[video\]([^\[]+)\[\/video\]/gi)){
+			field = bbCodeGc_preg_replace_callback("/\\[video\]([^\[]+)\\[\\/video\]/gi",function(matches){return bbCodeGcVideo(matches[1]);}, field, 1);
+		}
 
 		document.getElementById('zone_{id}').innerHTML = field;
 		document.getElementById('zone_{id}').scrollTop = 1000;
 		SyntaxHighlighter.config.bloggerMode = true;
 		SyntaxHighlighter.highlight();
-		document.getElementById('zone_{id}').innerHTML = UrlCliquable(document.getElementById('zone_{id}').innerHTML);
+		document.getElementById('zone_{id}').innerHTML = bbCodeGcUrlCliquable(document.getElementById('zone_{id}').innerHTML);
 		document.getElementById('zone_{id}').scrollTop = 1000;
 	}
 	
-	function previewAjax_{id}(){
+	function bbCodeGcPreviewAjax_{id}(){
 		alert("_(alertpreviewbbocde)_");
 	}
+
+	function bbCodeGcVideo(video){
+		video = bbCodeGcHtmlspecialchars_decode(video);
+		video = video.replace(/&feature=related/gi, '');
+
+		if(video.match(/youtube/gi)){
+			if(video.match(/www/gi)){	
+				if(!video.match(/gl=/gi)){
+					resultat = video.replace(/https?:\/\/www.youtube.com\/watch\?v=(.+)/gi,'$1');
+				}
+				else{
+					resultat = video.replace(/https?:\/\/www.youtube.com\/watch\?gl=(.+)&v=(.+)/gi,'$2');
+				}	
+			}
+			else{
+				if(!video.match(/gl=/g)){
+					resultat = video.replace(/https?:\/\/youtube.com\/watch\?v=(.+)/gi,'$1');
+				}
+				else{
+					resultat = video.replace(/https?:\/\/youtube.com\/watch\?gl=(.+)&v=(.+)/gi,'$2');
+				}
+			}
+
+			return '<object width="500" height="375" type="application/x-shockwave-flash" data="http://www.youtube.com/v/'+ resultat +'"><param name="movie" value="http://www.youtube.com/v/'+ resultat +'"><param name="allowFullScreen" value="true"><param name="wmode" value="transparent"></object>';
+		}
+		else if(video.match(/dailymotion/g)){
+			if(video.match(/www/g)){
+				resultat = video.replace(/https?:\/\/www.dailymotion.com\/video\/(.+)/gi,'http://www.dailymotion.com/swf/video/$1');
+			}
+			else{
+				resultat = video.replace(/https?:\/\/dailymotion.com\/video\/(.+)/gi,'http://www.dailymotion.com/swf/video/$1');
+			}
+
+			return '<object width="500" height="375" type="application/x-shockwave-flash" data="'+ resultat +'"><param name="movie" value="'+ resultat +'"><param name="allowFullScreen" value="true"><param name="wmode" value="transparent"></object>';
+		}
+		else if(video.match(/vimeo/g)){
+			if(video.match(/www/g)){
+				resultat = video.replace(/https?:\/\/www.vimeo.com\/(.+)/gi,'http://www.vimeo.com/moogaloop.swf?clip_id=$1&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1');
+			}
+			else{
+				resultat = video.replace(/https?:\/\/vimeo.com\/(.+)/gi,'http://vimeo.com/moogaloop.swf?clip_id=$1&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1');
+			}	
+
+			return '<object width="500" height="375" type="application/x-shockwave-flash" data="'+ resultat +'"><param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="'+ resultat +'" /><param name="wmode" value="transparent" /></object>';
+		}
+		else{
+			return '<video controls="" width="500" src="'+ video +'" controls="controls"></video>';
+		}
+	}
 	
-	function nl2br_js(myString) {
+	function bbCodeGcNl2brJs(myString) {
 		var regX = /\n/gi ;
 		s = new String(myString);
-		s = htmlspecialchars(s, 'ENT_QUOTES');
+		s = bbCodeGcHtmlspecialchars(s, 'ENT_QUOTES');
 		//s = s.replace(regX2, "\n");
 		s = s.replace(regX, " <br />");
 		
 		return s;
 	}
 
-	function htmlspecialchars (string, quote_style, charset, double_encode) {
-	  // http://kevin.vanzonneveld.net
-	  // +   original by: Mirek Slugen
-	  // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-	  // +   bugfixed by: Nathan
-	  // +   bugfixed by: Arno
-	  // +    revised by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-	  // +    bugfixed by: Brett Zamir (http://brett-zamir.me)
-	  // +      input by: Ratheous
-	  // +      input by: Mailfaker (http://www.weedem.fr/)
-	  // +      reimplemented by: Brett Zamir (http://brett-zamir.me)
-	  // +      input by: felix
-	  // +    bugfixed by: Brett Zamir (http://brett-zamir.me)
-	  // %        note 1: charset argument not supported
-	  // *     example 1: htmlspecialchars("<a href='test'>Test</a>", 'ENT_QUOTES');
-	  // *     returns 1: '&lt;a href=&#039;test&#039;&gt;Test&lt;/a&gt;'
-	  // *     example 2: htmlspecialchars("ab\"c'd", ['ENT_NOQUOTES', 'ENT_QUOTES']);
-	  // *     returns 2: 'ab"c&#039;d'
-	  // *     example 3: htmlspecialchars("my "&entity;" is still here", null, null, false);
-	  // *     returns 3: 'my &quot;&entity;&quot; is still here'
+	function bbCodeGcHtmlspecialchars_decode (string, quote_style) {
+	  var optTemp = 0,
+	    i = 0,
+	    noquotes = false;
+	  if (typeof quote_style === 'undefined') {
+	    quote_style = 2;
+	  }
+	  string = string.toString().replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+	  var OPTS = {
+	    'ENT_NOQUOTES': 0,
+	    'ENT_HTML_QUOTE_SINGLE': 1,
+	    'ENT_HTML_QUOTE_DOUBLE': 2,
+	    'ENT_COMPAT': 2,
+	    'ENT_QUOTES': 3,
+	    'ENT_IGNORE': 4
+	  };
+	  if (quote_style === 0) {
+	    noquotes = true;
+	  }
+	  if (typeof quote_style !== 'number') { // Allow for a single string or an array of string flags
+	    quote_style = [].concat(quote_style);
+	    for (i = 0; i < quote_style.length; i++) {
+	      // Resolve string input to bitwise e.g. 'PATHINFO_EXTENSION' becomes 4
+	      if (OPTS[quote_style[i]] === 0) {
+	        noquotes = true;
+	      } else if (OPTS[quote_style[i]]) {
+	        optTemp = optTemp | OPTS[quote_style[i]];
+	      }
+	    }
+	    quote_style = optTemp;
+	  }
+	  if (quote_style & OPTS.ENT_HTML_QUOTE_SINGLE) {
+	    string = string.replace(/&#0*39;/g, "'"); // PHP doesn't currently escape if more than one 0, but it should
+	    // string = string.replace(/&apos;|&#x0*27;/g, "'"); // This would also be useful here, but not a part of PHP
+	  }
+	  if (!noquotes) {
+	    string = string.replace(/&quot;/g, '"');
+	  }
+	  // Put this in last place to avoid escape being double-decoded
+	  string = string.replace(/&amp;/g, '&');
+
+	  return string;
+	}
+
+	function bbCodeGcHtmlspecialchars (string, quote_style, charset, double_encode) {
 	  var optTemp = 0,
 	    i = 0,
 	    noquotes = false;
@@ -631,32 +707,77 @@
 	  return string;
 	}
 
-	function UrlCliquable(url) { 
-		var reg=new RegExp("((http://)[a-zA-Z0-9:/.]+)+","gi");
+	function bbCodeGcUrlCliquable(url) { 
+		var reg=new RegExp("[^\"]+((http://)[a-zA-Z0-9:/.]+)+","gi");
   		return url.replace(reg,"<a href='$1'>$1</a>"); 
+	}
+
+	function bbCodeGc_preg_replace_callback(pattern, callback, subject, limit){
+		// Perform a regular expression search and replace using a callback
+		// 
+		// discuss at: http://geekfg.net/
+		// +   original by: Francois-Guillaume Ribreau (http://fgribreau)
+		// *     example 1: preg_replace_callback("/(\\@[^\\s,\\.]*)/ig",function(matches){return matches[0].toLowerCase();},'#FollowFriday @FGRibreau @GeekFG',1);
+		// *     returns 1: "#FollowFriday @fgribreau @GeekFG"
+		// *     example 2: preg_replace_callback("/(\\@[^\\s,\\.]*)/ig",function(matches){return matches[0].toLowerCase();},'#FollowFriday @FGRibreau @GeekFG');
+		// *     returns 2: "#FollowFriday @fgribreau @geekfg"
+
+		limit = !limit?-1:limit;
+
+		var _flag = pattern.substr(pattern.lastIndexOf(pattern[0])+1),
+			_pattern = pattern.substr(1,pattern.lastIndexOf(pattern[0])-1),
+			reg = new RegExp(_pattern,_flag),
+			rs = null,
+			res = [],
+			x = 0,
+			ret = subject;
+
+		if(limit === -1){
+			var tmp = [];
+
+			do{
+				tmp = reg.exec(subject);
+				if(tmp !== null){
+					res.push(tmp);
+				}
+			}while(tmp !== null && _flag.indexOf('g') !== -1)
+		}
+		else{
+			res.push(reg.exec(subject));
+		}
+
+		for(x = res.length-1; x > -1; x--){//explore match
+			ret = ret.replace(res[x][0],callback(res[x]));
+		}
+		return ret;
 	}
 </script>
 <div class="gc_bbcode">
 	<div class="gc_bbcode_option option {theme}">
 		<gc:foreach var="$bbCodeEditor" as="$val">
-			<img src="{imgpath}bbcode/{val[2]}" alt="{val[2]}" onclick="insertTag_{id}('[{<gc:function name="preg_quote" string="$val[0]"/>}]', '[/{<gc:function name="preg_quote" string="$val[1]"/>}]', '{id}'); " />
+			<img src="{imgpath}bbcode/{val[2]}" alt="{val[2]}" onclick="bbCodeGcInsertTag_{id}('[{<gc:function name="preg_quote" string="$val[0]"/>}]', '[/{<gc:function name="preg_quote" string="$val[1]"/>}]', '{id}'); " />
 		</gc:foreach>
 		<br />
 		<gc:foreach var="$smiley" as="$val">
-			<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" onclick="insertTag_{id}('{<gc:function name="preg_quote" string="$val[1]"/>} ', '', '{id}'); " />
+			<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" onclick="bbCodeGcInsertTag_{id}('{<gc:function name="preg_quote" string="$val[1]"/>} ', '', '{id}'); " />
 		</gc:foreach>
 	</div>
-	<textarea id="{id}" name="{name}"<gc:if cond="$preview == true && $instantane == true"> onKeyUp="preview_{id}('{id}');" </gc:if> >{message}</textarea>
+	<textarea id="{id}" name="{name}"<gc:if cond="$preview == true && $instantane == true"> onKeyUp="bbCodeGcPreview_{id}('{id}');" </gc:if> >{message}</textarea>
 	<gc:if cond="$preview == true && $previewAjax == true">
-		<div class="gc_bbcode_preview_button button {theme}" onClick="previewAjax_{id}();">
+		<div class="gc_bbcode_preview_button button {theme}" onClick="bbCodeGcPreviewAjax_{id}();">
 			_(bbcodepreview)_
 		</div>
 	</gc:if>
 	<gc:if cond="$preview == true && $previewAjax == false && $instantane == false">
-		<div class="gc_bbcode_preview_button button {theme}" onClick="preview_{id}('{id}');">
+		<div class="gc_bbcode_preview_button button {theme}" onClick="bbCodeGcPreview_{id}('{id}');">
 			_(bbcodepreview)_
 		</div>
 	</gc:if>
 	<div class="gc_bbcode_preview_zone" id="zone_{id}">
 	</div>
 </div>
+<script type="text/javascript">
+	if(document.getElementById('{id}').value != ""){
+		bbCodeGcPreview_{id}('{id}');
+	}
+</script>

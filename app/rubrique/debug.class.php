@@ -69,30 +69,15 @@
 			$this->setInfo(array('title'=>'GCsystem', 'doctype' => 'html5'));
 			echo $this->showHeader();
 			$bbcode = new bbcodeGc();
-			$bbcode-> editor('[code type="php"]salut [strong]salut[/strong] 
+			$bbcode-> editor('', array('theme' => 'grayish'));
 
-[quote title="dddddd"]dd[/quote]
-
-[/code][strong]salut[/strong]', array(
-		'theme' => 'grayish'
-	));
-
-			echo $bbcode->parse('[code type="php"]<?php
-  class maClass extends classMere{
-    private $_var = true;
-
-   public function __construct(){
-   }
-  }
-?>[/code]
-
+			echo $bbcode->parse('
 [code type="css"].css{
 
 <script>alert(\'salut\');</script> [a url="zz"]zzzzzzzzz[/a]
-http://localhost:82/GCsystem/asset/image/GCsystem/bbcode/code.png
-<br /
-"
-<a href="http://dddd">aaaaaaaaa</a>
+	http://localhost:82/GCsystem/asset/image/GCsystem/bbcode/code.png
+	<br />
+	<a href="http://dddd">aaaaaaaaa</a>
 }[/code]
 [a url="sa"]sa[/a]
 

@@ -5,13 +5,9 @@
 		<templatedefault nom="GCsystem/GCerrorperso" />
 	</config>
 	<errors>
-		<error id="1" template="GCsystem/GCerrorperso">
-			<var id="var1" type="var">
-				une erreur
-			</var>
-			<var id="var2" type="lang" id="idlang">
-				<varlang nom="var">machin</varlang>
-			</var>
+		<error id="1" template="GCsystem/GCerrorperso" backUrl="index">
+			<var id="var1" type="var">une erreur</var>
+			<var id="var2" type="lang">idlang</var>
 		</error>
 	</errors>
 </errorperso>

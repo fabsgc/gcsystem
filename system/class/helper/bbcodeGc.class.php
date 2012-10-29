@@ -25,8 +25,8 @@
 		protected $_previewInstantanee       =true              ; //la prévisualisation instantanée est activée
 		protected $_previewAjax              =true              ; //la prévisualisation ajax est activée
 
-		protected $_bbCodeWidth              ='600px'           ; //largeur de l'éditeur
-		protected $_bbCodeHeight             ='250px'           ; //largeur de la zone de texte de l'éditeur
+		protected $_bbCodeWidth              ='700px'           ; //largeur de l'éditeur
+		protected $_bbCodeHeight             ='300px'           ; //largeur de la zone de texte de l'éditeur
 		protected $_bbCodeBgColor            ='#9d9d9d'         ; //couleur de fond de l'éditeur
 		protected $_bbCodeButton             ='blue'            ; //couleur de la barre d'option et du bouton prévisualiser.
 															      //valeur : button blue red green pinkish maroonish golden brownish 
@@ -177,6 +177,9 @@
 
 			$this->_contenu = htmlentities($contenu);
 
+			$this->_contenu =  preg_replace_callback('#((?:https?|ftp)://\S+?)(?=[]\).,;:!?]?(?:\s|\Z)|\Z)#isU',
+				array('bbcodeGc', '_link'), $this->_contenu);
+
 			foreach($this->_bbCode as $cle => $valeur){
 				if($valeur[3]!=""){
 					$this->_contenu = preg_replace(
@@ -224,16 +227,11 @@
 			);
 
 			$this->_contenu = nl2br($this->_contenu);
-
+			
 			$this->_contenu = preg_replace_callback(
 				'`'.preg_quote(self::TAGSTART).'code type=&quot;(.*)&quot;'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'code'.preg_quote(self::TAGEND).'`isU', 
 				array('bbcodeGc', '_code'), $this->_contenu
 			);
-
-			/*$this->_contenu =  preg_replace_callback(
-				'`\s((?:https?|ftp)://\S+?)(?=[]\).,;:!?]?(?:\s|\Z)|\Z)`isU', 
-				array('bbcodeGc', '_link'), $this->_contenu);*/
-
 			
 			$this->_contenu = preg_replace('`><br \/>`isU', '>', $this->_contenu);
 			return $this->_contenu;
@@ -265,6 +263,7 @@
 		protected function _link($contenu){
 			if(strlen($contenu[1])>65){
 				return self::PARSETAGSTART.'a href="http://'.substr($contenu[1], 6,strlen($contenu[1])).'"'.self::PARSETAGEND.substr($contenu[1], 0,65).'...'.self::PARSETAGSTART2.'a'.self::PARSETAGEND; 
+				//return '<                   a href="http://'.substr($texte,      6,strlen($texte     )).'"                 >'.substr($texte,      0,65).'...</                      a  >'; 
 			}
 			else{
 				return self::PARSETAGSTART.'a href="http://'.substr($contenu[1], 6,strlen($contenu[1])).'"'.self::PARSETAGEND.$contenu[1].self::PARSETAGSTART2.'a'.self::PARSETAGEND;

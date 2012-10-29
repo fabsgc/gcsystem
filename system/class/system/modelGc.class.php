@@ -7,7 +7,7 @@
 	*/
 	
 	abstract class modelGc{
-		use errorGc, langInstance, generalGc, urlRegex; //trait
+		use errorGc, langInstance, generalGc, urlRegex, htmlHeaderGc ; //trait
 
 		protected $bdd                                ; //contient la connexion sql
 		

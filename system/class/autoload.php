@@ -18,3 +18,4 @@
 	require_once(CLASS_INSTALL);
 	require_once(CLASS_CRON);
 	require_once(CLASS_BACKUP);
+	require_once(CLASS_ERROR_PERSO);

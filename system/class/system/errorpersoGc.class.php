@@ -10,16 +10,11 @@
 		use errorGc, langInstance, domGc;                                //trait
 
 		public  function __construct($lang=""){
-			$this->_langInstance;
-			$this->_createLangInstance();
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
+			$this->_createLangInstance();
 		}
 
 		public function errorPerso($id, $var = array()){
-
-		}
-
-		public function errorPersoTpl($id, $var = array()){
 
 		}
 

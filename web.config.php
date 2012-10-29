@@ -61,6 +61,7 @@ define('CLASS_ANTISPAM', CLASS_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php');
 define('CLASS_INSTALL', CLASS_PATH.CLASS_SYSTEM_PATH.'installGc.class.php');
 define('CLASS_CRON', CLASS_PATH.CLASS_SYSTEM_PATH.'cronGc.class.php');
 define('CLASS_BACKUP', CLASS_PATH.CLASS_SYSTEM_PATH.'backupGc.class.php');
+define('CLASS_ERROR_PERSO', CLASS_PATH.CLASS_SYSTEM_PATH.'errorpersoGc.class.php');
 
 //fichiers de config
 define('ROUTE', APP_CONFIG_PATH.'routes.xml');

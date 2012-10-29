@@ -7,7 +7,7 @@
 	*/
 	
 	class templateGc{
-		use errorGc, langInstance, urlRegex;                       //trait
+		use errorGc, langInstance, urlRegex, htmlHeaderGc;             //trait
 		
 		protected $_file               = ""         ;    //chemin vers le .tpl
 		protected $_fileCache          = ""         ;    //chemin vers le .compil.tpl
@@ -21,7 +21,7 @@
 		protected $_timeFile		   = 0          ;    //contient la date de dernière modif du template
 		protected $_show		       = true       ;
 		
-		public  function __construct($file="", $nom="", $timecache=0, $lang=""){
+		public  function __construct($file="", $nom="", $timecache=0, $lang="fr"){
 			$this->_file=TEMPLATE_PATH.$file.TEMPLATE_EXT;
 			if(file_exists($this->_file) or is_readable($this->_file)){
 				$handle = fopen($this->_file, 'rb');
@@ -243,13 +243,14 @@
 			'while'          => array('while', 'cond'),                              // while
 			'for'            => array('for', 'var', 'boucle', 'cond'),               // for
 			'spaghettis'     => array('continue', 'break', 'goto', 'from', 'to'),    // spaghettis
-			'lang'           => array('_(', ')_'));                                  // langue
+			'lang'           => array('_(', ')_'),                                   // langue
+			'htmlheader'     => array('setInfo', 'showHeader', 'showFooter'));       // htmlHeader
 
 		protected $error;
 		
-		public  function __construct(templateGC &$tplGC, $lang = 'fr'){
+		public  function __construct(templateGC &$tplGC, $lang = ""){
+			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_templateGC=$tplGC;
-			$this->_lang=$lang;
 			$this->_createLangInstance();
 		}
 		
@@ -263,6 +264,8 @@
 		
 		public function parse($c){
 			$this->_contenu=$c;
+			$this->_parseHtmlHeader();
+			$this->_parseHtmlSetInfo();
 			$this->_parsevarsPhp();
 			$this->_parseInclude();
 			$this->_parsevarAdd();
@@ -284,6 +287,15 @@
 			$this->_parseLang();
 			$this->_parseException();
 			return $this->_contenu;
+		}
+
+		protected function _parseHtmlHeader(){
+			$this->_contenu = preg_replace('`<'.preg_quote($this->bal['htmlheader'][1]).$this->_regexSpace.'/>`isU', '<?php echo $this->showHeader()', $this->_contenu);
+			$this->_contenu = preg_replace('`<'.preg_quote($this->bal['htmlheader'][2]).$this->_regexSpace.'/>`isU', '<?php echo $this->showFooter()', $this->_contenu);
+		}
+
+		protected function _parseHtmlSetInfo(){
+
 		}
 		
 		protected function _parsevars(){
