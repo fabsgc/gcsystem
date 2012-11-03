@@ -98,9 +98,6 @@
 					
 					if($rubrique!=""){
 						$plugin = new pluginGc();
-						//$_SESSION['token'] = 'kqsjnqkdjqskdsdlfkjsd';
-						$_SESSION['connected'] = 'true';
-						//$_SESSION['statut'] = 2;
 
 						if($this->_cacheRoute > 0){ //le cache de la page est supérieur à 0 secondes et le rewrite activé
 							if($this->_setRubrique($rubrique) == true){  //on inclut les fichiers necéssaire à l'utilisation d'une rubrique
@@ -193,8 +190,9 @@
 						}
 					}
 					else{
+						$this->_addError('The rubric \'unknow\' were not found because rooting failed. Http Query : http://'.$this->getHost().$this->getUri(), __FILE__, __LINE__, ERROR);
 						$this->redirect404();
-						$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
+						$this->setErrorLog('errors', 'The rubric \'unknow\' were not found because rooting failed.  Http Query : http://'.$this->getHost().$this->getUri());
 					}
 				}				
 			}

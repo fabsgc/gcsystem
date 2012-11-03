@@ -12,7 +12,7 @@
 		protected $_command                       ; //contenu à traiter
 		protected $_stream                        ; //contenu à afficher
 		protected $_commandExplode                ; //contenu à traiter
-		protected $_result                        = '/ <span style="color: red;">commande non reconnu. Tapez <strong>help</strong> pour avoir la liste des commandes valides</span>'; //resultat du traitement
+		protected $_result                        = '/ <span style="color: red;">commande non reconnue. Tapez <strong>help</strong> pour avoir la liste des commandes valides</span>'; //resultat du traitement
 		protected $_dossier                       ; //dossier
 		protected $_fichier                       ; //fichier
 		protected $_forbidden                     ; //fichiers interdits
@@ -48,7 +48,7 @@
 			);
 
 			$this->_updateFile = array(
-				FUNCTION_GENERIQUE, RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
+				RUBRIQUE_PATH.'terminal'.RUBRIQUE_EXT.'.php',
 				'web.config.php',
 				'index.php',
 				LIB_PATH.'FormsGC/formsGC.class.php', LIB_PATH.'FormsGC/formsGCValidator.class.php',

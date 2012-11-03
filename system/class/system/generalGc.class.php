@@ -306,7 +306,7 @@
 		protected $_rss                = array()                                  ;
 		protected $_contentMarkupBody  = ''                                       ;
 		protected $_localisation       = ''                                       ;
-		protected $_otherHeader        =  array()                                 ;
+		protected $_otherHeader        = array()                                  ;
 		protected $_fbTitle            = ''                                       ;
 		protected $_fbDescription      = ''                                       ;
 		protected $_fbImage            = ''                                       ;
@@ -611,8 +611,13 @@
 		CONST TGZ                       = 'application/x-tar'                                                           ;
 	}
 
-	trait errorPerso(){
-		final protected function errorPerso($id){
-			
+	trait errorPerso{
+		final protected function errorPerso($id, $lang = ''){
+			if(lang != ''){
+				$error = new errorPersoGc($lang);
+			}
+			else{
+				$error = new errorPersoGc($this->_lang);
+			}
 		}
 	}

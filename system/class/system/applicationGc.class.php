@@ -7,7 +7,7 @@
 	*/
 	
 	abstract class applicationGc{
-		use errorGc, langInstance, generalGc, urlRegex, domGc, htmlHeaderGc       ; //trait
+		use errorGc, langInstance, generalGc, urlRegex, domGc, htmlHeaderGc, errorPerso       ; //trait
 		
 		protected $_devTool            = true                                     ;
 		protected $_var                = array()                                  ; //contient les variables que l'on passe depuis l'extérieur : obsolète

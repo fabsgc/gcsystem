@@ -72,20 +72,27 @@
 			$bbcode-> editor('', array('theme' => 'grayish'));
 
 			echo $bbcode->parse('
-[code type="css"].css{
+				[code type="css"].css{
 
-<script>alert(\'salut\');</script> [a url="zz"]zzzzzzzzz[/a]
-	http://localhost:82/GCsystem/asset/image/GCsystem/bbcode/code.png
-	<br />
-	<a href="http://dddd">aaaaaaaaa</a>
-}[/code]
-[a url="sa"]sa[/a]
+				<script>alert(\'salut\');</script> [a url="zz"]zzzzzzzzz[/a]
+					http://localhost:82/GCsystem/asset/image/GCsystem/bbcode/code.png
+					<br />
+					<a href="http://dddd">aaaaaaaaa</a>
+				}[/code]
+				[a url="sa"]sa[/a]
 
-<a href="http://dddd" > aaaaaaaaa</a>
-dfqsdqsdf <br />[font val="courier"]salut[/font] 
-http://localhost:82/GCsystem/asset/image/GCsystem/bbcode/code.png
+				<a href="http://dddd" > aaaaaaaaa</a>
+				dfqsdqsdf <br />[font val="courier"]salut[/font] 
+				http://localhost:82/GCsystem/asset/image/GCsystem/bbcode/code.png
 
-salut');
+				salut');
 			echo $this->showFooter();
+		}
+
+		public function actionTplHtmlHeader(){
+			$t = new templateGc('test2','test2', 0);
+			$t -> show();
+
+			$this->errorPerso(15);
 		}
 	}
