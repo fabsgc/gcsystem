@@ -207,7 +207,7 @@
 		}
 		
 		//by Lucas5190 
-		public function getAgo($time=NULL, $time2=NULL, $param = self::PARAM_TIMESTAMP){
+		public function getAgoFr($time=NULL, $time2=NULL, $param = self::PARAM_TIMESTAMP){
 			if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); $time2 = _getDatetoTimestamp($time2); }
 			$time = intval($time); $time2 = intval($time2);
 			if($time == NULL) $time = time(); if($time2 == NULL) $time2 = time();

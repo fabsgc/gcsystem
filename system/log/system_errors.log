@@ -1,253 +1,108 @@
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/tplHtmlHeader
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "test2" a bien été chargé.
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionTplHtmlHeader" de la rubrique "debug" réussi
+03/11/2012 a 22:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
+03/11/2012 a 22:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
+03/11/2012 a 22:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
+03/11/2012 a 22:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
+03/11/2012 a 22:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+03/11/2012 a 22:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/toZip
+03/11/2012 a 22:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+03/11/2012 a 22:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+03/11/2012 a 22:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
+03/11/2012 a 22:51:21 ! : [WARNING] fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php ligne 33 le fichier n'est pas accessible si vous utilisez putFileToZip et que vous créez un .zip, ne prêtez pas attention à cette erreur
+03/11/2012 a 22:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionToZip" de la rubrique "debug" réussi
 ##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:38:05 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
+03/11/2012 a 22:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+03/11/2012 a 22:51:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
+03/11/2012 a 22:51:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
+03/11/2012 a 22:51:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
+03/11/2012 a 22:51:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
+03/11/2012 a 22:51:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+03/11/2012 a 22:51:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/toZip
+03/11/2012 a 22:51:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+03/11/2012 a 22:51:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+03/11/2012 a 22:51:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
+03/11/2012 a 22:51:58 ! : [WARNING] fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php ligne 33 le fichier n'est pas accessible si vous utilisez putFileToZip et que vous créez un .zip, ne prêtez pas attention à cette erreur
+03/11/2012 a 22:51:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionToZip" de la rubrique "debug" réussi
 ##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:38:05 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js2
-03/11/2012 a 13:38:05 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
+03/11/2012 a 22:51:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+03/11/2012 a 22:52:15 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
+03/11/2012 a 22:52:15 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
+03/11/2012 a 22:52:15 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
+03/11/2012 a 22:52:15 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
+03/11/2012 a 22:52:15 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+03/11/2012 a 22:52:15 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/toZip
+03/11/2012 a 22:52:15 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+03/11/2012 a 22:52:15 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+03/11/2012 a 22:52:15 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
+03/11/2012 a 22:52:15 ! : [WARNING] fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php ligne 34 le fichier n'est pas accessible si vous utilisez putFileToZip et que vous créez un .zip, ne prêtez pas attention à cette erreur
+03/11/2012 a 22:52:15 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionToZip" de la rubrique "debug" réussi
 ##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:38:06 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:38:06 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:38:06 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:38:06 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js3
-03/11/2012 a 13:38:06 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
+03/11/2012 a 22:52:15 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+03/11/2012 a 23:03:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
+03/11/2012 a 23:03:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
+03/11/2012 a 23:03:53 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
+03/11/2012 a 23:03:53 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
+03/11/2012 a 23:03:53 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
+03/11/2012 a 23:03:53 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
+03/11/2012 a 23:03:53 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+03/11/2012 a 23:03:53 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/toZip
+03/11/2012 a 23:03:53 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+03/11/2012 a 23:03:53 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+03/11/2012 a 23:03:53 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
+03/11/2012 a 23:03:53 ! : [WARNING] fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php ligne 34 le fichier n'est pas accessible si vous utilisez putFileToZip et que vous créez un .zip, ne prêtez pas attention à cette erreur
+03/11/2012 a 23:03:53 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php ligne 130 le fichier ou le répertoire de fichiers que vous tentez de copier dans l'archive n'existe pas
+03/11/2012 a 23:03:53 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionToZip" de la rubrique "debug" réussi
 ##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:38:06 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:38:06 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:38:06 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:38:06 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/css/css1
-03/11/2012 a 13:38:06 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
+03/11/2012 a 23:03:53 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+03/11/2012 a 23:04:11 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
+03/11/2012 a 23:04:11 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
+03/11/2012 a 23:04:11 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
+03/11/2012 a 23:04:11 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
+03/11/2012 a 23:04:11 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+03/11/2012 a 23:04:11 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/toZip
+03/11/2012 a 23:04:11 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+03/11/2012 a 23:04:11 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+03/11/2012 a 23:04:11 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
+03/11/2012 a 23:04:11 ! : [WARNING] fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php ligne 34 le fichier n'est pas accessible si vous utilisez putFileToZip et que vous créez un .zip, ne prêtez pas attention à cette erreur
+03/11/2012 a 23:04:11 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php ligne 130 le fichier ou le répertoire de fichiers que vous tentez de copier dans l'archive n'existe pas
+03/11/2012 a 23:04:11 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionToZip" de la rubrique "debug" réussi
 ##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:38:06 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:38:06 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:38:06 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:38:06 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/css/css2
-03/11/2012 a 13:38:06 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
+03/11/2012 a 23:04:11 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+03/11/2012 a 23:04:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
+03/11/2012 a 23:04:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
+03/11/2012 a 23:04:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
+03/11/2012 a 23:04:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
+03/11/2012 a 23:04:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+03/11/2012 a 23:04:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/toZip
+03/11/2012 a 23:04:57 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+03/11/2012 a 23:04:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+03/11/2012 a 23:04:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
+03/11/2012 a 23:04:58 ! : [WARNING] fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php ligne 34 le fichier n'est pas accessible si vous utilisez putFileToZip et que vous créez un .zip, ne prêtez pas attention à cette erreur
+03/11/2012 a 23:04:58 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php ligne 130 le fichier ou le répertoire de fichiers que vous tentez de copier dans l'archive n'existe pas
+03/11/2012 a 23:04:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionToZip" de la rubrique "debug" réussi
 ##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:38:06 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/tplHtmlHeader
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "test2" a bien été chargé.
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionTplHtmlHeader" de la rubrique "debug" réussi
+03/11/2012 a 23:04:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+03/11/2012 a 23:05:13 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
+03/11/2012 a 23:05:13 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
+03/11/2012 a 23:05:13 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
+03/11/2012 a 23:05:13 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
+03/11/2012 a 23:05:13 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+03/11/2012 a 23:05:13 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/toZip
+03/11/2012 a 23:05:13 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+03/11/2012 a 23:05:13 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+03/11/2012 a 23:05:13 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
+03/11/2012 a 23:05:13 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php ligne 130 le fichier ou le répertoire de fichiers que vous tentez de copier dans l'archive n'existe pas
+03/11/2012 a 23:05:13 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionToZip" de la rubrique "debug" réussi
 ##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:38:46 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
+03/11/2012 a 23:05:13 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+03/11/2012 a 23:12:27 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
+03/11/2012 a 23:12:27 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
+03/11/2012 a 23:12:27 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
+03/11/2012 a 23:12:27 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
+03/11/2012 a 23:12:27 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+03/11/2012 a 23:12:27 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/toZip
+03/11/2012 a 23:12:27 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
+03/11/2012 a 23:12:27 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
+03/11/2012 a 23:12:27 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
+03/11/2012 a 23:12:27 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionToZip" de la rubrique "debug" réussi
 ##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:38:46 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js2
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:38:46 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js3
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:38:46 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/css/css1
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:38:46 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/css/css2
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:38:46 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/tplHtmlHeader
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "test2" a bien été chargé.
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionTplHtmlHeader" de la rubrique "debug" réussi
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:39:34 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:39:34 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js2
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:39:34 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:39:35 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js3
-03/11/2012 a 13:39:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:39:35 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/tplHtmlHeader
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "test2" a bien été chargé.
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionTplHtmlHeader" de la rubrique "debug" réussi
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:39:40 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:39:40 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js2
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:39:40 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js3
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:39:40 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/tplHtmlHeader
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "test2" a bien été chargé.
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionTplHtmlHeader" de la rubrique "debug" réussi
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:39:58 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:39:58 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js2
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:39:58 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 13:39:59 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 13:39:59 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 13:39:59 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js3
-03/11/2012 a 13:39:59 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 13:39:59 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 14:26:03 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 14:26:03 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 14:26:03 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
-03/11/2012 a 14:26:03 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
-03/11/2012 a 14:26:03 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
-03/11/2012 a 14:26:03 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/tplHtmlHeader
-03/11/2012 a 14:26:03 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
-03/11/2012 a 14:26:03 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
-03/11/2012 a 14:26:03 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
-03/11/2012 a 14:26:03 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "test2" a bien été chargé.
-03/11/2012 a 14:26:03 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionTplHtmlHeader" de la rubrique "debug" réussi
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 14:26:03 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 14:26:04 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 14:26:04 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js2
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 14:26:04 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/css/css1
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 14:26:04 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js3
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 14:26:04 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/css/css2
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 14:26:04 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 214 Chargement des fichiers "app/rubrique/debug.class.php" et "app/model/debug.model.class.php"
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur debug initialisé
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 35 Le parefeu n'a identifié aucune erreur dans l'accès à la rubrique debug/tplHtmlHeader
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\antispamGc.class.php ligne 22 le fichier app/config/antispam.xml a bien été chargé
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 47 L'antispam a vérifié que l'utilisateur n'avait pas atteint son quota de requêtes
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 58 Model debug initialisé
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "test2" a bien été chargé.
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionTplHtmlHeader" de la rubrique "debug" réussi
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 14:57:21 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 14:57:21 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js2
-03/11/2012 a 14:57:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 14:57:22 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
-03/11/2012 a 14:57:22 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 254 Content-Type : "Content-Type: text/html; charset=UTF-8"
-03/11/2012 a 14:57:22 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 51 Le fichier de route " app/config/routes.xml" a bien été charg
-03/11/2012 a 14:57:22 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 193 The rubric 'unknow' were not found because rooting failed. Http Query : http://localhost:82/GCsystem/asset/js/js3
-03/11/2012 a 14:57:22 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "404" a bien été chargé.
-##### END OF EXECUTION ####################################################################################################
-03/11/2012 a 14:57:22 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.
+03/11/2012 a 23:12:27 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" a bien été chargé.

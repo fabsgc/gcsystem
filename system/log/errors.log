@@ -1,9 +1,37 @@
-03/11/2012 a 14:26:04 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js
-03/11/2012 a 14:26:04 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js2
-03/11/2012 a 14:26:04 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css1
-03/11/2012 a 14:26:04 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js3
-03/11/2012 a 14:26:04 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css2
-03/11/2012 a 14:57:21 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
-03/11/2012 a 14:57:21 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js
-03/11/2012 a 14:57:22 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js2
-03/11/2012 a 14:57:22 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js3
+03/11/2012 a 22:31:23 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
+03/11/2012 a 22:31:23 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js
+03/11/2012 a 22:31:23 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js3
+03/11/2012 a 22:31:23 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css2
+03/11/2012 a 22:31:24 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js2
+03/11/2012 a 22:31:24 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css1
+03/11/2012 a 22:31:27 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
+03/11/2012 a 22:32:50 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
+03/11/2012 a 22:33:23 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
+03/11/2012 a 22:33:23 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js
+03/11/2012 a 22:33:24 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js3
+03/11/2012 a 22:33:24 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js2
+03/11/2012 a 22:33:24 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css1
+03/11/2012 a 22:33:24 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css2
+03/11/2012 a 22:33:24 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
+03/11/2012 a 22:33:28 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
+03/11/2012 a 22:33:28 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js
+03/11/2012 a 22:33:28 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js2
+03/11/2012 a 22:33:28 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js3
+03/11/2012 a 22:33:28 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css1
+03/11/2012 a 22:33:28 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css2
+03/11/2012 a 22:34:02 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
+03/11/2012 a 22:34:02 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js
+03/11/2012 a 22:34:02 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js2
+03/11/2012 a 22:34:02 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js3
+03/11/2012 a 22:34:08 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
+03/11/2012 a 22:35:02 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 626
+03/11/2012 a 22:35:03 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 626
+03/11/2012 a 22:39:59 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/topzip
+03/11/2012 a 23:03:53 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 123
+03/11/2012 a 23:03:53 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 126
+03/11/2012 a 23:04:11 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 123
+03/11/2012 a 23:04:11 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 126
+03/11/2012 a 23:04:58 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 123
+03/11/2012 a 23:04:58 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 126
+03/11/2012 a 23:05:13 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 123
+03/11/2012 a 23:05:13 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 126

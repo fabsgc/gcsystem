@@ -95,4 +95,9 @@
 
 			$this->errorPerso(15);
 		}
+
+		public function actionToZip(){
+			$zip = new zipGc('test.zip');
+			$zip->putFileToZip('asset/css/default.css', zipGc::PUTDIR);
+		}
 	}

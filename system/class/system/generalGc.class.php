@@ -513,10 +513,20 @@
 			}
 			foreach($this->_css as $element){
 				if(!preg_match('#http:#isU', JS_PATH.$element)){
-					$this->_header.="    <link href=\"".CSS_PATH.$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+					if(LESS==true){
+						$this->_header.="    <link href=\"".CSS_PATH.$element."\" rel=\"stylesheet/less\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+					}
+					else{
+						$this->_header.="    <link href=\"".CSS_PATH.$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+					}
 				}
 				else{
-					$this->_header.="    <link href=\"".$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+					if(LESS==true){
+						$this->_header.="    <link href=\"".$element."\" rel=\"stylesheet/less\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+					}
+					else{
+						$this->_header.="    <link href=\"".$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+					}
 				}	
 			}
 			foreach($this->_jsInFile as $element){
@@ -612,12 +622,14 @@
 	}
 
 	trait errorPerso{
-		final protected function errorPerso($id, $lang = ''){
+		final protected function errorPerso($id, $var = array(), $lang = ''){
 			if(lang != ''){
 				$error = new errorPersoGc($lang);
+				echo $error->errorPerso($id, $var);
 			}
 			else{
 				$error = new errorPersoGc($this->_lang);
+				echo $error->errorPerso($id, $var);
 			}
 		}
 	}
