@@ -13,6 +13,7 @@
 		protected $_dirName                                    ;
 		protected $_dirChmod                                   ;
 		protected $_dirArbo                           = array();
+		protected $_dirArboContent                    = array();
 		protected $_info                              = array();
 		protected $_isExist                           = false  ;
 		
@@ -55,6 +56,10 @@
 		
 		public function getDirArbo(){
 			return $this->_dirArbo;
+		}
+
+		public function getDirArboContent(){
+			return $this->_dirArboContent;
 		}
 		
 		public function getSize($repertoire=""){
@@ -201,6 +206,7 @@
 				$this->_setdirInfo($dirpath);
 				$this->_setdirChmod($dirpath);
 				$this->_setdirArbo($dirpath);
+				$this->_setdirArboContent($dirpath);
 				$this->_isExist = true;
 			}
 			else{
@@ -266,6 +272,22 @@
 					}
 					else{
 						array_push($this->_dirArbo, $dir.$fichier);
+					}					
+				}       
+			}
+			closedir ($dossier); 			
+		}
+
+		protected function _setDirArboContent($dir){
+			$dossier = opendir ($dir);
+		   
+			while ($fichier = readdir ($dossier)) {   
+				if ($fichier != "." && $fichier != "..") {           
+					if(filetype($dir.$fichier) == 'dir'){          
+						$this->_setDirArboContent($dir.$fichier.'/');               
+					}
+					else{
+						$this->_dirArboContent[$dir.$fichier] = file_get_contents($dir.$fichier);
 					}					
 				}       
 			}

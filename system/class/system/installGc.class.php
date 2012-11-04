@@ -1084,7 +1084,7 @@
 							}
 
 							foreach ($this->_forbiddenDir as $key => $value) { //on vérifie si on ne supprime pas des fichiers situés dans des répertoires interdits
-								if(preg_match('#'.$value2->getAttribute('path').'#isU', $value)){
+								if(preg_match('#^'.$value2->getAttribute('path').'#isU', $value)){
 									$this->_conflitUninstall = false;
 									$this->_addError('La désinstallation veut supprimer un fichier système : '.$value2->getAttribute('path'), __FILE__, __LINE__, ERROR);
 								}
@@ -1098,6 +1098,13 @@
 					$this->_addError('Le plugin d\'id '.$id.' n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
+
+				if($this->_conflitUninstall == false){
+					return false;
+				}
+				else{
+					return true;
+				}
 			}
 			else{
 				$this->_conflitUninstall = false;
@@ -1108,7 +1115,31 @@
 
 		public function uninstall($id){
 			if($this->getConflitUninstall() == true){
+				$this->_domXml = new DomDocument('1.0', CHARSET);
+				
+				if($this->_domXml->load(INSTALLED)){
+					$this->_nodeXml = $this->_domXml->getElementsByTagName('installed')->item(0);
+					$this->_nodeXml = $this->_nodeXml->getElementsByTagName('install');
 
+					foreach ($this->_nodeXml as $key => $value){
+						if($value->getAttribute('id') == $id){ //l'id existe \o/
+							
+							$this->_node2Xml = $value->getElementsByTagName('files')->item(0);
+							$this->_node2Xml = $this->_node2Xml->getElementsByTagName('file');
+
+							//on supprime d'abord les fichiers
+							foreach ($this->_node2Xml as $key2 => $value2){
+								if(!preg_match('#\/$#i', $value2->getAttribute('path'))){
+									echo $value2->getAttribute('path').'<br />';
+								}
+							}
+						}
+					}
+				}
+				else{
+					$this->_addError('Le fichier de désinstallation '.INSTALLED.' est endommagé', __FILE__, __LINE__, ERROR);
+					return false;
+				}
 			}
 			else{
 				return false;

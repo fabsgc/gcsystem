@@ -1,37 +1,77 @@
-03/11/2012 a 22:31:23 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
-03/11/2012 a 22:31:23 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js
-03/11/2012 a 22:31:23 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js3
-03/11/2012 a 22:31:23 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css2
-03/11/2012 a 22:31:24 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js2
-03/11/2012 a 22:31:24 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css1
-03/11/2012 a 22:31:27 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
-03/11/2012 a 22:32:50 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
-03/11/2012 a 22:33:23 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
-03/11/2012 a 22:33:23 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js
-03/11/2012 a 22:33:24 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js3
-03/11/2012 a 22:33:24 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js2
-03/11/2012 a 22:33:24 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css1
-03/11/2012 a 22:33:24 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css2
-03/11/2012 a 22:33:24 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
-03/11/2012 a 22:33:28 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
-03/11/2012 a 22:33:28 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js
-03/11/2012 a 22:33:28 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js2
-03/11/2012 a 22:33:28 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js3
-03/11/2012 a 22:33:28 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css1
-03/11/2012 a 22:33:28 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/css/css2
-03/11/2012 a 22:34:02 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
-03/11/2012 a 22:34:02 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js
-03/11/2012 a 22:34:02 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js2
-03/11/2012 a 22:34:02 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/asset/js/js3
-03/11/2012 a 22:34:08 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 616
-03/11/2012 a 22:35:02 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 626
-03/11/2012 a 22:35:03 ! : Erreur [8] (Use of undefined constant lang - assumed 'lang') dans le fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php a la ligne 626
-03/11/2012 a 22:39:59 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/topzip
-03/11/2012 a 23:03:53 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 123
-03/11/2012 a 23:03:53 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 126
-03/11/2012 a 23:04:11 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 123
-03/11/2012 a 23:04:11 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 126
-03/11/2012 a 23:04:58 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 123
-03/11/2012 a 23:04:58 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 126
-03/11/2012 a 23:05:13 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 123
-03/11/2012 a 23:05:13 ! : Erreur [8] (Undefined variable: path) dans le fichier C:\wamp\www\GCsystem\system\class\helper\zipGc.class.php a la ligne 126
+04/11/2012 a 14:48:55 ! : Erreur [8] (Undefined variable: value) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1121
+04/11/2012 a 14:51:00 ! : Erreur [8] (Undefined variable: value) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1121
+04/11/2012 a 14:51:36 ! : Erreur [8] (Undefined variable: id) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1125
+04/11/2012 a 18:03:19 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:03:19 ! : Erreur [8] (Undefined index: page) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 125
+04/11/2012 a 18:03:19 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:03:19 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:03:31 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:03:31 ! : Erreur [8] (Undefined index: page) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 125
+04/11/2012 a 18:03:31 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:03:31 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:03:37 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:03:38 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:03:38 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:03:45 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:03:45 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:03:45 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:05:36 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:05:36 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:05:36 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:05:37 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:05:38 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:05:38 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:05:38 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:05:38 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:05:38 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:05:39 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:05:39 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:05:39 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:08:55 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:08:55 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:08:55 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:08:57 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:08:57 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:08:57 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:08:58 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:08:58 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:08:58 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:08:59 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:08:59 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:08:59 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:08:59 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:08:59 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:08:59 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:00 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:09:00 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:00 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:00 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:09:00 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:00 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:01 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:09:01 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:01 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:01 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:09:01 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:01 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:02 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:09:02 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:02 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:07 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:09:07 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:07 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:09 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:09:09 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:09 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:10 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:09:10 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:10 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:11 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:09:11 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:09:11 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:11:37 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:11:37 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:11:37 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:11:39 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 18:11:39 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 18:11:39 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392

@@ -19,12 +19,13 @@
 		
 		/**
 		 * Crée l'instance de la classe
-		 * @access	public
-		 * @return	void
+		 * @param string $filepath : chemin vers le zip
+		 * @access public
+		 * @return void
 		 * @since 2.0
 		*/
 		
-		public function __construct($filepath){
+	 	public function __construct($filepath){
 			$filepath = strval($filepath);
 			$this->_filePath = $filepath; // pour filetoZip
 			if(is_file($filepath) && file_exists($filepath) && is_readable($filepath) and zip_open($filepath)){
@@ -35,7 +36,16 @@
 			}
 		}
 		
-		public function getContentZip(){
+
+		/**
+		 * Retourne sous le forme d'un tableau la liste des fichiers (pas des répertoires) contenus dans le zip sous cette forme :
+		 *  Array ( [0] => asset/css/default.css [1] => default.css )
+		 * @access public
+		 * @return array of string
+		 * @since 2.0
+		*/
+
+	 	public function getContentZip(){
 			if($this->_isExist == true){
 				$this->_zipContent = array();
 				$this->_setZip($this->_filePath);
@@ -52,8 +62,19 @@
 				return false;
 			}
 		}
+
+		/**
+		 * Retourne sous le forme d'un tableau la liste des fichiers ainsi que de leur contenu (pas des répertoires) contenus dans le zip sous cette forme :
+		 * Array(
+    	 *		[asset/css/default.css] => contenu
+    	 *		[default.css] => contenu
+    	 *  )
+		 * @access public
+		 * @return array of string
+		 * @since 2.0
+		*/
 		
-		public function getContentFileZip(){
+	 	public function getContentFileZip(){
 			if($this->_isExist == true){
 				$this->_zipContentFile = array();
 				$this->_setZip($this->_filePath);
@@ -70,6 +91,16 @@
 				return false;
 			}			
 		}
+
+		/**
+		 * Permet d'extraire tout une archive zip et de la placer dans un répertoire
+    	 * @param string $dir : répertoire de destination
+    	 * @param bool $option : true : replacer les fichiers avec leur arborescence. false : replacer les fichiers à la racine du dossier de destination
+    	 * @param array $filter : array contenant les extensions non autorisées
+		 * @access public
+		 * @return true or false
+		 * @since 2.0
+		*/
 		
 		public function putFileToFtp($dir, $option = self::NOPUTDIR, $filter = array()){
 			if($this->_isExist == true){
@@ -79,13 +110,11 @@
 					
 					while ($zip_entry = zip_read($this->_zip)){
 						if($option == self::NOPUTDIR){
-							if(in_array((substr(zip_entry_name($zip_entry),-3)), $filter) || count($filter)==0){
+							//les filtres sont corrects
+							if((!in_array((substr(zip_entry_name($zip_entry),-3)), $filter) && !in_array((substr(zip_entry_name($zip_entry),-4)), $filter) && !in_array((substr(zip_entry_name($zip_entry),-2)), $filter) && !in_array((substr(zip_entry_name($zip_entry),-5)))) || count($filter)==0){
 								if(!preg_match('#\/$#i', zip_entry_name($zip_entry))){
 									file_put_contents($dir.basename(zip_entry_name($zip_entry)), zip_entry_read($zip_entry, 900000));
-									echo $dir.basename(zip_entry_name($zip_entry)).'<br />';
 								}							
-							}
-							else{
 							}
 						}
 						elseif($option == self::PUTDIR){
@@ -93,7 +122,7 @@
 								mkdir($dir.zip_entry_name($zip_entry));
 							}
 							else{
-								if(in_array((substr(zip_entry_name($zip_entry),-3)), $filter) || count($filter)==0){
+								if((!in_array((substr(zip_entry_name($zip_entry),-3)), $filter) && !in_array((substr(zip_entry_name($zip_entry),-4)), $filter) && !in_array((substr(zip_entry_name($zip_entry),-2)), $filter) && !in_array((substr(zip_entry_name($zip_entry),-5)))) || count($filter)==0){
 									file_put_contents($dir.zip_entry_name($zip_entry), zip_entry_read($zip_entry, 900000));
 								}
 							}
@@ -114,35 +143,95 @@
 			}
 		}
 
-		public function putFileToZip($path, $option = self::NOPUTDIR, $filter = array()){
-			$zip = new ZipArchive(); 
-		  	$zip->open($this->_filePath, ZipArchive::CREATE);
+		/**
+		 * Permet de remplir une archive zip à partir d'un fichier ou d'un répertoire
+    	 * @param string $path : chemin du fichier ou du répertoire à copier
+    	 * @param bool $option : true : replacer les fichiers avec leur arborescence. false : replacer les fichiers à la racine du dossier de destination
+    	 * @param array $filter : array contenant les extensions non autorisées
+		 * @access public
+		 * @return true or false
+		 * @since 2.0
+		*/
 
-			if(is_dir($path) && file_exists($path)){ //on doit copier un répertoire
+	 	public function putFileToZip($path, $option = self::NOPUTDIR, $filter = array()){
+			$zip = new ZipArchive();
 
-			}
-			elseif(is_file($path) && file_exists($path)){
-				if($option == self::NOPUTDIR){
+		  	if($zip->open($this->_filePath, ZipArchive::CREATE) == true || $zip->open($this->_filePath) == TRUE){
+				if(preg_match('#\/$#i', $path) && file_exists($path)){ //on doit copier un répertoire
+					$dir = new dirGc($path);
+					foreach ($dir->getDirArboContent() as $key => $value){
+						if($option == self::NOPUTDIR){
+							//les filtres sont corrects
+							if((!in_array(substr($key,-3), $filter) && !in_array(substr($key,-4), $filter) && !in_array(substr($key,-2), $filter) && !in_array(substr($key,-5), $filter)) || count($filter)==0){
+								if(!preg_match('#\/$#i', $key)){ //c'est un fichier
+									$file = new fileGc($key);
+									$zip->addFromString($file->getFileName(), $file->getFileContent());
+								}
+							}
+						}
+						elseif($option == self::PUTDIR){
+							//les filtres sont corrects
+							if((!in_array(substr($key,-3), $filter) && !in_array(substr($key,-4), $filter) && !in_array(substr($key,-2), $filter) && !in_array(substr($key,-5), $filter)) || count($filter)==0){
+								$zip->addFile($key);
+							}
+						}
+					}
 				}
-				elseif($option == self::PUTDIR){
-					$zip->addFile($path);
+				elseif(file_exists($path)){ //on doit copier un fichier
+					if((!in_array((substr($path,-3)), $filter) && !in_array((substr($path,-4)), $filter) && !in_array((substr($path,-2)), $filter) && !in_array(substr($key,-5), $filter)) || count($filter)==0){
+						if($option == self::NOPUTDIR){
+							$file = new fileGc($path);
+							$zip->addFromString($file->getFileName(), $file->getFileContent());
+							return true;
+						}
+						elseif($option == self::PUTDIR){
+							$zip->addFile($path);
+							return true;
+						}
+					}
+				}
+				else{
+					$this->_addError('le fichier ou le répertoire de fichiers que vous tentez de copier dans l\'archive n\'existe pas', __FILE__, __LINE__, ERROR);
+					return false;
 				}
 			}
 			else{
-				$this->_addError('le fichier ou le répertoire de fichiers que vous tentez de copier dans l\'archive n\'existe pas', __FILE__, __LINE__, ERROR);
+				$this->_addError('L\'archive n\'a pas pu être créée', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
+
+		/**
+		 * retourne le poids total de l'archive
+		 * @access public
+		 * @return int
+		 * @since 2.0
+		*/
 		
-		public function getFilesCompressedSize(){ //donne le poids total
+	 	public function getFilesCompressedSize(){ //donne le poids total
 			return $this->_FilesCompressedSize;
 		}
+
+		/**
+		 * retourne le poids de chaque fichier contenu dans l'archive
+		 * @access public
+		 * @return array of int
+		 * @since 2.0
+		*/
 		
-		public function getFileCompressedSize(){ //donne un array avec le poids de chaque fichier
+	 	public function getFileCompressedSize(){ //donne un array avec le poids de chaque fichier
 			return $this->_FileCompressedSize;
 		}
+
+		/**
+		 * permet de paramétrer la classe à partir du chemin vers une archive
+		 * @access public
+		 * @param  string $filepath : chemin vers l'archive
+		 * @return void
+		 * @since 2.0
+		*/
 		
-		public function setFile($filepath){
+	 	public function setFile($filepath){
 			$filepath = strval($filepath);
 			if(is_file($filepath) && file_exists($filepath) && is_readable($filepath)){
 				$this->_setFilePath($filepath);
@@ -159,6 +248,14 @@
 				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 			}
 		}
+
+		/**
+		 * remplit l\'attribut contenant le poids total de l'archive
+		 * @access protected
+		 * @param  string $filepath : chemin vers l'archive
+		 * @return void
+		 * @since 2.0
+		*/
 		
 		protected function _setFilesCompressedSize($filepath){
 			$this->_setZip($filepath);
@@ -167,6 +264,14 @@
 			}
 			$this->_closeZip($filepath);
 		}
+
+		/**
+		 * remplit l\'attribut contenant le poids de chaque fichier de l'archive
+		 * @access protected
+		 * @param  string $filepath : chemin vers l'archive
+		 * @return void
+		 * @since 2.0
+		*/
 		
 		protected function _setFileCompressedSize($filepath){
 			$this->_setZip($filepath);
@@ -175,14 +280,37 @@
 			}
 			$this->_closeZip($filepath);
 		}
+
+		/**
+		 * ouvre une archive
+		 * @access protected
+		 * @param  string $filepath : chemin vers l'archive
+		 * @return void
+		 * @since 2.0
+		*/
 		
 		protected function _setZip($filepath){
 			$this->_zip = zip_open($filepath);	
 		}
 		
+		/**
+		 * ferme une archive
+		 * @access protected
+		 * @param  string $filepath : chemin vers l'archive
+		 * @return void
+		 * @since 2.0
+		*/
+
 		protected function _closeZip($filepath){
 			$this->_zip = zip_close($filepath);
 		}
+
+		/**
+		 * retourne true si le zip existe à l'instanciation false dans le cas contraire
+		 * @access protected
+		 * @return true or false
+		 * @since 2.0
+		*/
 
 		public function getIsExist(){
 			return $this->_isExist;
@@ -190,10 +318,10 @@
 		
 		/**
 		 * Desctructeur
-		 * @access	public
+		 * @access public
 		 * @since 2.0
 		*/
 		
-		public  function __destruct(){
+	 public  function __destruct(){
 		}
 	}

@@ -59,8 +59,9 @@
 		public function actionInstall(){
 			$install = new installGc();
             if($install->checkUninstall('22662503a6463b6c706.64500547')){
-            	$install->uninstall();
-            }else{
+            	$install->uninstall('22662503a6463b6c706.64500547');
+            }
+            else{
             	echo $install->showError();
             }
 		}
@@ -98,6 +99,8 @@
 
 		public function actionToZip(){
 			$zip = new zipGc('test.zip');
-			$zip->putFileToZip('asset/css/default.css', zipGc::PUTDIR);
+			//$zip->putFileToZip('asset/css/default.css', zipGc::PUTDIR);
+			//$zip->putFileToZip('asset/css/default.css', zipGc::NOPUTDIR);
+			$zip->putFileToZip('asset/', zipGc::PUTDIR, array('.jsh'));
 		}
 	}

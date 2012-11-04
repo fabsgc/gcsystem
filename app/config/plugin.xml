@@ -2,6 +2,7 @@
 <plugins>
 	<plugin type="helper" name="fileGc" access="fileGc.class.php" enabled="true" include="*"/>
 	<plugin type="helper" name="downloadGc" access="downloadGc.class.php" enabled="true" include="*"/>
+	<plugin type="helper" name="dirGc" access="dirGc.class.php" enabled="true" include="*"/>
 	<plugin type="helper" name="pictureGc" access="pictureGc.class.php" enabled="true" include="*"/>
 	<plugin type="helper" name="uploadGc" access="uploadGc.class.php" enabled="true" include="*"/>
 	<plugin type="helper" name="zipGc" access="zipGc.class.php" enabled="true" include="*"/>

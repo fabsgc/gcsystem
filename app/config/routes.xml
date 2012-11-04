@@ -21,6 +21,7 @@
     <route id="apropos" url="/apropos.html" rubrique="index" action="actionAPropos" vars="" cache="0"/>
     <route id="debug" url="/debug" rubrique="debug" action="" vars="" cache="0"/>
     <route id="debuginstall" url="/debug/install" rubrique="debug" action="install" vars="" cache="0"/>
-    <route id="syntaxhighlighter" url="/syntaxhighlighter" rubrique="debug" action="syntaxhighlighter" vars="" cache="0"/>
-    <route id="tplHtmlHeader" url="/tplhtmlheader" rubrique="debug" action="tplHtmlHeader" vars="" cache="0"/>
-<route id="debugzip" url="/tozip" rubrique="debug" action="toZip" vars="" cache="0"/></routes>
+    <route id="syntaxhighlighter" url="/debug/syntaxhighlighter" rubrique="debug" action="syntaxhighlighter" vars="" cache="0"/>
+    <route id="tplHtmlHeader" url="/debug/tplhtmlheader" rubrique="debug" action="tplHtmlHeader" vars="" cache="0"/>
+    <route id="debugzip" url="/debug/tozip" rubrique="debug" action="toZip" vars="" cache="0"/>
+</routes>

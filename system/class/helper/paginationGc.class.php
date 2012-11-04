@@ -12,7 +12,7 @@
 		protected $_byPage                = 2      ;
 		protected $_entry                          ;
 		protected $_buttonFl              = true   ;
-		protected $_buttonNp              = true   ;
+		protected $_buttonBa              = true   ;
 		protected $_url                            ;
 		protected $_pageActuel            = 0      ;
 		protected $_nbrPage               = 0      ;
@@ -45,7 +45,7 @@
 					break;
 					
 					case 'buttonNp':
-						$this->_buttonNp = $val;
+						$this->_buttonBa = $val;
 					break;
 					
 					case 'url':
@@ -179,13 +179,18 @@
 			}
 		}
 		
-		public function show(){
+		public function show($template = ''){
 			$rand = rand(0,2);
-			$tpl = new templateGc('GCsystem/GCpagination', 'pagination_'.$rand, 0, $this->_lang);
+			if($template == ''){
+				$tpl = new templateGc('GCsystem/GCpagination', 'pagination_'.$rand, 0, $this->_lang);
+			}
+			else{
+				$tpl = new templateGc($template, 'pagination_'.$rand, 0, $this->_lang);
+			}
 			
 			$tpl->assign(array(
 				'paginationFirstLast'    => $this->_buttonFl,
-				'paginationBeforeAfter'  => $this->_buttonNp,
+				'paginationBeforeAfter'  => $this->_buttonBa,
 				'pageActuel'             => $this->_pageActuel,
 				'paginationFirstBefore'  => $this->_paginationFirstBefore,
 				'paginationLastAfter'    => $this->_paginationLastAfter,
