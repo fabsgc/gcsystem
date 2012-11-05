@@ -1574,7 +1574,10 @@
 								$result .= '<br />><span style="color: chartreuse"># '.$value->getElementsByTagName('readme')->item(0)->nodeValue.'</span>';
 								$result .= '<br />><span style="color: chartreuse">############################################################</span>';
 
-								echo $result;
+								$this->_nodeXml->removeChild($value); 
+
+								return $result;
+
 						}
 					}
 				}
