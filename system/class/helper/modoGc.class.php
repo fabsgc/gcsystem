@@ -64,7 +64,7 @@
 			$this->_i            = 0;
 			$this->_parseInsulte = array();
 			foreach($this->_insulte as $insulte){
-				if(preg_match('`'.preg_quote($insulte).'`isU', $this->_contenu)){
+				if(preg_match('`'.$this->_setAccent(preg_quote($insulte)).' `isU', $this->_setAccent($this->_contenu))){
 					$this->_i++;
 				}
 			}

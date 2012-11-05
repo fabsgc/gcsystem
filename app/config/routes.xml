@@ -16,7 +16,6 @@
     <route id="test2" url="/test/ajax" rubrique="test" action="ajax" vars="" cache="0"/>
 	<route id="install" url="/install" rubrique="install" action="" vars="" cache="0"/>
 	<route id="test4" url="/url-test4" rubrique="index" action="test" vars="" cache="0"/>
-    <route id="installtest" url="/installtest" rubrique="installtest" action="" vars="" cache="10"/>   
     <route id="montruc" url="/montruc" rubrique="montruc" action="" vars="" cache="0"/>
     <route id="apropos" url="/apropos.html" rubrique="index" action="actionAPropos" vars="" cache="0"/>
     <route id="debug" url="/debug" rubrique="debug" action="" vars="" cache="0"/>
@@ -24,4 +23,4 @@
     <route id="syntaxhighlighter" url="/debug/syntaxhighlighter" rubrique="debug" action="syntaxhighlighter" vars="" cache="0"/>
     <route id="tplHtmlHeader" url="/debug/tplhtmlheader" rubrique="debug" action="tplHtmlHeader" vars="" cache="0"/>
     <route id="debugzip" url="/debug/tozip" rubrique="debug" action="toZip" vars="" cache="0"/>
-</routes>
+<route id="installtest" url="/installtest" rubrique="installtest" action="" vars="" cache="10"/></routes>

@@ -38,7 +38,6 @@
 				$this->_checkSecureVar();
 				$this->setErrorLog('history','Page rewrite : http://'.$this->getHost().$this->getUri().' rubrique : '.$this->getServerName().$this->getPhpSelf().'?'.$this->getQuery().' / origine : '.$this->getReferer().' / IP : '.$this->getIp());
 				$this->_configInstance = new configGc();
-				$this->_cronInstance  = new cronGc();
 				$this->_initInstance = 1;
 			}
 		}
@@ -98,6 +97,7 @@
 					
 					if($rubrique!=""){
 						$plugin = new pluginGc();
+						$this->_cronInstance  = new cronGc(); //les crons ont besoin des plugins
 
 						if($this->_cacheRoute > 0){ //le cache de la page est supérieur à 0 secondes et le rewrite activé
 							if($this->_setRubrique($rubrique) == true){  //on inclut les fichiers necéssaire à l'utilisation d'une rubrique

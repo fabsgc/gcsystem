@@ -57,7 +57,15 @@
 		}
 
 		public function actionInstall(){
+			//$install = new installGc('installtest.zip', $this->bdd, BDD);
 			$install = new installGc();
+			
+			/*if($install->check() == false){
+				echo $install->showError();
+			}
+			else{
+				$install->install();
+			}*/
             if($install->checkUninstall('22662503a6463b6c706.64500547')){
             	$install->uninstall('22662503a6463b6c706.64500547');
             }

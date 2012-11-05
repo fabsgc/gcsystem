@@ -186,11 +186,19 @@
 									//firewalls
 									$this->_checkConfigFirewalls();
 
+									//cron
+									$this->_checkConfigCrons();
+
+									//errorperso
+									$this->_checkConfigErrorPerso();
+
 									//langs
 									$this->_checkConfigLangs();
 
 									//sqls
 									$this->_checkConfigSqls();
+
+									return $this->_conflit; // faut penser à retourner ce truc hein ^^
 							}
 							else{
 								$this->_conflit = false;
@@ -361,8 +369,83 @@
 					}
 				}
 
+				$this->_node2Xml = $this->_nodeXml->getElementsByTagName('crons')->item(0);
+
+				//on check la balise crons
+				if(!is_object($this->_node2Xml)){
+					$this->_conflit = false;
+					$this->_addError('la section crons du fichier install.xml est endommagée.', __FILE__, __LINE__, ERROR);
+					$return = false;
+				}
+				else{
+					$this->_markupXml = $this->_node2Xml->getElementsByTagName('cron');
+					if(is_object($this->_markupXml)){
+						foreach($this->_markupXml as $key=>$sentence){
+							if($sentence->hasAttribute('id') && $sentence->hasAttribute('rubrique') && $sentence->hasAttribute('action') && $sentence->hasAttribute('time')){
+								//on stocke toutes les données dans un array pour pouvoir les utiliser plus tard à l'installation
+								$this->_xmlContent['crons'][$key] = array(
+									'id' => $sentence->getAttribute('id'),
+									'rubrique' => $sentence->getAttribute('rubrique'),
+									'action' => $sentence->getAttribute('action'),
+									'time' => $sentence->getAttribute('time')
+								);
+							}
+							else{
+								$this->_conflit = false;
+								$this->_addError('la section cron n°'.$key.' de la section crons du fichier install.xml possède des attributs incorrects.', __FILE__, __LINE__, ERROR);
+								$return = false;
+							}
+						}
+					}
+				}
+
+				$this->_node2Xml = $this->_nodeXml->getElementsByTagName('errors')->item(0);
+
+				//on check la balise errors
+				if(!is_object($this->_node2Xml)){
+					$this->_conflit = false;
+					$this->_addError('la section errors du fichier install.xml est endommagée.', __FILE__, __LINE__, ERROR);
+					$return = false;
+				}
+				else{
+					$this->_markupXml = $this->_node2Xml->getElementsByTagName('error');
+					if(is_object($this->_markupXml)){
+						foreach($this->_markupXml as $key=>$sentence){
+							if($sentence->hasAttribute('id') && $sentence->hasAttribute('template') && $sentence->hasAttribute('backUrl')){
+								//on stocke toutes les données dans un array pour pouvoir les utiliser plus tard à l'installation
+								$this->_xmlContent['errors'][$sentence->getAttribute('id')]['id'] = $sentence->getAttribute('id');
+								$this->_xmlContent['errors'][$sentence->getAttribute('id')]['template'] = $sentence->getAttribute('template');
+								$this->_xmlContent['errors'][$sentence->getAttribute('id')]['backUrl'] = $sentence->getAttribute('backUrl');
+
+								if($sentence->hasChildNodes()){
+									$this->_markup2Xml = $sentence->getElementsByTagName('var');
+									foreach($this->_markup2Xml as $key2=>$sentence2){
+										if($sentence2->hasAttribute('id') && $sentence2->hasAttribute('type')){
+											$this->_xmlContent['errors'][$sentence->getAttribute('id')]['vars'][$sentence2->getAttribute('id')] = array(
+												'id' => $sentence2->getAttribute('id'),
+												'type' => $sentence2->getAttribute('type'),
+												'value' => $sentence2->nodeValue
+											);
+										}
+										else{
+											$this->_conflit = false;
+											$this->_addError('la section var n°'.$key2.' de la section error n°'.$key.' de la section errors du fichier install.xml possède des attributs incorrects.', __FILE__, __LINE__, ERROR);
+											$return = false;
+										}
+									}
+								}
+							}
+							else{
+								$this->_conflit = false;
+								$this->_addError('la section error n°'.$key.' de la section errors du fichier install.xml possède des attributs incorrects.', __FILE__, __LINE__, ERROR);
+								$return = false;
+							}
+						}
+					}
+				}
+
 				$this->_node2Xml = $this->_nodeXml->getElementsByTagName('sqls')->item(0);
-				
+
 				//on check la balise sqls
 				if(!is_object($this->_node2Xml)){
 					$this->_conflit = false;
@@ -443,14 +526,15 @@
 
 		protected function _checkIsInstalled(){
 			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 			if($this->_domXml->loadXml($this->_zipContent['install.xml'])){
 				$id = $this->_domXml->getElementsByTagName('install')->item(0)->getAttribute("id");
-				if($this->_domXml->load(INSTALLED)){
+				if($this->_dom2Xml->load(INSTALLED)){
 					$return = true;
-					$this->_nodeXml = $this->_domXml->getElementsByTagName('installed')->item(0);
+					$this->_nodeXml = $this->_dom2Xml->getElementsByTagName('installed')->item(0);
 					$this->_markupXml = $this->_nodeXml->getElementsByTagName('install');
 					foreach($this->_markupXml as $sentence){
-						if ($id == $sentence->getAttribute("id")){
+						if ($id == intval($sentence->getAttribute("id"))){
 							$return = false;
 						}
 					}
@@ -668,6 +752,55 @@
 			}
 		}
 
+		protected function _checkConfigCrons(){
+			//on ouvre cron.xml et on vérifie si les id n'existe pas déjà
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
+
+			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(CRON)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('crons')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('cron');
+
+				$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('crons')->item(0);
+				$this->_node2Xml = $this->_node2Xml->getElementsByTagName('cron');
+
+				foreach($this->_nodeXml as $key => $value){
+					foreach ($this->_node2Xml as $key2 => $value2){
+						if($value->getAttribute('id') == $value2->getAttribute('id')){
+							$this->_conflit = false;
+							$this->_addError('l\'id de cron '.$value->getAttribute('id').' de la section n°'.$key.' du cron est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+						}
+					}
+				}
+			}
+		}
+
+		protected function _checkConfigErrorPerso(){
+			//on ouvre errorperso.xml et on vérifie si les id n'existe pas déjà
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
+
+			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(ERRORPERSO)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('errors')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('error');
+
+				$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('errorperso')->item(0);
+				$this->_node2Xml = $this->_node2Xml->getElementsByTagName('errors')->item(0);
+				$this->_node2Xml = $this->_node2Xml->getElementsByTagName('error');
+
+				foreach($this->_nodeXml as $key => $value){
+					foreach ($this->_node2Xml as $key2 => $value2){
+						if($value->getAttribute('id') == $value2->getAttribute('id')){
+							$this->_conflit = false;
+							$this->_addError('l\'id d\'errorperso '.$value->getAttribute('id').' de la section n°'.$key.' du fichier errorpersoGx.xml est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+						}
+					}
+				}
+			}
+		}
+
 		protected function _checkConfigLangs(){
 			//on ouvre [lang].xml si il existe et on vérifie si sentence n'existe pas déjà
 			$this->_domXml = new DomDocument('1.0', CHARSET);
@@ -683,7 +816,6 @@
 
 					foreach ($langsFile as $file){
 						if($this->_dom2Xml->load($file)){
-							
 							$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('lang')->item(0);
 							$this->_node2Xml = $this->_node2Xml->getElementsByTagName('sentence');
 
@@ -710,12 +842,12 @@
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
 				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('sqls')->item(0);
 
-				if($this->_nodeXml->hasChildNodes() && (!is_object($this->_bdd) || $this->_bddName == null)){
+				if($this->_nodeXml->hasChildNodes() && (!is_object($this->_bdd[$this->_bddName]))){
 					$this->_conflit = false;
 					$this->_addError('La connexion sql entrée en paramètre n\'est pas valide. Le plugin ne peut pas exécuter les requêtes necéssaires.', __FILE__, __LINE__, ERROR);
 				}
 				
-				if(is_object($this->_bdd) && $this->_bddName != null){
+				if(is_object($this->_bdd[$this->_bddName])){
 					//dans les fichiers de rubriques et manager, on corrige ça : $this->bdd[mauvaiseconnexion]
 					foreach ($this->_zipContent as $key => $value) {
 						if(preg_match('#(\.class\.php)$#isU', $key) && preg_match('#^app\/(.*)$#isU', $key)){
@@ -740,6 +872,12 @@
 
 					//firewalls
 					$this->_installConfigFirewalls();
+
+					//crons
+					$this->_installConfigCrons();
+
+					//errorperso
+					$this->_installConfigErrorspersos();
 
 					//langs
 					$this->_installConfigLangs();
@@ -857,6 +995,68 @@
 			}
 		}
 
+		protected function _installConfigCrons(){
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
+
+			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(CRON)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('crons')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('cron');
+
+				$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('crons')->item(0);
+
+				foreach($this->_nodeXml as $key => $value){
+					$this->_markup2Xml = $this->_dom2Xml->createElement('cron');
+					$this->_markup2Xml->setAttribute("id", $value->getAttribute('id'));
+					$this->_markup2Xml->setAttribute("rubrique", $value->getAttribute('rubrique'));
+					$this->_markup2Xml->setAttribute("action", $value->getAttribute('action'));
+					$this->_markup2Xml->setAttribute("time", $value->getAttribute('time'));
+					$this->_markup2Xml->setAttribute("executed", '');
+
+					$this->_node2Xml->appendChild($this->_markup2Xml);
+				}
+
+				$this->_dom2Xml->save(CRON);
+			}
+		}
+
+		protected function _installConfigErrorspersos(){
+			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
+
+			if($this->_domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(ERRORPERSO)){
+				$this->_nodeXml = $this->_domXml->getElementsByTagName('install')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('errors')->item(0);
+				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('error');
+
+				$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('errorperso')->item(0);
+				$this->_node2Xml = $this->_dom2Xml->getElementsByTagName('errors')->item(0);
+
+				foreach($this->_nodeXml as $key => $value){
+					$this->_markup2Xml = $this->_dom2Xml->createElement('error');
+					$this->_markup2Xml->setAttribute("id", $value->getAttribute('id'));
+					$this->_markup2Xml->setAttribute("template", $value->getAttribute('template'));
+					$this->_markup2Xml->setAttribute("backUrl", $value->getAttribute('backUrl'));
+
+					foreach ($this->_xmlContent['errors'][$value->getAttribute('id')]['vars'] as $key2 => $value2) {
+						$this->_markup3Xml = $this->_dom2Xml->createElement('var');
+						$this->_markup3Xml->setAttribute("id", $value2['id']);
+						$this->_markup3Xml->setAttribute("type", $value2['type']);
+						
+						$texte = $this->_dom2Xml->createTextNode($value2['value']);
+						$this->_markup3Xml->appendChild($texte);
+
+						$this->_markup2Xml->appendChild($this->_markup3Xml);
+					}
+
+					$this->_node2Xml->appendChild($this->_markup2Xml);
+				}
+			}
+
+			$this->_dom2Xml->save(ERRORPERSO);
+		}
+
 		protected function _installConfigLangs(){
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
@@ -898,7 +1098,7 @@
 		}
 
 		protected function _installConfigSqls(){
-			$query = new sqlGc($this->_bdd);
+			$query = new sqlGc($this->_bdd[$this->_bddName]);
 
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			$id = '';
@@ -909,11 +1109,12 @@
 				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('sql');
 
 				foreach ($this->_nodeXml as $key => $value) {
-					$value->nodeValue = preg_replace(
-						array('#&lt;#isU', '#&gt;#isU', '#&quot;#isU', '#&#39;#isU'), 
+					$requete = preg_replace(
+						array('#&lt;#isU', '#&gt;#isU', '#&quot;#isU', '#&39;#isU'), 
 						array('<', '>', '"', "'"),
 					$value->nodeValue);
-					$query->query($key, $value->nodeValue);
+
+					$query->query($key, $requete);
 					$query->fetch($key, sqlGc::PARAM_NORETURN);
 				}
 			}
@@ -1028,6 +1229,42 @@
 					}
 					$xml->appendChild($routes);
 
+					//ajouter les config du cron
+					$routes = $this->_domXml->createElement('crons');
+					foreach ($this->_xmlContent['crons'] as $key => $value) {
+						$route = $this->_domXml->createElement('cron');
+						$route->setAttribute('id', $value['id']);
+						$route->setAttribute('crubrique', $value['rubrique']);
+						$route->setAttribute('action', $value['action']);
+						$route->setAttribute('time', $value['time']);
+						$route->setAttribute('executed', '');
+						$routes->appendChild($route);
+					}
+					$xml->appendChild($routes);
+
+					//ajouter les config d'errorperso
+					$routes = $this->_domXml->createElement('errors');
+					foreach ($this->_xmlContent['errors'] as $key => $value) {
+						$route = $this->_domXml->createElement('error');
+						$route->setAttribute('id', $value['id']);
+						$route->setAttribute('template', $value['template']);
+						$route->setAttribute('backUrl', $value['backUrl']);
+
+						foreach ($value['vars'] as $key2 => $value2) {
+							$route2 = $this->_domXml->createElement('var');
+							$route2->setAttribute('id', $value2['id']);
+							$route2->setAttribute('type', $value2['type']);
+
+							$texte = $this->_domXml->createTextNode($value2['value']);
+							$route2->appendChild($texte);
+
+							$route->appendChild($route2);
+						}
+						
+						$routes->appendChild($route);
+					}
+					$xml->appendChild($routes);
+
 					//ajouter les config du sql
 					$routes = $this->_domXml->createElement('sqls');
 					foreach ($this->_xmlContent['sqls'] as $key => $value) {
@@ -1036,7 +1273,7 @@
 					}
 					$xml->appendChild($routes);
 
-					//ajouter les config du sql
+					//ajouter les config des langs
 					$routes = $this->_domXml->createElement('langs');
 					foreach ($this->_xmlContent['langs'] as $key => $value) {
 						$route = $this->_domXml->createElement('sentence');
@@ -1116,6 +1353,7 @@
 		public function uninstall($id){
 			if($this->getConflitUninstall() == true){
 				$this->_domXml = new DomDocument('1.0', CHARSET);
+				$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 				
 				if($this->_domXml->load(INSTALLED)){
 					$this->_nodeXml = $this->_domXml->getElementsByTagName('installed')->item(0);
@@ -1124,15 +1362,219 @@
 					foreach ($this->_nodeXml as $key => $value){
 						if($value->getAttribute('id') == $id){ //l'id existe \o/
 							
-							$this->_node2Xml = $value->getElementsByTagName('files')->item(0);
-							$this->_node2Xml = $this->_node2Xml->getElementsByTagName('file');
+							/* ###### suppression des fichiers ###### */
+								//on commence par supprimer les fichiers mis en place par le plugin
+								$this->_node2Xml = $value->getElementsByTagName('files')->item(0);
+								$this->_node2Xml = $this->_node2Xml->getElementsByTagName('file');
 
-							//on supprime d'abord les fichiers
-							foreach ($this->_node2Xml as $key2 => $value2){
-								if(!preg_match('#\/$#i', $value2->getAttribute('path'))){
-									echo $value2->getAttribute('path').'<br />';
+								//on supprime d'abord les fichiers
+								foreach ($this->_node2Xml as $key2 => $value2){
+									if(!preg_match('#\/$#i', $value2->getAttribute('path'))){
+										//unlink($value2->getAttribute('path'));
+									}
 								}
-							}
+
+								//on supprime ensuite les fichiers
+								foreach($this->_node2Xml as $key2 => $value2){
+									if(preg_match('#\/$#i', $value2->getAttribute('path'))){
+										//rmdir($value2->getAttribute('path'));
+									}
+								}
+
+							/* ###### SUPPRESSION DES LIGNES DANS LES FICHIERS DE CONFIG ###### */
+								/* ###### ROUTE ###### */
+								$this->_node2Xml = $value->getElementsByTagName('routes')->item(0);
+								$this->_node2Xml = $this->_node2Xml->getElementsByTagName('route');
+
+								if($this->_dom2Xml->load(ROUTE)){
+									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('routes')->item(0);
+									$this->_node3Xml = $this->_node3Xml->getElementsByTagName('route');
+
+									foreach ($this->_node2Xml as $key2 => $value2){
+										foreach($this->_node3Xml as $key3 => $value3){
+											if($value2->getAttribute('id') == $value3->getAttribute('id')){
+												echo $value2->getAttribute('id').'-1<br />';
+												//$this->_node3Xml->removeChild($value3); 
+											}
+										}
+									}
+								}
+								else{
+									$this->_addError('Le fichier de route '.ROUTE.' est endommagé', __FILE__, __LINE__, ERROR);
+									return false;
+								}
+
+								$this->_dom2Xml->save(ROUTE);
+
+								/* ###### APP ###### */
+								$this->_node2Xml = $value->getElementsByTagName('apps')->item(0);
+								$this->_node2Xml = $this->_node2Xml->getElementsByTagName('app');
+
+								if($this->_dom2Xml->load(APPCONFIG)){
+									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('definitions')->item(0);
+									$this->_node3Xml = $this->_node3Xml->getElementsByTagName('define');
+
+									foreach ($this->_node2Xml as $key2 => $value2){
+										foreach($this->_node3Xml as $key3 => $value3){
+											if($value2->getAttribute('id') == $value3->getAttribute('id')){
+												echo $value2->getAttribute('id').'-2<br />';
+												//$this->_node3Xml->removeChild($value3); 
+											}
+										}
+									}
+								}
+								else{
+									$this->_addError('Le fichier de constantes '.APPCONFIG.' est endommagé', __FILE__, __LINE__, ERROR);
+									return false;
+								}
+
+								$this->_dom2Xml->save(APPCONFIG);
+
+								/* ###### PLUGIN ###### */
+								$this->_node2Xml = $value->getElementsByTagName('plugins')->item(0);
+								$this->_node2Xml = $this->_node2Xml->getElementsByTagName('plugin');
+
+								if($this->_dom2Xml->load(PLUGIN)){
+									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('plugins')->item(0);
+									$this->_node3Xml = $this->_node3Xml->getElementsByTagName('plugin');
+
+									foreach ($this->_node2Xml as $key2 => $value2){
+										foreach($this->_node3Xml as $key3 => $value3){
+											if($value2->getAttribute('name') == $value3->getAttribute('name')){
+												echo $value2->getAttribute('name').'-3<br />';
+												//$this->_node3Xml->removeChild($value3); 
+											}
+										}
+									}
+								}
+								else{
+									$this->_addError('Le fichier de plugins '.PLUGIN.' est endommagé', __FILE__, __LINE__, ERROR);
+									return false;
+								}
+
+								$this->_dom2Xml->save(PLUGIN);
+
+								/* ###### FIREWALL ###### */
+								$this->_node2Xml = $value->getElementsByTagName('firewalls')->item(0);
+								$this->_node2Xml = $this->_node2Xml->getElementsByTagName('firewall');
+
+								if($this->_dom2Xml->load(FIREWALL)){
+									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('security')->item(0);
+									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('firewall')->item(0);
+									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('access')->item(0);
+									$this->_node3Xml = $this->_node3Xml->getElementsByTagName('url');
+
+									foreach ($this->_node2Xml as $key2 => $value2){
+										foreach($this->_node3Xml as $key3 => $value3){
+											if($value2->getAttribute('id') == $value3->getAttribute('id')){
+												echo $value2->getAttribute('id').'-4<br />';
+												//$this->_node3Xml->removeChild($value3); 
+											}
+										}
+									}
+								}
+								else{
+									$this->_addError('Le fichier du parefeu '.FIREWALL.' est endommagé', __FILE__, __LINE__, ERROR);
+									return false;
+								}
+
+								$this->_dom2Xml->save(FIREWALL);
+
+								/* ###### CRON ###### */
+								$this->_node2Xml = $value->getElementsByTagName('crons')->item(0);
+								$this->_node2Xml = $this->_node2Xml->getElementsByTagName('cron');
+
+								if($this->_dom2Xml->load(CRON)){
+									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('crons')->item(0);
+									$this->_node3Xml = $this->_node3Xml->getElementsByTagName('cron');
+
+									foreach ($this->_node2Xml as $key2 => $value2){
+										foreach($this->_node3Xml as $key3 => $value3){
+											if($value2->getAttribute('id') == $value3->getAttribute('id')){
+												echo $value2->getAttribute('id').'-5<br />';
+												//$this->_node3Xml->removeChild($value3); 
+											}
+										}
+									}
+								}
+								else{
+									$this->_addError('Le fichier de crons '.CRON.' est endommagé', __FILE__, __LINE__, ERROR);
+									return false;
+								}
+
+								$this->_dom2Xml->save(CRON);
+
+
+								/* ###### ERROR ###### */
+								$this->_node2Xml = $value->getElementsByTagName('errors')->item(0);
+								$this->_node2Xml = $this->_node2Xml->getElementsByTagName('error');
+
+								if($this->_dom2Xml->load(ERRORPERSO)){
+									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('errorperso')->item(0);
+									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('errors')->item(0);
+									$this->_node3Xml = $this->_node3Xml->getElementsByTagName('error');
+
+									foreach ($this->_node2Xml as $key2 => $value2){
+										foreach($this->_node3Xml as $key3 => $value3){
+											if($value2->getAttribute('id') == $value3->getAttribute('id')){
+												echo $value2->getAttribute('id').'-6<br />';
+												//$this->_node3Xml->removeChild($value3); 
+											}
+										}
+									}
+								}
+								else{
+									$this->_addError('Le fichier de erreurs personnalisées '.ERRORPERSO.' est endommagé', __FILE__, __LINE__, ERROR);
+									return false;
+								}
+
+								$this->_dom2Xml->save(ERRORPERSO);
+
+								/* ###### LANG ###### */
+								$this->_node2Xml = $value->getElementsByTagName('langs')->item(0);
+								$this->_node2Xml = $this->_node2Xml->getElementsByTagName('sentence');
+
+								foreach ($this->_node2Xml as $key2 => $value2) {
+									$value2->getAttribute('id');
+									//on lit toutes les versions
+
+									foreach ($value2->getElementsByTagName('lang') as $key3 => $value3){
+										if(file_exists(LANG_PATH.$value3->getAttribute('lang').'.xml')){
+											if($this->_dom2Xml->load(LANG_PATH.$value3->getAttribute('lang').'.xml')){
+												$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('lang')->item(0);
+												$this->_node3Xml = $this->_node3Xml->getElementsByTagName('sentence');
+
+												foreach ($this->_node3Xml as $key4 => $value4) {
+													if($value4->getAttribute('id') == $value2->getAttribute('id')){
+														echo $value4->getAttribute('id').'-7<br />';
+														//$this->_node3Xml->removeChild($value3); 
+													}
+												}
+
+												$this->_dom2Xml->save(LANG_PATH.$value3->getAttribute('lang').'.xml');
+											}
+										}
+									}
+								}
+
+								/* ###### SQL ###### */
+								$this->_node2Xml = $value->getElementsByTagName('sqls')->item(0);
+								$this->_node2Xml = $this->_node2Xml->getElementsByTagName('sql');
+
+								$result = '<br />><span style="color: chartreuse">########## requête sql exécutées : ################################</span>';
+
+								foreach ($this->_node2Xml as $key2 => $value2){
+									$result .= '<br />><span style="color: chartreuse"># '.$value2->nodeValue.'</span>';
+								}
+
+								$result .= '<br />><span style="color: chartreuse">############################################################</span>';
+
+								/* ###### README ###### */
+								$result .= '<br /><br />><span style="color: chartreuse">########## readme : ################################</span>';
+								$result .= '<br />><span style="color: chartreuse"># '.$value->getElementsByTagName('readme')->item(0)->nodeValue.'</span>';
+								$result .= '<br />><span style="color: chartreuse">############################################################</span>';
+
+								echo $result;
 						}
 					}
 				}

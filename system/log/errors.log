@@ -75,3 +75,345 @@
 04/11/2012 a 18:11:39 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
 04/11/2012 a 18:11:39 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
 04/11/2012 a 18:11:39 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 19:23:27 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 19:23:27 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 19:23:28 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 19:23:28 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 19:23:28 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 19:23:47 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 19:23:47 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 19:24:11 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 19:24:11 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 19:24:11 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 19:24:11 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 19:24:11 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 19:24:45 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 19:24:45 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 19:24:46 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 19:24:46 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 19:24:46 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 22:06:56 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 22:06:56 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 22:24:29 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 22:24:29 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 23:17:07 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 23:17:07 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 23:18:24 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 23:18:24 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 23:18:50 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 23:18:50 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 23:19:38 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 23:19:38 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 23:19:47 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 23:19:47 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 23:19:47 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 23:19:51 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 23:19:51 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 23:20:23 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 23:20:23 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 23:20:35 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 23:20:35 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 23:20:46 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 23:20:46 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 23:20:54 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 23:20:54 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 23:20:54 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 23:21:00 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 24
+04/11/2012 a 23:21:00 ! : Erreur [8] (Undefined index: rubrique) dans le fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php a la ligne 56
+04/11/2012 a 23:21:33 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+04/11/2012 a 23:21:33 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+04/11/2012 a 23:21:33 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+05/11/2012 a 11:33:46 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1234
+05/11/2012 a 11:33:46 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1235
+05/11/2012 a 11:33:46 ! : Erreur [8] (Undefined variable: sentence) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1245
+05/11/2012 a 11:38:32 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:38:32 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1235
+05/11/2012 a 11:38:32 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1236
+05/11/2012 a 11:38:32 ! : Erreur [8] (Undefined variable: sentence) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1246
+05/11/2012 a 11:41:34 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:41:34 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1235
+05/11/2012 a 11:41:34 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1236
+05/11/2012 a 11:41:34 ! : Erreur [8] (Undefined variable: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1249
+05/11/2012 a 11:41:34 ! : Erreur [8] (Undefined index: ) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1249
+05/11/2012 a 11:41:56 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:41:56 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1235
+05/11/2012 a 11:41:56 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1236
+05/11/2012 a 11:41:56 ! : Erreur [8] (Undefined variable: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1249
+05/11/2012 a 11:41:56 ! : Erreur [8] (Undefined index: ) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1249
+05/11/2012 a 11:42:23 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:42:23 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1235
+05/11/2012 a 11:42:23 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1236
+05/11/2012 a 11:42:23 ! : Erreur [8] (Undefined variable: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1249
+05/11/2012 a 11:42:23 ! : Erreur [8] (Undefined index: ) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1249
+05/11/2012 a 11:44:27 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:44:27 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1236
+05/11/2012 a 11:44:27 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1237
+05/11/2012 a 11:44:27 ! : Erreur [8] (Undefined variable: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1250
+05/11/2012 a 11:44:27 ! : Erreur [8] (Undefined index: ) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1250
+05/11/2012 a 11:44:54 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:44:54 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1236
+05/11/2012 a 11:44:54 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1237
+05/11/2012 a 11:44:54 ! : Erreur [8] (Undefined variable: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1250
+05/11/2012 a 11:44:54 ! : Erreur [8] (Undefined index: ) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1250
+05/11/2012 a 11:45:19 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:45:19 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1236
+05/11/2012 a 11:45:19 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1237
+05/11/2012 a 11:45:19 ! : Erreur [8] (Undefined variable: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1250
+05/11/2012 a 11:45:19 ! : Erreur [8] (Undefined index: ) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1250
+05/11/2012 a 11:46:46 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:46:47 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:49:22 ! : Erreur [8] (Undefined property: installGc::$_dom2Xml) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 531
+05/11/2012 a 11:49:44 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:49:44 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1237
+05/11/2012 a 11:49:44 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1238
+05/11/2012 a 11:49:44 ! : Erreur [8] (Undefined variable: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1251
+05/11/2012 a 11:49:44 ! : Erreur [8] (Undefined index: ) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1251
+05/11/2012 a 11:50:50 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:50:50 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1237
+05/11/2012 a 11:50:50 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1238
+05/11/2012 a 11:50:50 ! : Erreur [8] (Undefined variable: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1251
+05/11/2012 a 11:50:50 ! : Erreur [8] (Undefined index: ) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1251
+05/11/2012 a 11:50:51 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:50:51 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1237
+05/11/2012 a 11:50:51 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1238
+05/11/2012 a 11:50:51 ! : Erreur [8] (Undefined variable: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1251
+05/11/2012 a 11:50:51 ! : Erreur [8] (Undefined index: ) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1251
+05/11/2012 a 11:51:36 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:51:36 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 11:51:36 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 11:51:36 ! : Erreur [8] (Undefined variable: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1253
+05/11/2012 a 11:51:36 ! : Erreur [8] (Undefined index: ) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1253
+05/11/2012 a 11:52:21 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:52:23 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:52:41 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:52:41 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 11:52:41 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 11:52:41 ! : Erreur [8] (Undefined variable: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1253
+05/11/2012 a 11:52:41 ! : Erreur [8] (Undefined index: ) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1253
+05/11/2012 a 11:55:16 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:55:16 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 11:55:16 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 11:55:16 ! : Erreur [8] (Undefined variable: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1253
+05/11/2012 a 11:55:16 ! : Erreur [8] (Undefined index: ) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1253
+05/11/2012 a 11:55:38 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:55:38 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 11:55:38 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 11:55:38 ! : Erreur [8] (Undefined variable: route2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1255
+05/11/2012 a 11:56:21 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:56:21 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 11:56:21 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 11:56:21 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1261
+05/11/2012 a 11:56:21 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1261
+05/11/2012 a 11:56:21 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1261
+05/11/2012 a 11:56:21 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1261
+05/11/2012 a 11:56:21 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1261
+05/11/2012 a 11:56:21 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1261
+05/11/2012 a 11:56:21 ! : Erreur [8] (Undefined index: id) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1255
+05/11/2012 a 11:56:21 ! : Erreur [8] (Undefined index: type) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1256
+05/11/2012 a 11:56:21 ! : Erreur [8] (Undefined index: value) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1258
+05/11/2012 a 11:56:21 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1261
+05/11/2012 a 11:56:21 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1261
+05/11/2012 a 11:57:03 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:57:03 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 11:57:03 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 11:57:03 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:57:03 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:57:03 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:57:03 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:57:03 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:57:03 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:57:03 ! : Erreur [8] (Undefined index: id) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1256
+05/11/2012 a 11:57:03 ! : Erreur [8] (Undefined index: type) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1257
+05/11/2012 a 11:57:03 ! : Erreur [8] (Undefined index: value) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1259
+05/11/2012 a 11:57:03 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:57:03 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:50 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:58:50 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 11:58:50 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 11:58:50 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:50 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:50 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:50 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:50 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:50 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:50 ! : Erreur [8] (Undefined index: id) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1256
+05/11/2012 a 11:58:50 ! : Erreur [8] (Undefined index: type) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1257
+05/11/2012 a 11:58:50 ! : Erreur [8] (Undefined index: value) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1259
+05/11/2012 a 11:58:50 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:50 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:52 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:58:52 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 11:58:52 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 11:58:52 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:52 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:52 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:52 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:52 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:52 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:52 ! : Erreur [8] (Undefined index: id) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1256
+05/11/2012 a 11:58:52 ! : Erreur [8] (Undefined index: type) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1257
+05/11/2012 a 11:58:52 ! : Erreur [8] (Undefined index: value) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1259
+05/11/2012 a 11:58:52 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:58:52 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:02 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:59:02 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 11:59:02 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 11:59:02 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:02 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:02 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:02 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:02 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:02 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:02 ! : Erreur [8] (Undefined index: id) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1256
+05/11/2012 a 11:59:02 ! : Erreur [8] (Undefined index: type) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1257
+05/11/2012 a 11:59:02 ! : Erreur [8] (Undefined index: value) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1259
+05/11/2012 a 11:59:02 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:02 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:04 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:59:04 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 11:59:04 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 11:59:04 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:04 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:04 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:04 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:04 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:04 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:04 ! : Erreur [8] (Undefined index: id) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1256
+05/11/2012 a 11:59:04 ! : Erreur [8] (Undefined index: type) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1257
+05/11/2012 a 11:59:04 ! : Erreur [8] (Undefined index: value) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1259
+05/11/2012 a 11:59:04 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:04 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 11:59:36 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:59:36 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 11:59:36 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 11:59:36 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:36 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:36 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:36 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:36 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:36 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:36 ! : Erreur [8] (Undefined index: id) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1257
+05/11/2012 a 11:59:36 ! : Erreur [8] (Undefined index: type) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1258
+05/11/2012 a 11:59:36 ! : Erreur [8] (Undefined index: value) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1260
+05/11/2012 a 11:59:36 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:36 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:37 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 11:59:37 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 11:59:37 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 11:59:37 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:37 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:37 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:37 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:37 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:37 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:37 ! : Erreur [8] (Undefined index: id) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1257
+05/11/2012 a 11:59:37 ! : Erreur [8] (Undefined index: type) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1258
+05/11/2012 a 11:59:37 ! : Erreur [8] (Undefined index: value) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1260
+05/11/2012 a 11:59:37 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 11:59:37 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 12:00:53 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:00:53 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 12:00:53 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 12:00:53 ! : Erreur [8] (Undefined index: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1254
+05/11/2012 a 12:00:54 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:00:54 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 12:00:54 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 12:00:54 ! : Erreur [8] (Undefined index: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1254
+05/11/2012 a 12:00:55 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:00:55 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 12:00:55 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 12:00:55 ! : Erreur [8] (Undefined index: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1254
+05/11/2012 a 12:01:36 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:01:36 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 12:01:36 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 12:01:36 ! : Erreur [8] (Undefined index: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1254
+05/11/2012 a 12:01:36 ! : Erreur [8] (Undefined index: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1255
+05/11/2012 a 12:01:37 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:01:37 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 12:01:37 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 12:01:37 ! : Erreur [8] (Undefined index: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1254
+05/11/2012 a 12:01:37 ! : Erreur [8] (Undefined index: moncul) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1255
+05/11/2012 a 12:02:21 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:02:21 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 12:02:21 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 12:02:21 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 12:02:21 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 12:02:21 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 12:02:21 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 12:02:22 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:02:22 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 12:02:22 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 12:02:22 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 12:02:22 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 12:02:22 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 12:02:22 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1263
+05/11/2012 a 12:02:40 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:02:40 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 12:02:40 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 12:02:40 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1261
+05/11/2012 a 12:02:40 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1261
+05/11/2012 a 12:02:40 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1261
+05/11/2012 a 12:02:40 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1261
+05/11/2012 a 12:03:45 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:03:45 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 12:03:45 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 12:03:45 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 12:03:45 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 12:03:45 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 12:03:45 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 12:03:47 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:03:47 ! : Erreur [8] (Undefined index: connected) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1239
+05/11/2012 a 12:03:47 ! : Erreur [8] (Undefined index: access) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1240
+05/11/2012 a 12:03:47 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 12:03:47 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 12:03:47 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 12:03:47 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1262
+05/11/2012 a 12:07:55 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:07:55 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1264
+05/11/2012 a 12:07:55 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1264
+05/11/2012 a 12:07:55 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1264
+05/11/2012 a 12:07:55 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1264
+05/11/2012 a 12:08:34 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:08:34 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1264
+05/11/2012 a 12:08:34 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1264
+05/11/2012 a 12:08:34 ! : Erreur [8] (Undefined variable: routes2) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1264
+05/11/2012 a 12:08:34 ! : Erreur [4096] (Argument 1 passed to DOMNode::appendChild() must be an instance of DOMNode, null given, called in C:\wamp\www\GCsystem\system\class\system\installGc.class.php on line 891 and defined) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1264
+05/11/2012 a 12:08:55 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:09:15 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:11:45 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:14:36 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:14:57 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:15:10 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:16:08 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:16:47 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:17:23 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:18:11 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:19:29 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:20:50 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:20:51 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:21:09 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:21:10 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:24:18 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:25:36 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:25:39 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:25:40 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:26:29 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:27:03 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:28:23 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:31:52 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:32:53 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:33:49 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:34:11 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:34:42 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 12:34:49 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 13:15:50 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 13:16:22 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 13:18:54 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 13:19:04 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 13:19:31 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 13:19:41 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 13:20:22 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 13:20:43 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 13:21:50 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
+05/11/2012 a 13:54:43 ! : Erreur [4096] (Object of class installGc could not be converted to string) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1390
+05/11/2012 a 13:54:43 ! : Erreur [8] (Object of class installGc to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1390

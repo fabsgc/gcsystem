@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<definitions value="vald">
+<definitions>
 	<define id="bonjour">salutlespoux</define>
-	<define id="installtest">installtestvalue</define>
 	<define id="prout">installtestvalue</define>
 	<define id="machin">machinemachinesdfsdfa</define>
 	<define id="testt">&amp;lt;i&amp;gt;salut&amp;lt;/i&amp;gt;</define>
+	<define id="installtest" value="installtestvalue"/>
 </definitions>

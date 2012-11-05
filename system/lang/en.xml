@@ -32,6 +32,5 @@
   <sentence id="firewallforbiddencontent">Access to this page is forbidden</sentence>
   <sentence id="antispamerror">You have been identified as a spammer, your IP has been kicked</sentence>
   <sentence id="antispamexplication">Your IP has exceeded the number of requests allowed on a given period. Please wait for this period has elapsed</sentence>
-  <sentence id="installtest">installtest en</sentence>
   <sentence id="terminaltitre">Terminal - GCsystem</sentence>
-</lang>
+<sentence id="installtest">installtest en</sentence></lang>
