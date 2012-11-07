@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<install id="22662503a6463b6c706.64500547" name="installtest">
+   <routes>
+      <route id="installtest" url="/installtest" rubrique="installtest" action="" vars="" cache="10"/>
+   </routes>
+   <apps>
+      <app id="installtest" value="installtestvalue" />
+   </apps>
+   <plugins>
+      <plugin type="helper" name="installtestGc" access="installtestGc.class.php" enabled="true" include="*"/>
+   </plugins>
+   <firewalls>
+      <firewall id="installtest" connected="true" access="*"/>
+   </firewalls>
+   <crons>
+      <cron id="mesfesse" rubrique="debug" action="default" time="10" executed=""/>
+   </crons>
+   <errors>
+      <error id="moncul" template="GCsystem/GCerrorperso" backUrl="index">
+         <var id="var1" type="var">une erreur</var>
+         <var id="var2" type="lang">idlang</var>
+      </error>
+   </errors>
+   <sqls>
+      <sql>CREATE TABLE t (c CHAR(20) CHARACTER SET utf8 COLLATE utf8_bin);</sql>
+      <sql>CREATE TABLE ttest (c CHAR(20) CHARACTER SET utf8 COLLATE utf8_bin);</sql>
+   </sqls>
+   <langs>
+      <sentence id="installtest">
+         <lang lang="fr">installtest fr</lang>
+         <lang lang="en">installtest en</lang>
+         <lang lang="nl">installtest nl</lang>
+         <lang lang="de">installtest de</lang>
+      </sentence>
+   </langs>
+   <readme>
+      Informations :
+      -----------
+
+      * zip de test pour installer une class
+   </readme>
+</install>

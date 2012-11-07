@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<crons>
-	<cron id="mesfesse" rubrique="debug" action="install" time="10" executed="1352156504"/>
-</crons>
+<crons>	
+	
+<cron id="mesfesse" rubrique="debug" action="default" time="10" executed="1352329219"/></crons>

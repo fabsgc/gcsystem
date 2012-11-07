@@ -67,7 +67,7 @@
 				$install->install();
 			}*/
             if($install->checkUninstall('22662503a6463b6c706.64500547')){
-            	$install->uninstall('22662503a6463b6c706.64500547');
+            	echo $install->uninstall('22662503a6463b6c706.64500547');
             }
             else{
             	echo $install->showError();

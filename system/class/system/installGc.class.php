@@ -2,7 +2,7 @@
 	/**
 	 * @file : installGc.class.php
 	 * @author : fab@c++
-	 * @description : class gérant l'installation de rubriques externes
+	 * @description : class gérant l'installation de addons externes
 	 * @version : 2.0 bêta
 	*/
 
@@ -155,7 +155,7 @@
 				//on check si le fichier install.xml est valide
 				$this->_domXml = new DomDocument('1.0', CHARSET);
 				if($this->_domXml->loadXml($this->_zipContent['install.xml'])){
-					//on récupère les attributs id et name du plugin et on vérifie si ils sont corrects
+					//on récupère les attributs id et name de l'Add-on et on vérifie si ils sont corrects
 					if($this->_getNameId() == true){
 						//on check l'intégrité du fichier d'installation
 						if($this->_checkInstallFile()){
@@ -202,31 +202,31 @@
 							}
 							else{
 								$this->_conflit = false;
-								$this->_addError('le plugin a déjà été installé. L\'installation de cette version du plugin a échoué', __FILE__, __LINE__, ERROR);
+								$this->_addError('l\'add-on a déjà été installé. L\'installation de cette version de l\'add-on a échoué', __FILE__, __LINE__, ERROR);
 								return false;
 							}
 						}
 						else{
 							$this->_conflit = false;
-							$this->_addError('le fichier install.xml est endommagé, il manque des paramètres afin qu\'il puisse être lu et utilisé correctement. L\'installation de cette version du plugin a échoué', __FILE__, __LINE__, ERROR);
+							$this->_addError('le fichier install.xml est endommagé, il manque des paramètres afin qu\'il puisse être lu et utilisé correctement. L\'installation de cette version de l\'add-on a échoué', __FILE__, __LINE__, ERROR);
 							return false;
 						}
 					}
 					else{
 						$this->_conflit = false;
-						$this->_addError('Les paramètres id et name du plugin sont manquants ou incorrects. L\'installation de cette version du plugin a échoué', __FILE__, __LINE__, ERROR);
+						$this->_addError('Les paramètres id et name de l\'add-on sont manquants ou incorrects. L\'installation de cette version de l\'add-on a échoué', __FILE__, __LINE__, ERROR);
 						return false;
 					}
 				}
 				else{
 					$this->_conflit = false;
-					$this->_addError('le fichier install.xml est endommagé. L\'installation du plugin a échoué', __FILE__, __LINE__, ERROR);
+					$this->_addError('le fichier install.xml est endommagé. L\'installation de l\'add-on a échoué', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
 			else{
 				$this->_conflit = false;
-				$this->_addError('le fichier zip est endommagé ou inaccessible. L\'installation du plugin a échoué', __FILE__, __LINE__, ERROR);
+				$this->_addError('le fichier zip est endommagé ou inaccessible. L\'installation de l\'add-on a échoué', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -557,7 +557,7 @@
 				if(!preg_match('#[\/]$#isU', strval($key)) && $key != 'install.xml'){
 					if(in_array($key, $this->_forbiddenFile)){
 						$this->_conflit = false;
-						$this->_addError('le fichier '.$key.' est un fichier système. Un plugin n\'est pas en droit de le modifier', __FILE__, __LINE__, ERROR);
+						$this->_addError('le fichier '.$key.' est un fichier système. Un add-on n\'est pas en droit de le modifier', __FILE__, __LINE__, ERROR);
 					}
 				}
 			}
@@ -568,7 +568,7 @@
 				if(!preg_match('#[\/]$#isU', strval($key)) && $key != 'install.xml'){
 					if(!in_array($key, $this->_forbiddenFile) && file_exists($key)){
 						$this->_conflit = false;
-						$this->_addError('le plugin semble rentrer en conflit avec un fichier existant : '.$key.'.', __FILE__, __LINE__, ERROR);
+						$this->_addError('l\'add-on semble rentrer en conflit avec un fichier existant : '.$key.'.', __FILE__, __LINE__, ERROR);
 					}
 				}
 			}
@@ -580,7 +580,7 @@
 					foreach ($this->_forbiddenDir as $key2 => $value2) {
 						if(preg_match('#'.preg_quote($value2).'#isU', strval($key))){
 							$this->_conflit = false;
-							$this->_addError('le répertoire '.$value2.' est un répertoire système or le fichier '.$key.' va y être ajouté par le plugin. Un plugin n\'est pas en droit d\'y ajouter ou d\'y modifier des fichiers systèmes', __FILE__, __LINE__, ERROR);
+							$this->_addError('le répertoire '.$value2.' est un répertoire système or le fichier '.$key.' va y être ajouté par l\'add-on. Un add-on n\'est pas en droit d\'y ajouter ou d\'y modifier des fichiers systèmes', __FILE__, __LINE__, ERROR);
 						}
 					}
 				}
@@ -598,7 +598,7 @@
 							&& !preg_match('#^system\/lib\/(.*)#isU', $key)
 						){
 							$this->_conflit = false;
-							$this->_addError('le répertoire '.$key.' veut être ajouté dans le répertoire '.$value2.' qui est un répertoire système. Un plugin n\'est pas en droit d\'y ajouter des répertoires', __FILE__, __LINE__, ERROR);
+							$this->_addError('le répertoire '.$key.' veut être ajouté dans le répertoire '.$value2.' qui est un répertoire système. Un add-on n\'est pas en droit d\'y ajouter des répertoires', __FILE__, __LINE__, ERROR);
 						}
 					}
 				}
@@ -640,12 +640,12 @@
 					foreach ($this->_node2Xml as $key2 => $value2) {
 						if($value->getAttribute('id') == $value2->getAttribute('id')){
 							$this->_conflit = false;
-							$this->_addError('l\'id de route '.$value->getAttribute('id').' de la section n°'.$key.' du route est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+							$this->_addError('l\'id de route '.$value->getAttribute('id').' de la section n°'.$key.' du route est déjà utilisé par le projet. Un add-on ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
 						}
 
 						if($value->getAttribute('url') == $value2->getAttribute('url')){
 							$this->_conflit = false;
-							$this->_addError('l\'url de route "'.$value->getAttribute('url').'" de la section n°'.$key.' du route est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+							$this->_addError('l\'url de route "'.$value->getAttribute('url').'" de la section n°'.$key.' du route est déjà utilisé par le projet. Un add-on ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
 						}
 					}
 				}
@@ -669,7 +669,7 @@
 					foreach ($this->_node2Xml as $key2 => $value2) {
 						if($value->getAttribute('id') == $value2->getAttribute('id')){
 							$this->_conflit = false;
-							$this->_addError('l\'id de define "'.$value->getAttribute('id').'" de la section n°'.$key.' est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+							$this->_addError('l\'id de define "'.$value->getAttribute('id').'" de la section n°'.$key.' est déjà utilisé par le projet. Un add-on ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
 						}
 					}
 				}
@@ -693,17 +693,17 @@
 					foreach ($this->_node2Xml as $key2 => $value2) {
 						if($value->getAttribute('name') == $value2->getAttribute('name')){
 							$this->_conflit = false;
-							$this->_addError('le nom de plugin '.$value->getAttribute('name').' de la section n°'.$key.' est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+							$this->_addError('le nom de plugin '.$value->getAttribute('name').' de la section n°'.$key.' est déjà utilisé par le projet. Un add-on ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
 						}
 
 						if($value->getAttribute('access') == $value2->getAttribute('access')){
 							$this->_conflit = false;
-							$this->_addError('l\'accès du plugin "'.$value->getAttribute('access').'" de la section n°'.$key.' est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+							$this->_addError('l\'accès du plugin "'.$value->getAttribute('access').'" de la section n°'.$key.' est déjà utilisé par le projet. Un add-on ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
 						}
 
 						if($value->getAttribute('name') == $value2->getAttribute('name')){
 							$this->_conflit = false;
-							$this->_addError('le nom du plugin "'.$value->getAttribute('access').'" de la section n°'.$key.' est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+							$this->_addError('le nom du plugin "'.$value->getAttribute('access').'" de la section n°'.$key.' est déjà utilisé par le projet. Un add-on ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
 						}
 					}
 
@@ -745,7 +745,7 @@
 					foreach ($this->_node2Xml as $key2 => $value2) {
 						if($value->getAttribute('id') == $value2->getAttribute('id')){
 							$this->_conflit = false;
-							$this->_addError('l\'id du parefeu "'.$value->getAttribute('id').'" de la section n°'.$key.' est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+							$this->_addError('l\'id du parefeu "'.$value->getAttribute('id').'" de la section n°'.$key.' est déjà utilisé par le projet. Un add-on ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
 						}
 					}
 				}
@@ -769,7 +769,7 @@
 					foreach ($this->_node2Xml as $key2 => $value2){
 						if($value->getAttribute('id') == $value2->getAttribute('id')){
 							$this->_conflit = false;
-							$this->_addError('l\'id de cron '.$value->getAttribute('id').' de la section n°'.$key.' du cron est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+							$this->_addError('l\'id de cron '.$value->getAttribute('id').' de la section n°'.$key.' du cron est déjà utilisé par le projet. Un add-on ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
 						}
 					}
 				}
@@ -794,7 +794,7 @@
 					foreach ($this->_node2Xml as $key2 => $value2){
 						if($value->getAttribute('id') == $value2->getAttribute('id')){
 							$this->_conflit = false;
-							$this->_addError('l\'id d\'errorperso '.$value->getAttribute('id').' de la section n°'.$key.' du fichier errorpersoGx.xml est déjà utilisé par le projet. Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+							$this->_addError('l\'id d\'errorperso '.$value->getAttribute('id').' de la section n°'.$key.' du fichier errorpersoGx.xml est déjà utilisé par le projet. Un add-on ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
 						}
 					}
 				}
@@ -823,7 +823,7 @@
 
 								if($value->getAttribute('id') == $value2->getAttribute('id')){
 									$this->_conflit = false;
-									$this->_addError('l\'id de la phrase "'.$value->getAttribute('id').'" de la section n°'.$key.' est déjà utilisé par le projet dans le fichier de lang "'.$file.'". Un plugin ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
+									$this->_addError('l\'id de la phrase "'.$value->getAttribute('id').'" de la section n°'.$key.' est déjà utilisé par le projet dans le fichier de lang "'.$file.'". Un add-on ne peut pas l\'utiliser', __FILE__, __LINE__, ERROR);
 								}
 							}
 						}
@@ -844,7 +844,7 @@
 
 				if($this->_nodeXml->hasChildNodes() && (!is_object($this->_bdd[$this->_bddName]))){
 					$this->_conflit = false;
-					$this->_addError('La connexion sql entrée en paramètre n\'est pas valide. Le plugin ne peut pas exécuter les requêtes necéssaires.', __FILE__, __LINE__, ERROR);
+					$this->_addError('La connexion sql entrée en paramètre n\'est pas valide. L\'add-on ne peut pas exécuter les requêtes necéssaires.', __FILE__, __LINE__, ERROR);
 				}
 				
 				if(is_object($this->_bdd[$this->_bddName])){
@@ -1332,7 +1332,7 @@
 
 				if($plugin == false){
 					$this->_conflitUninstall = false;
-					$this->_addError('Le plugin d\'id '.$id.' n\'existe pas', __FILE__, __LINE__, ERROR);
+					$this->_addError('L\add-on d\'id '.$id.' n\'existe pas', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 
@@ -1370,14 +1370,14 @@
 								//on supprime d'abord les fichiers
 								foreach ($this->_node2Xml as $key2 => $value2){
 									if(!preg_match('#\/$#i', $value2->getAttribute('path'))){
-										//unlink($value2->getAttribute('path'));
+										unlink($value2->getAttribute('path'));
 									}
 								}
 
 								//on supprime ensuite les fichiers
 								foreach($this->_node2Xml as $key2 => $value2){
 									if(preg_match('#\/$#i', $value2->getAttribute('path'))){
-										//rmdir($value2->getAttribute('path'));
+										rmdir($value2->getAttribute('path'));
 									}
 								}
 
@@ -1388,13 +1388,13 @@
 
 								if($this->_dom2Xml->load(ROUTE)){
 									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('routes')->item(0);
-									$this->_node3Xml = $this->_node3Xml->getElementsByTagName('route');
+									$this->_node4Xml = $this->_node3Xml->getElementsByTagName('route');
 
 									foreach ($this->_node2Xml as $key2 => $value2){
-										foreach($this->_node3Xml as $key3 => $value3){
+										foreach($this->_node4Xml as $key3 => $value3){
 											if($value2->getAttribute('id') == $value3->getAttribute('id')){
 												echo $value2->getAttribute('id').'-1<br />';
-												//$this->_node3Xml->removeChild($value3); 
+												$this->_node3Xml->removeChild($value3); 
 											}
 										}
 									}
@@ -1412,13 +1412,13 @@
 
 								if($this->_dom2Xml->load(APPCONFIG)){
 									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('definitions')->item(0);
-									$this->_node3Xml = $this->_node3Xml->getElementsByTagName('define');
+									$this->_node4Xml = $this->_node3Xml->getElementsByTagName('define');
 
 									foreach ($this->_node2Xml as $key2 => $value2){
-										foreach($this->_node3Xml as $key3 => $value3){
+										foreach($this->_node4Xml as $key3 => $value3){
 											if($value2->getAttribute('id') == $value3->getAttribute('id')){
 												echo $value2->getAttribute('id').'-2<br />';
-												//$this->_node3Xml->removeChild($value3); 
+												$this->_node3Xml->removeChild($value3); 
 											}
 										}
 									}
@@ -1436,13 +1436,13 @@
 
 								if($this->_dom2Xml->load(PLUGIN)){
 									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('plugins')->item(0);
-									$this->_node3Xml = $this->_node3Xml->getElementsByTagName('plugin');
+									$this->_node4Xml = $this->_node3Xml->getElementsByTagName('plugin');
 
 									foreach ($this->_node2Xml as $key2 => $value2){
-										foreach($this->_node3Xml as $key3 => $value3){
+										foreach($this->_node4Xml as $key3 => $value3){
 											if($value2->getAttribute('name') == $value3->getAttribute('name')){
 												echo $value2->getAttribute('name').'-3<br />';
-												//$this->_node3Xml->removeChild($value3); 
+												$this->_node3Xml->removeChild($value3); 
 											}
 										}
 									}
@@ -1462,13 +1462,13 @@
 									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('security')->item(0);
 									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('firewall')->item(0);
 									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('access')->item(0);
-									$this->_node3Xml = $this->_node3Xml->getElementsByTagName('url');
+									$this->_node4Xml = $this->_node3Xml->getElementsByTagName('url');
 
 									foreach ($this->_node2Xml as $key2 => $value2){
-										foreach($this->_node3Xml as $key3 => $value3){
+										foreach($this->_node4Xml as $key3 => $value3){
 											if($value2->getAttribute('id') == $value3->getAttribute('id')){
 												echo $value2->getAttribute('id').'-4<br />';
-												//$this->_node3Xml->removeChild($value3); 
+												$this->_node3Xml->removeChild($value3); 
 											}
 										}
 									}
@@ -1486,13 +1486,13 @@
 
 								if($this->_dom2Xml->load(CRON)){
 									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('crons')->item(0);
-									$this->_node3Xml = $this->_node3Xml->getElementsByTagName('cron');
+									$this->_node4Xml = $this->_node3Xml->getElementsByTagName('cron');
 
 									foreach ($this->_node2Xml as $key2 => $value2){
-										foreach($this->_node3Xml as $key3 => $value3){
+										foreach($this->_node4Xml as $key3 => $value3){
 											if($value2->getAttribute('id') == $value3->getAttribute('id')){
 												echo $value2->getAttribute('id').'-5<br />';
-												//$this->_node3Xml->removeChild($value3); 
+												$this->_node3Xml->removeChild($value3); 
 											}
 										}
 									}
@@ -1511,14 +1511,14 @@
 
 								if($this->_dom2Xml->load(ERRORPERSO)){
 									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('errorperso')->item(0);
-									$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('errors')->item(0);
-									$this->_node3Xml = $this->_node3Xml->getElementsByTagName('error');
+									$this->_node3Xml = $this->_node3Xml->getElementsByTagName('errors')->item(0);
+									$this->_node4Xml = $this->_node3Xml->getElementsByTagName('error');
 
 									foreach ($this->_node2Xml as $key2 => $value2){
-										foreach($this->_node3Xml as $key3 => $value3){
+										foreach($this->_node4Xml as $key3 => $value3){
 											if($value2->getAttribute('id') == $value3->getAttribute('id')){
 												echo $value2->getAttribute('id').'-6<br />';
-												//$this->_node3Xml->removeChild($value3); 
+												$this->_node3Xml->removeChild($value3); 
 											}
 										}
 									}
@@ -1542,12 +1542,12 @@
 										if(file_exists(LANG_PATH.$value3->getAttribute('lang').'.xml')){
 											if($this->_dom2Xml->load(LANG_PATH.$value3->getAttribute('lang').'.xml')){
 												$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('lang')->item(0);
-												$this->_node3Xml = $this->_node3Xml->getElementsByTagName('sentence');
+												$this->_node4Xml = $this->_node3Xml->getElementsByTagName('sentence');
 
-												foreach ($this->_node3Xml as $key4 => $value4) {
+												foreach ($this->_node4Xml as $key4 => $value4) {
 													if($value4->getAttribute('id') == $value2->getAttribute('id')){
 														echo $value4->getAttribute('id').'-7<br />';
-														//$this->_node3Xml->removeChild($value3); 
+														$this->_node3Xml->removeChild($value4); 
 													}
 												}
 
@@ -1561,7 +1561,7 @@
 								$this->_node2Xml = $value->getElementsByTagName('sqls')->item(0);
 								$this->_node2Xml = $this->_node2Xml->getElementsByTagName('sql');
 
-								$result = '<br />><span style="color: chartreuse">########## requête sql exécutées : ################################</span>';
+								$result = '<br />><span style="color: chartreuse">########## requêtes sql exécutées : ################################</span>';
 
 								foreach ($this->_node2Xml as $key2 => $value2){
 									$result .= '<br />><span style="color: chartreuse"># '.$value2->nodeValue.'</span>';
@@ -1570,16 +1570,24 @@
 								$result .= '<br />><span style="color: chartreuse">############################################################</span>';
 
 								/* ###### README ###### */
-								$result .= '<br /><br />><span style="color: chartreuse">########## readme : ################################</span>';
+								$result .= '<br />><span style="color: chartreuse">########## readme : ################################</span>';
 								$result .= '<br />><span style="color: chartreuse"># '.$value->getElementsByTagName('readme')->item(0)->nodeValue.'</span>';
 								$result .= '<br />><span style="color: chartreuse">############################################################</span>';
-
-								$this->_nodeXml->removeChild($value); 
-
-								return $result;
-
 						}
 					}
+
+					$this->_nodeXml = $this->_domXml->getElementsByTagName('installed')->item(0);
+					$this->_node2Xml = $this->_nodeXml->getElementsByTagName('install');
+
+					foreach ($this->_node2Xml as $key => $value){
+						if($value->getAttribute('id') == $id){ //l'id existe \o/
+							$this->_nodeXml->removeChild($value); 
+						}
+					}
+
+					$this->_domXml->save(INSTALLED);
+
+					return $result;
 				}
 				else{
 					$this->_addError('Le fichier de désinstallation '.INSTALLED.' est endommagé', __FILE__, __LINE__, ERROR);

@@ -9,9 +9,6 @@
 			<var id="var1" type="var">une erreur</var>
 			<var id="var2" type="lang">idlang</var>
 		</error>
-		<error id="moncul" template="GCsystem/GCerrorperso" backUrl="index">
-			<var id="var1" type="var">une erreur</var>
-			<var id="var2" type="lang">idlang</var>
-		</error>
-	</errors>
+		
+	<error id="moncul" template="GCsystem/GCerrorperso" backUrl="index"><var id="var1" type="var">une erreur</var><var id="var2" type="lang">idlang</var></error></errors>
 </errorperso>

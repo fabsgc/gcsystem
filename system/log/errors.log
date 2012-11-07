@@ -417,3 +417,5 @@
 05/11/2012 a 13:21:50 ! : Erreur [8] (Use of undefined constant _conflit - assumed '_conflit') dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 201
 05/11/2012 a 13:54:43 ! : Erreur [4096] (Object of class installGc could not be converted to string) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1390
 05/11/2012 a 13:54:43 ! : Erreur [8] (Object of class installGc to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1390
+07/11/2012 a 10:48:23 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/debug/*
+07/11/2012 a 18:22:03 ! : Erreur [8] (Undefined property: installGc::$_dom3Xml) dans le fichier C:\wamp\www\GCsystem\system\class\system\installGc.class.php a la ligne 1514

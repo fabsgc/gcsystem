@@ -998,15 +998,16 @@
 					}
 					$this->_result = '<br />><span style="color: chartreuse;"> le log a bien été vidé</span>';
 				}
-				elseif(preg_match('#install rubrique (.*) (.*)#', $this->_command)){
-					$install = new installGc($this->_commandExplode[2], $this->_bdd[''.$this->_commandExplode[3].''], $this->_commandExplode[3], $this->_lang);
+				elseif(preg_match('#install add-on (.*) (.*)#', $this->_command)){
+					$install = new installGc($this->_commandExplode[2], $this->_bdd, $this->_commandExplode[3], $this->_lang);
+
 					$install->check();
 
 					if($install->getConflit() == true){
 						$install->install();
 
 						$this->_stream .= '<br />> <span style="color: chartreuse;">'.($install->getReadMe()).'</span>';
-						$this->_result = '<br />><span style="color: chartreuse;"> Le plugin '.$this->_commandExplode[2].' a bien été installé</span>';
+						$this->_result = '<br />><span style="color: chartreuse;"> L\'add-on '.$this->_commandExplode[2].' a bien été installé</span>';
 					}
 					else{
 						$i = 0;
@@ -1027,16 +1028,16 @@
 							}							
 						}
 
-						$this->_result = '<br />><span style="color: red;"> Le plugin '.$this->_commandExplode[2].' n\'a pas pu être installé</span>';
+						$this->_result = '<br />><span style="color: red;"> L\'add-on '.$this->_commandExplode[2].' n\'a pas pu être installé</span>';
 					}
 				}
-				elseif(preg_match('#uninstall rubrique (.*)#', $this->_command)){
+				elseif(preg_match('#uninstall add-on (.*)#', $this->_command)){
 					$install = new installGc();
 					$install->checkUninstall($this->_commandExplode[2]);
 
 					if($install->getConflitUninstall() == true){
-						$install->uninstall($this->_commandExplode[2]);
-						$this->_result = '<br />><span style="color: chartreuse;"> Le plugin d\'id '.$this->_commandExplode[2].' a bien été désinstallé</span>';
+						$this->_result = '<br />><span style="color: chartreuse;"> L\'add-on d\'id '.$this->_commandExplode[2].' a bien été désinstallé</span>';
+						$this->_stream .= $install->uninstall($this->_commandExplode[2]);
 					}
 					else{
 						$i = 0;
@@ -1057,7 +1058,7 @@
 							}							
 						}
 
-						$this->_result = '<br />><span style="color: red;"> Le plugin d\'id '.$this->_commandExplode[2].' n\'a pas pu être désinstallé</span>';
+						$this->_result = '<br />><span style="color: red;"> L\'add-on d\'id '.$this->_commandExplode[2].' n\'a pas pu être désinstallé</span>';
 					}
 				}
 				elseif(preg_match('#help#', $this->_command)){
@@ -1091,8 +1092,8 @@
 					$this->_stream .= '<br />> clear';
 					$this->_stream .= '<br />> update';
 					$this->_stream .= '<br />> update updater';
-					$this->_stream .= '<br />> install rubrique folder base';
-					$this->_stream .= '<br />> uninstall rubrique id';
+					$this->_stream .= '<br />> install add-on folder base';
+					$this->_stream .= '<br />> uninstall add-on id';
 					$this->_stream .= '<br />> recover config';
 					$this->_stream .= '<br />> see log nomdulogsansextansion';
 					$this->_stream .= '<br />> see route';
@@ -1101,6 +1102,7 @@
 					$this->_stream .= '<br />> see firewall';
 					$this->_stream .= '<br />> see antispam';
 					$this->_stream .= '<br />> see installed';
+					$this->_stream .= '<br />> see add-on';
 					$this->_stream .= '<br />> see file nom';
 					$this->_stream .= '<br />> changepassword nouveaumdp';
 					$this->_stream .= '<br />> connect mdp';
@@ -1281,7 +1283,34 @@
 								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier listant les plugins installés <strong>'.INSTALLED.'</strong> a bien été affiché</span>';
 							}
 							else{
-								$this->_result = '<br />><span style="color: red;"> Le fichier listant les plugins installés <strong>'.INSTALLED.'</strong> n\'existe pas ce qui est étonnant</span>';
+								$this->_result = '<br />><span style="color: red;"> Le fichier listant les add-ons installés <strong>'.INSTALLED.'</strong> n\'existe pas ce qui est étonnant</span>';
+							}
+						break;
+
+						case 'add-on':
+							$this->_domXml = new DomDocument('1.0', CHARSET);
+
+							if($this->_domXml->load(INSTALLED)){
+								$this->_nodeXml = $this->_domXml->getElementsByTagName('installed')->item(0);
+								$this->_nodeXml = $this->_nodeXml->getElementsByTagName('install');
+
+								$i = 0;
+
+								foreach ($this->_nodeXml as $key => $value){
+									if($i == 0){
+										$this->_stream .= '<br />> <span style="color: chartreuse;">'.$value->getAttribute('id').'</span>';
+										$i=1;
+									}
+									else{
+										$this->_stream .= '<br />> <span style="color: red;">'.$value->getAttribute('id').'</span>';
+										$i=0;
+									}
+								}
+
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier listant les add-ons installés <strong>'.INSTALLED.'</strong> a bien été affiché</span>';
+							}
+							else{
+								$this->_result = '<br />><span style="color: red;"> Le fichier listant les add-ons installés <strong>'.INSTALLED.'</strong> est endommagé</span>';
 							}
 						break;
 						
