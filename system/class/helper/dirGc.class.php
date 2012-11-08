@@ -26,41 +26,96 @@
 		const CHMOD0777                                = 0777  ;
 		const CHMOD0004                                = 0004  ;
 		
-		public function __construct($dirpath){
-			if($dirpath == NULL) { $dirpath = 'empty'; $this->_setDirDefault($dirpath); }
-			if($dirpath!=NULL && !is_dir($dirpath)) { $this->_setDirDefault($dirpath); }
-			
-			if(is_dir($dirpath)){
+		/**
+		 * Crée l'instance de la classe
+		 * @param string $dirpath : chemin vers le répertoire
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
+
+		public function __construct($dirpath){			
+			if(is_dir($dirpath) && file_exists($dirpath)){
 				$this->setdir($dirpath);
 			}
 			else{
+				$this->_isExist = false;
 				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 			}
 		}
+
+		/**
+		 * retourne le chemin vers le répertoire
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public function getDirPath(){
 			return $this->_dirPath;
 		}
+
+		/**
+		 * retourne le nom du répertoire
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 				
 		public function getDirName(){
 			return $this->_dirName;
 		}
+
+		/**
+		 * retourne des informations sur le répertoire sous la forme d'un array. voir ici : http://php.net/manual/fr/function.stat.php
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public function getDirInfo(){
 			return $this->_dirInfo;
 		}
+
+		/**
+		 * retourne le chmod du dossier. attention, le chmod n'existe pas sous windows
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public function getDirChmod(){
 			return $this->_dirChmod;
 		}
+
+		/**
+		 * retourne un array contenant l'arborescence interne du répertoire (seulement les fichiers)
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public function getDirArbo(){
 			return $this->_dirArbo;
 		}
 
+		/**
+		 * retourne un array contenant l'arborescence interne du répertoire. les clés sont les noms des fichiers; les valeurs, le contenu (seulement pour les fichiers)
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
+
 		public function getDirArboContent(){
 			return $this->_dirArboContent;
 		}
+
+		/**
+		 * retourne le poids total d'un répertoire
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public function getSize($repertoire=""){
 			if($repertoire == "") { $repertoire = $this->_dirPath; }
@@ -85,10 +140,24 @@
 				return false;
 			}
 		}
+
+		/**
+		 * permet de savoir si le répertoire existe au moment de l'instanciation de la classe
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public function getExist(){
 			return $this->_isExist;
 		}
+
+		/**
+		 * retour la date au format unix timestamp du dernier accès à ce répertoire
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public function getLastAccess(){
 			if($this->_isExist == true){
@@ -99,6 +168,13 @@
 				return false;
 			}
 		}
+
+		/**
+		 * retour la date au format unix timestamp de la dernière modification du répertoire
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public function getLastUpdate(){
 			if($this->_isExist == true){
@@ -109,15 +185,39 @@
 				return false;
 			}
 		}
+
+		/**
+		 * permet de changer le chmod du répertoire (ne fonctionne pas sous windows)
+		 * @access public
+		 * @param int $chmod : valeur du chmod sur 4 chiffres
+		 * @return void
+		 * @since 2.0
+		*/
 		
 		public function setChmod($chmod = self::CHMOD644){
-			chmod($this->_dirPath, $chmod);
-			$this->_setDirChmod($this->_dirPath);
+			if($this->_isExist == true){
+				chmod($this->_dirPath, $chmod);
+				$this->_setDirChmod($this->_dirPath);
+			}
+			else{
+				$this->_addError(self::NODIR);
+				return false;
+			}
 		}
+
+		/**
+		 * permet de déplacer un répertoire
+		 * @access public
+		 * @param string $dir : répertoire de destination
+		 * @param string $src : répertoire source. si aucune valeur n'est données, on prend le répertoire défini lors de l'instanciation
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public function moveTo($dir, $src=""){
 			if($src == "") { $src = $this->_dirPath; }
-			if(is_dir($src)){
+
+			if($this->_isExist == true || (file_exists($src) && is_dir($src))){
 				$dossier = opendir ($src);
 				while ($fichier = readdir ($dossier)) {
 					if ($fichier != "." && $fichier != "..") {          
@@ -144,10 +244,20 @@
 				return false;
 			}
 		}
+
+		/**
+		 * permet de copier un répertoire ailleurs
+		 * @access public
+		 * @param string $dir : répertoire de destination
+		 * @param string $src : répertoire source. si aucune valeur n'est données, on prend le répertoire défini lors de l'instanciation
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public function copyTo($dir, $src=""){
 			if($src == "") { $src = $this->_dirPath; }
-			if($this->_isExist == true){
+
+			if($this->_isExist == true || (file_exists($src) && is_dir($src))){
 				$dossier = opendir ($src);
 				while ($fichier = readdir ($dossier)) {
 					if ($fichier != "." && $fichier != "..") {          
@@ -172,6 +282,14 @@
 				return false;
 			}
 		}
+
+		/**
+		 * permet de supprimer un répertoire
+		 * @access public
+		 * @param string $dir : répertoire à supprimer. Si aucune valeur n'est données, on prend le répertoire défini lors de l'instanciation
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public function delete($dir=""){
 			$this->_isExist = false;
@@ -194,12 +312,18 @@
 				return false;
 			}
 		}
+
+		/**
+		 * permet de définir un peu tout
+		 * @access public
+		 * @param string $dir : répertoire de travail
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public function setDir($dirpath){
-			if($dirpath == NULL) $dirpath = 'empty'; $this->_setDirDefault($dirpath);
-			if($dirpath!=NULL && !is_dir($dirpath)) { $this->_setDirDefault($dirpath); }
-			
-			$dirpath = strval($dirpath);
+			$dirpath = trim(strval($dirpath));
+
 			if(is_dir($dirpath)){
 				$this->_setdirPath($dirpath);
 				$this->_setdirName($dirpath);
@@ -214,9 +338,13 @@
 			}
 		}
 
-		protected function _setDirDefault($dir){
-			mkdir($dir);
-		}
+		/**
+		 * configure variable
+		 * @access protected
+		 * @param string $dir : répertoire de travail
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		protected function _setDirPath($dir){
 			if(is_dir($dir)){
@@ -228,6 +356,14 @@
 				return false;
 			}
 		}
+
+		/**
+		 * configure variable
+		 * @access protected
+		 * @param string $dir : répertoire de travail
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		protected function _setdirName($dir){
 			if(is_dir($dir)){
@@ -239,6 +375,14 @@
 				return false;
 			}
 		}
+
+		/**
+		 * configure variable
+		 * @access protected
+		 * @param string $dir : répertoire de travail
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		protected function _setdirInfo($dir){
 			if(is_dir($dir)){
@@ -250,6 +394,14 @@
 				return false;
 			}
 		}
+
+		/**
+		 * configure variable
+		 * @access protected
+		 * @param string $dir : répertoire de travail
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		protected function _setdirChmod($dir){
 			if(is_dir($dir)){
@@ -261,6 +413,14 @@
 				return false;
 			}
 		}
+
+		/**
+		 * configure variable
+		 * @access protected
+		 * @param string $dir : répertoire de travail
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		protected function _setDirArbo($dir){
 			$dossier = opendir ($dir);
@@ -278,6 +438,14 @@
 			closedir ($dossier); 			
 		}
 
+		/**
+		 * configure variable
+		 * @access protected
+		 * @param string $dir : répertoire de travail
+		 * @return string
+		 * @since 2.0
+		*/
+
 		protected function _setDirArboContent($dir){
 			$dossier = opendir ($dir);
 		   
@@ -293,6 +461,13 @@
 			}
 			closedir ($dossier); 			
 		}
+
+		/**
+		 * desctructeur
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
 
 		public function __destruct(){
 		}

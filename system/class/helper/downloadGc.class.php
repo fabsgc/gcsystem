@@ -8,11 +8,17 @@
 	
 	class downloadGc extends fileGc{
 		
-		const NAME_DEFAULT              = 'telechargement'                           ;
+		const NAME_DEFAULT             	  = 'telechargement'                           ;
 		
-		protected $_listExt               = array(self::EXT_ZIP, self::EXT_GZ, self::EXT_PDF, self::EXT_PNG, self::EXT_GIF, 
-										 self::EXT_JPG, self::EXT_JPEG, self::EXT_TXT, self::EXT_HTM, self::EXT_HTML, 
-										 self::EXT_EXE, self::EXT_XLS, self::EXT_PPT, self::EXT_DEFAULT);
+		protected $_listExt               = array(self::EXT_GZ, self::EXT_PDF, self::EXT_JS, self::EXT_OGG, self::EXT_EXE,
+												self::EXT_DOC, self::EXT_XLS, self::EXT_PPT, self::EXT_DEFAULT, self::EXT_XML,
+												self::EXT_FLASH, self::EXT_JSON, self::EXT_PNG, self::EXT_GIF, self::EXT_JPG,
+												self::EXT_TIFF, self::EXT_ICO, self::EXT_SVG, self::EXT_JPEG, self::EXT_TXT,
+												self::EXT_HTM, self::EXT_HTML, self::EXT_CSV, self::EXT_MPEGAUDIO, self::EXT_MP3,
+												self::EXT_RPL, self::EXT_WAV, self::EXT_MPEG, self::EXT_MP4, self::EXT_QUICKTIME,
+												self::EXT_WMV, self::EXT_AVI, self::EXT_FLV, self::EXT_ODT, self::EXT_ODTCALC,
+												self::EXT_ODTPRE, self::EXT_ODTGRA, self::EXT_XLS2007, self::EXT_DOC2007, self::XUL,
+												self::TAR, self::TGZ);
 												
 		protected $_fileNameDownload                                                   ;
 		protected $_fileSize                                                           ;

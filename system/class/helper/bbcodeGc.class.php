@@ -143,19 +143,51 @@
 			'code'   => array ('code type=&quot;&quot;', 'code', 'code.png'),
 		);
 
+		/**
+		 * Crée l'instance de la classe
+		 * @param string $lang : langue à utiliser dans les templates utilisés par la classe
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
+
 		public  function __construct($lang=""){
 			$this->_langInstance;
 			$this->_createLangInstance();
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 		}
 
+		/**
+		 * créé une instance de la classe langGc
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
+
 		protected function _createLangInstance(){
 			$this->_langInstance = new langGc($this->_lang);
 		}
 
+		/**
+		 * permet d'utiliser l'instance de la class langGc dans cette class
+		 * @param string $sentence : id de la phrase
+		 * @param array $var : variable à utiliser dans la phrase traduite
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
+
 		public function useLang($sentence, $var = array()){
 			return $this->_langInstance->loadSentence($sentence, $var);
 		}
+
+		/**
+		 * permet de parser un contenu
+		 * @param string $contenu : contenu à parser
+		 * @access public
+		 * @return string contenu parsé
+		 * @since 2.0
+		*/
 
 		public function parse($contenu){
 			//securite
@@ -237,28 +269,76 @@
 			return $this->_contenu;
 		}
 
+		/**
+		 * permet de changer le contenu à parser
+		 * @param string $contenu : contenu à parser
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
+
 		public function setContenu($contenu){
 			$this->_contenu = $this->_contenu;
 		}
 
+		/**
+		 * permet de changer la langue utilisée
+		 * @param string $contenu : contenu à parser
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
+
 		public function setLang($Lang){
 			$this->_lang=$Lang;
 			$this->_langInstance->setLang($this->_lang);
-		} 
+		}
+
+		/**
+		 * permet de choisir si la bouton "prévisualiser s'affiche"
+		 * @param bool $preview : true : affichage du bouton "prévisualiser", false : contraire
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
 
 		public function setPreview($preview){
 			$this->_preview=$preview;
-		} 
+		}
+
+		/**
+		 * permet de choisir si la prévisualisation se fait en temps réel
+		 * @param bool $preview : true : parsage instantané, false : contraire
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
 
 		public function setInstantane($preview){
 			$this->_previewInstantanee=$preview;
 		}
+
+		/**
+		 * parse les balises codes
+		 * @param string $contenu : code à parser
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 
 		protected function _code($contenu){
 			$contenu[2] = preg_replace("/\<br\s*\/?\>\n/i", "\n", $contenu[2]);
 			
 			return '<script type="syntaxhighlighter" class="brush: '.$contenu[1].'; auto-links: false;"><![CDATA['.$contenu[2].']]></script>';
 		}
+
+		/**
+		 * parse les liens
+		 * @param string $contenu : lien à parser
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 
 		protected function _link($contenu){
 			if(strlen($contenu[1])>65){
@@ -269,6 +349,14 @@
 				return self::PARSETAGSTART.'a href="http://'.substr($contenu[1], 6,strlen($contenu[1])).'"'.self::PARSETAGEND.$contenu[1].self::PARSETAGSTART2.'a'.self::PARSETAGEND;
 			}
 		}
+
+		/**
+		 * parse les vidéos
+		 * @param string $contenu : vidéo à parser
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 
 		protected function _video($contenu){
 			$contenu[1] = html_entity_decode($contenu[1]);
@@ -323,6 +411,15 @@
 				return '<video controls="" width="500" src="'.$contenu[1].'" controls="controls"></video>';
 			}
 		}
+
+		/**
+		 * affiche l'éditeur de bbcode
+		 * @param string $contenu : contenu par défaut à afficher et parser
+		 * @param string $option : option de l'éditeur
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
 
 		public function editor($contenu, $option = array()){
 			$this->_id = 'id_'.uniqid();
@@ -394,6 +491,13 @@
 			));
 			$tpl->show();
 		}
+
+		/**
+		 * desctructeur
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
 
 		public  function __destruct(){
 

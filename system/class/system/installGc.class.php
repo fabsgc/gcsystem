@@ -859,37 +859,40 @@
 		}
 
 		public function install(){
+			$result = '';
 			if($this->_zip->getIsExist()==true && $this->_conflit == true){
 				//on remplit les fichiers de configs
 					//routes
-					$this->_installConfigRoutes();
+					$result= $this->_installConfigRoutes();
 
 					//apps
-					$this->_installConfigApp();
+					$result.= $this->_installConfigApp();
 
 					//plugins
-					$this->_installConfigPlugins();
+					$result.= $this->_installConfigPlugins();
 
 					//firewalls
-					$this->_installConfigFirewalls();
+					$result.= $this->_installConfigFirewalls();
 
 					//crons
-					$this->_installConfigCrons();
+					$result.= $this->_installConfigCrons();
 
 					//errorperso
-					$this->_installConfigErrorspersos();
+					$result.= $this->_installConfigErrorspersos();
 
 					//langs
-					$this->_installConfigLangs();
+					$result.= $this->_installConfigLangs();
 
 					//sqls
-					$this->_installConfigSqls();
+					$result.= $this->_installConfigSqls();
 
 				//installed
-				$this->_installConfigInstalled();
+				$result.= $this->_installConfigInstalled();
 
 				//on installe les nouveaux fichiers
-				$this->_installFiles();
+				$result.= $this->_installFiles();
+
+				return $result;
 			}
 			else{
 				return false;
@@ -897,6 +900,7 @@
 		}
 
 		protected function _installConfigRoutes(){
+			$result = '';
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 
@@ -917,13 +921,18 @@
 					$this->_markup2Xml->setAttribute("cache", $value->getAttribute('cache'));
 
 					$this->_node2Xml->appendChild($this->_markup2Xml);
+
+					$result .= '<br />><span style="color: chartreuse">ajout route, id : '.$value->getAttribute('id').'</span>';
 				}
 
 				$this->_dom2Xml->save(ROUTE);
 			}
+
+			return $result;
 		}
 
 		protected function _installConfigApp(){
+			$result = '';
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 
@@ -938,14 +947,20 @@
 					$this->_markup2Xml = $this->_dom2Xml->createElement('define');
 					$this->_markup2Xml->setAttribute("id", $value->getAttribute('id'));
 					$this->_markup2Xml->setAttribute("value", $value->getAttribute('value'));
+
 					$this->_node2Xml->appendChild($this->_markup2Xml);
+
+					$result .= '<br />><span style="color: chartreuse">ajout constante utilisateur, id : '.$value->getAttribute('id').'</span>';
 				}
 
 				$this->_dom2Xml->save(APPCONFIG);
 			}
+
+			return $result;
 		}
 
 		protected function _installConfigPlugins(){
+			$result = '';
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 
@@ -963,14 +978,20 @@
 					$this->_markup2Xml->setAttribute("access", $value->getAttribute('access'));
 					$this->_markup2Xml->setAttribute("enabled", $value->getAttribute('enabled'));
 					$this->_markup2Xml->setAttribute("include", $value->getAttribute('include'));
+
 					$this->_node2Xml->appendChild($this->_markup2Xml);
+
+					$result .= '<br />><span style="color: chartreuse">ajout plugin, nom : '.$value->getAttribute('name').'</span>';
 				}
 
 				$this->_dom2Xml->save(PLUGIN);
 			}
+
+			return $result;
 		}
 
 		protected function _installConfigFirewalls(){
+			$result = '';
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 
@@ -988,14 +1009,20 @@
 					$this->_markup2Xml->setAttribute("id", $value->getAttribute('id'));
 					$this->_markup2Xml->setAttribute("connected", $value->getAttribute('connected'));
 					$this->_markup2Xml->setAttribute("access", $value->getAttribute('access'));
+
 					$this->_node2Xml->appendChild($this->_markup2Xml);
+
+					$result .= '<br />><span style="color: chartreuse">ajout parefeu, id : '.$value->getAttribute('id').'</span>';
 				}
 
 				$this->_dom2Xml->save(FIREWALL);
 			}
+
+			return $result;
 		}
 
 		protected function _installConfigCrons(){
+			$result = '';
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 
@@ -1015,13 +1042,18 @@
 					$this->_markup2Xml->setAttribute("executed", '');
 
 					$this->_node2Xml->appendChild($this->_markup2Xml);
+
+					$result .= '<br />><span style="color: chartreuse">ajout cron, id : '.$value->getAttribute('id').'</span>';
 				}
 
 				$this->_dom2Xml->save(CRON);
 			}
+
+			return $result;
 		}
 
 		protected function _installConfigErrorspersos(){
+			$result = '';
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 
@@ -1051,13 +1083,18 @@
 					}
 
 					$this->_node2Xml->appendChild($this->_markup2Xml);
+
+					$result .= '<br />><span style="color: chartreuse">ajout errorperso, id : '.$value->getAttribute('id').'</span>';
 				}
 			}
 
 			$this->_dom2Xml->save(ERRORPERSO);
+
+			return $result;
 		}
 
 		protected function _installConfigLangs(){
+			$result = '';
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			$this->_dom2Xml = new DomDocument('1.0', CHARSET);
 			$id = '';
@@ -1092,12 +1129,17 @@
 						}
 
 						$this->_dom2Xml->save(LANG_PATH.$value2->getAttribute('lang').LANG_EXT);
+
+						$result .= '<br />><span style="color: chartreuse">ajout fichier langue '.$value2->getAttribute('lang').', id : '.$id.'</span>';
 					}
 				}
 			}
+
+			return $result;
 		}
 
 		protected function _installConfigSqls(){
+			$result = '';
 			$query = new sqlGc($this->_bdd[$this->_bddName]);
 
 			$this->_domXml = new DomDocument('1.0', CHARSET);
@@ -1116,11 +1158,16 @@
 
 					$query->query($key, $requete);
 					$query->fetch($key, sqlGc::PARAM_NORETURN);
+
+					$result .= '<br />><span style="color: chartreuse">exécution requête : '.$requete.'</span>';
 				}
 			}
+
+			return $result;
 		}
 
 		protected function _installFiles(){
+			$result = '';
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 
 			if($this->_domXml->load(INSTALLED)){
@@ -1143,6 +1190,8 @@
 									$file->setAttribute("path", $key2);
 
 									$this->_markupXml->appendChild($file);
+
+									$result .= '<br />><span style="color: chartreuse">ajout répertoire : '.$key2.'</span>';
 								}
 							}
 						}
@@ -1160,6 +1209,8 @@
 									$file->setAttribute("path", $key2);
 
 									$this->_markupXml->appendChild($file);
+
+									$result .= '<br />><span style="color: chartreuse">ajout fichier : '.$key2.'</span>';
 								}
 							}
 						}
@@ -1168,9 +1219,12 @@
 					}
 				}
 			}
+
+			return $result;
 		}
 
 		protected function _installConfigInstalled(){
+			$result = '';
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			if($this->_domXml->load(INSTALLED)){
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('installed')->item(0);
@@ -1298,6 +1352,9 @@
 				$this->_nodeXml->appendChild($this->_markupXml);
 				$this->_domXml->save(INSTALLED);
 			}
+
+			$result .= '<br />><span style="color: chartreuse">génération fichier '.INSTALLED.'</span>';
+			return $result;
 		}
 
 		public function checkUninstall($id){
@@ -1351,6 +1408,8 @@
 		}
 
 		public function uninstall($id){
+			$result = '';
+			
 			if($this->getConflitUninstall() == true){
 				$this->_domXml = new DomDocument('1.0', CHARSET);
 				$this->_dom2Xml = new DomDocument('1.0', CHARSET);
@@ -1370,6 +1429,7 @@
 								//on supprime d'abord les fichiers
 								foreach ($this->_node2Xml as $key2 => $value2){
 									if(!preg_match('#\/$#i', $value2->getAttribute('path'))){
+										$result = '<br />><span style="color: chartreuse">suppression fichier : '.$value2->getAttribute('path').'</span>';
 										unlink($value2->getAttribute('path'));
 									}
 								}
@@ -1377,6 +1437,7 @@
 								//on supprime ensuite les fichiers
 								foreach($this->_node2Xml as $key2 => $value2){
 									if(preg_match('#\/$#i', $value2->getAttribute('path'))){
+										$result .= '<br />><span style="color: chartreuse">suppression répertoire : '.$value2->getAttribute('path').'</span>';
 										rmdir($value2->getAttribute('path'));
 									}
 								}
@@ -1393,7 +1454,7 @@
 									foreach ($this->_node2Xml as $key2 => $value2){
 										foreach($this->_node4Xml as $key3 => $value3){
 											if($value2->getAttribute('id') == $value3->getAttribute('id')){
-												echo $value2->getAttribute('id').'-1<br />';
+												$result .= '<br />><span style="color: chartreuse">suppression route, id : '.$value3->getAttribute('id').'</span>';
 												$this->_node3Xml->removeChild($value3); 
 											}
 										}
@@ -1417,7 +1478,7 @@
 									foreach ($this->_node2Xml as $key2 => $value2){
 										foreach($this->_node4Xml as $key3 => $value3){
 											if($value2->getAttribute('id') == $value3->getAttribute('id')){
-												echo $value2->getAttribute('id').'-2<br />';
+												$result .= '<br />><span style="color: chartreuse">suppression constante utilisateur, id : '.$value3->getAttribute('id').'</span>';
 												$this->_node3Xml->removeChild($value3); 
 											}
 										}
@@ -1441,7 +1502,7 @@
 									foreach ($this->_node2Xml as $key2 => $value2){
 										foreach($this->_node4Xml as $key3 => $value3){
 											if($value2->getAttribute('name') == $value3->getAttribute('name')){
-												echo $value2->getAttribute('name').'-3<br />';
+												$result .= '<br />><span style="color: chartreuse">suppression plugin, id : '.$value3->getAttribute('name').'</span>';
 												$this->_node3Xml->removeChild($value3); 
 											}
 										}
@@ -1467,7 +1528,7 @@
 									foreach ($this->_node2Xml as $key2 => $value2){
 										foreach($this->_node4Xml as $key3 => $value3){
 											if($value2->getAttribute('id') == $value3->getAttribute('id')){
-												echo $value2->getAttribute('id').'-4<br />';
+												$result .= '<br />><span style="color: chartreuse">suppression parefeu, id : '.$value3->getAttribute('id').'</span>';
 												$this->_node3Xml->removeChild($value3); 
 											}
 										}
@@ -1491,7 +1552,7 @@
 									foreach ($this->_node2Xml as $key2 => $value2){
 										foreach($this->_node4Xml as $key3 => $value3){
 											if($value2->getAttribute('id') == $value3->getAttribute('id')){
-												echo $value2->getAttribute('id').'-5<br />';
+												$result .= '<br />><span style="color: chartreuse">suppression cron, id : '.$value3->getAttribute('id').'</span>';
 												$this->_node3Xml->removeChild($value3); 
 											}
 										}
@@ -1517,7 +1578,7 @@
 									foreach ($this->_node2Xml as $key2 => $value2){
 										foreach($this->_node4Xml as $key3 => $value3){
 											if($value2->getAttribute('id') == $value3->getAttribute('id')){
-												echo $value2->getAttribute('id').'-6<br />';
+												$result .= '<br />><span style="color: chartreuse">suppression errorperso, id : '.$value3->getAttribute('id').'</span>';
 												$this->_node3Xml->removeChild($value3); 
 											}
 										}
@@ -1546,7 +1607,7 @@
 
 												foreach ($this->_node4Xml as $key4 => $value4) {
 													if($value4->getAttribute('id') == $value2->getAttribute('id')){
-														echo $value4->getAttribute('id').'-7<br />';
+														$result .= '<br />><span style="color: chartreuse">suppression phrase fichier de langue '.$value3->getAttribute('lang').' , id : '.$value4->getAttribute('id').'</span>';
 														$this->_node3Xml->removeChild($value4); 
 													}
 												}
@@ -1561,7 +1622,7 @@
 								$this->_node2Xml = $value->getElementsByTagName('sqls')->item(0);
 								$this->_node2Xml = $this->_node2Xml->getElementsByTagName('sql');
 
-								$result = '<br />><span style="color: chartreuse">########## requêtes sql exécutées : ################################</span>';
+								$result .= '<br />><span style="color: chartreuse">########## requêtes sql exécutées : ################################</span>';
 
 								foreach ($this->_node2Xml as $key2 => $value2){
 									$result .= '<br />><span style="color: chartreuse"># '.$value2->nodeValue.'</span>';

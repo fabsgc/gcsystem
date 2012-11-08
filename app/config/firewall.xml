@@ -40,6 +40,6 @@
 			<url id="test4" connected="*" access="*"/>
 			<url id="montruc" connected="*" access="*"/>
 			<url id="debug" connected="*" access="*"/>
-		<url id="installtest" connected="true" access="*"/></access>
+		</access>
 	</firewall>
 </security>

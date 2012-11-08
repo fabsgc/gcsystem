@@ -18,4 +18,4 @@
 	<plugin type="helper" name="textGc" access="textGc.class.php" enabled="true" include="*"/>
 	<plugin type="lib" name="formsGc" access="FormsGC/formsGC.php" enabled="true" include="*"/>
 	
-<plugin type="helper" name="installtestGc" access="installtestGc.class.php" enabled="true" include="*"/></plugins>
+</plugins>

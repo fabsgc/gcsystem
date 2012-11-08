@@ -1004,7 +1004,7 @@
 					$install->check();
 
 					if($install->getConflit() == true){
-						$install->install();
+						$this->_stream .= $install->install();
 
 						$this->_stream .= '<br />> <span style="color: chartreuse;">'.($install->getReadMe()).'</span>';
 						$this->_result = '<br />><span style="color: chartreuse;"> L\'add-on '.$this->_commandExplode[2].' a bien été installé</span>';
@@ -1061,6 +1061,28 @@
 						$this->_result = '<br />><span style="color: red;"> L\'add-on d\'id '.$this->_commandExplode[2].' n\'a pas pu être désinstallé</span>';
 					}
 				}
+				elseif(preg_match('#add backup (.*) (.*)#', $this->_command)){
+					$backup = new backupGc();
+					if($backup->addBackup($this->_commandExplode[2], $this->_commandExplode[3])){
+						$this->_stream .= '<br />><span style="color: chartreuse"> backup <u>'.$this->_commandExplode[2].'</u> sous le nom de <u>'.$this->_commandExplode[3].'</u> réussie</span>';
+						$this->_result = '<br />><span style="color: chartreuse;"> le backup a bien été créé</span>';
+					}
+					else{
+						$this->_stream .= $backup->getError();
+						$this->_result = '<br />><span style="color: chartreuse;"> le backup n\'a pas pu être créé</span>';
+					}
+				}
+				elseif(preg_match('#delete backup (.*)#', $this->_command)){
+					$backup = new backupGc();
+					if($backup->delBackup($this->_commandExplode[2])){
+						$this->_stream .= '<br />><span style="color: chartreuse"> backup <u>'.$this->_commandExplode[2].'</u> supprimé</span>';
+						$this->_result = '<br />><span style="color: chartreuse;"> le backup a bien été supprimé</span>';
+					}
+					else{
+						$this->_stream .= $backup->getError();
+						$this->_result = '<br />><span style="color: chartreuse;"> le backup n\'a pas pu être créé</span>';
+					}
+				}
 				elseif(preg_match('#help#', $this->_command)){
 					$this->_stream .= '<br />> add rubrique nom (l\'url par défaut est le nom de la rubrique; cette url sera créée à condition que l\'id (nom) ne soit pas déjà utilisé';
 					$this->_stream .= '<br />> set rubrique nom nouveaunom';
@@ -1104,6 +1126,7 @@
 					$this->_stream .= '<br />> see installed';
 					$this->_stream .= '<br />> see add-on';
 					$this->_stream .= '<br />> see file nom';
+					$this->_stream .= '<br />> add backup nom';
 					$this->_stream .= '<br />> changepassword nouveaumdp';
 					$this->_stream .= '<br />> connect mdp';
 					$this->_stream .= '<br />> disconnect';
@@ -1298,11 +1321,11 @@
 
 								foreach ($this->_nodeXml as $key => $value){
 									if($i == 0){
-										$this->_stream .= '<br />> <span style="color: chartreuse;">'.$value->getAttribute('id').'</span>';
+										$this->_stream .= '<br />> <span style="color: chartreuse;">'.$value->getAttribute('id').' / '.$value->getAttribute('name').'</span>';
 										$i=1;
 									}
 									else{
-										$this->_stream .= '<br />> <span style="color: red;">'.$value->getAttribute('id').'</span>';
+										$this->_stream .= '<br />> <span style="color: red;">'.$value->getAttribute('id').' / '.$value->getAttribute('name').'</span>';
 										$i=0;
 									}
 								}

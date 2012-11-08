@@ -23,4 +23,4 @@
     <route id="syntaxhighlighter" url="/debug/syntaxhighlighter" rubrique="debug" action="syntaxhighlighter" vars="" cache="0"/>
     <route id="tplHtmlHeader" url="/debug/tplhtmlheader" rubrique="debug" action="tplHtmlHeader" vars="" cache="0"/>
     <route id="debugzip" url="/debug/tozip" rubrique="debug" action="toZip" vars="" cache="0"/>
-<route id="installtest" url="/installtest" rubrique="installtest" action="" vars="" cache="10"/></routes>
+</routes>

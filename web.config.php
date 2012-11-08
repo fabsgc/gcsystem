@@ -30,6 +30,7 @@ define('ERRORDUOCUMENT_PATH', 'ErrorDocument/');
 define('GCSYSTEM_PATH', 'GCsystem/');
 define('CLASS_SYSTEM_PATH', 'system/');
 define('CLASS_HELPER_PATH', 'helper/');
+define('BACKUP_PATH', SYSTEM_PATH.'backup/');
 
 //extensions de fichier
 define('LANG_EXT', '.xml');
@@ -94,7 +95,7 @@ $GLOBALS['db']['bdd']['sgbd']      = "mysql";
 define('BDD', 'test');
 
 //connexion à la bdd, true ou false
-define('CONNECTBDD', true);
+define('CONNECTBDD', false);
 
 //utilisation du routeur
 define('REWRITE', true);
