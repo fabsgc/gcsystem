@@ -11,6 +11,7 @@
 		
 		protected $_filePath                                   ;
 		protected $_fileName                                   ;
+		protected $_name                                       ;
 		protected $_fileExt                                    ;
 		protected $_fileContent                                ;
 		protected $_fileChmod                                  ;
@@ -67,6 +68,17 @@
 		
 		public function getFileName(){
 			return $this->_fileName;
+		}
+
+		/**
+		 * Retourne le nom du fichier (sans son extension)
+		 * @access	public
+		 * @return	string
+		 * @since 2.0
+		*/
+		
+		public function getName(){
+			return $this->_name;
 		}
 		
 		/**
@@ -229,6 +241,7 @@
 				$this->_setFilePath($filepath);
 				$this->_setFileName($filepath);
 				$this->_setFileExt($filepath);
+				$this->_setName($filepath);
 				$this->_setFileInfo($filepath);
 				$this->_setFileContent($filepath);
 				$this->_setFileChmod($filepath);
@@ -455,6 +468,25 @@
 			if(is_file($file) && file_exists($file) && is_readable($file)){
 				$extension = explode('.', basename($file));
 				$this->_fileExt = $extension[count($extension)-1];
+				return true;
+			}
+			else{
+				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
+				return false;
+			}
+		}
+
+		/**
+		 * Configure le nom du fichier sans son extension)
+		 * @access	public
+		 * @return	boolean
+		 * @param string $file : chemin d'accès vers le fichier
+		 * @since 2.0
+		*/
+
+		protected function _setName($file){
+			if(is_file($file) && file_exists($file) && is_readable($file)){
+				$this->_name = basename($file, '.'.$this->getFileExt());
 				return true;
 			}
 			else{

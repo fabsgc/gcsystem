@@ -118,13 +118,9 @@
 							}
 						}
 						elseif($option == self::PUTDIR){
-							if(preg_match('#\/$#i', zip_entry_name($zip_entry)) && !file_exists($zip_entry)){
-								mkdir($dir.zip_entry_name($zip_entry));
-							}
-							else{
-								if((!in_array((substr(zip_entry_name($zip_entry),-3)), $filter) && !in_array((substr(zip_entry_name($zip_entry),-4)), $filter) && !in_array((substr(zip_entry_name($zip_entry),-2)), $filter) && !in_array((substr(zip_entry_name($zip_entry),-5)))) || count($filter)==0){
-									file_put_contents($dir.zip_entry_name($zip_entry), zip_entry_read($zip_entry, 900000));
-								}
+							if((!in_array((substr(zip_entry_name($zip_entry),-3)), $filter) && !in_array((substr(zip_entry_name($zip_entry),-4)), $filter) && !in_array((substr(zip_entry_name($zip_entry),-2)), $filter) && !in_array((substr(zip_entry_name($zip_entry),-5)))) || count($filter)==0){
+								$this->_createDirFtp($dir.zip_entry_name($zip_entry));
+								file_put_contents($dir.zip_entry_name($zip_entry), zip_entry_read($zip_entry, 900000));
 							}
 						}
 					}
@@ -259,6 +255,7 @@
 		
 		protected function _setFilesCompressedSize($filepath){
 			$this->_setZip($filepath);
+
 			while ($zip_entry = zip_read($this->_zip)){
 				$this->_FilesCompressedSize += zip_entry_compressedsize($zip_entry);
 			}
@@ -314,6 +311,28 @@
 
 		public function getIsExist(){
 			return $this->_isExist;
+		}
+
+		/**
+		 * comme avec zip, on ne retourne apparemment que les fichiers et non les dossiers, il faut créer les répertoires avant d'ajouter le fichier :(
+		 * @access protected
+		 * @param  string $filepath : chemin vers le fichier à créer
+		 * @return void
+		 * @since 2.0
+		*/
+
+		protected function _createDirFtp($filepath){
+			$dirs = explode('/', $filepath);
+			array_pop($dirs);
+			$dir = "";
+
+			foreach($dirs as $key => $value){
+				$dir .= $value.'/';
+
+				if(!file_exists($dir)){
+					mkdir($dir);
+				}
+			}
 		}
 		
 		/**

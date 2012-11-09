@@ -118,7 +118,7 @@
 		}
 		
 		public function getDate($time=NULL, $format=NULL, $param = self::PARAM_TIMESTAMP){
-			if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
+			if($param == self::PARAM_DATETIME){ $time = $this->_getDatetoTimestamp($time); }
 			$time = intval($time);
 			if($time == NULL) $time = time();
 			if($format == NULL) $format = self::DATE_DEFAULT;

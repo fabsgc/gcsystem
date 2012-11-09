@@ -674,6 +674,38 @@
 					$this->_mkmap(CACHE_PATH);
 					$this->_result = '<br />><span style="color: chartreuse;"> fichiers de cache listés</span>';
 				}
+				elseif(preg_match('#list backup#', $this->_command)){
+					$backup = new backupGc();
+					$files = $backup->listBackup(); //on récupère les chemins vers tous les fichiers
+
+					$i = 0;
+
+					if($files != false){
+						foreach ($files as $key => $value) {
+							$file = new fileGc($value);
+							$date = new dateGc($this->lang);
+
+							if($file->getExist() == true){
+								if($file->getFileExt() == 'zip'){
+									$zip = new zipGc($value);
+									if($i == 0){
+										$this->_stream .= '<br />> <span style="color: chartreuse;"><u>'.$file->getName().'</u>, dernière modification : <u>'.$date->getDate($file->getLastUpdate(), dateGc::DATE_JMA_HMS_FR).'</u>, poids : <u>'.($zip->getFilesCompressedSize()/1000).' Ko</u></span>';
+										$i=1;
+									}
+									else{
+										$this->_stream .= '<br />> <span style="color: red;"><u>'.$file->getName().'</u>, dernière modification : <u>'.$date->getDate($file->getLastUpdate(), dateGc::DATE_JMA_HMS_FR).'</u>, poids : <u>'.($zip->getFilesCompressedSize()/1000).' Ko</u></span>';
+										$i=0;
+									}	
+								}		
+							}
+						}
+						$this->_result = '<br />><span style="color: chartreuse;"> backups listés</span>';
+					}
+					else{
+						$this->_stream .= $backup->getError();
+						$this->_result = '<br />><span style="color: chartreuse;"> les backups n\'ont pas pu être listés</span>';
+					}
+				}
 				elseif(preg_match('#delete template (.+)#', $this->_command)){
 					if(!in_array(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT, $this->_forbidden)){
 						if(is_file(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT) && file_exists(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT) && is_readable(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT)){
@@ -1063,13 +1095,34 @@
 				}
 				elseif(preg_match('#add backup (.*) (.*)#', $this->_command)){
 					$backup = new backupGc();
+					//add backup root machin19
+
+					if($this->_commandExplode[2] == 'root'){
+						$this->_commandExplode[2] = './';
+					}
+
 					if($backup->addBackup($this->_commandExplode[2], $this->_commandExplode[3])){
 						$this->_stream .= '<br />><span style="color: chartreuse"> backup <u>'.$this->_commandExplode[2].'</u> sous le nom de <u>'.$this->_commandExplode[3].'</u> réussie</span>';
 						$this->_result = '<br />><span style="color: chartreuse;"> le backup a bien été créé</span>';
 					}
 					else{
 						$this->_stream .= $backup->getError();
-						$this->_result = '<br />><span style="color: chartreuse;"> le backup n\'a pas pu être créé</span>';
+						$this->_result = '<br />><span style="color: red;"> le backup n\'a pas pu être créé</span>';
+					}
+				}
+				elseif(preg_match('#install backup (.*) (.*)#', $this->_command)){
+					$backup = new backupGc();
+
+					if($this->_commandExplode[3] == 'root'){ 
+						$this->_commandExplode[2] = './';
+					}
+					
+					if($backup->installBackup($this->_commandExplode[2], $this->_commandExplode[3])){
+						$this->_result = '<br />><span style="color: chartreuse;"> le backup <u>'.$this->_commandExplode[2].'</u> a bien été installé dans le répertoire <u>'.$this->_commandExplode[3].'</u></span>';
+					}
+					else{
+						$this->_stream .= $backup->getError();
+						$this->_result = '<br />><span style="color: chartreuse;"> le backup n\'a pas pu être installé</span>';
 					}
 				}
 				elseif(preg_match('#delete backup (.*)#', $this->_command)){
@@ -1109,14 +1162,12 @@
 					$this->_stream .= '<br />> list included';
 					$this->_stream .= '<br />> list rubrique';
 					$this->_stream .= '<br />> list cache';
+					$this->_stream .= '<br />> list backup';
 					$this->_stream .= '<br />> clear cache';
 					$this->_stream .= '<br />> clear log';
 					$this->_stream .= '<br />> clear';
-					$this->_stream .= '<br />> update';
-					$this->_stream .= '<br />> update updater';
 					$this->_stream .= '<br />> install add-on folder base';
 					$this->_stream .= '<br />> uninstall add-on id';
-					$this->_stream .= '<br />> recover config';
 					$this->_stream .= '<br />> see log nomdulogsansextansion';
 					$this->_stream .= '<br />> see route';
 					$this->_stream .= '<br />> see plugin';
@@ -1126,7 +1177,13 @@
 					$this->_stream .= '<br />> see installed';
 					$this->_stream .= '<br />> see add-on';
 					$this->_stream .= '<br />> see file nom';
+					$this->_stream .= '<br />> see backup nom';
 					$this->_stream .= '<br />> add backup nom';
+					$this->_stream .= '<br />> delete backup nom';
+					$this->_stream .= '<br />> install backup nom to';
+					$this->_stream .= '<br />> update';  
+					$this->_stream .= '<br />> update updater';
+					$this->_stream .= '<br />> recover config';
 					$this->_stream .= '<br />> changepassword nouveaumdp';
 					$this->_stream .= '<br />> connect mdp';
 					$this->_stream .= '<br />> disconnect';
@@ -1192,6 +1249,31 @@
 					}
 					else{
 						$this->_result = '<br />><span style="color: red;"> Le fichier <strong>'.$this->_commandExplode[2].'</strong> n\'existe pas.</span>';
+					}
+				}
+				elseif(preg_match('#see backup (.*)#', $this->_command)){
+					$backup = new backupGc();
+					$liste = $backup->seeBackup($this->_commandExplode[2]);
+
+					$i = 0;
+
+					if($liste != false){
+						foreach($liste as $key => $value){
+							if($i == 0){
+								$this->_stream .= '<br />> <span style="color: chartreuse;">'.$value.'</span>';
+								$i=1;
+							}
+							else{
+								$this->_stream .= '<br />> <span style="color: red;">'.$value.'</span>';
+								$i=0;
+							}								
+						}
+
+						$this->_result = '<br />><span style="color: chartreuse;"> le backup '.$this->_commandExplode[2].' a bien été affiché</span>';
+					}
+					else{
+						$this->_stream .= $backup->getError();
+						$this->_result = '<br />><span style="color: chartreuse;"> le backup n\'a pas pu être affiché</span>';
 					}
 				}
 				elseif(preg_match('#see (.+)#', $this->_command)){

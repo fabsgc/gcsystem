@@ -33,7 +33,6 @@
 				if(!file_exists(BACKUP_PATH.$nom.'.zip')){
 					$zip = new zipGc(BACKUP_PATH.$nom.'.zip');
 					$zip->putFileToZip($path, zipGc::PUTDIR);
-
 					return true;
 				}
 				else{
@@ -70,14 +69,13 @@
 		 * affiche le contenu d'un backup : juste le nom des fichiers, afficher le contenu serait trop long
 		 * @param string $nom : nom du backup
 		 * @access public
-		 * @return void
+		 * @return string or array
 		 * @since 2.0
 		*/
 
 		public function seeBackup($nom = ''){ //on donne le nom du zip sans l'extension
 			if(file_exists(BACKUP_PATH.$nom.'.zip')){
 				$zip = new zipGc(BACKUP_PATH.$nom.'.zip');
-
 				return $zip->getContentZip();
 			}
 			else{
@@ -91,11 +89,33 @@
 		 * @param string $nom : nom du backup
 		 * @param string $to : répertoire de destination
 		 * @access public
-		 * @return void
+		 * @return bool
 		 * @since 2.0
 		*/
 
 		public function installBackup($nom = '', $to = ''){ //on donne le nom du zip sans l'extension
+			if(file_exists(BACKUP_PATH.$nom.'.zip')){
+				$zip = new zipGc(BACKUP_PATH.$nom.'.zip');
+				$dir = new dirGc($to);
+
+				if($dir->getExist() == true){
+					if($zip->putFileToFtp($to, zipGc::PUTDIR) == true){
+						return true;
+					}else{
+						return false;
+					}
+				}
+				else{
+					$this->_addError('le répertoire de destination "'.$to.'" n\'existe pas', __FILE__, __LINE__, ERROR);
+					return false;
+				}
+
+				return $zip->getContentZip();
+			}
+			else{
+				$this->_addError('le backup de nom "'.$nom.'" n\'existe pas', __FILE__, __LINE__, ERROR);
+				return false;
+			}
 			return true;
 		}
 
@@ -107,6 +127,15 @@
 		*/
 
 		public function listBackup(){ //liste tous les backups
+			$dir = new dirGc(BACKUP_PATH);
+
+			if($dir->getExist() == true){
+				return $dir->getDirArbo();
+			}
+			else{
+				$this->_addError('le répertoire des backups '.BACKUP_PATH.' n\'est pas accessible', __FILE__, __LINE__, ERROR);
+				return false;
+			}
 		}
 
 		/**
