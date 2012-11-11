@@ -1,0 +1,24 @@
+11/11/2012 a 19:59:07 ! : Erreur [8] (Undefined variable: array) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 637
+11/11/2012 a 19:59:07 ! : Erreur [8] (Undefined variable: array) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 637
+11/11/2012 a 19:59:07 ! : Erreur [8] (Undefined variable: sdfjkh) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCsystem.tpl.compil.php a la ligne 71
+11/11/2012 a 19:59:07 ! : Erreur [8] (Undefined variable: fs) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCsystem.tpl.compil.php a la ligne 76
+11/11/2012 a 19:59:07 ! : Erreur [8] (Undefined variable: qsd) dans le fichier C:\wamp\www\GCsystem\app\cache\template_GCsystem.tpl.compil.php a la ligne 76
+11/11/2012 a 20:03:50 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+11/11/2012 a 20:03:50 ! : Erreur [8] (Undefined index: page) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 125
+11/11/2012 a 20:03:50 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+11/11/2012 a 20:03:50 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+11/11/2012 a 20:04:06 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+11/11/2012 a 20:04:06 ! : Erreur [8] (Undefined index: page) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 125
+11/11/2012 a 20:04:06 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+11/11/2012 a 20:04:06 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+11/11/2012 a 20:04:07 ! : Erreur [8] (Undefined index: prenom) dans le fichier C:\wamp\www\GCsystem\app\rubrique\index.class.php a la ligne 107
+11/11/2012 a 20:04:07 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+11/11/2012 a 20:04:07 ! : Erreur [8] (Array to string conversion) dans le fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php a la ligne 392
+11/11/2012 a 21:11:52 ! : Erreur [8] (Undefined property: errorPersoGc::$domXml) dans le fichier C:\wamp\www\GCsystem\system\class\system\errorpersoGc.class.php a la ligne 20
+11/11/2012 a 21:39:16 ! : Erreur [8] (Undefined variable: variable) dans le fichier C:\wamp\www\GCsystem\system\class\system\errorpersoGc.class.php a la ligne 31
+11/11/2012 a 21:39:18 ! : Erreur [8] (Undefined variable: variable) dans le fichier C:\wamp\www\GCsystem\system\class\system\errorpersoGc.class.php a la ligne 31
+11/11/2012 a 21:39:26 ! : Erreur [8] (Undefined variable: variable) dans le fichier C:\wamp\www\GCsystem\system\class\system\errorpersoGc.class.php a la ligne 31
+11/11/2012 a 21:45:53 ! : Erreur [8] (Undefined variable: variable) dans le fichier C:\wamp\www\GCsystem\system\class\system\errorpersoGc.class.php a la ligne 41
+11/11/2012 a 21:46:12 ! : Erreur [8] (Undefined variable: variable) dans le fichier C:\wamp\www\GCsystem\system\class\system\errorpersoGc.class.php a la ligne 41
+11/11/2012 a 21:46:33 ! : Erreur [8] (Undefined variable: variable) dans le fichier C:\wamp\www\GCsystem\system\class\system\errorpersoGc.class.php a la ligne 42
+11/11/2012 a 21:46:40 ! : Erreur [8] (Undefined variable: variable) dans le fichier C:\wamp\www\GCsystem\system\class\system\errorpersoGc.class.php a la ligne 41

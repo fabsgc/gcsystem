@@ -411,11 +411,10 @@
 					$this->_markupXml = $this->_node2Xml->getElementsByTagName('error');
 					if(is_object($this->_markupXml)){
 						foreach($this->_markupXml as $key=>$sentence){
-							if($sentence->hasAttribute('id') && $sentence->hasAttribute('template') && $sentence->hasAttribute('backUrl')){
+							if($sentence->hasAttribute('id') && $sentence->hasAttribute('template')){
 								//on stocke toutes les données dans un array pour pouvoir les utiliser plus tard à l'installation
 								$this->_xmlContent['errors'][$sentence->getAttribute('id')]['id'] = $sentence->getAttribute('id');
 								$this->_xmlContent['errors'][$sentence->getAttribute('id')]['template'] = $sentence->getAttribute('template');
-								$this->_xmlContent['errors'][$sentence->getAttribute('id')]['backUrl'] = $sentence->getAttribute('backUrl');
 
 								if($sentence->hasChildNodes()){
 									$this->_markup2Xml = $sentence->getElementsByTagName('var');
@@ -1069,7 +1068,6 @@
 					$this->_markup2Xml = $this->_dom2Xml->createElement('error');
 					$this->_markup2Xml->setAttribute("id", $value->getAttribute('id'));
 					$this->_markup2Xml->setAttribute("template", $value->getAttribute('template'));
-					$this->_markup2Xml->setAttribute("backUrl", $value->getAttribute('backUrl'));
 
 					foreach ($this->_xmlContent['errors'][$value->getAttribute('id')]['vars'] as $key2 => $value2) {
 						$this->_markup3Xml = $this->_dom2Xml->createElement('var');
@@ -1302,7 +1300,6 @@
 						$route = $this->_domXml->createElement('error');
 						$route->setAttribute('id', $value['id']);
 						$route->setAttribute('template', $value['template']);
-						$route->setAttribute('backUrl', $value['backUrl']);
 
 						foreach ($value['vars'] as $key2 => $value2) {
 							$route2 = $this->_domXml->createElement('var');

@@ -1178,7 +1178,7 @@
 					$this->_stream .= '<br />> see add-on';
 					$this->_stream .= '<br />> see file nom';
 					$this->_stream .= '<br />> see backup nom';
-					$this->_stream .= '<br />> add backup nom';
+					$this->_stream .= '<br />> add backup chemin nom';
 					$this->_stream .= '<br />> delete backup nom';
 					$this->_stream .= '<br />> install backup nom to';
 					$this->_stream .= '<br />> update';  

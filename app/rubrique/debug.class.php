@@ -111,4 +111,13 @@
 			//$zip->putFileToZip('asset/css/default.css', zipGc::NOPUTDIR);
 			$zip->putFileToZip('asset/', zipGc::PUTDIR, array('.jsh'));
 		}
+
+		public function actionError(){
+			$error = new errorPersoGc($this->_lang);
+			
+			echo $error->errorPerso('2', array(
+				'message3' => array('type' => 'var', 'value' => 'salut3'),
+				'message4' => array('type' => 'lang', 'value' => 'appDevGc_temp')
+			));
+		}
 	}
