@@ -23,4 +23,4 @@
     <route id="syntaxhighlighter" url="/debug/syntaxhighlighter" rubrique="debug" action="syntaxhighlighter" vars="" cache="0"/>
     <route id="tplHtmlHeader" url="/debug/tplhtmlheader" rubrique="debug" action="tplHtmlHeader" vars="" cache="0"/>
     <route id="debugzip" url="/debug/tozip" rubrique="debug" action="toZip" vars="" cache="0"/>
-<route id="debugerror" url="/errorperso" rubrique="debug" action="error" vars="" cache="0"/></routes>
+<route id="debugerror" url="/errorperso" rubrique="debug" action="error" vars="" cache="0"/><route id="debugftp" url="/debugftp" rubrique="debug" action="ftp" vars="" cache="0"/></routes>

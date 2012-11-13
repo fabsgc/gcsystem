@@ -16,6 +16,6 @@
 	<plugin type="helper" name="socialGc" access="socialGc.class.php" enabled="true" include="*"/>
 	<plugin type="helper" name="sqlGc" access="sqlGc.class.php" enabled="true" include="*"/>
 	<plugin type="helper" name="textGc" access="textGc.class.php" enabled="true" include="*"/>
+	<plugin type="helper" name="ftpGc" access="ftpGc.class.php" enabled="true" include="*"/>
 	<plugin type="lib" name="formsGc" access="FormsGC/formsGC.php" enabled="true" include="*"/>
-	
 </plugins>

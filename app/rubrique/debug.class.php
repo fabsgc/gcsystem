@@ -120,4 +120,37 @@
 				'message4' => array('type' => 'lang', 'value' => 'appDevGc_temp')
 			));
 		}
+
+		public function actionFtp(){
+			$ftp = new ftpGc();
+			$ftp->AddFtp('connect1', array(
+				'host' => 'dzvoice.com',
+				'port' => 21,
+				'timeout' => 350,
+				'username' => 'Padfj569zphKLLOHJrt_094356_669782_13drjuFIMPGddsf2f_see68ze772', 
+				'password' => 'LML88drgi_kuf96310dr88__sefohdPPHJZBF87GEFUfkifu__rzshgflns'
+			));
+
+			$ftp->AddFtp('connect2', array(
+				'host' => 'dzvoice.com',
+				'port' => 21,
+				'timeout' => 350,
+				'username' => 'lucestuntrouducul', 
+				'password' => 'luc'
+			));
+
+			$ftp->AddFtp('connect3', array(
+				'host' => 'dzvoice.com',
+				'port' => 21,
+				'timeout' => 350,
+				'username' => 'test', 
+				'password' => 'test'
+			));
+
+			//$ftp->putFileToFtp('connect1', 'installtest.zip', 'web/include/');
+			$ftp->putFileToFtp('connect3', 'installtest.zip', 'web/', 'montest.zip');
+			$ftp->putStringToFtp('connect3', 'nomfichier.txt', 'installtest.zip', 'web/');
+
+			echo $ftp->showError();
+		}
 	}

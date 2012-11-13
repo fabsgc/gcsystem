@@ -33,10 +33,10 @@
 				$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';
 				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 				$this->_setParser();
-				$this->_addError('le fichier de template "'.$this->_nom.'" a bien été chargé.', __FILE__, __LINE__, INFORMATION);
+				$this->_addError('le fichier de template "'.$this->_nom.'" ("'.$this->_file.'") a bien été chargé.', __FILE__, __LINE__, INFORMATION);
 			} 
 			else{
-				$this->_addError('le fichier de template "'.$this->_nom.'" spécifié n\'a pas été trouvé.', __FILE__, __LINE__, ERROR);
+				$this->_addError('le fichier de template "'.$this->_nom.'" ("'.$this->_file.'") spécifié n\'a pas été trouvé.', __FILE__, __LINE__, ERROR);
 				$this->_nom=$nom;
 				$this->_timeCache=$timecache;
 				$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';

@@ -7,7 +7,7 @@
 	*/
 	
 	class feedGc{
-		use errorGc,domGc                              ;
+		use errorGc, domGc                                  ;
 		
 		protected $_rssFile                        = ""     ;
 		protected $_rssFileContent                 = ""     ;
@@ -31,6 +31,15 @@
 		
 		public  function __construct(){
 		}
+
+		/**
+		 * créé un nouveau flux rss dans la classe
+		 * @access public
+		 * @param string $rss : nom du rss
+		 * @param string $cache : temp de mise en cache du fichier rss
+		 * @return bool
+		 * @since 2.0
+		*/
 		
 		public function newRss($rss, $cache = 0){
 			$this->_time[$rss] = $cache;
@@ -51,6 +60,15 @@
 				return false;
 			}
 		}
+
+		/**
+		 * ajoute les informations de header
+		 * @access public
+		 * @param string $rss : nom du rss
+		 * @param string $cache : array associatif contenant les informations du rss : cle => info
+		 * @return bool
+		 * @since 2.0
+		*/
 		
 		public function addHeader($rss, $markup = array()){
 			if($rss!="" && is_array($markup) && isset($this->_genRss[$rss])){
@@ -162,6 +180,17 @@
 				return false;
 			}
 		}
+
+		/**
+		 * ajoute des balises item au flux. on peut ajouter soit 1 seul balise soit une infinité
+		 * @access public
+		 * @param string $rss : nom du rss
+		 * @param string $markup : contenu des balises item. 2 formes :
+		 *   array ('info' => 'contenu')
+		 *   array (array('info' => 'contenu'), array('info' => 'contenu'))
+		 * @return bool
+		 * @since 2.0
+		*/
 		
 		public function addItem($rss, $markup = array()){
 			$isarray = array();
@@ -173,6 +202,7 @@
 					else{
 						array_push($isarray, true);
 					}
+
 					foreach($value1 as $cle2 => $value2){
 						switch($cle2){
 							case 'title' : 
@@ -222,6 +252,7 @@
 					$this->_genRssI++;
 				}
 				
+				/* si $markup ne contenait pas de array mais juste 1 seul ligne*/
 				if(in_array(false, $isarray) && !in_array(true, $isarray)){
 					foreach($markup as $cle1 => $value1){
 						switch($cle1){
@@ -276,6 +307,14 @@
 				return false;
 			}
 		}
+
+		/**
+		 * génère le fichier rss à partir des informations entrée par l'utilisateur
+		 * @access public
+		 * @param string $rss : nom du rss
+		 * @return string ou bool
+		 * @since 2.0
+		*/
 		
 		public function showRss($rss){
 			if($rss!="" && isset($this->_genRss[$rss])){
@@ -337,15 +376,31 @@
 				return false;
 			}
 		}
+
+		/**
+		 * récupère toutes les données de tous les rss gérés par la class
+		 * @access public
+		 * @return array
+		 * @since 2.0
+		*/
 		
 		public function getGenRss(){
 			return $this->_genRss;
 		}
+
+		/**
+		 * permet d'ajouter un nouveau rss existant à la classe afin que l'on puisse l'exploiter facilement par la suite
+		 * @access public
+		 * @param string $nom : nom du fichier rss
+		 * @param string $rss : chemin vers le fichier rss (accepte les http et https)
+		 * @return bool
+		 * @since 2.0
+		*/
 		
 		public function addRss($nom, $rss){
 			if($nom!="" && $rss!=""){
 				if(empty($this->_rssArray[$nom])){
-					if(preg_match('#http:#isU', $rss) || is_file($rss)){
+					if(preg_match('#http:#isU', $rss) || file_exists($rss)){
 						$ch = curl_init();
 						curl_setopt($ch, CURLOPT_URL, $rss);
 						curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -364,7 +419,7 @@
 
 							$this->_setRssHeader($nom, $this->_nodeXml);
 							$this->_setRssItem($nom, $this->_nodeXml);
-							$this->_rssRead[$nom] = true;
+							$this->_rssRead[$nom] = true; //le fichier de 'nom' a pu être lu
 							return true;
 						}
 						else{

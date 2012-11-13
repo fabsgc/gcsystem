@@ -38,8 +38,11 @@
 				foreach($this->_include as $cle => $val){
 					if($val['enabled'] == 'true'){
 						if($val['include'] == '*'){ //on inclut tout
-							if(is_file($val['access'])){
+							if(file_exists($val['access'])){
 								require_once($val['access']);
+							}
+							else{
+								$this->_addError('Le helper '.$val['access'].' est inaccessible.', __FILE__, __LINE__, ERROR);
 							}
 						}
 						elseif(preg_match('#no\[(.*)\]#isU', $val['include'])){ //on vérifie si la rubrique n'en fait pas partie
@@ -47,7 +50,12 @@
 							$rubrique = explode(',',  preg_replace('#no\[(.*)\]#isU', '$1', $val['include']));
 							
 							if(!in_array($_GET['rubrique'], $rubrique)){
-								require_once($val['access']);
+								if(file_exists($val['access'])){
+									require_once($val['access']);
+								}
+								else{
+									$this->_addError('Le helper '.$val['access'].' est inaccessible.', __FILE__, __LINE__, ERROR);
+								}
 							}
 						}
 						elseif(preg_match('#yes\[(.*)\]#isU', $val['include'])){ //on vérifie si la rubrique en fait partie
@@ -55,7 +63,12 @@
 							$rubrique = explode(',',  preg_replace('#yes\[(.*)\]#isU', '$1', $val['include']));
 							
 							if(in_array($_GET['rubrique'], $rubrique)){
-								require_once($val['access']);
+								if(file_exists($val['access'])){
+									require_once($val['access']);
+								}
+								else{
+									$this->_addError('Le helper '.$val['access'].' est inaccessible.', __FILE__, __LINE__, ERROR);
+								}
 							}
 						}
 					}

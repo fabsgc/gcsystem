@@ -47,7 +47,7 @@
 			$this->_domXml = new DomDocument('1.0', CHARSET);
 			
 			if($this->_domXml->load(ROUTE)){
-				$this->_addError('Le fichier de route " '.ROUTE.'" a bien été charg', __FILE__, __LINE__, INFORMATION);
+				$this->_addError('Le fichier de route " '.ROUTE.'" a bien été chargé', __FILE__, __LINE__, INFORMATION);
 				$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
 				$routes = $this->_nodeXml->getElementsByTagName('route');
 				
