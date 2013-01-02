@@ -41,6 +41,15 @@
 		protected $_bordure;
 		protected $_bordureColor;
 		
+		/**
+		 * Crée l'instance de la classe
+		 * @param string $mot : mot à afficher dans l'image
+		 * @param array $property : propriétés de l'image
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
+
 		public function __construct($mot, $property=array()){
 			$this->_i = 0;
 			$this->_mot = $mot;
@@ -117,6 +126,13 @@
 				}
 			}
 		}
+
+		/**
+		 * retourne l'image (qu'il faut afficher après le header png)
+		 * @access public
+		 * @return imagepng
+		 * @since 2.0
+		*/
 		
 		public function show(){
 			if($this->_backgroundImage==true){

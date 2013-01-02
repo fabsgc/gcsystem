@@ -1,14 +1,2 @@
-13/11/2012 a 21:45:15 ! : Erreur [8] (Undefined index: connect1) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 146
-13/11/2012 a 21:45:15 ! : Erreur [8] (Undefined index: connect1) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 147
-13/11/2012 a 21:45:27 ! : Erreur [8] (Undefined index: connect1) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 146
-13/11/2012 a 21:45:27 ! : Erreur [8] (Undefined index: connect1) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 147
-13/11/2012 a 21:46:40 ! : Erreur [8] (Undefined index: connect1) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 147
-13/11/2012 a 21:46:40 ! : Erreur [8] (Undefined index: connect1) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 148
-13/11/2012 a 21:46:57 ! : Erreur [8] (Undefined index: connect1) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 146
-13/11/2012 a 21:46:57 ! : Erreur [8] (Undefined index: connect1) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 147
-13/11/2012 a 22:30:57 ! : Erreur [4096] (Object of class fileGc could not be converted to string) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 121
-13/11/2012 a 22:31:19 ! : Erreur [4096] (Object of class fileGc could not be converted to string) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 121
-13/11/2012 a 22:31:30 ! : Erreur [4096] (Object of class fileGc could not be converted to string) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 120
-13/11/2012 a 22:31:30 ! : Erreur [4096] (Object of class fileGc could not be converted to string) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 121
-13/11/2012 a 22:31:51 ! : Erreur [4096] (Object of class fileGc could not be converted to string) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 120
-13/11/2012 a 22:34:28 ! : Erreur [8] (Undefined variable: name) dans le fichier C:\wamp\www\GCsystem\system\class\helper\ftpGc.class.php a la ligne 122
+24/12/2012 a 21:31:21 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/terminal.html
+24/12/2012 a 21:32:53 ! : Erreur [8] (Undefined property: terminalGc::$lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\terminalGc.class.php a la ligne 686

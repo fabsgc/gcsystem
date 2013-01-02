@@ -8,7 +8,7 @@
     <route id="template" url="/template.html" rubrique="index" action="template" vars="page" cache="10"/>
     <route id="picture" url="/picture.html" rubrique="index" action="picture" vars="" cache="10"/>
     <route id="contype" url="/truc/contype.xml" rubrique="index" action="contype" vars="" cache="0"/>
-    <route id="terminal" url="/terminal\.html" rubrique="terminal" action="" vars="" cache="0"/>
+    <route id="terminal" url="/terminal/" rubrique="terminal" action="" vars="" cache="0"/>
     <route id="terminal_terminal" url="/terminal-terminal\.html" rubrique="terminal" action="terminal" vars="" cache="0"/>
     <route id="urltoke" url="/urltoken-(.*).html" rubrique="index" action="actionContype" vars="token"/>
     <route id="testdebug" url="/testdebug.html" rubrique="index" action="actiontestdebug" vars="" cache="10"/>
@@ -23,4 +23,7 @@
     <route id="syntaxhighlighter" url="/debug/syntaxhighlighter" rubrique="debug" action="syntaxhighlighter" vars="" cache="0"/>
     <route id="tplHtmlHeader" url="/debug/tplhtmlheader" rubrique="debug" action="tplHtmlHeader" vars="" cache="0"/>
     <route id="debugzip" url="/debug/tozip" rubrique="debug" action="toZip" vars="" cache="0"/>
-<route id="debugerror" url="/errorperso" rubrique="debug" action="error" vars="" cache="0"/><route id="debugftp" url="/debugftp" rubrique="debug" action="ftp" vars="" cache="0"/></routes>
+    <route id="debugerror" url="/errorperso" rubrique="debug" action="error" vars="" cache="0"/>
+    <route id="debugftp" url="/debugftp" rubrique="debug" action="ftp" vars="" cache="0"/>
+    <route id="debugjs" url="/debugjs" rubrique="debug" action="debugjs" vars="" cache="0"/>
+</routes>

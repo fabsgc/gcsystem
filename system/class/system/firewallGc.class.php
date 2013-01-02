@@ -23,7 +23,6 @@
 					$this->_addError('le fichier '.FIREWALL.' a bien été chargé', __FILE__, __LINE__, INFORMATION);
 					$this->_setRoleHierarchy();
 					$this->_setFirewallConfigLoginSource();
-					$this->_setFirewallConfigLoginTarget();
 					$this->_setFirewallConfigForbidden();
 					$this->_setFirewallConfigcsrf();
 					$this->_setFirewallConfigConnect();
@@ -116,33 +115,6 @@
 		public function getFirewallConfigLoginSourceVars(){
 			if(isset($this->_security['firewall']['config']['login']['source']['vars'])){
 				return $this->_security['firewall']['config']['login']['source']['vars'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigLoginTarget(){
-			if(isset($this->_security['firewall']['config']['login']['target'])){
-				return $this->_security['firewall']['config']['login']['target'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigLoginTargetId(){
-			if(isset($this->_security['firewall']['config']['login']['target']['id'])){
-				return $this->_security['firewall']['config']['login']['target']['id'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigLoginTargetVars(){
-			if(isset($this->_security['firewall']['config']['login']['target']['vars'])){
-				return $this->_security['firewall']['config']['login']['target']['vars'];
 			}
 			else{
 				return false;
@@ -355,15 +327,6 @@
 			$this->_security['firewall']['config']['login']['source']['vars'] = explode(',', $this->_markupXml->getElementsByTagName('source')->item(0)->getAttribute('vars'));
 		}
 		
-		protected function _setFirewallConfigLoginTarget(){
-			$this->_nodeXml = $this->_domXml->getElementsByTagName('security')->item(0);
-			$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewall')->item(0);
-			$this->_node3Xml = $this->_node2Xml->getElementsByTagName('config')->item(0);
-			$this->_markupXml = $this->_node3Xml->getElementsByTagName('login')->item(0);
-			$this->_security['firewall']['config']['login']['target']['id'] = $this->_markupXml->getElementsByTagName('target')->item(0)->getAttribute('id');
-			$this->_security['firewall']['config']['login']['target']['vars'] = explode(',', $this->_markupXml->getElementsByTagName('target')->item(0)->getAttribute('vars'));
-		}
-		
 		protected function _setFirewallConfigForbidden(){
 			$this->_nodeXml = $this->_domXml->getElementsByTagName('security')->item(0);
 			$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewall')->item(0);
@@ -481,7 +444,14 @@
 								}
 								else{
 									$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car il doit être connecté', __FILE__, __LINE__, ERROR);
-									header('Location: '.$this->getUrl($this->_security['firewall']['config']['login']['source']['id'], $this->_security['firewall']['config']['login']['source']['vars']));
+									
+									if($this->getUrl($this->_security['firewall']['config']['login']['source']['id']) != ""){
+										header('Location: '.$this->getUrl($this->_security['firewall']['config']['login']['source']['id'], $this->_security['firewall']['config']['login']['source']['vars']));
+									}
+									else{
+										$this->_addError('Le parefeu n\'a pas pu exécuter la redirection vers l\'url d\'id '.$this->_security['firewall']['config']['login']['source']['id'], __FILE__, __LINE__, ERROR);
+									}
+
 									return false;
 								}
 							break;

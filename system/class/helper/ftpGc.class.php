@@ -160,14 +160,14 @@
 
 		public function putStringToFtp($ftp, $nom, $content, $to){
 			if($this->_connectFtp($ftp) == true){
-				file_put_contents(CACHE_PATH.$nom, $content);
+				file_put_contents(CACHE_PATH.'_temp_ftp_'.$nom.'.cache', $content);
 
-				if(ftp_put($this->_connexion, $to.$nom, CACHE_PATH.$nom, FTP_BINARY) == true){
-					unlink(CACHE_PATH.$nom, $content);
+				if(ftp_put($this->_connexion, $to.$nom, CACHE_PATH.'_temp_ftp_'.$nom.'.cache', FTP_BINARY) == true){
+					unlink(CACHE_PATH.'_temp_ftp_'.$nom.'.cache');
 				}
 				else{
-					$this->_addError('La copie du fichier "'.$file.'" a échoué', __FILE__, __LINE__, ERROR);
-					unlink(CACHE_PATH.$nom, $content);
+					$this->_addError('La copie du fichier "'.$nom.'" a échoué', __FILE__, __LINE__, ERROR);
+					unlink(CACHE_PATH.'_temp_ftp_'.$nom.'.cache');
 					return false;
 				}
 			}
@@ -187,7 +187,21 @@
 		*/
 
 		public function getFileFromFtp($ftp, $file){
+			$fichier = '';
 
+			if($this->_connectFtp($ftp) == true){
+				if(ftp_nb_get ($this->_connexion, CACHE_PATH.'_temp_ftp.cache' , $file, FTP_BINARY, -1) == true){
+					return file_get_contents(CACHE_PATH.'_temp_ftp.cache');
+				}
+				else{
+					$this->_addError('Le fichier n\'a pas pu être téléchargé sur le serveur distant', __FILE__, __LINE__, ERROR);
+					return false;
+				}
+			}
+			else{
+				$this->_addError('La connexion ftp a échoué, le fichier n\'a pas pu être envoyé', __FILE__, __LINE__, ERROR);
+				return false;
+			}
 		}
 
 		/**

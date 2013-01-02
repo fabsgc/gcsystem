@@ -18,7 +18,7 @@
 												self::EXT_RPL, self::EXT_WAV, self::EXT_MPEG, self::EXT_MP4, self::EXT_QUICKTIME,
 												self::EXT_WMV, self::EXT_AVI, self::EXT_FLV, self::EXT_ODT, self::EXT_ODTCALC,
 												self::EXT_ODTPRE, self::EXT_ODTGRA, self::EXT_XLS2007, self::EXT_DOC2007, self::XUL,
-												self::TAR, self::TGZ);
+												self::TAR, self::TGZ)                  ;
 												
 		protected $_fileNameDownload                                                   ;
 		protected $_fileSize                                                           ;
@@ -26,6 +26,14 @@
 		protected $_succesParameters      = true                                       ;
 		protected $_dateformat            = 'D, d M Y H:i:s'                           ;
 		
+		/**
+		 * Crée l'instance de la classe
+		 * @param string $filepath : chemin vers le fichier qu'il faudra faire télécharger
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
+
 		public function __construct($filepath, $filename, $fileext){
 			if($filepath == "") { $filepath = 'no'; $this->_succesParameters = false; $this->_addError('aucun fichier n\'a été spécifié. Le téléchargement ne pourra pas être lancé', __FILE__, __LINE__, ERROR); }
 			if($filename == "") { $filename = self::NAME_DEFAULT; }
@@ -33,14 +41,36 @@
 			if(is_file($filepath) && file_exists($filepath) && is_readable($filepath)) $this->setFile($filepath, $filename, $fileext);
 				else $this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 		}
+
+		/**
+		 * Retourne le type du fichier
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
 		
 		public function getFileExt(){
 			return $this->_fileExt;
 		}
+
+		/**
+		 * Retourne le nom du fichier
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
 		
 		public function getFileNameDownload(){
 			return $this->_fileNameDownload;
 		}
+
+		/**
+		 * Permet de modifier le fichier à télécharger
+		 * @param string $dirpath : chemin vers le répertoire
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
 		
 		public function setFile($filepath, $filename="nom", $fileext=downloadGc::EXT_DEFAULT){
 			if(is_file($filepath) && file_exists($filepath) && is_readable($filepath)){
@@ -57,6 +87,14 @@
 				$this->_addError(self::NOACCESS, __FILE__, __LINE__, ERROR);
 			}
 		}
+
+		/**
+		 * Récupère le type du fichier
+		 * @param string $appext : type du fichier entré par le client
+		 * @access protected
+		 * @return void
+		 * @since 2.0
+		*/
 		
 		protected function _setFileExt($appext){
 			if($appext == NULL){
@@ -70,10 +108,25 @@
 				$this->_addError('L\'extension n\'est pas gérée pas la classe, le processus de téléchargement ne fonctionnera peut-être pas', __FILE__, __LINE__, ERROR);
 			}
 		}
+
+		/**
+		 * Donne un nom au fichier téléchargé
+		 * @param string $file : nom
+		 * @access protected
+		 * @return void
+		 * @since 2.0
+		*/
 		
 		protected function _setFileNameDownload($file){
 			$this->_fileNameDownload = $file;
 		}
+
+		/**
+		 * Envoie le téléchargement du fichier
+		 * @access protected
+		 * @return void
+		 * @since 2.0
+		*/
 		
 		public function download(){
 			$this->_fileSize = filesize($this->_filePath);
@@ -97,6 +150,13 @@
 				return true;
 			exit();
 		}
+
+		/**
+		 * Desctructeur
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
 		
 		public  function __destruct(){
 		}

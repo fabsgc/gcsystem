@@ -7,7 +7,7 @@
 	*/
 	
 	class templateGc{
-		use errorGc, langInstance, urlRegex, htmlHeaderGc;             //trait
+		use errorGc, langInstance, urlRegex, htmlHeaderGc, generalGc;             //trait
 		
 		protected $_file               = ""         ;    //chemin vers le .tpl
 		protected $_fileCache          = ""         ;    //chemin vers le .compil.tpl
@@ -546,8 +546,6 @@
 				eval('echo '.$m[2].';');
 			$out = ob_get_contents();
 			ob_get_clean();
-			
-			//$this->_templateGC->vars[$m[1]] = $out;
 
 			return "<?php $".$m[1]."=".$m[2]."; ?>";
 		}
@@ -568,13 +566,13 @@
 		}
 		
 		protected function _parseLang(){
-			$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['lang'][0]).'(.+)'.preg_quote($this->bal['lang'][1]).'`sU', array('templateGcParser', '_parseLangCallBack'), $this->_contenu);
+			$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['lang'][0]).'(.*)'.preg_quote($this->bal['lang'][1]).'`isU', array('templateGcParser', '_parseLangCallBack'), $this->_contenu);
 		}
 		
 		protected function _parseLangCallBack($m){
-			foreach($m as $m){
-			}
-			return '<?php echo "'.$this->useLang(''.$m.'').'"; ?>';
+			$a = explode(':', $m[1]); //on sépare sentence et variable
+			$a[1] = explode(',', $a[1]); //on separe les variables
+			return '<?php echo "'.$this->useLang(''.trim($a[0]).'','\''.trim($a[1]).'\'').'"; ?>';
 		}
 		
 		protected function _parseGravatar(){
@@ -604,12 +602,12 @@
 		}
 		
 		protected function _parseUrlRegex(){
-			if(preg_match('`'.preg_quote($this->bal['vars'][9]).'(.+):(.*)'.preg_quote($this->bal['vars'][10]).'`sU', $this->_contenu)){
-				$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][9]).'(.+):(.*)'.preg_quote($this->bal['vars'][10]).'`sU',
+			if(preg_match('`'.preg_quote($this->bal['vars'][9]).'([\w]+):([^\s]*)'.preg_quote($this->bal['vars'][10]).'`sU', $this->_contenu)){
+				$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][9]).'([\w]+):([^\s]*)'.preg_quote($this->bal['vars'][10]).'`sU',
 				array('templateGcParser', '_parseUrlRegexCallback'), $this->_contenu);
 			}
 			else{
-				$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][9]).'(.+)'.preg_quote($this->bal['vars'][10]).'`sU',
+				$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][9]).'([\w]+)'.preg_quote($this->bal['vars'][10]).'`sU',
 				array('templateGcParser', '_parseUrlRegexCallback'), $this->_contenu);
 			}
 		}
@@ -630,7 +628,7 @@
 					}
 				}
 				else{
-					array_push($valeur, $var);
+					array_push($valeur, '\''.$var.'\'');
 				}
 			}
 

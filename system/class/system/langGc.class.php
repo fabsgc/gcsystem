@@ -84,6 +84,7 @@
 		*/
 		
 		public function loadSentence($nom, $var = array()){
+			$this->_content = ""; //on remet à null
 			if($this->_langFile==true){
 				$blog = $this->_domXml->getElementsByTagName('lang')->item(0);
 				$sentences = $blog->getElementsByTagName('sentence');
@@ -107,7 +108,7 @@
 					return ($this->_content);
 				}
 				else{
-					$this->_addError('Le texte "'.$nom.'" n\'a pas été trouvé dans le fichier de lang "'.$this->$_lang.'"', __FILE__, __LINE__, ERROR);
+					$this->_addError('Le texte "'.$nom.'" n\'a pas été trouvé dans le fichier de lang "'.$this->_lang.'"', __FILE__, __LINE__, ERROR);
 					return 'texte non trouvé';
 				}
 			}

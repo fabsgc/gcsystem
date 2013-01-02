@@ -109,9 +109,6 @@ define('ANTISPAM', true);
 //charset
 define('CHARSET', 'UTF-8');
 
-//favicon
-define('FAVICON_PATH', 'no');
-
 //dossier où est placé le framework à partir de la racine du répertoire. sous wamp par exemple, /GCsystem2.0
 define('FOLDER', '/GCsystem');
 
@@ -136,7 +133,7 @@ define('TERMINAL_MDP', 'mdp');
 define('JQUERY', true);
 
 /* mettre à true pour pouvoir utiliser less */
-define('LESS', true);
+define('LESS', false);
 
 /* mettre à true pour pouvoir utiliser le colorateur syntaxique */
 define('SYNTAXHIGHLIGHTER', true);
@@ -165,3 +162,7 @@ define('SHIGHLIGHTER_SHCORE_CSS', CSS_PATH.'syntaxhighligher/shCore.css');
 define('SHIGHLIGHTER_SHCOREDEFAULT_CSS', CSS_PATH.'syntaxhighligher/shCoreMidnight.css');
 define('SHIGHLIGHTER_SHCORE_JS', JS_PATH.'syntaxhighligher/shCore.js');
 define('SHIGHLIGHTER_AUTOLOADER_JS', JS_PATH.'syntaxhighligher/shAutoloader.js');
+
+
+//favicon
+define('FAVICON_PATH', 'no');

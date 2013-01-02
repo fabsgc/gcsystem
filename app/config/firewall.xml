@@ -9,7 +9,6 @@
 		<config>
 			<login>
 				<source id="login" vars=""/>
-				<target id="login" vars=""/>
 			</login>
 			<forbidden template="GCsystem/GCerror">
 				<variable type="lang" name="error" value="firewallforbiddentitle"/>

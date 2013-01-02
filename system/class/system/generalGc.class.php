@@ -478,7 +478,10 @@
 				}
 			}
 			if(is_file(FAVICON_PATH) && file_exists(FAVICON_PATH) && is_readable(FAVICON_PATH)){
-				$this->_header.="     <link rel=\"icon\" type=\"image/png\" href=\"".FOLDER.'/'.FAVICON_PATH."\" />\n";
+					$this->_header.="     <link rel=\"icon\" type=\"image/png\" href=\"".FOLDER."/".FAVICON_PATH."\" />\n";
+			}
+			else{
+				$this->_header.="     <link rel=\"icon\" type=\"image/png\" href=\"".FAVICON_PATH."\" />\n";
 			}
 			if(JQUERY==true){
 				$this->_header.="    <script type=\"text/javascript\" src=\"".JQUERYFILE."\" ></script> \n";

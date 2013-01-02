@@ -149,8 +149,15 @@
 
 			//$ftp->putFileToFtp('connect1', 'installtest.zip', 'web/include/');
 			$ftp->putFileToFtp('connect3', 'installtest.zip', 'web/', 'montest.zip');
+			$ftp->putFileToFtp('connect3', 'installtest.zip', 'web/', 'montest.ziptxt');
 			$ftp->putStringToFtp('connect3', 'nomfichier.txt', 'installtest.zip', 'web/');
+			$ftp->putFileToFtp('connect3', 'README.md', 'web/', 'read');
+
+			echo $ftp->getFileFromFtp('connect3', '/web/read');
 
 			echo $ftp->showError();
+		}
+
+		public function actionDebugjs(){
 		}
 	}
