@@ -534,11 +534,7 @@
 			}
 			foreach($this->_jsInFile as $element){
 				$this->_header.="    <script type=\"text/javascript\">\n";
-				if(!preg_match('#http:#isU', JS_PATH.$element)){
-					$fichier=JS_PATH.$element;
-					$contenu = fread(fopen($fichier, "r"), filesize($fichier));
-					$this->_header.="    ".$contenu."\n";
-				}
+				$this->_header.="    ".file_get_contents(preg_replace('#'.FOLDER.'/#isU', '', JS_PATH).$element)."\n";
 				$this->_header.="    </script>\n";
 			}
 			foreach($this->_rss as $element){
@@ -568,10 +564,12 @@
 		}
 		
 		final protected function showFooter(){
-			$this->_footer.="    <script type=\"text/javascript\">";
-			$this->_footer.="      SyntaxHighlighter.config.stripBrs = false;";
-			$this->_footer.="      SyntaxHighlighter.all();";
-			$this->_footer.="    </script>";
+			if(SYNTAXHIGHLIGHTER == true){
+				$this->_footer.="    <script type=\"text/javascript\">";
+				$this->_footer.="      SyntaxHighlighter.config.stripBrs = false;";
+				$this->_footer.="      SyntaxHighlighter.all();";
+				$this->_footer.="    </script>";
+			}
 			$this->_footer.="  </body>\n</html>";
 			return $this->_footer;
 		}
