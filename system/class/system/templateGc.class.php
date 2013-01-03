@@ -22,6 +22,9 @@
 		protected $_show		       = true       ;
 		
 		public  function __construct($file="", $nom="", $timecache=0, $lang="fr"){
+			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
+			$this->_createLangInstance();
+
 			$this->_file=TEMPLATE_PATH.$file.TEMPLATE_EXT;
 			if(file_exists($this->_file) or is_readable($this->_file)){
 				$handle = fopen($this->_file, 'rb');
@@ -60,13 +63,17 @@
 		protected function _createLangInstance(){
 			$this->_langInstance = new langGc($this->_lang);
 		}
+
+		public function useLang($sentence, $var = array()){
+			return $this->_langInstance->loadSentence($sentence, $var);
+		}
 		
 		protected function _setParser(){
 			$this->_refParser = new templateGcParser($this, $this->_lang);
 		}
 		
 		public function assign($nom, $vars=null){
-			if(is_array($nom)) $this->vars = array_merge($this->vars, $nom);
+			if(is_array($nom)){ $this->vars = array_merge($this->vars, $nom);}
 			else $this->vars[$nom] = $vars;
 		}
 
@@ -106,11 +113,10 @@
 				$GLOBALS['appDevGc']->addTemplate($this->_file);
 				if(is_file($this->_fileCache) && $this->_timeCache>0 && file_exists($this->_fileCache) && is_readable($this->_fileCache)){
 					$this->_timeFile=filemtime($this->_fileCache);
-					if(($this->_timeFile+$this->_timeCache)>time()){
+					if(($this->_timeFile+$this->_timeCache)>time()){ //cache dépassé
 						$handle = fopen($this->_fileCache, 'rb');
 						$content = fread($handle, filesize ($this->_fileCache));
 						fclose($handle);
-						
 						if($content==$this->_compile($this->_content)){
 							foreach ($this->vars as $cle => $valeur){
 								${$cle} = $valeur;
@@ -150,17 +156,19 @@
 				$GLOBALS['appDevGc']->addTemplate($this->_file);
 				if(is_file($this->_fileCache) && $this->_timeCache>0 && file_exists($this->_fileCache) && is_readable($this->_fileCache)){
 					$this->_timeFile=filemtime($this->_fileCache);
+
 					if(($this->_timeFile+$this->_timeCache)>time()){
 						$handle = fopen($this->_fileCache, 'rb');
 						$content = fread($handle, filesize ($this->_fileCache));
 						fclose ($this->_fileCache);
 						
 						if($content==$this->_compile($this->_content)){
-							foreach ($this->vars as $cle => $valeur){
-								${$cle} = $valeur;
-							}
-							
+
 							ob_start ();
+								foreach ($this->vars as $cle => $valeur){
+									$cle = $valeur;
+								}
+
 								include($this->_fileCache);
 							$out = ob_get_contents();
 							ob_get_clean();
@@ -169,11 +177,12 @@
 						else{
 							$this->_contentCompiled=$this->_compile($this->_content);
 							$this->_saveCache($this->_contentCompiled);
-							foreach ($this->vars as $cle => $valeur){
-								${$cle} = $valeur;
-							}
-							
+
 							ob_start ();
+								foreach ($this->vars as $cle => $valeur){
+									${$cle} = $valeur;
+								}
+
 								include($this->_fileCache);
 							$out = ob_get_contents();
 							ob_get_clean();
@@ -183,12 +192,12 @@
 					else{
 						$this->_contentCompiled=$this->_compile($this->_content);
 						$this->_saveCache($this->_contentCompiled);
-						
-						foreach ($this->vars as $cle => $valeur){
-							${$cle} = $valeur;
-						}
-						
+
 						ob_start ();
+							foreach ($this->vars as $cle => $valeur){
+								${$cle} = $valeur;
+							}
+
 							include($this->_fileCache);
 						$out = ob_get_contents();
 						ob_get_clean();
@@ -198,15 +207,16 @@
 				else{
 					$this->_contentCompiled=$this->_compile($this->_content);
 					$this->_saveCache($this->_contentCompiled);
-					
-					foreach ($this->vars as $cle => $valeur){
-						${$cle} = $valeur;
-					}
-					
+
 					ob_start ();
+						foreach ($this->vars as $cle => $valeur){
+							${$cle} = $valeur;
+						}
+
 						include($this->_fileCache);
 					$out = ob_get_contents();
 					ob_get_clean();
+
 					return($out);
 				}
 			}
@@ -426,7 +436,7 @@
 			$content = "";
 			if($this->_templateGC->getFile() != $file[1]){
 				if(file_exists($file[1]) or is_readable($file[1])){
-					$t = new templateGc($m[1], 'tplInclude_'.$this->_includeI.'_', $this->_templateGC->getTimeCache());
+					$t = new templateGc($m[1], 'tplInclude_'.$this->_lang.'_'.$this->_includeI.'_', $this->_templateGC->getTimeCache());
 					$t->assign($this->_templateGC->vars);
 					$t->setShow(false);
 					$t->show();
@@ -568,11 +578,10 @@
 		protected function _parseLang(){
 			$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['lang'][0]).'(.*)'.preg_quote($this->bal['lang'][1]).'`isU', array('templateGcParser', '_parseLangCallBack'), $this->_contenu);
 		}
-		
+
 		protected function _parseLangCallBack($m){
 			$a = explode(':', $m[1]); //on sépare sentence et variable
-			$a[1] = explode(',', $a[1]); //on separe les variables
-			return '<?php echo "'.$this->useLang(''.trim($a[0]).'','\''.trim($a[1]).'\'').'"; ?>';
+			return '<?php echo $this->useLang(\''.trim($a[0]).'\',array('.trim($a[1]).')); ?>'; //il faut mettre des '' aux strings
 		}
 		
 		protected function _parseGravatar(){
