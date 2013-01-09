@@ -325,6 +325,16 @@
 			$this->_markupXml = $this->_node3Xml->getElementsByTagName('login')->item(0);
 			$this->_security['firewall']['config']['login']['source']['id'] = $this->_markupXml->getElementsByTagName('source')->item(0)->getAttribute('id');
 			$this->_security['firewall']['config']['login']['source']['vars'] = explode(',', $this->_markupXml->getElementsByTagName('source')->item(0)->getAttribute('vars'));
+		
+			foreach ($this->_security['firewall']['config']['login']['source']['vars'] as $key => $value) {
+				if(preg_match('#^\$#isU', $value)){
+
+					ob_start ();
+						eval('echo '.$value.';');
+						$this->_security['firewall']['config']['login']['source']['vars'][$key] = ob_get_contents();
+					ob_get_clean();
+				}
+			}
 		}
 		
 		protected function _setFirewallConfigForbidden(){

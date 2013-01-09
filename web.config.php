@@ -151,6 +151,11 @@ define('CSS_PATH', FOLDER.'/'.ASSET_PATH.'css/');
 define('JS_PATH', FOLDER.'/'.ASSET_PATH.'js/');
 define('UPLOAD_PATH', FOLDER.'/'.ASSET_PATH.'upload/');
 
+define('IMG_PATH_PHP', ASSET_PATH.'image/');
+define('CSS_PATH_PHP', ASSET_PATH.'css/');
+define('JS_PATH_PHP', ASSET_PATH.'js/');
+define('UPLOAD_PATH_PHP', ASSET_PATH.'upload/');
+
 define('JQUERYFILE', JS_PATH.'jquery/jquery.min.js');
 define('JQUERYUIJS', JS_PATH.'jquery/jquery-ui.min.js');
 define('JQUERYUICSS', CSS_PATH.'jquery/jquery-ui.css');

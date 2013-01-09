@@ -28,7 +28,7 @@
 				}
 				else{
 					if($type!="checkbox" && $type!="listebox_date" && $type!="listebox_time"){
-						array_push($this->error, 'Champs '.$name_content.' : le champs n\'existe pas');
+						array_push($this->error, $name_content.' : le champs n\'existe pas');
 						array_push($this->valid, 'false');
 					}
 					else{
@@ -37,7 +37,7 @@
 							foreach($contraint as $contraint_checkbox => $valeur){
 								switch($contraint_checkbox){
 									case 'isset':
-										array_push($this->error, 'Champs '.$name_content.' : Vous devez cocher cette case');
+										array_push($this->error, $name_content.' : Vous devez cocher cette case');
 										array_push($this->valid, 'false');
 									break;
 									
@@ -48,7 +48,7 @@
 											}
 											else{
 												array_push($this->valid, 'false');
-												array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+												array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 											}
 										}
 									break;
@@ -75,7 +75,7 @@
 					array_push($this->field_array, $field);
 				}
 				else{
-					array_push($this->error, 'Champs '.$name_content.' : le champs n\'existe pas');
+					array_push($this->error, $name_content.' : le champs n\'existe pas');
 					array_push($this->valid, 'false');
 				}
 			}
@@ -96,7 +96,7 @@
 								foreach($contraint as $contraint_checkbox => $valeur){
 									switch($contraint_checkbox){
 										case 'isset':
-											array_push($this->error, 'Champs '.$name_content.' : Vous devez cocher cette case');
+											array_push($this->error, $name_content.' : Vous devez cocher cette case');
 											array_push($this->valid, 'false');
 										break;
 										
@@ -107,7 +107,7 @@
 												}
 												else{
 													array_push($this->valid, 'false');
-													array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+													array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 												}
 											}
 										break;
@@ -129,12 +129,12 @@
 					}
 				}
 				else{
-					array_push($this->error, 'Champs '.$name_content.' : le champs n\'existe pas');
+					array_push($this->error, $name_content.' : le champs n\'existe pas');
 					array_push($this->valid, 'false');
 				}
 			}
 			else{
-				array_push($this->error, 'Champs '.$name_content.' : Ce champs n\'est pas compatible avec l\'upload');
+				array_push($this->error, $name_content.' : Ce champs n\'est pas compatible avec l\'upload');
 				array_push($this->valid, 'false');
 			}
 		}
@@ -212,7 +212,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -222,7 +222,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -232,7 +232,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -243,7 +243,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -253,7 +253,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -263,7 +263,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -273,7 +273,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -283,7 +283,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -293,7 +293,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -303,7 +303,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -313,7 +313,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -323,7 +323,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -333,7 +333,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -343,7 +343,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -353,7 +353,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -363,7 +363,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -373,7 +373,7 @@
 								}
 								elseif($_POST[$value[1]]!=""){
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 								else{
 									array_push($this->valid, 'true');
@@ -386,7 +386,7 @@
 								}
 								elseif($_POST[$value[1]]!=""){
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 								else{
 									array_push($this->valid, 'true');
@@ -400,7 +400,7 @@
 									}
 									else{
 										array_push($this->valid, 'false');
-										array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+										array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 									}
 								}
 							break;
@@ -426,7 +426,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -436,7 +436,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -446,7 +446,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -456,7 +456,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -466,7 +466,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -476,7 +476,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 								}
@@ -497,7 +497,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -507,7 +507,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -517,7 +517,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -527,7 +527,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -537,7 +537,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -547,7 +547,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 								}
@@ -570,7 +570,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -580,7 +580,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -590,7 +590,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -601,7 +601,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -611,7 +611,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -621,7 +621,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -631,7 +631,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -641,7 +641,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -651,7 +651,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -661,7 +661,7 @@
 								}
 								elseif($_POST[$value[1]]!=""){
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 								else{
 									array_push($this->valid, 'true');
@@ -674,7 +674,7 @@
 								}
 								elseif($_POST[$value[1]]!=""){
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 								else{
 									array_push($this->valid, 'true');
@@ -688,7 +688,7 @@
 									}
 									else{
 										array_push($this->valid, 'false');
-										array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+										array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 									}
 								}
 							break;
@@ -714,7 +714,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -724,7 +724,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -734,7 +734,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -744,7 +744,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -754,7 +754,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -764,7 +764,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 								}
@@ -785,7 +785,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -795,7 +795,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -805,7 +805,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -815,7 +815,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -825,7 +825,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -835,7 +835,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 								}
@@ -858,7 +858,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -868,7 +868,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -878,7 +878,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -889,7 +889,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -899,7 +899,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -909,7 +909,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -919,7 +919,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -929,7 +929,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -939,7 +939,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -949,7 +949,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -960,7 +960,7 @@
 									}
 									else{
 										array_push($this->valid, 'false');
-										array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+										array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 									}
 								}
 							break;
@@ -988,7 +988,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -998,7 +998,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1008,7 +1008,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1019,7 +1019,7 @@
 									}
 									else{
 										array_push($this->valid, 'false');
-										array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+										array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 									}
 								}
 							break;
@@ -1047,7 +1047,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1057,7 +1057,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1067,7 +1067,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1077,7 +1077,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1087,7 +1087,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1098,7 +1098,7 @@
 									}
 									else{
 										array_push($this->valid, 'false');
-										array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+										array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 									}
 								}
 							break;
@@ -1124,7 +1124,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1134,7 +1134,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1144,7 +1144,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1154,7 +1154,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1164,7 +1164,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1174,7 +1174,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 								}
@@ -1195,7 +1195,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1205,7 +1205,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1215,7 +1215,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1225,7 +1225,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1235,7 +1235,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1245,7 +1245,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 								}
@@ -1268,7 +1268,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1278,7 +1278,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1288,7 +1288,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1299,7 +1299,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1309,7 +1309,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1319,7 +1319,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1329,7 +1329,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1339,7 +1339,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1349,7 +1349,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1359,7 +1359,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1369,7 +1369,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1379,7 +1379,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1389,7 +1389,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1399,7 +1399,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1409,7 +1409,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1419,7 +1419,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1429,7 +1429,7 @@
 								}
 								elseif($_POST[$value[1]]!=""){
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 								else{
 									array_push($this->valid, 'true');
@@ -1442,7 +1442,7 @@
 								}
 								elseif($_POST[$value[1]]!=""){
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 								else{
 									array_push($this->valid, 'true');
@@ -1456,7 +1456,7 @@
 									}
 									else{
 										array_push($this->valid, 'false');
-										array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+										array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 									}
 								}
 							break;
@@ -1482,7 +1482,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1492,7 +1492,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1502,7 +1502,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1512,7 +1512,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1522,7 +1522,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1532,7 +1532,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 								}
@@ -1553,7 +1553,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1563,7 +1563,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1573,7 +1573,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1583,7 +1583,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1593,7 +1593,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1603,7 +1603,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 								}
@@ -1628,7 +1628,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1638,7 +1638,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1650,7 +1650,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1662,7 +1662,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1675,7 +1675,7 @@
 									}
 									else{
 										array_push($this->valid, 'false');
-										array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+										array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 									}
 								}
 							break;
@@ -1701,7 +1701,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1711,7 +1711,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1721,7 +1721,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1731,7 +1731,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1741,7 +1741,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1751,7 +1751,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 								}
@@ -1772,7 +1772,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1782,7 +1782,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1792,7 +1792,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1802,7 +1802,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1812,7 +1812,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1822,7 +1822,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 								}
@@ -1841,7 +1841,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1851,7 +1851,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1866,7 +1866,7 @@
 									}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1882,7 +1882,7 @@
 								}
 								else{
 									array_push($this->valid, 'false');
-									array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
 							
@@ -1898,7 +1898,7 @@
 									}
 									else{
 										array_push($this->valid, 'false');
-										array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+										array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 									}
 								}
 							break;
@@ -1924,7 +1924,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1934,7 +1934,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1944,7 +1944,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1954,7 +1954,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1964,7 +1964,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -1974,7 +1974,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 								}
@@ -1995,7 +1995,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -2005,7 +2005,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -2015,7 +2015,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -2025,7 +2025,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -2035,7 +2035,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 									
@@ -2045,7 +2045,7 @@
 										}
 										else{
 											array_push($this->valid, 'false');
-											array_push($this->error, 'Champs '.$value[2].' : '.$value[4][$this->i]);
+											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
 									break;
 								}

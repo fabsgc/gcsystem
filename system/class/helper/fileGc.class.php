@@ -396,7 +396,7 @@
 		 * @since 2.0
 		*/
 		
-		public function iseReadable() {
+		public function isReadable() {
 			if(is_readable($this->_filePath)){
 				return true;
 			}

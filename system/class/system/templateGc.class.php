@@ -59,6 +59,10 @@
 		public function getFileCache(){
 			return $this->_fileCache;
 		}
+
+		public function getNom(){
+			return $this->_nom;
+		}
 		
 		protected function _createLangInstance(){
 			$this->_langInstance = new langGc($this->_lang);
@@ -399,7 +403,24 @@
 		
 		protected function _parsevars(){
 			foreach ($this->_templateGC->vars as $cle => $valeur){
-				$variable = '$'.$cle.'='.$valeur.';';
+				$array = '';
+				if(is_array($valeur)){
+					$array .= 'array(';
+
+					foreach($valeur as $val){
+						$array.=''.$val.',';
+					}
+
+					$array .= ')';
+
+					$array = preg_replace('#,\)#isU', ')', $array);
+					
+					$variable = '$'.$cle.'='.$array.';';
+				}
+				else{
+					$variable = '$'.$cle.'='.$valeur.';';
+				}
+				
 				$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).$this->_regexSpace.$cle.$this->_regexSpace.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($'.$cle.'); ?>', $this->_contenu);
 			}
 			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][0]).$this->_regexSpace.'([\[\]A-Za-z0-9\'._-]+)'.$this->_regexSpace.preg_quote($this->bal['vars'][1]).'`', '<?php echo ($$1); ?>', $this->_contenu);
@@ -427,7 +448,7 @@
 		
 		protected function _parseInclude(){
 			$this->_contenu = preg_replace_callback(
-				'`<'.$this->_name.preg_quote($this->bal['include'][0]).$this->_regexSpaceR.preg_quote($this->bal['include'][1]).'="(.+)"'.$this->_regexSpace.'/>`isU', 
+				'`<'.$this->_name.preg_quote($this->bal['include'][0]).$this->_regexSpaceR.preg_quote($this->bal['include'][1]).'="(.+)"'.$this->_regexSpace.'((cache="([0-9]*)")*)'.$this->_regexSpace.'/>`isU', 
 				array('templateGcParser','_parseIncludeCallback'), $this->_contenu);
 		}
 
@@ -436,7 +457,14 @@
 			$content = "";
 			if($this->_templateGC->getFile() != $file[1]){
 				if(file_exists($file[1]) or is_readable($file[1])){
-					$t = new templateGc($m[1], 'tplInclude_'.$this->_lang.'_'.$this->_includeI.'_', $this->_templateGC->getTimeCache());
+
+					if(isset($m[4])){ //temps de cache précisé
+						$t = new templateGc($m[1], 'tplInclude_'.$this->_templateGC->getNom().'_'.$m[4].'_'.$this->_lang.'_'.$this->_includeI.'_', $m[4]);
+					}
+					else{
+						$t = new templateGc($m[1], 'tplInclude_'.$this->_templateGC->getNom().'_'.$this->_lang.'_'.$this->_includeI.'_', '0');
+					}
+
 					$t->assign($this->_templateGC->vars);
 					$t->setShow(false);
 					$t->show();
@@ -581,7 +609,13 @@
 
 		protected function _parseLangCallBack($m){
 			$a = explode(':', $m[1]); //on sépare sentence et variable
-			return '<?php echo $this->useLang(\''.trim($a[0]).'\',array('.trim($a[1]).')); ?>'; //il faut mettre des '' aux strings
+
+			if(isset($a[1])){
+				return '<?php echo $this->useLang(\''.trim($a[0]).'\',array('.trim($a[1]).')); ?>'; //il faut mettre des '' aux strings
+			}
+			else{
+				return '<?php echo $this->useLang(\''.trim($a[0]).'\',array()); ?>'; //il faut mettre des '' aux strings
+			}
 		}
 		
 		protected function _parseGravatar(){
@@ -624,6 +658,7 @@
 		protected function _parseUrlRegexCallback($m){
 			$vars = explode(',', $m[2]);
 			$valeur = array();
+			$array = '';
 			foreach($vars as $var){
 				if(preg_match('#\$#', $var)){
 					foreach ($this->_templateGC->vars as $cle => $val){

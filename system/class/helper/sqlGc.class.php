@@ -25,6 +25,7 @@
 		const PARAM_FETCHINSERT         = 2;
 		const PARAM_FETCHUPDATE         = 3;
 		const PARAM_NORETURN            = 4;
+		const PARAM_FETCHDELETE         = 5;
 		
 		/**
 		 * Crée l'instance de la classe
@@ -91,8 +92,8 @@
 		 * @access	public
 		 * @return	void
 		 * @param array $var : tableau contenant la liste des variables qui seront utilisées dans les requêtes<br />
-		   premire syntaxe ex : array('id' => array(31, sqlGc::PARAM_INT), 'pass' => array("fuck", sqlGc::PARAM_STR))<br />
-		   deuxième syntaxe ex : array('id' => 31, 'pass' => "fuck") si le type de la variable n\'est pas défini grâce aux constantes de la classe, le type sera définie directement pas la classe
+		 *  premire syntaxe ex : array('id' => array(31, sqlGc::PARAM_INT), 'pass' => array("fuck", sqlGc::PARAM_STR))<br />
+		 *  deuxième syntaxe ex : array('id' => 31, 'pass' => "fuck") si le type de la variable n\'est pas défini grâce aux constantes de la classe, le type sera définie directement pas la classe
 		 * @since 2.0
 		*/
 		
@@ -157,11 +158,12 @@
 		 * @return	array ou boolean
 		 * @param string $nom : nom de la requête à fetcher
 		 * @param string $fetch : type de fetch à réaliser. Il en existe 3 :<br />
-		   sqlGc::PARAM_FETCH         : correspondant au fetch de PDO. Prévu pour une requête de type SELECT<br />
-		   sqlGc::PARAM_FETCHCOLUMN   : correspondant au fetchcolumn de PDO. Prévu pour une requête de type SELECT COUNT<br />
-		   sqlGc::PARAM_FETCHINSERT   : Prévu pour une requête de type INSERT<br />
-		   sqlGc::PARAM_FETCHUPDATE   : Prévu pour une requête de type UPDATE<br />
-		   valeur par défaut : sqlGc::PARAM_FETCH
+		 *  sqlGc::PARAM_FETCH         : correspondant au fetch de PDO. Prévu pour une requête de type SELECT<br />
+		 *  sqlGc::PARAM_FETCHCOLUMN   : correspondant au fetchcolumn de PDO. Prévu pour une requête de type SELECT COUNT<br />
+		 *  sqlGc::PARAM_FETCHINSERT   : Prévu pour une requête de type INSERT<br />
+		 *  sqlGc::PARAM_FETCHUPDATE   : Prévu pour une requête de type UPDATE<br />
+		 *  sqlGc::PARAM_FETCHDELETE   : Prévu pour une requête de type DELETE<br />
+		 *  valeur par défaut : sqlGc::PARAM_FETCH
 		 * @since 2.0
 		*/
 
@@ -221,6 +223,7 @@
 					case self::PARAM_FETCHCOLUMN : $this->_data = $this->_requete->fetchColumn(); break;
 					case self::PARAM_FETCHINSERT : $this->_data = true; break;
 					case self::PARAM_FETCHUPDATE : $this->_data = true; break;
+					case self::PARAM_FETCHDELETE : $this->_data = true; break;
 					case self::PARAM_NORETURN : $this->_data = true; break;
 					default : $this->_addError('cette constante n\'existe pas', __FILE__, __LINE__, ERROR); $this->_data=""; break;
 				}
@@ -233,6 +236,7 @@
 							return $this->_cache->getCache(); break;
 					case self::PARAM_FETCHINSERT : return true; break;
 					case self::PARAM_FETCHUPDATE : return true; break;
+					case self::PARAM_FETCHDELETE : return true; break;
 					case self::PARAM_NORETURN : return true; break;
 					default : $this->_addError('cette constante n\'existe pas', __FILE__, __LINE__, ERROR); $this->_data=""; break;
 				}

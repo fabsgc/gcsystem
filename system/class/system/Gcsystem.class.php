@@ -123,6 +123,7 @@
 													}
 												}
 												elseif($_GET['action']==""){
+													$_GET['action'] = 'default';
 													$action = 'actionDefault';
 													$class->$action();
 												}
@@ -141,6 +142,7 @@
 									}
 								}
 								else{
+
 								}
 							}
 							else{
@@ -170,6 +172,7 @@
 												}
 											}
 											elseif($_GET['action']==""){
+												$_GET['action'] = 'default';
 												$action = 'actionDefault';
 												$class->$action();
 											}

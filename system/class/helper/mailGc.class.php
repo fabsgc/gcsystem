@@ -25,6 +25,7 @@
 		protected $_bcc                         = array()                           ; //copie carbone invisible
 		protected $_formatHtml                  = true                              ;
 		protected $_reception                   = array()                           ;
+		protected $_lang                        = ''                                ;
 		
 		const MSG_TEMPLATE                      = 0                                 ;
 		const MSG_TXT                           = 1                                 ;
@@ -42,7 +43,7 @@
 							$this->_expediteur = $info;
 						}
 						else{
-							$this->_expediteur = array('mail', 'mail@mail.com');
+							array_push($this->_expediteur, $info);
 						}
 					break;
 					
@@ -139,7 +140,7 @@
 		}
 		
 		public function addTemplate($template, $vars = array(), $lang = DEFAULTLANG){
-			$tpl = new templateGC($template, templatemail, '0', $this->_lang);
+			$tpl = new templateGC($template, 'templatemail', '0', $this->_lang);
 			
 			foreach ($vars as $cle => $var){
 				$tpl->assign(array(
@@ -153,12 +154,12 @@
 			array_push($this->_message, $message);
 		}
 		
-		public function addFile($file, $name='pièce jointe', $mime = self::EXT_TXT){
+		public function addFile($fichier, $name='pièce jointe', $mime = self::EXT_TXT){
 			$this->_fileTransfert = 'multipart/mixed';
 			$this->_isPiece = true;
-			$file = new fileGc($file);
-			
-			if($file->iseReadable()){
+			$file = new fileGc($fichier);
+
+			if($file->isReadable()){
 				$message = $file->getFileContent();
 			}
 			else{
