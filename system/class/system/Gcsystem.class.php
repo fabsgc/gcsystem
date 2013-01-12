@@ -107,7 +107,8 @@
 										$this->_cache = new cacheGc('page_'.preg_replace('#\/#isU', '-slash-', $this->getUri()), "", $this->_cacheRoute);
 
 										if($this->_cache->isDie()){
-											ob_start ();
+											ob_start('ob_gzhandler');
+   											register_shutdown_function('ob_end_flush');
 												$class->init();
 														
 												if($_GET['action']!=""){

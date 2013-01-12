@@ -483,10 +483,28 @@
 			else{
 				$this->_header.="     <link rel=\"icon\" type=\"image/png\" href=\"".FAVICON_PATH."\" />\n";
 			}
+			foreach($this->_css as $element){
+				if(!preg_match('#http:#isU', JS_PATH.$element)){
+					if(LESS==true){
+						$this->_header.="    <link href=\"".CSS_PATH.$element."\" rel=\"stylesheet/less\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+					}
+					else{
+						$this->_header.="    <link href=\"".CSS_PATH.$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+					}
+				}
+				else{
+					if(LESS==true){
+						$this->_header.="    <link href=\"".$element."\" rel=\"stylesheet/less\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+					}
+					else{
+						$this->_header.="    <link href=\"".$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
+					}
+				}	
+			}
 			if(JQUERY==true){
+				$this->_header.="    <link href=\"".JQUERYUICSS."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
 				$this->_header.="    <script type=\"text/javascript\" src=\"".JQUERYFILE."\" ></script> \n";
 				$this->_header.="    <script type=\"text/javascript\" src=\"".JQUERYUIJS."\" ></script> \n";
-				$this->_header.="    <link href=\"".JQUERYUICSS."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
 			}
 			if(LESS==true){
 				$this->_header.="    <script type=\"text/javascript\" src=\"".LESSFILE."\" ></script> \n";
@@ -513,24 +531,6 @@
 				else{
 					$this->_header.="    <script type=\"text/javascript\" src=\"".$element."\" ></script> \n";
 				}
-			}
-			foreach($this->_css as $element){
-				if(!preg_match('#http:#isU', JS_PATH.$element)){
-					if(LESS==true){
-						$this->_header.="    <link href=\"".CSS_PATH.$element."\" rel=\"stylesheet/less\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
-					}
-					else{
-						$this->_header.="    <link href=\"".CSS_PATH.$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
-					}
-				}
-				else{
-					if(LESS==true){
-						$this->_header.="    <link href=\"".$element."\" rel=\"stylesheet/less\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
-					}
-					else{
-						$this->_header.="    <link href=\"".$element."\" rel=\"stylesheet\" type=\"text/css\" media=\"screen, print, handheld\" />\n";
-					}
-				}	
 			}
 			foreach($this->_jsInFile as $element){
 				$this->_header.="    <script type=\"text/javascript\">\n";
