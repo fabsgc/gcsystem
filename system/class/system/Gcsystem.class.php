@@ -230,6 +230,26 @@
 		public function run(){
 			echo $this->_output;
 			$this->_addErrorHr();
+
+			if($this->checkContentType() == false){
+				$GLOBALS['appDevGc']->setShow(false);
+			}
+		}
+
+		private function checkContentType(){ //renvoie false si on a pas affaire à du html et si on a une directive content-type
+			$header = headers_list();
+			
+			if(in_array('content-type: text/html', $header)){
+				return true;
+			}
+
+			foreach ($header as $key => $value) {
+				if(preg_match('#content-type#', $value)){
+					return false; //on a un content-type qui n'est pas html
+				}
+			}
+
+			return true;
 		}
 		
 		private function _checkHeaderStream($url){
