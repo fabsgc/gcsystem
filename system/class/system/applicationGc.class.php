@@ -88,6 +88,13 @@
 					break;
 				}
 			}
+
+			if(strtolower(CHARSET) == 'utf-8'){
+				foreach ($sql_connect as $value) {
+					$value->exec("SET CHARACTER SET utf8");
+				}
+			}
+
 			return $sql_connect;
 		}
 		
