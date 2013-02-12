@@ -280,7 +280,6 @@
 			foreach($list as $sentence){
 				
 				if($sentence->getAttribute($attribut) == $valeur){
-					echo $sentence->getAttribute('id');
 					$parent->removeChild($sentence);
 					$this->_removeChild($fichier, $dom, $parent, $list, $attribut, $valeur);
 					$dom->save($fichier);

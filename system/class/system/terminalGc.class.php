@@ -160,10 +160,10 @@
 								$this->_markupXml->setAttribute("id", $this->_commandExplode[2]);
 								
 								if(isset($this->_commandExplode[3])){
-									$this->_markupXml->setAttribute("url", "/".$this->_commandExplode[3]);
+									$this->_markupXml->setAttribute("url", "/".$this->_commandExplode[3].'/');
 								}
 								else{
-									$this->_markupXml->setAttribute("url", "/".$this->_commandExplode[2]);
+									$this->_markupXml->setAttribute("url", "/".$this->_commandExplode[2].'/');
 								}
 								
 								$this->_markupXml->setAttribute("rubrique", $this->_commandExplode[2]);
@@ -1311,7 +1311,6 @@
 						case 'route':
 							if(is_file(ROUTE) && file_exists(ROUTE) && is_readable(ROUTE)){
 								$sauvegarde = file_get_contents(ROUTE);
-								echo $sauvegarde;
 								$sauvegardes = explode("\n", $sauvegarde);
 								
 								$i = 0;
@@ -1339,7 +1338,6 @@
 						case 'errorperso':
 							if(is_file(ERRORPERSO) && file_exists(ERRORPERSO) && is_readable(ERRORPERSO)){
 								$sauvegarde = file_get_contents(ERRORPERSO);
-								echo $sauvegarde;
 								$sauvegardes = explode("\n", $sauvegarde);
 								
 								$i = 0;
@@ -1367,7 +1365,6 @@
 						case 'installed':
 							if(is_file(INSTALLED) && file_exists(INSTALLED) && is_readable(INSTALLED)){
 								$sauvegarde = file_get_contents(INSTALLED);
-								echo $sauvegarde;
 								$sauvegardes = explode("\n", $sauvegarde);
 								
 								$i = 0;
@@ -1422,7 +1419,6 @@
 						case 'plugin':
 							if(is_file(PLUGIN) && file_exists(PLUGIN) && is_readable(PLUGIN)){
 								$sauvegarde = file_get_contents(PLUGIN);
-								echo $sauvegarde;
 								$sauvegardes = explode("\n", $sauvegarde);
 								
 								$i = 0;
@@ -1450,7 +1446,6 @@
 						case 'app':
 							if(is_file(APPCONFIG) && file_exists(APPCONFIG) && is_readable(APPCONFIG)){
 								$sauvegarde = file_get_contents(APPCONFIG);
-								echo $sauvegarde;
 								$sauvegardes = explode("\n", $sauvegarde);
 								
 								$i = 0;
@@ -1478,7 +1473,6 @@
 						case 'firewall':
 							if(is_file(FIREWALL) && file_exists(FIREWALL) && is_readable(FIREWALL)){
 								$sauvegarde = file_get_contents(FIREWALL);
-								echo $sauvegarde;
 								$sauvegardes = explode("\n", $sauvegarde);
 								
 								$i = 0;
@@ -1506,7 +1500,6 @@
 						case 'antispam':
 							if(is_file(ASPAM) && file_exists(ASPAM) && is_readable(ASPAM)){
 								$sauvegarde = file_get_contents(ASPAM);
-								echo $sauvegarde;
 								$sauvegardes = explode("\n", $sauvegarde);
 								
 								$i = 0;
