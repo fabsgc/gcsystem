@@ -478,7 +478,7 @@
 				'id' => $this->_id,
 				'name' => $this->_name,
 				'width' => $this->_bbCodeWidth,
-				'Twidth' => $this->_bbCodeWidth,
+				'width' => $this->_bbCodeWidth,
 				'height' => $this->_bbCodeHeight,
 				'bgcolor' => $this->_bbCodeBgColor,
 				'theme' => $this->_bbCodeButton,
