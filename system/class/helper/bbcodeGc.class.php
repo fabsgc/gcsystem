@@ -189,7 +189,14 @@
 		 * @since 2.0
 		*/
 
-		public function parse($contenu){
+		public function parse($contenu = ""){
+			if($contenu != ""){
+				$this->_contenu = htmlentities($contenu);
+			}
+			else{
+				$this->_contenu = htmlentities($this->_contenu);
+			}
+
 			//securite
 			$this->_contenu = preg_replace(
 				'`'.preg_quote(self::TAGSTART).'img'.preg_quote(self::TAGEND).'javascript:(.*)'.preg_quote(self::TAGSTART2).'img'.preg_quote(self::TAGEND).'`isU', 
@@ -206,8 +213,6 @@
 				'script supprimé', 
 				$this->_contenu
 			);
-
-			$this->_contenu = htmlentities($contenu);
 
 			$this->_contenu =  preg_replace_callback('#((?:https?|ftp)://\S+?)(?=[]\).,;:!?]?(?:\s|\Z)|\Z)#isU',
 				array('bbcodeGc', '_link'), $this->_contenu);
