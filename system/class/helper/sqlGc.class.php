@@ -115,7 +115,7 @@
 			$this->_requete = $this->_bdd->prepare(''.$this->_query[''.$nom.''].'');
 			
 			foreach($this->_var as $cle => $val){
-				if(preg_match('#'.$cle.'#', $this->_query[''.$nom.''])){
+				if(preg_match('#:'.$cle.'#', $this->_query[''.$nom.''])){
 					if(is_array($val)){
 						$this->_requete->bindValue($cle,$val[0],$val[1]);
 					}
@@ -175,40 +175,40 @@
 				$GLOBALS['appDevGc']->addSql(''.$this->_query[''.$nom.''].'');
 				
 				foreach($this->_var as $cle => $val){
-					if(preg_match('#'.$cle.'#', $this->_query[''.$nom.''])){
+					if(preg_match('#:'.$cle.'#', $this->_query[''.$nom.''])){
 						if(is_array($val)){
 							$this->_requete->bindValue($cle,$val[0],$val[1]);
-							$GLOBALS['appDevGc']->addSql('_'.$cle.' : '.$val[0]);
+							$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val[0]);
 						}
 						else{
 							switch(gettype($val)){
 								case 'boolean' :
 									$this->_requete->bindValue(":$cle",$val,self::PARAM_BOOL);
-									$GLOBALS['appDevGc']->addSql('_'.$cle.' : '.$val);
+									$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
 								break;
 								
 								case 'integer' :
 									$this->_requete->bindValue(":$cle",$val,self::PARAM_INT);
-									$GLOBALS['appDevGc']->addSql('_'.$cle.' : '.$val);
+									$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
 								break;
 								
 								case 'double' :
 									$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
-									$GLOBALS['appDevGc']->addSql('_'.$cle.' : '.$val);
+									$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
 								break;
 								
 								case 'string' :
 									$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
-									$GLOBALS['appDevGc']->addSql('_'.$cle.' : '.$val);
+									$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
 								break;
 								
 								case 'NULL' :
 									$this->_requete->bindValue(":$cle",$val,self::PARAM_NULL);
-									$GLOBALS['appDevGc']->addSql($cle.' : '.$val);
+									$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
 								break;
 								
 								default :
-									$this->_addError('type non géré', __FILE__, __LINE__, ERROR);
+									$this->_addError('sql, variable '.$cle.', type non géré', __FILE__, __LINE__, ERROR);
 								break;
 							}
 						}
