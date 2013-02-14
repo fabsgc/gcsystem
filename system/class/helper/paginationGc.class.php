@@ -26,7 +26,7 @@
 		protected $_paginationLast        = array();
 		protected $_paginationBefore      = array();
 		protected $_paginationAfter       = array();
-		protected $_paginationCut         = false  ;
+		protected $_paginationCut         = false  ; //permet de spécifier cb de liens max à afficher à gauche et à droite du lien actuel
 		
 		protected $_data                  = array();
 	
@@ -118,7 +118,7 @@
 				$this->_paginationLastAfter = false;
 			}
 			
-			if($this->_paginationCut == false){
+			if($this->_paginationCut == false || $this->_paginationCut > $this->_nbrPage){ //inutile de couper le nombre de lien si y a pas assez de page
 				for($i = 1; $i<=$this->_nbrPage; $i++){
 					if($i == $this->_pageActuel && $linkDisabled != false){
 						$this->_paginationList[$i] = false;
@@ -181,6 +181,7 @@
 		
 		public function show($template = ''){
 			$rand = rand(0,2);
+
 			if($template == ''){
 				$tpl = new templateGc('GCsystem/GCpagination', 'pagination_'.$rand, 0, $this->_lang);
 			}
@@ -202,9 +203,12 @@
 				'totalpage'              => $this->_paginationTotalPage,
 				'nbrpage'                => $this->_nbrPage
 			));
-				
-			$tpl->show();
 			
+			$tpl->setShow(false);	
+			return $tpl->show();
+		}
+
+		public function getActualPage(){
 			return $this->_pageActuel;
 		}
 		

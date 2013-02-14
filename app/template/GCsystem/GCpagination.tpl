@@ -4,10 +4,10 @@
 	}
 </style>
 <div class="pagination">
-	<gc:if cond="$paginationFirstLast == true && $paginationFirstBefore == true">
+	<gc:if cond="$paginationFirstLast == true && $paginationFirstBefore == true && $nbrpage > 1">
 		<div class="pagination_first"><a href="{urlfirst}">_(pagination_first)_</a></div>
 	</gc:if>
-	<gc:if cond="$paginationBeforeAfter == true && $paginationFirstBefore == true">
+	<gc:if cond="$paginationBeforeAfter == true && $paginationFirstBefore == true && $pageActuel != 0">
 		<div class="pagination_before"><a href="{urlbefore}">_(pagination_before)_</a></div>
 	</gc:if>
 	
