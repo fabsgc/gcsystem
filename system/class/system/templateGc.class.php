@@ -641,7 +641,13 @@
 				}
 			}
 			
-			return '<?php echo \'http://gravatar.com/avatar/\'.md5("'.$m[1].'").\'?s='.$m[2].'&default=http://\'.$_SERVER[\'HTTP_HOST\'].\'\'.IMG_PATH.\'GCsystem/empty_avatar.png\'; ?>';
+			if(preg_match('#\'#', $m[1])){
+				$m[1] = preg_replace('#\'#', '"', $m[1]);
+				return '<?php echo \'http://gravatar.com/avatar/\'.md5('.$m[1].').\'?s='.$m[2].'&default=http://\'.$_SERVER[\'HTTP_HOST\'].\'\'.IMG_PATH.\'GCsystem/empty_avatar.png\'; ?>';
+			}
+			else{
+				return '<?php echo \'http://gravatar.com/avatar/\'.md5("'.$m[1].'").\'?s='.$m[2].'&default=http://\'.$_SERVER[\'HTTP_HOST\'].\'\'.IMG_PATH.\'GCsystem/empty_avatar.png\'; ?>';
+			}
 		}
 		
 		protected function _parseUrlRegex(){
