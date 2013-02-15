@@ -252,7 +252,7 @@
 			foreach($this->_bbCodeSmiley as $cle => $valeur){
 				$this->_contenu = preg_replace(
 					'`'.preg_quote($cle).'`isU', 
-						self::PARSETAGSTART.'img src="'.IMG_PATH.'bbcode/'.$valeur[0].'" alt="'.$valeur[1].'" '.self::PARSETAGENDAUTO.' ', 
+						self::PARSETAGSTART.'img src="'.IMG_PATH.'GCsystem/bbcode/'.$valeur[0].'" alt="'.$valeur[1].'" '.self::PARSETAGENDAUTO.' ', 
 						$this->_contenu
 				);
 			}
