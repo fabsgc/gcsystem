@@ -57,9 +57,9 @@
 			'align'  => array ('align val=&quot;(.*)&quot;', 'align', 'span style="display: inline-block; text-align: $1;"', 'span', '$2'),
 			'float'  => array ('float val=&quot;(.*)&quot;', 'float', 'span style="float: $1;"', 'span', '$2'),
 			'email'  => array ('email', 'email', 'a href="mailto:$1"', 'a', '$1'),
-			'color'  => array ('color val=&quot;(.*)&quot;', 'color', 'span style="color: $1;"', 'span', '$1'),
-			'taille' => array ('size val=&quot;(.*)&quot;', 'size', 'span style="font-size: $1em;"', 'span', '$1'),
-			'police' => array ('font val=&quot;(.*)&quot;', 'font', 'span style="font-family: $1;"', 'span', '$1'),
+			'color'  => array ('color val=&quot;(.*)&quot;', 'color', 'span style="color: $1;"', 'span', '$2'),
+			'taille' => array ('size val=&quot;(.*)&quot;', 'size', 'span style="font-size: $1em;"', 'span', '$2'),
+			'police' => array ('font val=&quot;(.*)&quot;', 'font', 'span style="font-family: $1;"', 'span', '$2'),
 		);
 
 		protected $_bbCodeSmiley = array (
@@ -67,10 +67,10 @@
 			':D'       => array('heureux.png', ':D'), 
 			':p'       => array('langue.png', ':p'),
 			':rire:'   => array('rire.png', ':rire:'),
-			':euh:'    => array('unsure.png', ':euh' ),
+			':euh:'    => array('unsure.png', ':euh:' ),
 			':('       => array('triste.png', ':('),
 			':o'       => array('huh.png', ':o'),
-			':colere:' => array('mechant.png', ':colere'),
+			':colere:' => array('mechant.png', ':colere:'),
 			'^^'       => array('hihi.png', '^^'),
 			':-&deg;'  => array('siffle.png', ':-°'),
 			':think:'  => array('think.png', ':think:'),
