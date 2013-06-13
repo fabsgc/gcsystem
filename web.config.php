@@ -135,9 +135,6 @@ define('JQUERY', true);
 /* mettre à true pour pouvoir utiliser less */
 define('LESS', false);
 
-/* mettre à true pour pouvoir utiliser le colorateur syntaxique */
-define('SYNTAXHIGHLIGHTER', true);
-
 /* mettre à true pour sécuriser les variables superglobales */
 define('SECUREGET', true);
 define('SECUREPOST', true);

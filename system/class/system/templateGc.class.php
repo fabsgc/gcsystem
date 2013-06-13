@@ -7,7 +7,7 @@
 	*/
 	
 	class templateGc{
-		use errorGc, langInstance, urlRegex, htmlHeaderGc, generalGc;             //trait
+		use errorGc, langInstance, urlRegex, generalGc;             //trait
 		
 		protected $_file               = ""         ;    //chemin vers le .tpl
 		protected $_fileCache          = ""         ;    //chemin vers le .compil.tpl
@@ -235,7 +235,7 @@
 	}
 	
 	class templateGcParser{
-		use errorGc, langInstance, urlRegex, domGc, htmlHeaderGc, errorPerso;                                          //trait
+		use errorGc, langInstance, urlRegex, domGc, errorPerso;                                          //trait
 		
 		protected $_templateGC                          ;
 		protected $_contenu                             ;
@@ -258,8 +258,7 @@
 			'while'          => array('while', 'cond'),                              // while
 			'for'            => array('for', 'var', 'boucle', 'cond'),               // for
 			'spaghettis'     => array('continue', 'break', 'goto', 'from', 'to'),    // spaghettis
-			'lang'           => array('_(', ')_'),                                   // langue
-			'htmlheader'     => array('setinfo', 'showheader', 'showfooter'));       // htmlHeader
+			'lang'           => array('_(', ')_'));                                  // langue
 
 		protected $error;
 		
@@ -279,8 +278,6 @@
 		
 		public function parse($c){
 			$this->_contenu=$c;
-			$this->_parseHtmlHeader();
-			$this->_parseHtmlSetInfo();
 			$this->_parsevarsPhp();
 			$this->_parseInclude();
 			$this->_parsevarAdd();
@@ -302,103 +299,6 @@
 			$this->_parseLang();
 			$this->_parseException();
 			return $this->_contenu;
-		}
-
-		protected function _parseHtmlHeader(){
-			$this->_contenu = preg_replace('`<'.$this->_name.preg_quote($this->bal['htmlheader'][1]).$this->_regexSpace.'/>`isU', '<?php echo $this->showHeader(); ?>', $this->_contenu);
-			$this->_contenu = preg_replace('`<'.$this->_name.preg_quote($this->bal['htmlheader'][2]).$this->_regexSpace.'/>`isU', '<?php echo $this->showFooter(); ?>', $this->_contenu);
-		}
-
-		protected function _parseHtmlSetInfo(){
-			$this->_contenu = preg_replace_callback('`<'.$this->_name.preg_quote($this->bal['htmlheader'][0]).$this->_regexSpace.'>(.+)</'.$this->_name.preg_quote($this->bal['htmlheader'][0]).'>`isU', 
-				array('templateGcParser','_parseHtmlSetInfoCallback'), $this->_contenu);
-		}
-
-		protected function _parseHtmlSetInfoCallback($m){
-			$this->_info = 'array(';
-
-			$stream = '<?xml version="1.0" encoding="utf-8" standalone="no"?>
-				<setinfo>'.$m[1].'</setinfo>';
-
-			$xml = simplexml_load_string($stream);
-
-			foreach($xml as $element){
-				switch($element->getName()){
-					case 'js':
-						$array = explode (',', strval($element));
-						$arraystring = 'array(';
-
-						foreach($array as $value){
-							$arraystring .= '\''.trim($value).'\',';
-						}
-
-						$arraystring .= ');';
-						$arraystring = preg_replace('#,\);#isU', ')', $arraystring);
-						$this->_info.= '\''.$element->getName().'\'=>'.$arraystring.',';
-					break;
-
-					case 'css':
-						$array = explode (',', strval($element));
-						$arraystring = 'array(';
-
-						foreach($array as $value){
-							$arraystring .= '\''.trim($value).'\',';
-						}
-
-						$arraystring .= ');';
-						$arraystring = preg_replace('#,\);#isU', ')', $arraystring);
-						$this->_info.= '\''.$element->getName().'\'=>'.$arraystring.',';
-					break;
-
-					case 'jsinfile':
-						$array = explode (',', strval($element));
-						$arraystring = 'array(';
-
-						foreach($array as $value){
-							$arraystring .= '\''.trim($value).'\',';
-						}
-
-						$arraystring .= ');';
-						$arraystring = preg_replace('#,\);#isU', ')', $arraystring);
-						$this->_info.= '\''.$element->getName().'\'=>'.$arraystring.',';
-					break;
-
-					case 'rss':
-						$array = explode (',', strval($element));
-						$arraystring = 'array(';
-
-						foreach($array as $value){
-							$arraystring .= '\''.trim($value).'\',';
-						}
-
-						$arraystring .= ');';
-						$arraystring = preg_replace('#,\);#isU', ')', $arraystring);
-						$this->_info.= '\''.$element->getName().'\'=>'.$arraystring.',';
-					break;
-
-					case 'otherheader':
-						$array = explode (',', strval($element));
-						$arraystring = 'array(';
-
-						foreach($array as $value){
-							$arraystring .= '\''.trim($value).'\',';
-						}
-
-						$arraystring .= ');';
-						$arraystring = preg_replace('#,\);#isU', ')', $arraystring);
-						$this->_info.= '\''.$element->getName().'\'=>'.$arraystring.',';
-					break;
-
-					default: 
-						$this->_info.= '\''.$element->getName().'\'=>\''.strval($element).'\',';
-					break;
-				}
-			}
-
-			$this->_info .= ');';
-			$this->_info = preg_replace('#,\);#isU', ')', $this->_info);
-
-			return '<?php $this->setInfo('.$this->_info.'); ?>';
 		}
 		
 		protected function _parsevars(){
@@ -435,7 +335,12 @@
 		}
 
 		protected function _parsevarsPhp(){
-			$this->_contenu = preg_replace('`'.preg_quote($this->bal['vars'][13]).'(.*)'.preg_quote($this->bal['vars'][14]).'`isU', '<?php $1 ?>', $this->_contenu);
+			$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][13]).'(.*)'.preg_quote($this->bal['vars'][14]).'`isU',
+				array('templateGcParser','_parsePhpCallback'), $this->_contenu);
+		}
+
+		protected function _parsePhpCallback($m){
+			return '<?php '.$m[1].' ?>';
 		}
 		
 		protected function _parseDefine(){

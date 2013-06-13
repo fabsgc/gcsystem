@@ -98,3 +98,43 @@
 24/12/2012 a 21:32:53 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 164 Appel du contrôleur "actionTerminal" de la rubrique "terminal" réussi
 ##### END OF EXECUTION ####################################################################################################
 24/12/2012 a 21:32:53 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 36 le fichier de template "GCsystemDev" ("app/template/GCsystem/GCsystemDev.tpl") a bien été chargé.
+17/03/2013 a 17:51:16 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 278 Content-Type : "Content-Type: text/html; charset=UTF-8"
+17/03/2013 a 17:51:16 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 50 Le fichier de route " app/config/routes.xml" a bien été chargé
+17/03/2013 a 17:51:17 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 218 Chargement des fichiers "app/rubrique/index.class.php" et "app/model/index.model.class.php"
+17/03/2013 a 17:51:17 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur index initialisé
+17/03/2013 a 17:51:17 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+17/03/2013 a 17:51:17 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 456 Le parefeu a identifié l'accès à la page index/ comme interdit pour cet utilisateur car il doit être connecté
+17/03/2013 a 17:51:17 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php ligne 211 fichier ouvert : app/config/routes.xml
+17/03/2013 a 17:51:17 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 462 Le parefeu n'a pas pu exécuter la redirection vers l'url d'id login
+##### END OF EXECUTION ####################################################################################################
+17/03/2013 a 17:51:17 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 39 le fichier de template "GCsystemDev" ("app/template/GCsystem/GCsystemDev.tpl") a bien été chargé.
+17/03/2013 a 17:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 278 Content-Type : "Content-Type: text/html; charset=UTF-8"
+17/03/2013 a 17:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 50 Le fichier de route " app/config/routes.xml" a bien été chargé
+17/03/2013 a 17:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 218 Chargement des fichiers "app/rubrique/index.class.php" et "app/model/index.model.class.php"
+17/03/2013 a 17:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur index initialisé
+17/03/2013 a 17:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+17/03/2013 a 17:51:21 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 456 Le parefeu a identifié l'accès à la page index/ comme interdit pour cet utilisateur car il doit être connecté
+17/03/2013 a 17:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php ligne 211 fichier ouvert : app/config/routes.xml
+17/03/2013 a 17:51:21 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 462 Le parefeu n'a pas pu exécuter la redirection vers l'url d'id login
+##### END OF EXECUTION ####################################################################################################
+17/03/2013 a 17:51:21 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 39 le fichier de template "GCsystemDev" ("app/template/GCsystem/GCsystemDev.tpl") a bien été chargé.
+17/03/2013 a 17:51:22 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 278 Content-Type : "Content-Type: text/html; charset=UTF-8"
+17/03/2013 a 17:51:22 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 50 Le fichier de route " app/config/routes.xml" a bien été chargé
+17/03/2013 a 17:51:22 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 218 Chargement des fichiers "app/rubrique/index.class.php" et "app/model/index.model.class.php"
+17/03/2013 a 17:51:22 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur index initialisé
+17/03/2013 a 17:51:22 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+17/03/2013 a 17:51:22 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 456 Le parefeu a identifié l'accès à la page index/ comme interdit pour cet utilisateur car il doit être connecté
+17/03/2013 a 17:51:22 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php ligne 211 fichier ouvert : app/config/routes.xml
+17/03/2013 a 17:51:22 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 462 Le parefeu n'a pas pu exécuter la redirection vers l'url d'id login
+##### END OF EXECUTION ####################################################################################################
+17/03/2013 a 17:51:22 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 39 le fichier de template "GCsystemDev" ("app/template/GCsystem/GCsystemDev.tpl") a bien été chargé.
+17/03/2013 a 17:51:23 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 278 Content-Type : "Content-Type: text/html; charset=UTF-8"
+17/03/2013 a 17:51:23 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 50 Le fichier de route " app/config/routes.xml" a bien été chargé
+17/03/2013 a 17:51:23 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\Gcsystem.class.php ligne 218 Chargement des fichiers "app/rubrique/index.class.php" et "app/model/index.model.class.php"
+17/03/2013 a 17:51:23 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\applicationGc.class.php ligne 24 Contrôleur index initialisé
+17/03/2013 a 17:51:23 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 23 le fichier app/config/firewall.xml a bien été chargé
+17/03/2013 a 17:51:23 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 456 Le parefeu a identifié l'accès à la page index/ comme interdit pour cet utilisateur car il doit être connecté
+17/03/2013 a 17:51:23 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\generalGc.class.php ligne 211 fichier ouvert : app/config/routes.xml
+17/03/2013 a 17:51:23 ! : [ERROR] fichier C:\wamp\www\GCsystem\system\class\system\firewallGc.class.php ligne 462 Le parefeu n'a pas pu exécuter la redirection vers l'url d'id login
+##### END OF EXECUTION ####################################################################################################
+17/03/2013 a 17:51:23 ! : [INFORMATION] fichier C:\wamp\www\GCsystem\system\class\system\templateGc.class.php ligne 39 le fichier de template "GCsystemDev" ("app/template/GCsystem/GCsystemDev.tpl") a bien été chargé.
