@@ -44,7 +44,7 @@
 						$this->_buttonFl = $val;
 					break;
 					
-					case 'buttonNp':
+					case 'buttonBa':
 						$this->_buttonBa = $val;
 					break;
 					
@@ -210,6 +210,10 @@
 
 		public function getActualPage(){
 			return $this->_pageActuel;
+		}
+
+		public function getNbrPage(){
+			return $this->_nbrPage;
 		}
 		
 		public function getData($data){

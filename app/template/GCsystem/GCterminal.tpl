@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>GCsystem - Terminal</title>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index,follow" />
+    <!--[if lt IE 9]>
+    	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="icon" type="image/png" href="{{def:IMG_PATH}}/GCsystem/logo.ico" />
+    <script type="text/javascript" src="{{def:JS_PATH}}/jquery/jquery.min.js" ></script>
+    </script>
+  </head>
+  <body>
 <style>
 	html, body{
 		padding: 0;
@@ -151,9 +165,7 @@
 	
 	function terminal_empty(){
 		//if (window.focus){ window.location.href="#terminal_input_write"; }
-	}
-
-	
+	}	
 </script>
 <div id="gc_terminal">
 	<div id="gc_terminal_top">
