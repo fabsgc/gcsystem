@@ -556,7 +556,7 @@
 		}
 		
 		protected function _parseUrlRegex(){
-			if(preg_match('`'.preg_quote($this->bal['vars'][9]).'([\w]+):([^\s]*)'.preg_quote($this->bal['vars'][10]).'`sU', $this->_contenu)){
+			if(preg_match('`'.preg_quote($this->bal['vars'][9]).'([\w]+):(.*)'.preg_quote($this->bal['vars'][10]).'`sU', $this->_contenu)){
 				$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][9]).'([\w]+):([^\s]*)'.preg_quote($this->bal['vars'][10]).'`sU',
 				array('templateGcParser', '_parseUrlRegexCallback'), $this->_contenu);
 			}
@@ -603,7 +603,7 @@
 		protected function _parseException(){
 			$this->_contenu = preg_replace('#'.preg_quote('; ?>; ?>').'#isU', '; ?>', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('<?php echo <?php').'#isU', '<?php echo', $this->_contenu);
-			$this->_contenu = preg_replace('#'.preg_quote('<?php').'(.*)'.preg_quote('= <?php').'#isU', '<?php$1=', $this->_contenu);
+			//$this->_contenu = preg_replace('#'.preg_quote('<?php').'(.*)'.preg_quote('= <?php').'#isU', '<?php$1=', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('?>').$this->_regexSpaceR.preg_quote('/>').'#isU', '?>', $this->_contenu);
 
 			//print_r($this->_templateGC->vars);
