@@ -14,6 +14,7 @@
 		protected $bdd                                                            ; //contient la connexion sql
 		protected $_firewall                                                      ;
 		protected $_antispam                                                      ;
+		protected $_nameModel          = ""                                       ; //pour les crons lors de l'init du model, on ne peut pas utiliser $_GET['rubrique']
 		
 		/* ---------- CONSTRUCTEURS --------- */
 		
@@ -53,12 +54,29 @@
 		}
 		
 		final protected function loadModel(){
-			$class = 'manager'.ucfirst($_GET['rubrique']);
-			if(class_exists($class)){	
-				$this->_addError('Model '.$_GET['rubrique'].' initialisé', __FILE__, __LINE__, INFORMATION);
-				$instance = new $class($this->_lang, $this->bdd);
-				$instance->init();
-				return $instance;
+			if($this->_nameModel != ""){ //si il ne s'agit pas d'une url mais d'un CRON
+				$class = 'manager'.ucfirst($this->_nameModel);
+				if(class_exists($class)){	
+					$this->_addError('Model '.$this->_nameModel.' initialisé', __FILE__, __LINE__, INFORMATION);
+					$instance = new $class($this->_lang, $this->bdd);
+					$instance->init();
+					return $instance;
+				}
+				else{
+					$this->_addError('Impossible de charger le model "'.$this->_nameModel.'"', __FILE__, __LINE__, ERROR);
+				}
+			}
+			else{
+				$class = 'manager'.ucfirst($_GET['rubrique']);
+				if(class_exists($class)){	
+					$this->_addError('Model '.$_GET['rubrique'].' initialisé', __FILE__, __LINE__, INFORMATION);
+					$instance = new $class($this->_lang, $this->bdd);
+					$instance->init();
+					return $instance;
+				}
+				else{
+					$this->_addError('Impossible de charger le model "'.$_GET['rubrique'].'"', __FILE__, __LINE__, ERROR);
+				}
 			}
 		}
 		
@@ -142,6 +160,10 @@
 			$t= new templateGC(GCSYSTEM_PATH.'GCnewrubrique', 'GCrubrique', '0');
 			$t->assign(array('rubrique' => $_GET['rubrique']));
 			$t->show();
+		}
+
+		final public function setNameModel($nameModel){
+			$this->_nameModel = $nameModel;
 		}
 		
 		final protected function affTemplate($nom_template){
