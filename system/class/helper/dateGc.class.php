@@ -87,6 +87,7 @@
 		const DATE_COMPLETE_H_FR_2               = 'j M Y \à h \h\e\u\r\e\(\s\)';
 		const DATE_COMPLETE_HM_FR_1              = 'd/m/Y \à h\h i\m';
 		const DATE_COMPLETE_HM_FR_2              = 'j M Y \à h \h\e\u\r\e\(\s\) i \m\i\n\u\t\e\(\s\)';
+		const DATE_COMPLETE_HM_FR_3              = 'd/m/Y \à h\hi';
 		const DATE_COMPLETE_FR_1                 = 'd/m/Y \à h\h i\m s\s';
 		const DATE_COMPLETE_FR_2                 = 'j M Y \à h \h\e\u\r\e\(\s\) i \m\i\n\u\t\e\(\s\) s \s\e\c\o\n\d\e\(\s\)';
 		
@@ -94,6 +95,7 @@
 		const DATE_COMPLETE_H_NL_2               = 'j M Y \o\p h \u\u\r';
 		const DATE_COMPLETE_HM_NL_1              = 'd/m/Y \o\p h\u i\m';
 		const DATE_COMPLETE_HM_NL_2              = 'j M Y \o\p h \u\u\r i \m\i\n\u\(\u\)\t\e\(\n\)';
+		const DATE_COMPLETE_HM_NL_3              = 'd/m/Y \o\p h\ui';
 		const DATE_COMPLETE_NL_1                 = 'd/m/Y \o\p h\u i\m s\s';
 		const DATE_COMPLETE_NL_2                 = 'j M Y \o\p h \u\u\r i \m\i\n\u\(\u\)\t\e\(\n\) s \s\e\c\o\n\d\e(\n)';
 		
@@ -101,6 +103,7 @@
 		const DATE_COMPLETE_H_EN_2               = 'j M Y \a\t h \h\o\u\r\(\s\)';
 		const DATE_COMPLETE_HM_EN_1              = 'd/m/Y \a\t h\h i\m';
 		const DATE_COMPLETE_HM_EN_2              = 'j M Y \a\t h \h\o\u\r\(\s\) i \m\i\n\u\t\(\s\)';
+		const DATE_COMPLETE_HM_EN_3              = 'd/m/Y \a\t h\hi';
 		const DATE_COMPLETE_EN_1                 = 'd/m/Y \a\t h\h i\m s\s';
 		const DATE_COMPLETE_EN_2                 = 'j M Y \a\t h \h\o\u\r\(\s\) i \m\i\n\u\t\(\s\) s \s\e\c\o\n\d\(\s\)';
 		
