@@ -115,17 +115,22 @@
 		*/
 	 
 		public function isDie(){
-			$rep = false;
-			if(!file_exists($this->_nameFile)){
-				$rep = true;
-			}
-			else{
-				$time_ago = time() - filemtime($this->_nameFile);
-				if($time_ago > $this->_time){
+			if($this->_time > 0){
+				$rep = false;
+				if(!file_exists($this->_nameFile)){
 					$rep = true;
 				}
+				else{
+					$time_ago = time() - filemtime($this->_nameFile);
+					if($time_ago > $this->_time){
+						$rep = true;
+					}
+				}
+				return $rep;
 			}
-			return $rep;
+			else{
+				return true;
+			}
 		}
 		
 		/**
