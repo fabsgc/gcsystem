@@ -21,14 +21,19 @@
 		 * @param string $name : nom du fichier de cache
 		 * @param string $val : contenu du fichier de cache<br />
 		 * @param int $time : temps de mise en cache du fichier. La valeur par défaut, 0 correspond à un fichier non mis en cache
+		 * @param int $sha1 : le nom du fichier est hashé ou non
 		 * @since 2.0
 		*/
 		
 		public function __construct($name, $val, $time=0){
 			$this->_time = $time;
 			$this->_name = $name;
-			$this->_nameFile = CACHE_PATH.$name.'.cache';
 			$this->_val = $val;
+
+			if(CACHE_SHA1 == 'true')
+				$this->_nameFile = CACHE_PATH.sha1($name.'.cache');
+			else
+				$this->_nameFile = CACHE_PATH.$name.'.cache';
 		}
 		
 		/**

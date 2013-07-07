@@ -142,6 +142,9 @@ define('SECUREPOST', true);
 /* prefixe des constantes de l'utilisateur */
 define('CONST_APP_PREFIXE', 'USER_');
 
+/* le nom des fichiers de cache sera hashé ou non */
+define('CACHE_SHA1', false);
+
 /* à ne pas modifier */
 define('IMG_PATH', FOLDER.'/'.ASSET_PATH.'image/');
 define('CSS_PATH', FOLDER.'/'.ASSET_PATH.'css/');

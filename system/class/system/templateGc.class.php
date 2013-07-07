@@ -33,7 +33,12 @@
 				
 				$this->_nom=$nom;
 				$this->_timeCache=$timecache;
-				$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';
+
+				if(CACHE_SHA1 == 'true')
+					$this->_fileCache=CACHE_PATH.sha1('template_'.$this->_nom.'.tpl.compil.php');
+				else
+					$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';
+
 				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 				$this->_setParser();
 				$this->_addError('le fichier de template "'.$this->_nom.'" ("'.$this->_file.'") a bien été chargé.', __FILE__, __LINE__, INFORMATION);
@@ -248,7 +253,7 @@
 		
 		/// les balises à parser
 		protected $bal= array(
-			'vars'           => array('{', '}', '{$', '}', '{{', '}}', 'variable', '{{gravatar:', '}}', '{{url:', '}}', '{{def:', '}}', '{{php:',  '}}'),  // vars
+			'vars'           => array('{', '}', '{$', '}', '{{', '}}', 'variable', '{{gravatar:', '}}', '{{url:', '}}', '{{def:', '}}', '{{php:',  '}}', '{{lang:', '}}'),  // vars
 			'include'        => array('include', 'file', 'cache'),                   // include
 			'cond'           => array('if', 'elseif', 'else', 'cond'),               // condition
 			'foreach'        => array('foreach', 'var', 'as', 'foreachelse'),        // boucle tableau
@@ -297,6 +302,7 @@
 			$this->_parseFunc();
 			$this->_parseSpaghettis();
 			$this->_parseLang();
+			$this->_parseLang2();
 			$this->_parseException();
 			return $this->_contenu;
 		}
@@ -509,6 +515,10 @@
 		}
 		
 		protected function _parseLang(){
+			$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][15]).'(.*)'.preg_quote($this->bal['vars'][16]).'`isU', array('templateGcParser', '_parseLangCallBack'), $this->_contenu);
+		}
+
+		protected function _parseLang2(){
 			$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['lang'][0]).'(.*)'.preg_quote($this->bal['lang'][1]).'`isU', array('templateGcParser', '_parseLangCallBack'), $this->_contenu);
 		}
 
