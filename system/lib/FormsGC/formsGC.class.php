@@ -404,6 +404,9 @@
 						$this->GCcontent.="    ".$element."\n";
 					}
 				}
+
+				/* champs cache avec name */
+				$this->GCcontent.="    <input type=\"hidden\" name=\"".$this->GCname."\" />\n";
 				
 				$this->GCcontent.="  </fieldset>\n";
 			}
@@ -465,179 +468,120 @@
 			if($label!="") $this->GCtypeInput.="<label>".$label."</label>";
 			switch($type){
 				case 'hidden':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 				
 				case 'password':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 
 				case 'text':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 				
 				case 'email':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 				
 				case 'date':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 				
 				case 'datetime':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 				
 				case 'month':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 				
 				case 'number':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 				
 				case 'range':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 				
 				case 'search':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 				
 				case 'tel':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 				
 				case 'time':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 				
 				case 'url':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
+					if(empty($attribute['value'])){
 						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
 						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
+						elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
+					}
+					else{
+						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
 					}
 				break;
 				
 				case 'week':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 				
 				case 'datetime-local':
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 				
 				default:
-					if(isset($attribute['value'])){
-						$this->GCtypeInput.="<input type=\"text\" value=\"".$attribute['value']."\"";
-					}
-					else{
-						if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-						elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
-						else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\""; }
-					}
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
+					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
 			}
 			
@@ -800,9 +744,12 @@
 				$this->GCtypeTextarea.=$attribut."=\"".$valeur."\" ";
 			}
 			$this->GCtypeTextarea.=">";
-			if($value!="" && !@$_POST[''.$attribute['name'].''] && !@$_POST[''.$attribute['name'].'']) $this->GCtypeTextarea.=$value;
+
 			if (isset($_POST[''.$attribute['name'].''])) $this->GCtypeTextarea.=@$_POST[''.$attribute['name'].''];
-			if (isset($_GET[''.$attribute['name'].''])) $this->GCtypeTextarea.=@$_GET[''.$attribute['name'].''];
+			elseif (isset($_GET[''.$attribute['name'].''])) $this->GCtypeTextarea.=@$_GET[''.$attribute['name'].''];
+			else if($value!="") $this->GCtypeTextarea.=$value;
+			else $this->GCtypeTextarea.='';
+			
 			$this->GCtypeTextarea.="</textarea>";
 			for($this->i=1;$this->i<=$br;$this->i++){
 				$this->GCtypeTextarea.="<br />";

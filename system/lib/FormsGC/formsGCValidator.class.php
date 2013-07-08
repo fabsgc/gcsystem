@@ -10,14 +10,16 @@
 		
 		private $valid=array();
 		private $content;
+		private $nameForm;            //permet d'identifier un formulaire et couplé au champ hidden de formsgc de savoir si le form a été envoyé ou non
 		
 		private $i=0;
 		
 		/* ---------- CONSTRUCTEUR --------- */
 		
-		public  function __construct($method="GET", $bdd=""){
+		public  function __construct($method="GET", $bdd="", $nameForm=""){
 			$this->method=$method;
 			$this->bdd=$bdd;
+			$this->nameForm = $nameForm;
 		}
 		
 		public  function addfield($type="", $name="", $name_content="", $contraint=array(), $error=array()){
@@ -142,7 +144,10 @@
 		public  function sentForm(){
 			if($this->method=='get'){
 				if(count($_GET)>0){
-					return true;
+					if(isset($_GET[$this->nameForm]))
+						return true;
+					else
+						return false;
 				}
 				else{
 					return false;
@@ -150,7 +155,10 @@
 			}
 			elseif($this->method=='post'){
 				if(count($_POST)>0){
-					return true;
+					if(isset($_POST[$this->nameForm]))
+						return true;
+					else
+						return false;
 				}
 				else{
 					return false;
@@ -175,7 +183,6 @@
 				$value=$field->return_array(); //$field contient un objet, on retourne tout ça sous forme de tableau
 				$this->validateFunction($value);
 			}
-		
 		}
 		
 		private function validateFunction($value){
