@@ -9,7 +9,7 @@
 	<div id="window_info_footer">
 		<a href="{redirect}">
 			<div id="window_info_bouton">
-				_(windowinfo_Back)_
+				{{lang:windowinfo_Back}}
 			</div>
 		</a>
 	</div>

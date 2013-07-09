@@ -554,7 +554,7 @@
 	}
 	
 	function bbCodeGcPreviewAjax_{id}(){
-		alert("_(alertpreviewbbocde)_");
+		alert("{{lang:alertpreviewbbocde}}");
 	}
 
 	function bbCodeGcVideo(video){
@@ -765,12 +765,12 @@
 	<textarea id="{id}" name="{name}"<gc:if cond="$preview == true && $instantane == true"> onKeyUp="bbCodeGcPreview_{id}('{id}');" </gc:if> >{message}</textarea>
 	<gc:if cond="$preview == true && $previewAjax == true">
 		<div class="gc_bbcode_preview_button button {theme}" onClick="bbCodeGcPreviewAjax_{id}();">
-			_(bbcodepreview)_
+			{{lang:bbcodepreview}}
 		</div>
 	</gc:if>
 	<gc:if cond="$preview == true && $previewAjax == false && $instantane == false">
 		<div class="gc_bbcode_preview_button button {theme}" onClick="bbCodeGcPreview_{id}('{id}');">
-			_(bbcodepreview)_
+			{{lang:bbcodepreview}}
 		</div>
 	</gc:if>
 	<div class="gc_bbcode_preview_zone" id="zone_{id}">

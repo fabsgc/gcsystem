@@ -54,11 +54,11 @@
 		 {{gravatar:$var:500}} 
 	</div>
 	<div id="GCsystem_right">
-		<h1>_(bienvenue)_</h1>
-		<p>_(content)_</p>
+		<h1>{{lang:bienvenue}}</h1>
+		<p>{{lang:content}}</p>
 		<ul>
-			<li><a href="">_(liredoc)_</a></li>
-			<li><a href="">_(lirecours)_</a></li>
+			<li><a href="">{{lang:liredoc}}</a></li>
+			<li><a href="">{{lang:lirecours}}</a></li>
 			<li><a href="{{url:terminal:}}">terminal</a>
 		</ul>
 	</div>

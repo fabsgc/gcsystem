@@ -1,2 +1,2 @@
-<h1 style="text-align: center;">{url} _(403)_ ({antispam})</h1>
-<p>_(anormal_activity)_</p>
+<h1 style="text-align: center;">{url} {{lang:403}} ({antispam})</h1>
+<p>{{lang:anormal_activity}}</p>

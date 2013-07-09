@@ -95,11 +95,11 @@
 <div id="GCsysytem_dev">
 	<div id="GCsysytem_dev_logo"><img src="{IMG_PATH}logo.png"/></div>
 	<div class="GCsysytem_dev_content">
-		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}time.png" title="_(executiontime)_"/><img src="{IMG_PATH}memory.png" title="_(memoireuse)_"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}time.png" title="{{lang:executiontime)_"/><img src="{IMG_PATH}memory.png" title="_(memoireuse}}"/></div>
 		<div class="GCsysytem_dev_content_content" style="padding: 2px; width: 70px;">{timeexec} ms<br /><span style="position: relative; top: 10px;">{memory} kb</span></div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}http.png" title="_(fichierinclus)_"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}http.png" title="{{lang:fichierinclus}}"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone" style="width: 219px;">
 			{http}
@@ -107,7 +107,7 @@
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 275px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}sql.png" title="_(requetesql)_"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}sql.png" title="{{lang:requetesql}}"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone" style="width: 244px;">
 			{sql}
@@ -115,7 +115,7 @@
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}tpl.png" title="_(fichiertpl)_"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}tpl.png" title="{{lang:fichiertpl}}"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone" style="width: 219px;">
 			{tpl}
@@ -123,7 +123,7 @@
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 200px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}arbo.png" title="_(vargetpost)_"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}arbo.png" title="{{lang:vargetpost}}"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone"  style="width: 169px;">
 				{<gc:function name="nl2br" string="$arbo" />}

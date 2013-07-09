@@ -2,4 +2,4 @@
 {message2}<br />
 {message3}<br />
 {message4}<br />
-_(pagination_last)_
+{{lang:pagination_last}}

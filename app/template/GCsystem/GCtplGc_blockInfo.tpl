@@ -8,7 +8,7 @@
 	<div id="block_info_footer">
 		<a href="{redirect}">
 			<div id="window_info_bouton">
-				_(blockinfo_Back)_
+				{{lang:blockinfo_Back}}
 			</div>
 		</a>
 	</div>

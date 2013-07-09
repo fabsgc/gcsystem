@@ -26,5 +26,5 @@
 	}
 </style>
 <div id="GCsystem">
-	<h1>_(maintenance)_</h1>
+	<h1>{{lang:maintenance}}</h1>
 </div>

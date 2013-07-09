@@ -5,10 +5,10 @@
 </style>
 <div class="pagination">
 	<gc:if cond="$paginationFirstLast == true && $paginationFirstBefore == true && $nbrpage > 1">
-		<div class="pagination_first"><a href="{urlfirst}">_(pagination_first)_</a></div>
+		<div class="pagination_first"><a href="{urlfirst}">{{lang:pagination_first}}</a></div>
 	</gc:if>
 	<gc:if cond="$paginationBeforeAfter == true && $paginationFirstBefore == true && $pageActuel != 0">
-		<div class="pagination_before"><a href="{urlbefore}">_(pagination_before)_</a></div>
+		<div class="pagination_before"><a href="{urlbefore}">{{lang:pagination_before}}</a></div>
 	</gc:if>
 	
 	<div class="pagination_list">
@@ -21,10 +21,10 @@
 		</gc:foreach>
 	</div>
 	<gc:if cond="$paginationBeforeAfter == true && $paginationLastAfter == true">
-		<div class="pagination_after"><a href="{urlafter}">_(pagination_after)_</a></div>
+		<div class="pagination_after"><a href="{urlafter}">{{lang:pagination_after}}</a></div>
 	</gc:if>
 	<gc:if cond="$paginationFirstLast == true && $paginationLastAfter == true">
-		<div class="pagination_last"><a href="{urllast}">_(pagination_last)_</a></div>
+		<div class="pagination_last"><a href="{urllast}">{{lang:pagination_last}}</a></div>
 	</gc:if>
 	<gc:if cond="$totalpage == true">
 		<gc:if cond="$pageActuel != $nbrpage">
