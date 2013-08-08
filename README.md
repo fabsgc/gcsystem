@@ -24,7 +24,7 @@ Installation :
 * téléchargez l'archive sur github
 * décompressez l'archive dans le répertoire désiré
 * dans le fichier web.config.php, modifiez la constante "FOLDER" et indiquez-y le répertoire où se trouve le framework. Par exemple : /GCsystem
-* chargez l'url : http://monsite.com/FOLDER/
+* chargez l'url racine du site (/)
 
 Contenus externes :
 -----------
