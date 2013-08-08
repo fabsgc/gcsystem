@@ -38,8 +38,8 @@
 			'quote'  => array ('quote title=&quot;(.*)&quot;', 'quote', 'blockquote title="$1"', 'blockquote', '$2'),
 			'sup'    => array ('sup', 'sup', 'sup', 'sup', '$1'),
 			'sub'    => array ('sub', 'sub', 'sub', 'sub', '$1'),
-			'a'      => array ('a', 'a', 'a href="$1"', 'a', '$1'),
-			'a2'     => array ('a url=&quot;(.*)&quot;', 'a', 'a href="$1"', 'a', '$2'),
+			'a'      => array ('a', 'a', 'a href=&quot;$1=&quot;', 'a', '$1'),
+			'a2'     => array ('a href=&quot;(.*)&quot;', 'a', 'a href="$1"', 'a', '$2'),
 			'h1'     => array ('h1', 'h1', 'h1', 'h1', '$1'),
 			'h2'     => array ('h2', 'h2', 'h2', 'h2', '$1'),
 			'h3'     => array ('h3', 'h3', 'h3', 'h3', '$1'),
@@ -83,7 +83,7 @@
 			'sup'    => array ('sup', 'sup', 'sup', 'sup', '$1'),
 			'sub'    => array ('sub', 'sub', 'sub', 'sub', '$1'),
 			'a'      => array ('a', 'a', 'a href="$1"', 'a', '$1'),
-			'a2'     => array ('a url="(.*)"', 'a', 'a href="$1"', 'a', '$2'),
+			'a2'     => array ('a href="(.*)"', 'a', 'a href="$1"', 'a', '$2'),
 			'h1'     => array ('h1', 'h1', 'h1', 'h1', '$1'),
 			'h2'     => array ('h2', 'h2', 'h2', 'h2', '$1'),
 			'h3'     => array ('h3', 'h3', 'h3', 'h3', '$1'),
@@ -125,7 +125,7 @@
 			'del'    => array ('del', 'del', 'barre.png'),
 			'h3'     => array ('h3', 'h3', 'titre1.png'),
 			'h4'     => array ('h4', 'h4', 'titre2.png'),
-			'a2'     => array ('a url=&quot;&quot;', 'a', 'lien.png'),
+			'a2'     => array ('a href=&quot;&quot;', 'a', 'lien.png'),
 			'img'    => array ('img', 'img', 'image.png'),
 			'liste'  => array ('ul][li', 'li][/ul', 'liste.png'),
 			'tableau'=> array ('table][tr][td', 'td][/tr][/table', 'tab.png'),
@@ -142,6 +142,9 @@
 			'video'  => array ('video', 'video', 'video.png'),
 			'code'   => array ('code type=&quot;&quot;', 'code', 'code.png'),
 		);
+
+		protected $_codeInArray = array(); //permet d'enregistrer ailleurs les balises code pour que leur contenu ne soit pas parsé
+		protected $_codeInArrayId = 0;
 
 		/**
 		 * Crée l'instance de la classe
@@ -191,10 +194,10 @@
 
 		public function parse($contenu = ""){
 			if($contenu != ""){
-				$this->_contenu = htmlentities($contenu);
+				$this->_contenu = ($contenu);
 			}
 			else{
-				$this->_contenu = htmlentities($this->_contenu);
+				$this->_contenu = ($this->_contenu);
 			}
 
 			//securite
@@ -214,8 +217,26 @@
 				$this->_contenu
 			);
 
-			$this->_contenu =  preg_replace_callback('#((?:https?|ftp)://\S+?)(?=[]\).,;:!?]?(?:\s|\Z)|\Z)#isU',
-				array('bbcodeGc', '_link'), $this->_contenu);
+			$this->_contenu =  preg_replace_callback('#^((?:https?|ftp)://\S+?)(?=[]\).,;:!?]?(?:\s|\Z)|\Z)#isU',
+				array('editorGc', '_linkBegin'), $this->_contenu);
+
+			$this->_contenu =  preg_replace_callback('#\n((?:https?|ftp)://\S+?)(?=[]\).,;:!?]?(?:\s|\Z)|\Z)#isU',
+				array('editorGc', '_linkLine'), $this->_contenu);
+
+			$this->_contenu =  preg_replace_callback('# ((?:https?|ftp)://\S+?)(?=[]\).,;:!?]?(?:\s|\Z)|\Z)#isU',
+				array('editorGc', '_linkText'), $this->_contenu);
+
+			/* ############################### CODE ###################### */
+			$this->_contenu = preg_replace_callback(
+				'`'.preg_quote(self::TAGSTART).'code type=&quot;(.*)&quot;'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'code'.preg_quote(self::TAGEND).'`isU', 
+				array('editorGc', '_codeInArray'), $this->_contenu
+			);
+
+			/* ############################### VIDEO ###################### */
+			$this->_contenu = preg_replace_callback(
+				'`'.preg_quote(self::TAGSTART).'video'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'video'.preg_quote(self::TAGEND).'`isU', 
+				array('editorGc', '_video'), $this->_contenu
+			);
 
 			foreach($this->_bbCode as $cle => $valeur){
 				if($valeur[3]!=""){
@@ -257,17 +278,14 @@
 				);
 			}
 
-			//balise non html
 			$this->_contenu = preg_replace_callback(
-				'`'.preg_quote(self::TAGSTART).'video'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'video'.preg_quote(self::TAGEND).'`isU', 
-				array('bbcodeGc', '_video'), $this->_contenu
+				'`\[code id=(.+)\]`isU', 
+				array('editorGc', '_codeInString'), $this->_contenu
 			);
 
-			$this->_contenu = nl2br($this->_contenu);
-			
 			$this->_contenu = preg_replace_callback(
 				'`'.preg_quote(self::TAGSTART).'code type=&quot;(.*)&quot;'.preg_quote(self::TAGEND).'(.*)'.preg_quote(self::TAGSTART2).'code'.preg_quote(self::TAGEND).'`isU', 
-				array('bbcodeGc', '_code'), $this->_contenu
+				array('editorGc', '_code'), $this->_contenu
 			);
 			
 			$this->_contenu = preg_replace('`><br \/>`isU', '>', $this->_contenu);
@@ -334,7 +352,37 @@
 		protected function _code($contenu){
 			$contenu[2] = preg_replace("/\<br\s*\/?\>\n/i", "\n", $contenu[2]);
 			
-			return '<script type="syntaxhighlighter" class="brush: '.$contenu[1].'; auto-links: false;"><![CDATA['.$contenu[2].']]></script>';
+			return '<pre class="brush: '.$contenu[1].'">'.$contenu[2].'</pre>';
+		}
+
+		/**
+		 * enreigstre ailleurs les balises code pour que leur contenu ne soit pas parsé
+		 * @param string $contenu : code à parser
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
+
+		protected function _codeInArray($contenu){
+			$contenu[2] = preg_replace("/\<br\s*\/?\>\n/i", "\n", $contenu[2]);
+
+			array_push($this->_codeInArray, array($contenu[1], $contenu[2]));
+			$code = '[code id='.$this->_codeInArrayId.']';
+			$this->_codeInArrayId ++;
+
+			return $code;
+		}
+
+		/**
+		 * après le parsage du message, remet les balises codes à leur place
+		 * @param string $contenu : code à parser
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
+
+		protected function _codeInString($contenu){			
+			return '[code type=&quot;'.$this->_codeInArray[$contenu[1]][0].'&quot;]'.$this->_codeInArray[$contenu[1]][1].'[/code]';
 		}
 
 		/**
@@ -345,13 +393,49 @@
 		 * @since 2.0
 		*/
 
-		protected function _link($contenu){
+		protected function _linkBegin($contenu){
 			if(strlen($contenu[1])>65){
 				return self::PARSETAGSTART.'a href="http://'.substr($contenu[1], 6,strlen($contenu[1])).'"'.self::PARSETAGEND.substr($contenu[1], 0,65).'...'.self::PARSETAGSTART2.'a'.self::PARSETAGEND; 
 				//return '<                   a href="http://'.substr($texte,      6,strlen($texte     )).'"                 >'.substr($texte,      0,65).'...</                      a  >'; 
 			}
 			else{
 				return self::PARSETAGSTART.'a href="http://'.substr($contenu[1], 6,strlen($contenu[1])).'"'.self::PARSETAGEND.$contenu[1].self::PARSETAGSTART2.'a'.self::PARSETAGEND;
+			}
+		}
+
+		/**
+		 * parse les liens
+		 * @param string $contenu : lien à parser
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
+
+		protected function _linkText($contenu){
+			if(strlen($contenu[1])>65){
+				return ' '.self::PARSETAGSTART.'a href="http://'.substr($contenu[1], 6,strlen($contenu[1])).'"'.self::PARSETAGEND.substr($contenu[1], 0,65).'...'.self::PARSETAGSTART2.'a'.self::PARSETAGEND; 
+				//return '<                   a href="http://'.substr($texte,      6,strlen($texte     )).'"                 >'.substr($texte,      0,65).'...</                      a  >'; 
+			}
+			else{
+				return ' '.self::PARSETAGSTART.'a href="http://'.substr($contenu[1], 6,strlen($contenu[1])).'"'.self::PARSETAGEND.$contenu[1].self::PARSETAGSTART2.'a'.self::PARSETAGEND;
+			}
+		}
+
+		/**
+		 * parse les liens
+		 * @param string $contenu : lien à parser
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
+
+		protected function _linkLine($contenu){
+			if(strlen($contenu[1])>65){
+				return "\n".self::PARSETAGSTART.'a href="http://'.substr($contenu[1], 6,strlen($contenu[1])).'"'.self::PARSETAGEND.substr($contenu[1], 0,65).'...'.self::PARSETAGSTART2.'a'.self::PARSETAGEND; 
+				//return '<                   a href="http://'.substr($texte,      6,strlen($texte     )).'"                 >'.substr($texte,      0,65).'...</                      a  >'; 
+			}
+			else{
+				return "\n".self::PARSETAGSTART.'a href="http://'.substr($contenu[1], 6,strlen($contenu[1])).'"'.self::PARSETAGEND.$contenu[1].self::PARSETAGSTART2.'a'.self::PARSETAGEND;
 			}
 		}
 
@@ -483,7 +567,6 @@
 				'id' => $this->_id,
 				'name' => $this->_name,
 				'width' => $this->_bbCodeWidth,
-				'width' => $this->_bbCodeWidth,
 				'height' => $this->_bbCodeHeight,
 				'bgcolor' => $this->_bbCodeBgColor,
 				'theme' => $this->_bbCodeButton,
@@ -494,7 +577,9 @@
 				'bbCodeEditor' => $this->_bbCodeEditor,
 				'color' => $this->_bbCodeButtonColor
 			));
-			$tpl->show();
+
+			$tpl->setShow(false);
+			return $tpl->show();
 		}
 
 		/**

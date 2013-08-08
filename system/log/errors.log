@@ -1,2 +1,0 @@
-24/12/2012 a 21:31:21 ! : The rubric 'unknow' were not found because rooting failed.  Http Query : http://localhost:82/GCsystem/terminal.html
-24/12/2012 a 21:32:53 ! : Erreur [8] (Undefined property: terminalGc::$lang) dans le fichier C:\wamp\www\GCsystem\system\class\system\terminalGc.class.php a la ligne 686

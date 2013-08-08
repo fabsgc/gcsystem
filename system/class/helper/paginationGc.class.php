@@ -94,7 +94,7 @@
 		}
 		
 		protected function _setData(){
-			if($this->_pageActuel == 0 || $this->_pageActuel == ""){
+			if(($this->_pageActuel == 0 || $this->_pageActuel == "")){
 				$linkDisabled = false;
 			}
 			else{

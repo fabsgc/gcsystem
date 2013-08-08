@@ -593,7 +593,7 @@
 					}
 				}
 				else{
-					array_push($valeur, '\''.$var.'\'');
+					array_push($valeur, $var);
 				}
 			}
 

@@ -187,3 +187,5 @@
 		document.getElementById('terminal_input_write').focus();
 	}
 </script>
+</body>
+</html>

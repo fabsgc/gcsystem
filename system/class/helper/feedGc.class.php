@@ -424,12 +424,12 @@
 						}
 						else{
 							$this->_addError('Le fichier '.$this->_rssFile.' n\'a pas pu être ouvert', __FILE__, __LINE__, ERROR);
-							$his->_rssRead[$nom] = false;
+							$this->_rssRead[$nom] = false;
 							return false;
 						}
 					}
 					else{
-						$his->_rssRead[$nom] = false;
+						$this->_rssRead[$nom] = false;
 						return false;
 					}
 				}

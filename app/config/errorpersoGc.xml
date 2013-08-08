@@ -4,13 +4,5 @@
 		<templatedefault nom="GCsystem/GCerrorperso"/>
 	</config>
 	<errors>
-		<error id="1" template="GCsystem/GCerrorperso">
-			<var id="var1" type="var">une erreur</var>
-			<var id="var2" type="lang">idlang</var>
-		</error>
-		<error id="2" template="template">
-			<var id="message1" type="var">une erreur</var>
-			<var id="message2" type="lang">fichierinclus</var>
-		</error>
 	</errors>
 </errorperso>

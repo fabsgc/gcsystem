@@ -14,8 +14,10 @@ require_once('web.config.php');
 require_once(CLASS_AUTOLOAD);
 
 /* ---------- creation de la page -------------- */
+
 $GLOBALS['appDevGc'] = new appDevGc();
 $GLOBALS['rubrique'] = new Gcsystem();
+
 $GLOBALS['rubrique']->init();
 
 /* ------ articulation du site web-------- */

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <lang>
-  <sentence id="windowinfo_Back">Retour</sentence>
-  <sentence id="blockinfo_Back">Retour</sentence>
   <sentence id="bienvenue">Bienvenue !</sentence>
   <sentence id="content">Bienvenue dans votre nouveau projet GCsystem, merci d'avoir choisi notre framework pour développer votre application.</sentence>
   <sentence id="liredoc">lire la documentation</sentence>
@@ -26,8 +24,8 @@
   <sentence id="rubriquenotfound">Une erreur relative au script s'est produite. La rubrique demandée ({rubrique}) n'a pas été trouvée</sentence>
   <sentence id="rubriquemissingparameters">Il manque des paramètres pour répondre à votre demande</sentence>
   <sentence id="actionnotfound">L'action demandée ({action}) n'a pas été trouvée</sentence>
-  <sentence id="firewallcsrftitle">Erreur dans les paramètres de l'url</sentence>
-  <sentence id="firewallcsrfcontent">Une erreur dans les paramètres de l'url a contraint l'application à bloquer l'accès à cette page</sentence>
+  <sentence id="firewallcsrftitle">Erreur dans les paramètres de l'url ou d'un formulaire</sentence>
+  <sentence id="firewallcsrfcontent">Une erreur dans les paramètres de l'url ou d'un formulaire a contraint l'application à bloquer l'accès à cette page</sentence>
   <sentence id="firewallforbiddentitle">Accès interdit</sentence>
   <sentence id="firewallforbiddencontent">L'accès à cette page vous est interdit</sentence>
   <sentence id="antispamerror">Vous avez été identifié comme spammeur, votre IP a été bloquée</sentence>

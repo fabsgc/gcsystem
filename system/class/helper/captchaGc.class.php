@@ -135,6 +135,8 @@
 		*/
 		
 		public function show(){
+			$orange = imagecolorallocate($this->_img, 255, 128, 0);
+
 			if($this->_backgroundImage==true){
 				$this->_extension = substr($this->_background, -3 );
 				$this->_extension = strtolower($this->_extension);

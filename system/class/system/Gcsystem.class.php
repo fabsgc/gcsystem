@@ -36,7 +36,7 @@
 				$this->_checkError();
 				$this->_checkFunctionGenerique();
 				$this->_checkSecureVar();
-				$this->setErrorLog('history','Page rewrite : http://'.$this->getHost().$this->getUri().' rubrique : '.$this->getServerName().$this->getPhpSelf().'?'.$this->getQuery().' / origine : '.$this->getReferer().' / IP : '.$this->getIp());
+				$this->setErrorLog(LOG_HISTORY,'Page rewrite : http://'.$this->getHost().$this->getUri().' rubrique : '.$this->getServerName().$this->getPhpSelf().'?'.$this->getQuery().' / origine : '.$this->getReferer().' / IP : '.$this->getIp());
 				$this->_configInstance = new configGc();
 				$this->_initInstance = 1;
 			}
@@ -128,6 +128,8 @@
 													$action = 'actionDefault';
 													$class->$action();
 												}
+
+												$class->end();
 											$this->_output = ob_get_contents();
 											ob_get_clean();
 
@@ -148,8 +150,8 @@
 							}
 							else{
 								$this->_addError('L\'instanciation du contrôleur de la rubrique "'.$rubrique.'" a échoué', __FILE__, __LINE__, ERROR);
+								$this->_addError('La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée', __FILE__,  __LINE__, ERROR);
 								$this->redirect404();
-								$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
 							}
 						}
 						else{
@@ -177,6 +179,8 @@
 												$action = 'actionDefault';
 												$class->$action();
 											}
+
+											$class->end();
 										}
 										else{
 										}
@@ -188,15 +192,15 @@
 							}
 							else{
 								$this->_addError('L\'instanciation du contrôleur de la rubrique "'.$rubrique.'" a échoué', __FILE__, __LINE__, ERROR);
+								$this->_addError('La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée', __FILE__,  __LINE__, ERROR);
 								$this->redirect404();
-								$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
 							}
 						}
 					}
 					else{
-						$this->_addError('The rubric \'unknow\' were not found because rooting failed. Http Query : http://'.$this->getHost().$this->getUri(), __FILE__, __LINE__, ERROR);
-						$this->redirect404();
-						$this->setErrorLog('errors', 'The rubric \'unknow\' were not found because rooting failed.  Http Query : http://'.$this->getHost().$this->getUri());
+						$this->_addError('La rubrique \'unknow\'car le route a echoué. Requête http : http://'.$this->getHost().$this->getUri(), __FILE__, __LINE__, ERROR);
+						$this->_addError('La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée car le route a échoué. URL : http://'.$this->getHost().$this->getUri(), __FILE__,  __LINE__, ERROR);
+							$this->redirect404();
 					}
 				}				
 			}
@@ -205,8 +209,8 @@
 					$this->_setRubrique('index');
 				}
 				else{
+					$this->_addError('La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée', __FILE__,  __LINE__, ERROR);
 					$this->redirect404();
-					$this->setErrorLog('errors', 'The rubric '.$_GET['rubrique'].' were not found');
 				}
 			}
 		}
@@ -313,13 +317,6 @@
 				foreach($_GET as $cle => $val){
 					$_GET[$cle] = htmlentities($val);
 				}
-			}
-			else{
-				if(isset($_GET['rubrique'])){ $_GET['rubrique']=htmlentities($_GET['rubrique']); }
-				if(isset($_GET['action'])){ $_GET['action']=htmlentities($_GET['action']); }
-				if(isset($_GET['id'])){ $_GET['id']=intval(htmlentities($_GET['id'])); }
-				if(isset($_GET['page'])){ $_GET['page']=intval(htmlentities($_GET['page'])); }
-				if(isset($_GET['token'])){ $_GET['token']=htmlentities($_GET['token']); }
 			}
 			
 			if(SECUREPOST == true && isset($_POST)){

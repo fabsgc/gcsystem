@@ -7,7 +7,7 @@
 	*/
 	
     class langGc{
-		use errorGc, domGc;                            //trait
+		use errorGc, domGc, generalGc;                            //trait
 		
 		protected $_lang = DEFAULTLANG; // nom de la langue a utilise
 		protected $_langFile = true   ; // indique si le fichier de langue est charge ou non
@@ -108,8 +108,8 @@
 					return ($this->_content);
 				}
 				else{
-					$this->_addError('Le texte "'.$nom.'" n\'a pas été trouvé dans le fichier de lang "'.$this->_lang.'"', __FILE__, __LINE__, ERROR);
-					return 'texte non trouvé';
+					$this->_addError('Le texte "'.$nom.'" n\'a pas été trouvé dans le fichier de lang "'.$this->_lang.'" ou une variable n\'a pas été remplie correctement', __FILE__, __LINE__, ERROR);
+					return 'texte non trouvé ou vide';
 				}
 			}
 		}

@@ -148,7 +148,6 @@
 			
 			if(readfile($this->_filePath))
 				return true;
-			exit();
 		}
 
 		/**

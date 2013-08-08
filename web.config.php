@@ -26,7 +26,7 @@ define('TEMPLATE_PATH', APP_PATH.'template/');
 define('CLASS_PATH', SYSTEM_PATH.'class/');
 define('LIB_PATH', SYSTEM_PATH.'lib/');
 define('LANG_PATH', SYSTEM_PATH.'lang/');
-define('ERRORDUOCUMENT_PATH', 'ErrorDocument/');
+define('ERRORDOCUMENT_PATH', 'ErrorDocument/');
 define('GCSYSTEM_PATH', 'GCsystem/');
 define('CLASS_SYSTEM_PATH', 'system/');
 define('CLASS_HELPER_PATH', 'helper/');
@@ -40,7 +40,14 @@ define('LOG_EXT', '.log');
 define('RUBRIQUE_EXT', '.class');
 define('MODEL_EXT', '.model.class');
 
-//fonctions et class
+//ficiher de log
+define('LOG_SYSTEM', 'system');
+define('LOG_PHP', 'errors');
+define('LOG_HISTORY', 'history');
+define('LOG_SQL', 'sql');
+define('LOG_CRONS', 'crons');
+
+//fonctions et classfdevt
 define('FUNCTION_GENERIQUE', RUBRIQUE_PATH.'function.php');
 define('CLASS_GENERAL_INTERFACE', CLASS_PATH.CLASS_SYSTEM_PATH.'generalGc.class.php');
 define('CLASS_RUBRIQUE', CLASS_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php');
@@ -110,7 +117,7 @@ define('ANTISPAM', true);
 define('CHARSET', 'UTF-8');
 
 //dossier où est placé le framework à partir de la racine du répertoire. sous wamp par exemple, /GCsystem2.0
-define('FOLDER', '/GCsystem');
+define('FOLDER', '');
 
 //dossier où est placé le framework à partir de la racine du répertoire
 define('DEFAULTLANG', 'fr');
@@ -124,16 +131,10 @@ define('ENVIRONMENT', 'development');
 define('MAINTENANCE', false);
 
 /* affiche la barre de dev ou non */
-define('DEVTOOL', true);
+define('DEVTOOL', false);
 
 /* mot de passe pour se connecter au terminal */
 define('TERMINAL_MDP', 'mdp');
-
-/* mettre à true pour pouvoir utiliser jquery et jquery ui */
-define('JQUERY', true);
-
-/* mettre à true pour pouvoir utiliser less */
-define('LESS', false);
 
 /* mettre à true pour sécuriser les variables superglobales */
 define('SECUREGET', true);
@@ -144,6 +145,9 @@ define('CONST_APP_PREFIXE', 'USER_');
 
 /* le nom des fichiers de cache sera hashé ou non */
 define('CACHE_SHA1', false);
+
+/* le nom des fichiers de cache sera hashé ou non */
+define('LOG_ENABLED', true);
 
 /* à ne pas modifier */
 define('IMG_PATH', FOLDER.'/'.ASSET_PATH.'image/');
@@ -156,18 +160,5 @@ define('CSS_PATH_PHP', ASSET_PATH.'css/');
 define('JS_PATH_PHP', ASSET_PATH.'js/');
 define('UPLOAD_PATH_PHP', ASSET_PATH.'upload/');
 
-define('JQUERYFILE', JS_PATH.'jquery/jquery.min.js');
-define('JQUERYUIJS', JS_PATH.'jquery/jquery-ui.min.js');
-define('JQUERYUICSS', CSS_PATH.'jquery/jquery-ui.css');
-
-define('LESSFILE', JS_PATH.'less/less-1.3.1.min.js');
-
-define('SHIGHLIGHTER', JS_PATH.'syntaxhighligher/');
-define('SHIGHLIGHTER_SHCORE_CSS', CSS_PATH.'syntaxhighligher/shCore.css');
-define('SHIGHLIGHTER_SHCOREDEFAULT_CSS', CSS_PATH.'syntaxhighligher/shCoreMidnight.css');
-define('SHIGHLIGHTER_SHCORE_JS', JS_PATH.'syntaxhighligher/shCore.js');
-define('SHIGHLIGHTER_AUTOLOADER_JS', JS_PATH.'syntaxhighligher/shAutoloader.js');
-
-
 //favicon
-define('FAVICON_PATH', 'no');
+define('FAVICON_PATH', IMG_PATH.'static/logo.png');

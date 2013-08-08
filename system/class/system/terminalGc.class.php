@@ -38,7 +38,7 @@
 				CLASS_PATH.CLASS_HELPER_PATH.'ftpGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'captchaGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'dateGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'dirGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'feedGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'fileGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'mailGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'modoGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'paginationGc.class.php',
-				CLASS_PATH.CLASS_HELPER_PATH.'pictureGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'socialGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'textGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'textGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'uploadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'zipGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php',
 				CLASS_PATH.CLASS_SYSTEM_PATH.'applicationGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'cacheGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'exceptionGc.class.php',
 				CLASS_PATH.CLASS_SYSTEM_PATH.'firewallGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'generalGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'installGc.class.php',
@@ -63,7 +63,7 @@
 				CLASS_PATH.CLASS_HELPER_PATH.'ftpGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'captchaGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'dateGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'dirGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'feedGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'fileGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'mailGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'modoGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'paginationGc.class.php',
-				CLASS_PATH.CLASS_HELPER_PATH.'pictureGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'socialGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'textGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'textGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'uploadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'zipGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php',
 				CLASS_PATH.CLASS_SYSTEM_PATH.'applicationGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'cacheGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'exceptionGc.class.php',
 				CLASS_PATH.CLASS_SYSTEM_PATH.'firewallGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'generalGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'installGc.class.php',
@@ -74,7 +74,7 @@
 		
 
 			$this->_helperDefault = array(
-				'ftpGc', 'fileGc', 'downloadGc', 'pictureGc', 'uploadGc', 'zipGc', 'bbcodeGc', 'captchaGc', 'dateGc', 'feedGc', 'mailGc', 'modoGc', 'paginationGc', 'socialGc', 'sqlGc', 'textGc'
+				'ftpGc', 'fileGc', 'downloadGc', 'uploadGc', 'zipGc', 'bbcodeGc', 'captchaGc', 'dateGc', 'feedGc', 'mailGc', 'modoGc', 'paginationGc', 'sqlGc', 'textGc'
 			);
 
 			$this->_configIfNoExist = array(
@@ -1175,6 +1175,7 @@
 					$this->_stream .= '<br />> see firewall';
 					$this->_stream .= '<br />> see antispam';
 					$this->_stream .= '<br />> see installed';
+					$this->_stream .= '<br />> see cron';
 					$this->_stream .= '<br />> see add-on';
 					$this->_stream .= '<br />> see file nom';
 					$this->_stream .= '<br />> see backup nom';
@@ -1225,7 +1226,7 @@
 					$this->_result = '<br />><span style="color: chartreuse;"> Les fichiers de configurations perdus ont bien été remplacés'.$sauvegarde.'</span>';
 				}
 				elseif(preg_match('#see file (.+)#', $this->_command)){
-					if(is_file($this->_commandExplode[2]) && file_exists($this->_commandExplode[2]) && is_readable($this->_commandExplode[2])){
+					if(is_file($this->_commandExplode[2]) && file_exists($this->_commandExplode[2]) && is_readable($this->_commandExplode[2]) && $this->_commandExplode[2] != 'web.config.php'){
 						$sauvegarde = file_get_contents($this->_commandExplode[2]);
 						$sauvegardes = explode("\n", $sauvegarde);
 								
@@ -1386,6 +1387,33 @@
 							}
 							else{
 								$this->_result = '<br />><span style="color: red;"> Le fichier listant les add-ons installés <strong>'.INSTALLED.'</strong> n\'existe pas ce qui est étonnant</span>';
+							}
+						break;
+
+						case 'cron':
+							if(is_file(CRON) && file_exists(CRON) && is_readable(CRON)){
+								$sauvegarde = file_get_contents(CRON);
+								$sauvegardes = explode("\n", $sauvegarde);
+								
+								$i = 0;
+								
+								foreach($sauvegardes as $valeur){
+									if(strlen($valeur)>=5){
+										if($i == 0){
+											$this->_stream .= '<br />> <span style="color: chartreuse;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=1;
+										}
+										else{
+											$this->_stream .= '<br />> <span style="color: red;">'.(htmlspecialchars($valeur)).'</span>';
+											$i=0;
+										}	
+									}
+								}
+								
+								$this->_result = '<br />><span style="color: chartreuse;"> Le fichier listant les crons <strong>'.CRON .'</strong> a bien été affiché</span>';
+							}
+							else{
+								$this->_result = '<br />><span style="color: red;"> Le fichier listant les crons <strong>'.CRON .'</strong> n\'existe pas ce qui est étonnant</span>';
 							}
 						break;
 

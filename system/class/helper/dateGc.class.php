@@ -83,36 +83,36 @@
 		const DATE_HMS                           = 'h:i:s';
 		const DATE_HMSU                          = 'h:i:s:u';
 		
-		const DATE_COMPLETE_H_FR_1               = 'd/m/Y \à h\h';
-		const DATE_COMPLETE_H_FR_2               = 'j M Y \à h \h\e\u\r\e\(\s\)';
-		const DATE_COMPLETE_HM_FR_1              = 'd/m/Y \à h\h i\m';
-		const DATE_COMPLETE_HM_FR_2              = 'j M Y \à h \h\e\u\r\e\(\s\) i \m\i\n\u\t\e\(\s\)';
-		const DATE_COMPLETE_HM_FR_3              = 'd/m/Y \à h\hi';
-		const DATE_COMPLETE_FR_1                 = 'd/m/Y \à h\h i\m s\s';
-		const DATE_COMPLETE_FR_2                 = 'j M Y \à h \h\e\u\r\e\(\s\) i \m\i\n\u\t\e\(\s\) s \s\e\c\o\n\d\e\(\s\)';
+		const DATE_COMPLETE_H_FR_1               = 'd/m/Y \à H\h';
+		const DATE_COMPLETE_H_FR_2               = 'j M Y \à H \h\e\u\r\e\(\s\)';
+		const DATE_COMPLETE_HM_FR_1              = 'd/m/Y \à H\h i\m';
+		const DATE_COMPLETE_HM_FR_2              = 'j M Y \à H \h\e\u\r\e\(\s\) i \m\i\n\u\t\e\(\s\)';
+		const DATE_COMPLETE_HM_FR_3              = 'd/m/Y \à H\hi';
+		const DATE_COMPLETE_FR_1                 = 'd/m/Y \à H\h i\m s\s';
+		const DATE_COMPLETE_FR_2                 = 'j M Y \à H \h\e\u\r\e\(\s\) i \m\i\n\u\t\e\(\s\) s \s\e\c\o\n\d\e\(\s\)';
 		
-		const DATE_COMPLETE_H_NL_1               = 'd/m/Y \o\p h\u';
-		const DATE_COMPLETE_H_NL_2               = 'j M Y \o\p h \u\u\r';
-		const DATE_COMPLETE_HM_NL_1              = 'd/m/Y \o\p h\u i\m';
-		const DATE_COMPLETE_HM_NL_2              = 'j M Y \o\p h \u\u\r i \m\i\n\u\(\u\)\t\e\(\n\)';
-		const DATE_COMPLETE_HM_NL_3              = 'd/m/Y \o\p h\ui';
-		const DATE_COMPLETE_NL_1                 = 'd/m/Y \o\p h\u i\m s\s';
-		const DATE_COMPLETE_NL_2                 = 'j M Y \o\p h \u\u\r i \m\i\n\u\(\u\)\t\e\(\n\) s \s\e\c\o\n\d\e(\n)';
+		const DATE_COMPLETE_H_NL_1               = 'd/m/Y \o\p H\u';
+		const DATE_COMPLETE_H_NL_2               = 'j M Y \o\p H \u\u\r';
+		const DATE_COMPLETE_HM_NL_1              = 'd/m/Y \o\p H\u i\m';
+		const DATE_COMPLETE_HM_NL_2              = 'j M Y \o\p H \u\u\r i \m\i\n\u\(\u\)\t\e\(\n\)';
+		const DATE_COMPLETE_HM_NL_3              = 'd/m/Y \o\p H\ui';
+		const DATE_COMPLETE_NL_1                 = 'd/m/Y \o\p H\u i\m s\s';
+		const DATE_COMPLETE_NL_2                 = 'j M Y \o\p H \u\u\r i \m\i\n\u\(\u\)\t\e\(\n\) s \s\e\c\o\n\d\e(\n)';
 		
-		const DATE_COMPLETE_H_EN_1               = 'd/m/Y \a\t h\h';
-		const DATE_COMPLETE_H_EN_2               = 'j M Y \a\t h \h\o\u\r\(\s\)';
-		const DATE_COMPLETE_HM_EN_1              = 'd/m/Y \a\t h\h i\m';
-		const DATE_COMPLETE_HM_EN_2              = 'j M Y \a\t h \h\o\u\r\(\s\) i \m\i\n\u\t\(\s\)';
-		const DATE_COMPLETE_HM_EN_3              = 'd/m/Y \a\t h\hi';
-		const DATE_COMPLETE_EN_1                 = 'd/m/Y \a\t h\h i\m s\s';
-		const DATE_COMPLETE_EN_2                 = 'j M Y \a\t h \h\o\u\r\(\s\) i \m\i\n\u\t\(\s\) s \s\e\c\o\n\d\(\s\)';
+		const DATE_COMPLETE_H_EN_1               = 'd/m/Y \a\t H\h';
+		const DATE_COMPLETE_H_EN_2               = 'j M Y \a\t H \h\o\u\r\(\s\)';
+		const DATE_COMPLETE_HM_EN_1              = 'd/m/Y \a\t H\h i\m';
+		const DATE_COMPLETE_HM_EN_2              = 'j M Y \a\t H \h\o\u\r\(\s\) i \m\i\n\u\t\(\s\)';
+		const DATE_COMPLETE_HM_EN_3              = 'd/m/Y \a\t H\hi';
+		const DATE_COMPLETE_EN_1                 = 'd/m/Y \a\t H\h i\m s\s';
+		const DATE_COMPLETE_EN_2                 = 'j M Y \a\t H \h\o\u\r\(\s\) i \m\i\n\u\t\(\s\) s \s\e\c\o\n\d\(\s\)';
 		
-		const DATE_COMPLETE_H_ES_1               = 'd/m/Y \a \l\a(\s\) h';
-		const DATE_COMPLETE_H_ES_2               = 'j \d\e M \d\e Y \a \l\a(\s\) h';
-		const DATE_COMPLETE_HM_ES_1              = 'd/m/Y \a \l\a(\s\) h \y i\m';
-		const DATE_COMPLETE_HM_ES_2              = 'j \d\e M \d\e Y \a \l\a(\s\) h \y i \m\i\n\u\t\o\(\s\)';
-		const DATE_COMPLETE_ES_1                 = 'd/m/Y \a \l\a(\s\) h \y i\m \y s\s';
-		const DATE_COMPLETE_ES_2                 = 'j \d\e M \d\e Y \a \l\a(\s\) h \y i \m\i\n\u\t\o\(\s\) \y s \s\e\c\u\n\d\a\(\s\)';
+		const DATE_COMPLETE_H_ES_1               = 'd/m/Y \a \l\a(\s\) H';
+		const DATE_COMPLETE_H_ES_2               = 'j \d\e M \d\e Y \a \l\a(\s\) H';
+		const DATE_COMPLETE_HM_ES_1              = 'd/m/Y \a \l\a(\s\) H \y i\m';
+		const DATE_COMPLETE_HM_ES_2              = 'j \d\e M \d\e Y \a \l\a(\s\) H \y i \m\i\n\u\t\o\(\s\)';
+		const DATE_COMPLETE_ES_1                 = 'd/m/Y \a \l\a(\s\) H \y i\m \y s\s';
+		const DATE_COMPLETE_ES_2                 = 'j \d\e M \d\e Y \a \l\a(\s\) H \y i \m\i\n\u\t\o\(\s\) \y s \s\e\c\u\n\d\a\(\s\)';
 		
 		public  function __construct($lang=""){
 			$this->_langInstance;

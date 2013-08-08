@@ -4,6 +4,7 @@
 		/* -------- FORMULAIRE -------- */
 		
 		private $GCname               = "formulaire";
+		private $GCtoken              = "";
 		private $GCaction             = "#"         ;
 		private $GCmethod             = "GET"       ;
 		private $GCenctype            = ""          ;
@@ -58,6 +59,12 @@
 					break;
 				}
 			}
+		}
+
+		public function setToken($token, $tokenName, $tokenValue){
+			$this->GCtoken = true;
+			$this->GCtokenName =  $tokenName;
+			$this->GCtokenValue =  $tokenValue;
 		}
 		
 		public function addFieldset($legend=""){
@@ -404,11 +411,16 @@
 						$this->GCcontent.="    ".$element."\n";
 					}
 				}
-
-				/* champs cache avec name */
-				$this->GCcontent.="    <input type=\"hidden\" name=\"".$this->GCname."\" />\n";
 				
 				$this->GCcontent.="  </fieldset>\n";
+			}
+
+			/* champs cache avec name */
+			$this->GCcontent.="    <input type=\"hidden\" name=\"".$this->GCname."\" />\n";
+
+			/* champs cache avec token */
+			if($this->GCtoken == true){
+				$this->GCcontent.="    <input type=\"hidden\" name=\"".$this->GCtokenName."\" value=\"".$this->GCtokenValue."\" />\n";
 			}
 			
 			foreach($this->GCelements as $element){
@@ -441,9 +453,15 @@
 			
 			foreach($this->GCfieldset as $fieldset){
 				$echo .='fieldset 1 => '.$fieldset;
+				$echo .="\n";
 				$i++;
 			}
-			
+
+			$echo .='name => '.$this->GCname;
+			$echo .="\n";
+			$echo .="\n";
+			$echo .='token => '.$this->GCtoken;
+
 			echo $echo;
 		}
 		
@@ -475,8 +493,8 @@
 				break;
 				
 				case 'password':
-					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_POST[''.$attribute['name'].'']."\""; }
-					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".@$_GET[''.$attribute['name'].'']."\""; }
+					if(isset($_POST[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\""; }
+					elseif(isset($_GET[''.$attribute['name'].''])){ $this->GCtypeInput.="<input type=\"".$type."\""; }
 					elseif(isset($attribute['value'])){ $this->GCtypeInput.="<input type=\"".$type."\" value=\"".$attribute['value']."\" "; }
 					else{ $this->GCtypeInput.="<input type=\"".$type."\" value=\"\" "; }
 				break;
@@ -828,7 +846,15 @@
 		}
 		
 		public function showRadio_sql($bdd, $query="", $label="",  $name="", $value="", $checked="", $attribute = array(), $br=0){
-			$this->query=$bdd->query($query);
+			$sql= preg_replace('#\[(.*)\] \[(.*)\]#isU', '$1', $query); 
+			$vars = preg_replace('#\[(.*)\] \[(.*)\]#isU', '$2', $query);
+			$var = explode(',', $vars);
+			$this->query = $bdd->prepare(''.$sql.'');
+
+			foreach ($var as $key => $values) {
+				$this->query->bindParam(1+$key, trim($values));
+			}
+
 			$this->query->execute();
 			
 			while($this->data=$this->query->fetch()){
@@ -1108,16 +1134,24 @@
 		private $i;
 		private $query;
 		private $data;
-		private $query_2;
-		private $data_2;
+		private $query2;
+		private $data2;
 		
 		/* ---------- CONSTRUCTEURS --------- */
 		
 		public  function __construct(){
 		}
 		
-		public function showListeBox_sql($label="", $bdd, $query="", $value="", $content_value="", $attribute = array(), $selected=array(), $br=0){			
-			$this->query=$bdd->query($query);
+		public function showListeBox_sql($label="", $bdd, $query="", $value="", $content_value="", $attribute = array(), $selected=array(), $br=0){
+			$sql= preg_replace('#\[(.*)\] \[(.*)\]#isU', '$1', $query); 
+			$vars = preg_replace('#\[(.*)\] \[(.*)\]#isU', '$2', $query);
+			$var = explode(',', $vars);
+			$this->query = $bdd->prepare(''.$sql.'');
+
+			foreach ($var as $key => $values) {
+				$this->query->bindParam(1+$key, trim($values));
+			}
+
 			$this->query->execute();
 			
 			if($label!="") $this->GCtypeListebox.="<label>".$label."</label>\n";
@@ -1139,9 +1173,18 @@
 			return $this->GCtypeListebox;
 		}
 		
-		public function showListeBox_sql_group($label="", $bdd, $query1="", $query2, $optgroup_value="", $optgroup_content="",  $option_optgroup_content="", $option_value="", $option_content_value="", $attribute = array(), $selected=array(), $br=0){
-			$this->query=$bdd->query($query1);
-			$this->query->execute();
+		public function showListeBox_sql_group($label="", $bdd, $query1="", $query2="", $optgroup_value="", $optgroup_content="",  $option_optgroup_content="", $option_value="", $option_content_value="", $attribute = array(), $selected=array(), $br=0){
+			/* ### requete 1 : optgroup ### */
+			$sql1= preg_replace('#\[(.*)\] \[(.*)\]#isU', '$1', $query1); 
+			$vars1 = preg_replace('#\[(.*)\] \[(.*)\]#isU', '$2', $query1);
+			$var1 = explode(',', $vars1);
+			$this->query1 = $bdd->prepare(''.$sql1.'');
+
+			foreach ($var1 as $key1 => $values1) {
+				$this->query1->bindParam(1+$key1, trim($values1));
+			}
+
+			$this->query1->execute();
 			
 			if($label!="") $this->GCtypeListebox.="<label>".$label."</label>\n";
 			$this->GCtypeListebox.="      <select ";
@@ -1150,24 +1193,36 @@
 			}
 			$this->GCtypeListebox.=">\n";
 			
-			while($this->data=$this->query->fetch()){
+			while($this->data=$this->query1->fetch()){
 				$this->GCtypeListebox.="        <optgroup label=\"".$this->data[$optgroup_value]."\">\n";
-				
-				if(preg_match('#WHERE#', $query2)){
-					$query2 = preg_replace('#WHERE#isU','WHERE '.$option_optgroup_content.' = '.$this->data[$optgroup_content].' AND ',$query2);
-					$this->query2=$bdd->query($query2);
-					$this->query2->execute();
+
+
+				/* ### requete 2 : option ### */
+				$sql2= preg_replace('#\[(.*)\] \[(.*)\]#isU', '$1', $query2); 
+				$vars2 = preg_replace('#\[(.*)\] \[(.*)\]#isU', '$2', $query2);
+				$var2 = explode(',', $vars2);
+
+				if(preg_match('#WHERE#', $sql2)){
+					$sql2 = preg_replace('#WHERE#isU','WHERE '.$option_optgroup_content.' = '.$this->data[$optgroup_content].' AND ',$sql2);
+					$this->query2=$bdd->prepare($sql2);
 				}
 				else{
-					$this->query2=$bdd->query($query2.' WHERE '.$option_optgroup_content.' = '.$this->data[$optgroup_content]);
-					$this->query2->execute();
+					$this->query2=$bdd->prepare($sql2.' WHERE '.$option_optgroup_content.' = '.$this->data[$optgroup_content]);
 				}
+
+				foreach ($var2 as $key2 => $values2) {
+					$this->query2->bindParam(1+$key2, trim($values2));
+				}
+
+				$this->query2->execute();
 				
 				while($this->data2=$this->query2->fetch()){
 					if($this->data[$optgroup_content]==$this->data2[$option_optgroup_content]){
 						if(!in_array($this->data2[$option_value], $selected)) $this->GCtypeListebox.="        <option value=\"".$this->data2[$option_value]."\">".$this->data2[$option_content_value]."</option>\n"; else $this->GCtypeListebox.="        <option value=\"".$this->data2[$option_value]."\" selected=\"selected\">".$this->data2[$option_content_value]."</option>\n";
 					}
 				}
+				/* ### requete 2 : option ### */
+
 				$this->GCtypeListebox.="        </optgroup>\n";
 			}
 			

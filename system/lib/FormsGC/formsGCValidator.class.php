@@ -11,19 +11,31 @@
 		private $valid=array();
 		private $content;
 		private $nameForm;            //permet d'identifier un formulaire et couplé au champ hidden de formsgc de savoir si le form a été envoyé ou non
+		private $token;               //permettra d'obliger la personne a avoir un champs token dans ce formulaire
+		private $tokenName;
+		private $tokenError;
 		
 		private $i=0;
 		
 		/* ---------- CONSTRUCTEUR --------- */
 		
-		public  function __construct($method="GET", $bdd="", $nameForm=""){
+		public  function __construct($method="GET", $bdd="", $nameForm="", $token = false){
 			$this->method=$method;
 			$this->bdd=$bdd;
 			$this->nameForm = $nameForm;
 		}
+
+		public function setToken($token = false, $name, $error = ""){
+			$this->token = $token;
+			$this->tokenName = $name;
+			$this->tokenError = $error;
+		}
 		
 		public  function addfield($type="", $name="", $name_content="", $contraint=array(), $error=array()){
-			if($this->method=='post' AND $type!="file"){
+			if($type=="textarea"){
+				$type="input";
+			}
+			if($this->method=='post' && $type!="file"){
 				if(isset($_POST[$name])){
 					$field = new formsGCField($type, $name, $name_content, $contraint, $error);
 					array_push($this->field_array, $field);
@@ -253,6 +265,28 @@
 									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
+
+							case 'between':
+								$contraint_val=explode('-', $contraint_valeur);
+								if($_POST[$value[1]]>=$contraint_val[0] && $_POST[$value[1]]<=$contraint_val[1]){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case 'between':
+								$contraint_val=explode('-', $contraint_valeur);
+								if($_POST[$value[1]]>=$contraint_val[0] && $_POST[$value[1]]<=$contraint_val[1]){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
 							
 							case 'different' :
 								if(($_POST[$value[1]])!=$contraint_valeur){
@@ -419,11 +453,21 @@
 							break;
 							
 							case 'sqlCount' :
-								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
+								$vars = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
+								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur); 
 
-								$query = $this->bdd->query(''.$sql.'');
+								$var = explode(',', $vars);
+
+								$query = $this->bdd->prepare(''.$sql.'');
+
+								foreach ($var as $key => $values) {
+									$query->bindParam(1+$key, trim($values));
+								}
+
+								$query->execute();
+
 								$query = $query->fetchColumn();
 								
 								switch($contrainte){
@@ -490,16 +534,27 @@
 							break;
 							
 							case 'sql' :
-								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
+								$vars = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
+								$champs = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur); 
+								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$5', $contraint_valeur); 
 
-								$query = $this->bdd->query(''.$sql.'');
+								$vars = explode(',', $vars);
+
+								$query = $this->bdd->prepare(''.$sql.'');
+
+								foreach ($var as $key => $values) {
+									$query->bindParam(1+$key, trim($values));
+								}
+
+								$query->execute();
+
 								$query = $query->fetch();
 								
 								switch($contrainte){
 									case '>':
-										if($query>$valeur){
+										if($query[''.$champs.'']>$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -509,7 +564,7 @@
 									break;
 									
 									case '>=':
-										if($query>=$valeur){
+										if($query[''.$champs.'']>=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -519,7 +574,7 @@
 									break;
 									
 									case '<':
-										if($query<$valeur){
+										if($query[''.$champs.'']<$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -529,7 +584,7 @@
 									break;
 									
 									case '<=':
-										if($query<=$valeur){
+										if($query[''.$champs.'']<=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -539,7 +594,7 @@
 									break;
 									
 									case '!=':
-										if($query!=$valeur){
+										if($query[''.$champs.'']!=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -549,224 +604,7 @@
 									break;
 									
 									case '==':
-										if($query==$valeur){
-											array_push($this->valid, 'true');
-										}
-										else{
-											array_push($this->valid, 'false');
-											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-										}
-									break;
-								}
-							break;
-							
-							case 'process':
-								$this->fieldProcess($contraint_valeur, $value[1]);
-							break;
-						}
-						$this->i++;
-					}
-				break;
-				
-				case 'textarea':
-					foreach($value[3] as $contraint => $contraint_valeur){
-						switch($contraint){
-							case 'minsize':
-								if(strlen($_POST[$value[1]])>=$contraint_valeur){
-									array_push($this->valid, 'true');
-								}
-								else{
-									array_push($this->valid, 'false');
-									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-								}
-							break;
-							
-							case 'maxsize':
-								if(strlen($_POST[$value[1]])<=$contraint_valeur){
-									array_push($this->valid, 'true');
-								}
-								else{
-									array_push($this->valid, 'false');
-									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-								}
-							break;
-							
-							case 'size':
-								if(strlen($_POST[$value[1]])==$contraint_valeur){
-									array_push($this->valid, 'true');
-								}
-								else{
-									array_push($this->valid, 'false');
-									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-								}
-							break;
-							
-							case 'intersize':
-								$contraint_val=explode('-', $contraint_valeur);
-								if(strlen($_POST[$value[1]])>=$contraint_val[0] && strlen($_POST[$value[1]])<=$contraint_val[1]){
-									array_push($this->valid, 'true');
-								}
-								else{
-									array_push($this->valid, 'false');
-									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-								}
-							break;
-							
-							case 'different' :
-								if(($_POST[$value[1]])!=$contraint_valeur){
-									array_push($this->valid, 'true');
-								}
-								else{
-									array_push($this->valid, 'false');
-									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-								}
-							break;
-							
-							case 'equalto' :
-								if(($_POST[$value[1]])==$contraint_valeur){
-									array_push($this->valid, 'true');
-								}
-								else{
-									array_push($this->valid, 'false');
-									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-								}
-							break;
-							
-							case 'regex' :
-								if(preg_match('#'.$contraint_valeur.'#isU', $_POST[$value[1]])){
-									array_push($this->valid, 'true');
-								}
-								else{
-									array_push($this->valid, 'false');
-									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-								}
-							break;
-							
-							case 'isset' :
-								if(isset($_POST[$value[1]])){
-									array_push($this->valid, 'true');
-								}
-								else{
-									array_push($this->valid, 'false');
-									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-								}
-							break;
-							
-							case 'empty' :
-								if(empty($_POST[$value[1]])){
-									array_push($this->valid, 'true');
-								}
-								else{
-									array_push($this->valid, 'false');
-									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-								}
-							break;
-							
-							case 'noEspace' :
-								if($_POST[$value[1]]!="" AND preg_match('#[a-zA-Z0-9ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ\.\(\)\[\]\"\'\-,;:\/!\?]#isU', $_POST[$value[1]])){
-									array_push($this->valid, 'true');
-								}
-								elseif($_POST[$value[1]]!=""){
-									array_push($this->valid, 'false');
-									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-								}
-								else{
-									array_push($this->valid, 'true');
-								}
-							break;
-							
-							case 'WhitoutEspace' :
-								if(!preg_match('#\s#isU', $_POST[$value[1]])){
-									array_push($this->valid, 'true');
-								}
-								elseif($_POST[$value[1]]!=""){
-									array_push($this->valid, 'false');
-									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-								}
-								else{
-									array_push($this->valid, 'true');
-								}
-							break;
-							
-							case 'required':
-								if($contraint_valeur=='true'){
-									if(isset($_POST[$value[1]]) && $_POST[$value[1]]!=""){
-										array_push($this->valid, 'true');
-									}
-									else{
-										array_push($this->valid, 'false');
-										array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-									}
-								}
-							break;
-							
-							case 'nullTo':
-								if(isset($_POST[$value[1]]) && $_POST[$value[1]]==""){
-									$_POST[$value[1]]=$contraint_valeur;
-								}
-							break;
-							
-							case 'sqlCount' :
-								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
-
-								$query = $this->bdd->query(''.$sql.'');
-								$query = $query->fetchColumn();
-								
-								switch($contrainte){
-									case '>':
-										if($query>$valeur){
-											array_push($this->valid, 'true');
-										}
-										else{
-											array_push($this->valid, 'false');
-											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-										}
-									break;
-									
-									case '>=':
-										if($query>=$valeur){
-											array_push($this->valid, 'true');
-										}
-										else{
-											array_push($this->valid, 'false');
-											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-										}
-									break;
-									
-									case '<':
-										if($query<$valeur){
-											array_push($this->valid, 'true');
-										}
-										else{
-											array_push($this->valid, 'false');
-											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-										}
-									break;
-									
-									case '<=':
-										if($query<=$valeur){
-											array_push($this->valid, 'true');
-										}
-										else{
-											array_push($this->valid, 'false');
-											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-										}
-									break;
-									
-									case '!=':
-										if($query!=$valeur){
-											array_push($this->valid, 'true');
-										}
-										else{
-											array_push($this->valid, 'false');
-											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-										}
-									break;
-									
-									case '==':
-										if($query==$valeur){
+										if($query[''.$champs.'']==$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -778,16 +616,25 @@
 							break;
 							
 							case 'sql' :
-								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
+								$vars = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
+								$champs = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur); 
+								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$5', $contraint_valeur); 
 
-								$query = $this->bdd->query(''.$sql.'');
+								$vars = explode(',', $vars);
+
+								$query = $this->bdd->prepare(''.$sql.'');
+
+								foreach ($vars as $key => $value) {
+									$query->bindParam($key+1, trim($value));
+								}
+
 								$query = $query->fetch();
 								
 								switch($contrainte){
 									case '>':
-										if($query>$valeur){
+										if($query[''.$champs.'']>$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -797,7 +644,7 @@
 									break;
 									
 									case '>=':
-										if($query>=$valeur){
+										if($query[''.$champs.'']>=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -807,7 +654,7 @@
 									break;
 									
 									case '<':
-										if($query<$valeur){
+										if($query[''.$champs.'']<$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -817,7 +664,7 @@
 									break;
 									
 									case '<=':
-										if($query<=$valeur){
+										if($query[''.$champs.'']<=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -827,7 +674,7 @@
 									break;
 									
 									case '!=':
-										if($query!=$valeur){
+										if($query[''.$champs.'']!=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -837,7 +684,7 @@
 									break;
 									
 									case '==':
-										if($query==$valeur){
+										if($query[''.$champs.'']==$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -892,6 +739,17 @@
 							case 'intersize':
 								$contraint_val=explode('-', $contraint_valeur);
 								if(strlen($_FILES[$value[1]]['size'])>=$contraint_val[0] && strlen($_FILES[$value[1]]['size'])<=$contraint_val[1]){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case 'between':
+								$contraint_val=explode('-', $contraint_valeur);
+								if($_POST[$value[1]]>=$contraint_val[0] && $_POST[$value[1]]<=$contraint_val[1]){
 									array_push($this->valid, 'true');
 								}
 								else{
@@ -1117,11 +975,19 @@
 							break;
 							
 							case 'sqlCount' :
-								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
+								$vars = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
+								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur); 
 
-								$query = $this->bdd->query(''.$sql.'');
+								$vars = explode(',', $vars);
+
+								$query = $this->bdd->prepare(''.$sql.'');
+
+								foreach ($vars as $key => $value) {
+									$query->bindParam($key+1, trim($value));
+								}
+
 								$query = $query->fetchColumn();
 								
 								switch($contrainte){
@@ -1188,16 +1054,25 @@
 							break;
 							
 							case 'sql' :
-								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
+								$vars = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
+								$champs = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur); 
+								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$5', $contraint_valeur); 
 
-								$query = $this->bdd->query(''.$sql.'');
+								$vars = explode(',', $vars);
+
+								$query = $this->bdd->prepare(''.$sql.'');
+
+								foreach ($vars as $key => $value) {
+									$query->bindParam($key+1, trim($value));
+								}
+
 								$query = $query->fetch();
 								
 								switch($contrainte){
 									case '>':
-										if($query>$valeur){
+										if($query[''.$champs.'']>$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1207,7 +1082,7 @@
 									break;
 									
 									case '>=':
-										if($query>=$valeur){
+										if($query[''.$champs.'']>=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1217,7 +1092,7 @@
 									break;
 									
 									case '<':
-										if($query<$valeur){
+										if($query[''.$champs.'']<$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1227,7 +1102,7 @@
 									break;
 									
 									case '<=':
-										if($query<=$valeur){
+										if($query[''.$champs.'']<=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1237,7 +1112,7 @@
 									break;
 									
 									case '!=':
-										if($query!=$valeur){
+										if($query[''.$champs.'']!=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1247,7 +1122,7 @@
 									break;
 									
 									case '==':
-										if($query==$valeur){
+										if($query[''.$champs.'']==$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1302,6 +1177,17 @@
 							case 'intersize':
 								$contraint_val=explode('-', $contraint_valeur);
 								if(strlen($_POST[$value[1]])>=$contraint_val[0] && strlen($_POST[$value[1]])<=$contraint_val[1]){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case 'between':
+								$contraint_val=explode('-', $contraint_valeur);
+								if($_POST[$value[1]]>=$contraint_val[0] && $_POST[$value[1]]<=$contraint_val[1]){
 									array_push($this->valid, 'true');
 								}
 								else{
@@ -1475,11 +1361,19 @@
 							break;
 							
 							case 'sqlCount' :
-								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
+								$vars = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
+								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur); 
 
-								$query = $this->bdd->query(''.$sql.'');
+								$vars = explode(',', $vars);
+
+								$query = $this->bdd->prepare(''.$sql.'');
+
+								foreach ($vars as $key => $value) {
+									$query->bindParam($key+1, trim($value));
+								}
+
 								$query = $query->fetchColumn();
 								
 								switch($contrainte){
@@ -1546,16 +1440,25 @@
 							break;
 							
 							case 'sql' :
-								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
+								$vars = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
+								$champs = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur); 
+								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$5', $contraint_valeur); 
 
-								$query = $this->bdd->query(''.$sql.'');
+								$vars = explode(',', $vars);
+
+								$query = $this->bdd->prepare(''.$sql.'');
+
+								foreach ($vars as $key => $value) {
+									$query->bindParam($key+1, trim($value));
+								}
+
 								$query = $query->fetch();
 								
 								switch($contrainte){
 									case '>':
-										if($query>$valeur){
+										if($query[''.$champs.'']>$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1565,7 +1468,7 @@
 									break;
 									
 									case '>=':
-										if($query>=$valeur){
+										if($query[''.$champs.'']>=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1575,7 +1478,7 @@
 									break;
 									
 									case '<':
-										if($query<$valeur){
+										if($query[''.$champs.'']<$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1585,7 +1488,7 @@
 									break;
 									
 									case '<=':
-										if($query<=$valeur){
+										if($query[''.$champs.'']<=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1595,7 +1498,7 @@
 									break;
 									
 									case '!=':
-										if($query!=$valeur){
+										if($query[''.$champs.'']!=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1605,7 +1508,7 @@
 									break;
 									
 									case '==':
-										if($query==$valeur){
+										if($query[''.$champs.'']==$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1694,11 +1597,19 @@
 							break;
 							
 							case 'sqlCount' :
-								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
+								$vars = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
+								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur); 
 
-								$query = $this->bdd->query(''.$sql.'');
+								$vars = explode(',', $vars);
+
+								$query = $this->bdd->prepare(''.$sql.'');
+
+								foreach ($vars as $key => $value) {
+									$query->bindParam($key+1, trim($value));
+								}
+
 								$query = $query->fetchColumn();
 								
 								switch($contrainte){
@@ -1765,16 +1676,25 @@
 							break;
 							
 							case 'sql' :
-								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
+								$vars = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
+								$champs = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur); 
+								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$5', $contraint_valeur); 
 
-								$query = $this->bdd->query(''.$sql.'');
+								$vars = explode(',', $vars);
+
+								$query = $this->bdd->prepare(''.$sql.'');
+
+								foreach ($vars as $key => $value) {
+									$query->bindParam($key+1, trim($value));
+								}
+
 								$query = $query->fetch();
 								
 								switch($contrainte){
 									case '>':
-										if($query>$valeur){
+										if($query[''.$champs.'']>$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1784,7 +1704,7 @@
 									break;
 									
 									case '>=':
-										if($query>=$valeur){
+										if($query[''.$champs.'']>=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1794,7 +1714,7 @@
 									break;
 									
 									case '<':
-										if($query<$valeur){
+										if($query[''.$champs.'']<$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1804,7 +1724,7 @@
 									break;
 									
 									case '<=':
-										if($query<=$valeur){
+										if($query[''.$champs.'']<=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1814,7 +1734,7 @@
 									break;
 									
 									case '!=':
-										if($query!=$valeur){
+										if($query[''.$champs.'']!=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1824,7 +1744,7 @@
 									break;
 									
 									case '==':
-										if($query==$valeur){
+										if($query[''.$champs.'']==$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -1917,11 +1837,19 @@
 							break;
 							
 							case 'sqlCount' :
-								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
+								$vars = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
+								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur); 
 
-								$query = $this->bdd->query(''.$sql.'');
+								$vars = explode(',', $vars);
+
+								$query = $this->bdd->prepare(''.$sql.'');
+
+								foreach ($vars as $key => $value) {
+									$query->bindParam($key+1, trim($value));
+								}
+
 								$query = $query->fetchColumn();
 								
 								switch($contrainte){
@@ -1988,16 +1916,25 @@
 							break;
 							
 							case 'sql' :
-								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
+								$vars = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
+								$champs = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
+								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur); 
+								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$5', $contraint_valeur); 
 
-								$query = $this->bdd->query(''.$sql.'');
+								$vars = explode(',', $vars);
+
+								$query = $this->bdd->prepare(''.$sql.'');
+
+								foreach ($vars as $key => $value) {
+									$query->bindParam($key+1, trim($value));
+								}
+
 								$query = $query->fetch();
 								
 								switch($contrainte){
 									case '>':
-										if($query>$valeur){
+										if($query[''.$champs.'']>$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -2007,7 +1944,7 @@
 									break;
 									
 									case '>=':
-										if($query>=$valeur){
+										if($query[''.$champs.'']>=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -2017,7 +1954,7 @@
 									break;
 									
 									case '<':
-										if($query<$valeur){
+										if($query[''.$champs.'']<$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -2027,7 +1964,7 @@
 									break;
 									
 									case '<=':
-										if($query<=$valeur){
+										if($query[''.$champs.'']<=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -2037,7 +1974,7 @@
 									break;
 									
 									case '!=':
-										if($query!=$valeur){
+										if($query[''.$champs.'']!=$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -2047,7 +1984,7 @@
 									break;
 									
 									case '==':
-										if($query==$valeur){
+										if($query[''.$champs.'']==$valeur){
 											array_push($this->valid, 'true');
 										}
 										else{
@@ -2349,7 +2286,22 @@
 		}
 		
 		public  function validateForm($name=""){
-			if($name=""){
+			//on verifie l'existence du champs token si besoin
+			if($this->token == true){
+				if(isset($_POST[''.$this->tokenName.''])){
+
+				}
+				else{
+					$this->valid = array();
+					$this->error = array();
+					array_push($this->valid, 'false');
+					array_push($this->error, $this->tokenError);
+
+					return false;											
+				}
+			}
+
+			if($name!=""){
 				$this->validateField($name);
 			}
 			else{

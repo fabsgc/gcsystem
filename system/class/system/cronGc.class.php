@@ -7,7 +7,7 @@
 	*/
 	
 	class cronGc {
-		use errorGc, domGc;                            //trait
+		use errorGc, domGc, generalGc;                            //trait
 		
 		public function __construct($lang = 'fr'){
 			$this->_lang=$lang;
@@ -19,7 +19,7 @@
 				$this->_markupXml = $this->_nodeXml->getElementsByTagName('cron');
 
 				foreach($this->_markupXml as $sentence){
-					if (($sentence->getAttribute("executed") + $sentence->getAttribute("time")) < (time())){
+					if (($sentence->getAttribute("executed") + $sentence->getAttribute("time")) < (time()) || $sentence->getAttribute("time") == 0){
 						$sentence->setAttribute("executed", time());
 						$this->_domXml->save(CRON);
 						//le cron doit être réexécuté : on le reexecute et on
@@ -28,6 +28,7 @@
 
 						if(class_exists($rubrique)){
 							$class = new $rubrique($this->_lang);
+							$class->setNameModel($rubrique);
 							ob_start ();
 								$class->init();
 								if(is_callable(array($rubrique, 'action'.ucfirst($sentence->getAttribute("action"))))){
@@ -38,12 +39,15 @@
 								else{
 									$this->_addError('CRON : L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué.', __FILE__, __LINE__, WARNING);
 								}
+								$class->end();
 							$this->_output = ob_get_contents();
 							ob_get_clean();
 						}
 						else{
 							$this->_addError('CRON : L\'appel de la rubrique "'.$rubrique.'" a échoué.', __FILE__, __LINE__, ERROR);
 						}
+
+						$this->setErrorLog(LOG_CRONS, '['.$sentence->getAttribute("action")."]\n[".$this->_output."]");
 					}
 				}
 			}

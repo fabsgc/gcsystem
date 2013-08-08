@@ -7,36 +7,11 @@
 	*/
 
 	trait generalGc{
-		public function windowInfo($Title, $Content, $Time, $Redirect, $lang='fr'){
-			$tpl = new templateGC(GCSYSTEM_PATH.'GCtplGc_windowInfo', 'tplGc_windowInfo', 0, $lang);
-			
-			$tpl->assign(array(
-				'title'=>$Title,
-				'content'=>$Content,
-				'redirect'=>$Redirect,
-				'time'=>$Time,
-				'css'=>'/asset/css/default.css'
-			));
-				
-			$tpl->show();
-		}
-		
-		public function blockInfo($Title, $Content, $Time, $Redirect, $lang='fr'){
-			$tpl = new templateGC(GCSYSTEM_PATH.'GCtplGc_blockInfo', 'tplGc_blockInfo', 0, $lang);
-			
-			$tpl->assign(array(
-				'title'=>$Title,
-				'content'=>$Content,
-				'redirect'=>$Redirect,
-				'time'=>$Time,
-			));
-				
-			$tpl->show();
-		}
-		
 		public function setErrorLog($file, $message){
-			$file = fopen(LOG_PATH.$file.LOG_EXT, "a+");
-			fputs($file, date("d/m/Y \a H:i:s ! : ",time()).$message."\n");
+			if(LOG_ENABLED == true){
+				$file = fopen(LOG_PATH.$file.LOG_EXT, "a+");
+				fputs($file, date("d/m/Y \a H:i:s ! : ",time()).$message."\n");
+			}
 		}
 		
 		public function sendMail($email, $message_html, $sujet, $envoyeur){
@@ -114,7 +89,7 @@
         }
 
         public function errorHttp($error, $titre){
-        	$t= new templateGC(ERRORDUOCUMENT_PATH.'httpError', $error, '0', $this->_lang);
+        	$t= new templateGC(ERRORDOCUMENT_PATH.'httpError', $error, '0', $this->_lang);
         	$t->setShow(false);
 			$t->assign(array(
 				'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri())),
@@ -174,16 +149,20 @@
 		}
 		
 		protected function _addError($error, $fichier = __FILE__, $ligne = __LINE__, $type = INFORMATION){
-			array_push($this->_error, $error);
-			$file = fopen(LOG_PATH.'system_errors'.LOG_EXT, "a+");
-			fputs($file, date("d/m/Y \a H:i:s ! : ",time()).'['.$type.'] fichier '.$fichier.' ligne '.$ligne.' '.$error."\n");
-			fclose($file);
+			if(LOG_ENABLED == true){
+				array_push($this->_error, $error);
+				$file = fopen(LOG_PATH.LOG_SYSTEM.LOG_EXT, "a+");
+				fputs($file, date("d/m/Y \a H:i:s ! : ",time()).'['.$type.'] fichier '.$fichier.' ligne '.$ligne.' '.$error."\n");
+				fclose($file);
+			}
 		}
 
 		protected function _addErrorHr(){
-			$file = fopen(LOG_PATH.'system_errors'.LOG_EXT, "a+");
-			fputs($file, "##### END OF EXECUTION ####################################################################################################\n");
-			fclose($file);
+			if(LOG_ENABLED == true){
+				$file = fopen(LOG_PATH.LOG_SYSTEM.LOG_EXT, "a+");
+				fputs($file, "##### END OF EXECUTION ####################################################################################################\n");
+				fclose($file);
+			}
 		}
     }
 	
@@ -208,7 +187,7 @@
 			if(REWRITE == true){
 				$domXml = new DomDocument('1.0', 'iso-8859-15');
 				if($domXml->load(ROUTE)){
-					$this->_addError('fichier ouvert : '.ROUTE, __FILE__, __LINE__, INFORMATION);
+					$this->_addError('url "'.$id.'" | fichier ouvert : '.ROUTE, __FILE__, __LINE__, INFORMATION);
 				
 					$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
 					$markupXml = $nodeXml->getElementsByTagName('route');

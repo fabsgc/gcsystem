@@ -1,17 +1,12 @@
 <?php
+	/**
+	 * @info :manager créé automatiquement par le GCsystem
+	*/
+	
 	class managerIndex extends modelGc{
 		protected $bdd                           ;
+		protected $sql                           ;
 		
 		public function init(){
-			//é
-		}
-		
-		public function actionDefault(){
-			$sql = new sqlGc($this->bdd[BDD]);
-			$sql->query('nom', 'SELECT * FROM news');
-
-			foreach($sql->fetch('nom') as $val){
-				echo $val['titre'].'<br />';
-			}
 		}
 	}

@@ -31,7 +31,7 @@
 			$this->_val = $val;
 
 			if(CACHE_SHA1 == 'true')
-				$this->_nameFile = CACHE_PATH.sha1($name.'.cache'); 
+				$this->_nameFile = CACHE_PATH.sha1($name.'.cache');
 			else
 				$this->_nameFile = CACHE_PATH.$name.'.cache';
 		}

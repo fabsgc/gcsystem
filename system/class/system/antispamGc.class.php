@@ -10,6 +10,7 @@
 		use errorGc, langInstance, domGc, generalGc;                  //trait
 
 		protected $_antispam                       ;
+		protected $_xmlValid                = true ; //il peut arriver que le fichier soit endommage, dans ce cas, on bloque le systeme
 		
 		public  function __construct($lang=NULL){
 			if($lang==NULL){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
@@ -25,6 +26,7 @@
 					$this->_setIp();
 				}
 				else{
+					$this->_xmlValid = false;
 					$this->_addError('le fichier '.ASPAM.' n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
 				}
 			}
@@ -231,39 +233,41 @@
 		}
 
 		public function check(){
-			if(isset($this->_antispam['antispams']['ips'][$this->getIp()])){
-				if(($this->_antispam['antispams']['ips'][$this->getIp()]['since'] + $this->_antispam['antispams']['config']['queryip']['duration'] < time())){
-					$this->_updateIpXml();
-
-					return true;
-				}
-				else{
-					if($this->_antispam['antispams']['ips'][$this->getIp()]['number'] < $this->_antispam['antispams']['config']['queryip']['number']){
-						$this->_updateNumberXml($this->_antispam['antispams']['ips'][$this->getIp()]['number']+1, $this->_antispam['antispams']['ips'][$this->getIp()]['since']);
+			if($this->_xmlValid == true){
+				if(isset($this->_antispam['antispams']['ips'][$this->getIp()])){
+					if(($this->_antispam['antispams']['ips'][$this->getIp()]['since'] + $this->_antispam['antispams']['config']['queryip']['duration'] < time())){
+						$this->_updateIpXml();
 
 						return true;
 					}
 					else{
-						$t = new templateGc($this->_antispam['antispams']['config']['error']['template']['src'], 'GCantispamerror', 0);		
-						foreach($this->_antispam['antispams']['config']['error']['template']['variable'] as $cle => $val){
-							if($val['type'] == 'var'){
-								$t->assign(array($val['name']=>$val['value']));
-							}
-							else{
-								$t->assign(array($val['name']=>$this->useLang($val['value'])));
-							}
-						}
-						$t -> show();
+						if($this->_antispam['antispams']['ips'][$this->getIp()]['number'] < $this->_antispam['antispams']['config']['queryip']['number']){
+							$this->_updateNumberXml($this->_antispam['antispams']['ips'][$this->getIp()]['number']+1, $this->_antispam['antispams']['ips'][$this->getIp()]['since']);
 
-						$this->_addError($this->getIp() .' : L\'IP  a dépassé le nombre de requêtes autorisée sur une période donnée pour la page '.$_GET['rubrique'].'/'.$_GET['action'], __FILE__, __LINE__, ERROR);
-						return false;
+							return true;
+						}
+						else{
+							$t = new templateGc($this->_antispam['antispams']['config']['error']['template']['src'], 'GCantispamerror', 0);		
+							foreach($this->_antispam['antispams']['config']['error']['template']['variable'] as $cle => $val){
+								if($val['type'] == 'var'){
+									$t->assign(array($val['name']=>$val['value']));
+								}
+								else{
+									$t->assign(array($val['name']=>$this->useLang($val['value'])));
+								}
+							}
+							$t -> show();
+
+							$this->_addError($this->getIp() .' : L\'IP  a dépassé le nombre de requêtes autorisée sur une période donnée pour la page '.$_GET['rubrique'].'/'.$_GET['action'], __FILE__, __LINE__, ERROR);
+							return false;
+						}
 					}
+					
 				}
-				
-			}
-			else{
-				$this->_setIpXml();
-				return true;
+				else{
+					$this->_setIpXml();
+					return true;
+				}
 			}
 		}
 

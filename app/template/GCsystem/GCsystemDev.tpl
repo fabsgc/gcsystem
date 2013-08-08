@@ -92,6 +92,8 @@
 	}
 	
 </style>
+<gc:if cond="$_GET['rubrique'] != 'terminal'">
+</gc:if>
 <div id="GCsysytem_dev">
 	<div id="GCsysytem_dev_logo"><img src="{IMG_PATH}logo.png"/></div>
 	<div class="GCsysytem_dev_content">

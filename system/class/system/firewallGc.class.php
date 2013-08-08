@@ -23,6 +23,7 @@
 					$this->_addError('le fichier '.FIREWALL.' a bien été chargé', __FILE__, __LINE__, INFORMATION);
 					$this->_setRoleHierarchy();
 					$this->_setFirewallConfigLoginSource();
+					$this->_setFirewallConfigDefaultSource();
 					$this->_setFirewallConfigForbidden();
 					$this->_setFirewallConfigcsrf();
 					$this->_setFirewallConfigConnect();
@@ -37,268 +38,6 @@
 			else{
 				$this->_addError('le mode routeur est désactivé. Le parefeu ne peut pas fonctionner', __FILE__, __LINE__, WARNING);
 				return true;
-			}
-		}
-
-		public function getFirewallArray(){
-			if(isset($this->_security)){
-				return $this->_security;
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallRoles(){
-			if(isset($this->_security['roles_hierarchy'])){
-				return $this->_security['roles_hierarchy'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallRole($nom){
-			if(isset($this->_security['roles_hierarchy'][''.$nom.''])){
-				return $this->_security['roles_hierarchy'][''.$nom.''];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewall(){
-			if(isset($this->_security['firewall'])){
-				return $this->_security['firewall'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfig(){
-			if(isset($this->_security['firewall']['config'])){
-				return $this->_security['firewall']['config'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigLogin(){
-			if(isset($this->_security['firewall']['config']['login'])){
-				return $this->_security['firewall']['config']['login'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigLoginSource(){
-			if(isset($this->_security['firewall']['config']['login']['source'])){
-				return $this->_security['firewall']['config']['login']['source'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigLoginSourceId(){
-			if(isset($this->_security['firewall']['config']['login']['source']['id'])){
-				return $this->_security['firewall']['config']['login']['source']['id'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigLoginSourceVars(){
-			if(isset($this->_security['firewall']['config']['login']['source']['vars'])){
-				return $this->_security['firewall']['config']['login']['source']['vars'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigForbidden(){
-			if(isset($this->_security['firewall']['config']['forbidden'])){
-				return $this->_security['firewall']['config']['forbidden'];
-			}
-			else{
-				return false;
-			}
-		}
-
-
-		public function getFirewallConfigForbiddenTemplate(){
-			if(isset($this->_security['firewall']['config']['forbidden']['template'])){
-				return $this->_security['firewall']['config']['forbidden']['template'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigForbiddenTemplateSrc(){
-			if(isset($this->_security['firewall']['config']['forbidden']['template']['src'])){
-				return $this->_security['firewall']['config']['forbidden']['template']['src'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigForbiddenTemplateVars(){
-			if(isset($this->_security['firewall']['config']['forbidden']['template']['variable'])){
-				return $this->_security['firewall']['config']['forbidden']['template']['variable'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		//ajout
-		public function getFirewallConfigForbiddenTemplateVar($nom){
-			if(isset($this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.''])){
-				return $this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.''];
-			}
-			else{
-				return false;
-			}
-		}
-
-		//ajout
-		public function getFirewallConfigForbiddenTemplateVarType($nom){
-			if(isset($this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.'']['type'])){
-				return $this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.'']['type'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		//ajout
-		public function getFirewallConfigForbiddenTemplateVarName($nom){
-			if(isset($this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.'']['name'])){
-				return $this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.'']['name'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		//ajout
-		public function getFirewallConfigForbiddenTemplateVarValue($nom){
-			if(isset($this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.'']['value'])){
-				return $this->_security['firewall']['config']['forbidden']['template']['variable'][''.$nom.'']['value'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigCsrf(){
-			if(isset($this->_security['firewall']['config']['csrf'])){
-				return $this->_security['firewall']['config']['csrf'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigCsrfEnabled(){
-			if(isset($this->_security['firewall']['config']['csrf']['enabled'])){
-				return $this->_security['firewall']['config']['csrf']['enabled'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigCsrfTemplate(){
-			if(isset($this->_security['firewall']['config']['csrf']['template'])){
-				return $this->_security['firewall']['config']['csrf']['template'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigCsrfTemplateSrc(){
-			if(isset($this->_security['firewall']['config']['csrf']['template']['src'])){
-				return $this->_security['firewall']['config']['csrf']['template']['src'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConfigCsrfTemplateVars(){
-			if(isset($this->_security['firewall']['config']['csrf']['template']['variable'])){
-				return $this->_security['firewall']['config']['csrf']['template']['variable'];
-			}
-			else{
-				return false;
-			}
-		}
-
-
-		//ajout
-		public function getFirewallConfigCsrfTemplateVar($nom){
-			if(isset($this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.''])){
-				return $this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.''];
-			}
-			else{
-				return false;
-			}
-		}
-
-		//ajout
-		public function getFirewallConfigCsrfTemplateVarType($nom){
-			if(isset($this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.'']['type'])){
-				return $this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.'']['type'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		//ajout
-		public function getFirewallConfigCsrfTemplateVarName($nom){
-			if(isset($this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.'']['name'])){
-				return $this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.'']['name'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		//ajout
-		public function getFirewallConfigCsrfTemplateVarValue($nom){
-			if(isset($this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.'']['value'])){
-				return $this->_security['firewall']['config']['csrf']['template']['variable'][''.$nom.'']['value'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallConnect(){
-			if(isset($this->_security['firewall']['connect'])){
-				return $this->_security['firewall']['connect'];
-			}
-			else{
-				return false;
-			}
-		}
-
-		public function getFirewallAccess(){
-			if(isset($this->_security['firewall']['access'])){
-				return $this->_security['firewall']['access'];
-			}
-			else{
-				return false;
 			}
 		}
 		
@@ -332,6 +71,25 @@
 					ob_start ();
 						eval('echo '.$value.';');
 						$this->_security['firewall']['config']['login']['source']['vars'][$key] = ob_get_contents();
+					ob_get_clean();
+				}
+			}
+		}
+
+		protected function _setFirewallConfigDefaultSource(){
+			$this->_nodeXml = $this->_domXml->getElementsByTagName('security')->item(0);
+			$this->_node2Xml = $this->_nodeXml->getElementsByTagName('firewall')->item(0);
+			$this->_node3Xml = $this->_node2Xml->getElementsByTagName('config')->item(0);
+			$this->_markupXml = $this->_node3Xml->getElementsByTagName('default')->item(0);
+			$this->_security['firewall']['config']['default']['source']['id'] = $this->_markupXml->getElementsByTagName('source')->item(0)->getAttribute('id');
+			$this->_security['firewall']['config']['default']['source']['vars'] = explode(',', $this->_markupXml->getElementsByTagName('source')->item(0)->getAttribute('vars'));
+		
+			foreach ($this->_security['firewall']['config']['default']['source']['vars'] as $key => $value) {
+				if(preg_match('#^\$#isU', $value)){
+
+					ob_start ();
+						eval('echo '.$value.';');
+						$this->_security['firewall']['config']['default']['source']['vars'][$key] = ob_get_contents();
 					ob_get_clean();
 				}
 			}
@@ -455,7 +213,7 @@
 								else{
 									$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car il doit être connecté', __FILE__, __LINE__, ERROR);
 									
-									if($this->getUrl($this->_security['firewall']['config']['login']['source']['id']) != ""){
+									if($this->getUrl($this->_security['firewall']['config']['login']['source']['id'],  $this->_security['firewall']['config']['login']['source']['vars']) != ""){
 										header('Location: '.$this->getUrl($this->_security['firewall']['config']['login']['source']['id'], $this->_security['firewall']['config']['login']['source']['vars']));
 									}
 									else{
@@ -472,18 +230,14 @@
 									return true;
 								}
 								else{
-									$t = new templateGc($this->_security['firewall']['config']['forbidden']['template']['src'], 'GCfirewallForbiddenGrade', 0);
-										
-									foreach($this->_security['firewall']['config']['forbidden']['template']['variable'] as $cle => $val){
-										if($val['type'] == 'var'){
-											$t->assign(array($val['name']=>$val['value']));
-										}
-										else{
-											$t->assign(array($val['name']=>$this->useLang($val['value'])));
-										}
+									$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car il est connecté', __FILE__, __LINE__, ERROR);
+									
+									if($this->getUrl($this->_security['firewall']['config']['default']['source']['id'],  $this->_security['firewall']['config']['default']['source']['vars']) != ""){
+										header('Location: '.$this->getUrl($this->_security['firewall']['config']['default']['source']['id'], $this->_security['firewall']['config']['default']['source']['vars']));
 									}
-
-									$t -> show();
+									else{
+										$this->_addError('Le parefeu n\'a pas pu exécuter la redirection vers l\'url d\'id '.$this->_security['firewall']['config']['default']['source']['id'], __FILE__, __LINE__, ERROR);
+									}
 
 									$this->_addError('Le parefeu a identifié l\'accès à la page '.$_GET['rubrique'].'/'.$_GET['action'].' comme interdit pour cet utilisateur car il est connecté', __FILE__, __LINE__, ERROR);
 									return false;
@@ -525,8 +279,19 @@
 		}
 		
 		protected function _checkCsrf(){
-			if(isset($_GET[$this->_security['firewall']['config']['csrf']['name']]) && $_SESSION[$this->_security['firewall']['config']['csrf']['name']]!=''){
+			if(isset($_GET[$this->_security['firewall']['config']['csrf']['name']]) && isset($_POST[$this->_security['firewall']['config']['csrf']['name']]) && $_SESSION[$this->_security['firewall']['config']['csrf']['name']]!=''){
+				if($_GET[$this->_security['firewall']['config']['csrf']['name']] == $_SESSION[$this->_security['firewall']['config']['csrf']['name']] && $_POST[$this->_security['firewall']['config']['csrf']['name']] == $_SESSION[$this->_security['firewall']['config']['csrf']['name']]){
+					return true; //Get et POST et Sessions correspondent
+				}
+				else{
+					return false;
+				}
+			}
+			elseif((isset($_GET[$this->_security['firewall']['config']['csrf']['name']]) || isset($_POST[$this->_security['firewall']['config']['csrf']['name']])) && $_SESSION[$this->_security['firewall']['config']['csrf']['name']]!=''){
 				if($_GET[$this->_security['firewall']['config']['csrf']['name']] == $_SESSION[$this->_security['firewall']['config']['csrf']['name']]){
+					return true; //Get et Sessions correspondent
+				}
+				elseif($_POST[$this->_security['firewall']['config']['csrf']['name']] == $_SESSION[$this->_security['firewall']['config']['csrf']['name']]){
 					return true; //Get et Sessions correspondent
 				}
 				else{

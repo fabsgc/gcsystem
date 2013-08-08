@@ -28,6 +28,9 @@
 		
 		protected function init(){	
 		}
+
+		protected function end(){	
+		}
 		
 		final public function setFirewall(){
 			$this->_firewall = new firewallGc($this->_lang);
@@ -88,7 +91,7 @@
 							$sql_connect[''.$d['database'].''] = new PDO($d['sgbd'].':host='.$d['hostname'].';dbname='.$d['database'], $d['username'], $d['password']);
 						}
 						catch (PDOException $e){
-							$this->setErrorLog('errors_sql', 'Une exception a été lancée. Message d\'erreur lors de la connexion à une base de données : '.$e.'');
+							$this->setErrorLog(LOG_SQL, 'Une exception a été lancée. Message d\'erreur lors de la connexion à une base de données : '.$e.'');
 						}	
 					break;
 					
@@ -102,7 +105,7 @@
 					break;
 					
 					default :
-						$this->setErrorLog('errors_sql', 'L\'extension de cette connexion n\'est pas gérée');
+						$this->setErrorLog(LOG_SQL, 'L\'extension de cette connexion n\'est pas gérée');
 					break;
 				}
 			}
@@ -171,10 +174,13 @@
 				include(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT);
 			} 
 			else { 
-				$this->setErrorLog('errors', 'Le template '.$nom_template.' n\'a pas été trouvé');
+				$this->_addError(LOG_SYSTEM, 'Le template '.$nom_template.' n\'a pas été trouvé');
 			}
 		}
 		
 		public function __desctuct(){
+			foreach ($this->bdd as $key => $value) {
+				$value->closeCursor();
+			}
 		}
 	}

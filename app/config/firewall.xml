@@ -1,44 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <security>
-	<roles_hierarchy name="statut">
-		<role_hierarchy name="ROLE_BANNI"/>
-		<role_hierarchy name="ROLE_MEMBER"/>
-		<role_hierarchy name="ROLE_ADMIN"/>
+	<roles_hierarchy name="user_statut">
+		<role_hierarchy name="ROLE_USER"/>
 	</roles_hierarchy>
 	<firewall>
 		<config>
 			<login>
-				<source id="login" vars=""/>
+				<source id="login" vars="fr"/>
 			</login>
+			<default>
+				<source id="index" vars="fr"/>
+			</default>
 			<forbidden template="GCsystem/GCerror">
 				<variable type="lang" name="error" value="firewallforbiddentitle"/>
 				<variable type="lang" name="explication" value="firewallforbiddencontent"/>
 			</forbidden>
-			<csrf name="token" template="GCsystem/GCerror" enabled="true">
+			<csrf name="user_token" template="GCsystem/GCerror" enabled="true">
 				<variable type="lang" name="error" value="firewallcsrftitle"/>
 				<variable type="lang" name="explication" value="firewallcsrfcontent"/>
 			</csrf>
-			<connect name="connected" yes="true" no="false"/>
+			<connect name="user_connected" yes="true" no="false"/>
 		</config>
 		<access>
-			<url id="index" connected="true" access="*"/>
-			<url id="index2" connected="true" access="*"/>
-			<url id="index3" connected="*" access="*"/>
-			<url id="page" connected="*" access="*"/>
-			<url id="page2" connected="*" access="*"/>
-			<url id="template" connected="*" access="*"/>
-			<url id="picture" connected="*" access="*"/>
-			<url id="contype" connected="*" access="*"/>
-			<url id="terminal" connected="*" access="*"/>
-			<url id="terminal_terminal" connected="*" access="*"/>		
-			<url id="urltoke" connected="*" access="*"/>
-			<url id="testdebug" connected="*" access="*"/>
-			<url id="test" connected="*" access="*"/>
-			<url id="test2" connected="*" access="*"/>
-			<url id="install" connected="*" access="*"/>
-			<url id="test4" connected="*" access="*"/>
-			<url id="montruc" connected="*" access="*"/>
-			<url id="debug" connected="*" access="*"/>
 		</access>
 	</firewall>
 </security>

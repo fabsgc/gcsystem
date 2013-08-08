@@ -37,7 +37,7 @@
 		
 		public function __construct($filepath){
 			if($filepath == NULL) { $filepath = 'empty.txt'; $this->_setFileDefault($filepath); }
-			if($filepath!=NULL && !is_file($filepath) && file_exists($filepath) && is_readable($filepath)) { $this->_setFileDefault($filepath); }
+			if($filepath != NULL && !is_file($filepath) && file_exists($filepath) && is_readable($filepath)) { $this->_setFileDefault($filepath); }
 			
 			$filepath = strval($filepath);
 			if(is_file($filepath) && file_exists($filepath) && is_readable($filepath)){
