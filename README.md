@@ -2,11 +2,11 @@ Informations :
 -----------
 
 * Open-Source depuis sa création
-* Version  : 2.0.1 Bêta
+* Version  : 2.1 Bêta
 * Créateur : fab@c++
 * Contributeurs actifs : Lucas5190, t1307
 * Description : framework php mvc de développement d'application web. 
-* Principe : Ce framework se base sur la notion de rubrique. Une rubrique regroupe donc un contrôleur, un modèle et une vue. 
+* Principe : Ce framework se base sur la notion de rubrique. Une rubrique regroupe donc un contrôleur, un modèle et une ou plusieurs vues. 
 * Langues : Framework proposant par défaut 3 langues : français, anglais, néerlandais
 
 Spécifications :
@@ -16,6 +16,7 @@ Spécifications :
 * L'extension CURL activée pour pouvoir faire les mises à jour et pouvoir lire des flux rss avec la classe feedGc
 * Chmod en lecture écriture (755,777)
 * rewrite_module apache activé
+* possibilité d'utiliser le mode deflate (désactivable dans le .htaccess)
 
 Installation :
 -----------
@@ -23,7 +24,7 @@ Installation :
 * téléchargez l'archive sur github
 * décompressez l'archive dans le répertoire désiré
 * dans le fichier web.config.php, modifiez la constante "FOLDER" et indiquez-y le répertoire où se trouve le framework. Par exemple : /GCsystem
-* chargez le fichier index.php
+* chargez l'url : http://monsite.com/FOLDER/
 
 Contenus externes :
 -----------
@@ -33,7 +34,11 @@ Contenus externes :
 Documentation :
 -----------
 
-* Le GCsystem 2.0 étant encore en développement, aucune documentation n'est pour l'instant disponible, mais une documentation est en cours de rédaction en parallèle
-* Vous pouvez toujours lire le [cours de prise en main de la version 1.0 du GCsystem][1]
+* Le GCsystem 2.0 étant encore en développement, une documentation est en cours de rédaction
 
-[1]: http://www.legeekcafe.com/tutoriels-55-utiliser-le-gcsystem.html
+Site du projet
+-----------
+
+[GCsystem framework PHP MVC de développement d'applications Web][1]
+
+[1]: http://www.gcsystem.dzv.me/GCsystem_site/
