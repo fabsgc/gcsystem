@@ -44,18 +44,23 @@
 		*/
 		
 		public function setCache(){
-			if(!file_exists($this->_nameFile)){
-				$fichier = fopen($this->_nameFile, 'w+');
-				fwrite($fichier, $this->_compress(serialize($this->_val)));
-				fclose($fichier);
+			if(file_exists(CACHE_PATH)){
+				if(!file_exists($this->_nameFile)){
+					$fichier = fopen($this->_nameFile, 'w+');
+					fwrite($fichier, $this->_compress(serialize($this->_val)));
+					fclose($fichier);
+				}
+			 
+				$time_ago = time() - filemtime($this->_nameFile);
+			 
+				if($time_ago > $this->_time){
+					$fichier = fopen($this->_nameFile, 'w+');
+					fwrite($fichier, $this->_compress(serialize($this->_val)));
+					fclose($fichier);
+				}
 			}
-		 
-			$time_ago = time() - filemtime($this->_nameFile);
-		 
-			if($time_ago > $this->_time){
-				$fichier = fopen($this->_nameFile, 'w+');
-				fwrite($fichier, $this->_compress(serialize($this->_val)));
-				fclose($fichier);
+			else{
+				$this->_addError('le répertoire des fichiers de cache "'.CACHE_PATH.'"" n\'est pas accessible, ce qui empêche l\'application de gérer correctement les templates/requêtes sql etc.', __FILE__, __LINE__, ERROR);
 			}
 		}
 		

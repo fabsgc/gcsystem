@@ -10,6 +10,7 @@
 		use errorGc, langInstance, urlRegex, generalGc;             //trait
 		
 		protected $_file               = ""         ;    //chemin vers le .tpl
+		protected $_fileString         = ""         ;    //contenu du template
 		protected $_fileCache          = ""         ;    //chemin vers le .compil.tpl
 		protected $_nom                = ""         ;    //nom du fichier compilé à créer
 		protected $_content            = ""         ;    //contenu du fichier de template
@@ -20,41 +21,66 @@
 		protected $_timeCache		   = 0          ;    //contient le temps de mise en cache
 		protected $_timeFile		   = 0          ;    //contient la date de dernière modif du template
 		protected $_show		       = true       ;
+
+		const TPL_FILE                 = 1          ;    //on peut charger un tpl à partir d'un fichier
+		const TPL_STRING               = 2          ;    //on peut charger un tpl à partir d'une chaîne de caractères
 		
-		public  function __construct($file="", $nom="", $timecache=0, $lang="fr"){
+		public  function __construct($file="", $nom="", $timecache=0, $lang="fr", $stream = self::TPL_FILE){
 			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();
 
-			$this->_file=TEMPLATE_PATH.$file.TEMPLATE_EXT;
-			if(file_exists($this->_file) or is_readable($this->_file)){
-				$handle = fopen($this->_file, 'rb');
-				$this->_content = fread($handle, filesize ($this->_file));
-				fclose ($handle);
-				
-				$this->_nom=$nom;
-				$this->_timeCache=$timecache;
+			switch($stream){
+				case self::TPL_FILE :
+					$this->_file=TEMPLATE_PATH.$file.TEMPLATE_EXT;
 
-				if(CACHE_SHA1 == 'true')
-					$this->_fileCache=CACHE_PATH.sha1('template_'.$this->_nom.'.tpl.compil.php');
-				else
-					$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';
+					if(file_exists($this->_file) or is_readable($this->_file)){
+						$handle = fopen($this->_file, 'rb');
+						$this->_content = fread($handle, filesize ($this->_file));
+						fclose ($handle);
+						
+						$this->_nom=$nom;
+						$this->_timeCache=$timecache;
 
-				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
-				$this->_setParser();
-				$this->_addError('le fichier de template "'.$this->_nom.'" ("'.$this->_file.'") a bien été chargé.', __FILE__, __LINE__, INFORMATION);
-			} 
-			else{
-				$this->_addError('le fichier de template "'.$this->_nom.'" ("'.$this->_file.'") spécifié n\'a pas été trouvé.', __FILE__, __LINE__, ERROR);
-				$this->_nom=$nom;
-				$this->_timeCache=$timecache;
-				$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';
-				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
-				$this->_setParser();
+						if(CACHE_SHA1 == 'true')
+							$this->_fileCache=CACHE_PATH.sha1('template_'.$this->_nom.'.tpl.compil.php');
+						else
+							$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';
+
+						$this->_setParser();
+						$this->_addError('le fichier de template "'.$this->_nom.'" ("'.$this->_file.'") a bien été chargé.', __FILE__, __LINE__, INFORMATION);
+					} 
+					else{
+						$this->_addError('le fichier de template "'.$this->_nom.'" ("'.$this->_file.'") spécifié n\'a pas été trouvé.', __FILE__, __LINE__, ERROR);
+						$this->_nom=$nom;
+						$this->_timeCache=$timecache;
+						$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';
+						if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
+						$this->_setParser();
+					}
+				break;
+
+				case self::TPL_STRING :
+					$this->_nom=$nom;
+					$this->_timeCache=$timecache;
+					$this->_content = $file;
+
+					if(CACHE_SHA1 == 'true')
+						$this->_fileCache=CACHE_PATH.sha1('template_'.$this->_nom.'.tpl.compil.php');
+					else
+						$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php';
+
+					$this->_setParser();
+					$this->_addError('le fichier de template "'.$this->_nom.'" (chaîne de caractères) a bien été chargé.', __FILE__, __LINE__, INFORMATION);
+				break;
 			}
 		}
 		
 		public function getFile(){
 			return $this->_file;
+		}
+
+		public function getFileString(){
+			return $this->_fileString;
 		}
 		
 		public function getTimeCache(){
@@ -244,12 +270,13 @@
 		
 		protected $_templateGC                          ;
 		protected $_contenu                             ;
-		protected $_functionException = array('print_r');
 		protected $_regexSpace        = '\s*'           ;
 		protected $_regexSpaceR       = '\s+'           ;
 		protected $_name              = 'gc:'           ;
 		protected $_includeI          = 0               ;
 		protected $_info                                ;
+		protected $_block             = array()         ;
+		protected $_template          = array()         ;
 		
 		/// les balises à parser
 		protected $bal= array(
@@ -263,7 +290,10 @@
 			'while'          => array('while', 'cond'),                              // while
 			'for'            => array('for', 'var', 'boucle', 'cond'),               // for
 			'spaghettis'     => array('continue', 'break', 'goto', 'from', 'to'),    // spaghettis
-			'lang'           => array('_(', ')_'));                                  // langue
+			'lang'           => array('_(', ')_'),                                   // langue
+			'block'          => array('block', 'name'),                              // block de code
+			'template'       => array('template', 'name'),                           // fonction de template
+			'call'           => array('call', 'block', 'template'));                 // fonction d'appel (block et template)
 
 		protected $error;
 		
@@ -283,6 +313,7 @@
 		
 		public function parse($c){
 			$this->_contenu=$c;
+			$this->_parseTemplate();
 			$this->_parsevarsPhp();
 			$this->_parseInclude();
 			$this->_parsevarAdd();
@@ -304,6 +335,8 @@
 			$this->_parseLang();
 			$this->_parseLang2();
 			$this->_parseException();
+			$this->_parseBlock();
+			$this->_parseCall();
 			return $this->_contenu;
 		}
 		
@@ -610,13 +643,41 @@
 			return '<?php echo $this->getUrl(\''.$m[1].'\', '.$array.'); ?>';
 		}
 
+		protected function _parseBlock(){
+			$this->_contenu = preg_replace_callback('`<'.$this->_name.preg_quote($this->bal['block'][0]).$this->_regexSpaceR.preg_quote($this->bal['block'][1]).'="'.$this->_regexSpace.'(\w+)'.$this->_regexSpace.'">(.*)</'.$this->_name.$this->bal['block'][0].'>`isU', array('templateGcParser', '_parseBlockCallback'), $this->_contenu);
+		}
+
+		protected function _parseBlockCallback($m){
+			$this->_block[$m[1]] = $m[2];
+			return '';
+		}
+
+		protected function _parseTemplate(){
+
+		}
+
+		protected function _parseTemplateCallback(){
+
+		}
+
+		protected function _parseCall(){
+			$this->_contenu = preg_replace_callback('`<'.$this->_name.preg_quote($this->bal['call'][0]).$this->_regexSpaceR.preg_quote($this->bal['call'][1]).'="'.$this->_regexSpace.'(\w+)'.$this->_regexSpace.'"'.$this->_regexSpace.'/>`isU', array('templateGcParser', '_parseCallBlockCallback'), $this->_contenu);
+		}
+
+		protected function _parseCallBlockCallback($m){
+			return '';
+		}
+
+
+		protected function _parseCallTemplateCallback(){
+
+		}
+
 		protected function _parseException(){
 			$this->_contenu = preg_replace('#'.preg_quote('; ?>; ?>').'#isU', '; ?>', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('<?php echo <?php').'#isU', '<?php echo', $this->_contenu);
 			//$this->_contenu = preg_replace('#'.preg_quote('<?php').'(.*)'.preg_quote('= <?php').'#isU', '<?php$1=', $this->_contenu);
 			$this->_contenu = preg_replace('#'.preg_quote('?>').$this->_regexSpaceR.preg_quote('/>').'#isU', '?>', $this->_contenu);
-
-			//print_r($this->_templateGC->vars);
 		}
 
 		public  function __destruct(){
