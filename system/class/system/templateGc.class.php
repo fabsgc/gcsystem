@@ -142,7 +142,7 @@
 				break;
 				
 				case self::TPL_COMPILE_INCLUDE:
-					return $this->_variable.$this->_refParser->parseInclude($contenu);
+					return $this->_variable.$this->_refParser->parseNoCall($contenu);
 				break;
 			}
 		} 
@@ -348,9 +348,29 @@
 			return $this->_contenu;
 		}
 
-		public function parseInclude($c){
+		public function parseNoCall($c){
 			$this->_contenu=$c;
 			$this->_parseInclude();
+			$this->_parsevarsPhp();
+			$this->_parsevarAdd();
+			$this->_parseGravatar();
+			$this->_parseUrlRegex();
+			$this->_parseDefine();
+			$this->_parseDefineClass();
+			$this->_parseForeach();
+			$this->_parseWhile();
+			$this->_parseFor();
+			$this->_parsevarsExist();
+			$this->_parsevars();
+			$this->_parsevarFunc();
+			$this->_parseCond();
+			$this->_parseSwitch();
+			$this->_parseCom();
+			$this->_parseFunc();
+			$this->_parseSpaghettis();
+			$this->_parseLang();
+			$this->_parseLang2();
+			$this->_parseException();
 			return $this->_contenu;
 		}
 		
