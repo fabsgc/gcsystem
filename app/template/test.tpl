@@ -1,20 +1,31 @@
-{{php:
-
-$var = array(0,1,2,3,4,5,6,7,8,9,10);
-}}
-
-<gc:block name="myblock">salut</gc:block>
-
-<gc:template name="mytemplate" vars="$string1, $string2, $string3">
-  {string1}
-  {string2}
-  {string3}
-</gc:template>
+<gc:include file="test2" cache="0"/>
 
 <gc:call block="myblock" />
+<gc:call block="myblock" />
+<gc:call block="myblock" />
+<gc:call block="myblock" />
+<gc:call block="myblock" />
+<gc:call block="myblock" />
+<gc:call block="myblock" />
+<gc:call block="myblock" />
+<gc:call block="myblock" />
+<gc:call block="myblock" />
+<gc:call block="myblock" />
+<gc:call block="myblock" />
+<gc:call block="myblock" />
+<gc:call block="myblock" />
+<gc:call block="myblock" />
 
-<gc:call template="mytemplate" />
+<gc:call template="mytemplate" string="1" var="$var2" int="1"/>
 
 <gc:if  cond="1==1">
 
+<gc:else />
+
 </gc:if>
+
+<gc:function name= " trim" string="   test    "/>
+
+<gc:foreach var="$var" as="$data">
+
+</gc:foreach>

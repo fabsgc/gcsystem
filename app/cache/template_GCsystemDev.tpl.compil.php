@@ -92,43 +92,43 @@
 	}
 	
 </style>
-<gc:if cond="$_GET['rubrique'] != 'terminal'">
-</gc:if>
+<?php if($_GET['rubrique'] != 'terminal') { ?>
+<?php } ?>
 <div id="GCsysytem_dev">
-	<div id="GCsysytem_dev_logo"><img src="{IMG_PATH}logo.png"/></div>
+	<div id="GCsysytem_dev_logo"><img src="<?php echo ($IMG_PATH); ?>logo.png"/></div>
 	<div class="GCsysytem_dev_content">
-		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}time.png" title="{{lang:executiontime}}"/><img src="{IMG_PATH}memory.png" title="{{lang:memoireuse}}"/></div>
-		<div class="GCsysytem_dev_content_content" style="padding: 2px; width: 70px;">{timeexec} ms<br /><span style="position: relative; top: 10px;">{memory} kb</span></div>
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>time.png" title="<?php echo $this->useLang('executiontime',array()); ?>"/><img src="<?php echo ($IMG_PATH); ?>memory.png" title="<?php echo $this->useLang('memoireuse',array()); ?>"/></div>
+		<div class="GCsysytem_dev_content_content" style="padding: 2px; width: 70px;"><?php echo ($timeexec); ?> ms<br /><span style="position: relative; top: 10px;"><?php echo ($memory); ?> kb</span></div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}http.png" title="{{lang:fichierinclus}}"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>http.png" title="<?php echo $this->useLang('fichierinclus',array()); ?>"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone" style="width: 219px;">
-			{http}
+			<?php echo ($http); ?>
 			</div>
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 275px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}sql.png" title="{{lang:requetesql}}"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>sql.png" title="<?php echo $this->useLang('requetesql',array()); ?>"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone" style="width: 244px;">
-			{sql}
+			<?php echo ($sql); ?>
 			</div>
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}tpl.png" title="{{lang:fichiertpl}}"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>tpl.png" title="<?php echo $this->useLang('fichiertpl',array()); ?>"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone" style="width: 219px;">
-			{tpl}
+			<?php echo ($tpl); ?>
 			</div>
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 200px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}arbo.png" title="{{lang:vargetpost}}"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>arbo.png" title="<?php echo $this->useLang('vargetpost',array()); ?>"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone"  style="width: 169px;">
-				{<gc:function name="nl2br" string="$arbo" />}
+				<?php echo (nl2br("$arbo")); ?>
 			</div>
 		</div>
 	</div>

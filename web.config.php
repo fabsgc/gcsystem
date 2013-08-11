@@ -131,7 +131,7 @@ define('ENVIRONMENT', 'development');
 define('MAINTENANCE', false);
 
 /* affiche la barre de dev ou non */
-define('DEVTOOL', false);
+define('DEVTOOL', true);
 
 /* mot de passe pour se connecter au terminal */
 define('TERMINAL_MDP', 'mdp');
