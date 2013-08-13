@@ -6,7 +6,7 @@
  | @file : web.config.php
  | @author : fab@c++
  | @description : Configuration générale de l'application web et des connexions SQL
- | @version : 1.0 Bêta
+ | @version : 2.1 Bêta
  
  | ------------------------------------------------------
  
@@ -63,7 +63,7 @@ define('CLASS_TERMINAL', CLASS_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php');
 define('CLASS_FIREWALL', CLASS_PATH.CLASS_SYSTEM_PATH.'firewallGc.class.php');
 define('CLASS_AUTOLOAD', CLASS_PATH.'autoload.php');
 define('CLASS_CONFIG', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php');
-define('CLASS_PLUGIN', CLASS_PATH.CLASS_SYSTEM_PATH.'pluginGc.class.php');
+define('CLASS_HELPER', CLASS_PATH.CLASS_SYSTEM_PATH.'helperGc.class.php');
 define('CLASS_ROUTER', CLASS_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php');
 define('CLASS_ANTISPAM', CLASS_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php');
 define('CLASS_INSTALL', CLASS_PATH.CLASS_SYSTEM_PATH.'installGc.class.php');
@@ -75,7 +75,7 @@ define('CLASS_ERROR_PERSO', CLASS_PATH.CLASS_SYSTEM_PATH.'errorpersoGc.class.php
 define('ROUTE', APP_CONFIG_PATH.'routes.xml');
 define('MODOGCCONFIG', APP_CONFIG_PATH.'modoGc.xml');
 define('APPCONFIG', APP_CONFIG_PATH.'app.xml');
-define('PLUGIN', APP_CONFIG_PATH.'plugin.xml');
+define('HELPER', APP_CONFIG_PATH.'helper.xml');
 define('FIREWALL', APP_CONFIG_PATH.'firewall.xml');
 define('ASPAM', APP_CONFIG_PATH.'antispam.xml');
 define('INSTALLED', APP_CONFIG_PATH.'installed.xml');

@@ -7,14 +7,14 @@
 	*/
 
 	trait generalGc{
-		public function setErrorLog($file, $message){
+		final protected function setErrorLog($file, $message){
 			if(LOG_ENABLED == true){
 				$file = fopen(LOG_PATH.$file.LOG_EXT, "a+");
 				fputs($file, date("d/m/Y \a H:i:s ! : ",time()).$message."\n");
 			}
 		}
 		
-		public function sendMail($email, $message_html, $sujet, $envoyeur){
+		final protected function sendMail($email, $message_html, $sujet, $envoyeur){
 			if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $email)){
 				$passage_ligne = "\r\n";
 			}
@@ -51,27 +51,27 @@
 			//==========		
 		}
 		
-		public function getIp(){
+		final protected function getIp(){
 			return $_SERVER['REMOTE_ADDR'];
 		}
 	
-		public function getQuery(){
+		final protected function getQuery(){
 			return $_SERVER['QUERY_STRING'];
 		}
 		
-		public function getPhpSelf(){
+		final protected function getPhpSelf(){
 			return $_SERVER['PHP_SELF'];
 		}
 		
-		public function getHost(){
+		final protected function getHost(){
 			return $_SERVER['HTTP_HOST'];
 		}
 		
-		public function getUri(){
+		final protected function getUri(){
 			return $_SERVER['REQUEST_URI'];
 		}
 		
-		public function getReferer(){
+		final protected function getReferer(){
 			if(isset($_SERVER['HTTP_REFERER'])){
 				return $_SERVER['HTTP_REFERER'];
 			}
@@ -80,15 +80,15 @@
 			}
 		}
 		
-		public function getServerName(){
+		final protected function getServerName(){
 			return $_SERVER['SERVER_NAME'];
 		}
 		
-		public function addHeader($header){
+		final protected function addHeader($header){
             header($header);
         }
 
-        public function errorHttp($error, $titre){
+        final protected function errorHttp($error, $titre){
         	$t= new templateGC(ERRORDOCUMENT_PATH.'httpError', $error, '0', $this->_lang);
         	$t->setShow(false);
 			$t->assign(array(
@@ -98,18 +98,18 @@
 			return $t->show();
         }
 		
-		public function redirect404(){
+		final protected function redirect404(){
 			$this->addHeader('HTTP/1.1 404 Not Found');
 			echo $this->errorHttp('404', $this->useLang('404'));
         }
 		
-		public function redirect500(){
+		final protected function redirect500(){
 			$this->addHeader('HTTP/1.1 500 internal error');
 			echo $this->errorHttp('500', $this->useLang('500'));
 			exit();
         }
 		
-		public function redirect403(){
+		final protected function redirect403(){
 			$this->addHeader('HTTP/1.1 403 Access Forbidden');
 			echo $this->errorHttp('403', $this->useLang('403'));
 			exit();
@@ -119,7 +119,7 @@
 	trait errorGc{
 		protected $_error              = array() ; //array contenant toutes les erreurs enregistrées
 		
-		public function showError(){
+		final protected function showError(){
 			$erreur = "";
 			foreach($this->_error as $error){
 				$erreur .=$error."<br />";
@@ -127,28 +127,7 @@
 			return $erreur;
 		}
 
-		public function __isset($nom){
-			$this->_addError('tentative de test "isset" sur un attribut "'.$nom.'" inaccessible', __FILE__,  __LINE__, ERROR);
-			return false;
-		}
-
-		public function __unset($nom){
-			$this->_addError('tentative de suppression de l:\'attribut "'.$nom.'" inaccessible', __FILE__,  __LINE__, ERROR);
-		}
-
-		public function __call($nom, $arguments){
-			$this->_addError('tentative d\'appel de la méthode "'.$nom.'" inaccessible avec les arguments '.implode(', ', $arguments), __FILE__,  __LINE__, ERROR);
-		}
-
-		public static function __callStatic($nom, $arguments){
-			$this->_addError('tentative d\'appel de la méthode "'.$nom.'" inaccessible dans un contexte statique avec les arguments '.implode(', ', $arguments), __FILE__,  __LINE__, ERROR);
-		}
-
-		public function __invoke($arguments){
-			$this->_addError('tentative d\'utilisation de l\'objet en tant que fonction avec les arguments '.implode(', ', $arguments), __FILE__,  __LINE__, ERROR);
-		}
-		
-		protected function _addError($error, $fichier = __FILE__, $ligne = __LINE__, $type = INFORMATION){
+		final protected function _addError($error, $fichier = __FILE__, $ligne = __LINE__, $type = INFORMATION){
 			if(LOG_ENABLED == true){
 				array_push($this->_error, $error);
 				$file = fopen(LOG_PATH.LOG_SYSTEM.LOG_EXT, "a+");
@@ -157,7 +136,7 @@
 			}
 		}
 
-		protected function _addErrorHr(){
+		final protected function _addErrorHr(){
 			if(LOG_ENABLED == true){
 				$file = fopen(LOG_PATH.LOG_SYSTEM.LOG_EXT, "a+");
 				fputs($file, "##### END OF EXECUTION ####################################################################################################\n");
@@ -170,7 +149,7 @@
 		protected $_lang                              = 'fr'    ; //gestion des langues via des fichiers XML
 		protected $_langInstance                                ; //instance de la class langGc
 		
-		public function getLangClient(){
+		final protected function getLangClient(){
 			if(!array_key_exists('HTTP_ACCEPT_LANGUAGE', $_SERVER) || !$_SERVER['HTTP_ACCEPT_LANGUAGE'] ) { return DEFAULTLANG; }
 			else{
 				$langcode = (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
@@ -183,7 +162,7 @@
     }
 	
 	trait urlRegex{
-		public function getUrl($id, $var = array()){
+		final protected function getUrl($id, $var = array()){
 			if(REWRITE == true){
 				$domXml = new DomDocument('1.0', 'iso-8859-15');
 				if($domXml->load(ROUTE)){
@@ -255,7 +234,7 @@
 		protected $_text2Xml                                ;
 		protected $_text3Xml                                ;
 
-		private function _removeChild($fichier, &$dom, &$parent, &$list, $attribut, $valeur){
+		final private function _removeChild($fichier, &$dom, &$parent, &$list, $attribut, $valeur){
 			foreach($list as $sentence){
 				
 				if($sentence->getAttribute($attribut) == $valeur){
@@ -322,6 +301,32 @@
 			else{
 				$error = new errorPersoGc($this->_lang);
 				echo $error->errorPerso($id, $var);
+			}
+		}
+	}
+
+	trait helperLoader{
+		final protected function loadHelper($helper){
+			if(!is_array($helper)){
+				$helper = array($helper);
+			}
+
+			foreach ($helper as $helpers) {
+				if(file_exists($helpers) && is_file($helpers)){
+					if(!in_array($helper, get_included_files())){
+						require_once($helpers);
+						$this->_addError('Le helper '.$helpers.' a bien été inclu.', __FILE__, __LINE__, INFORMATION);
+					}
+				}
+				else if(file_exists(CLASS_PATH.CLASS_HELPER_PATH.$helpers.'.class.php') && is_file(CLASS_PATH.CLASS_HELPER_PATH.$helpers.'.class.php')){
+					if(!in_array(CLASS_PATH.CLASS_HELPER_PATH.$helpers.'.class.php', get_included_files())){
+						require_once(CLASS_PATH.CLASS_HELPER_PATH.$helpers.'.class.php');
+						$this->_addError('Le helper '.CLASS_PATH.CLASS_HELPER_PATH.$helpers.'.class.php'.' a bien été inclu.', __FILE__, __LINE__, INFORMATION);
+					}
+				}
+				else{
+					$this->_addError('Le helper '.$helpers.' est inacessible.', __FILE__, __LINE__, ERROR);
+				}
 			}
 		}
 	}

@@ -7,14 +7,14 @@
 	*/
 	
 	abstract class applicationGc{
-		use errorGc, langInstance, generalGc, urlRegex, domGc, errorPerso       ; //trait
+		use errorGc, langInstance, generalGc, urlRegex, domGc, errorPerso, helperLoader; //trait
 		
-		protected $_devTool            = true                                     ;
-		protected $_var                = array()                                  ; //contient les variables que l'on passe depuis l'extérieur : obsolète
-		protected $bdd                                                            ; //contient la connexion sql
-		protected $_firewall                                                      ;
-		protected $_antispam                                                      ;
-		protected $_nameModel          = ""                                       ; //pour les crons lors de l'init du model, on ne peut pas utiliser $_GET['rubrique']
+		protected $_devTool            = true                                          ;
+		protected $_var                = array()                                       ; //contient les variables que l'on passe depuis l'extérieur : obsolète
+		protected $bdd                                                                 ; //contient la connexion sql
+		protected $_firewall                                                           ;
+		protected $_antispam                                                           ;
+		protected $_nameModel          = ""                                            ; //pour les crons lors de l'init du model, on ne peut pas utiliser $_GET['rubrique']
 		
 		/* ---------- CONSTRUCTEURS --------- */
 		
@@ -118,16 +118,6 @@
 
 			return $sql_connect;
 		}
-		
-		final protected function hydrate(array $donnees){
-            foreach ($donnees as $attribut => $valeur){
-                $methode = 'set'.ucfirst($attribut);
-                
-                if (is_callable(array($this, $methode))){
-                    $this->$methode($valeur);
-                }
-            }
-        }
 			
 		final protected function _createLangInstance(){
 			$this->_langInstance = new langGc($this->_lang);

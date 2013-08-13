@@ -96,7 +96,7 @@
 					}
 					
 					if($rubrique!=""){
-						$plugin = new pluginGc();
+						$helper = new helperGc();
 						$this->_cronInstance  = new cronGc(); //les crons ont besoin des plugins
 
 						if($this->_cacheRoute > 0){ //le cache de la page est supérieur à 0 secondes et le rewrite activé
@@ -108,7 +108,6 @@
 
 										if($this->_cache->isDie()){
 											ob_start('ob_gzhandler');
-   											register_shutdown_function('ob_end_flush');
 												$class->init();
 														
 												if($_GET['action']!=""){
@@ -135,17 +134,19 @@
 
 											$this->_cache->setVal($this->_output);
 											$this->_cache->setCache();
-											$this->_output = $this->_cache->getCache();
 										}
 										else{
 											$this->_output = $this->_cache->getCache();
 										}
 									}
 									else{
+										$this->_addError('L\'antispam semble avoir planté', __FILE__, __LINE__, ERROR);
+										$this->redirect404();
 									}
 								}
 								else{
-
+									$this->_addError('Le parefeu semble avoir planté', __FILE__, __LINE__, ERROR);
+									$this->redirect404();
 								}
 							}
 							else{
@@ -156,10 +157,10 @@
 						}
 						else{
 							if($this->_setRubrique($rubrique) == true){
-								ob_start ();
-									$class = new $rubrique($this->_lang);
-									if(SECURITY == false || $class->setFirewall() == true){
-										if(ANTISPAM == false || $class->setAntispam() == true){
+								$class = new $rubrique($this->_lang);
+								if(SECURITY == false || $class->setFirewall() == true){
+									if(ANTISPAM == false || $class->setAntispam() == true){
+										ob_start ();
 											$class->init();
 
 											if($_GET['action']!=""){
@@ -181,14 +182,18 @@
 											}
 
 											$class->end();
-										}
-										else{
-										}
+										$this->_output = ob_get_contents();
+										ob_get_clean();
 									}
 									else{
+										$this->_addError('L\'antispam semble avoir planté', __FILE__, __LINE__, ERROR);
+										$this->redirect404();
 									}
-								$this->_output = ob_get_contents();
-								ob_get_clean();
+								}
+								else{
+									$this->_addError('Le parefeu semble avoir planté', __FILE__, __LINE__, ERROR);
+									$this->redirect404();
+								}								
 							}
 							else{
 								$this->_addError('L\'instanciation du contrôleur de la rubrique "'.$rubrique.'" a échoué', __FILE__, __LINE__, ERROR);
@@ -198,7 +203,7 @@
 						}
 					}
 					else{
-						$this->_addError('La rubrique \'unknow\'car le route a echoué. Requête http : http://'.$this->getHost().$this->getUri(), __FILE__, __LINE__, ERROR);
+						$this->_addError('La rubrique \'inconnue\'car le route a echoué. Requête http : http://'.$this->getHost().$this->getUri(), __FILE__, __LINE__, ERROR);
 						$this->_addError('La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée car le route a échoué. URL : http://'.$this->getHost().$this->getUri(), __FILE__,  __LINE__, ERROR);
 							$this->redirect404();
 					}

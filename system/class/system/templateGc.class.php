@@ -194,6 +194,9 @@
 					foreach ($this->vars as $cle => $valeur){
 						${$cle} = $valeur;
 					}
+
+					
+					
 					include($this->_fileCache);
 				}
 			}
