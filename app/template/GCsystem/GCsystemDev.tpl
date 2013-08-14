@@ -128,7 +128,7 @@
 		<div class="GCsysytem_dev_content_logo"><img src="{IMG_PATH}arbo.png" title="{{lang:vargetpost}}"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone"  style="width: 169px;">
-				{<gc:function name="nl2br" string="$arbo" />}
+				{<gc:function name="nl2br,nl2br" var="$arbo" />}
 			</div>
 		</div>
 	</div>

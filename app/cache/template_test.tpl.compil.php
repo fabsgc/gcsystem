@@ -40,7 +40,7 @@ smdsdlfksdlfslksdlfksdjfslkfjslkfjslkfjsdlkfsd
 
 <?php } ?>
 
-<?php (trim("   test    ")); ?>
+<?php trim("   test    "); ?>
 
 <?php if(!empty($var)) { foreach($var as $data) { ?>
 

@@ -502,19 +502,39 @@
 		}
 		
 		protected function _parseFunc(){
-			$this->_contenu = preg_replace_callback('`<'.$this->_name.preg_quote($this->bal['function'][0]).$this->_spaceR.preg_quote($this->bal['function'][1]).$this->_space.'='.$this->_space.'"'.$this->_space.'(\w+)'.$this->_space.'"'.$this->_space.'(.*)'.$this->_space.'/>`isU', array('templateGcParser', '_parseFuncCallback'), $this->_contenu);
+			$this->_contenu = preg_replace_callback('`<'.$this->_name.preg_quote($this->bal['function'][0]).$this->_spaceR.preg_quote($this->bal['function'][1]).$this->_space.'='.$this->_space.'"'.$this->_space.'(.+)'.$this->_space.'"'.$this->_space.'(.*)'.$this->_space.'/>`isU', array('templateGcParser', '_parseFuncCallback'), $this->_contenu);
 		}
 
 		protected function _parseFuncCallback($m){
 			$args = '';
+			$func = '';
+
+			//on récupère les arguments
 			if($nb = preg_match_all('`(string|int|var)="(.+)"`U', $m[2], $arr)){
 				for($i=0; $i<$nb; $i++){
 					$args .= $arr[1][$i] == 'string' ? '"'.$arr[2][$i].'", ' : $arr[2][$i].', ';
 				}
 			}
+
 			$args = substr($args, 0, strlen($args)-2);
+
+			//on récupère les fonctions
+			$m[1] = explode(',', $m[1]);
+			$func = '<?php ';
+
+			foreach ($m[1] as $fonctions) {
+				$func .= trim($fonctions).'(';
+			}
+
+			$func .= $args;
+
+			for ($i=0; $i < count($m[1]); $i++) { 
+				$func .=')';
+			}
 			
-			return '<?php ('.$m[1].'('.$args.')); ?>';
+			$func .= '; ?>';
+
+			return $func;
 		}
 		
 		protected function _parseForeach(){

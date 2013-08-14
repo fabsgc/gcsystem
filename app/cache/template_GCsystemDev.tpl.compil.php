@@ -128,7 +128,7 @@
 		<div class="GCsysytem_dev_content_logo"><img src="<?php echo ($IMG_PATH); ?>arbo.png" title="<?php echo $this->useLang('vargetpost',array()); ?>"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone"  style="width: 169px;">
-				<?php echo (nl2br("$arbo")); ?>
+				<?php echo nl2br(nl2br($arbo)); ?>
 			</div>
 		</div>
 	</div>
