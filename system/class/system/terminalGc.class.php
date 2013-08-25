@@ -38,7 +38,7 @@
 				CLASS_PATH.CLASS_HELPER_PATH.'ftpGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'bbcodeGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'captchaGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'dateGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'dirGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'downloadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'feedGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'fileGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'mailGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'modoGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'paginationGc.class.php',
-				CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'textGc.class.php',
+				CLASS_PATH.CLASS_HELPER_PATH.'pictureGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'sqlGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'textGc.class.php',
 				CLASS_PATH.CLASS_HELPER_PATH.'uploadGc.class.php', CLASS_PATH.CLASS_HELPER_PATH.'zipGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php',
 				CLASS_PATH.CLASS_SYSTEM_PATH.'applicationGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'cacheGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'exceptionGc.class.php',
 				CLASS_PATH.CLASS_SYSTEM_PATH.'firewallGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'generalGc.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'installGc.class.php',

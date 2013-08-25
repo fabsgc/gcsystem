@@ -19,17 +19,48 @@
 		
 		/* ---------- CONSTRUCTEUR --------- */
 		
-		public  function __construct($method="GET", $bdd="", $nameForm="", $token = false){
+		/**
+		 * création d'un validateur de formulaire
+		 * @access public
+		 * @param string $method : méthode d'envoi du formulaire
+		 * @param PDO $bdd : connexion à une base de données dans le cas où vous utilisez par la suite des requêtes SQL comme contraintes
+		 * @param string $nameForm : nom du formulaire
+		 * @return void
+		 * @since 2.0
+		*/
+
+		public  function __construct($method="GET", $bdd="", $nameForm=""){
 			$this->method=$method;
 			$this->bdd=$bdd;
 			$this->nameForm = $nameForm;
 		}
 
-		public function setToken($token = false, $name, $error = ""){
-			$this->token = $token;
+		/**
+		 * activation du token anti CRSF
+		 * @access public
+		 * @param string $name : nom du champ input hidden qui sera créé
+		 * @param string $error : erreur qui sera affichée dans le cas où le token CRSF est incorrect
+		 * @return void
+		 * @since 2.0
+		*/
+
+		public function setToken($name, $error = ""){
+			$this->token = true;
 			$this->tokenName = $name;
 			$this->tokenError = $error;
 		}
+
+		/**
+		 * ajout de contraintes sur un champ
+		 * @access public
+		 * @param string $type : type du champ : input, radio, checkbox, textarea, file, listebox, listebox_date, listebox_time
+		 * @param string $name : nom du champ
+		 * @param string $name_content : nom qui sera affiché
+		 * @param array $contraint : liste des contraintes
+		 * @param array $error : liste des erreurs à afficher
+		 * @return void
+		 * @since 2.0
+		*/
 		
 		public  function addfield($type="", $name="", $name_content="", $contraint=array(), $error=array()){
 			if($type=="textarea"){
@@ -153,6 +184,13 @@
 			}
 		}
 		
+		/**
+		 * teste si le formulaire a été envoyé ou non
+		 * @access public
+		 * @return bool
+		 * @since 2.0
+		*/
+
 		public  function sentForm(){
 			if($this->method=='get'){
 				if(count($_GET)>0){
@@ -2285,6 +2323,14 @@
 			}
 		}
 		
+		/**
+		 * valide les champs du formulaire
+		 * @access public
+		 * @param $name : nom du formulaire à valider
+		 * @return bool
+		 * @since 2.0
+		*/
+
 		public  function validateForm($name=""){
 			//on verifie l'existence du champs token si besoin
 			if($this->token == true){
@@ -2315,6 +2361,13 @@
 				return true;
 			}
 		}
+
+		/**
+		 * affiche les erreurs
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public  function showError(){
 			foreach($this->error as $erreur){
@@ -2323,6 +2376,13 @@
 			return $error;
 		}
 		
+		/**
+		 * affiche les erreurs dans un div
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
+
 		public  function showErrorBlock(){
 			foreach($this->error as $erreur){
 				$this->Content.=$erreur."<br />";
@@ -2330,6 +2390,13 @@
 			return '<div class="alert alert-error">'.$this->Content.'</div>';
 		}
 		
+		/**
+		 * efface les erreurs
+		 * @access public
+		 * @return void
+		 * @since 2.0
+		*/
+
 		public  function cleanError(){
 			$this->error=null;
 		}

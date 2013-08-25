@@ -30,7 +30,7 @@
 		 * @access public
 		 * @param array $info : information de base du formulaire
 		 * name, action, method, enctype, accept_charset, accept_file
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -73,7 +73,7 @@
 		 * @access public
 		 * @param string $tokenName : nom de la variable post qui sera créée
 		 * @param string $tokenValue : valeur donnée à la variable
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 
@@ -87,7 +87,7 @@
 		 * les éléments sont regroupés par fieldset, on peut donc en créer un
 		 * @access public
 		 * @param string $legend : nom du fieldset, sert d'identificateur
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -110,7 +110,7 @@
 		 * @param string $label : label de l'élément
 		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -145,7 +145,7 @@
 		 * @param string $label : label de l'élément
 		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 
@@ -180,7 +180,7 @@
 		 * @param string $label : label de l'élément
 		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -216,7 +216,7 @@
 		 * @param string $value : contenu du textarea
 		 * @param array $attribute : tous les attributs que l'on peut rajouter au textarea
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -249,7 +249,7 @@
 		 * @access public
 		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
 		 * @param string $texte : contenu qui sera rajouté
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -267,7 +267,7 @@
 		 * @param string $label : label de l'élément
 		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -302,7 +302,7 @@
 		 * @param string $label : label de l'élément
 		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 
@@ -342,7 +342,7 @@
 		 * @param string $checked : valeur en rapport avec $value du bouton pour qu'il soit coché
 		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -365,7 +365,7 @@
 		 * @param int $pas : différence entre 2 nombres
 		 * @param array selected : liste des valeurs sélectionnées par défaut
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 
@@ -402,7 +402,7 @@
 		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
 		 * @param string $date : jj-mm-aaaa (j ou jj, m oui mm)
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -440,7 +440,7 @@
 		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
 		 * @param string $date : jj-mm-aaaa (j ou jj, m oui mm)
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -481,7 +481,7 @@
 		 * @param array array $group_content : [index_group][index_value]
 		 * @param array $selected : liste des options sélectionnées
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -519,7 +519,7 @@
 		 * @param array $content_value : la valeur tous les éléments qui seront affichés
 		 * @param array $selected : liste des options sélectionnées
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -559,7 +559,7 @@
 		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
 		 * @param array $selected : liste des options sélectionnées
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -577,13 +577,17 @@
 		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
 		 * @param string $label : label de l'élément
 		 * @param PDO $bdd : connexion a une base de données PDO
-		 * @param string $query1 : requête ramenant les options sous la forme '[select * from machin where id = ? AND id2 = ?] [''.$var1.'', ''.$var2.'']'
-		 * @param string $query2 : requête ramenant les groupes sous la forme '[select * from machin where id = ? AND id2 = ?] [''.$var1.'', ''.$var2.'']'
-		 * 
+		 * @param string $query1 : requête ramenant les groupes sous la forme '[select * from machin where id = ? AND id2 = ?] [''.$var1.'', ''.$var2.'']'
+		 * @param string $query2 : requête ramenant les options sous la forme '[select * from machin where id = ? AND id2 = ?] [''.$var1.'', ''.$var2.'']'
+		 * @param string $optgroup_value : nom de la colonne sql de la table contenant les groupes qui contient le nom des groupes (label)
+		 * @param string $optgroup_content : nom de la colonne sql de la table contenant les groupes qui sert de clé
+		 * @param string $option_optgroup_content : nom de la colonne de la table contenant les options qui sert de clé
+		 * @param string $option_value : nom de la colonne de la table contenant les options qui contient la valeur des options
+		 * @param string $option_content_value : nom de la colonne de la table contenant les options qui contient la valeur affichée des options
 		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
 		 * @param array $selected : liste des options sélectionnées
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -601,7 +605,7 @@
 		 * @param int $type : type de bouton
 		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
 		 * @param int $br : nombre de sauts de lignes
-		 * @return empty
+		 * @return void
 		 * @since 2.0
 		*/
 		
@@ -722,8 +726,6 @@
 		
 		public  function __construct(){
 		}
-		
-		// $name, $size, $value, $readonly, $maxlenght, $disabled, $alt
 		
 		public function showInputText($label="", $type="", $attribute = array(), $br=0){
 			if($label!="") $this->GCtypeInput.="<label>".$label."</label>";
