@@ -3,31 +3,38 @@
 		
 		/* -------- FORMULAIRE -------- */
 		
-		private $GCname               = "formulaire";
-		private $GCtoken              = "";
-		private $GCaction             = "#"         ;
-		private $GCmethod             = "GET"       ;
-		private $GCenctype            = ""          ;
-		private $GCaccept_charset     = ""          ;
-		private $GCaccept_file        = ""          ;
-		private $GCcontent;
-		private $GCdate_id=0;
-		private $GClegend_id=0;
+		private $GCname               = "formulaire"         ;
+		private $GCtoken              = ""                   ;
+		private $GCaction             = "#"                  ;
+		private $GCmethod             = "GET"                ;
+		private $GCenctype            = "multipart/form-data";
+		private $GCaccept_charset     = "UTF-8"              ;
+		private $GCaccept_file        = ""                   ;
+		private $GCcontent            = ""                   ;
+		private $GCdate_id            = 0                    ;
+		private $GClegend_id          = 0                    ;
 		
 		/* -------- ELEMENT -------- */
 
-		private $GCfieldset= array();
-		private $GCelements= array();
+		private $GCfieldset = array();
+		private $GCelements = array();
 		
 		/* -------- VALIDITE-ELEMENT -------- */
 
-		private $GCname_uniq= array();
-		private $GCid_uniq= array();
-		private $GCuniq_attr= 0;
+		private $GCname_uniq = array();
+		private $GCid_uniq   = array();
+		private $GCuniq_attr = 0      ; 
 		
-		/* ---------- CONSTRUCTEURS --------- */
+		/**
+		 * création d'un formulaire
+		 * @access public
+		 * @param array $info : information de base du formulaire
+		 * name, action, method, enctype, accept_charset, accept_file
+		 * @return empty
+		 * @since 2.0
+		*/
 		
-		public  function __construct($info=array()){
+		public  function __construct($info = array()){
 			foreach($info as $cle=>$info){
 				switch($cle){
 					case'name':
@@ -61,11 +68,28 @@
 			}
 		}
 
-		public function setToken($token, $tokenName, $tokenValue){
+		/**
+		 * sécurité du formulaire avec un token POST
+		 * @access public
+		 * @param string $tokenName : nom de la variable post qui sera créée
+		 * @param string $tokenValue : valeur donnée à la variable
+		 * @return empty
+		 * @since 2.0
+		*/
+
+		public function setToken($tokenName, $tokenValue){
 			$this->GCtoken = true;
 			$this->GCtokenName =  $tokenName;
 			$this->GCtokenValue =  $tokenValue;
 		}
+
+		/**
+		 * les éléments sont regroupés par fieldset, on peut donc en créer un
+		 * @access public
+		 * @param string $legend : nom du fieldset, sert d'identificateur
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addFieldset($legend=""){
 			if($legend!=""){
@@ -78,6 +102,17 @@
 				$this->GClegend_id++;
 			}
 		}
+
+		/**
+		 * input text, password, mail etc.
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addInputText($fieldset, $label="", $type, $attribute = array(), $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
@@ -103,6 +138,17 @@
 			}
 		}
 
+		/**
+		 * input button
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
+
 		public function addButton($fieldset, $type="", $attribute = array(), $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
 				/* ------------ verification attr name et id ---------------- */
@@ -126,6 +172,17 @@
 				unset($element);
 			}
 		}
+
+		/**
+		 * input file
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addFile($fieldset, $label="", $attribute = array(), $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
@@ -150,6 +207,18 @@
 				unset($element);
 			}
 		}
+
+		/**
+		 * textarea
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param string $value : contenu du textarea
+		 * @param array $attribute : tous les attributs que l'on peut rajouter au textarea
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addTextarea($fieldset, $label="", $value="", $attribute = array(), $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
@@ -174,6 +243,15 @@
 				unset($element);
 			}
 		}
+
+		/**
+		 * insertion de html pur
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $texte : contenu qui sera rajouté
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addHtml($fieldset, $texte=""){
 			if (in_array($fieldset, $this->GCfieldset)) {
@@ -181,6 +259,17 @@
 				unset($element);
 			}
 		}
+
+		/**
+		 * checkbox
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addCheckbox($fieldset, $label="", $attribute = array(), $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
@@ -206,6 +295,17 @@
 			}
 		}
 		
+		/**
+		 * radios
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
+
 		public function addRadio($fieldset, $label="", $attribute = array(), $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
 				/* ------------ verification attr name et id ---------------- */
@@ -229,6 +329,22 @@
 				unset($element);
 			}
 		}
+
+		/**
+		 * radios - requête sql
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param PDO $bdd : connexion a une base de données PDO
+		 * @param string $query : requête sous la forme '[select * from machin where id = ? AND id2 = ?] [''.$var1.'', ''.$var2.'']'
+		 * @param string $name : nom donné au groupe de bouton radio
+		 * @param string $value : valeur donné au bouton radio : nom d'une des colonnes retournées par la requête sql
+		 * @param string $checked : valeur en rapport avec $value du bouton pour qu'il soit coché
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addRadio_sql($fieldset, $bdd, $query="", $label="",  $name="", $value="", $checked="", $attribute = array(), $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
@@ -238,6 +354,21 @@
 			}
 		}
 		
+		/**
+		 * liste déroulante - nombre
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param int $begin : valeur de départ de la liste
+		 * @param int $end : valeur de fin de la liste
+		 * @param int $pas : différence entre 2 nombres
+		 * @param array selected : liste des valeurs sélectionnées par défaut
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
+
 		public function addListebox_static_number($fieldset, $label="", $attribute = array(), $begin=0, $end=10, $pas=1, $selected= array(), $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
 				/* ------------ verification attr name et id ---------------- */
@@ -261,6 +392,19 @@
 				unset($element);
 			}
 		}
+
+		/**
+		 * liste déroulante - date en 3 champs : jours / mois / années
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param string $date : jj-mm-aaaa (j ou jj, m oui mm)
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addListebox_static_date($fieldset, $label="", $attribute = array() ,$date="20-7-1995",  $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
@@ -286,6 +430,19 @@
 				$this->GCdate_id++;
 			}
 		}
+
+		/**
+		 * liste déroulante - date en 6 champs : jours / mois / années / heures / minutes / secondes
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param string $date : jj-mm-aaaa (j ou jj, m oui mm)
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addListebox_static_time($fieldset, $label="", $attribute = array() ,$date="20-7-1995-00-00-00",  $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
@@ -311,6 +468,22 @@
 				$this->GCdate_id++;
 			}
 		}
+
+		/**
+		 * liste déroulante statique avec groupe de données
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param array $value : tous les éléments qui seront affichés
+		 * @param array $content_value : la valeur tous les éléments qui seront affichés+
+		 * @param array $group : la liste des différents groupes
+		 * @param array array $group_content : [index_group][index_value]
+		 * @param array $selected : liste des options sélectionnées
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addListebox_static_group($fieldset, $label="", $attribute = array(), $value= array(), $content_value = array(), $group = array(), $group_content = array(), $selected= array(), $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
@@ -335,6 +508,20 @@
 				unset($element);
 			}
 		}
+
+		/**
+		 * liste déroulante statique
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param array $value : tous les éléments qui seront affichés
+		 * @param array $content_value : la valeur tous les éléments qui seront affichés
+		 * @param array $selected : liste des options sélectionnées
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addListebox_static($fieldset, $label="", $attribute = array(), $value = array(), $content_value = array(), $selected= array(), $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
@@ -359,6 +546,22 @@
 				unset($element);
 			}
 		}
+
+		/**
+		 * liste déroulante sql
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param PDO $bdd : connexion a une base de données PDO
+		 * @param string $query : requête sous la forme '[select * from machin where id = ? AND id2 = ?] [''.$var1.'', ''.$var2.'']'
+		 * @param string $value : valeur donnée aux options : nom d'une des colonnes retournées par la requête sql
+		 * @param string $content_value : valeur affichée par les options : nom d'une des colonnes retournées par la requête sql
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param array $selected : liste des options sélectionnées
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addListebox_sql($fieldset, $label="", $bdd, $query="", $value="", $content_value="", $attribute = array(), $selected=array(), $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
@@ -367,6 +570,22 @@
 				unset($element);
 			}
 		}
+
+		/**
+		 * liste déroulante sql - groupe
+		 * @access public
+		 * @param string $fieldset : nom du fieldset qui doit contenir l'élement
+		 * @param string $label : label de l'élément
+		 * @param PDO $bdd : connexion a une base de données PDO
+		 * @param string $query1 : requête ramenant les options sous la forme '[select * from machin where id = ? AND id2 = ?] [''.$var1.'', ''.$var2.'']'
+		 * @param string $query2 : requête ramenant les groupes sous la forme '[select * from machin where id = ? AND id2 = ?] [''.$var1.'', ''.$var2.'']'
+		 * 
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param array $selected : liste des options sélectionnées
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addListebox_sql_group($fieldset, $label="", $bdd, $query1="", $query2="", $optgroup_value="", $optgroup_content="", $option_optgroup_content="", $option_value="", $option_content_value="", $attribute = array(), $selected=array(), $br=0){
 			if (in_array($fieldset, $this->GCfieldset)) {
@@ -375,6 +594,16 @@
 				unset($element);
 			}
 		}
+
+		/**
+		 * affiche un bouton
+		 * @access public
+		 * @param int $type : type de bouton
+		 * @param array $attribute : tous les attributs que l'on peut rajouter à l'input
+		 * @param int $br : nombre de sauts de lignes
+		 * @return empty
+		 * @since 2.0
+		*/
 		
 		public function addSubmitReset($type="", $attribute = array(), $br=0){
 			/* ------------ verification attr name et id ---------------- */
@@ -397,6 +626,13 @@
 			array_push($this->GCelements, $element->showButton($type, $attribute, $br).'submit[]');
 			unset($element);
 		}
+
+		/**
+		 * affiche le formulaire
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
 		
 		public function showForms(){
 			$this->GCcontent.="<form name=\"".$this->GCname."\" action=\"".$this->GCaction."\" method=\"".$this->GCmethod."\" enctype=\"".$this->GCenctype."\">\n";			
@@ -435,6 +671,13 @@
 			return $this->GCcontent;
 		}
 		
+		/**
+		 * affiche le formulaire PHPiser
+		 * @access public
+		 * @return string
+		 * @since 2.0
+		*/
+
 		public function showPHPForms(){
 			$echo .='Informations sur le formulaire';
 			$echo .="\n";
@@ -939,9 +1182,15 @@
 			foreach($group as $groups){
 				$this->GCtypeListebox.="        <optgroup label=\"".$groups."\">\n";
 				foreach($value as $valeur){
-					if((count($group_content)-1)>=$this->j){
-						if($group_content[$this->j]==$this->i){
-							if(!in_array($this->j, $selected)) $this->GCtypeListebox.="          <option value=\"".$value[$this->j]."\">".$content_value[$this->j]."</option>\n"; else $this->GCtypeListebox.="          <option value=\"".$value[$this->j]."\" selected=\"selected\">".$content_value[$this->j]."</option>\n";
+					if((count($group_content)-1)>=$this->j){ //on verifie que toutes les options sont bien dans des groupes
+						if($group_content[$this->j]==$this->i){ //l'option est contenue dans ce groupe
+							if(!in_array($this->j, $selected)){
+								$this->GCtypeListebox.="          <option value=\"".$value[$this->j]."\">".$content_value[$this->j]."</option>\n"; 
+							}
+							else {
+								$this->GCtypeListebox.="          <option value=\"".$value[$this->j]."\" selected=\"selected\">".$content_value[$this->j]."</option>\n";
+							}
+
 							$this->j++;
 						}
 					}

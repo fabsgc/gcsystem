@@ -82,7 +82,7 @@
 		 * @since 2.0
 		*/
 
-		public function deleteFtp($ftp){
+		public function closeFtp($ftp){
 			if(isset($this->_connexionId[$ftp]) && $this->_connected[$ftp] == true){
 				ftp_close($this->_connexion);
 
@@ -98,7 +98,7 @@
 				return true;
 			}
 			else{
-				$this->_addError('La connexion ftp que vous voulez supprimer n\'existe pas', __FILE__, __LINE__, ERROR);
+				$this->_addError('La connexion ftp de nom '.$ftp.' que vous voulez supprimer n\'existe pas', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -142,7 +142,7 @@
 				}
 			}
 			else{
-				$this->_addError('La connexion ftp a échoué, le fichier n\'a pas pu être envoyé', __FILE__, __LINE__, ERROR);
+				$this->_addError('La connexion ftp de nom '.$ftp.' a échoué, le fichier n\'a pas pu être envoyé', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -172,7 +172,7 @@
 				}
 			}
 			else{
-				$this->_addError('La connexion ftp a échoué, le fichier n\'a pas pu être envoyé', __FILE__, __LINE__, ERROR);
+				$this->_addError('La connexion ftp de nom '.$ftp.' a échoué, le fichier n\'a pas pu être envoyé', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -199,7 +199,7 @@
 				}
 			}
 			else{
-				$this->_addError('La connexion ftp a échoué, le fichier n\'a pas pu être envoyé', __FILE__, __LINE__, ERROR);
+				$this->_addError('La connexion ftp de nom '.$ftp.' a échoué, le fichier n\'a pas pu être envoyé', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -215,6 +215,24 @@
 
 		public function getFilesFromFtp($ftp, $dir){
 
+		}
+
+		/**
+		 * renvoie l'objet ftp_stream demandé
+		 * @access public
+		 * @param string $ftp : le nom de la connexion ftp
+		 * @return ftp_stream
+		 * @since 2.0
+		*/
+
+		public function getFtpStream($ftp){
+			if($this->_connectFtp($ftp) == true){
+				return $this->_connexion;
+			}
+			else{
+				$this->_addError('La connexion ftp de nom '.$ftp.' n\'a pas pu être retournée', __FILE__, __LINE__, ERROR);
+				return false;
+			}
 		}
 
 		/**
@@ -253,7 +271,7 @@
 				}
 			}
 			else{
-				$this->_addError('La connexion ftp à laquelle vous voulez vous connecter n\'existe pas', __FILE__, __LINE__, ERROR);
+				$this->_addError('La connexion ftp de nom '.$ftp.' à laquelle vous voulez vous connecter n\'existe pas', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
@@ -266,5 +284,6 @@
 		*/
 
 		public function __destruct(){
+			ftp_close($this->_connexion);
 		}
 	}
