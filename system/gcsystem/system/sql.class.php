@@ -155,7 +155,7 @@
 					
 					return $this->_requete;
 				}
-				catch (Exception $e) {
+				catch (exception $e) {
 					$this->_addError($nom.' : '.$e->getMessage(), __FILE__, __LINE__, FATAL);
 					return false;
 				}
@@ -265,7 +265,7 @@
 							default : $this->setErrorLog(LOG_SQL, 'la constante d\'exécution '.$fetch.' n\'existe pas'); break;
 						}
 					} 
-					catch (Exception $e) {
+					catch (exception $e) {
 						$this->_addError($nom.' '.$e->getMessage(), __FILE__, __LINE__, FATAL);
 						return false;
 					}
