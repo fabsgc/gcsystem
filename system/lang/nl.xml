@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<lang>
+  <sentence id="bienvenue">welkom !</sentence>
+  <sentence id="content">Welkom op u nieuw project GC-systeem, dank u voor hebben gekozen onze framework.</sentence>
+  <sentence id="liredoc">lezen de documentatie</sentence>
+  <sentence id="lirecours">lezen de lessen</sentence>
+  <sentence id="appDev_temp">interface ontwikkeling is aan het zijn gecreerd</sentence>
+  <sentence id="maintenance">De website is op dit moment beschikbaar niet.</sentence>
+  <sentence id="executiontime">tijd van of uitvoering</sentence>
+  <sentence id="memoireuse">geheugen gebruikt</sentence>
+  <sentence id="fichierinclus">bestanden opgenomen</sentence>
+  <sentence id="requetesql">sql vragen uitgevoerd</sentence>
+  <sentence id="fichiertpl">templates bestanden gebruikt.</sentence>
+  <sentence id="vargetpost">var get, post, session en file</sentence>
+  <sentence id="bbcodepreview">bekijken</sentence>
+  <sentence id="alertpreviewbbocde">u moet schrijven het functie voor gebruiken het</sentence>
+  <sentence id="404">404 error : niet gevonden</sentence>
+  <sentence id="403">403 error : toegang verboden</sentence>
+  <sentence id="500">500 error : internal server error</sentence>
+  <sentence id="pagination_first">eerste pagina</sentence>
+  <sentence id="pagination_before">vorige pagina</sentence>
+  <sentence id="pagination_after">volgende pagina</sentence>
+  <sentence id="pagination_last">laatste pagina</sentence>
+  <sentence id="controllernotfound">Een fout op het script is opgetreden. De door u opgevraagde item ({controller}) was niet gevonden</sentence>
+  <sentence id="controllermissingparameters">Ontbrekende parameters om te reageren op uw verzoek</sentence>  
+  <sentence id="actionnotfound">De gevraagde actie ({action}) was niet gevonden</sentence>
+  <sentence id="firewallcsrftitle">CSRF fout ontdekt</sentence>
+  <sentence id="firewallcsrfcontent">Een fout in de parameters van de url heeft gedwongen de applicatie toegang te blokkeren naar deze pagina</sentence>
+  <sentence id="firewallforbiddentitle">toegang verboden</sentence>
+  <sentence id="firewallforbiddencontent">De toegang tot deze pagina is verboden</sentence>
+  <sentence id="antispamerror">U heeft geïdentificeerd als een spammer, is uw IP is geschopt</sentence>
+  <sentence id="antispamexplanation">Uw IP is hoger dan het aantal aanvragen toegestaan op een bepaalde periode. Wacht tot deze periode is verstreken</sentence>
+</lang>

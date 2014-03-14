@@ -1,0 +1,15 @@
+php_flag short_open_tag off
+RewriteEngine On
+
+# Si le fichier auquel on tente d'accéder existe (si on veut accéder à une image par exemple)
+# Alors on ne réécrit pas l'URL
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# enable resulting html compression
+php_flag zlib.output_compression on
+
+Options -Indexes
