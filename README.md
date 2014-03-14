@@ -13,7 +13,7 @@ Spécifications :
 -----------
 
 * PHP 5.4 minimum
-* L'extension CURL activée pour pouvoir faire les mises à jour et pouvoir lire des flux rss avec la classe feedGc
+* L'extension CURL activée pour pouvoir faire les mises à jour et pouvoir lire des flux rss avec la classe feed
 * Chmod en lecture écriture (755,777)
 * rewrite_module apache activé
 * 3 classes en développement : installation de plugins, mise à jour via le dépôt github, gestion des images

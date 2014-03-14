@@ -6,29 +6,25 @@ session_start();
  | @file : index.php
  | @author : fab@c++
  | @description : Controlleur central de l'application
- | @version : 2.1 bêta
+ | @version : 2.2 bêta
  | ------------------------------------------------------
 \*/
 
 require_once('web.config.php');
 require_once(CLASS_AUTOLOAD);
 
-/* ---------- creation de la page -------------- */
-
-$GLOBALS['appDevGc'] = new appDevGc();
-$GLOBALS['controller'] = new Gcsystem();
+$GLOBALS['appDev'] = new system\appDev();
+$GLOBALS['controller'] = new system\engine();
 
 $GLOBALS['controller']->init();
 
-/* ------ articulation du site web-------- */
-
-if(MAINTENANCE==false){ 
+if(MAINTENANCE == false){ 
 	$GLOBALS['controller']->route(); $GLOBALS['controller']->run(); 
 }
-elseif(MAINTENANCE==true){ 
+elseif(MAINTENANCE == true){ 
 	$GLOBALS['controller']->setMaintenance(); 
 }
 
-if(ENVIRONMENT == 'development' &&  ((DEVTOOL == true && $GLOBALS['appDevGc']->getShow() == true) || (DEVTOOL ==  false && $GLOBALS['appDevGc']->getShow() == true))){
-	$GLOBALS['appDevGc']->show();
+if(ENVIRONMENT == 'development' &&  ((DEVTOOL == true && $GLOBALS['appDev']->getShow() == true) || (DEVTOOL ==  false && $GLOBALS['appDev']->getShow() == true))){
+	$GLOBALS['appDev']->show();
 }

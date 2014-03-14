@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <security>
 	<roles_hierarchy name="user_role">
-		<role_hierarchy name="ROLE_BANNED"/>
-		<role_hierarchy name="ROLE_MEMBER"/>
-		<role_hierarchy name="ROLE_STAFF"/>
-		<role_hierarchy name="ROLE_ADMIN"/>
 	</roles_hierarchy>
 	<firewall>
 		<config>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <antispams>
 	<config>
-		<queryip number="5" duration="5"/>
+		<queryip number="10" duration="5"/>
 		<error template="GCsystem/GCerror">
-			<variable type="var" name="antispam" value="antispamGc"/>
+			<variable type="var" name="antispam" value="antispam"/>
 			<variable type="lang" name="error" value="antispamerror"/>
 			<variable type="lang" name="explanation" value="antispamexplanation"/>
 		</error>

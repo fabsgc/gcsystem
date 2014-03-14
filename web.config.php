@@ -8,23 +8,23 @@
  | ------------------------------------------------------
 \*/
 
-define('ASSET_PATH', 'asset/');
-define('APP_PATH', 'app/');
-define('SYSTEM_PATH', 'system/');
-define('LOG_PATH', SYSTEM_PATH.'log/');
-define('CACHE_PATH', APP_PATH.'cache/');
-define('CONTROLLER_PATH', APP_PATH.'controller/');
-define('MODEL_PATH', APP_PATH.'model/');
-define('APP_CONFIG_PATH', APP_PATH.'config/');
-define('TEMPLATE_PATH', APP_PATH.'template/');
-define('CLASS_PATH', SYSTEM_PATH.'class/');
-define('LIB_PATH', SYSTEM_PATH.'lib/');
-define('LANG_PATH', SYSTEM_PATH.'lang/');
-define('ERRORDOCUMENT_PATH', 'ErrorDocument/');
-define('GCSYSTEM_PATH', 'GCsystem/');
-define('CLASS_SYSTEM_PATH', 'system/');
-define('CLASS_HELPER_PATH', 'helper/');
-define('BACKUP_PATH', SYSTEM_PATH.'backup/');
+define('ASSET_PATH', 'asset'.DIRECTORY_SEPARATOR);
+define('APP_PATH', 'app'.DIRECTORY_SEPARATOR);
+define('SYSTEM_PATH', 'system'.DIRECTORY_SEPARATOR);
+define('LOG_PATH', SYSTEM_PATH.'log'.DIRECTORY_SEPARATOR);
+define('CACHE_PATH', APP_PATH.'cache'.DIRECTORY_SEPARATOR);
+define('CONTROLLER_PATH', APP_PATH.'controller'.DIRECTORY_SEPARATOR);
+define('MODEL_PATH', APP_PATH.'model'.DIRECTORY_SEPARATOR);
+define('APP_CONFIG_PATH', APP_PATH.'config'.DIRECTORY_SEPARATOR);
+define('TEMPLATE_PATH', APP_PATH.'template'.DIRECTORY_SEPARATOR);
+define('CLASS_PATH', SYSTEM_PATH.'gcsystem'.DIRECTORY_SEPARATOR);
+define('LIB_PATH', SYSTEM_PATH.'lib'.DIRECTORY_SEPARATOR);
+define('LANG_PATH', SYSTEM_PATH.'lang'.DIRECTORY_SEPARATOR);
+define('ERRORDOCUMENT_PATH', 'ErrorDocument'.DIRECTORY_SEPARATOR);
+define('GCSYSTEM_PATH', 'GCsystem'.DIRECTORY_SEPARATOR);
+define('CLASS_SYSTEM_PATH', 'system'.DIRECTORY_SEPARATOR);
+define('CLASS_HELPER_PATH', 'helper'.DIRECTORY_SEPARATOR);
+define('BACKUP_PATH', SYSTEM_PATH.'backup'.DIRECTORY_SEPARATOR);
 
 define('LANG_EXT', '.xml');
 define('FILES_EXT', '.html');
@@ -40,37 +40,38 @@ define('LOG_SQL', 'sql');
 define('LOG_CRONS', 'crons');
 
 define('FUNCTION_GENERIQUE', CONTROLLER_PATH.'function.php');
-define('CLASS_GENERAL_INTERFACE', CLASS_PATH.CLASS_SYSTEM_PATH.'generalGc.class.php');
-define('CLASS_CONTROLLER', CLASS_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php');
-define('CLASS_APPLICATION', CLASS_PATH.CLASS_SYSTEM_PATH.'applicationGc.class.php');
-define('CLASS_MODEL', CLASS_PATH.CLASS_SYSTEM_PATH.'modelGc.class.php');
-define('CLASS_LOG', CLASS_PATH.CLASS_SYSTEM_PATH.'logGc.class.php');
-define('CLASS_CACHE', CLASS_PATH.CLASS_SYSTEM_PATH.'cacheGc.class.php');
-define('CLASS_EXCEPTION', CLASS_PATH.CLASS_SYSTEM_PATH.'exceptionGc.class.php');
-define('CLASS_TEMPLATE', CLASS_PATH.CLASS_SYSTEM_PATH.'templateGc.class.php');
-define('CLASS_LANG', CLASS_PATH.CLASS_SYSTEM_PATH.'langGc.class.php');
-define('CLASS_APPDEVGC', CLASS_PATH.CLASS_SYSTEM_PATH.'appDevGc.class.php');
-define('CLASS_TERMINAL', CLASS_PATH.CLASS_SYSTEM_PATH.'terminalGc.class.php');
-define('CLASS_FIREWALL', CLASS_PATH.CLASS_SYSTEM_PATH.'firewallGc.class.php');
+define('CLASS_GENERAL', CLASS_PATH.CLASS_SYSTEM_PATH.'general.class.php');
+define('CLASS_ENGINE', CLASS_PATH.CLASS_SYSTEM_PATH.'engine.class.php');
+define('CLASS_CONTROLLER', CLASS_PATH.CLASS_SYSTEM_PATH.'controller.class.php');
+define('CLASS_MODEL', CLASS_PATH.CLASS_SYSTEM_PATH.'model.class.php');
+define('CLASS_LOG', CLASS_PATH.CLASS_SYSTEM_PATH.'log.class.php');
+define('CLASS_CACHE', CLASS_PATH.CLASS_SYSTEM_PATH.'cache.class.php');
+define('CLASS_TEMPLATE', CLASS_PATH.CLASS_SYSTEM_PATH.'template.class.php');
+define('CLASS_LANG', CLASS_PATH.CLASS_SYSTEM_PATH.'lang.class.php');
+define('CLASS_appDev', CLASS_PATH.CLASS_SYSTEM_PATH.'appDev.class.php');
+define('CLASS_TERMINAL', CLASS_PATH.CLASS_SYSTEM_PATH.'terminal.class.php');
+define('CLASS_FIREWALL', CLASS_PATH.CLASS_SYSTEM_PATH.'firewall.class.php');
 define('CLASS_AUTOLOAD', CLASS_PATH.'autoload.php');
-define('CLASS_CONFIG', CLASS_PATH.CLASS_SYSTEM_PATH.'configGc.class.php');
-define('CLASS_HELPER', CLASS_PATH.CLASS_SYSTEM_PATH.'helperGc.class.php');
-define('CLASS_ROUTER', CLASS_PATH.CLASS_SYSTEM_PATH.'routerGc.class.php');
-define('CLASS_ANTISPAM', CLASS_PATH.CLASS_SYSTEM_PATH.'antispamGc.class.php');
-define('CLASS_INSTALL', CLASS_PATH.CLASS_SYSTEM_PATH.'installGc.class.php');
-define('CLASS_CRON', CLASS_PATH.CLASS_SYSTEM_PATH.'cronGc.class.php');
-define('CLASS_BACKUP', CLASS_PATH.CLASS_SYSTEM_PATH.'backupGc.class.php');
-define('CLASS_ERROR_PERSO', CLASS_PATH.CLASS_SYSTEM_PATH.'errorpersoGc.class.php');
+define('CLASS_CONFIG', CLASS_PATH.CLASS_SYSTEM_PATH.'config.class.php');
+define('CLASS_HELPER', CLASS_PATH.CLASS_SYSTEM_PATH.'helper.class.php');
+define('CLASS_ROUTER', CLASS_PATH.CLASS_SYSTEM_PATH.'router.class.php');
+define('CLASS_ANTISPAM', CLASS_PATH.CLASS_SYSTEM_PATH.'antispam.class.php');
+define('CLASS_INSTALL', CLASS_PATH.CLASS_SYSTEM_PATH.'install.class.php');
+define('CLASS_CRON', CLASS_PATH.CLASS_SYSTEM_PATH.'cron.class.php');
+define('CLASS_BACKUP', CLASS_PATH.CLASS_SYSTEM_PATH.'backup.class.php');
+define('CLASS_ERROR_PERSO', CLASS_PATH.CLASS_SYSTEM_PATH.'errorperso.class.php');
+define('CLASS_SQL', CLASS_PATH.CLASS_SYSTEM_PATH.'sql.class.php');
+define('CLASS_EXCEPTION', CLASS_PATH.CLASS_SYSTEM_PATH.'exception.class.php');
 
 define('ROUTE', APP_CONFIG_PATH.'routes.xml');
-define('MODOGCCONFIG', APP_CONFIG_PATH.'modoGc.xml');
+define('MODOCONFIG', APP_CONFIG_PATH.'modo.xml');
 define('APPCONFIG', APP_CONFIG_PATH.'app.xml');
 define('HELPER', APP_CONFIG_PATH.'helper.xml');
 define('FIREWALL', APP_CONFIG_PATH.'firewall.xml');
 define('ASPAM', APP_CONFIG_PATH.'antispam.xml');
 define('INSTALLED', APP_CONFIG_PATH.'installed.xml');
 define('CRON', APP_CONFIG_PATH.'cron.xml');
-define('ERRORPERSO', APP_CONFIG_PATH.'errorpersoGc.xml');
+define('ERRORPERSO', APP_CONFIG_PATH.'errorperso.xml');
 
 define('WARNING', 'WARNING');
 define('ERROR', 'ERROR');
@@ -143,18 +144,18 @@ define('LOG_ENABLED', true);
 define('MINIFY_OUTPUT_HTML', false);
 
 /* affiche les log d'erreurs [FATAL] (erreurs qui entravent gravement le fonctionnement de l'application) */
-define('DISPLAY_ERROR_FATAL', true);
+define('DISPLAY_ERROR_FATAL', false);
 
 /* à ne pas modifier */
-define('IMG_PATH', FOLDER.'/'.ASSET_PATH.'image/');
-define('CSS_PATH', FOLDER.'/'.ASSET_PATH.'css/');
-define('JS_PATH', FOLDER.'/'.ASSET_PATH.'js/');
-define('FILE_PATH', FOLDER.'/'.ASSET_PATH.'file/');
+define('IMG_PATH', FOLDER.DIRECTORY_SEPARATOR.ASSET_PATH.'image'.DIRECTORY_SEPARATOR);
+define('CSS_PATH', FOLDER.DIRECTORY_SEPARATOR.ASSET_PATH.'css'.DIRECTORY_SEPARATOR);
+define('JS_PATH', FOLDER.DIRECTORY_SEPARATOR.ASSET_PATH.'js'.DIRECTORY_SEPARATOR);
+define('FILE_PATH', FOLDER.DIRECTORY_SEPARATOR.ASSET_PATH.'file'.DIRECTORY_SEPARATOR);
 
-define('IMG_PATH_PHP', ASSET_PATH.'image/');
-define('CSS_PATH_PHP', ASSET_PATH.'css/');
-define('JS_PATH_PHP', ASSET_PATH.'js/');
-define('FILE_PATH_PHP', ASSET_PATH.'file/');
+define('IMG_PATH_PHP', ASSET_PATH.'image'.DIRECTORY_SEPARATOR);
+define('CSS_PATH_PHP', ASSET_PATH.'css'.DIRECTORY_SEPARATOR);
+define('JS_PATH_PHP', ASSET_PATH.'js'.DIRECTORY_SEPARATOR);
+define('FILE_PATH_PHP', ASSET_PATH.'file'.DIRECTORY_SEPARATOR);
 
 //timezone
 define('TIMEZONE', 'Europe/Paris');

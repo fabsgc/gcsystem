@@ -452,7 +452,7 @@
 	}
 </style>
 <script>
-	function bbCodeGcInsertTag_{id}(startTag, endTag, textareaId, tagType) {
+	function bbcodeInsertTag_{id}(startTag, endTag, textareaId, tagType) {
 		var field  = document.getElementById(textareaId); 
 		var scroll = field.scrollTop;
 		field.focus();
@@ -478,11 +478,11 @@
 
 		field.scrollTop = scroll; // et on redéfinit le scroll.
 		
-		bbCodeGcPreview_{id}('{id}');
+		bbcodePreview_{id}('{id}');
 	}
 	
-	function bbCodeGcPreview_{id}(id){
-		field = bbCodeGcNl2brJs(document.getElementById('{id}').value);
+	function bbcodePreview_{id}(id){
+		field = bbcodeNl2brJs(document.getElementById('{id}').value);
 
 		<gc:foreach var="$bbcode" as="$val">
 			{{php: $val[0] = preg_replace('#"#isU', '&quot;', $val[0]);}}
@@ -502,23 +502,23 @@
 			'<pre type="syntaxhighlighter" class="brush: $1; auto-links: false">$2<\/pre>');
 
 		while(field.match(/\[video\]([^\[]+)\[\/video\]/gi)){
-			field = bbCodeGc_preg_replace_callback("/\\[video\]([^\[]+)\\[\\/video\]/gi",function(matches){return bbCodeGcVideo(matches[1]);}, field, 1);
+			field = bbcode_preg_replace_callback("/\\[video\]([^\[]+)\\[\\/video\]/gi",function(matches){return bbcodeVideo(matches[1]);}, field, 1);
 		}
 
 		document.getElementById('zone_{id}').innerHTML = field;
 		document.getElementById('zone_{id}').scrollTop = 1000;
 		SyntaxHighlighter.config.bloggerMode = true;
 		SyntaxHighlighter.highlight();
-		document.getElementById('zone_{id}').innerHTML = bbCodeGcUrlCliquable(document.getElementById('zone_{id}').innerHTML);
+		document.getElementById('zone_{id}').innerHTML = bbcodeUrlCliquable(document.getElementById('zone_{id}').innerHTML);
 		document.getElementById('zone_{id}').scrollTop = 1000;
 	}
 	
-	function bbCodeGcPreviewAjax_{id}(){
+	function bbcodePreviewAjax_{id}(){
 		alert("{{lang:alertpreviewbbocde}}");
 	}
 
-	function bbCodeGcVideo(video){
-		video = bbCodeGcHtmlspecialchars_decode(video);
+	function bbcodeVideo(video){
+		video = bbcodeHtmlspecialchars_decode(video);
 		video = video.replace(/&feature=related/gi, '');
 
 		if(video.match(/youtube/gi)){
@@ -566,17 +566,17 @@
 		}
 	}
 	
-	function bbCodeGcNl2brJs(myString) {
+	function bbcodeNl2brJs(myString) {
 		var regX = /\n/gi ;
 		s = new String(myString);
-		s = bbCodeGcHtmlspecialchars(s, 'ENT_QUOTES');
+		s = bbcodeHtmlspecialchars(s, 'ENT_QUOTES');
 		//s = s.replace(regX2, "\n");
 		s = s.replace(regX, " <br />");
 		
 		return s;
 	}
 
-	function bbCodeGcHtmlspecialchars_decode (string, quote_style) {
+	function bbcodeHtmlspecialchars_decode (string, quote_style) {
 	  var optTemp = 0,
 	    i = 0,
 	    noquotes = false;
@@ -620,7 +620,7 @@
 	  return string;
 	}
 
-	function bbCodeGcHtmlspecialchars (string, quote_style, charset, double_encode) {
+	function bbcodeHtmlspecialchars (string, quote_style, charset, double_encode) {
 	  var optTemp = 0,
 	    i = 0,
 	    noquotes = false;
@@ -667,12 +667,12 @@
 	  return string;
 	}
 
-	function bbCodeGcUrlCliquable(url) { 
+	function bbcodeUrlCliquable(url) { 
 		var reg=new RegExp("[^\"]+((http://)[a-zA-Z0-9:/.]+)+","gi");
   		return url.replace(reg,"<a href='$1'>$1</a>"); 
 	}
 
-	function bbCodeGc_preg_replace_callback(pattern, callback, subject, limit){
+	function bbcode_preg_replace_callback(pattern, callback, subject, limit){
 		// Perform a regular expression search and replace using a callback
 		// 
 		// discuss at: http://geekfg.net/
@@ -715,21 +715,21 @@
 <div class="gc_bbcode">
 	<div class="gc_bbcode_option option {theme}">
 		<gc:foreach var="$bbCodeEditor" as="$val">
-			<img src="{imgpath}bbcode/{val[2]}" alt="{val[2]}" onclick="bbCodeGcInsertTag_{id}('[{<gc:function name="preg_quote" string="$val[0]"/>}]', '[/{<gc:function name="preg_quote" string="$val[1]"/>}]', '{id}'); " />
+			<img src="{imgpath}bbcode/{val[2]}" alt="{val[2]}" onclick="bbcodeInsertTag_{id}('[{<gc:function name="preg_quote" string="$val[0]"/>}]', '[/{<gc:function name="preg_quote" string="$val[1]"/>}]', '{id}'); " />
 		</gc:foreach>
 		<br />
 		<gc:foreach var="$smiley" as="$val">
-			<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" onclick="bbCodeGcInsertTag_{id}('{<gc:function name="preg_quote" string="$val[1]"/>} ', '', '{id}'); " />
+			<img src="{imgpath}bbcode/{val[0]}" alt="{val[1]}" onclick="bbcodeInsertTag_{id}('{<gc:function name="preg_quote" string="$val[1]"/>} ', '', '{id}'); " />
 		</gc:foreach>
 	</div>
-	<textarea id="{id}" name="{name}"<gc:if cond="$preview == true && $instantane == true"> onKeyUp="bbCodeGcPreview_{id}('{id}');" </gc:if> >{message}</textarea>
+	<textarea id="{id}" name="{name}"<gc:if cond="$preview == true && $instantane == true"> onKeyUp="bbcodePreview_{id}('{id}');" </gc:if> >{message}</textarea>
 	<gc:if cond="$preview == true && $previewAjax == true">
-		<div class="gc_bbcode_preview_button button {theme}" onClick="bbCodeGcPreviewAjax_{id}();">
+		<div class="gc_bbcode_preview_button button {theme}" onClick="bbcodePreviewAjax_{id}();">
 			{{lang:bbcodepreview}}
 		</div>
 	</gc:if>
 	<gc:if cond="$preview == true && $previewAjax == false && $instantane == false">
-		<div class="gc_bbcode_preview_button button {theme}" onClick="bbCodeGcPreview_{id}('{id}');">
+		<div class="gc_bbcode_preview_button button {theme}" onClick="bbcodePreview_{id}('{id}');">
 			{{lang:bbcodepreview}}
 		</div>
 	</gc:if>
@@ -738,6 +738,6 @@
 </div>
 <script type="text/javascript">
 	if(document.getElementById('{id}').value != ""){
-		bbCodeGcPreview_{id}('{id}');
+		bbcodePreview_{id}('{id}');
 	}
 </script>

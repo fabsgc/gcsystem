@@ -1,5 +1,5 @@
 <?php
-	class index extends applicationGc{
+	class index extends system\controller{
 		public function init(){
 		}
 
@@ -8,6 +8,6 @@
 
 		public function actionDefault(){
 			$t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', 0, $this->lang);
-            $t->show();
+			$t->show();
 		}
 	}

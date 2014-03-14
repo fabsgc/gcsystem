@@ -1,5 +1,5 @@
-<?php
-	class managerIndex extends modelGc{
+<?php	
+	class managerIndex extends system\model{
 		public function init(){
 		}
 	}
