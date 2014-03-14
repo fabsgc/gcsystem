@@ -3,11 +3,11 @@
 	 * @file : backupGc.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les backups de code directement dans le fw
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
 	class backupGc{
-		use errorGc, domGc, generalGc;                  //trait
+		use errorGc, generalGc;                  //trait
 
 		/**
 		 * Crée l'instance de la classe

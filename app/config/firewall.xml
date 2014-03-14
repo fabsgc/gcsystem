@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <security>
-	<roles_hierarchy name="user_statut">
-		<role_hierarchy name="ROLE_USER"/>
+	<roles_hierarchy name="user_role">
+		<role_hierarchy name="ROLE_BANNED"/>
+		<role_hierarchy name="ROLE_MEMBER"/>
+		<role_hierarchy name="ROLE_STAFF"/>
+		<role_hierarchy name="ROLE_ADMIN"/>
 	</roles_hierarchy>
 	<firewall>
 		<config>
@@ -13,13 +16,13 @@
 			</default>
 			<forbidden template="GCsystem/GCerror">
 				<variable type="lang" name="error" value="firewallforbiddentitle"/>
-				<variable type="lang" name="explication" value="firewallforbiddencontent"/>
+				<variable type="lang" name="explanation" value="firewallforbiddencontent"/>
 			</forbidden>
-			<csrf name="user_token" template="GCsystem/GCerror" enabled="true">
+			<csrf name="token" template="GCsystem/GCerror" enabled="true">
 				<variable type="lang" name="error" value="firewallcsrftitle"/>
-				<variable type="lang" name="explication" value="firewallcsrfcontent"/>
+				<variable type="lang" name="explanation" value="firewallcsrfcontent"/>
 			</csrf>
-			<connect name="user_connected" yes="true" no="false"/>
+			<connect name="logged" yes="true" no="false"/>
 		</config>
 		<access>
 		</access>

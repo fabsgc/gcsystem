@@ -3,7 +3,7 @@
 	 * @file : sqlGc.class.php
 	 * @author : fab@c++
 	 * @description : class facilitant la gestion des requêtes SQL
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
 	class sqlGc{
@@ -112,46 +112,52 @@
 		*/
 		
 		public function execute($nom){
-			$this->_requete = $this->_bdd->prepare(''.$this->_query[''.$nom.''].'');
-			
-			foreach($this->_var as $cle => $val){
-				if(preg_match('#:'.$cle.'[\s|,|\)|\(]#', $this->_query[''.$nom.''].' ')){
-					if(is_array($val)){
-						$this->_requete->bindValue($cle,$val[0],$val[1]);
-					}
-					else{
-						switch(gettype($val)){
-							case 'boolean' :
-								$this->_requete->bindValue(":$cle",$val,self::PARAM_BOOL);
-							break;
-							
-							case 'integer' :
-								$this->_requete->bindValue(":$cle",$val,self::PARAM_INT);
-							break;
-							
-							case 'double' :
-								$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
-							break;
-							
-							case 'string' :
-								$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
-							break;
-							
-							case 'NULL' :
-								$this->_requete->bindValue(":$cle",$val,self::PARAM_NULL);
-							break;
-							
-							default :
-								$this->_addError('type non géré', __FILE__, __LINE__, ERROR);
-							break;
+			try{
+				$this->_requete = $this->_bdd->prepare(''.$this->_query[''.$nom.''].'');
+				
+				foreach($this->_var as $cle => $val){
+					if(preg_match('`:'.$cle.'[\s|,|\)|\(%]`', $this->_query[''.$nom.''].' ')){
+						if(is_array($val)){
+							$this->_requete->bindValue($cle,$val[0],$val[1]);
+						}
+						else{
+							switch(gettype($val)){
+								case 'boolean' :
+									$this->_requete->bindValue(":$cle",$val,self::PARAM_BOOL);
+								break;
+								
+								case 'integer' :
+									$this->_requete->bindValue(":$cle",$val,self::PARAM_INT);
+								break;
+								
+								case 'double' :
+									$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
+								break;
+								
+								case 'string' :
+									$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
+								break;
+								
+								case 'NULL' :
+									$this->_requete->bindValue(":$cle",$val,self::PARAM_NULL);
+								break;
+								
+								default :
+									$this->_addError('type non géré', __FILE__, __LINE__, ERROR);
+								break;
+							}
 						}
 					}
 				}
-			}
 
-			$this->_requete->execute();
-			
-			return $this->_requete;
+				$this->_requete->execute();
+				
+				return $this->_requete;
+			}
+			catch (Exception $e) {
+				$this->_addError($nom.' : '.$e->getMessage(), __FILE__, __LINE__, FATAL);
+				return false;
+			}
 		}
 		
 		/**
@@ -159,12 +165,12 @@
 		 * @access	public
 		 * @return	array ou boolean
 		 * @param string $nom : nom de la requête à fetcher
-		 * @param string $fetch : type de fetch à réaliser. Il en existe 3 :<br />
-		 *  sqlGc::PARAM_FETCH         : correspondant au fetch de PDO. Prévu pour une requête de type SELECT<br />
-		 *  sqlGc::PARAM_FETCHCOLUMN   : correspondant au fetchcolumn de PDO. Prévu pour une requête de type SELECT COUNT<br />
-		 *  sqlGc::PARAM_FETCHINSERT   : Prévu pour une requête de type INSERT<br />
-		 *  sqlGc::PARAM_FETCHUPDATE   : Prévu pour une requête de type UPDATE<br />
-		 *  sqlGc::PARAM_FETCHDELETE   : Prévu pour une requête de type DELETE<br />
+		 * @param string $fetch : type de fetch à réaliser. Il en existe 3 :
+		 *  sqlGc::PARAM_FETCH         : correspondant au fetch de PDO. Prévu pour une requête de type SELECT
+		 *  sqlGc::PARAM_FETCHCOLUMN   : correspondant au fetchcolumn de PDO. Prévu pour une requête de type SELECT COUNT
+		 *  sqlGc::PARAM_FETCHINSERT   : Prévu pour une requête de type INSERT
+		 *  sqlGc::PARAM_FETCHUPDATE   : Prévu pour une requête de type UPDATE
+		 *  sqlGc::PARAM_FETCHDELETE   : Prévu pour une requête de type DELETE
 		 *  valeur par défaut : sqlGc::PARAM_FETCH
 		 * @since 2.0
 		*/
@@ -173,87 +179,94 @@
 			$this->_cache = new cacheGc($nom.'.sql', "", $this->time[''.$nom.'']);
 
 			if($this->_cache->isDie() || $fetch == self::PARAM_FETCHINSERT){
-				$this->_requete = $this->_bdd->prepare(''.$this->_query[''.$nom.''].'');
-				$GLOBALS['appDevGc']->addSql(''.$this->_query[''.$nom.''].'');
-				$this->setErrorLog(LOG_SQL, '['.$_GET['rubrique'].']['.$_GET['action'].']['.$nom."] \n".$this->_query[''.$nom.''].'');
-				
-				foreach($this->_var as $cle => $val){
-					if(preg_match('#:'.$cle.'[\s|,|\)|\(]#', $this->_query[''.$nom.''].' ')){
-						if(is_array($val)){
-							$this->_requete->bindValue($cle,$val[0],$val[1]);
-							$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val[0]);
-							$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val[0]);
-						}
-						else{
-							switch(gettype($val)){
-								case 'boolean' :
-									$this->_requete->bindValue(":$cle",$val,self::PARAM_BOOL);
-									$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
-									$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
-								break;
-								
-								case 'integer' :
-									$this->_requete->bindValue(":$cle",$val,self::PARAM_INT);
-									$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
-									$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
-								break;
-								
-								case 'double' :
-									$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
-									$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
-									$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
-								break;
-								
-								case 'string' :
-									$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
-									$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
-									$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
-								break;
-								
-								case 'NULL' :
-									$this->_requete->bindValue(":$cle",$val,self::PARAM_NULL);
-									$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
-									$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
-								break;
-								
-								default :
-									$this->setErrorLog(LOG_SQL, 'sql, variable '.$cle.', type non géré');
-								break;
+
+				try {
+					$this->_requete = $this->_bdd->prepare(''.$this->_query[''.$nom.''].'');
+					$GLOBALS['appDevGc']->addSql(''.$this->_query[''.$nom.''].'');
+					$this->setErrorLog(LOG_SQL, '['.$_GET['controller'].']['.$_GET['action'].']['.$nom."] \n".$this->_query[''.$nom.''].'');
+					
+					foreach($this->_var as $cle => $val){
+						if(preg_match('`:'.$cle.'[\s|,|\)|\(%]`', $this->_query[''.$nom.''].' ')){
+							if(is_array($val)){
+								$this->_requete->bindValue($cle,$val[0],$val[1]);
+								$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val[0]);
+								$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val[0]);
+							}
+							else{
+								switch(gettype($val)){
+									case 'boolean' :
+										$this->_requete->bindValue(":$cle",$val,self::PARAM_BOOL);
+										$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
+										$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
+									break;
+									
+									case 'integer' :
+										$this->_requete->bindValue(":$cle",$val,self::PARAM_INT);
+										$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
+										$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
+									break;
+									
+									case 'double' :
+										$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
+										$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
+										$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
+									break;
+									
+									case 'string' :
+										$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
+										$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
+										$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
+									break;
+									
+									case 'NULL' :
+										$this->_requete->bindValue(":$cle",$val,self::PARAM_NULL);
+										$GLOBALS['appDevGc']->addSql(' / _'.$cle.' : '.$val);
+										$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
+									break;
+									
+									default :
+										$this->setErrorLog(LOG_SQL, 'sql, variable '.$cle.', type non géré');
+									break;
+								}
 							}
 						}
 					}
-				}
-				
-				$GLOBALS['appDevGc']->addSql('####################################');
-				$this->setErrorLog(LOG_SQL, "########################################################################\n\n");
-				$this->_requete->execute();
-				
-				switch($fetch){
-					case self::PARAM_FETCH : $this->_data = $this->_requete->fetchAll(); break;
-					case self::PARAM_FETCHCOLUMN : $this->_data = $this->_requete->fetchColumn(); break;
-					case self::PARAM_FETCHINSERT : $this->_data = true; break;
-					case self::PARAM_FETCHUPDATE : $this->_data = true; break;
-					case self::PARAM_FETCHDELETE : $this->_data = true; break;
-					case self::PARAM_NORETURN : $this->_data = true; break;
-					default : $this->setErrorLog(LOG_SQL, 'la constante d\'exécution '.$fetch.' n\'existe pas'); break;
-				}
-				
-				switch($fetch){
-					case self::PARAM_FETCH :
-						$this->_cache->setVal($this->_data);
-						$this->_cache->setCache($this->_data);
-						return $this->_data; break;
-					break;
-					case self::PARAM_FETCHCOLUMN : 
-						$this->_cache->setVal($this->_data);
-						$this->_cache->setCache($this->_data);
-						return $this->_data; 
-					break;
-					case self::PARAM_FETCHINSERT : return true; break;
-					case self::PARAM_FETCHUPDATE : return true; break;
-					case self::PARAM_FETCHDELETE : return true; break;
-					case self::PARAM_NORETURN : return true; break;
-					default : $this->setErrorLog(LOG_SQL, 'la constante d\'exécution '.$fetch.' n\'existe pas'); break;
+					
+					$GLOBALS['appDevGc']->addSql('####################################');
+					$this->setErrorLog(LOG_SQL, "########################################################################\n\n");
+					$this->_requete->execute();
+					
+					switch($fetch){
+						case self::PARAM_FETCH : $this->_data = $this->_requete->fetchAll(); break;
+						case self::PARAM_FETCHCOLUMN : $this->_data = $this->_requete->fetchColumn(); break;
+						case self::PARAM_FETCHINSERT : $this->_data = true; break;
+						case self::PARAM_FETCHUPDATE : $this->_data = true; break;
+						case self::PARAM_FETCHDELETE : $this->_data = true; break;
+						case self::PARAM_NORETURN : $this->_data = true; break;
+						default : $this->setErrorLog(LOG_SQL, 'la constante d\'exécution '.$fetch.' n\'existe pas'); break;
+					}
+					
+					switch($fetch){
+						case self::PARAM_FETCH :
+							$this->_cache->setVal($this->_data);
+							$this->_cache->setCache($this->_data);
+							return $this->_data; break;
+						break;
+						case self::PARAM_FETCHCOLUMN : 
+							$this->_cache->setVal($this->_data);
+							$this->_cache->setCache($this->_data);
+							return $this->_data; 
+						break;
+						case self::PARAM_FETCHINSERT : return true; break;
+						case self::PARAM_FETCHUPDATE : return true; break;
+						case self::PARAM_FETCHDELETE : return true; break;
+						case self::PARAM_NORETURN : return true; break;
+						default : $this->setErrorLog(LOG_SQL, 'la constante d\'exécution '.$fetch.' n\'existe pas'); break;
+					}
+				} 
+				catch (Exception $e) {
+					$this->_addError($nom.' '.$e->getMessage(), __FILE__, __LINE__, FATAL);
+					return false;
 				}
 			}
 			else{

@@ -3,7 +3,7 @@
 	 * @file : fileGc.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les opérations sur les fichiers, très complète
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
     class fileGc extends constMime{

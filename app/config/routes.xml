@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <routes>  
-    <route id="index" url="(/*)" rubrique="index" action="" vars="" cache="0"/>
-    <route id="terminal" url="/terminal(/*)" rubrique="terminal" action="" vars="" cache="0"/>
-    <route id="terminal_terminal" url="/terminal-terminal\.html" rubrique="terminal" action="terminal" vars="" cache="0"/>
+	<route id="index" url="(/*)" controller="index" action="" vars="" cache="0"/>	
+	<route id="terminal" url="/terminal(/*)" controller="terminal" action="" vars="" cache="0"/>
+	<route id="terminal_terminal" url="/terminal_terminal\.html" controller="terminal" action="terminal" vars="" cache="0"/>
 </routes>

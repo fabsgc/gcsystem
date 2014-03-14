@@ -3,7 +3,7 @@
 	 * @file : downloadGc.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les téléchargement
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
 	class downloadGc extends fileGc{

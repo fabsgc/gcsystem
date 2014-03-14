@@ -3,7 +3,7 @@
   <sentence id="bienvenue">Welcome !</sentence>
   <sentence id="content">Welcome to your new project GCsystem, thank you for choosing our framework.</sentence>
   <sentence id="liredoc">read the documentation</sentence>
-  <sentence id="lirecours">read the introductory tutorial</sentence>
+  <sentence id="lirecours">read the tutorials</sentence>
   <sentence id="appDevGc_temp">interface development being created</sentence>
   <sentence id="maintenance">The website is currently unavailable.</sentence>
   <sentence id="executiontime">time of execution</sentence>
@@ -21,14 +21,13 @@
   <sentence id="pagination_before">previous page</sentence>
   <sentence id="pagination_after">next page</sentence>
   <sentence id="pagination_last">last page</sentence>
-  <sentence id="rubriquenotfound">An error on the script occurred. The requested item ({rubrique}) was not found</sentence>
-  <sentence id="rubriquemissingparameters">Missing parameters to respond to your request</sentence>
+  <sentence id="controllernotfound">An error on the script occurred. The requested item ({controller}) was not found</sentence>
+  <sentence id="controllermissingparameters">Missing parameters to respond to your request</sentence>
   <sentence id="actionnotfound">The requested action ({action}) was not found</sentence>
   <sentence id="firewallcsrftitle">Error in the parameters of the url</sentence>
-  <sentence id="firewallcsrfcontent">An error in the parameters of the url has forced the application to block access to this page</sentence>
+  <sentence id="firewallcsrfcontent">An error in the parameters of the url has forced the application to block the access of this page</sentence>
   <sentence id="firewallforbiddentitle">Access forbidden</sentence>
   <sentence id="firewallforbiddencontent">Access to this page is forbidden</sentence>
   <sentence id="antispamerror">You have been identified as a spammer, your IP has been kicked</sentence>
-  <sentence id="antispamexplication">Your IP has exceeded the number of requests allowed on a given period. Please wait for this period has elapsed</sentence>
-  <sentence id="terminaltitre">Terminal - GCsystem</sentence>
+  <sentence id="antispamexplanation">Your IP has exceeded the number of requests allowed on a given period. Please wait for this period has elapsed</sentence>
 </lang>

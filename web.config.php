@@ -1,25 +1,19 @@
 <?php
 /*\
-
  | ------------------------------------------------------
-
  | @file : web.config.php
  | @author : fab@c++
  | @description : Configuration générale de l'application web et des connexions SQL
- | @version : 2.1 Bêta
- 
+ | @version : 2.2 Bêta
  | ------------------------------------------------------
- 
 \*/
 
-//chemins d'accès
 define('ASSET_PATH', 'asset/');
 define('APP_PATH', 'app/');
 define('SYSTEM_PATH', 'system/');
 define('LOG_PATH', SYSTEM_PATH.'log/');
 define('CACHE_PATH', APP_PATH.'cache/');
-define('FILE_PATH', ASSET_PATH.'file/');
-define('RUBRIQUE_PATH', APP_PATH.'rubrique/');
+define('CONTROLLER_PATH', APP_PATH.'controller/');
 define('MODEL_PATH', APP_PATH.'model/');
 define('APP_CONFIG_PATH', APP_PATH.'config/');
 define('TEMPLATE_PATH', APP_PATH.'template/');
@@ -32,25 +26,22 @@ define('CLASS_SYSTEM_PATH', 'system/');
 define('CLASS_HELPER_PATH', 'helper/');
 define('BACKUP_PATH', SYSTEM_PATH.'backup/');
 
-//extensions de fichier
 define('LANG_EXT', '.xml');
 define('FILES_EXT', '.html');
 define('TEMPLATE_EXT', '.tpl');
 define('LOG_EXT', '.log');
-define('RUBRIQUE_EXT', '.class');
+define('CONTROLLER_EXT', '.class');
 define('MODEL_EXT', '.model.class');
 
-//ficiher de log
 define('LOG_SYSTEM', 'system');
 define('LOG_PHP', 'errors');
 define('LOG_HISTORY', 'history');
 define('LOG_SQL', 'sql');
 define('LOG_CRONS', 'crons');
 
-//fonctions et classfdevt
-define('FUNCTION_GENERIQUE', RUBRIQUE_PATH.'function.php');
+define('FUNCTION_GENERIQUE', CONTROLLER_PATH.'function.php');
 define('CLASS_GENERAL_INTERFACE', CLASS_PATH.CLASS_SYSTEM_PATH.'generalGc.class.php');
-define('CLASS_RUBRIQUE', CLASS_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php');
+define('CLASS_CONTROLLER', CLASS_PATH.CLASS_SYSTEM_PATH.'Gcsystem.class.php');
 define('CLASS_APPLICATION', CLASS_PATH.CLASS_SYSTEM_PATH.'applicationGc.class.php');
 define('CLASS_MODEL', CLASS_PATH.CLASS_SYSTEM_PATH.'modelGc.class.php');
 define('CLASS_LOG', CLASS_PATH.CLASS_SYSTEM_PATH.'logGc.class.php');
@@ -71,7 +62,6 @@ define('CLASS_CRON', CLASS_PATH.CLASS_SYSTEM_PATH.'cronGc.class.php');
 define('CLASS_BACKUP', CLASS_PATH.CLASS_SYSTEM_PATH.'backupGc.class.php');
 define('CLASS_ERROR_PERSO', CLASS_PATH.CLASS_SYSTEM_PATH.'errorpersoGc.class.php');
 
-//fichiers de config
 define('ROUTE', APP_CONFIG_PATH.'routes.xml');
 define('MODOGCCONFIG', APP_CONFIG_PATH.'modoGc.xml');
 define('APPCONFIG', APP_CONFIG_PATH.'app.xml');
@@ -82,27 +72,27 @@ define('INSTALLED', APP_CONFIG_PATH.'installed.xml');
 define('CRON', APP_CONFIG_PATH.'cron.xml');
 define('ERRORPERSO', APP_CONFIG_PATH.'errorpersoGc.xml');
 
-//logs messages
 define('WARNING', 'WARNING');
 define('ERROR', 'ERROR');
 define('INFORMATION', 'INFORMATION');
+define('FATAL', 'FATAL');
 
 /* --------------parametres de connexion a la base de donnees------------------*/
 
 $GLOBALS['db']['bdd']['hostname']  = "localhost";
 $GLOBALS['db']['bdd']['username']  = "root";
 $GLOBALS['db']['bdd']['password']  = "";
-$GLOBALS['db']['bdd']['database']  = "test";
+$GLOBALS['db']['bdd']['database']  = "legeekcafev4";
 $GLOBALS['db']['bdd']['extension'] = "pdo";
 $GLOBALS['db']['bdd']['sgbd']      = "mysql";
 
 /* -------------- CONSTANTE RELATIVE AU SITE OBLIGATOIRES MAIS MODIFIABLES ----------------- */
 
 //base du site (utile pour eviter les repetition et faciliter  les changements de bdd
-define('BDD', 'test');
+define('BDD', 'legeekcafev4');
 
 //connexion à la bdd, true ou false
-define('CONNECTBDD', false);
+define('CONNECTBDD', true);
 
 //utilisation du routeur
 define('REWRITE', true);
@@ -119,7 +109,7 @@ define('CHARSET', 'UTF-8');
 //dossier où est placé le framework à partir de la racine du répertoire. sous wamp par exemple, /GCsystem2.0
 define('FOLDER', '');
 
-//dossier où est placé le framework à partir de la racine du répertoire
+//langue par défaut du système
 define('DEFAULTLANG', 'fr');
 
 /** Definit l'environnement dans lequel est effectué l'application :
@@ -131,7 +121,7 @@ define('ENVIRONMENT', 'development');
 define('MAINTENANCE', false);
 
 /* affiche la barre de dev ou non */
-define('DEVTOOL', true);
+define('DEVTOOL', false);
 
 /* mot de passe pour se connecter au terminal */
 define('TERMINAL_MDP', 'mdp');
@@ -149,16 +139,22 @@ define('CACHE_SHA1', false);
 /* le nom des fichiers de cache sera hashé ou non */
 define('LOG_ENABLED', true);
 
+/* réduis la taille des fichiers html en supprimant les tabulations (attention avec les zones de texte) */
+define('MINIFY_OUTPUT_HTML', false);
+
+/* affiche les log d'erreurs [FATAL] (erreurs qui entravent gravement le fonctionnement de l'application) */
+define('DISPLAY_ERROR_FATAL', true);
+
 /* à ne pas modifier */
 define('IMG_PATH', FOLDER.'/'.ASSET_PATH.'image/');
 define('CSS_PATH', FOLDER.'/'.ASSET_PATH.'css/');
 define('JS_PATH', FOLDER.'/'.ASSET_PATH.'js/');
-define('UPLOAD_PATH', FOLDER.'/'.ASSET_PATH.'upload/');
+define('FILE_PATH', FOLDER.'/'.ASSET_PATH.'file/');
 
 define('IMG_PATH_PHP', ASSET_PATH.'image/');
 define('CSS_PATH_PHP', ASSET_PATH.'css/');
 define('JS_PATH_PHP', ASSET_PATH.'js/');
-define('UPLOAD_PATH_PHP', ASSET_PATH.'upload/');
+define('FILE_PATH_PHP', ASSET_PATH.'file/');
 
-//favicon
-define('FAVICON_PATH', IMG_PATH.'static/logo.png');
+//timezone
+define('TIMEZONE', 'Europe/Paris');

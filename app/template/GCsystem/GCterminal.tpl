@@ -1,191 +1,158 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <title>GCsystem - Terminal</title>
-    <meta charset="utf-8" />
-    <meta name="robots" content="index,follow" />
-    <!--[if lt IE 9]>
-    	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link rel="icon" type="image/png" href="{{def:IMG_PATH}}/GCsystem/logo.ico" />
-    <script type="text/javascript" src="{{def:JS_PATH}}/jquery/jquery.min.js" ></script>
-    </script>
-  </head>
-  <body>
-<style>
-	html, body{
-		padding: 0;
-		margin: 0;
-		font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
-		background-color: black;
-	}
-	
-	#gc_terminal{
-		-webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 8px;
-		box-shadow: rgba(0, 0, 0, 0.5) 0 0 6px;
-		width: 100%;
-		height: 100%;
-		z-index: 1000;
-		font-size: 0.95em;
-		color: white;
-		background-color: black;
-		margin-bottom : {moins2}px;
-	}
-
-	#gc_terminal_top{
-		height: 25px;
-		width: 100%;
-		font-size: 1.15em;
-		position: fixed;
-		top: 0;
-		border-top:1px #b0b0b0 solid;
-		background-color: #444444;
-		background-image:-webkit-linear-gradient(top, #E5E5E5, #AEAEAE);
-		background-image:-moz-linear-gradient(top, #E5E5E5, #AEAEAE);
-		background-image:-ms-linear-gradient(top, #E5E5E5, #AEAEAE);
-		background-image:-o-linear-gradient(top, #E5E5E5, #AEAEAE);
-		background-image:linear-gradient(to bottom, #E5E5E5, #AEAEAE);
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#E5E5E5', EndColorStr='#AEAEAE');
-		font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
-		margin:0;
-		display:block;
-		text-align:center;
-		color:#464646;
-		text-shadow:0 1px 0 rgba(255,255,255,.75);
-		text-indent: 4px;
-		box-shadow: rgba(0, 0, 0, 0.25) 0 0 8px;
-	}
-
-	#gc_terminal_top_titre{
-		
-	}
-
-	#gc_terminal #terminal, #gc_terminal input[type=text]{
-		border: none;
-		background-color: black;
-		color: white;
-		border: none;
-	}
-	
-	*:focus{
-	  outline:none;
-	}
-	
-	#gc_terminal #terminal{
-		height: 100%;
-		overflow: none;
-		word-wrap: break-word;
-		font-size: 0.98em;
-		font-family: Consolas;
-		padding: 1px;
-		line-height: 0.95em;
-	}
-	
-	#gc_terminal #terminal_input_write{
-		opacity: 1;
-		font-size: 1.0em;
-		font-family: Consolas;
-		float: left;
-		position: relative;
-		background-color: rgba(0, 0, 0, 0);	
-		top: -6px;
-	}
-	
-	#gc_terminal #terminal_input_write_left{
-		width: 140px;
-		opacity: 1;
-		font-size: 1.0em;
-		font-family: Consolas;
-		float: left;
-		text-shadow : white 0px 0px 5px;
-		position: relative;
-		background-color: rgba(0, 0, 0, 0);	
-		top: -6px;
-	}
-	
-	
-	#terminal_read, gc_terminal_top_content{
-		margin-top: 28px;
-	}
-	
-	#terminal_read{
-	}
-</style>
-<script>	
-	function pageScroll() {
-    	window.scrollBy(0,1000); // horizontal and vertical scroll increments
-    	scrolldelay = setTimeout('pageScroll()',0); // scrolls every 100 milliseconds
-		stopScroll();
-	}
-	
-	function stopScroll() {
-    	clearTimeout(scrolldelay);
-	}
-	
-	function terminal(evenement){
-		//if (window.focus){ window.location.href="#terminal_input_write"; }
-		var touche = window.event ? evenement.keyCode : evenement.which;
-		pageScroll();
-		if(touche==13){
-			window.location.href="#terminal_input_write";
-			var field  = document.getElementById('terminal_input_write');
-			var commande  = document.getElementById('terminal');
-			if(document.getElementById('terminal_input_write').value=="clear"){
-				document.getElementById('terminal').innerHTML="";
-				document.getElementById('terminal_input_write').value="";
+  	<head>
+    	<title>GCsystem - Terminal</title>
+    	<link rel="icon" type="image/png" href="{{def:IMG_PATH}}/GCsystem/logo.png" />
+    	<script type="text/javascript" src="{{def:JS_PATH}}jquery/jquery.min.js" ></script>
+  	</head>
+	 <body>
+		<style>
+			html,body{
+				height: 100%;
+				background-color: #080808;
+				font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif!important;
+				color: white;
+				padding:0;
+				margin: 0;
 			}
-			
-			if(field.value!=""){
-				var sVar1 = encodeURIComponent(field.value);	
+
+			#main-body{
+				background-color: #080808!important;
+			}
+
+			#terminal-read{
+				font-size: 14px;
+				padding: 5px!important;
+			}
+
+			#terminal-input-begin,
+			#terminal-input-write{
+				display: inline-block;
+				height: 20px;
+				overflow: hidden;
+			}
+
+			#terminal-input-write{
+				background-color: transparent;
+				color: white;
+				border: none;
+				position: relative;
+				top: -6px;
+				outline: none;
+			}
+
+			#terminal{
+				width: 100%;
+				overflow: hidden;
+				word-wrap: break-word;
+			}
+
+			.terminal-data{
+				-webkit-animation-name: "fadeInRight";
+				-moz-animation-name: "fadeInRight";
+				-ms-animation-name: "fadeInRight";
+				-o-animation-name: "fadeInRight";
+				animation-name: "fadeInRight";
+				-webkit-animation-duration: 0.4s;
+				-moz-animation-duration: 0.4s;
+				-ms-animation-duration: 0.4s;
+				-o-animation-duration: 0.4s;
+				animation-duration: 0.4s;
+			}
+
+			@-webkit-keyframes pulse {
+			  0% { opacity: 1; }
+			  50% { opacity: 0; }
+			  100% { opacity: 1; }
+			}
+			@-moz-keyframes pulse {
+			  0% { opacity: 1; }
+			  50% { opacity: 0; }
+			  100% { opacity: 1; }
+			}
+			@-o-keyframes pulse {
+			  0% { opacity: 1; }
+			  50% { opacity: 0; }
+			  100% { opacity: 1; }
+			}
+			@-ms-keyframes pulse {
+			  0% { opacity: 1; }
+			  50% { opacity: 0; }
+			  100% { opacity: 1; }
+			}
+			@keyframes pulse {
+			  0% { opacity: 1; }
+			  50% { opacity: 0; }
+			  100% { opacity: 1; }
+			}
+		</style>
+		<script>
+			function terminal(keyEvent){
+				var key = window.event ? keyEvent.keyCode : keyEvent.which;
 				
-				$(function(){
-					var message = $('#terminal_input_write').val();
-					$.post("{{url:terminal_terminal}}",
-					{
-						message: message
-					},
-					function(data){
-						var val = $('#terminal').html();
-						if(val==""){ var val2="" } else { var val2="<br />"; }
-						$('#terminal').html(val+val2+data);
-					});
-				});
+				if(key==13){
+					var command = $('#terminal-input-write').val();
+					adminTerminalLastCommand = command;
 
-				field.value = "";
-				field.focus();
-				window.setTimeout(function (){ document.getElementById(field).focus(); }, 0);				
+					if(command.match(/^clear/g)){
+						$('#terminal').html('');
+					}
+					else if(command != ''){
+						$( document ).ready(function() {
+							$.ajax({
+								type: "POST",
+								url: '{{url:terminal_terminal}}',
+								data: {
+									command : command
+								}
+							}).done(function(data) {
+								$('#terminal').append('<div class="terminal-data">'+data+'</div>');
+								$(document).scrollTop($('html')[0].scrollHeight);
+								$('#terminal-input-write').val('');
+							});
+						});
+					}
+
+					$('#terminal-input-write').val('')
+				}
 			}
-			else{
-				field.value = "";
-				field.focus();								
+
+			function terminalUp(keyEvent){
+				$(document).scrollTop($(document).scrollHeight);
+
+				var key = window.event ? keyEvent.keyCode : keyEvent.which;
+
+				if(key == 38){
+					$( document ).ready(function() {
+						$('#terminal-input-write').val(adminTerminalLastCommand);
+						document.getElementById('terminal-input-write').focus();
+					});
+				}
 			}
-			if (window.focus){ window.location.href="#terminal_input_write"; }
-		}
-	}
-	
-	function terminal_empty(){
-		//if (window.focus){ window.location.href="#terminal_input_write"; }
-	}	
-</script>
-<div id="gc_terminal">
-	<div id="gc_terminal_top">
-		<div id="gc_terminal_top_titre">{{lang:terminaltitre}}</div>
-	</div>
-	<div id="gc_terminal_top_content">
-		<div id="terminal_read">
-			<div id="terminal" readonly="readonly"></div>
-			<div id="terminal_write">
-				<input type="text" value="> app/console &#8594;" id="terminal_input_write_left"/>
-				<input type="text" value="" id="terminal_input_write" onkeyPress="terminal(event);" onkeyUp="terminal_empty();"/>
+
+			function terminalUpdateHeight(){
+				$('#terminal-input-write').css('width', ($('#terminal-write').width() - $('#terminal-input-begin').width() - 5)+'px');
+			}
+		</script>
+		<div id="main-body">
+			<div id="terminal-read">
+				<div id="terminal" readonly="readonly"></div>
+				<div id="terminal-write">
+					<div id="terminal-input-begin">terminal@gcsystem~$</div>
+					<input id="terminal-input-write" spellcheck="false" onKeyUp="terminalUp(event)" onkeyPress="terminal(event);" />
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<script>
-	if (document.body){
-		document.getElementById('terminal_input_write').style.width = (document.body.clientWidth-180) + "px";
-		document.getElementById('terminal_input_write').focus();
-	}
-</script>
-</body>
+		<script>
+			$( document ).ready(function() {
+				document.getElementById('terminal-input-write').focus();
+			});
+
+			terminalUpdateHeight();
+
+			$(window).resize(function() {
+				terminalUpdateHeight();
+			});
+		</script>
+	</body>
 </html>

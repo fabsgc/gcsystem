@@ -1,13 +1,13 @@
 <?php
 	/**
-	 * @file : rubrique.class.php
+	 * @file : controller.class.php
 	 * @author : fab@c++
 	 * @description : class mère de l'application
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
 	class Gcsystem{
-		use errorGc, langInstance, generalGc, urlRegex, domGc;                            //trait
+		use errorGc, langInstance, generalGc, urlRegex;                            //trait
 		/* --- infos d'en tete -- */
 
 		protected $_output                     ;
@@ -36,20 +36,21 @@
 				$this->_checkError();
 				$this->_checkFunctionGenerique();
 				$this->_checkSecureVar();
-				$this->setErrorLog(LOG_HISTORY,'Page rewrite : http://'.$this->getHost().$this->getUri().' rubrique : '.$this->getServerName().$this->getPhpSelf().'?'.$this->getQuery().' / origine : '.$this->getReferer().' / IP : '.$this->getIp());
+				$this->setErrorLog(LOG_HISTORY,'Page rewrite : http://'.$this->getHost().$this->getUri().' contrôleur : '.$this->getServerName().$this->getPhpSelf().'?'.$this->getQuery().' / origine : '.$this->getReferer().' / IP : '.$this->getIp());
 				$this->_configInstance = new configGc();
 				$this->_initInstance = 1;
+				date_default_timezone_set(TIMEZONE);
 			}
 		}
 		
 		private function _getRubrique(){
 			$this->_routerInstance = new routerGc($this);
-			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$domXml = new DomDocument('1.0', CHARSET);
 			
-			if($this->_domXml->load(ROUTE)){
+			if($domXml->load(ROUTE)){
 				$this->_addError('Le fichier de route " '.ROUTE.'" a bien été chargé', __FILE__, __LINE__, INFORMATION);
-				$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
-				$routes = $this->_nodeXml->getElementsByTagName('route');
+				$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
+				$routes = $nodeXml->getElementsByTagName('route');
 				
 				foreach($routes as $route){
 					$vars = array();
@@ -58,68 +59,73 @@
 						$vars = explode(',', $route->getAttribute('vars'));
 					}
 
-					$this->_routerInstance->addRoute(new routeGc($route->getAttribute('url'), $route->getAttribute('rubrique'), $route->getAttribute('action'), $route->getAttribute('id'), $route->getAttribute('cache'), $vars));
+					$this->_routerInstance->addRoute(new routeGc($route->getAttribute('url'), $route->getAttribute('controller'), $route->getAttribute('action'), $route->getAttribute('id'), $route->getAttribute('cache'), $vars));
 				}
 
 				if($matchedRoute = $this->_routerInstance->getRoute(preg_replace('`\?'.preg_quote($this->getQuery()).'`isU', '', $this->getUri()))){
 					$_GET = array_merge($_GET, $matchedRoute->vars());
-					$_GET['rubrique']  = $matchedRoute->module();
+					$_GET['controller']  = $matchedRoute->module();
 					$_GET['action']    = $matchedRoute->action();
 					$_GET['pageid']    = $matchedRoute->id();
 					$this->_cacheRoute = $matchedRoute->cache();
+
+					if($_GET['action'] == ''){
+						$_GET['action'] = 'default';
+					}
 				}
 				else{
-					$_GET['rubrique'] = "";
+					$_GET['controller'] = "";
 				}
 			}
 			else{
-				$this->_addError('Le routage a échoué car le fichier "'.ROUTE.'" n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
+				$this->_addError('Le routage a échoué car le fichier "'.ROUTE.'" n\'a pas pu être chargé', __FILE__, __LINE__, FATAL);
 			}
 		}
 		
 		public function route(){
 			if(REWRITE == true){ $this->_getRubrique(); }
 			
-			if(isset($_GET['rubrique'])){
-				$this->_domXml = new DomDocument('1.0', CHARSET);
+			if(isset($_GET['controller'])){
+				$domXml = new DomDocument('1.0', CHARSET);
 				
-				if($this->_domXml->load(ROUTE)){
-					$this->_nodeXml = $this->_domXml->getElementsByTagName('routes')->item(0);
-					$this->_markupXml = $this->_nodeXml->getElementsByTagName('route');
+				if($domXml->load(ROUTE)){
+					$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
+					$markupXml = $nodeXml->getElementsByTagName('route');
 					
-					$rubrique = ""; //on initialise la variable
+					$controller = ""; //on initialise la variable
 					
-					foreach($this->_markupXml as $sentence){
-						if ($sentence->getAttribute('rubrique') == $_GET['rubrique']){
-							$rubrique =  $sentence->getAttribute('rubrique');
+					foreach($markupXml as $sentence){
+						if ($sentence->getAttribute('controller') == $_GET['controller']){
+							$controller =  $sentence->getAttribute('controller');
 						}
 					}
 					
-					if($rubrique!=""){
+					if($controller!=""){
 						$helper = new helperGc();
 						$this->_cronInstance  = new cronGc(); //les crons ont besoin des plugins
 
 						if($this->_cacheRoute > 0){ //le cache de la page est supérieur à 0 secondes et le rewrite activé
-							if($this->_setRubrique($rubrique) == true){  //on inclut les fichiers necéssaire à l'utilisation d'une rubrique
-								$class = new $rubrique($this->_lang);
+							if($this->_setRubrique($controller) == true){  //on inclut les fichiers necéssaire à l'utilisation d'un contrôleur
+								$class = new $controller($this->_lang);
 								if(SECURITY == false || $class->setFirewall() == true){
 									if(ANTISPAM == false || $class->setAntispam() == true){
+										$class->loadModel();
 										$this->_cache = new cacheGc('page_'.preg_replace('#\/#isU', '-slash-', $this->getUri()), "", $this->_cacheRoute);
 
 										if($this->_cache->isDie()){
-											ob_start('ob_gzhandler');
+											ob_start ();
 												$class->init();
-														
+
 												if($_GET['action']!=""){
 													if(method_exists($class, 'action'.ucfirst($_GET['action']))){
 														$action = 'action'.ucfirst($_GET['action']);
 														$class->$action();
-														$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__, INFORMATION);
+														$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, INFORMATION);
 													}
 													else{
 														$action = 'actionDefault';
 														$class->$action();
-														$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
+														$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
 													}
 												}
 												elseif($_GET['action']==""){
@@ -140,26 +146,26 @@
 										}
 									}
 									else{
-										$this->_addError('L\'antispam semble avoir planté', __FILE__, __LINE__, ERROR);
-										$this->redirect404();
+										$this->_addError('L\'antispam semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
 									}
 								}
 								else{
-									$this->_addError('Le parefeu semble avoir planté', __FILE__, __LINE__, ERROR);
-									$this->redirect404();
+									$this->_addError(' Le parefeu semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
 								}
 							}
 							else{
-								$this->_addError('L\'instanciation du contrôleur de la rubrique "'.$rubrique.'" a échoué', __FILE__, __LINE__, ERROR);
-								$this->_addError('La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée', __FILE__,  __LINE__, ERROR);
+								$this->_addError('L\'instanciation du contrôleur "'.$controller.'" a échoué', __FILE__, __LINE__, FATAL);
+								$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé', __FILE__,  __LINE__, FATAL);
 								$this->redirect404();
 							}
 						}
 						else{
-							if($this->_setRubrique($rubrique) == true){
-								$class = new $rubrique($this->_lang);
+							if($this->_setRubrique($controller) == true){
+								$class = new $controller($this->_lang);
 								if(SECURITY == false || $class->setFirewall() == true){
 									if(ANTISPAM == false || $class->setAntispam() == true){
+									    $class->loadModel();
+
 										ob_start ();
 											$class->init();
 
@@ -167,12 +173,12 @@
 												if(method_exists($class, 'action'.ucfirst($_GET['action']))){
 													$action = 'action'.ucfirst($_GET['action']);
 													$class->$action();
-													$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" réussi', __FILE__, __LINE__, INFORMATION);
+													$this->_addError('Appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, INFORMATION);
 												}
 												else{
 													$action = 'actionDefault';
 													$class->$action();
-													$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" de la rubrique "'.$rubrique.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
+													$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
 												}
 											}
 											elseif($_GET['action']==""){
@@ -186,57 +192,59 @@
 										ob_get_clean();
 									}
 									else{
-										$this->_addError('L\'antispam semble avoir planté', __FILE__, __LINE__, ERROR);
-										$this->redirect404();
+										$this->_addError('L\'antispam semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
 									}
 								}
 								else{
-									$this->_addError('Le parefeu semble avoir planté', __FILE__, __LINE__, ERROR);
-									$this->redirect404();
+									$this->_addError('Le parefeu semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
 								}								
 							}
 							else{
-								$this->_addError('L\'instanciation du contrôleur de la rubrique "'.$rubrique.'" a échoué', __FILE__, __LINE__, ERROR);
-								$this->_addError('La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée', __FILE__,  __LINE__, ERROR);
+								$this->_addError('L\'instanciation du contrôleur "'.$controller.'" a échoué', __FILE__, __LINE__, FATAL);
+								$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé', __FILE__,  __LINE__, FATAL);
 								$this->redirect404();
 							}
 						}
 					}
 					else{
-						$this->_addError('La rubrique \'inconnue\'car le route a echoué. Requête http : http://'.$this->getHost().$this->getUri(), __FILE__, __LINE__, ERROR);
-						$this->_addError('La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée car le route a échoué. URL : http://'.$this->getHost().$this->getUri(), __FILE__,  __LINE__, ERROR);
+						$this->_addError('Le contrôleur \'inconnue\' n\'a pas été instancié car le routage a echoué. Requête http : http://'.$this->getHost().$this->getUri(), __FILE__, __LINE__, FATAL);
+						$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé car le routage a échoué. URL : http://'.$this->getHost().$this->getUri(), __FILE__,  __LINE__, FATAL);
 							$this->redirect404();
 					}
 				}				
 			}
 			else{
-				if(is_file(RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php') && file_exists(RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php') && is_readable(RUBRIQUE_PATH.'index'.RUBRIQUE_EXT.'.php')){ 
+				if(is_file(CONTROLLER_PATH.'index'.CONTROLLER_EXT.'.php') && file_exists(CONTROLLER_PATH.'index'.CONTROLLER_EXT.'.php') && is_readable(CONTROLLER_PATH.'index'.CONTROLLER_EXT.'.php')){ 
 					$this->_setRubrique('index');
 				}
 				else{
-					$this->_addError('La rubrique '.$_GET['rubrique'].' n\'a pas été trouvée', __FILE__,  __LINE__, ERROR);
+					$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé', __FILE__,  __LINE__, FATAL);
 					$this->redirect404();
 				}
 			}
 		}
 		
-		private function _setRubrique($rubrique){
-			if(file_exists(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php')){
-				if(file_exists(MODEL_PATH.$rubrique.MODEL_EXT.'.php')){
-					require_once(MODEL_PATH.$rubrique.MODEL_EXT.'.php');
-					$this->_addError('Chargement des fichiers "'.RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php" et "'.MODEL_PATH.$rubrique.MODEL_EXT.'.php"', __FILE__, __LINE__, INFORMATION);
+		private function _setRubrique($controller){
+			if(file_exists(CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php')){
+				if(file_exists(MODEL_PATH.$controller.MODEL_EXT.'.php')){
+					require_once(MODEL_PATH.$controller.MODEL_EXT.'.php');
+					$this->_addError('Chargement des fichiers "'.CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php" et "'.MODEL_PATH.$controller.MODEL_EXT.'.php"', __FILE__, __LINE__, INFORMATION);
 				}
-				require_once(RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php');
+				require_once(CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php');
 				return true;
 			}
 			else{ 
-				$this->_addError($this->useLang('rubriquenotfound', array('rubrique' => $rubrique)), __FILE__, __LINE__, ERROR);
-				$this->_addError('Echec lors du chargement des fichiers "'.RUBRIQUE_PATH.$rubrique.RUBRIQUE_EXT.'.php" et "'.MODEL_PATH.$rubrique.MODEL_EXT.'.php"', __FILE__, __LINE__, ERROR);
+				$this->_addError($this->useLang('controllernotfound', array('controller' => $controller)), __FILE__, __LINE__, FATAL);
+				$this->_addError('Echec lors du chargement des fichiers "'.CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php" et "'.MODEL_PATH.$controller.MODEL_EXT.'.php"', __FILE__, __LINE__, ERROR);
 				return false;
 			}
 		}
 		
 		public function run(){
+			if(MINIFY_OUTPUT_HTML == true && $this->checkContentType() == true){
+				$this->_output = preg_replace('#\\t#isU', '', $this->_output);
+			}
+
 			echo $this->_output;
 			$this->_addErrorHr();
 
@@ -247,8 +255,8 @@
 
 		private function checkContentType(){ //renvoie false si on a pas affaire à du html et si on a une directive content-type
 			$header = headers_list();
-			
-			if(in_array('content-type: text/html', $header)){
+
+			if(in_array('Content-Type: text/html; charset='.CHARSET, $header)){
 				return true;
 			}
 
@@ -258,7 +266,7 @@
 				}
 			}
 
-			return true;
+			return false;
 		}
 		
 		private function _checkHeaderStream($url){

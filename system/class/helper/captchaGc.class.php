@@ -3,7 +3,7 @@
 	 * @file : captchaGc.class.php
 	 * @author : fab@c++
 	 * @description : class permettant la génération de captcha personnalisée
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
 	class captchaGC{
@@ -12,8 +12,8 @@
 		protected $_img;
 		protected $_mot;
 		
-		protected $_largeur;
-		protected $_hauteur;
+		protected $_width;
+		protected $_height;
 		
 		protected $_backgroundImage; //true ou false
 		protected $_background;
@@ -25,21 +25,21 @@
 		protected $_textSize;
 		protected $_textPos;
 		
-		protected $_hachure; //true ou false
-		protected $_hachureColor;
+		protected $_hatching; //true ou false
+		protected $_hatchingColor;
 		
 		protected $_i=0;
-		protected $_xhachure=0;
+		protected $_xhatching=0;
 		protected $_blur;
 		protected $_matrix_blur=array();
 		
-		protected $_colorHachureAllocate;
+		protected $_colorhatchingAllocate;
 		protected $_colorBackgroundAllocate;
 		protected $_colorTextAllocate;
-		protected $_colorBordureAllocate;
+		protected $_colorborderAllocate;
 		
-		protected $_bordure;
-		protected $_bordureColor;
+		protected $_border;
+		protected $_borderColor;
 		
 		/**
 		 * Crée l'instance de la classe
@@ -53,8 +53,8 @@
 		public function __construct($mot, $property=array()){
 			$this->_i = 0;
 			$this->_mot = $mot;
-			$this->_largeur = 10;
-			$this->_hauteur = 10;
+			$this->_width = 10;
+			$this->_height = 10;
 			$this->_backgroundImage = false;
 			$this->_background = array(255,255,255);
 			$this->_font = false;
@@ -62,32 +62,32 @@
 			$this->_textColor = array();
 			$this->_textSize = 5;
 			$this->_textPos = array(0,0);
-			$this->_hachure = false;
-			$this->_hachureColor = array(50,50,50);
+			$this->_hatching = false;
+			$this->_hatchingColor = array(50,50,50);
 			$this->_blur = false;
 			
 			foreach($property as $cle=>$valeur){
 				switch($cle){
-					case 'largeur':
-						$this->_largeur = $valeur;
+					case 'width':
+						$this->_width = $valeur;
 					break;
 					
-					case 'hauteur':
-						$this->_hauteur = $valeur;
+					case 'height':
+						$this->_height = $valeur;
 					break;
 					
-					case 'textcolor' :
+					case 'textColor' :
 						$this->_textColor = $valeur;
 						$this->_textColor[0] = intval($this->_textColor[0]);
 						$this->_textColor[1] = intval($this->_textColor[1]);
 						$this->_textColor[2] = intval($this->_textColor[2]);
 					break;
 					
-					case 'textsize' :
+					case 'textSize' :
 						$this->_textSize = $valeur;
 					break;
 					
-					case 'textposition' :
+					case 'textPosition' :
 						$this->_textPos = $valeur;
 					break;
 					
@@ -102,12 +102,12 @@
 						}
 					break;
 					
-					case 'hachurecolor' :
-						$this->_hachureColor = $valeur;
+					case 'hatchingColor' :
+						$this->_hatchingColor = $valeur;
 					break;
 					
-					case 'hachure' :
-						$this->_hachure = $valeur;
+					case 'hatching' :
+						$this->_hatching = $valeur;
 					break;
 					
 					case 'blur' :
@@ -119,9 +119,9 @@
 						$this->_fontLink = $valeur;
 					break;
 					
-					case 'bordure' :
-						$this->_bordure = true;
-						$this->_bordureColor = $valeur;
+					case 'border' :
+						$this->_border = true;
+						$this->_borderColor = $valeur;
 					break;
 				}
 			}
@@ -168,24 +168,24 @@
 				imagestring($this->_img, $this->_textSize, $this->_textPos[0], $this->_textPos[1], $this->_mot, $this->_colorTextAllocate);
 			}
 			else{
-				$this->_img = imagecreate($this->_largeur, $this->_hauteur);
+				$this->_img = imagecreate($this->_width, $this->_height);
 				$this->_colorBackgroundAllocate = imagecolorallocate($this->_img, $this->_background[0], $this->_background[1], $this->_background[2]);
 				$this->_colorTextAllocate = imagecolorallocate($this->_img, $this->_textColor[0], $this->_textColor[1], $this->_textColor[2]);
 				imagestring($this->_img, $this->_textSize, $this->_textPos[0], $this->_textPos[1], $this->_mot, $this->_colorTextAllocate);
 			}
 			
-			$this->_colorHachureAllocate = imagecolorallocate($this->_img, $this->_hachureColor[0], $this->_hachureColor[1], $this->_hachureColor[2]);
-			$this->_colorBordureAllocate = imagecolorallocate($this->_img, $this->_bordureColor[0], $this->_bordureColor[1], $this->_bordureColor[2]);
+			$this->_colorhatchingAllocate = imagecolorallocate($this->_img, $this->_hatchingColor[0], $this->_hatchingColor[1], $this->_hatchingColor[2]);
+			$this->_colorborderAllocate = imagecolorallocate($this->_img, $this->_borderColor[0], $this->_borderColor[1], $this->_borderColor[2]);
 				
 			
-			if($this->_hachure==true){
+			if($this->_hatching==true){
 				for($this->_i=0; $this->_i<1; $this->_i++){
-					imageline($this->_img, 2,mt_rand(2,$this->_hauteur), $this->_largeur - 2, mt_rand(2,$this->_hauteur), $this->_colorHachureAllocate);
+					imageline($this->_img, 2,mt_rand(2,$this->_height), $this->_width - 2, mt_rand(2,$this->_height), $this->_colorhatchingAllocate);
 				}
 				
-				for($this->_xhachure = 5; $this->_xhachure < $this->_largeur; $this->_xhachure+=14)
+				for($this->_xhatching = 5; $this->_xhatching < $this->_width; $this->_xhatching+=14)
 				{
-					imageline($this->_img, $this->_xhachure,2,$this->_xhachure-5,$this->_hauteur, $this->_colorHachureAllocate);
+					imageline($this->_img, $this->_xhatching,2,$this->_xhatching-5,$this->_height, $this->_colorhatchingAllocate);
 				}
 			}
 			

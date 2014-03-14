@@ -7,15 +7,13 @@
 	require_once(CLASS_LANG);
 	require_once(CLASS_ROUTER);
 	require_once(CLASS_HELPER);
-	require_once(CLASS_RUBRIQUE);
+	require_once(CLASS_CONTROLLER);
 	require_once(CLASS_CONFIG);
 	require_once(CLASS_LOG);
 	require_once(CLASS_EXCEPTION);
 	require_once(CLASS_CACHE);
 	require_once(CLASS_TEMPLATE);
 	require_once(CLASS_APPDEVGC);
-	require_once(CLASS_TERMINAL);
-	require_once(CLASS_INSTALL);
 	require_once(CLASS_CRON);
 	require_once(CLASS_BACKUP);
 	require_once(CLASS_ERROR_PERSO);

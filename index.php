@@ -6,7 +6,7 @@ session_start();
  | @file : index.php
  | @author : fab@c++
  | @description : Controlleur central de l'application
- | @version : 2.0 bêta
+ | @version : 2.1 bêta
  | ------------------------------------------------------
 \*/
 
@@ -16,12 +16,19 @@ require_once(CLASS_AUTOLOAD);
 /* ---------- creation de la page -------------- */
 
 $GLOBALS['appDevGc'] = new appDevGc();
-$GLOBALS['rubrique'] = new Gcsystem();
+$GLOBALS['controller'] = new Gcsystem();
 
-$GLOBALS['rubrique']->init();
+$GLOBALS['controller']->init();
 
 /* ------ articulation du site web-------- */
 
-if(MAINTENANCE==false){ $GLOBALS['rubrique']->route(); $GLOBALS['rubrique']->run(); }
-elseif(MAINTENANCE==true){ $GLOBALS['rubrique']->setMaintenance(); }
-if(ENVIRONMENT == 'development' &&  DEVTOOL == true && $GLOBALS['appDevGc']->getShow() == true) $GLOBALS['appDevGc']->show();
+if(MAINTENANCE==false){ 
+	$GLOBALS['controller']->route(); $GLOBALS['controller']->run(); 
+}
+elseif(MAINTENANCE==true){ 
+	$GLOBALS['controller']->setMaintenance(); 
+}
+
+if(ENVIRONMENT == 'development' &&  ((DEVTOOL == true && $GLOBALS['appDevGc']->getShow() == true) || (DEVTOOL ==  false && $GLOBALS['appDevGc']->getShow() == true))){
+	$GLOBALS['appDevGc']->show();
+}

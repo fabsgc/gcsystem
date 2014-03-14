@@ -3,11 +3,11 @@
 	 * @file : modelGc.class.php
 	 * @author : fab@c++
 	 * @description : class gérant la partie model. abstraite
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
 	abstract class modelGc{
-		use errorGc, langInstance, generalGc, urlRegex, domGc, errorPerso; //trait
+		use errorGc, langInstance, generalGc, urlRegex, errorPerso; //trait
 
 		protected $bdd                                ; //contient la connexion sql
 		
@@ -18,6 +18,9 @@
 		}
 		
 		public function init(){
+		}
+		
+		protected function end(){	
 		}
 			
 		final protected function _createLangInstance(){

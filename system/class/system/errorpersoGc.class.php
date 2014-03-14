@@ -3,11 +3,11 @@
 	 * @file : errorPersoGc.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les erreurs personnalisées de façon plus propre et plus simple
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 
 	class errorPersoGc{
-		use errorGc, langInstance, domGc;                                //trait
+		use errorGc, langInstance;                                //trait
 
 		protected                $_templateInstance = '';
 		protected                $_templatedefault = '' ;
@@ -18,14 +18,14 @@
 		}
 
 		public function errorPerso($id = '0', $var = array()){
-			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$domXml = new DomDocument('1.0', CHARSET);
 
-			if($this->_domXml->load(ERRORPERSO)){
-				$this->_nodeXml = $this->_domXml->getElementsByTagName('errorperso')->item(0);
-				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('errors')->item(0);
-				$this->_nodeXml = $this->_nodeXml->getElementsByTagName('error');
+			if($domXml->load(ERRORPERSO)){
+				$nodeXml = $domXml->getElementsByTagName('errorperso')->item(0);
+				$nodeXml = $nodeXml->getElementsByTagName('errors')->item(0);
+				$nodeXml = $nodeXml->getElementsByTagName('error');
 
-				foreach ($this->_nodeXml as $key => $value) {
+				foreach ($nodeXml as $key => $value) {
 					if($value->hasAttribute('id') && $value->getAttribute('id') == $id){
 						if(!$value->hasAttribute('template')){
 							$this->_templatedefault = $this->_getTemplateDefault();
@@ -37,9 +37,9 @@
 						$this->_templateInstance = new templateGc($this->_templatedefault, 'errorperso', 0, $this->_lang);
 						$this->_templateInstance->setShow(false);
 
-						$this->_node2Xml = $value->getElementsByTagName('var');
+						$node2Xml = $value->getElementsByTagName('var');
 
-						foreach ($this->_node2Xml as $key2 => $value2) {
+						foreach ($node2Xml as $key2 => $value2) {
 							if($value2->hasAttribute('type') && $value2->hasAttribute('id'))
 							switch($value2->getAttribute('type')){
 								case 'var':
@@ -69,22 +69,22 @@
 				}
 			}
 			else{
-				$this->_addError('Le fichier de configuration des erreurs personnalisées '.ERRORPERSO.' est endommagé', __FILE__, __LINE__, ERROR);
+				$this->_addError('Le fichier de configuration des erreurs personnalisées '.ERRORPERSO.' est endommagé', __FILE__, __LINE__, FATAL);
 				return false;
 			}
 		}
 
 		protected function _getTemplateDefault(){
-			$this->_domXml = new DomDocument('1.0', CHARSET);
+			$domXml = new DomDocument('1.0', CHARSET);
 
-			if($this->_domXml->load(ERRORPERSO)){
-				return $this->_domXml->getElementsByTagName('errorperso')->item(0)
+			if($domXml->load(ERRORPERSO)){
+				return $domXml->getElementsByTagName('errorperso')->item(0)
 					->getElementsByTagName('config')->item(0)
 					->getElementsByTagName('templatedefault')->item(0)
 					->getAttribute('nom');
 			}
 			else{
-				$this->_addError('Le fichier de configuration des erreurs personnalisées '.ERRORPERSO.' est endommagé', __FILE__, __LINE__, ERROR);
+				$this->_addError('Le fichier de configuration des erreurs personnalisées '.ERRORPERSO.' est endommagé', __FILE__, __LINE__, FATAL);
 				return false;
 			}
 		}
@@ -93,8 +93,8 @@
 			$this->_langInstance = new langGc($this->_lang);
 		}
 		
-		public function useLang($sentence, $var = array()){
-			return $this->_langInstance->loadSentence($sentence, $var);
+		public function useLang($sentence, $var = array(), $template = langGc::USE_NOT_TPL){
+			return $this->_langInstance->loadSentence($sentence, $var, $template);
 		}
 
 		public  function __destruct(){

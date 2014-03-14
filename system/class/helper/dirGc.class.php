@@ -3,7 +3,7 @@
 	 * @dir : dirGc.class.php
 	 * @author : fab@c++
 	 * @description : class gèrant les opérations sur les fichiers
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
     class dirGc{

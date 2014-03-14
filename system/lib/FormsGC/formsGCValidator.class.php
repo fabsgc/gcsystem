@@ -736,6 +736,22 @@
 							case 'process':
 								$this->fieldProcess($contraint_valeur, $value[1]);
 							break;
+
+							case 'in_array':
+								if(is_array($contraint_valeur)){
+									if(in_array($_POST[$value[1]], $contraint_valeur)){
+										array_push($this->valid, 'true');
+									}
+									else{
+										array_push($this->valid, 'false');
+										array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+									}
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
 						}
 						$this->i++;
 					}
@@ -858,7 +874,7 @@
 							
 							case 'required':
 								if($contraint_valeur=='true'){
-									if(isset($_POST[$value[1]]) && $_POST[$value[1]]!=""){
+									if(isset($_FILES[$value[1]]) && $_FILES[$value[1]]!=""){
 										array_push($this->valid, 'true');
 									}
 									else{
@@ -866,16 +882,6 @@
 										array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 									}
 								}
-							break;
-							
-							case 'nullTo':
-								if(isset($_POST[$value[1]]) && $_POST[$value[1]]==""){
-									$_POST[$value[1]]=$contraint_valeur;
-								}
-							break;
-							
-							case 'process':
-								$this->fieldProcess($contraint_valeur, $value[1]);
 							break;
 						}
 						$this->i++;
@@ -1173,6 +1179,22 @@
 							
 							case 'process':
 								$this->fieldProcess($contraint_valeur, $value[1]);
+							break;
+
+							case 'in_array':
+								if(is_array($contraint_valeur)){
+									if(in_array($_POST[$value[1]], $contraint_valeur)){
+										array_push($this->valid, 'true');
+									}
+									else{
+										array_push($this->valid, 'false');
+										array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+									}
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
 							break;
 						}
 						$this->i++;
@@ -1559,6 +1581,22 @@
 							
 							case 'process':
 								$this->fieldProcess($contraint_valeur, $value[1]);
+							break;
+
+							case 'in_array':
+								if(is_array($contraint_valeur)){
+									if(in_array($_POST[$value[1]], $contraint_valeur)){
+										array_push($this->valid, 'true');
+									}
+									else{
+										array_push($this->valid, 'false');
+										array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+									}
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
 							break;
 						}
 						$this->i++;
@@ -2334,7 +2372,7 @@
 		public  function validateForm($name=""){
 			//on verifie l'existence du champs token si besoin
 			if($this->token == true){
-				if(isset($_POST[''.$this->tokenName.''])){
+				if(isset($_POST[$this->tokenName]) && $_POST[''.$this->tokenName.''] == $_SESSION[$this->tokenName]){
 
 				}
 				else{

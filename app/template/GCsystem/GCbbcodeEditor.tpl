@@ -7,7 +7,6 @@
 		padding-right: 3px;
 		font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 	}
-	
 	textarea#{id}{
 		border: none;
 		width: {width};
@@ -16,7 +15,6 @@
 		margin-top: 1px;
 		padding: 1px;
 	}
-	
 	.gc_bbcode_preview_zone{
 		width: {width};
 		padding: 0 1px 0 1px;
@@ -28,11 +26,6 @@
 		overflow-x:hidden;
 		word-wrap: break-word;
 	}
-	
-	div .button {
-
-	}
-
 	.button, .option {
 		display: inline-block;
 		width: 100%;
@@ -53,12 +46,10 @@
 		min-width: 54px;
 		text-decoration: none;
 	}
-	
 	.option{
 		cursor: default;
 		min-height: 50px;
 	}
-
 	.button:hover {
 		background-color: #F8F8F8;
 		background-image: -webkit-linear-gradient(top,#f8f8f8,#f1f1f1);
@@ -74,7 +65,6 @@
 	}
 
 	/* blue */
-
 	.button.blue, .option.blue {
 		background-color: #4D90FE;
 		background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed);
@@ -85,7 +75,6 @@
 		border: 1px solid #3079ED;
 		color: white;
 	}
-
 	.button.blue:hover {
 		border: 1px solid #2F5BB7;
 		background-color: #357AE8;
@@ -100,7 +89,6 @@
 	}
 
 	/* red */
-	
 	.button.red,.option.red {
 		background-color: #D14836;
 		background-image: -webkit-linear-gradient(top,#dd4b39,#d14836);
@@ -112,7 +100,6 @@
 		color: white;
 		text-shadow: 0 1px rgba(0, 0, 0, 0.1);
 	}
-
 	.button.red:hover {
 		background-color: #C53727;
 		background-image: -webkit-linear-gradient(top,#dd4b39,#c53727);
@@ -123,7 +110,6 @@
 	}
 
 	/* green */
-
 	.button.green, .option.green {
 		background-color: #3D9400;
 		background-image: -webkit-linear-gradient(top,#3d9400,#398a00);
@@ -135,7 +121,6 @@
 		color: white;
 		text-shadow: 0 1px rgba(0, 0, 0, 0.1);
 	}
-
 	.button.green:hover {
 		background-color: #368200;
 		background-image: -webkit-linear-gradient(top,#3d9400,#368200);
@@ -148,7 +133,6 @@
 	}
 
 	/* brownish */
-
 	.button.brownish, .option.brownich {
 		background-color: #3D9400;
 		background-image: -webkit-linear-gradient(top,#674850,#50393f);
@@ -159,7 +143,6 @@
 		border: 1px solid #463237;
 		color: white;
 	}
-
 	.button.brownish:hover {
 		background-color: #368200;
 		background-image: -webkit-linear-gradient(top,#674850,#463237);
@@ -171,7 +154,6 @@
 	}
 
 	/* maroonish */
-
 	.button.maroonish, .option.marronish {
 		background-color: #a55474;
 		background-image: -webkit-linear-gradient(top,#a55474,#8e4964);
@@ -183,7 +165,6 @@
 		color: white;
 		text-shadow: 0 1px rgba(0, 0, 0, 0.1);
 	}
-
 	.button.maroonish:hover {
 		background-color: #a55474;
 		background-image: -webkit-linear-gradient(top,#a55474,#83445d);
@@ -195,7 +176,6 @@
 	}
 
 	/* pinkish */
-
 	.button.pinkish, .option.pinkish {
 		background-color: #7c7461;
 		background-image: -webkit-linear-gradient(top,#dfa7ca,#cd97b9);
@@ -207,7 +187,6 @@
 		color: white;
 		text-shadow: 0 1px rgba(0, 0, 0, 0.1);
 	}
-
 	.button.pinkish:hover {
 		background-color: #7c7461;
 		background-image: -webkit-linear-gradient(top,#dfa7ca,#c38fb0);
@@ -219,7 +198,6 @@
 	}
 
 	/* golden */
-
 	.button.golden, .option.golden {
 		background-color: #dee362;
 		background-image: -webkit-linear-gradient(top,#c1b758,#aea54e);
@@ -230,7 +208,6 @@
 		color: white;
 		border: 1px solid #a29948;
 	}
-
 	.button.golden:hover {
 		background-color: #c0c455;
 		background-image: -webkit-linear-gradient(top,#c1b758,#a29948);
@@ -242,7 +219,6 @@
 	}
 
 	/* goldenish */
-
 	.button.goldenish, .option.goldenish {
 		background-color: #3D9400;
 		background-image: -webkit-linear-gradient(top,#777726,#62621e);
@@ -254,7 +230,6 @@
 		color: white;
 		text-shadow: 0 1px rgba(0, 0, 0, 0.1);
 	}
-
 	.button.goldenish:hover {
 		background-color: #368200;
 		background-image: -webkit-linear-gradient(top,#777726,#525219);
@@ -266,7 +241,6 @@
 	}
 
 	/* skinish */
-
 	.button.skinish, .option.skinish {
 		background-color: #3D9400;
 		background-image: -webkit-linear-gradient(top,#eab447,#cfa03f);
@@ -278,7 +252,6 @@
 		color: white;
 		text-shadow: 0 1px rgba(0, 0, 0, 0.1);
 	}
-
 	.button.skinish:hover {
 		background-color: #368200;
 		background-image: -webkit-linear-gradient(top,#eab447,#c0943a);
@@ -290,7 +263,6 @@
 	}
 
 	/* graysish */
-
 	.button.grayish, .option.grayish {
 		background-color: #3D9400;
 		background-image: -webkit-linear-gradient(top,#7c7461,#615b4c);
@@ -302,7 +274,6 @@
 		color: white;
 		text-shadow: 0 1px rgba(0, 0, 0, 0.1);
 	}
-
 	.button.grayish:hover {
 		background-color: #368200;
 		background-image: -webkit-linear-gradient(top,#7c7461,#504b3e);
@@ -314,7 +285,6 @@
 	}
 
 	/* yellowish */
-
 	.button.yellowish, .option.yellowish {
 		background-color: #3D9400;
 		background-image: -webkit-linear-gradient(top,#dee362,#c0c455);
@@ -324,7 +294,6 @@
 		background-image: linear-gradient(top,#dee362,#c0c455);
 		border: 1px solid #b3b74e;
 	}
-
 	.button.yellowish:hover {
 		background-color: #368200;
 		background-image: -webkit-linear-gradient(top,#dee362,#b3b74e);
@@ -347,7 +316,6 @@
 		border: 1px solid #ed30e6;
 		color: white;
 	}
-
 	.button.pink:hover {
 		background-color: #e835de;
 		background-image: -webkit-linear-gradient(top,#fe4df6,#e835de);
@@ -362,7 +330,6 @@
 	}
 
 	/* Violet */
-
 	.button.violet, .option.violet {
 		background-color: #aC47eD;
 		background-image: -webkit-linear-gradient(top,#bA4dfe,#ac47ed);
@@ -374,7 +341,6 @@
 		border: 1px solid #a030ed;
 		color: white;
 	}
-
 	.button.violet:hover {
 		background-color: #a435e8;
 		background-image: -webkit-linear-gradient(top,#c14Dfe,#a435e8);
@@ -389,7 +355,6 @@
 	}
 
 	/* Orange */
-
 	.button.orange, .option.orange {
 		background-color: #fe7d4d;
 		background-image: -webkit-linear-gradient(top,#fe7d4d,#ed7247);
@@ -401,7 +366,6 @@
 		border: 1px solid #ed5f30;
 		color: white;
 	}
-
 	.button.orange:hover {
 		border: 1px solid #b7492f;
 
@@ -428,7 +392,6 @@
 
 		border: 1px solid #30edd0;
 	}
-
 	.button.seagreen:hover {
 		border: 1px solid #2fb7a2;
 
@@ -443,7 +406,6 @@
 		-moz-box-shadow: 0 1px 1px rgba(0,0,0,.1);
 		box-shadow: 0 1px 1px rgba(0,0,0,.1);
 	}
-	
 	/* Personnalize */
 	.button.personnalize, .option.personnalize {
 		background-color: #{color[0]};
@@ -455,7 +417,6 @@
 
 		border: 1px solid #{color[0]};
 	}
-	
 	.button.personnalize:hover {
 		border: 1px solid #{color[0]};
 		
@@ -472,7 +433,6 @@
 	}
 
 	/* defaults */
-
 	.button.default:active {
 		-webkit-box-shadow: inset 0px 1px 2px rgba(0,0,0,.1);
 		-moz-box-shadow: inset 0px 1px 2px rgba(0,0,0,.1);
@@ -635,7 +595,7 @@
 	  if (quote_style === 0) {
 	    noquotes = true;
 	  }
-	  if (typeof quote_style !== 'number') { // Allow for a single string or an array of string flags
+	  if (typeof quote_style !== 'number') {
 	    quote_style = [].concat(quote_style);
 	    for (i = 0; i < quote_style.length; i++) {
 	      // Resolve string input to bitwise e.g. 'PATHINFO_EXTENSION' becomes 4

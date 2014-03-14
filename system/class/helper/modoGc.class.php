@@ -3,11 +3,11 @@
 	 * @file : modoGc.class.php
 	 * @author : fab@c++
 	 * @description : class gérant le filtrage du contenu du site
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
 	class modoGc{
-		use errorGc, domGc;                         //trait
+		use errorGc;                         //trait
 		
 		protected $_contenu                           ; //contenu à filtrer
 		protected $_maxWord                  = 10     ; //contenu à filtrer
@@ -171,15 +171,15 @@
 		*/
 		
 		protected function  _setInsulte(){
-			$this->_domXml = new DomDocument('1.0', CHARSET);
-			if($this->_domXml->load(MODOGCCONFIG)){
+			$domXml = new DomDocument('1.0', CHARSET);
+			if($domXml->load(MODOGCCONFIG)){
 				$this->_addError('fichier ouvert : '.MODOGCCONFIG, __FILE__, __LINE__, ERROR);
 				
-				$this->_nodeXml = $this->_domXml->getElementsByTagName('insultes')->item(0);
-				$sentences = $this->_nodeXml->getElementsByTagName('insulte');
+				$nodeXml = $domXml->getElementsByTagName('insultes')->item(0);
+				$sentences = $nodeXml->getElementsByTagName('insulte');
 				
 				foreach($sentences as $sentence){
-					if ($sentence->getAttribute("rubrique") == $this->_commandExplode[2]){
+					if ($sentence->getAttribute("controller") == $this->_commandExplode[2]){
 						array_push($this->_insulte,$sentence->firstChild->nodeValue);
 					}
 				}

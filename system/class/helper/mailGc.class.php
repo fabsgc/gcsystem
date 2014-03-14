@@ -3,11 +3,11 @@
 	 * @file : mailGc.class.php
 	 * @author : fab@c++
 	 * @description : class générant des mails
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
 	class mailGc extends constMime{
-		use errorGc                                                                 ;
+		use errorGc, helperLoader                                                   ;
 		
 		protected $_passageLigne                = "\r\n"                            ; //passage à la ligne en fonction du destinataire
 		protected $_expediteur                  = array('mail', 'mail@mail.com')    ; //nom de l'expediteur et email de l'expediteur
@@ -36,9 +36,11 @@
 		const FORMATTEXT                            = false                         ;
 		
 		public  function __construct($infos = array()){
+			$this->loadHelper('fileGc');
+
 			foreach($infos as $cle => $info){
 				switch($cle){
-					case 'expediteur' :
+					case 'sender' :
 						if(is_array($info)){
 							$this->_expediteur = $info;
 						}
@@ -47,7 +49,7 @@
 						}
 					break;
 					
-					case 'destinataire':
+					case 'receiver':
 						if(is_array($info)){
 							$this->_destinataire = $info;
 						}
@@ -92,7 +94,7 @@
 						}
 					break;
 					
-					case 'sujet':
+					case 'subject':
 						$this->_sujet = $info;
 					break;
 					

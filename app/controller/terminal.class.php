@@ -1,12 +1,8 @@
 <?php
-	class terminal extends applicationGc{
-		protected $model                         ;
-		protected $bdd                           ;
-		protected $forms                = array();
-		protected $sql                           ;
-		
+	class terminal extends applicationGc{		
 		public function init(){
-			$this->model = $this->loadModel(); //chargement du model
+			require_once(CLASS_TERMINAL);
+			require_once(CLASS_INSTALL);
 		}
 
 		public function end(){
@@ -20,7 +16,8 @@
 		}
 		
 		public function actionTerminal(){
-			$terminal = new terminalGC($_POST['message'], $this->bdd);
+			$this->loadHelper(array('fileGc', 'dirGc', 'zipGc', 'dateGc'));
+			$terminal = new terminalGC(strip_tags(html_entity_decode($_POST['command'])), $this->bdd);
 			echo $terminal->parse();
 		}
 	}

@@ -3,11 +3,11 @@
 	 * @dir : ftpGc.class.php
 	 * @author : fab@c++
 	 * @description : class gèrant les connexion ftp, elle permet de gérer plusieurs connexion dans la même instance
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
     class ftpGc{
-		use errorGc;                            //trait
+		use errorGc, helperLoader;                            //trait
 		
 		protected $_connexionId                       = array();
 		protected $_connected                         = array();
@@ -21,7 +21,8 @@
 		 * @since 2.0
 		*/
 
-		public function __construct(){			
+		public function __construct(){
+			$this->loadHelper('fileGc');
 		}
 
 		/**

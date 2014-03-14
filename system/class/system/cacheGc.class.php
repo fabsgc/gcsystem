@@ -3,7 +3,7 @@
 	 * @file : cacheGc.class.php
 	 * @author : fab@c++
 	 * @description : class gérant la mise en cache de façon générale
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
 	class cacheGc{
@@ -60,7 +60,7 @@
 				}
 			}
 			else{
-				$this->_addError('le répertoire des fichiers de cache "'.CACHE_PATH.'"" n\'est pas accessible, ce qui empêche l\'application de gérer correctement les templates/requêtes sql etc.', __FILE__, __LINE__, ERROR);
+				$this->_addError('le répertoire des fichiers de cache "'.CACHE_PATH.'"" n\'est pas accessible, ce qui empêche l\'application de gérer correctement les templates/requêtes sql etc.', __FILE__, __LINE__, FATAL);
 			}
 		}
 		
@@ -110,7 +110,7 @@
 	 
 		public function getCache(){
 			if(file_exists($this->_nameFile)){
-				return unserialize($this->_uncompress(file_get_contents($this->_nameFile)));
+				return unserialize(($this->_uncompress(file_get_contents($this->_nameFile))));
 			}
 			else{
 				$this->setCache();

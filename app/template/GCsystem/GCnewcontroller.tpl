@@ -26,5 +26,5 @@
 	}
 </style>
 <div id="GCsystem">
-	<h1>{rubrique}::Default</h1>
+	<h1>{controller}::Default</h1>
 </div>

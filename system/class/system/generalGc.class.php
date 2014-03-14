@@ -3,18 +3,18 @@
 	 * @file : generalGc.class.php
 	 * @author : fab@c++
 	 * @description : traits
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 
 	trait generalGc{
-		final protected function setErrorLog($file, $message){
+		public function setErrorLog($file, $message){
 			if(LOG_ENABLED == true){
 				$file = fopen(LOG_PATH.$file.LOG_EXT, "a+");
 				fputs($file, date("d/m/Y \a H:i:s ! : ",time()).$message."\n");
 			}
 		}
 		
-		final protected function sendMail($email, $message_html, $sujet, $envoyeur){
+		public function sendMail($email, $message_html, $sujet, $envoyeur){
 			if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $email)){
 				$passage_ligne = "\r\n";
 			}
@@ -51,27 +51,27 @@
 			//==========		
 		}
 		
-		final protected function getIp(){
+		public function getIp(){
 			return $_SERVER['REMOTE_ADDR'];
 		}
 	
-		final protected function getQuery(){
+		public function getQuery(){
 			return $_SERVER['QUERY_STRING'];
 		}
 		
-		final protected function getPhpSelf(){
+		public function getPhpSelf(){
 			return $_SERVER['PHP_SELF'];
 		}
 		
-		final protected function getHost(){
+		public function getHost(){
 			return $_SERVER['HTTP_HOST'];
 		}
 		
-		final protected function getUri(){
+		public function getUri(){
 			return $_SERVER['REQUEST_URI'];
 		}
 		
-		final protected function getReferer(){
+		public function getReferer(){
 			if(isset($_SERVER['HTTP_REFERER'])){
 				return $_SERVER['HTTP_REFERER'];
 			}
@@ -80,15 +80,15 @@
 			}
 		}
 		
-		final protected function getServerName(){
+		public function getServerName(){
 			return $_SERVER['SERVER_NAME'];
 		}
 		
-		final protected function addHeader($header){
+		public function addHeader($header){
             header($header);
         }
 
-        final protected function errorHttp($error, $titre){
+        public function errorHttp($error, $titre){
         	$t= new templateGC(ERRORDOCUMENT_PATH.'httpError', $error, '0', $this->_lang);
         	$t->setShow(false);
 			$t->assign(array(
@@ -98,28 +98,39 @@
 			return $t->show();
         }
 		
-		final protected function redirect404(){
+		public function redirect404(){
 			$this->addHeader('HTTP/1.1 404 Not Found');
 			echo $this->errorHttp('404', $this->useLang('404'));
         }
 		
-		final protected function redirect500(){
+		public function redirect500(){
 			$this->addHeader('HTTP/1.1 500 internal error');
 			echo $this->errorHttp('500', $this->useLang('500'));
 			exit();
         }
 		
-		final protected function redirect403(){
+		public function redirect403(){
 			$this->addHeader('HTTP/1.1 403 Access Forbidden');
 			echo $this->errorHttp('403', $this->useLang('403'));
 			exit();
         }
+
+        private function _removeChild($fichier, &$dom, &$parent, &$list, $attribut, $valeur){
+			foreach($list as $sentence){
+				
+				if($sentence->getAttribute($attribut) == $valeur){
+					$parent->removeChild($sentence);
+					$this->_removeChild($fichier, $dom, $parent, $list, $attribut, $valeur);
+					$dom->save($fichier);
+				}
+			}
+		}
 	}
 	
 	trait errorGc{
 		protected $_error              = array() ; //array contenant toutes les erreurs enregistrées
 		
-		final protected function showError(){
+		public function showError(){
 			$erreur = "";
 			foreach($this->_error as $error){
 				$erreur .=$error."<br />";
@@ -127,19 +138,23 @@
 			return $erreur;
 		}
 
-		final protected function _addError($error, $fichier = __FILE__, $ligne = __LINE__, $type = INFORMATION){
+		public function _addError($error, $fichier = __FILE__, $ligne = __LINE__, $type = INFORMATION){
 			if(LOG_ENABLED == true){
 				array_push($this->_error, $error);
 				$file = fopen(LOG_PATH.LOG_SYSTEM.LOG_EXT, "a+");
 				fputs($file, date("d/m/Y \a H:i:s ! : ",time()).'['.$type.'] fichier '.$fichier.' ligne '.$ligne.' '.$error."\n");
 				fclose($file);
+
+				if(DISPLAY_ERROR_FATAL == true && $type == FATAL){
+					echo date("d/m/Y \a H:i:s ! : ",time()).'['.$type.'] fichier '.$fichier.' ligne '.$ligne.' '.$error."<br />";
+				}
 			}
 		}
 
-		final protected function _addErrorHr(){
+		public function _addErrorHr(){
 			if(LOG_ENABLED == true){
 				$file = fopen(LOG_PATH.LOG_SYSTEM.LOG_EXT, "a+");
-				fputs($file, "##### END OF EXECUTION ####################################################################################################\n");
+				fputs($file, "##### END OF EXECUTION OF http://".$this->getHost().$this->getUri()." ####################################################################################################\n");
 				fclose($file);
 			}
 		}
@@ -149,7 +164,7 @@
 		protected $_lang                              = 'fr'    ; //gestion des langues via des fichiers XML
 		protected $_langInstance                                ; //instance de la class langGc
 		
-		final protected function getLangClient(){
+		public function getLangClient(){
 			if(!array_key_exists('HTTP_ACCEPT_LANGUAGE', $_SERVER) || !$_SERVER['HTTP_ACCEPT_LANGUAGE'] ) { return DEFAULTLANG; }
 			else{
 				$langcode = (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : '';
@@ -162,7 +177,7 @@
     }
 	
 	trait urlRegex{
-		final protected function getUrl($id, $var = array()){
+		public function getUrl($id, $var = array()){
 			if(REWRITE == true){
 				$domXml = new DomDocument('1.0', 'iso-8859-15');
 				if($domXml->load(ROUTE)){
@@ -171,7 +186,6 @@
 					$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
 					$markupXml = $nodeXml->getElementsByTagName('route');
 					
-					$rubrique = "";
 					$result   = "";
 					
 					foreach($markupXml as $sentence){	
@@ -195,7 +209,7 @@
 					}
 				}
 				else{
-					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert', __FILE__, __LINE__, ERROR);
+					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
 				}
 			}
 			else{
@@ -220,35 +234,10 @@
 		}
 	}
 	
-	trait domGc{
-		protected $_domXml                                  ;
-		protected $_channelXml                              ;
-		protected $_itemXml                                 ;
-		protected $_nodeXml                                 ;
-		protected $_node2Xml                                ;
-		protected $_node3Xml                                ;
-		protected $_markupXml                               ;
-		protected $_markup2Xml                              ;
-		protected $_markup3Xml                              ;
-		protected $_textXml                                 ;
-		protected $_text2Xml                                ;
-		protected $_text3Xml                                ;
-
-		final private function _removeChild($fichier, &$dom, &$parent, &$list, $attribut, $valeur){
-			foreach($list as $sentence){
-				
-				if($sentence->getAttribute($attribut) == $valeur){
-					$parent->removeChild($sentence);
-					$this->_removeChild($fichier, $dom, $parent, $list, $attribut, $valeur);
-					$dom->save($fichier);
-				}
-			}
-		}
-	}
-	
 	abstract class constMime{
 		const EXT_ZIP                   = 'application/gzip'                         ;
 		const EXT_GZ                    = 'application/x-gzip'                       ;
+		const EXT_GZ_COMPRESSED         = 'application/x-zip-compressed'             ;
 		const EXT_PDF                   = 'application/pdf'                          ;
 		const EXT_JS                    = 'application/javascript'                   ;
 		const EXT_OGG                   = 'application/ogg'                          ;
@@ -293,7 +282,7 @@
 	}
 
 	trait errorPerso{
-		final protected function errorPerso($id, $var = array(), $lang = ''){
+		public function errorPerso($id, $var = array(), $lang = ''){
 			if(lang != ''){
 				$error = new errorPersoGc($lang);
 				echo $error->errorPerso($id, $var);
@@ -306,11 +295,10 @@
 	}
 
 	trait helperLoader{
-		final protected function loadHelper($helper){
+		public function loadHelper($helper){
 			if(!is_array($helper)){
 				$helper = array($helper);
 			}
-
 			foreach ($helper as $helpers) {
 				if(file_exists($helpers) && is_file($helpers)){
 					if(!in_array($helper, get_included_files())){
@@ -325,7 +313,7 @@
 					}
 				}
 				else{
-					$this->_addError('Le helper '.$helpers.' est inacessible.', __FILE__, __LINE__, ERROR);
+					$this->_addError('Le helper '.$helpers.' est inacessible.', __FILE__, __LINE__, FATAL);
 				}
 			}
 		}

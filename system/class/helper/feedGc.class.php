@@ -3,11 +3,11 @@
 	 * @file : feedGc.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les flux rss
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
 	class feedGc{
-		use errorGc, domGc                                  ;
+		use errorGc                                         ;
 		
 		protected $_rssFile                        = ""     ;
 		protected $_rssFileContent                 = ""     ;
@@ -321,49 +321,49 @@
 				$this->_cache = new cacheGc($rss.'.feedGc', "", $this->_time[$rss]);
 			
 				if($this->_cache->isDie()){
-					$this->_domXml = new DomDocument('1.0', CHARSET);
+					$domXml = new DomDocument('1.0', CHARSET);
 					
-					$this->_nodeXml = $this->_domXml->createElement("rss");
-					$this->_nodeXml->setAttribute("version", "2.0"); 
-					$this->_nodeXml->setAttribute("encoding", CHARSET); 
-					$this->_nodeXml = $this->_domXml->appendChild($this->_nodeXml); 
+					$nodeXml = $domXml->createElement("rss");
+					$nodeXml->setAttribute("version", "2.0"); 
+					$nodeXml->setAttribute("encoding", CHARSET); 
+					$nodeXml = $domXml->appendChild($nodeXml); 
 					
-					$this->_channelXml = $this->_domXml->createElement("channel");
-					$this->_channelXml = $this->_nodeXml->appendChild($this->_channelXml);
+					$channelXml = $domXml->createElement("channel");
+					$channelXml = $nodeXml->appendChild($channelXml);
 					
 					foreach($this->_genRss[$rss]['header'] as $cle => $val){
-						$this->_markupXml = $this->_domXml->createElement($cle);
-						$this->_markupXml = $this->_channelXml->appendChild($this->_markupXml);
+						$markupXml = $domXml->createElement($cle);
+						$markupXml = $channelXml->appendChild($markupXml);
 						
 						if(!is_array($val)){
-							$this->_textXml = $this->_domXml->createTextNode($val);
-							$this->_textXml = $this->_markupXml->appendChild($this->_textXml);
+							$this->_textXml = $domXml->createTextNode($val);
+							$this->_textXml = $markupXml->appendChild($this->_textXml);
 						}
 						elseif(is_array($val)){
 							foreach($this->_genRss[$rss]['header'][$cle] as $cle2 => $val2){
-								$this->_markup2Xml = $this->_domXml->createElement($cle2);
-								$this->_markup2Xml = $this->_markupXml->appendChild($this->_markup2Xml);
+								$markup2Xml = $domXml->createElement($cle2);
+								$markup2Xml = $markupXml->appendChild($markup2Xml);
 								
-								$this->_text2Xml = $this->_domXml->createTextNode($val2);
-								$this->_text2Xml = $this->_markup2Xml->appendChild($this->_text2Xml);
+								$text2Xml = $domXml->createTextNode($val2);
+								$text2Xml = $markup2Xml->appendChild($text2Xml);
 							}
 						}
 					}
 					
 					foreach($this->_genRss[$rss]['items'] as $cle => $val){
-						$this->_itemXml = $this->_domXml->createElement("item");
-						$this->_itemXml = $this->_channelXml->appendChild($this->_itemXml);
+						$this->_itemXml = $domXml->createElement("item");
+						$this->_itemXml = $channelXml->appendChild($this->_itemXml);
 						
 						foreach($val as $cle2 => $val2){
-							$this->_markup2Xml = $this->_domXml->createElement($cle2);//On crée un élément description
-							$this->_markup2Xml = $this->_itemXml->appendChild($this->_markup2Xml);//On ajoute cet élément au channel
+							$markup2Xml = $domXml->createElement($cle2);//On crée un élément description
+							$markup2Xml = $this->_itemXml->appendChild($markup2Xml);//On ajoute cet élément au channel
 								
-							$this->_text2Xml = $this->_domXml->createTextNode($val2); //On crée un texte
-							$this->_text2Xml = $this->_markup2Xml->appendChild($this->_text2Xml); //On insère ce texte dans le noeud description
+							$text2Xml = $domXml->createTextNode($val2); //On crée un texte
+							$text2Xml = $markup2Xml->appendChild($text2Xml); //On insère ce texte dans le noeud description
 						}
 					}
 					
-					$this->_cache->setVal($this->_domXml->saveXML());
+					$this->_cache->setVal($domXml->saveXML());
 					$this->_cache->setCache();
 					return $this->_cache->getCache();
 				}
@@ -411,14 +411,14 @@
 						$this->_rssFile = $rss;
 						curl_close($ch);
 
-						$this->_domXml = new DomDocument('1.0', CHARSET);
+						$domXml = new DomDocument('1.0', CHARSET);
 						
-						if($this->_domXml->loadXML($this->_rssFileContent)){
+						if($domXml->loadXML($this->_rssFileContent)){
 							$this->_addError('fichier ouvert : '.$this->_rssFile, __FILE__, __LINE__, ERROR);
-							$this->_nodeXml = $this->_domXml->getElementsByTagName('rss')->item(0)->getElementsByTagName('channel')->item(0);
+							$nodeXml = $domXml->getElementsByTagName('rss')->item(0)->getElementsByTagName('channel')->item(0);
 
-							$this->_setRssHeader($nom, $this->_nodeXml);
-							$this->_setRssItem($nom, $this->_nodeXml);
+							$this->_setRssHeader($nom, $nodeXml);
+							$this->_setRssItem($nom, $nodeXml);
 							$this->_rssRead[$nom] = true; //le fichier de 'nom' a pu être lu
 							return true;
 						}
@@ -463,9 +463,9 @@
 			$this->_rssArray[$nom]['header']['image']['url'] = $this->_markupeXml = $rss->getElementsByTagName('image')->item(0)->getElementsByTagName('url')->item(0)->nodeValue;
 			$this->_rssArray[$nom]['header']['image']['link'] = $this->_markupeXml = $rss->getElementsByTagName('image')->item(0)->getElementsByTagName('link')->item(0)->nodeValue;			
 			
-			$this->_rssArray[$nom]['header']['rating'] = $this->_nodeXml->getElementsByTagName('rating')->item(0)->nodeValue;
-			$this->_rssArray[$nom]['header']['textInput'] = $this->_nodeXml->getElementsByTagName('textInput')->item(0)->nodeValue;
-			$this->_rssArray[$nom]['header']['skipDays'] = $this->_nodeXml->getElementsByTagName('skipDays')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['rating'] = $nodeXml->getElementsByTagName('rating')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['textInput'] = $nodeXml->getElementsByTagName('textInput')->item(0)->nodeValue;
+			$this->_rssArray[$nom]['header']['skipDays'] = $nodeXml->getElementsByTagName('skipDays')->item(0)->nodeValue;
 		}
 			
 		public function _setRssItem($nom, $rss){

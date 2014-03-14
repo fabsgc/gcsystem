@@ -3,46 +3,47 @@
 	 * @file : appDevGc.class.php
 	 * @author : fab@c++
 	 * @description : class à utiliser lors du développement de l'application
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
 	class appDevGc{
-		use errorGc, langInstance;                                              //trait
+		use langInstance;                                              //trait
 		
-		protected $_timeExec                ; //calcul du temps d'exécution
-		protected $_timeExecStart           ; //time de départ
-		protected $_timeExecEnd             ; //time de fin
-		protected $_rubrique       = array(); //liste des rubrique
-		protected $_template       = array(); //liste des templates
-		protected $_sql            = array(); //liste des requêtes sql
-		protected $_arbo                    ; //liste des fichiers inclus
-		protected $_show          = 0       ; //liste des fichiers inclus
-		protected $_setShow       = true    ; //liste des fichiers inclus
+		protected $_timeExec                 ; //calcul du temps d'exécution
+		protected $_timeExecStart            ; //time de départ
+		protected $_timeExecEnd              ; //time de fin
+		protected $_controller       = array(); //liste des controller
+		protected $_template        = array(); //liste des templates
+		protected $_sql             = array(); //liste des requêtes sql
+		protected $_arbo                     ; //liste des fichiers inclus
+		protected $_show          = 0        ; //liste des fichiers inclus
+		protected $_setShow       = true     ; //liste des fichiers inclus
 		
 		public  function __construct($lang=NULL){
 			if($lang==NULL){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 			$this->_createLangInstance();
 			$this->_timeExecStart=microtime(true);
+			$this->_setShow = DEVTOOL;
 		}
 		
 		protected function _createLangInstance(){
 			$this->_langInstance = new langGc($this->_lang);
 		}
 		
-		public function useLang($sentence, $var = array()){
-			return $this->_langInstance->loadSentence($sentence, $var);
+		public function useLang($sentence, $var = array(), $template = langGc::USE_NOT_TPL){
+			return $this->_langInstance->loadSentence($sentence, $var, $template);
 		}
 		
 		public function show(){
 			if($this->_setShow == true){
 				if($this->_show==0){
-					$rubrique="";
+					$controller="";
 					$template="";
 					$sql="";
-					$this->_rubrique = get_included_files();
-					self::setTimeExec();
-					foreach($this->_rubrique as $val){
-						$rubrique .= $val."\n";
+					$this->_controller = get_included_files();
+					$this->setTimeExec();
+					foreach($this->_controller as $val){
+						$controller .= $val."\n";
 					}
 					foreach($this->_template as $val){
 						$template .= $val."\n";
@@ -75,13 +76,16 @@
 							$this->_arbo .="-".$cle2."::".$val2."\n";
 						}
 					}
+					$this->_arbo .="----------cookie--------------\n";
+					foreach($_COOKIE as $cle => $val){
+						$this->_arbo .="".$cle."::".$val."\n";
+					}
 					
 					$tpl = new templateGC(GCSYSTEM_PATH.'GCsystemDev', 'GCsystemDev', '10000', $this->_lang);
 					$tpl->assign(array(
 						'text'=>$this->useLang('appDevGc_temp'),
-						'IMG_PATH'=>IMG_PATH.GCSYSTEM_PATH,
 						'timeexec' => round($this->_timeExecEnd,2),
-						'http' => $rubrique,
+						'http' => $controller,
 						'tpl' => $template,
 						'sql' => $sql,
 						'arbo' => $this->_arbo,
@@ -108,7 +112,7 @@
 		}
 		
 		public function addRubrique($val){
-			array_push($this->_rubrique, $val);
+			array_push($this->_controller, $val);
 		}
 		
 		public function addTemplate($val){

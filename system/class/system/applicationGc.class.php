@@ -2,27 +2,37 @@
 	/**
 	 * @file : applicationGc.class.php
 	 * @author : fab@c++
-	 * @description : class gérant les contrôleurs. abstraite
-	 * @version : 2.0 bêta
+	 * @description : class mère dont hérite chaque les contrôleur. Abstraite
+	 * @version : 2.2 bêta
 	*/
 	
 	abstract class applicationGc{
-		use errorGc, langInstance, generalGc, urlRegex, domGc, errorPerso, helperLoader; //trait
+		use errorGc, langInstance, generalGc, urlRegex, errorPerso, helperLoader; //trait
 		
 		protected $_devTool            = true                                          ;
-		protected $_var                = array()                                       ; //contient les variables que l'on passe depuis l'extérieur : obsolète
-		protected $bdd                                                                 ; //contient la connexion sql
 		protected $_firewall                                                           ;
 		protected $_antispam                                                           ;
-		protected $_nameModel          = ""                                            ; //pour les crons lors de l'init du model, on ne peut pas utiliser $_GET['rubrique']
+		protected $_nameModel          = ""                                            ; //pour les crons lors de l'init du model, on ne peut pas utiliser $_GET['controller']
+		protected $model               = ""                                            ; //instance du model
+		protected $lang                = DEFAULTLANG                                   ; //lang par défaut
+		protected $bdd                                                                 ; //instance PDO
 		
 		/* ---------- CONSTRUCTEURS --------- */
 		
 		final public function __construct($lang=""){
-			if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
-			$this->_createLangInstance();	
-			if(CONNECTBDD == true) {$this->bdd=$this->_connectDatabase($GLOBALS['db']); }
-			$this->_addError('Contrôleur '.$_GET['rubrique'].' initialisé', __FILE__, __LINE__, INFORMATION);
+			if($lang==""){ 
+				$this->lang = $this->getLangClient(); 
+			} 
+			else { 
+				$this->lang = $lang; 
+			}
+
+			$this->_createLangInstance();
+
+			if(CONNECTBDD == true) { 
+				$this->bdd=$this->_connectDatabase($GLOBALS['db']); 
+			}
+
 			$this->_firewall = false;
 		}
 		
@@ -33,10 +43,10 @@
 		}
 		
 		final public function setFirewall(){
-			$this->_firewall = new firewallGc($this->_lang);
+			$this->_firewall = new firewallGc($this->lang);
 			
 			if($this->_firewall->check()){
-				$this->_addError('Le parefeu n\'a identifié aucune erreur dans l\'accès à la rubrique '.$_GET['rubrique'].'/'.$_GET['action'], __FILE__, __LINE__, INFORMATION);
+				$this->_addError('Le parefeu n\'a identifié aucune erreur dans l\'accès au contrôleur '.$_GET['controller'].'/'.$_GET['action'], __FILE__, __LINE__, INFORMATION);
 				return true;
 			}
 			else{
@@ -45,7 +55,7 @@
 		}
 
 		final public function setAntispam(){
-			$this->_antispam = new antispamGc($this->_lang);
+			$this->_antispam = new antispamGc($this->lang);
 			
 			if($this->_antispam->check()){
 				$this->_addError('L\'antispam a vérifié que l\'utilisateur n\'avait pas atteint son quota de requêtes', __FILE__, __LINE__, INFORMATION);
@@ -56,29 +66,27 @@
 			}
 		}
 		
-		final protected function loadModel(){
+		final public function loadModel(){
 			if($this->_nameModel != ""){ //si il ne s'agit pas d'une url mais d'un CRON
 				$class = 'manager'.ucfirst($this->_nameModel);
 				if(class_exists($class)){	
 					$this->_addError('Model '.$this->_nameModel.' initialisé', __FILE__, __LINE__, INFORMATION);
-					$instance = new $class($this->_lang, $this->bdd);
-					$instance->init();
-					return $instance;
+					$this->model = new $class($this->lang, $this->bdd);
+					$this->model->init();
 				}
 				else{
-					$this->_addError('Impossible de charger le model "'.$this->_nameModel.'"', __FILE__, __LINE__, ERROR);
+					$this->_addError('Impossible de charger le model "'.$this->_nameModel.'"', __FILE__, __LINE__, FATAL);
 				}
 			}
 			else{
-				$class = 'manager'.ucfirst($_GET['rubrique']);
+				$class = 'manager'.ucfirst($_GET['controller']);
 				if(class_exists($class)){	
-					$this->_addError('Model '.$_GET['rubrique'].' initialisé', __FILE__, __LINE__, INFORMATION);
-					$instance = new $class($this->_lang, $this->bdd);
-					$instance->init();
-					return $instance;
+					$this->_addError('Model '.$_GET['controller'].' initialisé', __FILE__, __LINE__, INFORMATION);
+					$this->model = new $class($this->lang, $this->bdd);
+					$this->model->init();
 				}
 				else{
-					$this->_addError('Impossible de charger le model "'.$_GET['rubrique'].'"', __FILE__, __LINE__, ERROR);
+					$this->_addError('Impossible de charger le model "'.$_GET['controller'].'"', __FILE__, __LINE__, FATAL);
 				}
 			}
 		}
@@ -120,15 +128,15 @@
 		}
 			
 		final protected function _createLangInstance(){
-			$this->_langInstance = new langGc($this->_lang);
+			$this->langInstance = new langGc($this->lang);
 		}
 		
 		final protected function useLang($sentence, $var = array()){
-			return $this->_langInstance->loadSentence($sentence, $var);
+			return $this->langInstance->loadSentence($sentence, $var);
 		}
 		
 		final protected function getLang(){
-			return $this->_lang;
+			return $this->lang;
 		}
 		
 		final protected function setDevTool($set){
@@ -141,31 +149,18 @@
 		}
 		
 		final protected function setLang($lang){
-			$this->_lang=$lang;
-			$this->_langInstance->setLang($this->_lang);
-		}
-		
-		final protected function newToken(){
-			return uniqid(rand(), true);
+			$this->lang=$lang;
+			$this->langInstance->setLang($this->lang);
 		}
 		
 		final protected function showDefault(){
-			$t= new templateGC(GCSYSTEM_PATH.'GCnewrubrique', 'GCrubrique', '0');
-			$t->assign(array('rubrique' => $_GET['rubrique']));
+			$t= new templateGC(GCSYSTEM_PATH.'GCnewcontroller', 'GCcontroller', '0');
+			$t->assign(array('controller' => $_GET['controller']));
 			$t->show();
 		}
 
 		final public function setNameModel($nameModel){
 			$this->_nameModel = $nameModel;
-		}
-		
-		final protected function affTemplate($nom_template){
-			if(is_file(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT) && file_exists(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT) && is_readable(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT)) { 
-				include(TEMPLATE_PATH.$nom_template.TEMPLATE_EXT);
-			} 
-			else { 
-				$this->_addError(LOG_SYSTEM, 'Le template '.$nom_template.' n\'a pas été trouvé');
-			}
 		}
 		
 		public function __desctuct(){

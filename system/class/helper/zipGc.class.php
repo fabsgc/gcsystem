@@ -3,7 +3,7 @@
 	 * @file : zipGc.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les fichiers compressés
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
 	class zipGc extends fileGc{
@@ -174,7 +174,7 @@
 					}
 				}
 				elseif(file_exists($path)){ //on doit copier un fichier
-					if((!in_array((substr($path,-3)), $filter) && !in_array((substr($path,-4)), $filter) && !in_array((substr($path,-2)), $filter) && !in_array(substr($key,-5), $filter)) || count($filter)==0){
+					if((!in_array((substr($path,-3)), $filter) && !in_array((substr($path,-4)), $filter) && !in_array((substr($path,-2)), $filter)) || count($filter)==0){
 						if($option == self::NOPUTDIR){
 							$file = new fileGc($path);
 							$zip->addFromString($file->getFileName(), $file->getFileContent());

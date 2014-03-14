@@ -3,7 +3,7 @@
 	 * @file : logGc.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les erreurs php
-	 * @version : 2.0 bêta
+	 * @version : 2.2 bêta
 	*/
 	
 	class TestErrorHandling { 
@@ -58,16 +58,16 @@
 					$d = date("d/m/Y \a H:i:s !",time());
 					$msg = sprintf("%s : Erreur  [%d] (%s) dans le fichier %s a la ligne %d\n", $d, $errno, $errstr, $errfile, $errline);
 		  
-					error_log($msg, 1, $dest, "subject: ".$sujet);
-					break;
+					if(LOG_ENABLED == true) error_log($msg, 1, $dest, "subject: ".$sujet);
+				break;
 
 				default:
 					// Par défaut, on log l'erreur dans un fichier :
 					$d = date("d/m/Y \a H:i:s !",time());
 					$msg = sprintf("%s : Erreur [%d] (%s) dans le fichier %s a la ligne %d\n", $d, $errno, $errstr, $errfile, $errline);
 					
-					error_log($msg, 3, LOG_PATH."errors".LOG_EXT);
-					break;
+					if(LOG_ENABLED == true) error_log($msg, 3, LOG_PATH."errors".LOG_EXT);
+				break;
 			}
 
 		   return true;
