@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<helpers>
-	<helper type="lib" name="formsGc" access="FormsGC/formsGC.class.php" enabled="false" include="*"/>
-	<helper type="lib" name="formsGcValidator" access="FormsGC/formsGCValidator.class.php" enabled="false" include="*"/>
-</helpers>
