@@ -14,7 +14,7 @@
 		}
 		
 		public function actionTerminal(){
-			$terminal = new terminal(strip_tags(html_entity_decode($_POST['command'])), $this->bdd);
+			$terminal = new system\terminal(strip_tags(html_entity_decode($_POST['command'])), $this->bdd);
 			echo $terminal->parse();
 		}
 	}

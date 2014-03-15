@@ -14,7 +14,7 @@ require_once('web.config.php');
 require_once(CLASS_AUTOLOAD);
 
 $GLOBALS['appDev'] = new system\appDev();
-$GLOBALS['controller'] = new system\engine();
+$GLOBALS['controller'] = new system\engine(DEFAULTLANG);
 
 $GLOBALS['controller']->init();
 

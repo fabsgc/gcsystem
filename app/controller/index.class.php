@@ -7,7 +7,7 @@
 		}
 
 		public function actionDefault(){
-			$t= new templateGC(GCSYSTEM_PATH.'GCsystem', 'GCsystem', 0, $this->lang);
+			$t= new system\template(GCSYSTEM_PATH.'GCsystem', 'GCsystem', 0, $this->lang);
 			$t->show();
 		}
 	}

@@ -26,7 +26,13 @@
 			/* ---------- CONSTRUCTEURS --------- */
 			
 			public  function __construct($lang=""){
-				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
+				if($lang == ""){ 
+					$this->_lang=$this->getLangClient(); 
+				} 
+				else { 
+					$this->_lang = $lang; 
+				}
+
 				$this->_createLangInstance();
 			}
 			

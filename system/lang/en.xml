@@ -2,8 +2,9 @@
 <lang>
   <sentence id="bienvenue">Welcome !</sentence>
   <sentence id="content">Welcome to your new project GCsystem, thank you for choosing our framework.</sentence>
-  <sentence id="liredoc">read the documentation</sentence>
-  <sentence id="lirecours">read the tutorials</sentence>
+  <sentence id="read_documentation">read the documentation</sentence>
+  <sentence id="read_tutorial">read the tutorials</sentence>
+  <sentence id="read_official">official Website</sentence>
   <sentence id="appDev_temp">interface development being created</sentence>
   <sentence id="maintenance">The website is currently unavailable.</sentence>
   <sentence id="executiontime">time of execution</sentence>

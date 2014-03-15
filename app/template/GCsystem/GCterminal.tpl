@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
-  	<head>
-    	<title>GCsystem - Terminal</title>
-    	<link rel="icon" type="image/png" href="{{def:IMG_PATH}}/GCsystem/logo.png" />
-    	<script type="text/javascript" src="{{def:JS_PATH}}jquery/jquery.min.js" ></script>
-  	</head>
+	<head>
+		<title>GCsystem - Terminal</title>
+		<link rel="icon" type="image/png" href="{{def:IMG_PATH}}/GCsystem/logo.png" />
+		<script type="text/javascript" src="{{def:JS_PATH}}jquery/jquery.min.js" ></script>
+	</head>
 	 <body>
 		<style>
 			html,body{
@@ -15,23 +15,19 @@
 				padding:0;
 				margin: 0;
 			}
-
 			#main-body{
 				background-color: #080808!important;
 			}
-
 			#terminal-read{
 				font-size: 14px;
 				padding: 5px!important;
 			}
-
 			#terminal-input-begin,
 			#terminal-input-write{
 				display: inline-block;
 				height: 20px;
 				overflow: hidden;
 			}
-
 			#terminal-input-write{
 				background-color: transparent;
 				color: white;
@@ -40,50 +36,10 @@
 				top: -6px;
 				outline: none;
 			}
-
 			#terminal{
 				width: 100%;
 				overflow: hidden;
 				word-wrap: break-word;
-			}
-
-			.terminal-data{
-				-webkit-animation-name: "fadeInRight";
-				-moz-animation-name: "fadeInRight";
-				-ms-animation-name: "fadeInRight";
-				-o-animation-name: "fadeInRight";
-				animation-name: "fadeInRight";
-				-webkit-animation-duration: 0.4s;
-				-moz-animation-duration: 0.4s;
-				-ms-animation-duration: 0.4s;
-				-o-animation-duration: 0.4s;
-				animation-duration: 0.4s;
-			}
-
-			@-webkit-keyframes pulse {
-			  0% { opacity: 1; }
-			  50% { opacity: 0; }
-			  100% { opacity: 1; }
-			}
-			@-moz-keyframes pulse {
-			  0% { opacity: 1; }
-			  50% { opacity: 0; }
-			  100% { opacity: 1; }
-			}
-			@-o-keyframes pulse {
-			  0% { opacity: 1; }
-			  50% { opacity: 0; }
-			  100% { opacity: 1; }
-			}
-			@-ms-keyframes pulse {
-			  0% { opacity: 1; }
-			  50% { opacity: 0; }
-			  100% { opacity: 1; }
-			}
-			@keyframes pulse {
-			  0% { opacity: 1; }
-			  50% { opacity: 0; }
-			  100% { opacity: 1; }
 			}
 		</style>
 		<script>
@@ -119,7 +75,6 @@
 
 			function terminalUp(keyEvent){
 				$(document).scrollTop($(document).scrollHeight);
-
 				var key = window.event ? keyEvent.keyCode : keyEvent.which;
 
 				if(key == 38){

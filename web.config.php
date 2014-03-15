@@ -8,23 +8,23 @@
  | ------------------------------------------------------
 \*/
 
-define('ASSET_PATH', 'asset'.DIRECTORY_SEPARATOR);
-define('APP_PATH', 'app'.DIRECTORY_SEPARATOR);
-define('SYSTEM_PATH', 'system'.DIRECTORY_SEPARATOR);
-define('LOG_PATH', SYSTEM_PATH.'log'.DIRECTORY_SEPARATOR);
-define('CACHE_PATH', APP_PATH.'cache'.DIRECTORY_SEPARATOR);
-define('CONTROLLER_PATH', APP_PATH.'controller'.DIRECTORY_SEPARATOR);
-define('MODEL_PATH', APP_PATH.'model'.DIRECTORY_SEPARATOR);
-define('APP_CONFIG_PATH', APP_PATH.'config'.DIRECTORY_SEPARATOR);
-define('TEMPLATE_PATH', APP_PATH.'template'.DIRECTORY_SEPARATOR);
-define('CLASS_PATH', SYSTEM_PATH.'gcsystem'.DIRECTORY_SEPARATOR);
-define('LIB_PATH', SYSTEM_PATH.'lib'.DIRECTORY_SEPARATOR);
-define('LANG_PATH', SYSTEM_PATH.'lang'.DIRECTORY_SEPARATOR);
-define('ERRORDOCUMENT_PATH', 'ErrorDocument'.DIRECTORY_SEPARATOR);
-define('GCSYSTEM_PATH', 'GCsystem'.DIRECTORY_SEPARATOR);
-define('CLASS_SYSTEM_PATH', 'system'.DIRECTORY_SEPARATOR);
-define('CLASS_HELPER_PATH', 'helper'.DIRECTORY_SEPARATOR);
-define('BACKUP_PATH', SYSTEM_PATH.'backup'.DIRECTORY_SEPARATOR);
+define('ASSET_PATH', 'asset/');
+define('APP_PATH', 'app/');
+define('SYSTEM_PATH', 'system/');
+define('LOG_PATH', SYSTEM_PATH.'log/');
+define('CACHE_PATH', APP_PATH.'cache/');
+define('CONTROLLER_PATH', APP_PATH.'controller/');
+define('MODEL_PATH', APP_PATH.'model/');
+define('APP_CONFIG_PATH', APP_PATH.'config/');
+define('TEMPLATE_PATH', APP_PATH.'template/');
+define('CLASS_PATH', SYSTEM_PATH.'core/');
+define('LIB_PATH', SYSTEM_PATH.'lib/');
+define('LANG_PATH', SYSTEM_PATH.'lang/');
+define('ERRORDOCUMENT_PATH', 'ErrorDocument/');
+define('GCSYSTEM_PATH', 'GCsystem/');
+define('CLASS_SYSTEM_PATH', 'system/');
+define('CLASS_HELPER_PATH', 'helper/');
+define('BACKUP_PATH', SYSTEM_PATH.'backup/');
 
 define('LANG_EXT', '.xml');
 define('FILES_EXT', '.html');
@@ -34,7 +34,7 @@ define('CONTROLLER_EXT', '.class');
 define('MODEL_EXT', '.model.class');
 
 define('LOG_SYSTEM', 'system');
-define('LOG_PHP', 'errors');
+define('LOG_PHP', 'error');
 define('LOG_HISTORY', 'history');
 define('LOG_SQL', 'sql');
 define('LOG_CRONS', 'crons');
@@ -83,17 +83,17 @@ define('FATAL', 'FATAL');
 $GLOBALS['db']['bdd']['hostname']  = "localhost";
 $GLOBALS['db']['bdd']['username']  = "root";
 $GLOBALS['db']['bdd']['password']  = "";
-$GLOBALS['db']['bdd']['database']  = "legeekcafev4";
+$GLOBALS['db']['bdd']['database']  = "test";
 $GLOBALS['db']['bdd']['extension'] = "pdo";
 $GLOBALS['db']['bdd']['sgbd']      = "mysql";
 
 /* -------------- CONSTANTE RELATIVE AU SITE OBLIGATOIRES MAIS MODIFIABLES ----------------- */
 
 //base du site (utile pour eviter les repetition et faciliter  les changements de bdd
-define('BDD', 'legeekcafev4');
+define('BDD', 'test');
 
 //connexion à la bdd, true ou false
-define('CONNECTBDD', true);
+define('CONNECTBDD', false);
 
 //utilisation du routeur
 define('REWRITE', true);
@@ -111,7 +111,7 @@ define('CHARSET', 'UTF-8');
 define('FOLDER', '');
 
 //langue par défaut du système
-define('DEFAULTLANG', 'fr');
+define('DEFAULTLANG', 'en');
 
 /** Definit l'environnement dans lequel est effectué l'application :
 * development : erreurs affichées + barre de développement et présence d'un terminal
@@ -147,15 +147,15 @@ define('MINIFY_OUTPUT_HTML', false);
 define('DISPLAY_ERROR_FATAL', false);
 
 /* à ne pas modifier */
-define('IMG_PATH', FOLDER.DIRECTORY_SEPARATOR.ASSET_PATH.'image'.DIRECTORY_SEPARATOR);
-define('CSS_PATH', FOLDER.DIRECTORY_SEPARATOR.ASSET_PATH.'css'.DIRECTORY_SEPARATOR);
-define('JS_PATH', FOLDER.DIRECTORY_SEPARATOR.ASSET_PATH.'js'.DIRECTORY_SEPARATOR);
-define('FILE_PATH', FOLDER.DIRECTORY_SEPARATOR.ASSET_PATH.'file'.DIRECTORY_SEPARATOR);
+define('IMG_PATH', FOLDER.'/'.ASSET_PATH.'image/');
+define('CSS_PATH', FOLDER.'/'.ASSET_PATH.'css/');
+define('JS_PATH', FOLDER.'/'.ASSET_PATH.'js/');
+define('FILE_PATH', FOLDER.'/'.ASSET_PATH.'file/');
 
-define('IMG_PATH_PHP', ASSET_PATH.'image'.DIRECTORY_SEPARATOR);
-define('CSS_PATH_PHP', ASSET_PATH.'css'.DIRECTORY_SEPARATOR);
-define('JS_PATH_PHP', ASSET_PATH.'js'.DIRECTORY_SEPARATOR);
-define('FILE_PATH_PHP', ASSET_PATH.'file'.DIRECTORY_SEPARATOR);
+define('IMG_PATH_PHP', ASSET_PATH.'image/');
+define('CSS_PATH_PHP', ASSET_PATH.'css/');
+define('JS_PATH_PHP', ASSET_PATH.'js/');
+define('FILE_PATH_PHP', ASSET_PATH.'file/');
 
 //timezone
 define('TIMEZONE', 'Europe/Paris');

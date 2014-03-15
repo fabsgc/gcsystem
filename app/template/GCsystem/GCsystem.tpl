@@ -1,71 +1,81 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <title>GCsystem</title>
+    <title>GCsystem Version 2.3</title>
     <meta charset="utf-8" />
-    <meta name="robots" content="index,follow" />
-    <link rel="icon" type="image/png" href="{{def:IMG_PATH}}GCsystem/logo.png" />
-    <script type="text/javascript" src="{{def:JS_PATH}}jquery/jquery.min.js" ></script>
-    </script>
+    <link rel="icon" type="image/png" href="{{def:IMG_PATH}}gcsystem/logo.png" />
   </head>
   <body>
     <style>
+      *{
+        box-sizing: border-box;
+      }
       body{
-        background-color: #EFEFEF;
-        font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+        background-color: #E1E1E1;
+        font-family: Calibri, sans-serif;
         font-size: 0.95em;
-      }
-      #GCsystem{
-        width: 810px;
-        height: 205px;
-        background-color: white;
-        border: 1px solid #DFDFDF;
-        -moz-border-radius: 16px;
-        -webkit-border-radius: 16px;
-        border-radius: 3px;
-        margin-bottom: 20px;
-        word-wrap: break-word;
-        position:absolute; 
-        top:50px; 
-        left:50%; 
-        margin-left:-400px; 
-      }
-      #GCsystem_left{
-        float: left;
-        width: 200px;
-        height: 205px;
-        background-color: rgb(230,230,230);
-        border-top-left-radius: 2px;
-        border-bottom-left-radius: 2px;
-      }
-      #GCsystem_right{
-        padding: 5px;
-        padding-left: 210px;
-      }
-      #GCsystem_right h1{
-        font-size: 2em;
-        color: #ff7800;
-        text-align: center;
+        padding: 0;
         margin: 0;
       }
-      #GCsystem_right p{
-        text-indent: 10px;
-        text-align: justify;
+      header{
+        width: 100%;
+        margin: auto;
+        height: 70px;
+        border-bottom: 10px solid #E74C3C;
+        background-color: white;
+      }
+      header .content{
+        width: 750px;
+        margin: auto;
+      }
+      header h1{
+        line-height: 60px;
+        font-size: 30px;
+        color: #E74C3C;
+        padding-left: 65px;
+        background: url('{{def:IMG_PATH}}GCsystem/logo60.png') top left no-repeat;
+      }
+      #body{
+        width: 750px;
+        margin: auto;
+        background-color: white;
+      }
+      #body .content{
+        padding: 5px 12px 5px 12px;
+      }
+      #body h1{
+        color: #E74C3C;
+        margin-top: 0;
+      }
+      #body a{
+        color: #E74C3C;
+      }
+      footer{
+        width: 750px;
+        margin: auto;
+        background-color: white;
+        color: #C8C8C8;
+        padding: 5px;
+        border-bottom: 5px solid #E74C3C;
       }
     </style>
-    <div id="GCsystem">
-      <div id="GCsystem_left">
-        <img src="{{def:IMG_PATH}}GCsystem/logo.png" alt="logo"/>
+    <header>
+      <div class="content">
+        <h1>GCsystem Version 2.3</h1>
       </div>
-      <div id="GCsystem_right">
+    </header>
+    <div id="body">
+      <div class="content">
         <h1>{{lang:bienvenue}}</h1>
         <p>{{lang:content}}</p>
         <ul>
-          <li><a href="http://www.gcs-framework.dzv.me/fr/documentation">{{lang:liredoc}}</a></li>
-          <li><a href="http://www.gcs-framework.dzv.me/fr/tutorial">{{lang:lirecours}}</a></li>
+          <li><a href="http://www.gcs-framework.dzv.me/fr/">{{lang:read_official}}</a></li>
+          <li><a href="http://www.gcs-framework.dzv.me/fr/documentation">{{lang:read_documentation}}</a></li>
+          <li><a href="http://www.gcs-framework.dzv.me/fr/tutorial">{{lang:read_tutorial}}</a></li>
           <li><a href="{{url:terminal}}">terminal</a>
         </ul>
       </div>
     </div>
+    <footer>Gcsystem Version 2.3</footer>
   </body>
 </html>

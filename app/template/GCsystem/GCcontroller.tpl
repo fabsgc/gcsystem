@@ -1,5 +1,5 @@
 <gc:variable var ="<?php
-	class ".$rubrique." extends controller{
+	class ".$rubrique." extends system\controller{
 		public function init(){
 		}
 

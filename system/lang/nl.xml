@@ -2,8 +2,9 @@
 <lang>
   <sentence id="bienvenue">welkom !</sentence>
   <sentence id="content">Welkom op u nieuw project GC-systeem, dank u voor hebben gekozen onze framework.</sentence>
-  <sentence id="liredoc">lezen de documentatie</sentence>
-  <sentence id="lirecours">lezen de lessen</sentence>
+  <sentence id="read_documentation">lezen de documentatie</sentence>
+  <sentence id="read_tutorial">lezen de lessen</sentence>
+  <sentence id="read_official">officiële Website</sentence>
   <sentence id="appDev_temp">interface ontwikkeling is aan het zijn gecreerd</sentence>
   <sentence id="maintenance">De website is op dit moment beschikbaar niet.</sentence>
   <sentence id="executiontime">tijd van of uitvoering</sentence>
