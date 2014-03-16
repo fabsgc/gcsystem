@@ -199,7 +199,7 @@
 						if(($this->_timeFile+$this->_timeCache) > time()){ //cache non périmé
 							ob_start ();
 								foreach ($this->vars as $cle => $valeur){
-									$cle = $valeur;
+									${$cle} = $valeur;
 								}
 
 								include($this->_fileCache);
@@ -783,11 +783,19 @@
 					$element->innertext = preg_replace_callback('`^(.+)<id=(.+)><time=(.+)>$`isU', array('system\templateParser', '_parseCacheCallback'), $element->innertext.'<id='.$element->getAttribute('id').'><time='.$element->getAttribute('time').'>');
 				}
 
-				$this->_contenu = $html->outertext;
+				$this->_contenu = preg_replace(
+					array(
+					'`<'.$this->_name.preg_quote($this->bal['cache'][0]).'(.+)>`isU',
+					'`</'.$this->_name.preg_quote($this->bal['cache'][0]).''.$this->_space.'>`isU'
+					),
+					array('', ''),
+					$html->outertext
+				);
 			}
 
 			protected function _parseCacheCallback($m){
 				$tpl = new template($m[1], $this->_template->getName().'_cache_'.$m[2], $m[3], $this->_lang, template::TPL_STRING);
+				$tpl->assign($this->_template->vars);
 				$tpl->setShow(false);
 				return $tpl->show();
 			}
