@@ -180,37 +180,27 @@
 		trait urlRegex{
 			public function getUrl($id, $var = array()){
 				if(REWRITE == true){
-					$domXml = new \DomDocument('1.0', 'iso-8859-15');
-					if($domXml->load(ROUTE)){
-						$this->_addError('url "'.$id.'" | fichier ouvert : '.ROUTE, __FILE__, __LINE__, INFORMATION);
-					
-						$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
-						$markupXml = $nodeXml->getElementsByTagName('route');
-						
-						$result   = "";
-						
-						foreach($markupXml as $sentence){	
-							if ($sentence->getAttribute("id") == $id){
-								$url = preg_replace('#\((.*)\)#isU', '<($1)>',  $sentence->getAttribute("url"));
-								$urls = explode('<', $url);
-								$i=0;
-								foreach($urls as $url){
-									if(preg_match('#\)>#', $url)){
-										$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
-										$i++;
-									}
-									else{
-										$result.=$url;
-									}
-								}
+					$this->_dom = new htmlparser();				
+					$this->_dom->load(file_get_contents(ROUTE), false, false);
+					$this->_addError('url "'.$id.'" | fichier ouvert : '.ROUTE, __FILE__, __LINE__, INFORMATION);
+					$result = "";
 
-								$result = preg_replace('#\\\.#U', '.', $result);
-								return FOLDER.$result;
+					foreach ($this->_dom->find('route[id='.$id.']') as $sentence) {
+						$url = preg_replace('#\((.*)\)#isU', '<($1)>',  $sentence->getAttribute("url"));
+						$urls = explode('<', $url);
+						$i=0;
+						foreach($urls as $url){
+							if(preg_match('#\)>#', $url)){
+								$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
+								$i++;
+							}
+							else{
+								$result.=$url;
 							}
 						}
-					}
-					else{
-						$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
+
+						$result = preg_replace('#\\\.#U', '.', $result);
+						return FOLDER.$result;
 					}
 				}
 				else{

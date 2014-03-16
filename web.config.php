@@ -63,13 +63,13 @@ define('CLASS_ERROR_PERSO', CLASS_PATH.CLASS_SYSTEM_PATH.'errorperso.class.php')
 define('CLASS_SQL', CLASS_PATH.CLASS_SYSTEM_PATH.'sql.class.php');
 define('CLASS_EXCEPTION', CLASS_PATH.CLASS_SYSTEM_PATH.'exception.class.php');
 
-define('ROUTE', APP_CONFIG_PATH.'routes.xml');
+define('ROUTE', APP_CONFIG_PATH.'route.xml');
 define('MODOCONFIG', APP_CONFIG_PATH.'modo.xml');
 define('APPCONFIG', APP_CONFIG_PATH.'app.xml');
 define('HELPER', APP_CONFIG_PATH.'helper.xml');
 define('FIREWALL', APP_CONFIG_PATH.'firewall.xml');
 define('ASPAM', APP_CONFIG_PATH.'antispam.xml');
-define('INSTALLED', APP_CONFIG_PATH.'installed.xml');
+define('ADDON', APP_CONFIG_PATH.'addon.xml');
 define('CRON', APP_CONFIG_PATH.'cron.xml');
 define('ERRORPERSO', APP_CONFIG_PATH.'errorperso.xml');
 
@@ -111,7 +111,7 @@ define('CHARSET', 'UTF-8');
 define('FOLDER', '');
 
 //langue par défaut du système
-define('DEFAULTLANG', 'en');
+define('DEFAULTLANG', 'fr');
 
 /** Definit l'environnement dans lequel est effectué l'application :
 * development : erreurs affichées + barre de développement et présence d'un terminal
@@ -132,7 +132,7 @@ define('SECUREGET', true);
 define('SECUREPOST', true);
 
 /* prefixe des constantes de l'utilisateur */
-define('CONST_APP_PREFIXE', 'USER_');
+define('CONST_APP_PREFIXE', 'GCS_');
 
 /* le nom des fichiers de cache sera hashé ou non */
 define('CACHE_SHA1', false);

@@ -35,7 +35,7 @@
 
 				//fichiers dont la modification est interdite
 				$this->_forbiddenFile = array(
-					ROUTE, MODOCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, INSTALLED, CRON, ERRORPERSO,
+					ROUTE, MODOCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, ADDON, CRON, ERRORPERSO,
 					MODEL_PATH.'index'.MODEL_EXT.'.php', MODEL_PATH.'terminal'.MODEL_EXT.'.php', 
 					CONTROLLER_PATH.'index'.CONTROLLER_EXT.'.php', CONTROLLER_PATH.'terminal'.CONTROLLER_EXT.'.php', FUNCTION_GENERIQUE,
 					TEMPLATE_PATH.ERRORDOCUMENT_PATH.'httpError'.TEMPLATE_EXT,
@@ -530,7 +530,7 @@
 			protected function _checkIsInstalled(){
 	            $this->_dom2Xml = new \DomDocument('1.0', CHARSET);
 	                
-	            if($this->_dom2Xml->load(INSTALLED)){
+	            if($this->_dom2Xml->load(ADDON)){
 	                $return = true;
 	                $nodeXml = $this->_dom2Xml->getElementsByTagName('installed')->item(0);
 	                $markupXml = $nodeXml->getElementsByTagName('install');
@@ -545,7 +545,7 @@
 	            }
 	            else{
 	                $this->_conflit = false;
-	                $this->_addError('le fichier listant les plugins installés '.INSTALLED.' est endommagé ou inexistant.', __FILE__, __LINE__, ERROR);
+	                $this->_addError('le fichier listant les plugins installés '.ADDON.' est endommagé ou inexistant.', __FILE__, __LINE__, ERROR);
 	                return false;
 	            }
 			}
@@ -1100,7 +1100,7 @@
 				$result = '';
 				$domXml = new \DomDocument('1.0', CHARSET);
 
-				if($domXml->load(INSTALLED)){
+				if($domXml->load(ADDON)){
 					$nodeXml = $domXml->getElementsByTagName('installed')->item(0);
 					$nodeXml = $nodeXml->getElementsByTagName('install');
 
@@ -1145,7 +1145,7 @@
 								}
 							}
 
-							$domXml->save(INSTALLED);
+							$domXml->save(ADDON);
 						}
 					}
 				}
@@ -1156,7 +1156,7 @@
 			protected function _installConfigInstalled(){
 				$result = '';
 				$domXml = new \DomDocument('1.0', CHARSET);
-				if($domXml->load(INSTALLED)){
+				if($domXml->load(ADDON)){
 					$nodeXml = $domXml->getElementsByTagName('installed')->item(0);
 					$markupXml = $domXml->createElement('install', '');
 					$markupXml->setAttribute("id", $this->_id);
@@ -1279,16 +1279,16 @@
 						$markupXml->appendChild($xml);
 
 					$nodeXml->appendChild($markupXml);
-					$domXml->save(INSTALLED);
+					$domXml->save(ADDON);
 				}
 
-				$result .= '<br />><span style="color: chartreuse">génération fichier '.INSTALLED.'</span>';
+				$result .= '<br />><span style="color: chartreuse">génération fichier '.ADDON.'</span>';
 				return $result;
 			}
 
 			public function checkUninstall($id){
 				$domXml = new \DomDocument('1.0', CHARSET);
-				if($domXml->load(INSTALLED)){
+				if($domXml->load(ADDON)){
 					$nodeXml = $domXml->getElementsByTagName('installed')->item(0);
 					$nodeXml = $nodeXml->getElementsByTagName('install');
 
@@ -1331,7 +1331,7 @@
 				}
 				else{
 					$this->_conflitUninstall = false;
-					$this->_addError('Le fichier de désinstallation '.INSTALLED.' est endommagé', __FILE__, __LINE__, ERROR);
+					$this->_addError('Le fichier de désinstallation '.ADDON.' est endommagé', __FILE__, __LINE__, ERROR);
 					return false;
 				}
 			}
@@ -1343,7 +1343,7 @@
 					$domXml = new \DomDocument('1.0', CHARSET);
 					$this->_dom2Xml = new \DomDocument('1.0', CHARSET);
 					
-					if($domXml->load(INSTALLED)){
+					if($domXml->load(ADDON)){
 						$nodeXml = $domXml->getElementsByTagName('installed')->item(0);
 						$nodeXml = $nodeXml->getElementsByTagName('install');
 
@@ -1575,12 +1575,12 @@
 							}
 						}
 
-						$domXml->save(INSTALLED);
+						$domXml->save(ADDON);
 
 						return $result;
 					}
 					else{
-						$this->_addError('Le fichier de désinstallation '.INSTALLED.' est endommagé', __FILE__, __LINE__, ERROR);
+						$this->_addError('Le fichier de désinstallation '.ADDON.' est endommagé', __FILE__, __LINE__, ERROR);
 						return false;
 					}
 				}

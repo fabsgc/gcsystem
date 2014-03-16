@@ -13,7 +13,7 @@
 			protected $_file               = ""         ;    //chemin vers le .tpl
 			protected $_fileString         = ""         ;    //contenu du template
 			protected $_fileCache          = ""         ;    //chemin vers le .compil.tpl
-			protected $_nom                = ""         ;    //nom du fichier compilé à créer
+			protected $_name               = ""         ;    //nom du fichier compilé à créer
 			protected $_content            = ""         ;    //contenu du fichier de template
 			protected $_contentCompiled    = ""         ;    //contenu du fichier de template
 			public    $vars                = array()    ;    //ensemble des variables
@@ -41,39 +41,39 @@
 							$this->_content = fread($handle, filesize ($this->_file));
 							fclose ($handle);
 							
-							$this->_nom=$nom;
+							$this->_name=$nom;
 							$this->_timeCache=$timecache;
 
 							if(CACHE_SHA1 == 'true')
-								$this->_fileCache=CACHE_PATH.sha1('template_'.$this->_nom.'.tpl.compil.php.cache');
+								$this->_fileCache=CACHE_PATH.sha1('template_'.$this->_name.'.tpl.compil.php.cache');
 							else
-								$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php.cache';
+								$this->_fileCache=CACHE_PATH.'template_'.$this->_name.'.tpl.compil.php.cache';
 
 							$this->_setParser();
-							$this->_addError('le fichier de template "'.$this->_nom.'" ("'.$this->_file.'") a bien été chargé.', __FILE__, __LINE__, INFORMATION);
+							$this->_addError('le fichier de template "'.$this->_name.'" ("'.$this->_file.'") a bien été chargé.', __FILE__, __LINE__, INFORMATION);
 						} 
 						else{
-							$this->_addError('le fichier de template "'.$this->_nom.'" ("'.$this->_file.'") spécifié n\'a pas été trouvé.', __FILE__, __LINE__, FATAL);
-							$this->_nom=$nom;
+							$this->_addError('le fichier de template "'.$this->_name.'" ("'.$this->_file.'") spécifié n\'a pas été trouvé.', __FILE__, __LINE__, FATAL);
+							$this->_name=$nom;
 							$this->_timeCache=$timecache;
-							$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php.cache';
+							$this->_fileCache=CACHE_PATH.'template_'.$this->_name.'.tpl.compil.php.cache';
 							if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 							$this->_setParser();
 						}
 					break;
 
 					case self::TPL_STRING :
-						$this->_nom=$nom;
+						$this->_name=$nom;
 						$this->_timeCache=$timecache;
 						$this->_content = $file;
 
 						if(CACHE_SHA1 == 'true')
-							$this->_fileCache=CACHE_PATH.sha1('template_'.$this->_nom.'.tpl.compil.php.cache');
+							$this->_fileCache=CACHE_PATH.sha1('template_'.$this->_name.'.tpl.compil.php.cache');
 						else
-							$this->_fileCache=CACHE_PATH.'template_'.$this->_nom.'.tpl.compil.php.cache';
+							$this->_fileCache=CACHE_PATH.'template_'.$this->_name.'.tpl.compil.php.cache';
 
 						$this->_setParser();
-						$this->_addError('le fichier de template "'.$this->_nom.'" (chaîne de caractères) a bien été chargé.', __FILE__, __LINE__, INFORMATION);
+						$this->_addError('le fichier de template "'.$this->_name.'" (chaîne de caractères) a bien été chargé.', __FILE__, __LINE__, INFORMATION);
 					break;
 				}
 			}
@@ -94,8 +94,8 @@
 				return $this->_fileCache;
 			}
 
-			public function getNom(){
-				return $this->_nom;
+			public function getName(){
+				return $this->_name;
 			}
 			
 			protected function _createLangInstance(){
@@ -155,28 +155,18 @@
 			}
 			
 			public function show($typeCompile = self::TPL_COMPILE_ALL){
-				if($this->_show==true){
+				if($this->_show == true){
 					$GLOBALS['appDev']->addTemplate($this->_file);
+
 					if(is_file($this->_fileCache) && $this->_timeCache>0 && file_exists($this->_fileCache) && is_readable($this->_fileCache)){
 						$this->_timeFile=filemtime($this->_fileCache);
+
 						if(($this->_timeFile+$this->_timeCache)>time()){ //cache dépassé
-							$handle = fopen($this->_fileCache, 'rb');
-							$content = fread($handle, filesize ($this->_fileCache));
-							fclose($handle);
-							if($content==$this->_compile($this->_content, $typeCompile)){
-								foreach ($this->vars as $cle => $valeur){
-									${$cle} = $valeur;
-								}
-								include($this->_fileCache);
+							foreach ($this->vars as $cle => $valeur){
+								${$cle} = $valeur;
 							}
-							else{
-								$this->_contentCompiled=$this->_compile($this->_content, $typeCompile);
-								$this->_saveCache($this->_contentCompiled);
-								foreach ($this->vars as $cle => $valeur){
-									${$cle} = $valeur;
-								}
-								include($this->_fileCache);
-							}
+
+							include($this->_fileCache);
 						}
 						else{
 							$this->_contentCompiled=$this->_compile($this->_content, $typeCompile);
@@ -185,6 +175,7 @@
 							foreach ($this->vars as $cle => $valeur){
 								${$cle} = $valeur;
 							}
+
 							include($this->_fileCache);
 						}
 					}
@@ -199,42 +190,22 @@
 						include($this->_fileCache);
 					}
 				}
-				elseif($this->_show==false){
+				elseif($this->_show == false){
 					$GLOBALS['appDev']->addTemplate($this->_file);
-					if(is_file($this->_fileCache) && $this->_timeCache>0 && file_exists($this->_fileCache) && is_readable($this->_fileCache)){
+
+					if(is_file($this->_fileCache) && $this->_timeCache > 0 && file_exists($this->_fileCache) && is_readable($this->_fileCache)){
 						$this->_timeFile=filemtime($this->_fileCache);
 
-						if(($this->_timeFile+$this->_timeCache)>time()){
-							$handle = fopen($this->_fileCache, 'rb');
-							$content = fread($handle, filesize ($this->_fileCache));
-							fclose ($this->_fileCache);
-							
-							if($content==$this->_compile($this->_content, $typeCompile)){
+						if(($this->_timeFile+$this->_timeCache) > time()){ //cache non périmé
+							ob_start ();
+								foreach ($this->vars as $cle => $valeur){
+									$cle = $valeur;
+								}
 
-								ob_start ();
-									foreach ($this->vars as $cle => $valeur){
-										$cle = $valeur;
-									}
-
-									include($this->_fileCache);
-								$out = ob_get_contents();
-								ob_get_clean();
-								return $out;
-							}
-							else{
-								$this->_contentCompiled=$this->_compile($this->_content, $typeCompile);
-								$this->_saveCache($this->_contentCompiled);
-
-								ob_start ();
-									foreach ($this->vars as $cle => $valeur){
-										${$cle} = $valeur;
-									}
-
-									include($this->_fileCache);
-								$out = ob_get_contents();
-								ob_get_clean();
-								return $out;
-							}
+								include($this->_fileCache);
+							$out = ob_get_contents();
+							ob_get_clean();
+							return $out;
 						}
 						else{
 							$this->_contentCompiled=$this->_compile($this->_content, $typeCompile);
@@ -280,7 +251,7 @@
 		class templateParser{
 			use error, langInstance, urlRegex, errorPerso ;
 			
-			protected $_template                          ;
+			protected $_template                            ;
 			protected $_contenu                             ;
 			protected $_space             = '\s*'           ;
 			protected $_spaceR            = '\s+'           ;
@@ -302,9 +273,8 @@
 				'spaghettis'     => array('continue', 'break', 'goto', 'from', 'to'),    // spaghettis
 				'block'          => array('block', 'name'),                              // block de code
 				'template'       => array('template', 'name', 'vars'),                   // fonction de template
-				'call'           => array('call', 'block', 'template'));                 // fonction d'appel (block et template)
-
-			protected $error;
+				'call'           => array('call', 'block', 'template'),                  // fonction d'appel (block et template)
+				'cache'          => array('cache', 'id', 'time'));                 			 // gestion des blocs mis en cache inline
 			
 			public  function __construct(template &$tplGC, $lang = ""){
 				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
@@ -323,6 +293,7 @@
 			public function parse($c){
 				$this->_contenu=$c;
 				$this->_parseDebugStart();
+				$this->_parseCache();
 				$this->_parseInclude();
 				$this->_parsevarsPhp();
 				$this->_parsevarAdd();
@@ -353,6 +324,7 @@
 			public function parseNoCall($c){
 				$this->_contenu=$c;
 				$this->_parseDebugStart();
+				$this->_parseCache();
 				$this->_parseInclude();
 				$this->_parsevarsPhp();
 				$this->_parsevarAdd();
@@ -448,10 +420,10 @@
 					if(file_exists($file[1]) or is_readable($file[1])){
 
 						if(isset($m[4])){ //temps de cache précisé
-							$t = new template($m[1], 'tplInclude_'.$this->_template->getNom().'_'.$m[4].'_'.$this->_lang.'_'.$this->_includeI.'_', $m[4]);
+							$t = new template($m[1], 'tplInclude_'.$this->_template->getName().'_'.$m[4].'_'.$this->_lang.'_'.$this->_includeI.'_', $m[4]);
 						}
 						else{
-							$t = new template($m[1], 'tplInclude_'.$this->_template->getNom().'_'.$this->_lang.'_'.$this->_includeI.'_', '0');
+							$t = new template($m[1], 'tplInclude_'.$this->_template->getName().'_'.$this->_lang.'_'.$this->_includeI.'_', '0');
 						}
 
 						$t->assign($this->_template->vars);
@@ -791,7 +763,6 @@
 				return '<?php '.$m[1].'(); ?>';
 			}
 
-
 			protected function _parseCallTemplateCallback($m){
 				$args = '';
 				if($nb = preg_match_all('`(string|int|var)="(.+)"`U', $m[2], $arr)){
@@ -802,6 +773,23 @@
 				$args = substr($args, 0, strlen($args)-2);
 				
 				return '<?php (template'.$m[1].'::'.$m[1].'('.$args.')); ?>';
+			}
+
+			protected function _parseCache(){
+				$html = new htmlparser();
+				$html->load($this->_contenu, false, false);
+				
+				foreach($html->find('gc:cache') as $element){
+					$element->innertext = preg_replace_callback('`^(.+)<id=(.+)><time=(.+)>$`isU', array('system\templateParser', '_parseCacheCallback'), $element->innertext.'<id='.$element->getAttribute('id').'><time='.$element->getAttribute('time').'>');
+				}
+
+				$this->_contenu = $html->outertext;
+			}
+
+			protected function _parseCacheCallback($m){
+				$tpl = new template($m[1], $this->_template->getName().'_cache_'.$m[2], $m[3], $this->_lang, template::TPL_STRING);
+				$tpl->setShow(false);
+				return $tpl->show();
 			}
 
 			protected function _parseException(){

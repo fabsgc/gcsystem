@@ -101,6 +101,33 @@
 			public function setTime($time=0){
 				$this->_time = $time;
 			}
+
+			/**
+			 * Destruction d'un fichier de cache
+			 * @access	public
+			 * @return	void
+			 * @param bool
+			 * @since 2.3
+			*/
+			
+			public function destroy(){
+				if(file_exists(CACHE_PATH)){
+					if(file_exists($this->_nameFile)){
+						if(unlink($this->_nameFile)){
+							return true;
+						}
+						else{
+							return false;
+						}
+					}
+					else{
+						return true;
+					}
+				}
+				else{
+					return true;
+				}
+			}
 			
 			/**
 			 * Récupération du cache

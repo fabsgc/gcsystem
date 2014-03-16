@@ -8,7 +8,7 @@
 
 	namespace system{
 		class terminal{
-			use error, langInstance, general, helperLoader;
+			use error, langInstance, general;
 
 			protected $_command                       ; //contenu à traiter
 			protected $_stream                        ; //contenu à afficher
@@ -43,7 +43,7 @@
 					CLASS_PATH.CLASS_SYSTEM_PATH.'firewall.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'engine.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'general.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'install.class.php',
 					CLASS_PATH.CLASS_SYSTEM_PATH.'lang.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'log.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'model.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'pluginGc.class.php',
 					CLASS_EXCEPTION, CLASS_PATH.CLASS_SYSTEM_PATH.'backup.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'router.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'template.class.php', CLASS_PATH.CLASS_SYSTEM_PATH.'terminal.class.php',
-					ROUTE, MODOCONFIG, APPCONFIG, HELPER, FIREWALL, ASPAM, INSTALLED, CRON, ERRORPERSO
+					ROUTE, MODOCONFIG, APPCONFIG, HELPER, FIREWALL, ASPAM, ADDON, CRON, ERRORPERSO
 				);
 
 				$this->_updateFile = array(
@@ -793,8 +793,8 @@
 							break;
 
 							case 'installed':
-								if(is_file(INSTALLED) && file_exists(INSTALLED) && is_readable(INSTALLED)){
-									$sauvegarde = file_get_contents(INSTALLED);
+								if(is_file(ADDON) && file_exists(ADDON) && is_readable(ADDON)){
+									$sauvegarde = file_get_contents(ADDON);
 									$sauvegardes = explode("\n", $sauvegarde);
 									
 									$i = 0;
@@ -812,10 +812,10 @@
 										}
 									}
 									
-									$this->_result = '<br />><span style="color: chartreuse;"> Le fichier listant les plugins installés <strong>'.INSTALLED.'</strong> a bien été affiché</span>';
+									$this->_result = '<br />><span style="color: chartreuse;"> Le fichier listant les plugins installés <strong>'.ADDON.'</strong> a bien été affiché</span>';
 								}
 								else{
-									$this->_result = '<br />><span style="color: red;"> Le fichier listant les add-ons installés <strong>'.INSTALLED.'</strong> n\'existe pas ce qui est étonnant</span>';
+									$this->_result = '<br />><span style="color: red;"> Le fichier listant les add-ons installés <strong>'.ADDON.'</strong> n\'existe pas ce qui est étonnant</span>';
 								}
 							break;
 
@@ -849,7 +849,7 @@
 							case 'add-on':
 								$domXml = new \DomDocument('1.0', CHARSET);
 
-								if($domXml->load(INSTALLED)){
+								if($domXml->load(ADDON)){
 									$nodeXml = $domXml->getElementsByTagName('installed')->item(0);
 									$nodeXml = $nodeXml->getElementsByTagName('install');
 
@@ -866,10 +866,10 @@
 										}
 									}
 
-									$this->_result = '<br />><span style="color: chartreuse;"> Le fichier listant les add-ons installés <strong>'.INSTALLED.'</strong> a bien été affiché</span>';
+									$this->_result = '<br />><span style="color: chartreuse;"> Le fichier listant les add-ons installés <strong>'.ADDON.'</strong> a bien été affiché</span>';
 								}
 								else{
-									$this->_result = '<br />><span style="color: red;"> Le fichier listant les add-ons installés <strong>'.INSTALLED.'</strong> est endommagé</span>';
+									$this->_result = '<br />><span style="color: red;"> Le fichier listant les add-ons installés <strong>'.ADDON.'</strong> est endommagé</span>';
 								}
 							break;
 							

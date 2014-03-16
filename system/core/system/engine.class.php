@@ -52,14 +52,12 @@
 			
 			private function _getRubrique(){
 				$this->_routerInstance = new router($this);
-				$domXml = new \DomDocument('1.0', CHARSET);
-				
-				if($domXml->load(ROUTE)){
+
+				$dom = new htmlparser();				
+				if($dom->load(file_get_contents(ROUTE), false, false)){
 					$this->_addError('Le fichier de route " '.ROUTE.'" a bien été chargé', __FILE__, __LINE__, INFORMATION);
-					$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
-					$routes = $nodeXml->getElementsByTagName('route');
-					
-					foreach($routes as $route){
+
+					foreach ($dom->find('route') as $route) {
 						$vars = array();
 						
 						if ($route->hasAttribute('vars')){
@@ -93,18 +91,10 @@
 				if(REWRITE == true){ $this->_getRubrique(); }
 				
 				if(isset($_GET['controller'])){
-					$domXml = new \DomDocument('1.0', CHARSET);
-					
-					if($domXml->load(ROUTE)){
-						$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
-						$markupXml = $nodeXml->getElementsByTagName('route');
-						
-						$controller = ""; //on initialise la variable
-						
-						foreach($markupXml as $sentence){
-							if ($sentence->getAttribute('controller') == $_GET['controller']){
-								$controller =  $sentence->getAttribute('controller');
-							}
+					$dom = new htmlparser();				
+					if($dom->load(file_get_contents(ROUTE), false, false)){
+						foreach ($dom->find('route[controller='.$_GET['controller'].']') as $route) {
+							$controller =  $route->getAttribute('controller');
 						}
 						
 						if($controller!=""){
