@@ -23,7 +23,6 @@
 
 				foreach ($dom->find('define') as $element) {
 					if (!defined(strtoupper(CONST_APP_PREFIXE.strval($element->getAttribute('id'))))){
-
 						define(CONST_APP_PREFIXE.strtoupper($element->getAttribute('id')), $element->innertext);
 					}
 				}

@@ -34,7 +34,7 @@ Contenus externes :
 Documentation :
 -----------
 
-* Le GCsystem 2.1 étant encore en développement, une documentation est en cours de rédaction mais n'est pas terminée. Elle est disponible ici : [GCsystem 2.1 documentation][2]
+* Le GCsystem 2.3 étant encore en développement, une documentation est en cours de rédaction mais n'est pas terminée. Elle est disponible ici : [GCsystem 2.3 documentation][2]
 
 Site du projet
 -----------
