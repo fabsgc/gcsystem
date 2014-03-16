@@ -26,7 +26,7 @@
 				if($lang==NULL){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 				$this->_createLangInstance();
 
-				if(@fopen(ASPAM, 'r+')) {
+				if($fp = @fopen(ASPAM, 'r+')) {
 					if(ANTISPAM == true){
 						$this->_domXml = new \DomDocument('1.0', CHARSET);
 					

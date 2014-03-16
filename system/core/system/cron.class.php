@@ -14,7 +14,7 @@
 				$this->_lang=$lang;
 				$this->_createLangInstance();
 
-				if(@fopen(CRON, 'r+')) {
+				if($fp = @fopen(CRON, 'r+')) {
 					$this->domXml = new \DomDocument('1.0', CHARSET);
 					if($this->domXml->load(CRON)){
 						if($this->exception() == false){
