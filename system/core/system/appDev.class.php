@@ -3,7 +3,7 @@
 	 * @file : appDev.class.php
 	 * @author : fab@c++
 	 * @description : class à utiliser lors du développement de l'application
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace system{

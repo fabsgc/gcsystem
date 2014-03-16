@@ -4,7 +4,7 @@
 	 * @file : install.class.php
 	 * @author : fab@c++
 	 * @description : class gérant l'installation de addons externes
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 
 	namespace system{

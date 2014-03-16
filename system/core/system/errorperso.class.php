@@ -3,7 +3,7 @@
 	 * @file : errorperso.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les erreurs personnalisées de façon plus propre et plus simple
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 
 	namespace system{
@@ -82,7 +82,7 @@
 					return $domXml->getElementsByTagName('errorperso')->item(0)
 						->getElementsByTagName('config')->item(0)
 						->getElementsByTagName('templatedefault')->item(0)
-						->getAttribute('nom');
+						->getAttribute('name');
 				}
 				else{
 					$this->_addError('Le fichier de configuration des erreurs personnalisées '.ERRORPERSO.' est endommagé', __FILE__, __LINE__, FATAL);

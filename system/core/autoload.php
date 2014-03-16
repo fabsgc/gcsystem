@@ -4,7 +4,7 @@
 	 | @file : autoload.php
 	 | @author : fab@c++
 	 | @description : Inclusion automatique de tous les fichiers nécessaires au système
-	 | @version : 2.2 Bêta
+	 | @version : 2.3 Bêta
 	 | ------------------------------------------------------
 	\*/
 

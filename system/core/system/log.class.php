@@ -3,7 +3,7 @@
 	 * @file : log.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les erreurs php
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace system{

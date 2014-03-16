@@ -18,12 +18,15 @@
 			*/
 
 			public function __construct(){
-				$dom = new htmlparser();
-				$dom->load(file_get_contents(APPCONFIG), false, false);
+				$domXml = new \DomDocument('1.0', CHARSET);
+				if($domXml->load(APPCONFIG)){				
+					$nodeXml = $domXml->getElementsByTagName('definitions')->item(0);
+					$markupXml = $nodeXml->getElementsByTagName('define');
 
-				foreach ($dom->find('define') as $element) {
-					if (!defined(strtoupper(CONST_APP_PREFIXE.strval($element->getAttribute('id'))))){
-						define(CONST_APP_PREFIXE.strtoupper($element->getAttribute('id')), $element->innertext);
+					foreach($markupXml as $sentence){
+						if (!defined(strtoupper(CONST_APP_PREFIXE.strval($sentence->getAttribute("id"))))){
+							define(CONST_APP_PREFIXE.strtoupper(strval($sentence->getAttribute("id"))).'', htmlspecialchars_decode(strval($sentence->nodeValue)));
+						}
 					}
 				}
 			}

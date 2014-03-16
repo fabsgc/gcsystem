@@ -3,7 +3,7 @@
 	 * @file : cron.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les fichiers crons
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace system{
@@ -14,11 +14,10 @@
 				$this->_lang=$lang;
 				$this->_createLangInstance();
 
-				if($fp = @fopen(CRON, 'r+')) {
+				if(@fopen(CRON, 'r+')) {
 					$this->domXml = new \DomDocument('1.0', CHARSET);
 					if($this->domXml->load(CRON)){
 						if($this->exception() == false){
-							flock($fp, LOCK_EX);				
 							$nodeXml = $this->domXml->getElementsByTagName('crons')->item(0)->getElementsByTagName('actions')->item(0);
 							$markupXml = $nodeXml->getElementsByTagName('cron');
 
@@ -54,7 +53,6 @@
 									$this->setErrorLog(LOG_CRONS, '['.$sentence->getAttribute("action")."]\n[".$this->_output."]");
 								}
 							}
-							flock($fp, LOCK_UN);
 						}
 						else{
 							$this->_addError('la page appelante est une exception', __FILE__, __LINE__, INFORMATION);

@@ -3,7 +3,7 @@
 	 * @file : helper.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les helpers ajoutés par le projet
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace system{

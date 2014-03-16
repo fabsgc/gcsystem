@@ -3,7 +3,7 @@
 	 * @file : engine.class.php
 	 * @author : fab@c++
 	 * @description : class mère de l'application
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace system{
@@ -38,6 +38,7 @@
 			
 			public function init(){
 				if($this->_initInstance == 0){
+					$this->_checkConfigFile();
 					$this->_checkHeaderStream($this->getUri());
 					$this->_checkEnvironment();
 					$this->_checkError();
@@ -53,11 +54,14 @@
 			private function _getRubrique(){
 				$this->_routerInstance = new router($this);
 
-				$dom = new htmlparser();				
-				if($dom->load(file_get_contents(ROUTE), false, false)){
+				$domXml = new \DomDocument('1.0', CHARSET);
+				
+				if($domXml->load(ROUTE)){
 					$this->_addError('Le fichier de route " '.ROUTE.'" a bien été chargé', __FILE__, __LINE__, INFORMATION);
-
-					foreach ($dom->find('route') as $route) {
+					$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
+					$routes = $nodeXml->getElementsByTagName('route');
+					
+					foreach($routes as $route){
 						$vars = array();
 						
 						if ($route->hasAttribute('vars')){
@@ -89,136 +93,108 @@
 			
 			public function route(){
 				if(REWRITE == true){ $this->_getRubrique(); }
-				
-				if(isset($_GET['controller'])){
-					$dom = new htmlparser();				
-					if($dom->load(file_get_contents(ROUTE), false, false)){
-						foreach ($dom->find('route[controller='.$_GET['controller'].']') as $route) {
-							$controller =  $route->getAttribute('controller');
-						}
-						
-						if($controller!=""){
-							$helper = new helper();
-							$this->_cronInstance  = new cron(); //les crons ont besoin des plugins
 
-							if($this->_cacheRoute > 0){ //le cache de la page est supérieur à 0 secondes et le rewrite activé
-								if($this->_setRubrique($controller) == true){  //on inclut les fichiers necéssaire à l'utilisation d'un contrôleur
-									$class = new $controller($this->_lang);
-									if(SECURITY == false || $class->setFirewall() == true){
-										if(ANTISPAM == false || $class->setAntispam() == true){
-											$class->loadModel();
-											$this->_cache = new cache('page_'.preg_replace('#\/#isU', '-slash-', $this->getUri()), "", $this->_cacheRoute);
+				if(isset($_GET['controller']) && $_GET['controller'] != ''){
+					$controller = $_GET['controller'];
+					
+					$helper = new helper();
+					$this->_cronInstance  = new cron(); //les crons ont besoin des plugins
 
-											if($this->_cache->isDie()){
-												ob_start ();
-													$class->init();
+					if($this->_cacheRoute > 0){ //le cache de la page est supérieur à 0 secondes et le rewrite activé
+						if($this->_setRubrique($controller) == true){  //on inclut les fichiers necéssaire à l'utilisation d'un contrôleur
+							$class = new $controller($this->_lang);
 
-													if($_GET['action']!=""){
-														if(method_exists($class, 'action'.ucfirst($_GET['action']))){
-															$action = 'action'.ucfirst($_GET['action']);
-															$class->$action();
-															$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, INFORMATION);
-														}
-														else{
-															$action = 'actionDefault';
-															$class->$action();
-															$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
-														}
-													}
-													elseif($_GET['action']==""){
-														$_GET['action'] = 'default';
-														$action = 'actionDefault';
-														$class->$action();
-													}
+							if(SECURITY == false || $class->setFirewall() == true){
+								if(ANTISPAM == false || $class->setAntispam() == true){
+									$class->loadModel();
+									$this->_cache = new cache('page_'.preg_replace('#\/#isU', '-slash-', $this->getUri()), "", $this->_cacheRoute);
 
-													$class->end();
-												$this->_output = ob_get_contents();
-												ob_get_clean();
+									if($this->_cache->isDie()){
+										ob_start ();
+											$class->init();
 
-												$this->_cache->setVal($this->_output);
-												$this->_cache->setCache();
+											if(method_exists($class, 'action'.ucfirst($_GET['action']))){
+												$action = 'action'.ucfirst($_GET['action']);
+												$class->$action();
+												$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, INFORMATION);
 											}
 											else{
-												$this->_output = $this->_cache->getCache();
+												$action = 'actionDefault';
+												$class->$action();
+												$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
 											}
-										}
-										else{
-											$this->_addError('L\'antispam semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
-										}
+
+											$class->end();
+										$this->_output = ob_get_contents();
+										ob_get_clean();
+
+										$this->_cache->setVal($this->_output);
+										$this->_cache->setCache();
 									}
 									else{
-										$this->_addError(' Le parefeu semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
+										$this->_output = $this->_cache->getCache();
 									}
 								}
 								else{
-									$this->_addError('L\'instanciation du contrôleur "'.$controller.'" a échoué', __FILE__, __LINE__, FATAL);
-									$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé', __FILE__,  __LINE__, FATAL);
-									$this->redirect404();
+									$this->_addError('L\'antispam semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
 								}
 							}
 							else{
-								if($this->_setRubrique($controller) == true){
-									$class = new $controller($this->_lang);
-									if(SECURITY == false || $class->setFirewall() == true){
-										if(ANTISPAM == false || $class->setAntispam() == true){
-										    $class->loadModel();
-
-											ob_start ();
-												$class->init();
-
-												if($_GET['action']!=""){
-													if(method_exists($class, 'action'.ucfirst($_GET['action']))){
-														$action = 'action'.ucfirst($_GET['action']);
-														$class->$action();
-														$this->_addError('Appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, INFORMATION);
-													}
-													else{
-														$action = 'actionDefault';
-														$class->$action();
-														$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
-													}
-												}
-												elseif($_GET['action']==""){
-													$_GET['action'] = 'default';
-													$action = 'actionDefault';
-													$class->$action();
-												}
-
-												$class->end();
-											$this->_output = ob_get_contents();
-											ob_get_clean();
-										}
-										else{
-											$this->_addError('L\'antispam semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
-										}
-									}
-									else{
-										$this->_addError('Le parefeu semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
-									}								
-								}
-								else{
-									$this->_addError('L\'instanciation du contrôleur "'.$controller.'" a échoué', __FILE__, __LINE__, FATAL);
-									$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé', __FILE__,  __LINE__, FATAL);
-									$this->redirect404();
-								}
+								$this->_addError(' Le parefeu semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
 							}
 						}
 						else{
-							$this->_addError('Le contrôleur \'inconnue\' n\'a pas été instancié car le routage a echoué. Requête http : http://'.$this->getHost().$this->getUri(), __FILE__, __LINE__, FATAL);
-							$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé car le routage a échoué. URL : http://'.$this->getHost().$this->getUri(), __FILE__,  __LINE__, FATAL);
-								$this->redirect404();
+							$this->_addError('L\'instanciation du contrôleur "'.$controller.'" a échoué', __FILE__, __LINE__, FATAL);
+							$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé', __FILE__,  __LINE__, FATAL);
+							$this->redirect404();
 						}
-					}				
-				}
-				else{
-					if(is_file(CONTROLLER_PATH.'index'.CONTROLLER_EXT.'.php') && file_exists(CONTROLLER_PATH.'index'.CONTROLLER_EXT.'.php') && is_readable(CONTROLLER_PATH.'index'.CONTROLLER_EXT.'.php')){ 
-						$this->_setRubrique('index');
 					}
 					else{
-						$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé', __FILE__,  __LINE__, FATAL);
-						$this->redirect404();
+						if($this->_setRubrique($controller) == true){
+							$class = new $controller($this->_lang);
+
+							if(SECURITY == false || $class->setFirewall() == true){
+								if(ANTISPAM == false || $class->setAntispam() == true){
+								    $class->loadModel();
+
+									ob_start ();
+										$class->init();
+
+										if(method_exists($class, 'action'.ucfirst($_GET['action']))){
+											$action = 'action'.ucfirst($_GET['action']);
+											$class->$action();
+											$this->_addError('Appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, INFORMATION);
+										}
+										else{
+											$action = 'actionDefault';
+											$class->$action();
+											$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
+										}
+
+										$class->end();
+									$this->_output = ob_get_contents();
+									ob_get_clean();
+								}
+								else{
+									$this->_addError('L\'antispam semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
+								}
+							}
+							else{
+								$this->_addError('Le parefeu semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
+							}								
+						}
+						else{
+							$this->_addError('L\'instanciation du contrôleur "'.$controller.'" a échoué', __FILE__, __LINE__, FATAL);
+							$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé', __FILE__,  __LINE__, FATAL);
+							$this->redirect404();
+						}
 					}
 				}
+				else{
+					$this->_addError('Le contrôleur \'inconnue\' n\'a pas été instancié car le routage a echoué. Requête http : http://'.$this->getHost().$this->getUri(), __FILE__, __LINE__, FATAL);
+					$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé car le routage a échoué. URL : http://'.$this->getHost().$this->getUri(), __FILE__,  __LINE__, FATAL);
+					$this->redirect404();
+				}	
 			}
 			
 			private function _setRubrique($controller){
@@ -334,6 +310,46 @@
 						$_POST[$cle] = htmlentities($val);
 					}
 				}
+			}
+
+			private function _checkConfigFile(){
+				/*$dom = new \DomDocument('1.0', CHARSET);
+				
+				if(!$dom->loadXml(file_get_contents(ROUTE))){
+					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
+				}
+
+				if(!$dom->loadXml(file_get_contents(MODOCONFIG))){
+					$this->_addError('Le fichier '.MODOCONFIG.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
+				}
+
+				if(!$dom->loadXml(file_get_contents(APPCONFIG))){
+					$this->_addError('Le fichier '.APPCONFIG.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
+				}
+
+				if(!$dom->loadXml(file_get_contents(HELPER))){
+					$this->_addError('Le fichier '.HELPER.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
+				}
+
+				if(!$dom->loadXml(file_get_contents(FIREWALL))){
+					$this->_addError('Le fichier '.FIREWALL.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
+				}
+
+				if(!$dom->loadXml(file_get_contents(ASPAM))){
+					$this->_addError('Le fichier '.ASPAM.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
+				}
+
+				if(!$dom->loadXml(file_get_contents(ADDON))){
+					$this->_addError('Le fichier '.ADDON.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
+				}
+
+				if(!$dom->loadXml(file_get_contents(CRON))){
+					$this->_addError('Le fichier '.CRON.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
+				}
+
+				if(!$dom->loadXml(file_get_contents(ERRORPERSO))){
+					$this->_addError('Le fichier '.ERRORPERSO.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
+				}*/
 			}
 			
 			public function setMaintenance(){

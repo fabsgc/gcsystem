@@ -3,7 +3,7 @@
 	 * @file : captcha.class.php
 	 * @author : fab@c++
 	 * @description : class permettant la génération de captcha personnalisée
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace helper{

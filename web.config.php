@@ -4,7 +4,7 @@
  | @file : web.config.php
  | @author : fab@c++
  | @description : Configuration générale de l'application web et des connexions SQL
- | @version : 2.2 Bêta
+ | @version : 2.3 Bêta
  | ------------------------------------------------------
 \*/
 

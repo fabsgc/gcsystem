@@ -11,5 +11,5 @@
 		</exceptions>
 	</config>
 	<ips>
-	</ips>
+	<ip ip="127.0.0.1" number="1" since="1395003335"/></ips>
 </antispams>

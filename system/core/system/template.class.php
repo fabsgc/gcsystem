@@ -3,7 +3,7 @@
 	 * @file : template.class.php
 	 * @author : fab@c++
 	 * @description : class gérant le moteur de template
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace system{
@@ -35,7 +35,6 @@
 				switch($stream){
 					case self::TPL_FILE :
 						$this->_file=TEMPLATE_PATH.$file.TEMPLATE_EXT;
-
 						if(file_exists($this->_file) or is_readable($this->_file)){
 							$handle = fopen($this->_file, 'rb');
 							$this->_content = fread($handle, filesize ($this->_file));
@@ -158,7 +157,7 @@
 				if($this->_show == true){
 					$GLOBALS['appDev']->addTemplate($this->_file);
 
-					if(is_file($this->_fileCache) && $this->_timeCache>0 && file_exists($this->_fileCache) && is_readable($this->_fileCache)){
+					if(is_file($this->_fileCache) && $this->_timeCache > 0 && file_exists($this->_fileCache) && is_readable($this->_fileCache)){
 						$this->_timeFile=filemtime($this->_fileCache);
 
 						if(($this->_timeFile+$this->_timeCache)>time()){ //cache dépassé
@@ -293,8 +292,8 @@
 			public function parse($c){
 				$this->_contenu=$c;
 				$this->_parseDebugStart();
-				$this->_parseCache();
 				$this->_parseInclude();
+				$this->_parseCache();
 				$this->_parsevarsPhp();
 				$this->_parsevarAdd();
 				$this->_parseGravatar();
@@ -324,8 +323,8 @@
 			public function parseNoCall($c){
 				$this->_contenu=$c;
 				$this->_parseDebugStart();
-				$this->_parseCache();
 				$this->_parseInclude();
+				$this->_parseCache();
 				$this->_parsevarsPhp();
 				$this->_parsevarAdd();
 				$this->_parseGravatar();
@@ -730,7 +729,7 @@
 
 			protected function _parseTemplateCallback($m){
 				if(!function_exists($m[1])){
-					$blockFunction  = '<?php class template'.$m[1].' extends system\template{ use \system\langInstance, \system\urlRegex; public function '.$m[1].'('.$m[2].'){ ?> ';
+					$blockFunction  = '<?php class template'.$m[1].' extends system\template{ use system\langInstance, system\urlRegex; public function '.$m[1].'('.$m[2].'){ ?> ';
 					$blockFunction .= $m[3];
 					$blockFunction .= ' <?php } } ?>';
 
@@ -743,7 +742,7 @@
 
 			protected function _parseTemplateCallbackNoVars($m){
 				if(!function_exists($m[1])){
-					$blockFunction  = '<?php class template'.$m[1].' extends system\template{ use \system\langInstance, \system\urlRegex; public function '.$m[1].'(){ ?> ';
+					$blockFunction  = '<?php class template'.$m[1].' extends system\template{ use system\langInstance, system\urlRegex; public function '.$m[1].'(){ ?> ';
 					$blockFunction .= $m[2];
 					$blockFunction .= ' <?php } } ?>';
 

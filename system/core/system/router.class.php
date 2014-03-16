@@ -3,7 +3,7 @@
 	 * @file : routeGc.class.php
 	 * @author : fab@c++
 	 * @description : class gérant l'url rewriting
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace system{

@@ -3,7 +3,7 @@
 	 * @file : firewall.class.php
 	 * @author : fab@c++
 	 * @description : class gérant le firewall, l'accès aux pages
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace system{

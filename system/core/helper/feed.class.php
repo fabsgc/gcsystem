@@ -3,7 +3,7 @@
 	 * @file : feed.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les flux rss
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace helper{

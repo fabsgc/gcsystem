@@ -3,7 +3,7 @@
 	 * @file : backup.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les backups de code directement dans le fw
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace system{

@@ -3,7 +3,7 @@
 	 * @dir : dir.class.php
 	 * @author : fab@c++
 	 * @description : class gèrant les opérations sur les fichiers
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace helper{

@@ -3,7 +3,7 @@
 	 * @file : exception.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les exceptions
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace system{

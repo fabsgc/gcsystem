@@ -3,7 +3,7 @@
 	 * @file : mail.class.php
 	 * @author : fab@c++
 	 * @description : class générant des mails
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace helper{

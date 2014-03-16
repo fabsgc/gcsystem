@@ -3,7 +3,7 @@
 	 * @dir : ftp.class.php
 	 * @author : fab@c++
 	 * @description : class gèrant les connexion ftp, elle permet de gérer plusieurs connexion dans la même instance
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace helper{

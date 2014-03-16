@@ -3,7 +3,7 @@
 	 * @file : controller.class.php
 	 * @author : fab@c++
 	 * @description : class mère dont hérite chaque les contrôleur. Abstraite
-	 * @version : 2.2 bêta
+	 * @version : 2.3 Bêta
 	*/
 	
 	namespace system{
