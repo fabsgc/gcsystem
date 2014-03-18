@@ -462,7 +462,7 @@
 							}
 						}
 
-						$this->_result = '<br />><span style="color: chartreuse;"> fichiers des controller listés</span>';
+						$this->_result = '<br />><span style="color: chartreuse;"> module listés</span>';
 					}
 					elseif(preg_match('#list included#', $this->_command)){				
 						foreach(get_included_files() as $val){
@@ -484,7 +484,7 @@
 					elseif(preg_match('#clear log#', $this->_command)){
 						if($this->_dossier = opendir(LOG_PATH)){
 							while(false !== ($this->_fichier = readdir($this->_dossier))){
-								if(is_file(LOG_PATH.$this->_fichier) && file_exists(LOG_PATH.$this->_fichier) && is_readable(LOG_PATH.$this->_fichier)){
+								if(is_file(LOG_PATH.$this->_fichier) && file_exists(LOG_PATH.$this->_fichier) && is_readable(LOG_PATH.$this->_fichier) && $this->_fichier != '.htaccess'){
 									unlink(LOG_PATH.$this->_fichier);
 									$this->_stream .= '<br />> '.LOG_PATH.$this->_fichier.LOG_EXT;
 								}
@@ -604,6 +604,8 @@
 						$this->_stream .= '<br />> add template nom';
 						$this->_stream .= '<br />> set template nom nouveaunom';
 						$this->_stream .= '<br />> delete template nom';
+						$this->_stream .= '<br />> add event nom';
+						$this->_stream .= '<br />> delete event nom';
 						$this->_stream .= '<br />> list template';
 						$this->_stream .= '<br />> list included';
 						$this->_stream .= '<br />> list controller';

@@ -18,6 +18,10 @@
 				if(file_exists(CLASS_PATH.$class.'.class.php')){
 					include(CLASS_PATH.$class.'.class.php');
 				}
+
+				if(file_exists(APP_PATH.$class.EVENT_EXT.'.php')){
+					include(APP_PATH.$class.EVENT_EXT.'.php');
+				}
 			}
 		}
 

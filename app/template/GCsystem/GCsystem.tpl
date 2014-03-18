@@ -3,7 +3,7 @@
 	<head>
 		<title>GCsystem Version 2.3</title>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="{{def:IMG_PATH}}gcsystem/logo.png" />
+		<link rel="icon" type="image/png" href="{{def:IMG_PATH}}gcsystem/logo60.png" />
 	</head>
 	<body>
 		<style>

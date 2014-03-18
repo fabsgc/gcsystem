@@ -196,8 +196,10 @@
 								$i=0;
 								foreach($urls as $url){
 									if(preg_match('#\)>#', $url)){
-										$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
-										$i++;
+										if(count($var) > 0){
+											$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
+											$i++;
+										}
 									}
 									else{
 										$result.=$url;
@@ -318,5 +320,9 @@
 					}
 				}
 			}
+		}
+
+		interface eventListener {
+			public function implementedEvents();
 		}
 	}

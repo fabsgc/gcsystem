@@ -9,7 +9,6 @@
 	namespace system{
 		class engine{
 			use error, langInstance, general, urlRegex;
-			/* --- infos d'en tete -- */
 
 			protected $_output                     ;
 			protected $_configInstance             ;
@@ -22,8 +21,6 @@
 
 			protected $_cacheRoute           = 0   ;
 			protected $_cache                = null;
-			
-			/* ---------- CONSTRUCTEURS --------- */
 			
 			public  function __construct($lang=""){
 				if($lang == ""){ 
@@ -39,6 +36,7 @@
 			public function init(){
 				if($this->_initInstance == 0){
 					$this->_checkConfigFile();
+					$this->_setEventListeners();
 					$this->_checkHeaderStream($this->getUri());
 					$this->_checkEnvironment();
 					$this->_checkError();
@@ -313,7 +311,7 @@
 			}
 
 			private function _checkConfigFile(){
-				/*$dom = new \DomDocument('1.0', CHARSET);
+				$dom = new \DomDocument('1.0', CHARSET);
 				
 				if(!$dom->loadXml(file_get_contents(ROUTE))){
 					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
@@ -349,12 +347,22 @@
 
 				if(!$dom->loadXml(file_get_contents(ERRORPERSO))){
 					$this->_addError('Le fichier '.ERRORPERSO.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
-				}*/
+				}
 			}
 			
 			public function setMaintenance(){
 				$tpl = new template(GCSYSTEM_PATH.'GCmaintenance', 'GCmaintenance', 0, $this->_lang);				
 				$tpl->show();
+			}
+
+			protected function _setEventListeners(){
+				$dir = new \helper\dir(EVENT_PATH);
+				$GLOBALS['eventListeners'] = array();
+				
+				foreach ($dir->getDirArbo() as $value) {
+					$value = '\event\\'.preg_replace('#'.preg_quote(EVENT_PATH).'(.+)'.preg_quote(EVENT_EXT).preg_quote('.php').'#isU', '$1', $value);
+					array_push($GLOBALS['eventListeners'], new $value());
+				}
 			}
 
 			public  function __destruct(){

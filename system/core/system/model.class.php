@@ -12,10 +12,20 @@
 
 			protected $bdd                                ; //contient la connexion sql
 			
-			final public  function __construct($lang="", $bdd){
-				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
-				$this->_createLangInstance();			
-				if(CONNECTBDD == true) {$this->bdd=$bdd; }
+			final public  function __construct($lang = "", $bdd){
+				if($lang==""){ 
+					$this->_lang=$this->getLangClient(); 
+				} else { 
+					$this->_lang=$lang; 
+
+				}
+				$this->_createLangInstance();
+
+				if(CONNECTBDD == true) {
+					$this->bdd = $bdd; 
+				}
+
+				$this->event = new eventManager();
 			}
 			
 			public function init(){

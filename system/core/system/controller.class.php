@@ -17,6 +17,7 @@
 			protected $model               = ""         ; //instance du model
 			protected $lang                = DEFAULTLANG; //lang par défaut
 			protected $bdd                              ; //instance PDO
+			protected $event                            ; //instance du gestionnaire d'évènement
 			
 			/**
 			 * Constructeur de la classe. initialisation du contrôleur de l'application
@@ -40,6 +41,8 @@
 				}
 
 				$this->_firewall = false;
+
+				$this->event = new eventManager();
 			}
 			
 			protected function init(){	

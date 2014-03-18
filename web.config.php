@@ -15,6 +15,7 @@ define('LOG_PATH', SYSTEM_PATH.'log/');
 define('CACHE_PATH', APP_PATH.'cache/');
 define('CONTROLLER_PATH', APP_PATH.'controller/');
 define('MODEL_PATH', APP_PATH.'model/');
+define('EVENT_PATH', APP_PATH.'event/');
 define('APP_CONFIG_PATH', APP_PATH.'config/');
 define('TEMPLATE_PATH', APP_PATH.'template/');
 define('CLASS_PATH', SYSTEM_PATH.'core/');
@@ -32,6 +33,7 @@ define('TEMPLATE_EXT', '.tpl');
 define('LOG_EXT', '.log');
 define('CONTROLLER_EXT', '.class');
 define('MODEL_EXT', '.model.class');
+define('EVENT_EXT', '.class');
 
 define('LOG_SYSTEM', 'system');
 define('LOG_PHP', 'error');
@@ -62,6 +64,8 @@ define('CLASS_BACKUP', CLASS_PATH.CLASS_SYSTEM_PATH.'backup.class.php');
 define('CLASS_ERROR_PERSO', CLASS_PATH.CLASS_SYSTEM_PATH.'errorperso.class.php');
 define('CLASS_SQL', CLASS_PATH.CLASS_SYSTEM_PATH.'sql.class.php');
 define('CLASS_EXCEPTION', CLASS_PATH.CLASS_SYSTEM_PATH.'exception.class.php');
+define('CLASS_EVENT', CLASS_PATH.CLASS_SYSTEM_PATH.'event.class.php');
+define('CLASS_EVENT_MANAGER', CLASS_PATH.CLASS_SYSTEM_PATH.'eventManager.class.php');
 
 define('ROUTE', APP_CONFIG_PATH.'route.xml');
 define('MODOCONFIG', APP_CONFIG_PATH.'modo.xml');
