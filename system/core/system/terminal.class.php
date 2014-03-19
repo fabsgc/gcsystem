@@ -122,7 +122,7 @@
 							$this->_stream .= '<br />> '.CONTROLLER_PATH.$this->_commandExplode[2].CONTROLLER_EXT.'.php';
 							$this->_stream .= '<br />> '.MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php';
 
-							$this->_result = '<br />> <span style="color: chartreuse;">le contrôleur <u>'.$this->_commandExplode[2].'</u> a bien été créée</span>';
+							$this->_result = '<br />> <span style="color: chartreuse;">le contrôleur <u>'.$this->_commandExplode[2].'</u> a bien été créé</span>';
 							
 							$domXml = new \DomDocument('1.0', CHARSET);
 							if($domXml->load(ROUTE)){						
@@ -278,6 +278,42 @@
 							$this->_stream .= '<br />> '.CONTROLLER_PATH.$this->_commandExplode[2].CONTROLLER_EXT.'.php';
 							$this->_result = '<br />><span style="color: red;"> La modification de ce fichier est interdite</span>';
 						}
+					}
+					else if(preg_match('#add listener (.+)#', $this->_command)){
+						$this->_commandExplode[2] = html_entity_decode(htmlspecialchars_decode($this->_commandExplode[2]));
+
+						if(!file_exists(EVENT_PATH.$this->_commandExplode[2].EVENT_EXT.'.php')){
+							$monfichier = fopen(EVENT_PATH.$this->_commandExplode[2].EVENT_EXT.'.php', 'a');						
+								$t= new template(GCSYSTEM_PATH.'GCevent', 'GCevent', '0');
+								$t->assign(array(
+									'name'=> ucfirst($this->_commandExplode[2])
+								));
+								$t->setShow(FALSE);
+								fputs($monfichier, $t->show());
+							fclose($monfichier);
+
+							$this->_stream .= '<br />> '.EVENT_PATH.$this->_commandExplode[2].EVENT_EXT.'.php';
+
+							$this->_result = '<br />> <span style="color: chartreuse;">l\'écouteur <u>'.$this->_commandExplode[2].'</u> a bien été créé</span>';
+							
+						}
+						else{
+							$this->_result = '<br />> <span style="color: red;">l\'écouteur <u>'.$this->_commandExplode[2].'</u> existe déjà</span>';
+						}	
+					}
+					else if(preg_match('#delete listener (.+)#', $this->_command)){
+						$this->_commandExplode[2] = html_entity_decode(htmlspecialchars_decode($this->_commandExplode[2]));
+
+						if(file_exists(EVENT_PATH.$this->_commandExplode[2].EVENT_EXT.'.php')){
+							unlink(EVENT_PATH.$this->_commandExplode[2].EVENT_EXT.'.php');
+							$this->_stream .= '<br />> '.EVENT_PATH.$this->_commandExplode[2].EVENT_EXT.'.php';
+
+							$this->_result = '<br />> <span style="color: chartreuse;">l\'écouteur <u>'.$this->_commandExplode[2].'</u> a bien été supprimé</span>';
+							
+						}
+						else{
+							$this->_result = '<br />> <span style="color: red;">l\'écouteur <u>'.$this->_commandExplode[2].'</u> n\'existe pas</span>';
+						}	
 					}
 					elseif(preg_match('#add template (.+)#', $this->_command)){
 						if(!in_array(TEMPLATE_PATH.$this->_commandExplode[2].TEMPLATE_EXT, $this->_forbidden)){
@@ -461,6 +497,14 @@
 								}
 							}
 						}
+						if($this->_dossier = opendir(EVENT_PATH)){
+							$this->_stream .= '<br />>####################### LISTENER';
+							while(false !== ($this->_fichier = readdir($this->_dossier))){
+								if(is_file(EVENT_PATH.$this->_fichier) && $this->_fichier!='.htaccess'){
+									$this->_stream .= '<br />> '.EVENT_PATH.$this->_fichier.'';
+								}
+							}
+						}
 
 						$this->_result = '<br />><span style="color: chartreuse;"> module listés</span>';
 					}
@@ -604,8 +648,8 @@
 						$this->_stream .= '<br />> add template nom';
 						$this->_stream .= '<br />> set template nom nouveaunom';
 						$this->_stream .= '<br />> delete template nom';
-						$this->_stream .= '<br />> add event nom';
-						$this->_stream .= '<br />> delete event nom';
+						$this->_stream .= '<br />> add listener nom';
+						$this->_stream .= '<br />> delete listener nom';
 						$this->_stream .= '<br />> list template';
 						$this->_stream .= '<br />> list included';
 						$this->_stream .= '<br />> list controller';

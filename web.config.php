@@ -144,6 +144,9 @@ define('CACHE_SHA1', false);
 /* le nom des fichiers de cache sera hashé ou non */
 define('LOG_ENABLED', true);
 
+/* le cache peut-être désactivé pour pouvoir tester facilement quelque chose. Dans ce cas, le cache est mis toujours à 0 */
+define('CACHE_ENABLED', true);
+
 /* réduis la taille des fichiers html en supprimant les tabulations (attention avec les zones de texte) */
 define('MINIFY_OUTPUT_HTML', false);
 

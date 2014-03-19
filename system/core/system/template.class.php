@@ -32,6 +32,9 @@
 				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 				$this->_createLangInstance();
 
+				if(CACHE_ENABLED == false)
+					$timecache = 0;
+
 				switch($stream){
 					case self::TPL_FILE :
 						$this->_file=TEMPLATE_PATH.$file.TEMPLATE_EXT;
@@ -293,9 +296,9 @@
 				$this->_contenu=$c;
 				$this->_parseDebugStart();
 				$this->_parseInclude();
-				$this->_parseCache();
 				$this->_parsevarsPhp();
 				$this->_parsevarAdd();
+				//$this->_parseCache();
 				$this->_parseGravatar();
 				$this->_parseUrlRegex();
 				$this->_parseDefine();
@@ -324,9 +327,9 @@
 				$this->_contenu=$c;
 				$this->_parseDebugStart();
 				$this->_parseInclude();
-				$this->_parseCache();
 				$this->_parsevarsPhp();
 				$this->_parsevarAdd();
+				$this->_parseCache();
 				$this->_parseGravatar();
 				$this->_parseUrlRegex();
 				$this->_parseDefine();

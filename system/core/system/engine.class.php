@@ -74,7 +74,12 @@
 						$_GET['controller']  = $matchedRoute->module();
 						$_GET['action']    = $matchedRoute->action();
 						$_GET['pageid']    = $matchedRoute->id();
-						$this->_cacheRoute = $matchedRoute->cache();
+
+						if(CACHE_ENABLED == true)
+							$this->_cacheRoute = $matchedRoute->cache();
+						else{
+							$this->_cacheRoute = 0;
+						}
 
 						if($_GET['action'] == ''){
 							$_GET['action'] = 'default';

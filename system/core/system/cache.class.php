@@ -27,7 +27,6 @@
 			*/
 			
 			public function __construct($name, $val, $time=0){
-				$this->_time = $time;
 				$this->_name = $name;
 				$this->_val = $val;
 
@@ -35,6 +34,11 @@
 					$this->_nameFile = CACHE_PATH.sha1($name.'.cache');
 				else
 					$this->_nameFile = CACHE_PATH.$name.'.cache';
+
+				if(CACHE_ENABLED == true)
+					$this->_time = $time;
+				else
+					$this->_time = 0;
 			}
 			
 			/**
@@ -99,7 +103,12 @@
 			*/
 			
 			public function setTime($time=0){
-				$this->_time = $time;
+				if(CACHE_ENABLED == true){
+					$this->_time = $time;
+				}
+				else{
+					$this->_time = 0;
+				}
 			}
 
 			/**
