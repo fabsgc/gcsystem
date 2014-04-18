@@ -12,7 +12,7 @@ define('ASSET_PATH', 'asset/');
 define('APP_PATH', 'app/');
 define('SYSTEM_PATH', 'system/');
 define('LOG_PATH', SYSTEM_PATH.'log/');
-define('CACHE_PATH', APP_PATH.'cache/');
+define('CACHE_PATH', SYSTEM_PATH.'cache/');
 define('CONTROLLER_PATH', APP_PATH.'controller/');
 define('MODEL_PATH', APP_PATH.'model/');
 define('EVENT_PATH', APP_PATH.'event/');
