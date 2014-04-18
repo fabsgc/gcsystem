@@ -130,6 +130,28 @@
 					}
 				}
 			}
+
+			/**
+			 * Récupère toutes les phrases contenues dans le fichier (non parsées)
+			 * @access	public
+			 * @return array
+			 * @since 2.3
+			*/
+
+			public function loadAllSentence(){
+				$result = array();
+
+				if($this->_langFile==true){
+					$blog = $this->_domXml->getElementsByTagName('lang')->item(0);
+					$sentences = $blog->getElementsByTagName('sentence');
+					
+					foreach($sentences as $sentence){
+						$result[$sentence->getAttribute("id")] = $sentence->firstChild->nodeValue;
+					}
+
+					return $result;
+				}
+			}
 			
 			/**
 			 * Desctructeur

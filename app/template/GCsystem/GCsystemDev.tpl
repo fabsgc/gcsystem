@@ -99,11 +99,11 @@
 <div id="GCsysytem_dev">
 	<div id="GCsysytem_dev_logo"><img src="{{def:IMG_PATH}}GCsystem/logo.png"/></div>
 	<div class="GCsysytem_dev_content">
-		<div class="GCsysytem_dev_content_logo"><img src="{{def:IMG_PATH}}GCsystem/time.png" title="{{lang:executiontime}}"/><img src="{{def:IMG_PATH}}/GCsystem/memory.png" title="{{lang:memoireuse}}"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="{{def:IMG_PATH}}GCsystem/time.png" title="{{lang:gc_executiontime}}"/><img src="{{def:IMG_PATH}}/GCsystem/memory.png" title="{{lang:gc_memoireuse}}"/></div>
 		<div class="GCsysytem_dev_content_content" style="padding: 2px; width: 70px;">{timeexec} ms<br /><span style="position: relative; top: 10px;">{memory} kb</span></div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="{{def:IMG_PATH}}GCsystem/http.png" title="{{lang:fichierinclus}}"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="{{def:IMG_PATH}}GCsystem/http.png" title="{{lang:gc_fichierinclus}}"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone" style="width: 219px;">
 			{http}
@@ -111,7 +111,7 @@
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 275px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="{{def:IMG_PATH}}GCsystem/sql.png" title="{{lang:requetesql}}"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="{{def:IMG_PATH}}GCsystem/sql.png" title="{{lang:gc_requetesql}}"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone" style="width: 244px;">
 			{sql}
@@ -119,7 +119,7 @@
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 250px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="{{def:IMG_PATH}}GCsystem/tpl.png" title="{{lang:fichiertpl}}"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="{{def:IMG_PATH}}GCsystem/tpl.png" title="{{lang:gc_fichiertpl}}"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone" style="width: 219px;">
 			{tpl}
@@ -127,7 +127,7 @@
 		</div>
 	</div>
 	<div class="GCsysytem_dev_content" style="width: 200px; padding: 0px;">
-		<div class="GCsysytem_dev_content_logo"><img src="{{def:IMG_PATH}}GCsystem/arbo.png" title="{{lang:vargetpost}}"/></div>
+		<div class="GCsysytem_dev_content_logo"><img src="{{def:IMG_PATH}}GCsystem/arbo.png" title="{{lang:gc_vargetpost}}"/></div>
 		<div class="GCsysytem_dev_content_content">
 			<div id="GCsysytem_dev_content_zone"  style="width: 169px;">
 				{<gc:function name="nl2br" var="$arbo" />}

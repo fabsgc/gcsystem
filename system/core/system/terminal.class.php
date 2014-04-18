@@ -286,7 +286,7 @@
 							$monfichier = fopen(EVENT_PATH.$this->_commandExplode[2].EVENT_EXT.'.php', 'a');						
 								$t= new template(GCSYSTEM_PATH.'GCevent', 'GCevent', '0');
 								$t->assign(array(
-									'name'=> ucfirst($this->_commandExplode[2])
+									'name'=> $this->_commandExplode[2]
 								));
 								$t->setShow(FALSE);
 								fputs($monfichier, $t->show());

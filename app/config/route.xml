@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <routes>  
 	<route id="index2" url="(/*)" controller="index" action="" vars="" cache="0"/>
-	<route id="terminal" url="/terminal(/*)" controller="terminal" action="" vars="" cache="0"/>
-	<route id="terminal_terminal" url="/terminal_terminal\.html" controller="terminal" action="terminal" vars="lang" cache="0"/>
+	<route id="gcsystem_terminal" url="/gcs/terminal(/*)" controller="gcsystem" action="terminal" vars="" cache="0"/>
+	<route id="gcsystem_terminal_parse" url="/gcs/terminal_terminal\.html" controller="gcsystem" action="terminalParse" vars="lang" cache="0"/>
+	<route id="gcsystem_lang" url="/gcs/lang(/*)" controller="gcsystem" action="lang" vars="" cache="0"/>
 </routes>

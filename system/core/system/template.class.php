@@ -298,7 +298,7 @@
 				$this->_parseInclude();
 				$this->_parsevarsPhp();
 				$this->_parsevarAdd();
-				//$this->_parseCache();
+				$this->_parseCache();
 				$this->_parseGravatar();
 				$this->_parseUrlRegex();
 				$this->_parseDefine();
@@ -778,11 +778,14 @@
 			}
 
 			protected function _parseCache(){
-				$html = new htmlparser();
+				/*$html = new htmlparser();
 				$html->load($this->_contenu, false, false);
 				
 				foreach($html->find('gc:cache') as $element){
-					$element->innertext = preg_replace_callback('`^(.+)<id=(.+)><time=(.+)>$`isU', array('system\templateParser', '_parseCacheCallback'), $element->innertext.'<id='.$element->getAttribute('id').'><time='.$element->getAttribute('time').'>');
+					$element->innertext = preg_replace_callback(
+						'`^(.+)<id=(.+)><time=(.+)>$`isU', 
+						array('system\templateParser', '_parseCacheCallback'), 
+						$element->innertext.'<id='.$element->getAttribute('id').'><time='.$element->getAttribute('time').'>');
 				}
 
 				$this->_contenu = preg_replace(
@@ -792,7 +795,7 @@
 					),
 					array('', ''),
 					$html->outertext
-				);
+				);*/
 			}
 
 			protected function _parseCacheCallback($m){

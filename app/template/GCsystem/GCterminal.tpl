@@ -50,14 +50,14 @@
 					var command = $('#terminal-input-write').val();
 					adminTerminalLastCommand = command;
 
-					if(command.match(/^clear$/g)){
+					if(command.match(/^clear/g)){
 						$('#terminal').html('');
 					}
 					else if(command != ''){
 						$( document ).ready(function() {
 							$.ajax({
 								type: "POST",
-								url: '{{url:terminal_terminal}}',
+								url: '{{url:gcsystem_terminal_parse}}',
 								data: {
 									command : command
 								}

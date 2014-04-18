@@ -42,7 +42,7 @@ define('LOG_SQL', 'sql');
 define('LOG_CRONS', 'crons');
 
 define('FUNCTION_GENERIQUE', CONTROLLER_PATH.'function.php');
-define('CLASS_GENERAL', CLASS_PATH.CLASS_SYSTEM_PATH.'general.class.php');
+define('CLASS_GENERAL_INTERFACE', CLASS_PATH.CLASS_SYSTEM_PATH.'general.class.php');
 define('CLASS_ENGINE', CLASS_PATH.CLASS_SYSTEM_PATH.'engine.class.php');
 define('CLASS_CONTROLLER', CLASS_PATH.CLASS_SYSTEM_PATH.'controller.class.php');
 define('CLASS_MODEL', CLASS_PATH.CLASS_SYSTEM_PATH.'model.class.php');

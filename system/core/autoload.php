@@ -15,6 +15,8 @@
 
 		class autoloader{
 			public static function load($class){
+				$class = preg_replace('#'.preg_quote('\\').'#isU', '/', $class);
+
 				if(file_exists(CLASS_PATH.$class.'.class.php')){
 					include(CLASS_PATH.$class.'.class.php');
 				}
