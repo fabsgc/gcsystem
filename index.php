@@ -5,8 +5,8 @@ session_start();
  | ------------------------------------------------------
  | @file : index.php
  | @author : fab@c++
- | @description : Controlleur central de l'application
- | @version : 2.3 Bêta
+ | @description : contrôleur central de l'application
+ | @version : 2.4 bêta
  | ------------------------------------------------------
 \*/
 
@@ -19,9 +19,10 @@ $GLOBALS['controller'] = new system\engine(DEFAULTLANG);
 $GLOBALS['controller']->init();
 
 if(MAINTENANCE == false){ 
-	$GLOBALS['controller']->route(); $GLOBALS['controller']->run(); 
+	$GLOBALS['controller']->route(); 
+	$GLOBALS['controller']->run();
 }
-elseif(MAINTENANCE == true){ 
+elseif(MAINTENANCE == true){
 	$GLOBALS['controller']->setMaintenance(); 
 }
 

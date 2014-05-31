@@ -65,7 +65,7 @@
 			
 				$markup3Xml = $markupXml->getElementsByTagName('exception');
 
-				foreach ($markup3Xml as $cle => $val) {
+				foreach ($markup3Xml as $val) {
 					if($_GET['controller'] == $val->getAttribute('controller') && $_GET['action'] == $val->getAttribute('action')){
 						return true;
 					}
@@ -90,7 +90,7 @@
 			
 				$markup3Xml = $markupXml->getElementsByTagName('variable');
 
-				foreach ($markup3Xml as $cle => $val) {
+				foreach ($markup3Xml as $val) {
 					$this->_antispam['antispams']['config']['error']['template']['variable'][$val->getAttribute('name')]['type'] = $val->getAttribute('type');
 					$this->_antispam['antispams']['config']['error']['template']['variable'][$val->getAttribute('name')]['name'] = $val->getAttribute('name');
 					$this->_antispam['antispams']['config']['error']['template']['variable'][$val->getAttribute('name')]['value'] = $val->getAttribute('value');

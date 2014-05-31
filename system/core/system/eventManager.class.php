@@ -62,9 +62,9 @@
 				foreach ($this->_listeners as $listeners) {
 					foreach ($this->_events as $events) {
 						if(isset($listeners->implementedEvents()[$events->getName()])){
-							foreach ($listeners->implementedEvents()[$events->getName()] as $key => $event) {
+							foreach ($listeners->implementedEvents()[$events->getName()] as $event) {
 								if($events->getStatus() == event::START && method_exists($listeners, $event)){
-									ob_start ();
+									ob_start("ob_gzhandler");
 										$this->_addError('EVENT : lancement de l\'écouteur "'.get_class($listeners).'::'.$event.'" de l\'événement "'.$events->getName(), __FILE__, __LINE__, INFORMATION);
 										$events->setResult($listeners->$event($events), get_class($listeners).'::'.$event, get_class($listeners), $event);
 									ob_get_clean();

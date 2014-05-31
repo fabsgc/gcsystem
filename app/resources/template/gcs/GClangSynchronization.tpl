@@ -1,10 +1,10 @@
-<gc:include file="GCsystem/include/function" />
+<gc:include file="gcs/include/function" />
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
 		<title>GCsystem {{lang:gc_lang_synchronization_title}}</title>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="{{def:IMG_PATH}}gcsystem/logo.png" />
+		<link rel="icon" type="image/png" href="{{def:IMG_PATH}}gcs/logo.png" />
 	</head>
 	<body>
 		<style>
@@ -17,8 +17,15 @@
 		</style>
 		<header>
 			<div class="content">
-				<h1 style="float:left">{{lang:gc_lang_synchronization_title}}</h1>
-				<a class="button" onClick="save()" style="float:right; margin-top: 13px;">{{lang:gc_lang_synchronization_save}}</a>
+				<h1 style="float:left">
+					{{lang:gc_lang_synchronization_title}}
+					<gc:if cond="$_GET['lang']">
+						- {_GET['lang']}
+					</gc:if>
+				</h1>
+				<gc:if cond="$_GET['lang']">
+					<a class="button" onClick="save()" style="float:right; margin-top: 13px;">{{lang:gc_lang_synchronization_save}}</a>
+				</gc:if>
 			</div>
 		</header>
 		<div id="body">
@@ -53,7 +60,7 @@
 				</p>
 		</div>
 		<script type="text/javascript" src="{{def:JS_PATH}}jquery/jquery.min.js" ></script>
-		<script type="text/javascript">
+		<script type="text/javascript" defer>
 			$(document).ready(function(e){
 				updateHeight();
 				$(window).resize(function() {

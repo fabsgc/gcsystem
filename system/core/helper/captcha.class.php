@@ -13,12 +13,11 @@
 			/**
 			 * retourne l'image sans header
 			 * @access public
-			 * @return imagepng
+			 * @return string
 			 * @since 2.0
 			*/
 			
 			public static function show($mot, $property=array()){
-				$_i = 0;
 				$_mot = $mot;
 				
 				$_width = 10;
@@ -26,28 +25,13 @@
 				
 				$_backgroundImage = false;
 				$_background = array(255,255,255);
-				$_extension;
-				
-				$_font = false;
-				$_fontLink = '';
+
 				$_textColor = array(0,0,0);
 				$_textSize = 5;
 				$_textPos = array(0,0);
 				
 				$_hatching = false;
 				$_hatchingColor = array(50,50,50);
-				
-				$_xhatching = 0;
-				$_blur = false;
-				$_matrix_blur = array();
-				
-				$_colorhatchingAllocate;
-				$_colorBackgroundAllocate;
-				$_colorTextAllocate;
-				$_colorborderAllocate;
-				
-				$_border;
-				$_borderColor;
 				
 				foreach($property as $cle=>$valeur){
 					switch($cle){
@@ -92,24 +76,8 @@
 						case 'hatching' :
 							$_hatching = $valeur;
 						break;
-						
-						case 'blur' :
-							$_blur = true;
-						break;
-						
-						case 'font' :
-							$_font = true;
-							$_fontLink = $valeur;
-						break;
-						
-						case 'border' :
-							$_border = true;
-							$_borderColor = $valeur;
-						break;
 					}
 				}
-
-				$orange = imagecolorallocate($_img, 255, 128, 0);
 
 				if($_backgroundImage==true){
 					$_extension = substr($_background, -3 );
@@ -134,7 +102,7 @@
 						break;
 						
 						default :
-							$_addError('L\'extension n\est pas gérée', __FILE__, __LINE__, ERROR);
+							_addError('L\'extension n\est pas gérée', __FILE__, __LINE__, ERROR);
 						break;
 					}
 					
@@ -149,9 +117,7 @@
 				}
 				
 				$_colorhatchingAllocate = imagecolorallocate($_img, $_hatchingColor[0], $_hatchingColor[1], $_hatchingColor[2]);
-				$_colorborderAllocate = imagecolorallocate($_img, $_borderColor[0], $_borderColor[1], $_borderColor[2]);
-					
-				
+
 				if($_hatching==true){
 					for($_i=0; $_i<1; $_i++){
 						imageline($_img, 2,mt_rand(2,$_height), $_width - 2, mt_rand(2,$_height), $_colorhatchingAllocate);
@@ -161,12 +127,6 @@
 					{
 						imageline($_img, $_xhatching,2,$_xhatching-5,$_height, $_colorhatchingAllocate);
 					}
-				}
-				
-				if($_blur==true){
-					$_matrix_blur = array(array(1,1,1),
-											array(1,1,1),
-											array(1,1,1));
 				}
 				
 				return imagepng($_img);

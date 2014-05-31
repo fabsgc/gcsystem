@@ -32,7 +32,7 @@
 									if(class_exists($controller)){
 										$class = new $controller($this->_lang);
 										$class->setNameModel($controller);
-										ob_start ();
+										ob_start("ob_gzhandler");
 											$class->init();
 											if(is_callable(array($controller, 'action'.ucfirst($sentence->getAttribute("action"))))){
 												$action = 'action'.ucfirst($sentence->getAttribute("action"));
@@ -75,7 +75,7 @@
 			
 				$markup3Xml = $markupXml->getElementsByTagName('exception');
 
-				foreach ($markup3Xml as $cle => $val) {
+				foreach ($markup3Xml as $val) {
 					if($_GET['controller'] == $val->getAttribute('controller') && $_GET['action'] == $val->getAttribute('action')){
 						return true;
 					}
@@ -94,7 +94,7 @@
 					return true;
 				}
 				else{ 
-					$this->_addError('CRON : '.$this->useLang('controllernotfound', array('controller' => $controller)), __FILE__, __LINE__, FATAL);
+					$this->_addError('CRON : '.$this->useLang('gc_controllernotfound', array('controller' => $controller)), __FILE__, __LINE__, FATAL);
 					$this->_addError('CRON : Echec lors du chargement des fichiers "'.CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php" et "'.MODEL_PATH.$controller.MODEL_EXT.'.php"', __FILE__, __LINE__, FATAL);
 					return false;
 				}

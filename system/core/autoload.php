@@ -21,8 +21,8 @@
 					include(CLASS_PATH.$class.'.class.php');
 				}
 
-				if(file_exists(APP_PATH.$class.EVENT_EXT.'.php')){
-					include(APP_PATH.$class.EVENT_EXT.'.php');
+				if(file_exists(RESOURCE_PATH.$class.EVENT_EXT.'.php')){
+					include(RESOURCE_PATH.$class.EVENT_EXT.'.php');
 				}
 			}
 		}

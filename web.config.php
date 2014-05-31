@@ -4,7 +4,7 @@
  | @file : web.config.php
  | @author : fab@c++
  | @description : Configuration générale de l'application web et des connexions SQL
- | @version : 2.3 Bêta
+ | @version : 2.4 Bêta
  | ------------------------------------------------------
 \*/
 
@@ -15,14 +15,15 @@ define('LOG_PATH', SYSTEM_PATH.'log/');
 define('CACHE_PATH', SYSTEM_PATH.'cache/');
 define('CONTROLLER_PATH', APP_PATH.'controller/');
 define('MODEL_PATH', APP_PATH.'model/');
-define('EVENT_PATH', APP_PATH.'event/');
-define('APP_CONFIG_PATH', APP_PATH.'config/');
-define('TEMPLATE_PATH', APP_PATH.'template/');
+define('RESOURCE_PATH', APP_PATH.'resources/');
+define('EVENT_PATH', RESOURCE_PATH.'event/');
+define('APP_CONFIG_PATH', RESOURCE_PATH.'config/');
+define('TEMPLATE_PATH', RESOURCE_PATH.'template/');
 define('CLASS_PATH', SYSTEM_PATH.'core/');
-define('LIB_PATH', SYSTEM_PATH.'lib/');
-define('LANG_PATH', SYSTEM_PATH.'lang/');
+define('LIB_PATH', RESOURCE_PATH.'lib/');
+define('LANG_PATH', RESOURCE_PATH.'lang/');
 define('ERRORDOCUMENT_PATH', 'ErrorDocument/');
-define('GCSYSTEM_PATH', 'GCsystem/');
+define('GCSYSTEM_PATH', 'gcs/');
 define('CLASS_SYSTEM_PATH', 'system/');
 define('CLASS_HELPER_PATH', 'helper/');
 define('BACKUP_PATH', SYSTEM_PATH.'backup/');
@@ -42,7 +43,7 @@ define('LOG_SQL', 'sql');
 define('LOG_CRONS', 'crons');
 
 define('FUNCTION_GENERIQUE', CONTROLLER_PATH.'function.php');
-define('CLASS_GENERAL_INTERFACE', CLASS_PATH.CLASS_SYSTEM_PATH.'general.class.php');
+define('CLASS_GENERAL', CLASS_PATH.CLASS_SYSTEM_PATH.'general.class.php');
 define('CLASS_ENGINE', CLASS_PATH.CLASS_SYSTEM_PATH.'engine.class.php');
 define('CLASS_CONTROLLER', CLASS_PATH.CLASS_SYSTEM_PATH.'controller.class.php');
 define('CLASS_MODEL', CLASS_PATH.CLASS_SYSTEM_PATH.'model.class.php');
@@ -141,6 +142,10 @@ define('CONST_APP_PREFIXE', 'GCS_');
 /* le nom des fichiers de cache sera hashé ou non */
 define('CACHE_SHA1', false);
 
+/* dossiers des types de cache */
+define('CACHE_PATH_DEFAULT', CACHE_PATH.'/default/');
+define('CACHE_PATH_TEMPLATE', CACHE_PATH.'/template/');
+
 /* le nom des fichiers de cache sera hashé ou non */
 define('LOG_ENABLED', true);
 
@@ -152,6 +157,9 @@ define('MINIFY_OUTPUT_HTML', false);
 
 /* affiche les log d'erreurs [FATAL] (erreurs qui entravent gravement le fonctionnement de l'application) */
 define('DISPLAY_ERROR_FATAL', false);
+
+/* asset manager activé */
+define('ASSETMANAGER', true);
 
 /* à ne pas modifier */
 define('IMG_PATH', FOLDER.'/'.ASSET_PATH.'image/');

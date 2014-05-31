@@ -116,7 +116,7 @@
 								$t= new template($sentence->firstChild->nodeValue, $nom, 0, $this->_lang, template::TPL_STRING);
 								$t->assign(array($var));
 								$t->setShow(false);
-								$this->_content = $t->show();
+								$this->_content = $t->show(template::TPL_COMPILE_LANG);
 							}
 						}
 					}

@@ -232,6 +232,8 @@
 			}
 			
 			public function getErrorHtml(){
+                $retour = "";
+
 				foreach($this->_checkedAnswer as $valeur){
 					$retour .= $valeur.'<br />';
 				}

@@ -37,7 +37,7 @@
 			*/
 			
 			public function AddFtp($ftp, $connect = array()){
-				$this->_connexionId[$ftp] = array(
+				$this->_connexionId[''.$ftp.''] = array(
 					'host' => 'empty',
 					'port' => 21,
 					'timeout' => 90,
@@ -48,28 +48,28 @@
 				foreach ($connect as $key => $value) {
 					switch($key){
 						case 'host':
-							$this->_connexionId[$ftp][$key] = $value;
+							$this->_connexionId[''.$ftp.''][$key] = $value;
 						break;
 
 						case 'port':
-							$this->_connexionId[$ftp][$key] = $value;
+							$this->_connexionId[''.$ftp.''][$key] = $value;
 						break;
 
 						case 'timeout':
-							$this->_connexionId[$ftp][$key] = $value;
+							$this->_connexionId[''.$ftp.''][$key] = $value;
 						break;
 
 						case 'username':
-							$this->_connexionId[$ftp][$key] = $value;
+							$this->_connexionId[''.$ftp.''][$key] = $value;
 						break;
 
 						case 'password':
-							$this->_connexionId[$ftp][$key] = $value;
+							$this->_connexionId[''.$ftp.''][$key] = $value;
 						break;
 					}
 				}
 
-				$this->_connected[$ftp] = false;
+				$this->_connected[''.$ftp.''] = false;
 
 				return true;
 			}
@@ -84,17 +84,17 @@
 			*/
 
 			public function closeFtp($ftp){
-				if(isset($this->_connexionId[$ftp]) && $this->_connected[$ftp] == true){
+				if(isset($this->_connexionId[''.$ftp.'']) && $this->_connected[''.$ftp.''] == true){
 					ftp_close($this->_connexion);
 
-					unset($this->_connexionId[$ftp]);
-					unset($this->_connected[$ftp]);
+					unset($this->_connexionId[''.$ftp.'']);
+					unset($this->_connected[''.$ftp.'']);
 
 					return true;
 				}
-				elseif(isset($this->_connexionId[$ftp]) && $this->_connected[$ftp] == false){
-					unset($this->_connexionId[$ftp]);
-					unset($this->_connected[$ftp]);
+				elseif(isset($this->_connexionId[''.$ftp.'']) && $this->_connected[''.$ftp.''] == false){
+					unset($this->_connexionId[''.$ftp.'']);
+					unset($this->_connected[''.$ftp.'']);
 
 					return true;
 				}
@@ -124,7 +124,7 @@
 							if(ftp_put($this->_connexion, $to.$nom, $file, FTP_BINARY) == true){
 							}
 							else{
-								$this->_addError('La copie du fichier "'.$file.'" a échoué', __FILE__, __LINE__, ERROR);
+								$this->_addError('La copie du fichier "'.$file->getFileName().'" a échoué', __FILE__, __LINE__, ERROR);
 								return false;
 							}
 						}
@@ -132,7 +132,7 @@
 							if(ftp_put($this->_connexion, $to.$file->getFileName(), $file, FTP_BINARY) == true){
 							}
 							else{
-								$this->_addError('La copie du fichier "'.$file.'" a échoué', __FILE__, __LINE__, ERROR);
+								$this->_addError('La copie du fichier "'.$file->getFileName().'" a échoué', __FILE__, __LINE__, ERROR);
 								return false;
 							}
 						}
@@ -188,8 +188,6 @@
 			*/
 
 			public function getFileFromFtp($ftp, $file){
-				$fichier = '';
-
 				if($this->_connectFtp($ftp) == true){
 					if(ftp_nb_get ($this->_connexion, CACHE_PATH.'_temp_ftp.cache' , $file, FTP_BINARY, -1) == true){
 						return file_get_contents(CACHE_PATH.'_temp_ftp.cache');
@@ -246,28 +244,28 @@
 			*/
 
 			protected function _connectFtp($ftp){
-				if(isset($this->_connexionId[$ftp]) && $this->_connected[$ftp] == true){
+				if(isset($this->_connexionId[''.$ftp.'']) && $this->_connected[''.$ftp.''] == true){
 					return true; //on a déjà la bonne connexion
 				}
-				elseif(isset($this->_connexionId[$ftp]) && $this->_connected[$ftp] == false){ //on n'est pas encore connecté
+				elseif(isset($this->_connexionId[''.$ftp.'']) && $this->_connected[''.$ftp.''] == false){ //on n'est pas encore connecté
 					$this->_connexion = ftp_connect(
-						$this->_connexionId[$ftp]['host'], 
-						$this->_connexionId[$ftp]['port'],
-						$this->_connexionId[$ftp]['timeout']
+						$this->_connexionId[''.$ftp.'']['host'], 
+						$this->_connexionId[''.$ftp.'']['port'],
+						$this->_connexionId[''.$ftp.'']['timeout']
 					);
 
 					if($this->_connexion == true){
-						if(ftp_login($this->_connexion, $this->_connexionId[$ftp]['username'], $this->_connexionId[$ftp]['password']) == true){
-							$this->_connected[$ftp] = true;
+						if(ftp_login($this->_connexion, $this->_connexionId[''.$ftp.'']['username'], $this->_connexionId[''.$ftp.'']['password']) == true){
+							$this->_connected[''.$ftp.''] = true;
 							return true;
 						}
 						else{
-							$this->_addError('La connexion ftp de nom '.$ftp.' a échoué avec : username : '.$this->_connexionId[$ftp]['username'].', password : '.$this->_connexionId[$ftp]['password'], __FILE__, __LINE__, ERROR);
+							$this->_addError('La connexion ftp de nom '.$ftp.' a échoué avec : username : '.$this->_connexionId[''.$ftp.'']['username'].', password : '.$this->_connexionId[''.$ftp.'']['password'], __FILE__, __LINE__, ERROR);
 							return false;
 						}
 					}
 					else{
-						$this->_addError('La connexion ftp de nom '.$ftp.' a échoué avec : hôte : '.$this->_connexionId[$ftp]['host'].', port : '.$this->_connexionId[$ftp]['port'], __FILE__, __LINE__, ERROR);
+						$this->_addError('La connexion ftp de nom '.$ftp.' a échoué avec : hôte : '.$this->_connexionId[''.$ftp.'']['host'].', port : '.$this->_connexionId[''.$ftp.'']['port'], __FILE__, __LINE__, ERROR);
 						return false;
 					}
 				}

@@ -64,7 +64,7 @@
 						$d = date("d/m/Y \a H:i:s !",time());
 						$msg = sprintf("%s : Erreur [%d] (%s) dans le fichier %s a la ligne %d\n", $d, $errno, $errstr, $errfile, $errline);
 						
-						if(LOG_ENABLED == true) error_log($msg, 3, LOG_PATH."errors".LOG_EXT);
+						if(LOG_ENABLED == true && is_readable(LOG_PATH."errors".LOG_EXT)) error_log($msg, 3, LOG_PATH."errors".LOG_EXT);
 					break;
 				}
 

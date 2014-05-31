@@ -141,7 +141,7 @@
 			}
 			
 			public function addTemplate($template, $vars = array(), $lang = DEFAULTLANG){
-				$tpl = new \system\template($template, 'templatemail', '0', $this->_lang);
+				$tpl = new \system\template($template, 'templatemail', '0', $lang);
 				
 				foreach ($vars as $cle => $var){
 					$tpl->assign(array(

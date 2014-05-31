@@ -126,10 +126,10 @@
 					while($dossier = readdir($racine)){
 						if($dossier != '..' && $dossier != '.') {
 							if(is_dir($repertoire.'/'.$dossier)) {
-								$poids += $this->getSize($repertoire.'/'.$dossier);
+								$poids .= $this->getSize($repertoire.'/'.$dossier);
 							} 
 							else {
-								$poids += filesize($repertoire.'/'.$dossier);
+								$poids .= filesize($repertoire.'/'.$dossier);
 							}
 						}
 					}
@@ -235,7 +235,7 @@
 							} 
 						} 
 					}
-					$this->setDir($dest);
+					$this->setDir($src);
 					closedir ($dossier); 
 					return true;				
 				}

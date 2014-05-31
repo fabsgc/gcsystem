@@ -736,7 +736,7 @@
 	<div class="gc_bbcode_preview_zone" id="zone_{id}">
 	</div>
 </div>
-<script type="text/javascript">
+<script type="text/javascript" defer>
 	if(document.getElementById('{id}').value != ""){
 		bbcodePreview_{id}('{id}');
 	}

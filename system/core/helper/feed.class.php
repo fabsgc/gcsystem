@@ -460,13 +460,13 @@
 				$this->_rssArray[$nom]['header']['docs'] = $rss->getElementsByTagName('docs')->item(0)->nodeValue;
 				$this->_rssArray[$nom]['header']['ttl'] = $rss->getElementsByTagName('ttl')->item(0)->nodeValue;
 				
-				$this->_rssArray[$nom]['header']['image']['title'] = $this->_markupeXml = $rss->getElementsByTagName('image')->item(0)->getElementsByTagName('title')->item(0)->nodeValue;
-				$this->_rssArray[$nom]['header']['image']['url'] = $this->_markupeXml = $rss->getElementsByTagName('image')->item(0)->getElementsByTagName('url')->item(0)->nodeValue;
-				$this->_rssArray[$nom]['header']['image']['link'] = $this->_markupeXml = $rss->getElementsByTagName('image')->item(0)->getElementsByTagName('link')->item(0)->nodeValue;			
+				$this->_rssArray[$nom]['header']['image']['title'] = $rss->getElementsByTagName('image')->item(0)->getElementsByTagName('title')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['header']['image']['url'] = $rss->getElementsByTagName('image')->item(0)->getElementsByTagName('url')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['header']['image']['link'] = $rss->getElementsByTagName('image')->item(0)->getElementsByTagName('link')->item(0)->nodeValue;
 				
-				$this->_rssArray[$nom]['header']['rating'] = $nodeXml->getElementsByTagName('rating')->item(0)->nodeValue;
-				$this->_rssArray[$nom]['header']['textInput'] = $nodeXml->getElementsByTagName('textInput')->item(0)->nodeValue;
-				$this->_rssArray[$nom]['header']['skipDays'] = $nodeXml->getElementsByTagName('skipDays')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['header']['rating'] = $rss->getElementsByTagName('rating')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['header']['textInput'] = $rss->getElementsByTagName('textInput')->item(0)->nodeValue;
+				$this->_rssArray[$nom]['header']['skipDays'] = $rss->getElementsByTagName('skipDays')->item(0)->nodeValue;
 			}
 				
 			public function _setRssItem($nom, $rss){

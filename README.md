@@ -2,7 +2,7 @@ Informations :
 -----------
 
 * Open-Source depuis sa création
-* Version  : 2.3 Bêta
+* Version  : 2.4 Bêta
 * Créateur : fab@c++
 * Contributeurs : Lucas5190, t1307
 * Description : framework PHP MVC de développement d'applications Web. 

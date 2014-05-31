@@ -14,10 +14,10 @@
 			protected $_firewall                        ;
 			protected $_antispam                        ;
 			protected $_nameModel          = ""         ; //pour les crons lors de l'init du model, on ne peut pas utiliser $_GET['controller']
-			protected $model               = ""         ; //instance du model
-			protected $lang                = DEFAULTLANG; //lang par défaut
-			protected $bdd                              ; //instance PDO
-			protected $event                            ; //instance du gestionnaire d'évènement
+			public $model                               ; //instance du model
+			public $lang                   = DEFAULTLANG; //lang par défaut
+			public $bdd                                 ; //instance PDO
+			public $event                               ; //instance du gestionnaire d'évènement
 			
 			/**
 			 * Constructeur de la classe. initialisation du contrôleur de l'application
@@ -140,11 +140,11 @@
 				$this->langInstance = new lang($this->lang);
 			}
 			
-			final protected function useLang($sentence, $var = array()){
+			final public function useLang($sentence, $var = array()){
 				return $this->langInstance->loadSentence($sentence, $var);
 			}
 			
-			final protected function getLang(){
+			final public function getLang(){
 				return $this->lang;
 			}
 			
@@ -153,16 +153,16 @@
 				$GLOBALS['appDev']->setShow($set);
 			}
 			
-			final protected function getDevTool($set){
+			final protected function getDevTool(){
 				return $this->_devTool;
 			}
 			
-			final protected function setLang($lang){
+			final public function setLang($lang){
 				$this->lang=$lang;
 				$this->langInstance->setLang($this->lang);
 			}
 			
-			final protected function showDefault(){
+			final public function showDefault(){
 				$t= new template(GCSYSTEM_PATH.'GCnewcontroller', 'GCcontroller', '0');
 				$t->assign(array('controller' => $_GET['controller']));
 				$t->show();
@@ -180,7 +180,7 @@
 			*/
 
 			public function __desctuct(){
-				foreach ($this->bdd as $key => $value) {
+				foreach ($this->bdd as $value) {
 					$value->closeCursor();
 				}
 			}

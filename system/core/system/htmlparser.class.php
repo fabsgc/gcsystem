@@ -402,7 +402,7 @@
 				if (isset($this->_[HDOM_INFO_INNER]))
 				{
 					// If it's a br tag...  don't return the HDOM_INNER_INFO that we may or may not have added.
-					if ($this->tag != "br")
+					if ($this->tag != "br" && $this->tag != "gc:function")
 					{
 						$ret .= $this->_[HDOM_INFO_INNER];
 					}
@@ -1134,7 +1134,7 @@
 			}
 
 			// prepare HTML data and init everything
-			protected function prepare($str, $lowercase=true, $stripRN=true, $defaultBRText=DEFAULT_BR_TEXT, $defaultSpanText=DEFAULT_SPAN_TEXT)
+			protected function prepare($str, $lowercase=true, $stripRN=false, $defaultBRText=DEFAULT_BR_TEXT, $defaultSpanText=DEFAULT_SPAN_TEXT)
 			{
 				$this->clear();
 

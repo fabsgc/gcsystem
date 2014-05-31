@@ -250,12 +250,12 @@
 						switch($fetch){
 							case self::PARAM_FETCH :
 								$this->_cache->setVal($this->_data);
-								$this->_cache->setCache($this->_data);
+								$this->_cache->setCache();
 								return $this->_data; break;
 							break;
 							case self::PARAM_FETCHCOLUMN : 
 								$this->_cache->setVal($this->_data);
-								$this->_cache->setCache($this->_data);
+								$this->_cache->setCache();
 								return $this->_data; 
 							break;
 							case self::PARAM_FETCHINSERT : return true; break;

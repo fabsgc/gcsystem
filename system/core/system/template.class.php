@@ -27,6 +27,7 @@
 			const TPL_STRING               = 2          ;    //on peut charger un tpl à partir d'une chaîne de caractères
 			const TPL_COMPILE_ALL          = 1          ;    //du fait du système d'include, on compile soit les fichiers en entier soit juste les balises include
 			const TPL_COMPILE_INCLUDE      = 2          ;
+			const TPL_COMPILE_LANG         = 3          ;
 			
 			public  function __construct($file="", $nom="", $timecache=0, $lang="fr", $stream = self::TPL_FILE){
 				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
@@ -46,10 +47,14 @@
 							$this->_name=$nom;
 							$this->_timeCache=$timecache;
 
+							if (!file_exists(CACHE_PATH_TEMPLATE)) {
+								mkdir(CACHE_PATH_TEMPLATE, 0777, true);
+							}
+
 							if(CACHE_SHA1 == 'true')
-								$this->_fileCache=CACHE_PATH.sha1('template_'.$this->_name.'.tpl.compil.php.cache');
+								$this->_fileCache=CACHE_PATH_TEMPLATE.sha1('template_'.$this->_name.'.tpl.compil.php.cache');
 							else
-								$this->_fileCache=CACHE_PATH.'template_'.$this->_name.'.tpl.compil.php.cache';
+								$this->_fileCache=CACHE_PATH_TEMPLATE.'template_'.$this->_name.'.tpl.compil.php.cache';
 
 							$this->_setParser();
 							$this->_addError('le fichier de template "'.$this->_name.'" ("'.$this->_file.'") a bien été chargé.', __FILE__, __LINE__, INFORMATION);
@@ -58,7 +63,7 @@
 							$this->_addError('le fichier de template "'.$this->_name.'" ("'.$this->_file.'") spécifié n\'a pas été trouvé.', __FILE__, __LINE__, FATAL);
 							$this->_name=$nom;
 							$this->_timeCache=$timecache;
-							$this->_fileCache=CACHE_PATH.'template_'.$this->_name.'.tpl.compil.php.cache';
+							$this->_fileCache=CACHE_PATH_TEMPLATE.'template_'.$this->_name.'.tpl.compil.php.cache';
 							if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 							$this->_setParser();
 						}
@@ -70,9 +75,9 @@
 						$this->_content = $file;
 
 						if(CACHE_SHA1 == 'true')
-							$this->_fileCache=CACHE_PATH.sha1('template_'.$this->_name.'.tpl.compil.php.cache');
+							$this->_fileCache=CACHE_PATH_TEMPLATE.sha1('template_'.$this->_name.'.tpl.compil.php.cache');
 						else
-							$this->_fileCache=CACHE_PATH.'template_'.$this->_name.'.tpl.compil.php.cache';
+							$this->_fileCache=CACHE_PATH_TEMPLATE.'template_'.$this->_name.'.tpl.compil.php.cache';
 
 						$this->_setParser();
 						$this->_addError('le fichier de template "'.$this->_name.'" (chaîne de caractères) a bien été chargé.', __FILE__, __LINE__, INFORMATION);
@@ -147,6 +152,10 @@
 					case self::TPL_COMPILE_INCLUDE:
 						return $this->_variable.$this->_refParser->parseNoCall($contenu);
 					break;
+
+					case self::TPL_COMPILE_LANG:
+						return $this->_variable.$this->_refParser->parseLang($contenu);
+					break;
 				}
 			} 
 			
@@ -199,7 +208,7 @@
 						$this->_timeFile=filemtime($this->_fileCache);
 
 						if(($this->_timeFile+$this->_timeCache) > time()){ //cache non périmé
-							ob_start ();
+							ob_start("ob_gzhandler");
 								foreach ($this->vars as $cle => $valeur){
 									${$cle} = $valeur;
 								}
@@ -213,7 +222,7 @@
 							$this->_contentCompiled=$this->_compile($this->_content, $typeCompile);
 							$this->_saveCache($this->_contentCompiled);
 
-							ob_start ();
+							ob_start("ob_gzhandler");
 								foreach ($this->vars as $cle => $valeur){
 									${$cle} = $valeur;
 								}
@@ -228,12 +237,13 @@
 						$this->_contentCompiled=$this->_compile($this->_content, $typeCompile);
 						$this->_saveCache($this->_contentCompiled);
 
-						ob_start ();
+						ob_start("ob_gzhandler");
 							foreach ($this->vars as $cle => $valeur){
 								${$cle} = $valeur;
 							}
 
-							include($this->_fileCache);
+							if($typeCompile == self::TPL_COMPILE_ALL)
+								include($this->_fileCache);
 						$out = ob_get_contents();
 						ob_get_clean();
 
@@ -263,7 +273,7 @@
 			
 			/// les balises à parser
 			protected $bal= array(
-				'vars'           => array('{', '}', '{$', '}', '{{', '}}', 'variable', '{{gravatar:', '}}', '{{url:', '}}', '{{def:', '}}', '{{php:',  '}}', '{{lang:', '}}', '{{lang[template]:'),  // vars
+				'vars'           => array('{', '}', '{$', '}', '{{', '}}', 'variable', '{{gravatar:', '}}', '{{url:', '}}', '{{def:', '}}', '{{php:',  '}}', '{{lang:', '}}', '{{lang[template]:', '{{url[absolute]', '}}'),  // vars
 				'include'        => array('include', 'file', 'cache'),                   // include
 				'cond'           => array('if', 'elseif', 'else', 'cond'),               // condition
 				'foreach'        => array('foreach', 'var', 'as', 'foreachelse'),        // boucle tableau
@@ -276,7 +286,9 @@
 				'block'          => array('block', 'name'),                              // block de code
 				'template'       => array('template', 'name', 'vars'),                   // fonction de template
 				'call'           => array('call', 'block', 'template'),                  // fonction d'appel (block et template)
-				'cache'          => array('cache', 'id', 'time'));                 			 // gestion des blocs mis en cache inline
+				'cache'          => array('cache', 'id', 'time'),                        // gestion des blocs mis en cache inline
+				'assetManager'   => array('asset', 'type', 'files', 'cache'),            // gestion des fichiers css/js
+				'minify'   		 => array('minify'));                                    // minifier des portions de code
 			
 			public  function __construct(template &$tplGC, $lang = ""){
 				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
@@ -301,6 +313,7 @@
 				$this->_parseCache();
 				$this->_parseGravatar();
 				$this->_parseUrlRegex();
+				$this->_parseUrlRegexAbolute();
 				$this->_parseDefine();
 				$this->_parseDefineClass();
 				$this->_parseForeach();
@@ -319,6 +332,8 @@
 				$this->_parseBlock();
 				$this->_parseTemplate();
 				$this->_parseCall();
+				$this->_parseAssetManager();
+				$this->_parseMinify();
 				$this->_parseDebugEnd();
 				return $this->_contenu;
 			}
@@ -332,6 +347,7 @@
 				$this->_parseCache();
 				$this->_parseGravatar();
 				$this->_parseUrlRegex();
+				$this->_parseUrlRegexAbolute();
 				$this->_parseDefine();
 				$this->_parseDefineClass();
 				$this->_parseForeach();
@@ -345,6 +361,32 @@
 				$this->_parseCom();
 				$this->_parseFunc();
 				$this->_parseSpaghettis();
+				$this->_parseLang();
+				$this->_parseException();
+				$this->_parseBlock();
+				$this->_parseCall();
+				$this->_parseAssetManager();
+				$this->_parseMinify();
+				$this->_parseDebugEnd();
+				return $this->_contenu;
+			}
+
+			public function parseLang($c){
+				$this->_contenu=$c;
+				$this->_parseDebugStart();
+				$this->_parseInclude();
+				$this->_parsevarsPhp();
+				$this->_parsevarAdd();
+				$this->_parseGravatar();
+				$this->_parseUrlRegex();
+				$this->_parseUrlRegexAbolute();
+				$this->_parseDefine();
+				$this->_parseDefineClass();
+				$this->_parsevarsExist();
+				$this->_parsevars();
+				$this->_parsevarFunc();
+				$this->_parseCond();
+				$this->_parseFunc();
 				$this->_parseLang();
 				$this->_parseException();
 				$this->_parseDebugEnd();
@@ -563,7 +605,7 @@
 			}
 
 			protected function _parseVarAddCallBack($m){
-				ob_start ();
+				ob_start("ob_gzhandler");
 					eval('echo '.$m[2].';');
 				$out = ob_get_contents();
 				ob_get_clean();
@@ -670,6 +712,17 @@
 					array('system\templateParser', '_parseUrlRegexCallback'), $this->_contenu);
 				}
 			}
+
+			protected function _parseUrlRegexAbolute(){
+				if(preg_match('`'.preg_quote($this->bal['vars'][18]).'([\w]+):(.*)'.preg_quote($this->bal['vars'][19]).'`sU', $this->_contenu)){
+					$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][9]).'(.*):(.+)'.preg_quote($this->bal['vars'][10]).'`sU',
+					array('system\templateParser', '_parseUrlRegexCallback'), $this->_contenu);
+				}
+				else{
+					$this->_contenu = preg_replace_callback('`'.preg_quote($this->bal['vars'][18]).'(.*)'.preg_quote($this->bal['vars'][19]).'`sU',
+					array('system\templateParser', '_parseUrlRegexCallback'), $this->_contenu);
+				}
+			}
 			
 			protected function _parseUrlRegexCallback($m){
 				if(isset($m[2])) $vars = explode(',', $m[2]);
@@ -705,6 +758,10 @@
 				$array = preg_replace('#,\)#isU', ')', $array);
 
 				return '<?php echo $this->getUrl(\''.$m[1].'\', '.$array.'); ?>';
+			}
+
+			protected function _parseUrlRegexAbsoluteCallback($m){
+				return preg_replace('#\); \?>#isU', ', true); ?>', $this->_parseUrlRegexCallback($m));
 			}
 
 			protected function _parseBlock(){
@@ -775,6 +832,67 @@
 				$args = substr($args, 0, strlen($args)-2);
 				
 				return '<?php (template'.$m[1].'::'.$m[1].'('.$args.')); ?>';
+			}
+
+			protected function _parseAssetManager(){
+				$this->_contenu = 
+				preg_replace_callback('`<'.$this->_name.preg_quote($this->bal['assetManager'][0]).
+					$this->_spaceR.preg_quote($this->bal['assetManager'][1]).$this->_space.'='.$this->_space.'"'.$this->_space.'(.+)'.$this->_space.'"'.        
+					$this->_spaceR.preg_quote($this->bal['assetManager'][2]).$this->_space.'='.$this->_space.'"'.$this->_space.'(.+)'.$this->_space.'"'.
+					$this->_spaceR.preg_quote($this->bal['assetManager'][3]).$this->_space.'='.$this->_space.'"'.$this->_space.'(.+)'.$this->_space.'"'.
+				   	$this->_space.'/>`isU', array('system\templateParser', '_parseAssetManagerCallback'), $this->_contenu);
+			}
+
+			protected function _parseAssetManagerCallback($m){
+				if(ASSETMANAGER == true){
+					$data = array(
+						'type' => $m[1],
+						'cache' => $m[3],
+						'files' => explode(',', $m[2]));
+
+					$asset = new \system\assetManager($data);
+
+					if($m[1] == 'css'){
+						return '<link href="{{url:gcsystem_asset_manager:\''.$asset->getId().'\',\''.$asset->getType().'\'}}" rel="stylesheet" media="screen" type="text/css" />';
+					}
+					else if($m[1] == 'js'){
+						return '<script type="text/javascript" defer src="{{url:gcsystem_asset_manager:\''.$asset->getId().'\',\''.$asset->getType().'\'}}" ></script>';
+					}
+				}
+				else{
+					$files = explode(',', $m[2]);
+
+					foreach ($files as $key => $value) {
+						$value = preg_replace('#\\n#isU', '', $value);
+						$value = preg_replace('#\\r#isU', '', $value);
+						$value = preg_replace('#\\t#isU', '', $value);
+
+						if($m[1] == 'css'){
+							$content .= '<link href="/'.ASSET_PATH.trim($value).'" rel="stylesheet" media="screen" type="text/css" />';
+						}
+						else{
+							$content .= '<script type="text/javascript" defer src="/'.ASSET_PATH.trim($value).'"></script>';
+						}
+					}
+
+					return $content;
+				}
+			}
+
+			protected function _parseMinify(){
+				$this->_contenu = preg_replace_callback(
+					'`<'.$this->_name.preg_quote($this->bal['minify'][0]).$this->_space.'>(.*)</'.$this->_name.preg_quote($this->bal['minify'][0]).$this->_space.'>`isU', array('system\templateParser', '_parseMinifyCallback'), $this->_contenu);
+			}
+
+			protected function _parseMinifyCallback($m){
+				if(MINIFY_OUTPUT_HTML == true){
+					//$m[1] = preg_replace('#(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)#isU', "", $m[1]);
+					$m[1] = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $m[1]);
+					$m[1] = str_replace(': ', ':', $m[1]);
+					$m[1] = str_replace(array("\t", '  ', '    ', '    '), '', $m[1]);
+				}
+
+				return $m[1];
 			}
 
 			protected function _parseCache(){

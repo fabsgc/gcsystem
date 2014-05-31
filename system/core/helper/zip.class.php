@@ -151,9 +151,9 @@
 			*/
 
 		 	public function putFileToZip($path, $option = self::NOPUTDIR, $filter = array()){
-				$zip = new ZipArchive();
+				$zip = new \ZipArchive();
 
-			  	if($zip->open($this->_filePath, ZipArchive::CREATE) == true || $zip->open($this->_filePath) == TRUE){
+			  	if($zip->open($this->_filePath, \ZipArchive::CREATE) == true || $zip->open($this->_filePath) == TRUE){
 					if(preg_match('#\/$#i', $path) && file_exists($path)){ //on doit copier un répertoire
 						$dir = new dir($path);
 						foreach ($dir->getDirArboContent() as $key => $value){

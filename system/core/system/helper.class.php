@@ -36,7 +36,7 @@
 						}
 					}
 					
-					foreach($this->_include as $cle => $val){
+					foreach($this->_include as $val){
 						if($val['enabled'] == 'true'){
 							if($val['include'] == '*'){ //on inclut tout
 								if(file_exists($val['access'])){
@@ -48,7 +48,6 @@
 								}
 							}
 							elseif(preg_match('#no\[(.*)\]#isU', $val['include'])){ //on vérifie si le contrôleur n'en fait pas partie
-								$controller = array();
 								$controller = explode(',',  preg_replace('#no\[(.*)\]#isU', '$1', $val['include']));
 								
 								if(!in_array($_GET['controller'], $controller)){
@@ -61,7 +60,6 @@
 								}
 							}
 							elseif(preg_match('#yes\[(.*)\]#isU', $val['include'])){ //on vérifie si le contrôleur en fait partie
-								$controller = array();
 								$controller = explode(',',  preg_replace('#yes\[(.*)\]#isU', '$1', $val['include']));
 								
 								if(in_array($_GET['controller'], $controller)){

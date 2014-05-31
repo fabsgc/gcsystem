@@ -132,6 +132,8 @@
 			*/
 			
 			public function getInsulteHtml(){
+                $val = "";
+
 				foreach($this->_parseInsulte as $valeur){
 					$val .=$valeur.'<br />';
 				}
@@ -161,7 +163,7 @@
 			*/
 			
 			public function setMaxWord($max){
-				$this->_maxWord = intval($maxu);
+				$this->_maxWord = intval($max);
 			}
 			
 			/**

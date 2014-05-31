@@ -70,7 +70,7 @@
 				foreach ($this->_security['firewall']['config']['login']['source']['vars'] as $key => $value) {
 					if(preg_match('#^\$#isU', $value)){
 
-						ob_start ();
+						ob_start("ob_gzhandler");
 							eval('echo '.$value.';');
 							$this->_security['firewall']['config']['login']['source']['vars'][$key] = ob_get_contents();
 						ob_get_clean();
@@ -89,7 +89,7 @@
 				foreach ($this->_security['firewall']['config']['default']['source']['vars'] as $key => $value) {
 					if(preg_match('#^\$#isU', $value)){
 
-						ob_start ();
+						ob_start("ob_gzhandler");
 							eval('echo '.$value.';');
 							$this->_security['firewall']['config']['default']['source']['vars'][$key] = ob_get_contents();
 						ob_get_clean();
@@ -148,7 +148,7 @@
 				$node3Xml = $node2Xml->getElementsByTagName('access')->item(0);
 				$markupXml = $node3Xml->getElementsByTagName('url');
 				
-				foreach($markupXml as $cle => $val){
+				foreach($markupXml as $val){
 					if($val->getAttribute('id') == $_GET['pageid']){
 						$this->_security['firewall']['access']['url']['id'] = $val->getAttribute('id');
 						$this->_security['firewall']['access']['url']['connected'] = $val->getAttribute('connected');
@@ -156,12 +156,12 @@
 						$this->_id = $val->getAttribute('id');
 
 						if(count($access) > 0){
-							foreach($access as $cle => $val){
-								if($val == '*'){
-									$this->_security['firewall']['access']['url']['access'][$val] = $val;
+							foreach($access as $val2){
+								if($val2 == '*'){
+									$this->_security['firewall']['access']['url']['access'][$val2] = $val2;
 								}
 								else{
-									$this->_security['firewall']['access']['url']['access'][$val] = $this->_security['roles_hierarchy']['role_hierarchy'][$val];
+									$this->_security['firewall']['access']['url']['access'][$val2] = $this->_security['roles_hierarchy']['role_hierarchy'][$val2];
 								}
 							}
 						}
@@ -198,7 +198,7 @@
 										}
 										else{
 											$t = new template($this->_security['firewall']['config']['forbidden']['template']['src'], 'GCfirewallForbiddenGrade', 0);
-											foreach($this->_security['firewall']['config']['forbidden']['template']['variable'] as $cle => $val){
+											foreach($this->_security['firewall']['config']['forbidden']['template']['variable'] as $val){
 												if($val['type'] == 'var'){
 													$t->assign(array($val['name']=>$val['value']));
 												}
@@ -259,7 +259,7 @@
 						else{
 							$t = new template($this->_security['firewall']['config']['csrf']['template']['src'], 'GCfirewallForbiddenCsrf', 0, $this->_lang);
 											
-							foreach($this->_security['firewall']['config']['csrf']['template']['variable'] as $cle => $val){
+							foreach($this->_security['firewall']['config']['csrf']['template']['variable'] as $val){
 								if($val['type'] == 'var'){
 									$t->assign(array($val['name']=>$val['value']));
 								}
@@ -327,7 +327,7 @@
 				//renvoie true si le statut du membre est présent dans la liste des statuts autorisés false dans l'autre cas
 				if((isset($_SESSION[''.$this->_security['roles_hierarchy']['name'].'']) 
 					&& in_array($_SESSION[$this->_security['roles_hierarchy']['name']], $this->_security['firewall']['access']['url']['access'])) 
-					|| (isset($this->_security['firewall']['access']['url']['access']['*']) && $this->_security['firewall']['access']['url']['access']['*'] == '*')){
+					|| (isset($this->_security['firewall']['access']['url']['access']['*']))){
 					return true;
 				}
 				else{

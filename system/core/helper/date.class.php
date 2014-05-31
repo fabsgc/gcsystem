@@ -130,7 +130,7 @@
 			}
 			
 			public function getDateFr($time=NULL, $format=NULL, $param = self::PARAM_TIMESTAMP){
-				if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
+				if($param == self::PARAM_DATETIME){ $time = $this->_getDatetoTimestamp($time); }
 				$time = intval($time);
 				if($time == NULL) $time = time();
 				if($format == NULL) $format = self::DATE_DEFAULT;
@@ -142,7 +142,7 @@
 			}
 			
 			public function getDateEn($time=NULL, $format=NULL, $param = self::PARAM_TIMESTAMP){
-				if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
+				if($param == self::PARAM_DATETIME){ $time = $this->_getDatetoTimestamp($time); }
 				$time = intval($time);
 				if($time == NULL) $time = time();
 				if($format == NULL) $format = self::DATE_DEFAULT;
@@ -154,7 +154,7 @@
 			}
 			
 			public function getDateNl($time=NULL, $format=NULL, $param = self::PARAM_TIMESTAMP){
-				if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
+				if($param == self::PARAM_DATETIME){ $time = $this->_getDatetoTimestamp($time); }
 				$time = intval($time);
 				if($time == NULL) $time = time();
 				if($format == NULL) $format = self::DATE_DEFAULT;
@@ -166,7 +166,7 @@
 			}
 			
 			public function getDateDe($time=NULL, $format=NULL, $param = self::PARAM_TIMESTAMP){
-				if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
+				if($param == self::PARAM_DATETIME){ $time = $this->_getDatetoTimestamp($time); }
 				$time = intval($time);
 				if($time == NULL) $time = time();
 				if($format == NULL) $format = self::DATE_DEFAULT;
@@ -178,7 +178,7 @@
 			}
 			
 			public function getDateEs($time=NULL, $format=NULL, $param = self::PARAM_TIMESTAMP){
-				if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
+				if($param == self::PARAM_DATETIME){ $time = $this->_getDatetoTimestamp($time); }
 				$time = intval($time);
 				if($time == NULL) $time = time();
 				if($format == NULL) $format = self::DATE_DEFAULT;
@@ -190,14 +190,14 @@
 			}
 			
 			public function getDecalTimeZone($time=NULL, $param = self::PARAM_TIMESTAMP){
-				if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
+				if($param == self::PARAM_DATETIME){ $time = $this->_getDatetoTimestamp($time); }
 				$time = intval($time);
 				if($time == NULL) $time = time();
 				return date('Z', $time);
 			}
 			
 			public function getAge($time=NULL, $param = self::PARAM_TIMESTAMP){
-				if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
+				if($param == self::PARAM_DATETIME){ $time = $this->_getDatetoTimestamp($time); }
 				$time = intval($time);
 				if($time == NULL) $time = time();
 				
@@ -212,7 +212,7 @@
 			
 			//by Lucas5190 
 			public function getAgoFr($time=NULL, $time2=NULL, $param = self::PARAM_TIMESTAMP){
-				if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); $time2 = _getDatetoTimestamp($time2); }
+				if($param == self::PARAM_DATETIME){ $time = $this->_getDatetoTimestamp($time); $time2 = $this->_getDatetoTimestamp($time2); }
 				$time = intval($time); $time2 = intval($time2);
 				if($time == NULL) $time = time(); if($time2 == NULL) $time2 = time();
 				
@@ -262,7 +262,7 @@
 			}
 			
 			public function isSummer($time=NULL, $param = self::PARAM_TIMESTAMP){
-				if($param == self::PARAM_DATETIME){ $time = _getDatetoTimestamp($time); }
+				if($param == self::PARAM_DATETIME){ $time = $this->_getDatetoTimestamp($time); }
 				$time = intval($time);
 				if($time == NULL) $time = time();
 				
@@ -270,14 +270,12 @@
 					else return false;
 			}
 			
-			public function getDayInMonth($time="", $month=""){
+			public function getDayInMonth($month=""){
 				if ($month < 1 OR $month > 12){
 					return 0;
 				}
 
-				if (!is_numeric($year) OR strlen($year)!= 4){
-					$year = date('Y');
-				}
+                $year = date('Y');
 
 				if ($month == 2){
 					if ($year % 400 == 0 OR ($year % 4 == 0 AND $year % 100 != 0)){

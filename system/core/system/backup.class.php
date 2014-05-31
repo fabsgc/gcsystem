@@ -32,8 +32,8 @@
 			public function addBackup($path = '', $nom = ''){ //path est le répertoire ou le fichier à sauvegarder
 				if(file_exists($path)){
 					if(!file_exists(BACKUP_PATH.$nom.'.zip')){
-						$zip = new zip(BACKUP_PATH.$nom.'.zip');
-						$zip->putFileToZip($path, zip::PUTDIR);
+						$zip = new \helper\zip(BACKUP_PATH.$nom.'.zip');
+						$zip->putFileToZip($path, \helper\zip::PUTDIR);
 						return true;
 					}
 					else{
@@ -76,7 +76,7 @@
 
 			public function seeBackup($nom = ''){ //on donne le nom du zip sans l'extension
 				if(file_exists(BACKUP_PATH.$nom.'.zip')){
-					$zip = new zip(BACKUP_PATH.$nom.'.zip');
+					$zip = new \helper\zip(BACKUP_PATH.$nom.'.zip');
 					return $zip->getContentZip();
 				}
 				else{
@@ -96,11 +96,11 @@
 
 			public function installBackup($nom = '', $to = ''){ //on donne le nom du zip sans l'extension
 				if(file_exists(BACKUP_PATH.$nom.'.zip')){
-					$zip = new zip(BACKUP_PATH.$nom.'.zip');
-					$dir = new dir($to);
+					$zip = new \helper\zip(BACKUP_PATH.$nom.'.zip');
+					$dir = new \helper\dir($to);
 
 					if($dir->getExist() == true){
-						if($zip->putFileToFtp($to, zip::PUTDIR) == true){
+						if($zip->putFileToFtp($to, \helper\zip::PUTDIR) == true){
 							return true;
 						}else{
 							return false;
@@ -128,7 +128,7 @@
 			*/
 
 			public function listBackup(){ //liste tous les backups
-				$dir = new dir(BACKUP_PATH);
+				$dir = new \helper\dir(BACKUP_PATH);
 
 				if($dir->getExist() == true){
 					return $dir->getDirArbo();
@@ -149,7 +149,7 @@
 			public function getError(){
 				$result = "";
 
-				foreach ($this->_error as $key => $value) {
+				foreach ($this->_error as $value) {
 					$result .= '<br />><span style="color: red"> '.$value.'</span>';
 				}
 

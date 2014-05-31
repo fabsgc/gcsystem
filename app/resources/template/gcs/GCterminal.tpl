@@ -35,6 +35,7 @@
 				position: relative;
 				top: -6px;
 				outline: none;
+				left: 3px;
 			}
 			#terminal{
 				width: 100%;
@@ -50,7 +51,7 @@
 					var command = $('#terminal-input-write').val();
 					adminTerminalLastCommand = command;
 
-					if(command.match(/^clear/g)){
+					if(command.match(/^clear$/g)){
 						$('#terminal').html('');
 					}
 					else if(command != ''){

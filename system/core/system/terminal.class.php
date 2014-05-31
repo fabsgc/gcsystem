@@ -82,7 +82,7 @@
 			}
 
 			public function parse(){
-				if((preg_match('#connect (.+)#', $this->_command) && isset($_SESSION['GC_terminalMdp']) && $_SESSION['GC_terminalMdp']==0) || (preg_match('#connect (.+)#', $this->_command) && empty($_SESSION['GC_terminalMdp']))){
+				if((preg_match('#login (.+)#', $this->_command) && isset($_SESSION['GC_terminalMdp']) && $_SESSION['GC_terminalMdp']==0) || (preg_match('#login (.+)#', $this->_command) && empty($_SESSION['GC_terminalMdp']))){
 					if(TERMINAL_MDP == $this->_commandExplode[1]){
 						$this->_result = '<br />><span style="color: chartreuse;"> Le mot de passe est correct</span>';
 						$_SESSION['GC_terminalMdp'] = 1;
@@ -213,10 +213,10 @@
 									$markupXml->setAttribute("id", $this->_commandExplode[2]);
 									
 									if(isset($this->_commandExplode[6])){
-										$markupXml->setAttribute("connected", $this->_commandExplode[6]);
+										$markupXml->setAttribute("logined", $this->_commandExplode[6]);
 									}
 									else{
-										$markupXml->setAttribute("connected", '*');
+										$markupXml->setAttribute("logined", '*');
 									}
 									
 									if(isset($this->_commandExplode[7])){
@@ -515,14 +515,8 @@
 						$this->_result = '<br />><span style="color: chartreuse;"> fichiers inclus listés</span>';
 					}
 					elseif(preg_match('#clear cache#', $this->_command)){
-						if($this->_dossier = opendir(CACHE_PATH)){
-							while(false !== ($this->_fichier = readdir($this->_dossier))){
-								if(is_file(CACHE_PATH.$this->_fichier) && $this->_fichier!='.htaccess' && file_exists(CACHE_PATH.$this->_fichier) && is_readable(CACHE_PATH.$this->_fichier)){
-									unlink(CACHE_PATH.$this->_fichier);
-									$this->_stream .= '<br />> '.CACHE_PATH.$this->_fichier.'';
-								}
-							}
-						}
+						$this->rrmdir(CACHE_PATH);
+
 						$this->_result = '<br />><span style="color: chartreuse;"> le cache a bien été vidé</span>';
 					}
 					elseif(preg_match('#clear log#', $this->_command)){
@@ -530,7 +524,7 @@
 							while(false !== ($this->_fichier = readdir($this->_dossier))){
 								if(is_file(LOG_PATH.$this->_fichier) && file_exists(LOG_PATH.$this->_fichier) && is_readable(LOG_PATH.$this->_fichier) && $this->_fichier != '.htaccess'){
 									unlink(LOG_PATH.$this->_fichier);
-									$this->_stream .= '<br />> '.LOG_PATH.$this->_fichier.LOG_EXT;
+									$this->_stream .= '<br />> '.LOG_PATH.$this->_fichier;
 								}
 							}
 						}
@@ -602,12 +596,14 @@
 					elseif(preg_match('#add backup (.*) (.*)#', $this->_command)){
 						$backup = new backup();
 
-						if($this->_commandExplode[2] == 'root'){
-							$this->_commandExplode[2] ='./';
-						}
+						/*$document = basename ($_SERVER['DOCUMENT_ROOT']);
 
-						if($backup->addBackup($this->_commandExplode[2], $this->_commandExplode[3])){
-							$this->_stream .= '<br />><span style="color: chartreuse"> backup <u>'.$this->_commandExplode[2].'</u> sous le nom de <u>'.$this->_commandExplode[3].'</u> réussie</span>';
+						if($this->_commandExplode[2] == 'root'){
+							$this->_commandExplode[2] = '../'.$document.'/';
+						}*/
+
+						if($backup->addBackup($this->_commandExplode[2], $this->_commandExplode[3]) == true){
+							$this->_stream .= '<br />><span style="color: chartreuse"> backup <u>'.$this->_commandExplode[2].'</u> sous le nom de <u>'.$this->_commandExplode[3].'</u> créé</span>';
 							$this->_result = '<br />><span style="color: chartreuse;"> le backup a bien été créé</span>';
 						}
 						else{
@@ -618,9 +614,11 @@
 					elseif(preg_match('#install backup (.*) (.*)#', $this->_command)){
 						$backup = new backup();
 
-						if($this->_commandExplode[3] == 'root'){ 
-							$this->_commandExplode[2] = './';
-						}
+						/*$document = basename ($_SERVER['DOCUMENT_ROOT']);
+
+						if($this->_commandExplode[2] == 'root'){
+							$this->_commandExplode[2] = '../'.$document.'/';
+						}*/
 						
 						if($backup->installBackup($this->_commandExplode[2], $this->_commandExplode[3])){
 							$this->_result = '<br />><span style="color: chartreuse;"> le backup <u>'.$this->_commandExplode[2].'</u> a bien été installé dans le répertoire <u>'.$this->_commandExplode[3].'</u></span>';
@@ -632,7 +630,7 @@
 					}
 					elseif(preg_match('#delete backup (.*)#', $this->_command)){
 						$backup = new backup();
-						if($backup->delBackup($this->_commandExplode[2])){
+						if($backup->delBackup($this->_commandExplode[2]) == true){
 							$this->_stream .= '<br />><span style="color: chartreuse"> backup <u>'.$this->_commandExplode[2].'</u> supprimé</span>';
 							$this->_result = '<br />><span style="color: chartreuse;"> le backup a bien été supprimé</span>';
 						}
@@ -677,8 +675,8 @@
 						$this->_stream .= '<br />> update';  
 						$this->_stream .= '<br />> update updater';
 						$this->_stream .= '<br />> changepassword nouveaumdp';
-						$this->_stream .= '<br />> connect mdp';
-						$this->_stream .= '<br />> disconnect';
+						$this->_stream .= '<br />> login mdp';
+						$this->_stream .= '<br />> logout';
 						$this->_stream .= '<br />> help';
 						$this->_result  = '<br />><span style="color: chartreuse;"> liste des commandes</span>';
 					}
@@ -690,8 +688,8 @@
 						$this->_stream .= $this->_update();
 						$this->_result = '<br />><span style="color: chartreuse;"> framework à jour</span>';
 					}
-					elseif(preg_match('#disconnect#', $this->_command) && $this->_mdp==false){
-						$this->_result = '<br />><span style="color: chartreuse;"> Vous avez été déconnecté(e)</span>';
+					elseif(preg_match('#logout#', $this->_command) && $this->_mdp==false){
+						$this->_result = '<br />><span style="color: chartreuse;"> Vous avez été déloginé(e)</span>';
 						$_SESSION['GC_terminalMdp'] = 0;
 					}
 					elseif(preg_match('#changepassword (.+)#', $this->_command)){
@@ -734,7 +732,7 @@
 						$i = 0;
 
 						if($liste != false){
-							foreach($liste as $key => $value){
+							foreach($liste as $value){
 								if($i == 0){
 									$this->_stream .= '<br />> <span style="color: chartreuse;">'.$value.'</span>';
 									$i=1;
@@ -1030,7 +1028,7 @@
 					}
 				}
 				else{
-					$this->_result = '<br />><span style="color: red;"> Erreur de connexion. Vous devez vous connecter grâce au  mot de passe du fichier de config</span>';
+					$this->_result = '<br />><span style="color: red;"> Erreur de connexion. Vous devez vous loginer grâce au  mot de passe du fichier de config</span>';
 				}
 				
 				if($this->_stream!="")

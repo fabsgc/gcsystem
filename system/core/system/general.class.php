@@ -86,37 +86,50 @@
 			}
 			
 			public function addHeader($header){
-	            header($header);
-	        }
+				header($header);
+			}
 
-	        public function errorHttp($error, $titre){
-	        	$t= new template(ERRORDOCUMENT_PATH.'httpError', $error, '0', $this->_lang);
-	        	$t->setShow(false);
+			public function getMethod(){
+				return $_SERVER['REQUEST_METHOD'];
+			}
+
+			public function isXmlHttpRequest(){
+				if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+					return true;
+				}
+				else{
+					return false;
+				}
+			}
+
+			public function errorHttp($error, $titre){
+				$t= new template(ERRORDOCUMENT_PATH.'httpError', $error, '0', $this->_lang);
+				$t->setShow(false);
 				$t->assign(array(
 					'url' => substr($this->getUri(), strlen(FOLDER), strlen($this->getUri())),
 					'message' => $titre
 				));
 				return $t->show();
-	        }
+			}
 			
 			public function redirect404(){
 				$this->addHeader('HTTP/1.1 404 Not Found');
-				echo $this->errorHttp('404', $this->useLang('404'));
-	        }
+				echo $this->errorHttp('404', $this->useLang('gc_404'));
+			}
 			
 			public function redirect500(){
 				$this->addHeader('HTTP/1.1 500 internal error');
-				echo $this->errorHttp('500', $this->useLang('500'));
+				echo $this->errorHttp('500', $this->useLang('gc_500'));
 				exit();
-	        }
+			}
 			
 			public function redirect403(){
 				$this->addHeader('HTTP/1.1 403 Access Forbidden');
-				echo $this->errorHttp('403', $this->useLang('403'));
+				echo $this->errorHttp('403', $this->useLang('gc_403'));
 				exit();
-	        }
+			}
 
-	        private function _removeChild($fichier, &$dom, &$parent, &$list, $attribut, $valeur){
+			private function _removeChild($fichier, &$dom, &$parent, &$list, $attribut, $valeur){
 				foreach($list as $sentence){
 					
 					if($sentence->getAttribute($attribut) == $valeur){
@@ -125,6 +138,37 @@
 						$dom->save($fichier);
 					}
 				}
+			}
+
+			private function rrmdir($dir) {
+				if (is_dir($dir)) {
+					$objects = scandir($dir);
+						foreach ($objects as $object) {
+							if ($object != "." && $object != "..") {
+								if (filetype($dir."/".$object) == "dir") 
+									$this->rrmdir($dir."/".$object); 
+								else unlink   ($dir."/".$object);
+							}
+						}
+					reset($objects);
+					rmdir($dir);
+				}
+			}
+
+			function minifyHtml($buffer) {
+				$search = array(
+					'/\>[^\S]+/s',
+					'/[^\S]+\</s'
+				);
+
+				$replace = array(
+					'>',
+					'<'
+				);
+
+				$buffer = preg_replace($search, $replace, $buffer);
+
+				return $buffer;
 			}
 		}
 		
@@ -159,7 +203,7 @@
 					fclose($file);
 				}
 			}
-	    }
+		}
 		
 		trait langInstance{
 			protected $_lang                              = 'fr'    ; //gestion des langues via des fichiers XML
@@ -175,10 +219,10 @@
 					return $langcode['0'];
 				}
 			}
-	    }
+		}
 		
 		trait urlRegex{
-			public function getUrl($id, $var = array()){
+			public function getUrl($id, $var = array(), $absolute = false){
 				if(REWRITE == true){
 					$domXml = new \DomDocument('1.0', 'iso-8859-15');
 					if($domXml->load(ROUTE)){
@@ -207,7 +251,11 @@
 								}
 
 								$result = preg_replace('#\\\.#U', '.', $result);
-								return FOLDER.$result;
+
+								if($absolute == false)
+									return FOLDER.$result;
+								else
+									return 'http://'.$_SERVER['HTTP_HOST'].FOLDER.$result;
 							}
 						}
 					}
@@ -221,18 +269,24 @@
 					$i=0;
 
 					foreach($urls as $url){
+						$result="";
+
 						if(preg_match('#\)>#', $url)){
-						$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
-						$i++;
+							$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
+							$i++;
 						}
 						else{
 							$result.=$url;
 						}
 					}
 
-				 	$result = preg_replace('#\/#U', '', $result);
-				 	$result = preg_replace('#\\\.#U', '.', $result);
-				 	return $result;
+					$result = preg_replace('#\/#U', '', $result);
+					$result = preg_replace('#\\\.#U', '.', $result);
+
+					if($absolute == false)
+						return $result;
+					else
+						return 'http://'.$_SERVER['HTTP_HOST'].$result;
 				}
 			}
 		}
@@ -286,7 +340,7 @@
 
 		trait errorPerso{
 			public function errorPerso($id, $var = array(), $lang = ''){
-				if(lang != ''){
+				if($lang != ''){
 					$error = new errorperso($lang);
 					echo $error->errorPerso($id, $var);
 				}

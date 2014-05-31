@@ -3,7 +3,7 @@
 	<head>
 		<title>GCsystem Version 2.3</title>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="{{def:IMG_PATH}}gcsystem/logo.png" />
+		<link rel="icon" type="image/png" href="{{def:IMG_PATH}}gcs/logo.png" />
 	</head>
 	<body>
 		<style>
@@ -28,7 +28,7 @@
 		</div>
 		<footer>Gcsystem Version 2.3</footer>
 		<script type="text/javascript" src="{{def:JS_PATH}}jquery/jquery.min.js" ></script>
-		<script type="text/javascript">
+		<script type="text/javascript" defer>
 			$(document).ready(function(e){
 				updateHeight();
 				$(window).resize(function() {

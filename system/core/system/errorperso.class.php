@@ -40,7 +40,7 @@
 
 							$node2Xml = $value->getElementsByTagName('var');
 
-							foreach ($node2Xml as $key2 => $value2) {
+							foreach ($node2Xml as $value2) {
 								if($value2->hasAttribute('type') && $value2->hasAttribute('id'))
 								switch($value2->getAttribute('type')){
 									case 'var':

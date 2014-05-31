@@ -35,7 +35,7 @@
 
 				//fichiers dont la modification est interdite
 				$this->_forbiddenFile = array(
-					ROUTE, MODOCONFIG, APPCONFIG, PLUGIN, FIREWALL, ASPAM, ADDON, CRON, ERRORPERSO,
+					ROUTE, MODOCONFIG, APPCONFIG, ADDON, FIREWALL, ASPAM, ADDON, CRON, ERRORPERSO,
 					MODEL_PATH.'index'.MODEL_EXT.'.php', MODEL_PATH.'terminal'.MODEL_EXT.'.php', 
 					CONTROLLER_PATH.'index'.CONTROLLER_EXT.'.php', CONTROLLER_PATH.'terminal'.CONTROLLER_EXT.'.php', FUNCTION_GENERIQUE,
 					TEMPLATE_PATH.ERRORDOCUMENT_PATH.'httpError'.TEMPLATE_EXT,
@@ -536,7 +536,7 @@
 	                $markupXml = $nodeXml->getElementsByTagName('install');
 	            
 	                foreach($markupXml as $sentence){
-	                    if ($id == intval($this->_xmlContent['id'])){
+	                    if ($this->_id == intval($this->_xmlContent['id'])){
 	                        $return = false;
 	                    }
 	                }
@@ -573,7 +573,7 @@
 	                foreach ($this->_forbiddenDir as $key2 => $value2) {
 	                    if(preg_match('#'.preg_quote($value2).'#isU', strval($value))){
 	                        $this->_conflit = false;
-	                        $this->_addError('le répertoire '.$value2.' est un répertoire système or le fichier '.$key.' va y être ajouté par l\'add-on. Un add-on n\'est pas en droit d\'y ajouter ou d\'y modifier des fichiers systèmes', __FILE__, __LINE__, ERROR);
+	                        $this->_addError('le répertoire '.$value2.' est un répertoire système or le fichier '.$key2.' va y être ajouté par l\'add-on. Un add-on n\'est pas en droit d\'y ajouter ou d\'y modifier des fichiers systèmes', __FILE__, __LINE__, ERROR);
 	                    }
 	                }
 	            }		
@@ -584,10 +584,10 @@
 	                $dir = explode('/', $value);
 	                
 	                for($i = 0; $i < count($dir) -1;$i++){
-	                    foreach ($this->_forbiddenCreateDir as $value2){
+	                    foreach ($this->_forbiddenCreateDir as $key2 => $value2){
 							if(preg_match('#^'.preg_quote($value2).'(.+)#isU', $dir[$i]) && !preg_match('#^system\/lib\/(.*)#isU', $dir[$i])){
 								$this->_conflit = false;
-								$this->_addError('le répertoire '.$key.' veut être ajouté dans le répertoire '.$value2.' qui est un répertoire système. Un add-on n\'est pas en droit d\'y ajouter des répertoires', __FILE__, __LINE__, ERROR);
+								$this->_addError('le répertoire '.$key2.' veut être ajouté dans le répertoire '.$value2.' qui est un répertoire système. Un add-on n\'est pas en droit d\'y ajouter des répertoires', __FILE__, __LINE__, ERROR);
 	                            break;
 	                        }
 						}
@@ -642,7 +642,7 @@
 				//on ouvre plugins.xml et on vérifie si name et access ne sont pas deja pris
 				$domXml = new \DomDocument('1.0', CHARSET);
 
-				if($domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(PLUGIN)){
+				if($domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(ADDON)){
 					$node2Xml = $domXml->getElementsByTagName('plugins')->item(0);
 					$node2Xml = $nodeXml->getElementsByTagName('plugin');
 
@@ -895,7 +895,7 @@
 				$domXml = new \DomDocument('1.0', CHARSET);
 				$this->_dom2Xml = new \DomDocument('1.0', CHARSET);
 
-				if($domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(PLUGIN)){
+				if($domXml->loadXml($this->_zipContent['install.xml']) && $this->_dom2Xml->load(ADDON)){
 					$nodeXml = $domXml->getElementsByTagName('install')->item(0);
 					$nodeXml = $nodeXml->getElementsByTagName('plugins')->item(0);
 					$nodeXml = $nodeXml->getElementsByTagName('plugin');
@@ -915,7 +915,7 @@
 						$result .= '<br />><span style="color: chartreuse">ajout plugin, nom : '.$value->getAttribute('name').'</span>';
 					}
 
-					$this->_dom2Xml->save(PLUGIN);
+					$this->_dom2Xml->save(ADDON);
 				}
 
 				return $result;
@@ -1424,7 +1424,7 @@
 									$node2Xml = $value->getElementsByTagName('plugins')->item(0);
 									$node2Xml = $node2Xml->getElementsByTagName('plugin');
 
-									if($this->_dom2Xml->load(PLUGIN)){
+									if($this->_dom2Xml->load(ADDON)){
 										$this->_node3Xml = $this->_dom2Xml->getElementsByTagName('plugins')->item(0);
 										$this->_node4Xml = $this->_node3Xml->getElementsByTagName('plugin');
 
@@ -1438,11 +1438,11 @@
 										}
 									}
 									else{
-										$this->_addError('Le fichier de plugins '.PLUGIN.' est endommagé', __FILE__, __LINE__, ERROR);
+										$this->_addError('Le fichier de plugins '.ADDON.' est endommagé', __FILE__, __LINE__, ERROR);
 										return false;
 									}
 
-									$this->_dom2Xml->save(PLUGIN);
+									$this->_dom2Xml->save(ADDON);
 
 									/* ###### FIREWALL ###### */
 									$node2Xml = $value->getElementsByTagName('firewalls')->item(0);

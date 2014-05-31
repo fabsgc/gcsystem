@@ -112,8 +112,8 @@
 									$class->loadModel();
 									$this->_cache = new cache('page_'.preg_replace('#\/#isU', '-slash-', $this->getUri()), "", $this->_cacheRoute);
 
-									if($this->_cache->isDie()){
-										ob_start ();
+									if($this->_cache->isDie() == true){
+										ob_start();
 											$class->init();
 
 											if(method_exists($class, 'action'.ucfirst($_GET['action']))){
@@ -160,7 +160,7 @@
 								if(ANTISPAM == false || $class->setAntispam() == true){
 								    $class->loadModel();
 
-									ob_start ();
+									ob_start();
 										$class->init();
 
 										if(method_exists($class, 'action'.ucfirst($_GET['action']))){
@@ -197,7 +197,7 @@
 					$this->_addError('Le contrôleur \'inconnue\' n\'a pas été instancié car le routage a echoué. Requête http : http://'.$this->getHost().$this->getUri(), __FILE__, __LINE__, FATAL);
 					$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé car le routage a échoué. URL : http://'.$this->getHost().$this->getUri(), __FILE__,  __LINE__, FATAL);
 					$this->redirect404();
-				}	
+				}
 			}
 			
 			private function _setRubrique($controller){
@@ -210,7 +210,7 @@
 					return true;
 				}
 				else{ 
-					$this->_addError($this->useLang('controllernotfound', array('controller' => $controller)), __FILE__, __LINE__, FATAL);
+					$this->_addError($this->useLang('gc_controllernotfound', array('controller' => $controller)), __FILE__, __LINE__, FATAL);
 					$this->_addError('Echec lors du chargement des fichiers "'.CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php" et "'.MODEL_PATH.$controller.MODEL_EXT.'.php"', __FILE__, __LINE__, ERROR);
 					return false;
 				}
@@ -218,7 +218,7 @@
 			
 			public function run(){
 				if(MINIFY_OUTPUT_HTML == true && $this->checkContentType() == true){
-					$this->_output = preg_replace('#\\t#isU', '', $this->_output);
+					$this->_output = $this->minifyHtml($this->_output);
 				}
 
 				echo $this->_output;
@@ -236,7 +236,7 @@
 					return true;
 				}
 
-				foreach ($header as $key => $value) {
+				foreach ($header as $value) {
 					if(preg_match('#content-type#', $value)){
 						return false; //on a un content-type qui n'est pas html
 					}
@@ -366,7 +366,8 @@
 				
 				foreach ($dir->getDirArbo() as $value) {
 					$value = '\event\\'.preg_replace('#'.preg_quote(EVENT_PATH).'(.+)'.preg_quote(EVENT_EXT).preg_quote('.php').'#isU', '$1', $value);
-					array_push($GLOBALS['eventListeners'], new $value());
+                    $value = preg_replace('#/#', '\\', $value);
+                    array_push($GLOBALS['eventListeners'], new $value());
 				}
 			}
 

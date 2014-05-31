@@ -53,10 +53,6 @@
 						$this->GCmethod=$info;
 					break;
 					
-					case'enctype':
-						$this->GCmethod=$info;
-					break;
-					
 					case'accept_charset':
 						$this->GCaccept_charset=$info;
 					break;

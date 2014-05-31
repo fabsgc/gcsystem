@@ -10,13 +10,13 @@
 		abstract class model{
 			use error, langInstance, general, urlRegex, errorPerso; //trait
 
-			protected $bdd                                ; //contient la connexion sql
+			public $bdd                                ; //contient la connexion sql
 			
 			final public  function __construct($lang = "", $bdd){
 				if($lang==""){ 
-					$this->_lang=$this->getLangClient(); 
+					$this->lang=$this->getLangClient(); 
 				} else { 
-					$this->_lang=$lang; 
+					$this->lang=$lang; 
 
 				}
 				$this->_createLangInstance();
@@ -38,15 +38,15 @@
 				$this->_langInstance = new lang($this->_lang);
 			}
 			
-			final protected function useLang($sentence, $var = array()){
+			final public function useLang($sentence, $var = array()){
 				return $this->_langInstance->loadSentence($sentence, $var);
 			}
 			
-			final protected function getLang(){
+			final public function getLang(){
 				return $this->_lang;
 			}
 			
-			final protected function setLang($lang){
+			final public function setLang($lang){
 				$this->_lang=$lang;
 				$this->_langInstance->setLang($this->_lang);
 			}

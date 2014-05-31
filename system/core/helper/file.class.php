@@ -275,7 +275,7 @@
 			*/
 			
 			public function setContent($content){
-				file_put_content($this->_fileContent, $content);
+				file_put_contents($this->_fileContent, $content);
 				$this->_setFileContent($this->_filePath);
 			}
 			

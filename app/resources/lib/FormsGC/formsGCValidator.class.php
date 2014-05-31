@@ -314,17 +314,6 @@
 									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
-
-							case 'between':
-								$contraint_val=explode('-', $contraint_valeur);
-								if($_POST[$value[1]]>=$contraint_val[0] && $_POST[$value[1]]<=$contraint_val[1]){
-									array_push($this->valid, 'true');
-								}
-								else{
-									array_push($this->valid, 'false');
-									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-								}
-							break;
 							
 							case 'different' :
 								if(($_POST[$value[1]])!=$contraint_valeur){
@@ -652,87 +641,7 @@
 									break;
 								}
 							break;
-							
-							case 'sql' :
-								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
-								$vars = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$champs = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$5', $contraint_valeur); 
 
-								$vars = explode(',', $vars);
-
-								$query = $this->bdd->prepare(''.$sql.'');
-
-								foreach ($vars as $key => $value) {
-									$query->bindParam($key+1, trim($value));
-								}
-
-								$query = $query->fetch();
-								
-								switch($contrainte){
-									case '>':
-										if($query[''.$champs.'']>$valeur){
-											array_push($this->valid, 'true');
-										}
-										else{
-											array_push($this->valid, 'false');
-											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-										}
-									break;
-									
-									case '>=':
-										if($query[''.$champs.'']>=$valeur){
-											array_push($this->valid, 'true');
-										}
-										else{
-											array_push($this->valid, 'false');
-											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-										}
-									break;
-									
-									case '<':
-										if($query[''.$champs.'']<$valeur){
-											array_push($this->valid, 'true');
-										}
-										else{
-											array_push($this->valid, 'false');
-											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-										}
-									break;
-									
-									case '<=':
-										if($query[''.$champs.'']<=$valeur){
-											array_push($this->valid, 'true');
-										}
-										else{
-											array_push($this->valid, 'false');
-											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-										}
-									break;
-									
-									case '!=':
-										if($query[''.$champs.'']!=$valeur){
-											array_push($this->valid, 'true');
-										}
-										else{
-											array_push($this->valid, 'false');
-											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-										}
-									break;
-									
-									case '==':
-										if($query[''.$champs.'']==$valeur){
-											array_push($this->valid, 'true');
-										}
-										else{
-											array_push($this->valid, 'false');
-											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
-										}
-									break;
-								}
-							break;
-							
 							case 'process':
 								$this->fieldProcess($contraint_valeur, $value[1]);
 							break;
@@ -2088,15 +1997,6 @@
 			foreach($strings as $str){
 				$str= trim($str);
 				switch($str){
-					case 'addcslashes':
-						if($this->method=="GET"){
-							$_GET[''.$variable.'']=addcslashes($_GET[''.$variable.'']);
-						}
-						else{
-							$_POST[''.$variable.'']=addcslashes($_POST[''.$variable.'']);
-						}
-					break;
-					
 					case 'addslashes':
 						if($this->method=="GET"){
 							$_GET[''.$variable.'']=addslashes($_GET[''.$variable.'']);
@@ -2423,9 +2323,9 @@
 
 		public  function showErrorBlock(){
 			foreach($this->error as $erreur){
-				$this->Content.=$erreur."<br />";
+				$this->content.=$erreur."<br />";
 			}
-			return '<div class="alert alert-error">'.$this->Content.'</div>';
+			return '<div class="alert alert-error">'.$this->content.'</div>';
 		}
 		
 		/**

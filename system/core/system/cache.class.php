@@ -30,10 +30,14 @@
 				$this->_name = $name;
 				$this->_val = $val;
 
+				if (!file_exists(CACHE_PATH_DEFAULT)) {
+					mkdir(CACHE_PATH_DEFAULT, 0777, true);
+				}
+
 				if(CACHE_SHA1 == 'true')
-					$this->_nameFile = CACHE_PATH.sha1($name.'.cache');
+					$this->_nameFile = CACHE_PATH_DEFAULT.sha1($this->_name.'.cache');
 				else
-					$this->_nameFile = CACHE_PATH.$name.'.cache';
+					$this->_nameFile = CACHE_PATH_DEFAULT.$this->_name.'.cache';
 
 				if(CACHE_ENABLED == true)
 					$this->_time = $time;
@@ -49,7 +53,7 @@
 			*/
 			
 			public function setCache(){
-				if(file_exists(CACHE_PATH)){
+				if(file_exists(CACHE_PATH_DEFAULT)){
 					if(!file_exists($this->_nameFile)){
 						$fichier = fopen($this->_nameFile, 'w+');
 						fwrite($fichier, $this->_compress(serialize($this->_val)));
@@ -65,7 +69,7 @@
 					}
 				}
 				else{
-					$this->_addError('le répertoire des fichiers de cache "'.CACHE_PATH.'"" n\'est pas accessible, ce qui empêche l\'application de gérer correctement les templates/requêtes sql etc.', __FILE__, __LINE__, FATAL);
+					$this->_addError('le répertoire des fichiers de cache "'.CACHE_PATH_DEFAULT.'"" n\'est pas accessible, ce qui empêche l\'application de gérer correctement les templates/requêtes sql etc.', __FILE__, __LINE__, FATAL);
 				}
 			}
 			
@@ -79,7 +83,15 @@
 			
 			public function setName($name){
 				$this->_name = $name;
-				$this->_nameFileFile = CACHE_PATH.$name.'.cache';
+
+				if (!file_exists(CACHE_PATH_DEFAULT)) {
+					mkdir(CACHE_PATH_DEFAULT, 0777, true);
+				}
+
+				if(CACHE_SHA1 == 'true')
+					$this->_nameFile = CACHE_PATH_DEFAULT.sha1($this->_name.'.cache');
+				else
+					$this->_nameFile = CACHE_PATH_DEFAULT.$this->_name.'.cache';
 			}
 			
 			/**
@@ -120,7 +132,7 @@
 			*/
 			
 			public function destroy(){
-				if(file_exists(CACHE_PATH)){
+				if(file_exists(CACHE_PATH_DEFAULT)){
 					if(file_exists($this->_nameFile)){
 						if(unlink($this->_nameFile)){
 							return true;
