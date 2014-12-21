@@ -8,6 +8,8 @@
  | ------------------------------------------------------
 \*/
 
+define('VERSION', '3.0');
+
 define('ASSET_PATH', 'asset/');
 define('APP_PATH', 'app/');
 define('SYSTEM_PATH', 'system/');
