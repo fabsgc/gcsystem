@@ -37,6 +37,7 @@
 			 * 		cache int
 			 * 		type string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct(&$profiler, &$config, &$request, &$response, $lang, $data = array()){
@@ -71,6 +72,7 @@
 			 * destructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

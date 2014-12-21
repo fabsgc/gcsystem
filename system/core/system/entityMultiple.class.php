@@ -24,7 +24,8 @@
 			 * @param $lang string
 			 * @param $data array
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
 
 			public function __construct(&$profiler, &$config, &$request, &$response, $lang, $data = array()) {
 				$this->profiler = $profiler;
@@ -42,7 +43,9 @@
 			 * @param array $value
 			 * @return void
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
+
 			public function __set($key, $value) {
 				if(array_key_exists($key, $this->_data)){
 					$this->_data[''.$key.''] = $value;
@@ -56,7 +59,9 @@
 			 * @param array $value
 			 * @return void
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
+
 			public function set($key, $value) {
 				if(array_key_exists($key, $this->_data)){
 					$this->_data[''.$key.''] = $value;
@@ -69,7 +74,9 @@
 			 * @param $key string
 			 * @return string
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
+
 			public function get($key) {
 				if(array_key_exists($key, $this->_data)){
 					return $this->_data[''.$key.''];
@@ -82,7 +89,9 @@
 			 * @param $key string
 			 * @return string
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
+
 			public function __get($key) {
 				if(array_key_exists($key, $this->_data)){
 					return $this->_data[''.$key.''];
@@ -94,7 +103,9 @@
 			 * @access public
 			 * @return array
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
+
 			public function toArray(){
 				return $this->_data;
 			}
@@ -105,7 +116,9 @@
 			 * @param array $data
 			 * @return void
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
+
 			public function setData($data = array()){
 				$this->_data = $data;
 			}
@@ -115,7 +128,8 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
 
 			public function __destruct(){
 			}

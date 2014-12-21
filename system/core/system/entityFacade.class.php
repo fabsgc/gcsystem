@@ -22,7 +22,9 @@
 			 * @param &$request \system\request
 			 * @param &$response \system\response
 			 * @param $lang string
+			 * @param $bdd pdo
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			final public function __construct(&$profiler, &$config, &$request, &$response, $lang, $bdd){
@@ -35,12 +37,16 @@
 			}
 
 			/**
-			 * instanciate the good entity
+			 * instantiate the good entity
 			 * @access public
-			 * @param $name string : entity class name
+			 * @param $name string
+			 * @param $arguments array
 			 * @return entity
+			 * @throws exception
 			 * @since 3.0
+ 			 * @package system
 			*/
+			
 			public function __call($name, $arguments){
 				if(file_exists(APP_RESOURCE_ENTITY_PATH.$name.EXT_ENTITY.'.php')){
 					include_once(APP_RESOURCE_ENTITY_PATH.$name.EXT_ENTITY.'.php');
@@ -64,9 +70,12 @@
 					return $reflect->newInstanceArgs($params);
 				}
 				else{
+					$file = '';
+					$line = '';
 					$stack = debug_backtrace(0);
+					$trace = $this->getStackTraceFacade($stack);
 
-					foreach ($stack as $key => $value) {
+					foreach ($trace as $value) {
 						if($value['function'] == $name){
 							$file = $value['file'];
 							$line = $value['line'];
@@ -83,6 +92,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

@@ -17,6 +17,7 @@
 			 * @access public
 			 * @return mixed
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public static function connect($db){

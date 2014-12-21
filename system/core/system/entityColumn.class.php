@@ -20,6 +20,7 @@
 			 * Constructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct() {
@@ -32,6 +33,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function setName($name) {
@@ -44,6 +46,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function setValue($value) {
@@ -57,6 +60,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function setOptions($options) {
@@ -70,6 +74,7 @@
 			 * @access public
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getValue() {
@@ -81,6 +86,7 @@
 			 * @access public
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getName() {
@@ -92,6 +98,7 @@
 			 * @access public
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getOptions() {
@@ -103,6 +110,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

@@ -28,6 +28,7 @@
 			 * @param $name string : nom du fichier de cache
 			 * @param $time int : temps de mise en cache du fichier. La valeur par défaut, 0 correspond à un fichier non mis en cache
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __construct(&$profiler, &$config, &$request, &$response, $lang, $name, $time = 0){
@@ -53,6 +54,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function setCache(){
@@ -73,6 +75,7 @@
 			 * @param string $content : cache content
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function setContent($content){
@@ -84,6 +87,7 @@
 			 * @access public
 			 * @return boolean
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function destroy(){
@@ -105,6 +109,7 @@
 			 * @access public
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 		 
 			public function getCache(){
@@ -123,6 +128,7 @@
 			 * @access public
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 		 
 			public function isDie(){
@@ -150,6 +156,7 @@
 			 * @access public
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function isExist(){
@@ -167,6 +174,7 @@
 			 * @param string $content
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			protected function _compress($content){
@@ -176,9 +184,10 @@
 			/**
 			 * uncompress the content
 			 * @access public
-			 * @param string $content
+			 * @param string $val
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			protected function _uncompress($val){
@@ -189,6 +198,7 @@
 			 * destructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
   <config>
-    <query number="100" duration="5"/>
+    <query number="10" duration="5"/>
     <error template=".app/error/spam">
-      <variable type="lang" name="title" value="system.spam.title"/>
-      <variable type="lang" name="message" value="system.spam.message"/>
+      <variable type="lang" name="title" value=".app.system.spam.title"/>
+      <variable type="lang" name="message" value=".app.system.spam.message"/>
     </error>
     <exceptions>
-      <exception name=".gcs.index"/>
+      <exception name=".gcs.gcs.default"/>
+      <exception name=".gcs.gcs.lang"/>
+      <exception name=".gcs.gcs.profiler"/>
+      <exception name=".gcs.gcs.assetManager"/>
     </exceptions>
   </config>
   <ips>
-    <ip ip="127.0.0.1" time="1418741809" number="1">
-    </ip>
+    <ip ip="127.0.0.1" time="1419179669" number="2"/>
   </ips>
 </root>

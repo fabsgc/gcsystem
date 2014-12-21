@@ -29,6 +29,7 @@
 			 * @param &$response \system\response
 			 * @param $lang string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			final public function __construct(&$profiler, &$config, &$request, &$response, $lang){
@@ -40,20 +41,28 @@
 			}
 
 			/**
-			 * instanciate the good helper
+			 * instantiate the good helper
 			 * @access public
 			 * @param $name string : helper class name
-			 * @param $arguments array : helper class arguments
+			 * @param $params array : helper class arguments
 			 * @return object
+			 * @throws exception when the helper doesn't exist
 			 * @since 3.0
+ 			 * @package system
 			*/
-			public function __call($name, $arguments){
-				if(array_key_exists($name, self::$_alias)){
-					$reflect  = new \ReflectionClass(self::$_alias[$name]);
+
+			public function __call($name, $params){
+				if(array_key_exists($name, $this->_alias)){
+					$reflect  = new \ReflectionClass($this->_alias[$name]);
 					return $reflect->newInstanceArgs($params);
 				}
 				else{
-					foreach ($stack as $key => $value) {
+					$file = '';
+					$line = '';
+					$stack = debug_backtrace(0);
+					$trace = $this->getStackTraceFacade($stack);
+
+					foreach ($trace as $value) {
 						if($value['function'] == $name){
 							$file = $value['file'];
 							$line = $value['line'];
@@ -70,6 +79,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

@@ -22,6 +22,7 @@
 			 * @param $lang string
 			 * @param $src string
  			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct (&$profiler, &$config, &$request, &$response, $lang, $src){

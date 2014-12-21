@@ -28,6 +28,7 @@
 			 * @param $bdd pdo
 			 * @param $entity string
 			 * @since 3.0
+ 			 * @package system
 			 */
 
 			public function __construct(&$profiler, &$config, &$request, &$response, $lang, $bdd, $entity = ''){
@@ -46,6 +47,7 @@
 			 * Destructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

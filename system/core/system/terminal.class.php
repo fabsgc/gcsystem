@@ -24,6 +24,7 @@
 			 * @param &$response \system\response
 			 * @param $lang string
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __construct(&$profiler, &$config, &$request, &$response, $lang){
@@ -41,6 +42,7 @@
 			 * @param $argv string
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseArg($argv){
@@ -72,6 +74,7 @@
 			 * @param $argv string
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _command(){
@@ -107,6 +110,7 @@
 			 * @param $removeDir : remove subdirectories too
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public static function rrmdir($dir, $removeDir = false) {
@@ -134,6 +138,7 @@
 			 * Desctructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __destruct(){
@@ -224,8 +229,6 @@
 				}
 
 				if($exist == false){
-					$values =  $xml->xpath('//root');
-
 					$node = $xml->addChild('src', null);
 					$node->addAttribute('name', $src);
 

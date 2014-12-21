@@ -41,6 +41,7 @@
 			 * @param $lang string
 			 * @param $bdd Pdo instance
  			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct (&$profiler, &$config, &$request, &$response, $lang, $bdd){

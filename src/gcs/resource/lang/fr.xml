@@ -1,3 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
+	<group name="gcs">
+		<group name="profiler">
+			<lang name="time">Temps d'exécution</lang>
+			<lang name="request">Objet Request</lang>
+			<lang name="response">Objet Response</lang>
+			<lang name="response-status">Statut</lang>
+			<lang name="file">Fichiers inclus</lang>
+			<lang name="template">Template inclus</lang>
+			<lang name="sql">Requêtes SQL exécutées</lang>
+			<lang name="page-id">Entrez l'id de la page désirée (laisser vide pour voir la dernière page)</lang>
+			<lang name="page-send">Mettre à jour</lang>
+		</group>
+		<group name="default">
+			<lang name="welcome">Bienvenue !</lang>
+			<lang name="content">Bienvenue dans votre nouveau projet GCsystem, merci d'avoir choisi notre framework pour développer votre application.</lang>
+			<lang name="website">site officiel</lang>
+			<lang name="website-documentation">lire la documentation</lang>
+			<lang name="website-tutorial">lire les tutoriaux</lang>
+		</group>
+	</group>
 </root>

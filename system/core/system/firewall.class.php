@@ -26,6 +26,7 @@
 			 * @param &$response \system\response
 			 * @param $lang string
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __construct(&$profiler, &$config, &$request, &$response, $lang){
@@ -45,6 +46,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _setFirewall(){
@@ -66,6 +68,7 @@
 			 * @param $array array : "path" to the value in $in
 			 * @return mixed
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _setFirewallConfigArray($in, $array){
@@ -96,6 +99,7 @@
 			 * @access public
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function check(){
@@ -189,6 +193,7 @@
 			 * @access protected
 			 * @return boolean
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _checkCsrf(){
@@ -215,6 +220,7 @@
 			 * @access protected
 			 * @return boolean
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _checkLogged(){
@@ -226,6 +232,7 @@
 			 * @access protected
 			 * @return boolean
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			protected function _checkRole(){
@@ -241,6 +248,7 @@
 			 * Desctructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __destruct(){

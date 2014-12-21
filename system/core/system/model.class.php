@@ -24,7 +24,10 @@
 			 * @param &$response \system\response
 			 * @param $lang string
 			 * @param $bdd pdo
+			 * @param $entity \system\entityFacade
+			 * @param $helper \system\helperFacade
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			final public function __construct(&$profiler, &$config, &$request, &$response, $lang, $bdd, $entity, $helper){
@@ -45,6 +48,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 				
 			public function init(){	
@@ -54,6 +58,7 @@
 			 * destructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __destruct(){

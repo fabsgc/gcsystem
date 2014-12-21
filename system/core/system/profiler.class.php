@@ -34,6 +34,7 @@
 			 * constructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct (){
@@ -47,6 +48,7 @@
 			 * @param $response
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function profiler($request, $response){
@@ -74,10 +76,12 @@
 					$dataProfiler['server'] = $_SERVER;
 					$dataProfiler['url'] = $_SERVER['REQUEST_URI'];
 
-					$cache = $this->cache('gcs_profiler', $dataProfiler, 0);
+					$cache = $this->cache('gcsProfiler', 0);
+					$cache->setContent($dataProfiler);
 					$cache->setCache();
 
-					$cacheId = $this->cache('gcs_profiler_'.$this->request->name, $dataProfiler, 0);
+					$cacheId = $this->cache('gcsProfiler_'.$this->request->src.'.'.$this->request->controller.'.'.$this->request->action, 0);
+					$cacheId->setContent($dataProfiler);
 					$cacheId->setCache();
 				}
 			}
@@ -88,6 +92,7 @@
 			 * @param $error string
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function addError($error){
@@ -102,6 +107,7 @@
 			 * @param $file
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function addTemplate($name, $type = self::TEMPLATE_START, $file){
@@ -128,6 +134,7 @@
 			 * @param $value
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function addSql($name, $type = self::SQL_START, $value = ''){
@@ -153,6 +160,7 @@
 			 * @param $type
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function addTime($name, $type = self::USER_START){
@@ -176,6 +184,7 @@
 			 * @param $enabled boolean
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function enable($enabled = true){
@@ -187,6 +196,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _stopTime(){
@@ -198,6 +208,7 @@
 			 * @access public
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

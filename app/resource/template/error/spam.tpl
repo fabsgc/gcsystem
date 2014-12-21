@@ -1,2 +1,2 @@
-<h1 style="text-align:center;">{{lang:.app.error.spam.title}}</h1>
-<p>{{lang:.app.error.spam.message}}</p>
+<h1 style="text-align:center;">{{lang:.app.system.spam.title}}</h1>
+<p>{{lang:.app.system.spam.message}}</p>

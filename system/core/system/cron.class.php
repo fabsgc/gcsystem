@@ -26,6 +26,7 @@
 			 * @param $lang string
 			 * @param $file string : file path
  			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct (&$profiler, &$config, &$request, $lang, $file){
@@ -78,6 +79,7 @@
 			 * @access protected
 			 * @return boolean
  			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _exception(){

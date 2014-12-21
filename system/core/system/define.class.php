@@ -22,6 +22,7 @@
 			 * @param $lang string
 			 * @param $src string : src
  			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct (&$profiler, &$config, &$request, &$response, $lang, $src){
@@ -47,6 +48,7 @@
 			 * destructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

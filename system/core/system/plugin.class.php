@@ -17,7 +17,8 @@
 			 * @access public
 			 * @param $bdd pdo
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
 
 			public function __construct($bdd){
 
@@ -27,6 +28,7 @@
 			 * Destructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

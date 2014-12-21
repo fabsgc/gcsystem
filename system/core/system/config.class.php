@@ -61,6 +61,7 @@
 			 * constructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct (){
@@ -85,6 +86,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _init(){
@@ -155,12 +157,16 @@
 					$this->_parseLibrary($data['name']);
 					
 					//copy app lang in each other module lang
-					foreach ($this->config['lang']['app'] as $key => $value) {
-						$this->config['lang'][''.$data['name'].''][''.$key.''] = 
-							array_merge(
-								$this->config['lang']['app'][''.$key.''],
-								$value
-							);
+					foreach ($this->config['lang'] as $key => $value) {
+						if($key != 'app'){
+							foreach($value as $key2 => $value2){
+								$this->config['lang'][''.$key.''][''.$key2.''] =
+									array_merge(
+										$this->config['lang']['app'][''.$key2.''],
+										$value2
+									);
+							}
+						}
 					}
 				}
 
@@ -176,6 +182,7 @@
 			 * @param $src string
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			 * @throws exception if src config file doesn't exist
 			*/
 
@@ -218,6 +225,7 @@
 			 * @param $lang lang
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			 * @throws exception if src config file doesn't exist
 			*/
 
@@ -269,6 +277,7 @@
 			 * @return array
 			 * @throws exception if spam file can't be opened
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseSpam(){
@@ -287,8 +296,9 @@
 						$this->config['spam']['app']['error']['template'] = $value['template']->__toString();
 					}
 
+					$this->config['spam']['app']['exception'] = array();
+
 					foreach ($exception as $value) {
-						$this->config['spam']['app']['exception'] = array();
 						array_push($this->config['spam']['app']['exception'], $value['name']->__toString());
 					}
 
@@ -315,6 +325,7 @@
 			 * @throws exception if spam file can't be opened
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseFirewall($src = null){
@@ -407,6 +418,7 @@
 			 * @param $attributes array
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseParent($child, $data, $attributes){
@@ -445,6 +457,7 @@
 			 * @throws exception if spam file can't be opened
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseDefine($src = null){
@@ -482,6 +495,7 @@
 			 * * @throws exception if spam file can't be opened
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseLibrary($src = null){
@@ -524,6 +538,7 @@
 			 * @access protected
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

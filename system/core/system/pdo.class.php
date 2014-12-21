@@ -23,6 +23,7 @@
 			 * @param $password string
 			 * @param $driverOptions string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct($dsn, $username , $password, $driverOptions){
@@ -38,6 +39,7 @@
 			 * get SQL host
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getHost(){
@@ -48,6 +50,7 @@
 			 * get SQL username
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getUsername(){
@@ -58,6 +61,7 @@
 			 * get SQL password
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getPassword(){
@@ -68,6 +72,7 @@
 			 * get SQL database
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getDatabase(){

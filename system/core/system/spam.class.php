@@ -30,6 +30,7 @@
 			 * @param &$response \system\response
 			 * @param $lang string
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __construct(&$profiler, &$config, &$request, &$response, $lang){
@@ -63,6 +64,7 @@
 			 * @access public
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function check(){
@@ -79,7 +81,7 @@
 						else{
 							$t = $this->template($this->config->config['spam']['app']['error']['template'], 'GCspam', 0);	
 							
-							foreach($this->config->config['spam']['app']['error']['variable'] as $key => $value){
+							foreach($this->config->config['spam']['app']['error']['variable'] as $value){
 								if($value['type'] == 'var'){
 									$t->assign(array($value['name'] => $value['value']));
 								}
@@ -102,12 +104,13 @@
 			/**
 			 * check if the url is a spam exception
 			 * @access public
-			 * @return array
+			 * @return boolean
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _exception(){
-				$url = '.'.$this->request->src.'.'.$this->request->name;
+				$url = '.'.$this->request->src.'.'.$this->request->controller.'.'.$this->request->action;
 
 				if(in_array($url, $this->config->config['spam']['app']['exception'])){
 					$this->_exception = true;
@@ -124,44 +127,71 @@
 			 * @access public
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _setIp(){
 				$values =  $this->_xmlContent->xpath('//ip');
 
-				foreach ($values as $value) {
-					$this->_ip['ip'] = $value['ip']->__toString();
-					$this->_ip['number'] = $value['number']->__toString();
-					$this->_ip['time'] = $value['time']->__toString();
+				if(count($values) > 0){
+					foreach ($values as $value) {
+						$this->_ip['ip'] = $value['ip']->__toString();
+						$this->_ip['number'] = $value['number']->__toString();
+						$this->_ip['time'] = $value['time']->__toString();
+					}
+				}
+				else{
+					$this->_ip['ip'] = $this->request->env('REMOTE_ADDR');
+					$this->_ip['number'] = 1;
+					$this->_ip['time'] = time();
 				}
 			}
 
 			/**
 			 * update time and number attribute from IP
 			 * @access public
-			 * @param $time string
+			 * @param $time int
 			 * @param $number int
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			*/
+
 			protected function _updateIp($time = 0, $number = 1){
 				$values =  $this->_xmlContent->xpath('//ip[@ip=\''.$this->_ip['ip'].'\']');
+				$xml = simplexml_load_file(APP_CONFIG_SPAM);
 
-				foreach ($values as $value) {
-					$value['time'] = $time;
-					$value['number'] = $number;
+				if(count($values) > 0){
+					foreach ($values as $value) {
+						$value['time'] = $time;
+						$value['number'] = $number;
+						$dom = new \DOMDocument("1.0");
+						$dom->preserveWhiteSpace = false;
+						$dom->formatOutput = true;
+						$dom->loadXML($this->_xmlContent->asXML());
+						$dom->save(APP_CONFIG_SPAM);
+					}
+				}
+				else{
+					$values = $xml->xpath('//ips')[0];
+					$node = $values->addChild('ip', null);
+					$node->addAttribute('ip', $this->_ip['ip']);
+					$node->addAttribute('time', $this->_ip['time']);
+					$node->addAttribute('number', $this->_ip['number']);
+
 					$dom = new \DOMDocument("1.0");
 					$dom->preserveWhiteSpace = false;
 					$dom->formatOutput = true;
-					$dom->loadXML($this->_xmlContent->asXML());
+					$dom->loadXML($xml->asXML());
 					$dom->save(APP_CONFIG_SPAM);
 				}
 			}
 			
 			/**
-			 * Desctructor
+			 * destructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __destruct(){

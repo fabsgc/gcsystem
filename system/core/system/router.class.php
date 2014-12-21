@@ -25,6 +25,7 @@
 			 * @param $route route : route instance
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function addRoute(route $route){
@@ -39,6 +40,7 @@
 			 * @param $url string
 			 * @return \system\route
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getRoute($url){
@@ -95,6 +97,7 @@
 			 * @param $varsNames array : list of variable from vars=""
 			 * @param $src string : location of the file
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __construct($url, $controller, $action, $name, $cache, $varsNames = array(), $src, $logged, $access){

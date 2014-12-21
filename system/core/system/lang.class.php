@@ -24,6 +24,7 @@
 			 * @param &$response \system\response
 			 * @param $lang string
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __construct(&$profiler, &$config, &$request, &$response, $lang){
@@ -42,6 +43,7 @@
 			 * @param $template bool|int : use template syntax or not
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			 */
 			
 			public function lang($name, $vars = array(), $template = self::USE_NOT_TPL){
@@ -80,6 +82,7 @@
 			 * Desctructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __destruct(){

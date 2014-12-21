@@ -16,6 +16,7 @@
 			 * Array of http errors
  			 * @var array
  			*/
+
 			protected $_statusCode = array(
 				100 => 'Continue',
 				101 => 'Switching Protocols',
@@ -64,32 +65,33 @@
 			 * status code which display an error page
  			 * @var array
  			*/
+
 			protected $_statusErrorPage = array(
-				400 => 'error.http.400',
-				401 => 'error.http.401',
-				402 => 'error.http.402',
-				403 => 'error.http.403',
-				404 => 'error.http.404',
-				405 => 'error.http.405',
-				406 => 'error.http.406',
-				407 => 'error.http.407',
-				408 => 'error.http.408',
-				409 => 'error.http.409',
-				410 => 'error.http.410',
-				411 => 'error.http.411',
-				412 => 'error.http.412',
-				413 => 'error.http.413',
-				414 => 'error.http.414',
-				415 => 'error.http.415',
-				416 => 'error.http.416',
-				417 => 'error.http.417',
-				418 => 'error.http.418',
-				500 => 'error.http.500',
-				501 => 'error.http.501',
-				502 => 'error.http.502',
-				503 => 'error.http.503',
-				504 => 'error.http.504',
-				505 => 'error.http.505'
+				400 => array('error.http.400', ERROR_TEMPLATE),
+				401 => array('error.http.401', ERROR_TEMPLATE),
+				402 => array('error.http.402', ERROR_TEMPLATE),
+				403 => array('error.http.403', ERROR_403_TEMPLATE),
+				404 => array('error.http.404', ERROR_404_TEMPLATE),
+				405 => array('error.http.405', ERROR_TEMPLATE),
+				406 => array('error.http.406', ERROR_TEMPLATE),
+				407 => array('error.http.407', ERROR_TEMPLATE),
+				408 => array('error.http.408', ERROR_TEMPLATE),
+				409 => array('error.http.409', ERROR_TEMPLATE),
+				410 => array('error.http.410', ERROR_TEMPLATE),
+				411 => array('error.http.411', ERROR_TEMPLATE),
+				412 => array('error.http.412', ERROR_TEMPLATE),
+				413 => array('error.http.413', ERROR_TEMPLATE),
+				414 => array('error.http.414', ERROR_TEMPLATE),
+				415 => array('error.http.415', ERROR_TEMPLATE),
+				416 => array('error.http.416', ERROR_TEMPLATE),
+				417 => array('error.http.417', ERROR_TEMPLATE),
+				418 => array('error.http.418', ERROR_TEMPLATE),
+				500 => array('error.http.500', ERROR_500_TEMPLATE),
+				501 => array('error.http.501', ERROR_TEMPLATE),
+				502 => array('error.http.502', ERROR_TEMPLATE),
+				503 => array('error.http.503', ERROR_TEMPLATE),
+				504 => array('error.http.504', ERROR_TEMPLATE),
+				505 => array('error.http.505', ERROR_TEMPLATE)
 			);
 
 			protected $_status      = null;
@@ -101,6 +103,7 @@
 			 * constructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct ($lang = LANG){
@@ -116,6 +119,7 @@
 			 * @param $header string
 			 * @return mixed
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function header($header = null){
@@ -134,6 +138,7 @@
 			 * @param $status string
 			 * @return mixed
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function status($status = null){
@@ -154,6 +159,7 @@
 			 * @param $contentType string
 			 * @return mixed
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function contentType($contentType = null){
@@ -172,19 +178,20 @@
 			 * @access public
 			 * @param &$profiler \system\profiler
 			 * @param &$config \system\config
-			 * @param &$response \system\response
+			 * @param &$request \system\request
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
-			public function run(&$profiler, &$config, &$response){
+			public function run(&$profiler, &$config, &$request){
 				header('Content-Type: '.$this->_contentType);
 				
 				if($this->_status != 200)
 					http_response_code($this->_status);
 
 				if(array_key_exists($this->_status, $this->_statusErrorPage)){
-					$tpl = new template($profiler, $config, $this, $response, $this->lang, '.app/error/http', $this->_status, '0', $this->lang);
+					$tpl = new template($profiler, $config, $request, $this, $this->lang, $this->_statusErrorPage[$this->_status][1], $this->_status, '0', $this->lang);
 
 					$tpl->assign(array(
 						'code' => $this->_status,
@@ -206,6 +213,7 @@
 			 * @param $page string
 			 * @return mixed
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function page($page = null){
@@ -222,6 +230,7 @@
 			 * @access public
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

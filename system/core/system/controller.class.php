@@ -25,6 +25,7 @@
 			 * @param &$response \system\response
 			 * @param $lang string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			final public function __construct(&$profiler, &$config, &$request, &$response, $lang){
@@ -49,6 +50,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function init(){	
@@ -59,6 +61,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function end(){	
@@ -69,6 +72,7 @@
 			 * @access public
 			 * @return bool
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			final public function setFirewall(){
@@ -85,6 +89,7 @@
 			 * @access public
 			 * @return bool
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			final public function setSpam(){
@@ -101,6 +106,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			final public function model(){
@@ -116,9 +122,24 @@
 			}
 
 			/**
+			 * display a default template
+			 * @access public
+			 * @return string
+			 * @since 3.0
+			 * @package system
+			 */
+
+			final public function showDefault(){
+				$t = $this->template('.app/system/default', 'systemDefault');
+				$t->assign(array('action' => $this->request->src.'::'.$this->request->controller.'::'.$this->request->action));
+				return $t->show();
+			}
+
+			/**
 			 * destructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __desctuct(){

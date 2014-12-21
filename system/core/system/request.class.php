@@ -16,6 +16,7 @@
 			 * parameters of each action
  			 * @var array
  			*/
+ 			
 			public $param = array(
 				'name' => '',
 				'src' => '',
@@ -23,13 +24,15 @@
 				'action' => '',
 				'cache' => 0,
 				'logged' => '*',
-				'access' => '*'
+				'access' => '*',
+				'method' => '*'
 			);
 			
 			/**
 			 * constructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct (){
@@ -40,7 +43,9 @@
 			 * @access public
 			 * @param $name string : name of the attribute
 			 * @return mixed
+			 * @throws exception
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __get($name){
@@ -58,7 +63,9 @@
 			 * @param $name string : name of the attribute
 			 * @param $value string : new value
 			 * @return void
+			 * @throws exception
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __set($name, $value){
@@ -73,10 +80,12 @@
 			/**
 			 * get server data
 			 * @access public
-			 * @param $name env : name
-			 * @return mixed
+			 * @param $env
+			 * @internal param \system\env $name : name
+			 * @return boolean
 			 * @since 3.0
-			*/
+			 * @package system
+			 */
 
 			public function env($env){
 				if(isset($_SERVER[$env])){
@@ -91,6 +100,7 @@
 			 * destructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

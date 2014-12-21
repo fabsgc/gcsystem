@@ -43,8 +43,6 @@ define('WEB_FILE_PATH', 'file/');
 define('WEB_IMAGE_PATH', 'image/');
 define('WEB_JS_PATH', 'js/');
 
-define('ASSET_PATH', 'asset/');
-
 define('SYSTEM_PATH', 'system/');
 define('SYSTEM_BACKUP', SYSTEM_PATH.'backup/');
 define('SYSTEM_CORE_PATH', SYSTEM_PATH.'core/');
@@ -205,15 +203,18 @@ define('CACHE_CONFIG', false);
 define('CACHE_ENABLED', true);
 
 // don't modify
-define('IMAGE_PATH', FOLDER.'/'.ASSET_PATH.'image/');
-define('CSS_PATH', FOLDER.'/'.ASSET_PATH.'css/');
-define('JS_PATH', FOLDER.'/'.ASSET_PATH.'js/');
-define('FILE_PATH', FOLDER.'/'.ASSET_PATH.'file/');
+define('HTML_WEB_PATH', FOLDER.'/'.WEB_PATH);
+define('PHP_WEB_PATH', WEB_PATH);
 
-define('IMAGE_PATH_PHP', ASSET_PATH.'image/');
-define('CSS_PATH_PHP', ASSET_PATH.'css/');
-define('JS_PATH_PHP', ASSET_PATH.'js/');
-define('FILE_PATH_PHP', ASSET_PATH.'file/');
+define('IMAGE_PATH_PHP', WEB_PATH.'image/');
+define('CSS_PATH_PHP', WEB_PATH.'css/');
+define('JS_PATH_PHP', WEB_PATH.'js/');
+define('FILE_PATH_PHP', WEB_PATH.'file/');
+
+define('ERROR_TEMPLATE', '.app/error/http');
+define('ERROR_403_TEMPLATE', '.app/error/http');
+define('ERROR_404_TEMPLATE', '.app/error/http');
+define('ERROR_500_TEMPLATE', '.app/error/http');
 
 // timezone
 define('TIMEZONE', 'Europe/Paris');

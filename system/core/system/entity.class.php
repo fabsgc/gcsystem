@@ -33,7 +33,8 @@
 			 * @param $lang string
 			 * @param $bdd pdo
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
 
 			public function __construct(&$profiler, &$config, &$request, &$response, $lang, $bdd) {
 				$this->profiler = $profiler;
@@ -52,7 +53,9 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
+
 			public function setTableDefinition(){
 
 			}
@@ -63,7 +66,9 @@
 			 * @param $bdd pdo
 			 * @return void
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
+
 			public function setBdd($bdd) {
 				$this->_bdd = $bdd;
 			}
@@ -75,7 +80,9 @@
 			 * @param array $value
 			 * @return void
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
+
 			public function __set($key, $value) {
 				if(array_key_exists($key, $this->_columns)){
 					$this->_columns[''.$key.'']->setValue($value);
@@ -89,7 +96,9 @@
 			 * @param $value array
 			 * @return void
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
+
 			public function set($key, $value) {
 				if(array_key_exists($key, $this->_columns)){
 					$this->_columns[''.$key.'']->setValue($value);
@@ -103,7 +112,8 @@
 			 * @param $options array
 			 * @return void
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
 
 			public function addColumn($name, $options = array()) {
 				$this->_columns[''.$name.''] = new entityColumn();
@@ -153,7 +163,8 @@
 			 * @param $name string
 			 * @return void
 			 * @since 3.0
-			**/
+ 			 * @package system
+			*/
 
 			public function setTable($name) {
 				$this->_table = $name;
@@ -165,7 +176,9 @@
 			 * @param $key string
 			 * @return string
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
+
 			public function __get($key) {
 				if(array_key_exists($key, $this->_columns)){
 					return $this->_columns[''.$key.'']->getValue();
@@ -178,7 +191,9 @@
 			 * @param $key string
 			 * @return string
 			 * @since 3.0
-			 */
+ 			 * @package system
+			*/
+
 			public function get($key) {
 				if(array_key_exists($key, $this->_columns)){
 					return $this->_columns[''.$key.'']->getValue();
@@ -190,7 +205,8 @@
 			 * @access public
 			 * @return string
 			 * @since 3.0
-			 **/
+ 			 * @package system
+			*/
 
 			public function getTable() {
 				return $this->_table;
@@ -201,7 +217,8 @@
 			 * @access public
 			 * @return string
 			 * @since 3.0
-			 **/
+ 			 * @package system
+			*/
 
 			public function getColumns() {
 				return $this->_columns;
@@ -212,7 +229,8 @@
 			 * @access public
 			 * @return string
 			 * @since 3.0
-			 **/
+ 			 * @package system
+			*/
 
 			public function getPrimary() {
 				return $this->_primary;
@@ -223,7 +241,8 @@
 			 * @access public
 			 * @return boolean
 			 * @since 3.0
-			 **/
+ 			 * @package system
+			*/
 
 			public function insert() {
 				$sql = $this->sql($this->bdd);
@@ -268,6 +287,7 @@
 			 * @param $var array
 			 * @return boolean
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function update($where = '', $var = array()) {
@@ -312,6 +332,7 @@
 			 * @param $var array
 			 * @return boolean
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function delete($where = '', $var = array()) {
@@ -341,6 +362,7 @@
 			 * @access public
 			 * @return boolean
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function flush(){
@@ -357,6 +379,7 @@
 			 * Destructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

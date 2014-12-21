@@ -44,6 +44,7 @@
 			 * @param $lang string
 			 * @throws exception if the tpl file can't be read
  			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct (&$profiler, &$config, &$request, &$response, $lang, $file, $name = 'template', $cache = 0, $stream = self::TPL_FILE){
@@ -65,11 +66,11 @@
 				if(!preg_match('#(tplInclude)#isU', $name)){
 					$stack = debug_backtrace(0);
 					$trace = $this->getStackTraceToString($stack);
-					$this->name .= $trace;
+					$this->_name .= $trace;
 				}
 				else{
 					$trace = '';
-					$this->name .= $trace;
+					$this->_name .= $trace;
 				}
 
 				if($this->_stream == self::TPL_FILE){
@@ -102,6 +103,7 @@
 			 * @param $stack string
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			 */
 
 			private function getStackTraceToString($stack){
@@ -131,6 +133,7 @@
 			 * @param $vars
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function assign($name, $vars = ''){
@@ -146,6 +149,7 @@
 			 * @param $type int
 			 * @return mixed
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _compile($content, $type = self::TPL_COMPILE_ALL){
@@ -169,6 +173,7 @@
 			 * @param $content
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _save($content){
@@ -213,7 +218,10 @@
 
 			/**
 			 * get file path
+			 * @access public
 			 * @return string
+			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getFile(){
@@ -222,7 +230,10 @@
 
 			/**
 			 * get file path cache
+			 * @access public
 			 * @return string
+			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getFileCache(){
@@ -231,7 +242,10 @@
 
 			/**
 			 * get tpl name
+			 * @access public
 			 * @return string
+			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getName(){
@@ -243,6 +257,7 @@
 			 * @access public
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){
@@ -285,13 +300,14 @@
 			/**
 			 * constructor
 			 * @access public
-			 * * @param &$profiler \system\profiler
+			 * @param &$profiler \system\profiler
 			 * @param &$config \system\config
 			 * @param &$request \system\request
 			 * @param &$response \system\response
 			 * @param $lang string
 			 * @param $tpl \system\template
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct(&$profiler, &$config, &$request, &$response, $lang, template $tpl){
@@ -310,6 +326,7 @@
 			 * @param $content string
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function parse($content){
@@ -342,6 +359,7 @@
 			 * @param $content string
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function parseNoTemplate($content){
@@ -371,6 +389,7 @@
 			 * @param $content string
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function parseLang($content){
@@ -398,6 +417,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			 */
 
 			protected function _parseInclude(){
@@ -415,6 +435,7 @@
 			 * @param $m
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseIncludeCallback($m){
@@ -450,6 +471,7 @@
 			 * @param $m
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseIncludeCompileCallback($m){
@@ -478,6 +500,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseGravatar(){
@@ -491,6 +514,7 @@
 			 * @param $m
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			 */
 
 			protected function _parseGravatarCallback($m){
@@ -532,6 +556,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseUrl(){
@@ -551,6 +576,7 @@
 			 * @param $m array
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseUrlCallbackNormal($m){
@@ -576,6 +602,7 @@
 			 * @param $m array
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseUrlCallback($m){
@@ -593,6 +620,7 @@
 			 * @param $m array
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			 */
 
 			protected function _parseUrlCallbackNoEcho($m){
@@ -610,6 +638,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parsePhp(){
@@ -625,6 +654,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseLang(){
@@ -639,6 +669,7 @@
 			 * @param $m array
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseLangCallBack($m){
@@ -668,6 +699,7 @@
 			 * @param $m array
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseLangCallBackNoEcho($m){
@@ -697,6 +729,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseForeach(){
@@ -715,6 +748,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseFor(){
@@ -733,6 +767,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseVar(){
@@ -745,6 +780,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseVarFunc(){
@@ -760,6 +796,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseCondition(){
@@ -783,6 +820,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseFunction(){
@@ -795,10 +833,11 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseBlock(){
-				$this->_content = preg_replace_callback('`<'.$this->_name.preg_quote($this->markup['block'][0]).$this->_spaceR.preg_quote($this->markup['block'][1]).$this->_space.'='.$this->_space.'"'.$this->_space.'(\w+)'.$this->_space.'"'.$this->_space.'>(.*)</'.$this->_name.$this->markup['block'][0].$this->_space.'>`isU', array('system\templateParser', '_parseBlockCallback'), $this->_content);
+				$this->_content = preg_replace_callback('`<'.$this->_name.preg_quote($this->markup['block'][0]).$this->_spaceR.preg_quote($this->markup['block'][1]).$this->_space.'='.$this->_space.'"'.$this->_space.'(\w+)\(\)'.$this->_space.'"'.$this->_space.'>(.*)</'.$this->_name.$this->markup['block'][0].$this->_space.'>`isU', array('system\templateParser', '_parseBlockCallback'), $this->_content);
 			}
 
 			/**
@@ -807,17 +846,18 @@
 			 * @param $m array
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			 */
 
 			protected function _parseBlockCallback($m){
-				if(!function_exists($m[1])){
-					$blockFunction  = '<?php class template'.$m[1].' extends \system\template { public static function '.$m[1].'(){ ?> ';
+				if(!class_exists('block'.$m[1])){
+					$blockFunction  = '<?php class block'.$m[1].' extends \system\template { public static function '.$m[1].'(){ ?> ';
 					$blockFunction .= $m[2];
 					$blockFunction .= ' <?php } } ?>';
 					return $blockFunction;
 				}
 				else{
-					$this->addError('function '.$m[1].' already exists', __FILE__, __LINE__, ERROR_FATAL);
+					$this->addError('the class "block'.$m[1].'" already exists', __FILE__, __LINE__, ERROR_FATAL);
 					return '';
 				}
 			}
@@ -827,10 +867,11 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseTemplate(){
-				$this->_content = preg_replace_callback('`<'.$this->_name.preg_quote($this->markup['template'][0]).$this->_spaceR.preg_quote($this->markup['template'][1]).$this->_space.'='.$this->_space.'"'.$this->_space.'(\w+)'.$this->_space.'"'.$this->_space.'>(.*)</'.$this->_name.$this->markup['template'][0].$this->_space.'>`isU', array('system\templateParser', '_parseTemplateCallback'), $this->_content);
+				$this->_content = preg_replace_callback('`<'.$this->_name.preg_quote($this->markup['template'][0]).$this->_spaceR.preg_quote($this->markup['template'][1]).$this->_space.'='.$this->_space.'"'.$this->_space.'(\w+)\((.*)\)'.$this->_space.'"'.$this->_space.'>(.*)</'.$this->_name.$this->markup['template'][0].$this->_space.'>`isU', array('system\templateParser', '_parseTemplateCallback'), $this->_content);
 			}
 
 			/**
@@ -839,21 +880,110 @@
 			 * @param $m array
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseTemplateCallback($m){
+				if(!class_exists('block'.$m[1])){
+					$vars = explode(',', $m[2]);
+					$varList = '';
 
+					foreach($vars as $value){
+						if($value == '*'){
+							foreach($this->_template->vars as $key => $value2){
+								if(!in_array('$'.$key,$vars )){
+									$varList .= '$'.$key.',';
+								}
+								else{
+									$this->addError('the template function "template'.$m[1].'" has already this parameter ('.$value.')', __FILE__, __LINE__, ERROR_FATAL);
+									$varList .= '$'.$key.',';
+								}
+							}
+						}
+						else{
+							$varList .= $value.',';
+						}
+					}
+
+					$varList = preg_replace('#,$#isU', '', $varList);
+
+					$blockFunction  = '<?php class template'.$m[1].' extends system\template{  '."\n";
+					$blockFunction .= '		public $profiler; public $config; public $request; public $response; public $lang;'."\n";
+					$blockFunction .= '		public function __construct(&$profiler, &$config, &$request, &$response, $lang){'."\n";
+					$blockFunction .= '			$this->profiler = $profiler; $this->config = $config; $this->request = $request; $this->response = $response; $this->lang = $lang;'."\n";
+					$blockFunction .= '		}'."\n";
+					$blockFunction .= '		public function '.$m[1].'('.$varList.'){ ?> '."\n";
+					$blockFunction .= '			'.$m[3]."\n";
+					$blockFunction .= ' <?php } } ?>';
+
+					return $blockFunction;
+				}
+				else{
+					$this->addError('the class "template'.$m[1].'" already exists', __FILE__, __LINE__, ERROR_FATAL);
+					return '';
+				}
 			}
 
 			/**
-			 * parse calling template or block : <gc:call template="name()">
+			 * parse calling template or block :
+			 * 		<gc:call template="name()">
+			 * 		<gc:call block="name()">
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseCall(){
+				$this->_content = preg_replace_callback('`<'.$this->_name.preg_quote($this->markup['call'][0]).$this->_spaceR.preg_quote($this->markup['call'][1]).$this->_space.'='.$this->_space.'"'.$this->_space.'(\w+)\(\)'.$this->_space.'"'.$this->_space.'/>`isU', array('system\templateParser', '_parseCallBlockCallback'), $this->_content);
+				$this->_content = preg_replace_callback('`<'.$this->_name.preg_quote($this->markup['call'][0]).$this->_spaceR.preg_quote($this->markup['call'][2]).$this->_space.'='.$this->_space.'"'.$this->_space.'(\w+)\((.*)\)'.$this->_space.'"'.$this->_space.'/>`isU', array('system\templateParser', '_parseCallTemplateCallback'), $this->_content);
+			}
 
+			/**
+			 * parse call block callback
+			 * @access protected
+			 * @param $m array
+			 * @return string
+			 * @since 3.0
+ 			 * @package system
+			*/
+
+			protected function _parseCallBlockCallback($m){
+				return '<?php block'.$m[1].'::'.$m[1].'(); ?>';
+			}
+
+			/**
+			 * parse call block callback
+			 * @access protected
+			 * @param $m array
+			 * @return string
+			 * @since 3.0
+ 			 * @package system
+			*/
+
+			protected function _parseCallTemplateCallback($m){
+				$vars = explode(',', $m[2]);
+				$varList = '';
+				foreach($vars as $value){
+					if($value == '*'){
+						foreach($this->_template->vars as $key => $value2){
+							if(!in_array('$'.$key,$vars )){
+								$varList .= '$'.$key.',';
+							}
+							else{
+								$this->addError('the template function "template'.$m[1].'" has already this parameter ('.$value.')', __FILE__, __LINE__, ERROR_FATAL);
+								$varList .= '$'.$key.',';
+							}
+						}
+					}
+					elseif($value != ''){
+						$varList .= $value.',';
+					}
+				}
+
+				$varList = preg_replace('#,$#isU', '', $varList);
+
+				return '<?php $template'.$m[1].' = new template'.$m[1].'($this->profiler, $this->config, $this->request, $this->response, $this->lang); $template'.$m[1].'->'.$m[1].'('.$varList.'); ?>';
 			}
 
 			/**
@@ -864,6 +994,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseAssetManager(){
@@ -880,6 +1011,7 @@
 			 * @param $m array
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseAssetManagerCallback($m){
@@ -924,6 +1056,7 @@
 			 * @access protected
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseMinify(){
@@ -936,6 +1069,7 @@
 			 * @param $m array
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _parseMinifyCallback($m){
@@ -979,6 +1113,7 @@
 			 * @access public
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

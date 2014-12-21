@@ -18,6 +18,7 @@
 			 * @param $data string : ".gcs.lang" ".gcs/template/" "template"
 			 * @return mixed
  			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function resolve($type, $data){
@@ -59,6 +60,7 @@
 			 * @param $php boolean : because method return path, the framework wants to know if you want the html path or the php path
 			 * @return string
  			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function path($type, $data = '', $php = false){
@@ -84,6 +86,7 @@
 			 * @param $arguments array
 			 * @return object
  			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __call($name, $arguments = array()){

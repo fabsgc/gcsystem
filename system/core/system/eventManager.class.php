@@ -19,6 +19,7 @@
 			 * constructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct() {
@@ -31,6 +32,7 @@
 			 * @param event $event : object
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function add($event) {	
@@ -43,6 +45,7 @@
 			 * @param string $name
 			 * @return bool
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function destroy($name) {	
@@ -57,6 +60,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function dispatch() {	
@@ -85,6 +89,7 @@
 			 * @param string $name : name of the event. If it's empty, get results of all events
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getResult($name = '') {
@@ -114,6 +119,7 @@
 			 * @param $status int
 			 * @return bool
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function setStatus($name = '', $status = self::START) {
@@ -138,6 +144,7 @@
 			 * @param $name string : name of the event
 			 * @return mixed
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getStatus($name = ''){
@@ -159,6 +166,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __destruct(){

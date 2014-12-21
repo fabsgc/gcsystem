@@ -19,12 +19,14 @@
 			 * constructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct ($mode = MODE_HTTP){
 				if (!defined('CONSOLE_ENABLED'))
 					define('CONSOLE_ENABLED', $mode);
 
+				$this->_setLog();
 				$this->_setErrorHandler();
 				$this->request  = new request();
 				$this->response = new response();
@@ -38,6 +40,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function init(){
@@ -70,6 +73,7 @@
 			 * @param $action string
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function initCron($src, $controller, $action){
@@ -92,6 +96,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 			public function console(){
 				$this->terminal();
@@ -102,6 +107,7 @@
 			 * @access private
 			 * @return this
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			private function _route(){
@@ -153,6 +159,7 @@
 			 * @param $action string
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			private function _routeCron($src, $controller, $action){
@@ -171,7 +178,9 @@
 			 * init controller
 			 * @access public
 			 * @return void
+			 * @throws \system\exception
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _controller(){
@@ -220,8 +229,11 @@
 			 * call action from controller
 			 * @param &$class : controller instance reference
 			 * @access public
+			 * @param &$class \system\controller
 			 * @return string
+			 * @throws \system\exception
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function _action(&$class){
@@ -251,6 +263,7 @@
 			 * @param $controller string
 			 * @return boolean
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			protected function _setControllerFile($src, $controller){
@@ -273,11 +286,10 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function run(){
-				$lang = $this->lang();
-
 				if(MAINTENANCE == false){
 					if($this->_route == false){
 						$this->response->status(404);
@@ -287,7 +299,7 @@
 						$this->_controller();
 					}
 					
-					$this->response->run($this->profiler, $this->config, $this->response);
+					$this->response->run($this->profiler, $this->config, $this->request);
 					$this->addErrorHr(LOG_ERROR);
 					$this->addErrorHr(LOG_SYSTEM);
 					$this->_setHistory('');
@@ -310,11 +322,10 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function runCron(){
-				$lang = $this->lang();
-
 				if(MAINTENANCE == false){
 					$this->_controller();
 					$this->_setHistory('CRON');
@@ -329,8 +340,9 @@
 			/**
 			 * get maintenance template
 			 * @access public
-			 * @return void
+			 * @return \system\template
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			private function maintenance(){
@@ -343,6 +355,7 @@
 			 * @access private
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			private function _setEnvironment(){
@@ -362,6 +375,7 @@
 			 * @access private
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			private function _setErrorHandler(){
@@ -374,6 +388,7 @@
 			 * @param $src string 
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			private function _setCron($src = null){
@@ -391,14 +406,15 @@
 			 * @param $src string 
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			private function _setDefine($src = null){
 				if($src == null){
-					$define = $this->define('app');
+					 $this->define('app');
 				}
 				else{
-					$define = $this->define($src);
+					$this->define($src);
 				}
 			}
 
@@ -408,6 +424,7 @@
 			 * @param $src string 
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			private function _setLibrary($src = null){
@@ -424,6 +441,7 @@
 			 * @access private
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			private function _setSecure(){
@@ -439,8 +457,10 @@
 			/**
 			 * escape array (htmlentities)
 			 * @access private
+			 * @param $var array
 			 * @return mixed
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			private function _setSecureArray($var){
@@ -459,8 +479,10 @@
 			/**
 			 * set event
 			 * @access private
+			 * @param $src string
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			private function _setEvent($src = null){
@@ -505,6 +527,7 @@
 			 * @param $src string
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			private function _setFunction($src = null){
@@ -522,6 +545,7 @@
 			 * @param $message string
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			private function _setHistory($message){
@@ -532,11 +556,25 @@
 			}
 
 			/**
+			 * create the log folder
+			 * @access private
+			 * @return void
+			 * @since 3.0
+			 * @package system
+			*/
+
+			private function _setLog(){
+				if (!file_exists(APP_LOG_PATH))
+					mkdir(APP_LOG_PATH, 0755, true);
+			}
+
+			/**
 			 * minify html
 			 * @access private
 			 * @param string buffer
-			 * @return void
+			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			private function _minifyHtml($buffer) {
@@ -551,6 +589,7 @@
 			 * destructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

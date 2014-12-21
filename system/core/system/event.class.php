@@ -29,6 +29,7 @@
 			 * @param $parent object : parent object
 			 * @param $data array : data given
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct($name = 'event', $parent = null, $data = null) {
@@ -42,6 +43,7 @@
 			 * @access public
 			 * @return string
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getName(){
@@ -53,6 +55,7 @@
 			 * @access public
 			 * @return boolean
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getStatus(){
@@ -64,6 +67,7 @@
 			 * @access public
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function getResult(){
@@ -76,6 +80,7 @@
 			 * @param $name string 
 			 * @return array
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function setName($name = 'event'){
@@ -88,6 +93,7 @@
 			 * @param $status
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function setStatus($status = self::START){
@@ -103,6 +109,7 @@
 			 * @param $function string : name of the method called
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function setResult($result = '', $index, $class, $function){
@@ -114,6 +121,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __destruct(){

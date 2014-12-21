@@ -24,7 +24,7 @@ header h1{
 	font-size: 30px;
 	color: #E74C3C;
 	padding-left: 65px;
-	background: url('{HTML_WEB_PATH}gcs/image/logo60.png') top left no-repeat;
+	background: url('{{def:IMG_PATH}}GCsystem/logo60.png') top left no-repeat;
 	margin: 0;
 }
 #body{

@@ -15,6 +15,7 @@
 			 * constructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __construct ($message, $code = 0, Exception $previous = null){
@@ -26,6 +27,7 @@
 			 * @access public
 			 * @param string
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __toString(){
@@ -36,6 +38,7 @@
 			 * destructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){
@@ -49,6 +52,7 @@
 			 * constructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 			
 			public function __construct () { 
@@ -61,6 +65,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function errorHlander($errno, $errstr, $errfile, $errline){
@@ -94,6 +99,7 @@
 			 * @access public
 			 * @return void
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function exceptionHandler($e){
@@ -104,6 +110,7 @@
 			 * destructor
 			 * @access public
 			 * @since 3.0
+ 			 * @package system
 			*/
 
 			public function __destruct(){

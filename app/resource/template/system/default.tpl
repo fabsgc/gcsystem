@@ -25,5 +25,5 @@ h1{
 }
 </style>
 <div id="gcs">
-	<h1>{{lang:.app.system.maintenance.title}}</h1>
+	<h1>{$action}</h1>
 </div>
