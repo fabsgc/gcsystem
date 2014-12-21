@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : eventManager .class.php
-	 * @author : fab@c++
-	 * @description : class permettant l'utilisation du design pattern observer
-	 * @version : 2.3 bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : eventManager .class.php
+	 | @author : fab@c++
+	 | @description : class permettant l'utilisation du design pattern observer
+	 | @version : 2.4 bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class eventManager {
@@ -16,7 +18,6 @@
 			/**
 			 * Constructeur de la classe
 			 * @access	public
-			 * @return	void
 			 * @since 2.3
 			*/
 

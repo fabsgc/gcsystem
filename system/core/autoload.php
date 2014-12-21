@@ -4,7 +4,7 @@
 	 | @file : autoload.php
 	 | @author : fab@c++
 	 | @description : Inclusion automatique de tous les fichiers nécessaires au système
-	 | @version : 2.3 Bêta
+	 | @version : 2.4 Bêta
 	 | ------------------------------------------------------
 	\*/
 
@@ -18,11 +18,15 @@
 				$class = preg_replace('#'.preg_quote('\\').'#isU', '/', $class);
 
 				if(file_exists(CLASS_PATH.$class.'.class.php')){
-					include(CLASS_PATH.$class.'.class.php');
+					include_once(CLASS_PATH.$class.'.class.php');
 				}
 
 				if(file_exists(RESOURCE_PATH.$class.EVENT_EXT.'.php')){
-					include(RESOURCE_PATH.$class.EVENT_EXT.'.php');
+					include_once(RESOURCE_PATH.$class.EVENT_EXT.'.php');
+				}
+
+				if(file_exists(APP_PATH.$class.ENTITY_EXT.'.php')){
+					include_once(APP_PATH.$class.ENTITY_EXT.'.php');
 				}
 			}
 		}

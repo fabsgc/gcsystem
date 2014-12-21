@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : exception.class.php
-	 * @author : fab@c++
-	 * @description : class gérant les exceptions
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : exception.class.php
+	 | @author : fab@c++
+	 | @description : class gérant les exceptions
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class exception extends \Exception{

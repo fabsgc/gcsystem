@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : config.class.php
-	 * @author : fab@c++
-	 * @description : class gérant le fichier de config de l'application
-	 * @version : 2.2 bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : config.class.php
+	 | @author : fab@c++
+	 | @description : class gérant le fichier de config de l'application
+	 | @version : 2.4 bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class config {

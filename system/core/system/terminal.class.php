@@ -1,10 +1,12 @@
 <?php
-	/**
+	/*\
+	 | ------------------------------------------------------
 	 * @file : terminal.class.php
 	 * @author : fab@c++
 	 * @description : class gérant les fichiers compressés
-	 * @version : 2.3 Bêta
-	*/
+	 * @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 
 	namespace system{
 		class terminal{
@@ -29,8 +31,8 @@
 				$this->_command = '<span style="color: gold;"> '.$command.'</span>';
 				$this->_forbidden = array(
 					MODEL_PATH.'terminal'.MODEL_EXT.'.php', MODEL_PATH.'index'.MODEL_EXT.'.php', FUNCTION_GENERIQUE, CONTROLLER_PATH.'index'.CONTROLLER_EXT.'.php', CONTROLLER_PATH.'terminal'.CONTROLLER_EXT.'.php',
-					TEMPLATE_PATH.GCSYSTEM_PATH.'GCcontroller'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
-					TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT,
+					TEMPLATE_PATH.GCSYSTEM_PATH.'controller'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'pagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'bbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'system'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'maintenance'.TEMPLATE_EXT,
+					TEMPLATE_PATH.GCSYSTEM_PATH.'tplGc_blockInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'devtool'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'tplGc_windowInfo'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'terminal'.TEMPLATE_EXT,TEMPLATE_PATH.GCSYSTEM_PATH.'terminal'.TEMPLATE_EXT,
 					TEMPLATE_PATH.ERRORDOCUMENT_PATH.'httpError'.TEMPLATE_EXT,
 	                CLASS_CRON, CLASS_INSTALL, CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_CONTROLLER, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL,CLASS_ENGINE, CLASS_LOG, CLASS_CACHE, CLASS_TEMPLATE,CLASS_LANG, CLASS_appDev, CLASS_TERMINAL, CLASS_ERROR_PERSO,
 					LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT,
@@ -51,12 +53,12 @@
 					'web.config.php',
 					'index.php',
 					LIB_PATH.'FormsGC/formsGC.class.php', LIB_PATH.'FormsGC/formsGCValidator.class.php',
-					TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCerror'.TEMPLATE_EXT,
-					TEMPLATE_PATH.GCSYSTEM_PATH.'GCerrorperso'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GClang'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT,
-					TEMPLATE_PATH.GCSYSTEM_PATH.'GCmodel'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCnewcontroller'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT,
-					TEMPLATE_PATH.GCSYSTEM_PATH.'GCcontroller'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCspam'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT,
-					TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCterminal'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_blockInfo'.TEMPLATE_EXT,
-					TEMPLATE_PATH.GCSYSTEM_PATH.'GCtplGc_windowInfo'.TEMPLATE_EXT,
+					TEMPLATE_PATH.GCSYSTEM_PATH.'bbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'error'.TEMPLATE_EXT,
+					TEMPLATE_PATH.GCSYSTEM_PATH.'errorperso'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'lang'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'maintenance'.TEMPLATE_EXT,
+					TEMPLATE_PATH.GCSYSTEM_PATH.'model'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'newcontroller'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'pagination'.TEMPLATE_EXT,
+					TEMPLATE_PATH.GCSYSTEM_PATH.'controller'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'spam'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'system'.TEMPLATE_EXT,
+					TEMPLATE_PATH.GCSYSTEM_PATH.'devtool'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'terminal'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'tplGc_blockInfo'.TEMPLATE_EXT,
+					TEMPLATE_PATH.GCSYSTEM_PATH.'tplGc_windowInfo'.TEMPLATE_EXT,
 	                TEMPLATE_PATH.ERRORDOCUMENT_PATH.'httpError'.TEMPLATE_EXT,
 					CLASS_EXCEPTION, CLASS_BACKUP, CLASS_CRON, CLASS_INSTALL, CLASS_ANTISPAM, CLASS_FIREWALL, CLASS_CONTROLLER, CLASS_ROUTER, CLASS_AUTOLOAD, CLASS_GENERAL,CLASS_ENGINE,CLASS_LOG,CLASS_CACHE, CLASS_TEMPLATE, CLASS_LANG, CLASS_appDev, CLASS_TERMINAL, CLASS_ERROR_PERSO,
 					LANG_PATH.'nl'.LANG_EXT, LANG_PATH.'fr'.LANG_EXT, LANG_PATH.'en'.LANG_EXT,
@@ -99,7 +101,7 @@
 						if(!in_array(CONTROLLER_PATH.$this->_commandExplode[2].CONTROLLER_EXT.'.php', $this->_forbidden) && !in_array(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', $this->_forbidden)){
 							if(!file_exists(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
 								$monfichier = fopen(CONTROLLER_PATH.$this->_commandExplode[2].CONTROLLER_EXT.'.php', 'a');						
-									$t= new template(GCSYSTEM_PATH.'GCcontroller', 'GCcontroller', '0');
+									$t= new template(GCSYSTEM_PATH.'controller', 'GCcontroller', '0');
 									$t->assign(array(
 										'controller'=> $this->_commandExplode[2]
 									));
@@ -110,7 +112,7 @@
 							
 							if(!file_exists(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php')){
 								$monfichier = fopen(MODEL_PATH.$this->_commandExplode[2].MODEL_EXT.'.php', 'a');						
-									$t= new template(GCSYSTEM_PATH.'GCmodel', 'GCmodel', '0');
+									$t= new template(GCSYSTEM_PATH.'model', 'GCmodel', '0');
 									$t->assign(array(
 										'controller'=> ucfirst($this->_commandExplode[2])
 									));
@@ -213,10 +215,10 @@
 									$markupXml->setAttribute("id", $this->_commandExplode[2]);
 									
 									if(isset($this->_commandExplode[6])){
-										$markupXml->setAttribute("logined", $this->_commandExplode[6]);
+										$markupXml->setAttribute("conncted", $this->_commandExplode[6]);
 									}
 									else{
-										$markupXml->setAttribute("logined", '*');
+										$markupXml->setAttribute("connected", '*');
 									}
 									
 									if(isset($this->_commandExplode[7])){
@@ -284,7 +286,7 @@
 
 						if(!file_exists(EVENT_PATH.$this->_commandExplode[2].EVENT_EXT.'.php')){
 							$monfichier = fopen(EVENT_PATH.$this->_commandExplode[2].EVENT_EXT.'.php', 'a');						
-								$t= new template(GCSYSTEM_PATH.'GCevent', 'GCevent', '0');
+								$t= new template(GCSYSTEM_PATH.'event', 'GCevent', '0');
 								$t->assign(array(
 									'name'=> $this->_commandExplode[2]
 								));
@@ -639,6 +641,24 @@
 							$this->_result = '<br />><span style="color: chartreuse;"> le backup n\'a pas pu être créé</span>';
 						}
 					}
+					elseif(preg_match('#add entity (.*)#', $this->_command)){
+						$this->_result = '';
+
+						$this->_commandExplode[2] = trim($this->_commandExplode[2]);
+
+						if($this->_commandExplode[2] == '*'){
+							$sql = new sql($this->_bdd);
+							$sql->query('add_entity', 'SHOW TABLES FROM '.$this->_bdd->getDatabase());
+							$data = $sql->fetch('add_entity', sql::PARAM_FETCH);
+
+							foreach($data as $value){
+								$this->_result .= $this->addEntity($this->_bdd->getDatabase(), $value[0]);
+							}
+						}
+						else{
+							$this->_result = $this->addEntity($this->_bdd->getDatabase(), $this->_commandExplode[2]);
+						}
+					}
 					elseif(preg_match('#help#', $this->_command)){
 						$this->_stream .= '<br />> add controller nom (l\'url par défaut est le nom du contrôleur; cette url sera créée à condition que l\'id (nom) ne soit pas déjà utilisé';
 						$this->_stream .= '<br />> set controller nom nouveaunom';
@@ -672,6 +692,7 @@
 						$this->_stream .= '<br />> add backup chemin nom';
 						$this->_stream .= '<br />> delete backup nom';
 						$this->_stream .= '<br />> install backup nom to';
+						$this->_stream .= '<br />> add entity bdd table';
 						$this->_stream .= '<br />> update';  
 						$this->_stream .= '<br />> update updater';
 						$this->_stream .= '<br />> changepassword nouveaumdp';
@@ -1071,8 +1092,9 @@
 			}
 
 			protected function _update(){
+				$contenu = "";
+
 				if(function_exists('curl_init')){
-					$contenu = "";
 					$sauvegarde ="";
 					$suppr = "";
 
@@ -1104,6 +1126,53 @@
 				}	
 				else{
 					return $contenu .= '<br />> <span style="color: red;">Vous devez activer l\'extension C_URL dans le php.ini pour pouvoir utiliser la fonction update';
+				}
+			}
+
+			public function addEntity($bdd, $table){
+				if(file_exists(ENTITY_PATH.$table.ENTITY_EXT.'.php')){
+					unlink(ENTITY_PATH.$table.ENTITY_EXT.'.php');
+				}
+
+				$sql = new sql($this->_bdd);
+				$sql->query('add_entity', 'SELECT COLUMN_NAME, EXTRA, COLUMN_KEY FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = :bdd AND TABLE_NAME = :table');
+				$sql->setVar(array('bdd' => $bdd));
+				$sql->setVar(array('table' => $table));
+
+				$column = '';
+
+				foreach($sql->fetch('add_entity', sql::PARAM_FETCH) as $value){
+					$options = '';
+
+					if($value['EXTRA'] == 'auto_increment'){
+						$options .= "'autoincrement' => true,";
+					}
+
+					if($value['COLUMN_KEY'] == 'PRI'){
+						$options .= "'primary' => true,";
+					}
+
+					$options = preg_replace('#,$#isU', '', $options);
+
+					$column.= '                $this->addColumn(\''.$value['COLUMN_NAME'].'\', array('.$options.'));'."\n";
+				}
+
+				if($column != ''){
+					$t = new template(GCSYSTEM_PATH.'entity', 'GCentity_'.$table, '0');
+					$t->assign(array(
+						'class'=> $table,
+						'column'=> $column
+					));
+					$t->setShow(FALSE);
+
+					$file = fopen(ENTITY_PATH.$table.ENTITY_EXT.'.php', 'a');
+					fputs($file, $t->show());
+					fclose($file);
+
+					return '<br />><span style="color: chartreuse;"> l\'entité <u>'.ENTITY_PATH.$table.ENTITY_EXT.'.php'.'</u>  a bien été ajoutée</span>';
+				}
+				else{
+					return '<br />><span style="color: red;"> l\'entité <u>'.ENTITY_PATH.$table.ENTITY_EXT.'.php'.'</u>  la table sql n\'existe pas</span>';
 				}
 			}
 

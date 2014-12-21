@@ -10,15 +10,15 @@
 			<default>
 				<source id="index" vars="fr"/>
 			</default>
-			<forbidden template="GCsystem/GCerror">
-				<variable type="lang" name="error" value="firewallforbiddentitle"/>
-				<variable type="lang" name="explanation" value="firewallforbiddencontent"/>
+			<forbidden template="gcs/error">
+				<variable type="lang" name="error" value="gc_firewallforbiddentitle"/>
+				<variable type="lang" name="explanation" value="gc_firewallforbiddencontent"/>
 			</forbidden>
-			<csrf name="token" template="GCsystem/GCerror" enabled="true">
-				<variable type="lang" name="error" value="firewallcsrftitle"/>
-				<variable type="lang" name="explanation" value="firewallcsrfcontent"/>
+			<csrf name="user_token" template="gcs/error" enabled="true">
+				<variable type="lang" name="error" value="gc_firewallcsrftitle"/>
+				<variable type="lang" name="explanation" value="gc_firewallcsrfcontent"/>
 			</csrf>
-			<connect name="logged" yes="true" no="false"/>
+			<connect name="user_logged" yes="true" no="false"/>
 		</config>
 		<access>
 		</access>

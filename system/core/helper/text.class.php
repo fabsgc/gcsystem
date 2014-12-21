@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : text.class.php
-	 * @author : fab@c++
-	 * @description : class gÃ©rant les text
-	 * @version : 2.0 bÃªta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : text.class.php
+	 | @author : fab@c++
+	 | @description : class gérant les textes
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace helper{
 		class text{
@@ -19,7 +21,7 @@
 			/**
 			 * Crée l'instance de la classe
 			 * @access	public
-			 * @return	void
+			 * @param $texte string : $texte à utiliser
 			 * @since 2.0
 			*/
 			

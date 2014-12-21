@@ -1,14 +1,16 @@
 <?php
-	/**
-	 * @file : firewall.class.php
-	 * @author : fab@c++
-	 * @description : class gérant le firewall, l'accès aux pages
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : firewall.class.php
+	 | @author : fab@c++
+	 | @description : class gérant le firewall, l'accès aux pages
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class firewall {
-			use error, langInstance, general, urlRegex; //trait
+			use error, langInstance, general, urlRegex;
 			
 			protected $_security             = array();
 			protected $_sessions             = array();

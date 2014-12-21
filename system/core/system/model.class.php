@@ -1,16 +1,18 @@
 <?php
-	/**
-	 * @file : model.class.php
-	 * @author : fab@c++
-	 * @description : class gérant la partie model. abstraite
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : model.class.php
+	 | @author : fab@c++
+	 | @description : class gérant la partie model. abstraite
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		abstract class model{
-			use error, langInstance, general, urlRegex, errorPerso; //trait
+			use error, langInstance, general, urlRegex, errorPerso, ormFunctions;
 
-			public $bdd                                ; //contient la connexion sql
+			public $bdd                                ;
 			
 			final public  function __construct($lang = "", $bdd){
 				if($lang==""){ 
@@ -43,12 +45,24 @@
 			}
 			
 			final public function getLang(){
-				return $this->_lang;
+				return $this->lang;
 			}
 			
 			final public function setLang($lang){
-				$this->_lang=$lang;
+				$this->lang=$lang;
 				$this->_langInstance->setLang($this->_lang);
+			}
+
+			/**
+			 * retourne les données sous forme d'entités
+			 * @access	public
+			 * @param $data array
+			 * @param $entity string
+			 * @return	array
+			 * @since 2.4
+			 */
+			final public function toEntity($data = array(), $entity = ''){
+				return $this->ormToEntity($this->bdd, $data, $entity);
 			}
 			
 			public  function __destruct(){

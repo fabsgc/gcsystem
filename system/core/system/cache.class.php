@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : cache.class.php
-	 * @author : fab@c++
-	 * @description : class gérant la mise en cache de façon générale
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : cache.class.php
+	 | @author : fab@c++
+	 | @description : class gérant la mise en cache de façon générale
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class cache{
@@ -18,15 +20,13 @@
 			/**
 			 * Constructeur de la classe. Configure les paramètres necéssaires à la création d'un fichier de cache
 			 * @access	public
-			 * @return	void
-			 * @param string $name : nom du fichier de cache
-			 * @param string $val : contenu du fichier de cache<br />
-			 * @param int $time : temps de mise en cache du fichier. La valeur par défaut, 0 correspond à un fichier non mis en cache
-			 * @param int $sha1 : le nom du fichier est hashé ou non
+			 * @param $name string : nom du fichier de cache
+			 * @param $val string : contenu du fichier de cache<br />
+			 * @param $time int : temps de mise en cache du fichier. La valeur par défaut, 0 correspond à un fichier non mis en cache
 			 * @since 2.0
 			*/
 			
-			public function __construct($name, $val, $time=0){
+			public function __construct($name, $val, $time = 0){
 				$this->_name = $name;
 				$this->_val = $val;
 
@@ -126,8 +126,7 @@
 			/**
 			 * Destruction d'un fichier de cache
 			 * @access	public
-			 * @return	void
-			 * @param bool
+			 * @return	boolean
 			 * @since 2.3
 			*/
 			
@@ -153,7 +152,7 @@
 			/**
 			 * Récupération du cache
 			 * @access	public
-			 * @return	void
+			 * @return	string
 			 * @since 2.0
 			*/
 		 
@@ -164,12 +163,14 @@
 				else{
 					$this->setCache();
 				}
+
+				return unserialize(($this->_uncompress(file_get_contents($this->_nameFile))));
 			}
 		 
 			/**
 			 * Fonction permettant de savoir si le fichier de cache est périmé
 			 * @access	public
-			 * @return	void
+			 * @return	string
 			 * @since 2.0
 			*/
 		 
@@ -195,7 +196,7 @@
 			/**
 			 * Fonction permettant de savoir si le fichier de cache existe
 			 * @access	public
-			 * @return	void
+			 * @return	boolean
 			 * @since 2.0
 			*/
 			
@@ -211,7 +212,7 @@
 			/**
 			 * Compression du fichier de cache
 			 * @access	public
-			 * @return	void
+			 * @return	string
 			 * @param string $val : contenu à compresser
 			 * @since 2.0
 			*/
@@ -223,7 +224,7 @@
 			/**
 			 * Décompression du fichier de cache
 			 * @access	public
-			 * @return	void
+			 * @return	string
 			 * @param string $val : contenu à décompresser
 			 * @since 2.0
 			*/

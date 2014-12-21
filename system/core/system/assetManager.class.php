@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : assetManager.class.php
-	 * @author : fab@c++
-	 * @description : class facilitant la gestion des ressources JS et CSS
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : assetManager.class.php
+	 | @author : fab@c++
+	 | @description : class facilitant la gestion des ressources JS et CSS
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 
 	namespace system{
 		class assetManager{
@@ -21,8 +23,10 @@
 			/**
 			 * Crée l'instance de la classe
 			 * @access	public
-			 * @return	void
-			 * @param array $data
+			 * @param $data array :
+			 * 		files array : liens vers les fichiers concernés,
+			 * 		cache int : temps de mise en cache
+			 * 		type string : js/css
 			 * @since 2.0
 			*/
 			
@@ -77,57 +81,68 @@
 
 				if($this->_type == 'css'){
 					$this->_currentPath = $file->getFolder().'/';
-					$this->_data[''.$path.''] = preg_replace_callback('`url\((.*)\)`isU', array('system\assetManager', '_parseRelativePathCss'), $this->_data[''.$path.'']);
+					$this->_data[''.$path.''] = preg_replace_callback('`url\((.*)\)`isU', array('system\assetManager', '_parseRelativePathCssUrl'), $this->_data[''.$path.'']);
+					$this->_data[''.$path.''] = preg_replace_callback('`src=\'(.*)\'`isU', array('system\assetManager', '_parseRelativePathCssSrc'), $this->_data[''.$path.'']);
 				}
 			}
 
+			protected function _parseRelativePathCssUrl($m){
+				return 'url('.$this->_parseRelativePathCss($m).')';
+			}
+
+			protected function _parseRelativePathCssSrc($m){
+				return 'src=\''.$this->_parseRelativePathCss($m).'\'';
+			}
+
 			protected function _parseRelativePathCss($m){
-				/*
-					on prend le chemin du fichier. A chaque fois qu'on a un ../ dans un fichier dans le code css, on va enlever un dossier au chemin du fichier parent
-					exemple :
-						j'ai le fichier css/dossier/truc/test.css
-						dedans, j'ai le fichier ../../test.png
-						on a 2 ../ donc on va prend le chemin du fichier et enlevé les deux derniers dossiers donc truc/dossier/ en moins
-				*/
+				if(!preg_match('#^(http)#isU', $m[1])){
+					/*
+						on prend le chemin du fichier. A chaque fois qu'on a un ../ dans un fichier dans le code css, on va enlever un dossier au chemin du fichier parent
+						exemple :
+							j'ai le fichier css/dossier/truc/test.css
+							dedans, j'ai le fichier ../../test.png
+							on a 2 ../ donc on va prend le chemin du fichier et enlevé les deux derniers dossiers donc truc/dossier/ en moins
+					*/
 
-				//on enlève le / de début
-				$m[1] = preg_replace("#^/#isU", '', $m[1]);
-				$this->_currentPath = preg_replace("#^/#isU", '', $this->_currentPath);
+					//on enlève le / de début
+					$m[1] = preg_replace("#^/#isU", '', $m[1]);
+					$this->_currentPath = preg_replace("#^/#isU", '', $this->_currentPath);
 
-				//on compte le nombre de dossiers parents à remonter
-				$numberParentDir = substr_count($m[1], '../');
+					//on compte le nombre de dossiers parents à remonter
+					$numberParentDir = substr_count($m[1], '../');
 
-				//on créé la chaîne
-				for ($i=0; $i < $numberParentDir; $i++) { 
-					$pathReplace .= '(.[^\/]+)\/';
-				}
+					//on créé la chaîne
+					for ($i=0; $i < $numberParentDir; $i++) {
+						$pathReplace .= '(.[^\/]+)\/';
+					}
 
-				$pathReplace .= '$';
+					$pathReplace .= '$';
 
-				//echo $this->_currentPath."\n";
+					//echo $this->_currentPath."\n";
 
-				//on élimine tous les dossiers en trop
-				$newCurrentPath = preg_replace('#'.$pathReplace.'#isU', '', $this->_currentPath);
-				//echo $newCurrentPath."\n";
+					//on élimine tous les dossiers en trop
+					$newCurrentPath = preg_replace('#'.$pathReplace.'#isU', '', $this->_currentPath);
+					//echo $newCurrentPath."\n";
 
-				//on nettoie encore
-				$m[1] = preg_replace('#\.\./#isU', '', $m[1]);
-				$m[1] = preg_replace('#"#isU', '', $m[1]);
-				$m[1] = preg_replace("#'#isU", '', $m[1]);
+					//on nettoie encore
+					$m[1] = preg_replace('#\.\./#isU', '', $m[1]);
+					$m[1] = preg_replace('#"#isU', '', $m[1]);
+					$m[1] = preg_replace("#'#isU", '', $m[1]);
 
-				//on peut rétablir les chemins relatifs
-				if($newCurrentPath != $this->_currentPath){
-					$m[1] = $newCurrentPath.$m[1];
-				}
-				else if(!preg_match('#^'.preg_quote($newCurrentPath).'#isU', $m[1])){
-					if(!preg_match('#^/asset#isU', $m[1]) && !preg_match('#^asset#isU', $m[1]))
+					//on peut rétablir les chemins relatifs
+					if($newCurrentPath != $this->_currentPath){
 						$m[1] = $newCurrentPath.$m[1];
+					}
+					else if(!preg_match('#^'.preg_quote($newCurrentPath).'#isU', $m[1])){
+						if(!preg_match('#^/asset#isU', $m[1]) && !preg_match('#^asset#isU', $m[1]))
+							$m[1] = $newCurrentPath.$m[1];
+					}
+
+					if(!preg_match('#^/#isU', $m[1]))
+						$m[1] = '/'.$m[1];
 				}
 
-				if(!preg_match('#^/#isU', $m[1]))
-					$m[1] = '/'.$m[1];
-
-				return 'url('.$m[1].')';
+				return $m[1];
 			}
 
 			protected function _parseRelativePathJs($m){
@@ -151,10 +166,22 @@
 				$this->_cache->setCache();
 			}
 
+			/**
+			 * Récupère l'id du fichier généré
+			 * @access	public
+			 * @return string
+			 * @since 2.0
+			 */
 			public function getId(){
 				return sha1($this->_name);
 			}
 
+			/**
+			 * Récupère le type
+			 * @access	public
+			 * @return string
+			 * @since 2.0
+			 */
 			public function getType(){
 				return $this->_type;
 			}

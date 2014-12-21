@@ -1,5 +1,7 @@
 <?php
 	class index extends system\controller{
+		public $attribute;
+
 		public function init(){
 		}
 
@@ -7,7 +9,7 @@
 		}
 
 		public function actionDefault(){
-			$t = new system\template(GCSYSTEM_PATH.'GCsystem', 'GCsystem', 0, $this->lang);
+			$t = new system\template(GCSYSTEM_PATH.'system', 'system', 0, $this->lang);
 			$t->show();
 		}
 	}

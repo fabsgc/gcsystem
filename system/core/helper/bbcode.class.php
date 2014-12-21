@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : bbcode.class.php
-	 * @author : fab@c++
-	 * @description : class gérant le parsage des messages et l'affichage d'un éditeur plus ou moins avancé
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : bbcode.class.php
+	 | @author : fab@c++
+	 | @description : class gérant le parsage des messages et l'affichage d'un éditeur plus ou moins avancé
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 
 	namespace helper{
 		class bbcode{
@@ -148,9 +150,8 @@
 
 			/**
 			 * Crée l'instance de la classe
-			 * @param string $lang : langue à utiliser dans les templates utilisés par la classe
+			 * @param $lang string : langue à utiliser dans les templates utilisés par la classe
 			 * @access public
-			 * @return void
 			 * @since 2.0
 			*/
 
@@ -173,10 +174,11 @@
 
 			/**
 			 * permet d'utiliser l'instance de la class lang dans cette class
-			 * @param string $sentence : id de la phrase
-			 * @param array $var : variable à utiliser dans la phrase traduite
+			 * @param $sentence string  : id de la phrase
+			 * @param $var array : variable à utiliser dans la phrase traduite
+			 * @param $template : utilisation de la syntaxe des templates ou non (désactivé par défaut)
 			 * @access public
-			 * @return void
+			 * @return string
 			 * @since 2.0
 			*/
 
@@ -311,14 +313,14 @@
 
 			/**
 			 * permet de changer la langue utilisée
-			 * @param string $contenu : contenu à parser
 			 * @access public
+			 * @param $lang string : contenu à parser
 			 * @return void
 			 * @since 2.0
 			*/
 
-			public function setLang($Lang){
-				$this->_lang=$Lang;
+			public function setLang($lang){
+				$this->_lang = $lang;
 				$this->_langInstance->setLang($this->_lang);
 			}
 
@@ -508,8 +510,8 @@
 
 			/**
 			 * affiche l'éditeur de bbcode
-			 * @param string $contenu : contenu par défaut à afficher et parser
-			 * @param string $option : option de l'éditeur
+			 * @param $contenu string : contenu par défaut à afficher et parser
+			 * @param $option array : option de l'éditeur
 			 * @access public
 			 * @return void
 			 * @since 2.0
@@ -563,7 +565,7 @@
 					}
 				}
 
-				$tpl = new \system\template(GCSYSTEM_PATH.'GCbbcodeEditor', 'GCbbcodeEditor', 0, $this->_lang);
+				$tpl = new \system\template(GCSYSTEM_PATH.'bbcodeEditor', 'GCbbcodeEditor', 0, $this->_lang);
 				$tpl->assign(array(
 					'message' => $contenu,
 					'preview' => $this->_preview,

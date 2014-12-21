@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : antispam.class.php
-	 * @author : fab@c++
-	 * @description : class gérant la lutte contre le spam par requête (IP)
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : antispam.class.php
+	 | @author : fab@c++
+	 | @description : class gérant la lutte contre le spam par requête (IP)
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class antispam{
@@ -18,11 +20,11 @@
 			/**
 			 * Crée l'instance de la classe
 			 * @access public
-			 * @return void
+			 * @param $lang string : langue
 			 * @since 2.0
 			*/
 
-			public  function __construct($lang=NULL){
+			public  function __construct($lang = NULL){
 				if($lang==NULL){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 				$this->_createLangInstance();
 

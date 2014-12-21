@@ -324,6 +324,46 @@
 									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
+
+							case '>' :
+								if(($_POST[$value[1]])>$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '<' :
+								if(($_POST[$value[1]])<$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '>=' :
+								if(($_POST[$value[1]])>=$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+								break;
+
+							case '<=' :
+								if(($_POST[$value[1]])<=$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+								break;
 							
 							case 'equalto' :
 								if(($_POST[$value[1]])==$contraint_valeur){
@@ -482,8 +522,8 @@
 							case 'sqlCount' :
 								$sql= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$1', $contraint_valeur); 
 								$vars = preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$2', $contraint_valeur); 
-								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur); 
-								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur); 
+								$contrainte= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$3', $contraint_valeur);
+								$valeur= preg_replace('#\[(.*)\] \[(.*)\] \[(.*)\] \[(.*)\]#isU', '$4', $contraint_valeur);
 
 								$var = explode(',', $vars);
 
@@ -521,8 +561,10 @@
 									case '<':
 										if($query<$valeur){
 											array_push($this->valid, 'true');
+											echo 'sdfsd';
 										}
 										else{
+											echo 'sdfsd((((sd';
 											array_push($this->valid, 'false');
 											array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 										}
@@ -730,6 +772,46 @@
 									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
+
+							case '>' :
+								if(($_POST[$value[1]])>$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '<' :
+								if(($_POST[$value[1]])<$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '>=' :
+								if(($_POST[$value[1]])>=$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '<=' :
+								if(($_POST[$value[1]])<=$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
 							
 							case 'equalto' :
 								if(($_FILES[$value[1]]['size'])==$contraint_valeur){
@@ -861,6 +943,46 @@
 						switch($contraint){
 							case 'different' :
 								if(($_POST[$value[1]])!=$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '>' :
+								if(($_POST[$value[1]])>$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '<' :
+								if(($_POST[$value[1]])<$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '>=' :
+								if(($_POST[$value[1]])>=$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '<=' :
+								if(($_POST[$value[1]])<=$contraint_valeur){
 									array_push($this->valid, 'true');
 								}
 								else{
@@ -1167,6 +1289,46 @@
 							
 							case 'different' :
 								if(($_POST[$value[1]])!=$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '>' :
+								if(($_POST[$value[1]])>$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '<' :
+								if(($_POST[$value[1]])<$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '>=' :
+								if(($_POST[$value[1]])>=$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '<=' :
+								if(($_POST[$value[1]])<=$contraint_valeur){
 									array_push($this->valid, 'true');
 								}
 								else{
@@ -1526,6 +1688,46 @@
 									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
 								}
 							break;
+
+							case '>' :
+								if(($date)>$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+								break;
+
+							case '<' :
+								if(($date)<$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+								break;
+
+							case '>=' :
+								if(($date)>=$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+								break;
+
+							case '<=' :
+								if(($date)<=$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+								break;
 							
 							case 'equalto' :
 								if(($date)==$contraint_valeur){
@@ -1749,6 +1951,46 @@
 						switch($contraint){								
 							case 'different' :
 								if(($date)!=$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '>' :
+								if(($date)>$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '<' :
+								if(($date)<$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '>=' :
+								if(($date)>=$contraint_valeur){
+									array_push($this->valid, 'true');
+								}
+								else{
+									array_push($this->valid, 'false');
+									array_push($this->error, $value[2].' : '.$value[4][$this->i]);
+								}
+							break;
+
+							case '<=' :
+								if(($date)<=$contraint_valeur){
 									array_push($this->valid, 'true');
 								}
 								else{

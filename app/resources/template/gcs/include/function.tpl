@@ -1,4 +1,5 @@
 <gc:template name="gcsystemHtmlDefault" vars="">
+    <gc:minify>
 	*{
 		box-sizing: border-box;
 	}
@@ -16,7 +17,7 @@
 		background-color: white;
 	}
 	header .content{
-		width: 750px;
+		width: 900px;
 		margin: auto;
 	}
 	header h1{
@@ -24,11 +25,11 @@
 		font-size: 30px;
 		color: #E74C3C;
 		padding-left: 65px;
-		background: url('{{def:IMG_PATH}}GCsystem/logo60.png') top left no-repeat;
+		background: url('{{def:IMG_PATH}}gcs/logo60.png') top left no-repeat;
 		margin: 0;
 	}
 	#body{
-		width: 750px;
+		width: 900px;
 		min-height: 200px;
 		margin: auto;
 		background-color: white;
@@ -44,7 +45,7 @@
 		color: #E74C3C;
 	}
 	footer{
-		width: 750px;
+		width: 900px;
 		margin: auto;
 		color: white;
 		padding: 5px;
@@ -76,4 +77,9 @@
 		box-shadow: rgba(0, 0, 0, 0.0980392) 0px -1px 0px inset, rgba(0, 0, 0, 0.0980392) 0px 2px 0px;
 		text-decoration:none;
 	}
+    h3{
+        margin-top: 5px;
+        color: #E74C3C;
+    }
+    </gc:minify>
 </gc:template>

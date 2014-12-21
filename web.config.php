@@ -8,7 +8,7 @@
  | ------------------------------------------------------
 \*/
 
-define('VERSION', '3.0');
+define('VERSION', '2.4.1');
 
 define('ASSET_PATH', 'asset/');
 define('APP_PATH', 'app/');
@@ -17,6 +17,7 @@ define('LOG_PATH', SYSTEM_PATH.'log/');
 define('CACHE_PATH', SYSTEM_PATH.'cache/');
 define('CONTROLLER_PATH', APP_PATH.'controller/');
 define('MODEL_PATH', APP_PATH.'model/');
+define('ENTITY_PATH', APP_PATH.'entity/');
 define('RESOURCE_PATH', APP_PATH.'resources/');
 define('EVENT_PATH', RESOURCE_PATH.'event/');
 define('APP_CONFIG_PATH', RESOURCE_PATH.'config/');
@@ -29,6 +30,8 @@ define('GCSYSTEM_PATH', 'gcs/');
 define('CLASS_SYSTEM_PATH', 'system/');
 define('CLASS_HELPER_PATH', 'helper/');
 define('BACKUP_PATH', SYSTEM_PATH.'backup/');
+define('CACHE_PATH_DEFAULT', CACHE_PATH.'/default/');
+define('CACHE_PATH_TEMPLATE', CACHE_PATH.'/template/');
 
 define('LANG_EXT', '.xml');
 define('FILES_EXT', '.html');
@@ -36,7 +39,8 @@ define('TEMPLATE_EXT', '.tpl');
 define('LOG_EXT', '.log');
 define('CONTROLLER_EXT', '.class');
 define('MODEL_EXT', '.model.class');
-define('EVENT_EXT', '.class');
+define('EVENT_EXT', '.event.class');
+define('ENTITY_EXT', '.entity.class');
 
 define('LOG_SYSTEM', 'system');
 define('LOG_PHP', 'error');
@@ -87,17 +91,14 @@ define('FATAL', 'FATAL');
 
 /* --------------parametres de connexion a la base de donnees------------------*/
 
-$GLOBALS['db']['bdd']['hostname']  = "localhost";
-$GLOBALS['db']['bdd']['username']  = "root";
-$GLOBALS['db']['bdd']['password']  = "";
-$GLOBALS['db']['bdd']['database']  = "test";
-$GLOBALS['db']['bdd']['extension'] = "pdo";
-$GLOBALS['db']['bdd']['sgbd']      = "mysql";
+$GLOBALS['db']['hostname'] = "localhost";
+$GLOBALS['db']['username']  = "root";
+$GLOBALS['db']['password']  = "";
+$GLOBALS['db']['database']  = "test";
+$GLOBALS['db']['extension'] = "pdo";
+$GLOBALS['db']['sgbd']      = "mysql";
 
 /* -------------- CONSTANTE RELATIVE AU SITE OBLIGATOIRES MAIS MODIFIABLES ----------------- */
-
-//base du site (utile pour eviter les repetition et faciliter  les changements de bdd
-define('BDD', 'test');
 
 //connexion à la bdd, true ou false
 define('CONNECTBDD', false);
@@ -129,7 +130,8 @@ define('ENVIRONMENT', 'development');
 define('MAINTENANCE', false);
 
 /* affiche la barre de dev ou non */
-define('DEVTOOL', false);
+define('DEVTOOL', true);
+define('DEVTOOLBAR', false);
 
 /* mot de passe pour se connecter au terminal */
 define('TERMINAL_MDP', 'mdp');
@@ -139,29 +141,25 @@ define('SECUREGET', true);
 define('SECUREPOST', true);
 
 /* prefixe des constantes de l'utilisateur */
-define('CONST_APP_PREFIXE', 'GCS_');
+define('CONST_APP_PREFIXE', 'USER_');
 
 /* le nom des fichiers de cache sera hashé ou non */
 define('CACHE_SHA1', false);
-
-/* dossiers des types de cache */
-define('CACHE_PATH_DEFAULT', CACHE_PATH.'/default/');
-define('CACHE_PATH_TEMPLATE', CACHE_PATH.'/template/');
 
 /* le nom des fichiers de cache sera hashé ou non */
 define('LOG_ENABLED', true);
 
 /* le cache peut-être désactivé pour pouvoir tester facilement quelque chose. Dans ce cas, le cache est mis toujours à 0 */
-define('CACHE_ENABLED', true);
+define('CACHE_ENABLED', false);
 
 /* réduis la taille des fichiers html en supprimant les tabulations (attention avec les zones de texte) */
-define('MINIFY_OUTPUT_HTML', false);
+define('MINIFY_OUTPUT_HTML', true);
 
 /* affiche les log d'erreurs [FATAL] (erreurs qui entravent gravement le fonctionnement de l'application) */
-define('DISPLAY_ERROR_FATAL', false);
+define('DISPLAY_ERROR_FATAL', true);
 
 /* asset manager activé */
-define('ASSETMANAGER', true);
+define('ASSETMANAGER', false);
 
 /* à ne pas modifier */
 define('IMG_PATH', FOLDER.'/'.ASSET_PATH.'image/');

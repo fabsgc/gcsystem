@@ -29,12 +29,12 @@ Installation :
 Contenus externes :
 -----------
 
-* Utilisation des images de la barre de développement de symfony pendant la période de développement du Framework
+* Utilisation des images de la barre de développement de symfony
 
 Documentation :
 -----------
 
-* Le GCsystem 2.3 étant encore en développement, une documentation est en cours de rédaction mais n'est pas terminée. Elle est disponible ici : [GCsystem 2.3 documentation][2]
+* Le GCsystem 2.4 étant encore en développement, une documentation est en cours de rédaction mais n'est pas terminée. Elle est disponible ici : [GCsystem 2.3 documentation][2] (note : la version de la documentation est la 2.3 et non la 2.4)
 
 Site du projet
 -----------

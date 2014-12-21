@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @dir : dir.class.php
-	 * @author : fab@c++
-	 * @description : class gèrant les opérations sur les fichiers
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : dir.class.php
+	 | @author : fab@c++
+	 | @description : class gèrant les opérations sur les fichiers
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace helper{
 	    class dir{
@@ -29,9 +31,8 @@
 			
 			/**
 			 * Crée l'instance de la classe
-			 * @param string $dirpath : chemin vers le répertoire
+			 * @param $dirpath string : chemin vers le répertoire
 			 * @access public
-			 * @return void
 			 * @since 2.0
 			*/
 
@@ -114,6 +115,7 @@
 			/**
 			 * retourne le poids total d'un répertoire
 			 * @access public
+			 * @param $repertoire string : répertoire
 			 * @return string
 			 * @since 2.0
 			*/
@@ -317,7 +319,7 @@
 			/**
 			 * permet de définir un peu tout
 			 * @access public
-			 * @param string $dir : répertoire de travail
+			 * @param $dirpath string : répertoire de travail
 			 * @return string
 			 * @since 2.0
 			*/

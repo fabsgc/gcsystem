@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : upload.class.php
-	 * @author : fab@c++
-	 * @description : class gérant les uploads
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : upload.class.php
+	 | @author : fab@c++
+	 | @description : class gérant les uploads
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace helper{
 		class upload{

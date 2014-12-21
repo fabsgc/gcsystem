@@ -2,7 +2,7 @@
 <html lang="fr">
 	<head>
 		<title>GCsystem - Terminal</title>
-		<link rel="icon" type="image/png" href="{{def:IMG_PATH}}/GCsystem/logo.png" />
+		<link rel="icon" type="image/png" href="{{def:IMG_PATH}}/gcs/logo.png" />
 		<script type="text/javascript" src="{{def:JS_PATH}}jquery/jquery.min.js" ></script>
 	</head>
 	 <body>
@@ -58,7 +58,7 @@
 						$( document ).ready(function() {
 							$.ajax({
 								type: "POST",
-								url: '{{url:gcsystem_terminal_parse}}',
+								url: '{{url:gcs.terminal_parse}}',
 								data: {
 									command : command
 								}

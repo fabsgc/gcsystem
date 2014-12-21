@@ -1,11 +1,12 @@
-
 <?php
-	/**
-	 * @file : install.class.php
-	 * @author : fab@c++
-	 * @description : class gérant l'installation de addons externes
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : install.class.php
+	 | @author : fab@c++
+	 | @description : class gérant l'installation de addons externes
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 
 	namespace system{
 		class install{
@@ -39,10 +40,10 @@
 					MODEL_PATH.'index'.MODEL_EXT.'.php', MODEL_PATH.'terminal'.MODEL_EXT.'.php', 
 					CONTROLLER_PATH.'index'.CONTROLLER_EXT.'.php', CONTROLLER_PATH.'terminal'.CONTROLLER_EXT.'.php', FUNCTION_GENERIQUE,
 					TEMPLATE_PATH.ERRORDOCUMENT_PATH.'httpError'.TEMPLATE_EXT,
-					TEMPLATE_PATH.GCSYSTEM_PATH.'GCbbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCerror'.TEMPLATE_EXT, 
-					TEMPLATE_PATH.GCSYSTEM_PATH.'GCmaintenance'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCmodel'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCnewcontroller'.TEMPLATE_EXT, 
-					TEMPLATE_PATH.GCSYSTEM_PATH.'GCpagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCspam'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystem'.TEMPLATE_EXT, 
-					TEMPLATE_PATH.GCSYSTEM_PATH.'GCsystemDev'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'GCTerminal'.TEMPLATE_EXT, 
+					TEMPLATE_PATH.GCSYSTEM_PATH.'bbcodeEditor'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'error'.TEMPLATE_EXT, 
+					TEMPLATE_PATH.GCSYSTEM_PATH.'maintenance'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'model'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'newcontroller'.TEMPLATE_EXT, 
+					TEMPLATE_PATH.GCSYSTEM_PATH.'pagination'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'spam'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'system'.TEMPLATE_EXT, 
+					TEMPLATE_PATH.GCSYSTEM_PATH.'devtool'.TEMPLATE_EXT, TEMPLATE_PATH.GCSYSTEM_PATH.'Terminal'.TEMPLATE_EXT, 
 					SYSTEM_PATH.'.htaccess', SYSTEM_PATH.'class/autoload.php', CLASS_PATH.CLASS_HELPER_PATH.'bbcode.class.php', CLASS_PATH.CLASS_HELPER_PATH.'captcha.class.php',
 					CLASS_PATH.CLASS_HELPER_PATH.'ftp.class.php', CLASS_PATH.CLASS_HELPER_PATH.'date.class.php', CLASS_PATH.CLASS_HELPER_PATH.'dir.class.php', CLASS_PATH.CLASS_HELPER_PATH.'download.class.php', CLASS_PATH.CLASS_HELPER_PATH.'feed.class.php',
 					CLASS_PATH.CLASS_HELPER_PATH.'file.class.php', CLASS_PATH.CLASS_HELPER_PATH.'mail.class.php', CLASS_PATH.CLASS_HELPER_PATH.'modo.class.php', CLASS_PATH.CLASS_HELPER_PATH.'pagination.class.php',
@@ -176,8 +177,6 @@
 
 										//sqls
 										$this->_checkConfigSqls();
-	                                
-	                                    //print_r($this->_xmlContent);
 
 										return $this->_conflit; // faut penser à retourner ce truc hein ^^
 								}
@@ -327,7 +326,7 @@
 
 					$node2Xml = $nodeXml->getElementsByTagName('firewalls')->item(0);
 					
-					//on check la balise firewals
+					//on check la balise firewalls
 					if(!is_object($node2Xml)){
 						$this->_conflit = false;
 						$this->_addError('la section firewalls du fichier install.xml est endommagée.', __FILE__, __LINE__, ERROR);
@@ -1042,8 +1041,8 @@
 						foreach ($markupXml as $key2 => $value2){
 							if(!file_exists(LANG_PATH.$value2->getAttribute('lang').LANG_EXT)){
 								$monfichier = fopen(LANG_PATH.$value2->getAttribute('lang').LANG_EXT, 'a');						
-									$t= new template(GCSYSTEM_PATH.'GClang', 'GClang', '0');
-									$t->setShow(FALSE);
+									$t= new template(GCSYSTEM_PATH.'lang', 'GClang', '0');
+									$t->setShow(false);
 									fputs($monfichier, $t->show());
 								fclose($monfichier);
 							}
@@ -1218,7 +1217,7 @@
 						foreach ($this->_xmlContent['crons'] as $key => $value) {
 							$route = $domXml->createElement('cron');
 							$route->setAttribute('id', $value['id']);
-							$route->setAttribute('ccontroller', $value['controller']);
+							$route->setAttribute('controller', $value['controller']);
 							$route->setAttribute('action', $value['action']);
 							$route->setAttribute('time', $value['time']);
 							$route->setAttribute('executed', '');

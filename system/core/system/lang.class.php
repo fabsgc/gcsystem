@@ -1,14 +1,16 @@
 <?php
-	/**
-	 * @file : lang.class.php
-	 * @author : fab@c++
-	 * @description : class permettant la gestion de plusieurs langues
-	 * @version : 2.2 bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : lang.class.php
+	 | @author : fab@c++
+	 | @description : class permettant la gestion de plusieurs langues
+	 | @version : 2.4 bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 	    class lang{
-			use error, general;
+			use error, general, groupConfig;
 			
 			protected $_lang     = DEFAULTLANG; // nom de la langue a utilise
 			protected $_langFile = true       ; // indique si le fichier de langue est chargé ou non
@@ -20,8 +22,7 @@
 			/**
 			 * Crée l'instance de la classe langue
 			 * @access	public
-			 * @param string $lang : le nom de la lang qui sera chargée
-			 * @return	void
+			 * @param $lang string : le nom de la lang qui sera chargée
 			 * @since 2.0
 			*/
 			
@@ -85,7 +86,7 @@
 			 * @access	public
 			 * @param string $nom : le nom de la phrase à charger. Il correspondant à l'attribut id dans le fichier XML de langue
 			 * @param array $var : les variables à utiliser dans la phrase
-			 * @param bool template : utilisation de la syntaxe des templates
+			 * @param bool $template : utilisation de la syntaxe des templates
 			 * @return string
 			 * @since 2.0
 			*/

@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : modo.class.php
-	 * @author : fab@c++
-	 * @description : class gérant le filtrage du contenu du site
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : modo.class.php
+	 | @author : fab@c++
+	 | @description : class gérant le filtrage du contenu textuel de l'application
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace helper{
 		class modo{
@@ -19,13 +21,12 @@
 			/**
 			 * Crée l'instance de la classe
 			 * @access	public
-			 * @return	void
-			 * @param string $contenu : contenu à modérer
-			 * @param string $maxword : nombre maximum de mot toléré, une valeur de 0 entraîne un nombre illimité d'insultes toléré
+			 * @param $contenu string : contenu à modérer
+			 * @param $maxword int : nombre maximum de mot toléré, une valeur de 0 entraîne un nombre illimité d'insultes toléré
 			 * @since 2.0
 			*/
 			
-			public  function __construct($contenu, $maxword=0){
+			public  function __construct($contenu, $maxword = 0){
 				$this->_contenu = strval($contenu);
 				$this->_maxWord = intval($maxword);
 				$this->_setInsulte();

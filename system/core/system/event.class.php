@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : event.class.php
-	 * @author : fab@c++
-	 * @description : class permettant l'utilisation du design pattern observer
-	 * @version : 2.3 bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : event.class.php
+	 | @author : fab@c++
+	 | @description : class permettant l'utilisation du design pattern observer
+	 | @version : 2.4 bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class event {
@@ -23,7 +25,9 @@
 			/**
 			 * Constructeur de la classe
 			 * @access	public
-			 * @return	void
+			 * @param $name string : nom de l'évènement
+			 * @param $parent object : l'objet parent
+			 * @param $data array : les données passées
 			 * @since 2.3
 			*/
 
@@ -81,7 +85,7 @@
 			/**
 			 * Modifie le statut de l'évènement (true en cours ou false arrêté)
 			 * @access	public
-			 * @param int $status
+			 * @param $status
 			 * @return void
 			 * @since 2.3
 			*/
@@ -91,9 +95,9 @@
 			}
 
 			/**
-			 * Modifie le résultat retourné par l'écouteur
+			 * Modifie le résultat retourné par l'écouteur (fonction utilisée par le FW)
 			 * @access	public
-			 * @param ?? $status
+			 * @param $result string : résultat à retourner par l'écouteur
 			 * @param int $index : numéro de l'event dans l'ordre (0,1,2,3)
 			 * @param string $class : nom de la classe appelée
 			 * @param string $function : nom de la fonction appelée

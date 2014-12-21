@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : cron.class.php
-	 * @author : fab@c++
-	 * @description : class gérant les fichiers crons
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : cron.class.php
+	 | @author : fab@c++
+	 | @description : class gérant les fichiers crons
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class cron {
@@ -13,6 +15,8 @@
 			public function __construct($lang = 'fr'){
 				$this->_lang=$lang;
 				$this->_createLangInstance();
+
+				$devTool = $GLOBALS['appDev']->getShow();
 
 				if(@fopen(CRON, 'r+')) {
 					$this->domXml = new \DomDocument('1.0', CHARSET);
@@ -66,6 +70,8 @@
 				else{
 					$this->_addError('le fichier des tâches crons est en cours de lecture.', __FILE__, __LINE__, WARNING);
 				}
+
+				$GLOBALS['appDev']->setShow($devTool);
 			}
 
 			public function exception(){

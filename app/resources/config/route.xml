@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<routes>  
-	<route id="index2" url="(/*)" controller="index" action="" vars="" cache="0"/>
-	<route id="gcsystem_terminal" url="/gcs/terminal(/*)" controller="gcsystem" action="terminal" vars="" cache="0"/>
-	<route id="gcsystem_terminal_parse" url="/gcs/terminal_terminal\.html" controller="gcsystem" action="terminalParse" vars="lang" cache="0"/>
-	<route id="gcsystem_lang" url="/gcs/lang(/*)" controller="gcsystem" action="lang" vars="" cache="0"/>
+<routes>
+	<route name="profil" url="/user/([0-9]+)-([a-zA-Z0-9_-]+)(/*)" controller="user" action="viewProfil" vars="id,pseudo" cache="0"/>
+	<group name="app">
+		<route name="default" url="(/*)" action="index.default"/>
+	</group>
+	<group name="gcs" url="/gcs" action="gcsystem">
+		<route name="terminal" url="/terminal(/*)" action="terminal" vars="lang"/>
+		<route name="terminal_parse" url="/terminal_terminal\.html" action="terminalParse" vars="lang"/>
+		<route name="lang" url="/lang(/*)" action="lang"/>
+		<route name="profiler" url="/profiler(/*)" controller="gcsystem" action="profiler"/>
+		<route name="asset_manager" url="/asset/(.[^\/]+)\.([css|js]+)" action="assetManager" vars="id,type"/>
+
+	</group>
 </routes>

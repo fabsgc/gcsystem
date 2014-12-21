@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : feed.class.php
-	 * @author : fab@c++
-	 * @description : class gérant les flux rss
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : feed.class.php
+	 | @author : fab@c++
+	 | @description : class gérant les flux rss
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace helper{
 		class feed{

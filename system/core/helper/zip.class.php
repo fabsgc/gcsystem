@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : zip.class.php
-	 * @author : fab@c++
-	 * @description : class gérant les fichiers compressés
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : zip.class.php
+	 | @author : fab@c++
+	 | @description : class gérant les fichiers compressés
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace helper{
 		class zip extends file{

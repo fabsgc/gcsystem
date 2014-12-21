@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : picture.class.php
-	 * @author : fab@c++
-	 * @description : class gérant les opérations sur les images avec GD2
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : picture.class.php
+	 | @author : fab@c++
+	 | @description : class gérant les opérations sur les images avec GD2
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace helper{
 	    class picture{		

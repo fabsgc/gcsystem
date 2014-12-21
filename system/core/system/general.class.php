@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : general.class.php
-	 * @author : fab@c++
-	 * @description : traits
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : general.class.php
+	 | @author : fab@c++
+	 | @description : traits
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 
 	namespace system{
 		trait general{
@@ -28,8 +30,8 @@
 				//==========
 				
 				//=====Création du header de l'e-mail.
-				$header = "From: \"".$envoyeur."\"<contact@legeekcafe.com>".$passage_ligne;
-				$header.= "Reply-to: \"".$envoyeur."\" <contact@legeekcafe.com>".$passage_ligne;
+				$header = "From: \"".$envoyeur."\"<contact@mygreatdating.com>".$passage_ligne;
+				$header.= "Reply-to: \"".$envoyeur."\" <contact@mygreatdating.com>".$passage_ligne;
 				$header.= "MIME-Version: 1.0".$passage_ligne;
 				$header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
 				//==========
@@ -157,18 +159,71 @@
 
 			function minifyHtml($buffer) {
 				$search = array(
-					'/\>[^\S]+/s',
-					'/[^\S]+\</s'
+					'/\>[^\S ]+/s', 
+        			'/[^\S ]+\</s',
+        			'/\>(\s)+/s',
+        			'/(\s)+\</s'
 				);
 
 				$replace = array(
-					'>',
-					'<'
+					'> ',
+					' <',
+					'> ',
+					' <'
 				);
 
 				$buffer = preg_replace($search, $replace, $buffer);
 
 				return $buffer;
+			}
+
+			public function printArray($a, $n = 0) {
+				if (!is_array($a)) {
+					$n = 0;
+					echo $a."</li>";
+					return;
+				}
+
+				foreach($a as $k => $value) {
+					if($k != ''){
+						if($n != 0){
+							echo '<ul>';
+						}
+						if($k<10){
+							echo '<li><strong>'.$k.'</strong> : ';
+							$this->printArray($value, $n+1);
+						}
+						if($n != 0){
+							echo '</ul>';
+						}
+					}
+				}
+			}
+
+			public function getPhpArraySyntax($array){
+				$data = 'array(';
+
+				foreach($array as $key => $value){
+					if(is_array($value)){
+						$data .= $this->getPhpArraySyntax($value).',';
+					}
+					else{
+						$data .= '"'.$key.'" => "'.str_replace('"','\"',$value).'",'."\n";
+					}
+				}
+
+				$data = preg_replace('#,$#isU', '', $data);
+
+				return $data.')';
+			}
+
+			public function getFunctionArgNames($function = array()) {
+				$f = new \ReflectionFunction($function);
+				$result = array();
+				foreach ($f->getParameters() as $param) {
+					$result[] = $param->name;
+				}
+				return $result;
 			}
 		}
 		
@@ -204,6 +259,39 @@
 				}
 			}
 		}
+
+		trait ormFunctions{
+			/**
+			 * retourne les données sous forme d'entités
+			 * @access	public
+			 * @param $bdd pdo
+			 * @param $data array
+			 * @param $entity string
+			 * @return	array
+			 * @since 2.4
+			 */
+			final public function ormToEntity($bdd, $data = array(), $entity = ''){
+				$entities = array();
+
+				foreach($data as $value){
+					if($entity != ''){
+						$entityName = '\entity\\'.$entity;
+						$entityObject = new $entityName($bdd);
+
+						foreach($value as $key => $value2){
+							$entityObject->$key = $value2;
+						}
+					}
+					else{
+						$entityObject = new entityMultiple($data);
+					}
+
+					array_push($entities, $entityObject);
+				}
+
+				return $entities;
+			}
+		}
 		
 		trait langInstance{
 			protected $_lang                              = 'fr'    ; //gestion des langues via des fichiers XML
@@ -220,51 +308,99 @@
 				}
 			}
 		}
-		
-		trait urlRegex{
-			public function getUrl($id, $var = array(), $absolute = false){
-				if(REWRITE == true){
-					$domXml = new \DomDocument('1.0', 'iso-8859-15');
-					if($domXml->load(ROUTE)){
-						$this->_addError('url "'.$id.'" | fichier ouvert : '.ROUTE, __FILE__, __LINE__, INFORMATION);
-					
-						$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
-						$markupXml = $nodeXml->getElementsByTagName('route');
-						
-						$result   = "";
-						
-						foreach($markupXml as $sentence){	
-							if ($sentence->getAttribute("id") == $id){
-								$url = preg_replace('#\((.*)\)#isU', '<($1)>',  $sentence->getAttribute("url"));
-								$urls = explode('<', $url);
-								$i=0;
-								foreach($urls as $url){
-									if(preg_match('#\)>#', $url)){
-										if(count($var) > 0){
-											$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
-											$i++;
-										}
-									}
-									else{
-										$result.=$url;
-									}
+
+		trait groupConfig{
+			private function _groupGetParent($child, $data){
+				$parent = $child->xpath("parent::*");
+
+				if(is_object($parent[0]['name'])){
+					foreach ($this->_routeAttribute as $attribute) {
+						$name = $attribute['name'];
+
+						if(is_object($parent[0][$name])){
+							if($attribute['cache'] == false){
+								if($data[$name] != ''){
+									$data[$name] = $parent[0][$name]->__toString().$attribute['separator'].$data[$name];
 								}
-
-								$result = preg_replace('#\\\.#U', '.', $result);
-
-								if($absolute == false)
-									return FOLDER.$result;
-								else
-									return 'http://'.$_SERVER['HTTP_HOST'].FOLDER.$result;
+								else{
+									$data[$name] = $parent[0][$name]->__toString();
+								}
+							}
+							else{
+								$data[$name] = $parent[0][$name]->__toString();
 							}
 						}
 					}
-					else{
-						$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
+
+					$data = $this->_groupGetParent($parent[0], $data);
+				}
+				
+				return $data;
+			}
+		}
+		
+		trait urlRegex{
+			use groupConfig;
+
+			private $_routeAttribute = array();
+
+			private function _initRoute(){
+				$this->_routeAttribute = array(
+					array('name' => 'name', 'separator' => '.', 'cache' => false),
+					array('name' => 'url', 'separator' => '', 'cache' => false),
+					array('name' => 'action', 'separator' => '.', 'cache' => false),
+					array('name' => 'vars', 'separator' => ',', 'cache' => false),
+					array('name' => 'cache', 'separator' => '', 'cache' => true)
+				);
+			}
+
+			public function getUrl($name, $var = array(), $absolute = false){
+				if(REWRITE == true){
+					$this->_initRoute();
+					$this->_addError('url "'.$name.'" | fichier ouvert : '.ROUTE, __FILE__, __LINE__, INFORMATION);
+					
+					$xml = simplexml_load_file(ROUTE);
+					$routes = $xml->xpath('//route');
+					$result = '';
+
+					foreach ($routes as $value) {
+						foreach ($this->_routeAttribute as $attribute) {
+							$attributeType = $attribute['name'];
+
+							if(is_object($value[$attributeType]))
+								$data[$attributeType] = $value[$attributeType]->__toString();
+						}
+
+						$data = $this->_groupGetParent($value, $data);
+				
+						if ($data['name'] == $name){
+							$url = preg_replace('#\((.*)\)#isU', '<($1)>',  $data['url']);
+							$urls = explode('<', $url);
+							$i=0;
+							
+							foreach($urls as $url){
+								if(preg_match('#\)>#', $url)){
+									if(count($var) > 0){
+										$result.= preg_replace('#\((.*)\)>#U', $var[$i], $url);
+										$i++;
+									}
+								}
+								else{
+									$result.=$url;
+								}
+							}
+
+							$result = preg_replace('#\\\.#U', '.', $result);
+
+							if($absolute == false)
+								return FOLDER.$result;
+							else
+								return 'http://'.$_SERVER['HTTP_HOST'].FOLDER.$result;
+						}
 					}
 				}
 				else{
-					$url = preg_replace('#\((.*)\)#isU', '<($1)>',  $regex);
+					$url = preg_replace('#\((.*)\)#isU', '<($1)>',  $name);
 					$urls = explode('<', $url);
 					$i=0;
 

@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : log.class.php
-	 * @author : fab@c++
-	 * @description : class gérant les erreurs php
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : log.class.php
+	 | @author : fab@c++
+	 | @description : class gérant les erreurs php
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class TestErrorHandling { 

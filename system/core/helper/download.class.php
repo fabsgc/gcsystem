@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : download.class.php
-	 * @author : fab@c++
-	 * @description : class gérant les téléchargement
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : download.class.php
+	 | @author : fab@c++
+	 | @description : class gérant les téléchargement
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace helper{
 		class download extends \system\file{
@@ -27,9 +29,10 @@
 			
 			/**
 			 * Crée l'instance de la classe
-			 * @param string $filepath : chemin vers le fichier qu'il faudra faire télécharger
+			 * @param $filepath string : chemin vers le fichier qu'il faudra faire télécharger
+			 * @param $filename string : nom du fichier
+			 * @param $fileext string : extention du fichier
 			 * @access public
-			 * @return void
 			 * @since 2.0
 			*/
 
@@ -65,13 +68,15 @@
 
 			/**
 			 * Permet de modifier le fichier à télécharger
-			 * @param string $dirpath : chemin vers le répertoire
+			 * @param $filepath string : chemin vers le fichier qu'il faudra faire télécharger
+			 * @param $filename string : nom du fichier
+			 * @param $fileext string : extention du fichier
 			 * @access public
 			 * @return void
 			 * @since 2.0
 			*/
 			
-			public function setFile($filepath, $filename="nom", $fileext=download::EXT_DEFAULT){
+			public function setFile($filepath, $filename = "name", $fileext=download::EXT_DEFAULT){
 				if(is_file($filepath) && file_exists($filepath) && is_readable($filepath)){
 					$this->_setFilePath($filepath);
 					$this->_setFileName($filepath);

@@ -1,14 +1,16 @@
 <?php
-	/**
-	 * @file : routeGc.class.php
-	 * @author : fab@c++
-	 * @description : class gérant l'url rewriting
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : routeGc.class.php
+	 | @author : fab@c++
+	 | @description : class gérant l'url rewriting
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class router{
-			use error;								//trait
+			use error;
 		
 			protected $routes = array();
 			
@@ -48,21 +50,21 @@
 		}
 		
 		class routeGc{
-			use error;								//trait
+			use error;
 			
 			protected $action;
-			protected $module;
-			protected $id;
+			protected $controller;
+			protected $name;
 			protected $cache;
 			protected $url;
 			protected $varsNames;
 			protected $vars = array();
 			
-			public function __construct($url, $module, $action, $id, $cache, $varsNames = array()){
+			public function __construct($url, $controller, $action, $name, $cache, $varsNames = array()){
 				$this->setUrl($url);
-				$this->setModule($module);
+				$this->setController($controller);
 				$this->setAction($action);
-				$this->setId($id);
+				$this->setName($name);
 				$this->setCache($cache);
 				$this->setVarsNames($varsNames);
 			}
@@ -86,9 +88,9 @@
 				}
 			}
 			
-			public function setId($id){
-				if (is_string($id)){
-					$this->id = $id;
+			public function setName($name){
+				if (is_string($name)){
+					$this->name = $name;
 				}
 			}
 
@@ -96,9 +98,9 @@
 				$this->cache = $cache;
 			}
 			
-			public function setModule($module){
-				if (is_string($module)){
-					$this->module = $module;
+			public function setController($controller){
+				if (is_string($controller)){
+					$this->controller = $controller;
 				}
 			}
 			
@@ -120,8 +122,8 @@
 				return $this->action;
 			}
 			
-			public function id(){
-				return $this->id;
+			public function name(){
+				return $this->name;
 			}
 
 			public function cache(){
@@ -132,8 +134,8 @@
 				return $this->url;
 			}
 			
-			public function module(){
-				return $this->module;
+			public function controller(){
+				return $this->controller;
 			}
 			
 			public function vars(){

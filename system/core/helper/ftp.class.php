@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @dir : ftp.class.php
-	 * @author : fab@c++
-	 * @description : class gèrant les connexion ftp, elle permet de gérer plusieurs connexion dans la même instance
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : ftp.class.php
+	 | @author : fab@c++
+	 | @description : class gèrant les connexion ftp, elle permet de gérer plusieurs connexions dans la même instance
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace helper{
 	    class ftp{
@@ -16,9 +18,7 @@
 			
 			/**
 			 * Crée l'instance de la classe
-			 * @param string $dirpath : chemin vers le répertoire
 			 * @access public
-			 * @return void
 			 * @since 2.0
 			*/
 
@@ -77,9 +77,8 @@
 			/**
 			 * supprime la connexion ftp voulue de l'instance
 			 * @access public
-			 * @param array $ftp : le nom de la connexion ftp
-			 * @param array $connect : les identifiants pour la connexion
-			 * @return string
+			 * @param $ftp array : le nom de la connexion ftp
+			 * @return boolean
 			 * @since 2.0
 			*/
 
@@ -238,8 +237,7 @@
 			 * supprime la connexion ftp voulue
 			 * @access public
 			 * @param array $ftp : le nom de la connexion ftp
-			 * @param array $connect : les identifiants pour la connexion
-			 * @return string
+			 * @return boolean
 			 * @since 2.0
 			*/
 

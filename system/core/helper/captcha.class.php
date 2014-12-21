@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : captcha.class.php
-	 * @author : fab@c++
-	 * @description : class permettant la génération de captcha personnalisée
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : captcha.class.php
+	 | @author : fab@c++
+	 | @description : class permettant la génération de captchas personnalisées
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace helper{
 		class captcha{
@@ -13,6 +15,16 @@
 			/**
 			 * retourne l'image sans header
 			 * @access public
+			 * @param $mot string : $mot à afficher dans l'image
+			 * @param $property array : liste des propriétés appliquable à l'image :
+			 *			width int : largeur en px
+			 * 			height int : hauteur en image
+			 * 			textColor array : rgb
+			 * 			textSize int : taille du texte
+			 * 			textPosition int : décalage à gauche en px du texte
+			 * 			background string : chemin vers l'image
+			 * 			hatchingColor array : couleur des hachures en rgb
+			 * 			hatching bool : hachures ou non
 			 * @return string
 			 * @since 2.0
 			*/
@@ -102,7 +114,7 @@
 						break;
 						
 						default :
-							_addError('L\'extension n\est pas gérée', __FILE__, __LINE__, ERROR);
+							//$this->_addError('L\'extension n\est pas gérée', __FILE__, __LINE__, ERROR);
 						break;
 					}
 					

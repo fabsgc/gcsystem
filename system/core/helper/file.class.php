@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : file.class.php
-	 * @author : fab@c++
-	 * @description : class gérant les opérations sur les fichiers, très complète
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : file.class.php
+	 | @author : fab@c++
+	 | @description : class gérant les opérations sur les fichiers, très complète
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace helper{
 	    class file extends \system\constMime{
@@ -31,8 +33,7 @@
 			/**
 			 * Crée l'instance de la classe
 			 * @access	public
-			 * @param string $filepath : chemin complet ou relatif vers le fichier
-			 * @return	void
+			 * @param $filepath string : chemin complet ou relatif vers le fichier
 			 * @since 2.0
 			*/
 			
@@ -107,20 +108,20 @@
 			}
 			
 			/**
-			 * Retourne les informations du fichier dans un array<br />
-			 *	0	dev	volume<br />
-			 *	1	ino	Numéro d'inode (*)<br />
-			 *	2	mode	droit d'accès à l'inode<br />
-			 *	3	nlink	nombre de liens<br />
-			 *	4	uid	userid du propriétaire (*)<br />
-			 *	5	gid	groupid du propriétaire (*)<br />
-			 *	6	rdev	type du volume, si le volume est une inode<br />
-			 *	7	size	taille en octets<br />
-			 *	8	atime	date de dernier accès (Unix timestamp)<br />
-			 *	9	mtime	date de dernière modification (Unix timestamp)<br />
-			 *	10	ctime	date de dernier changement d'inode (Unix timestamp)<br />
-			 *	11	blksize	taille de bloc (**)<br />
-			 *	12	blocks	nombre de blocs de 512 octets alloués (**)<br />
+			 * Retourne les informations du fichier dans un array
+			 *	0	dev	volume
+			 *	1	ino	Numéro d'inode (*)
+			 *	2	mode	droit d'accès à l'inode
+			 *	3	nlink	nombre de liens
+			 *	4	uid	userid du propriétaire (*)
+			 *	5	gid	groupid du propriétaire (*)
+			 *	6	rdev	type du volume, si le volume est une inode
+			 *	7	size	taille en octets
+			 *	8	atime	date de dernier accès (Unix timestamp)
+			 *	9	mtime	date de dernière modification (Unix timestamp)
+			 *	10	ctime	date de dernier changement d'inode (Unix timestamp)
+			 *	11	blksize	taille de bloc (**)
+			 *	12	blocks	nombre de blocs de 512 octets alloués (**)
 			 * @access	public
 			 * @return	array
 			 * @since 2.0

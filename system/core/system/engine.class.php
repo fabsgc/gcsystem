@@ -1,27 +1,35 @@
 <?php
-	/**
-	 * @file : engine.class.php
-	 * @author : fab@c++
-	 * @description : class mère de l'application
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+ 	 | ------------------------------------------------------
+	 | @file : engine.class.php
+	 | @author : fab@c++
+	 | @description : class mère de l'application
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class engine{
 			use error, langInstance, general, urlRegex;
 
-			protected $_output                     ;
-			protected $_configInstance             ;
-			protected $_cronInstance               ;
-			protected $_routerInstance             ;
-			protected $_routeInstance              ;
+			private $_output                        ;
+			private $_configInstance                ;
+			private $_cronInstance                  ;
+			private $_routerInstance                ;
+			private $_routeInstance                 ;
 			
-			protected $_initInstance               ;
-			protected $_devTool              = true;
+			private $_initInstance                  ;
+			private $_devTool              = true   ;
 
-			protected $_cacheRoute           = 0   ;
-			protected $_cache                = null;
-			
+			private $_cacheRoute           = 0      ;
+			private $_cache                = null   ;
+
+			/**
+			 * Constructeur de la classe. Lancement du moteur
+			 * @access	public
+			 * @param $lang string
+			 * @since 2.0
+			*/
 			public  function __construct($lang=""){
 				if($lang == ""){ 
 					$this->_lang=$this->getLangClient(); 
@@ -32,7 +40,14 @@
 
 				$this->_createLangInstance();
 			}
-			
+
+			/**
+			 * Constructeur de la classe. Initialisation du moteur
+			 * @access	public
+			 * @return void
+			 * @since 2.0
+			*/
+
 			public function init(){
 				if($this->_initInstance == 0){
 					$this->_checkConfigFile();
@@ -42,69 +57,87 @@
 					$this->_checkError();
 					$this->_checkFunctionGenerique();
 					$this->_checkSecureVar();
+					$this->_initRoute();
 					$this->setErrorLog(LOG_HISTORY,'Page rewrite : http://'.$this->getHost().$this->getUri().' contrôleur : '.$this->getServerName().$this->getPhpSelf().'?'.$this->getQuery().' / origine : '.$this->getReferer().' / IP : '.$this->getIp());
 					$this->_configInstance = new config();
 					$this->_initInstance = 1;
 					date_default_timezone_set(TIMEZONE);
 				}
 			}
-			
-			private function _getRubrique(){
+
+			/**
+			 * Récupération du controller à partir de l'url
+			 * @access	public
+			 * @return void
+			 * @since 2.0
+			*/
+
+			private function _getController(){
+				$GLOBALS['appDev']-> setTimeExecUser('gcs route');
 				$this->_routerInstance = new router($this);
 
-				$domXml = new \DomDocument('1.0', CHARSET);
-				
-				if($domXml->load(ROUTE)){
-					$this->_addError('Le fichier de route " '.ROUTE.'" a bien été chargé', __FILE__, __LINE__, INFORMATION);
-					$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
-					$routes = $nodeXml->getElementsByTagName('route');
-					
-					foreach($routes as $route){
-						$vars = array();
-						
-						if ($route->hasAttribute('vars')){
-							$vars = explode(',', $route->getAttribute('vars'));
-						}
+				$this->_addError('Le fichier de route " '.ROUTE.'" a bien été chargé', __FILE__, __LINE__, INFORMATION);
 
-						$this->_routerInstance->addRoute(new routeGc($route->getAttribute('url'), $route->getAttribute('controller'), $route->getAttribute('action'), $route->getAttribute('id'), $route->getAttribute('cache'), $vars));
+				$xml = simplexml_load_file(ROUTE);
+				$result = $xml->xpath('//route');
+
+				foreach ($result as $value) {
+					foreach ($this->_routeAttribute as $attribute) {
+						$name = $attribute['name'];
+
+						if(is_object($value[$name]))
+							$data[$name] = $value[$name]->__toString();
 					}
 
-					if($matchedRoute = $this->_routerInstance->getRoute(preg_replace('`\?'.preg_quote($this->getQuery()).'`isU', '', $this->getUri()))){
-						$_GET = array_merge($_GET, $matchedRoute->vars());
-						$_GET['controller']  = $matchedRoute->module();
-						$_GET['action']    = $matchedRoute->action();
-						$_GET['pageid']    = $matchedRoute->id();
+					$data = $this->_groupGetParent($value, $data);
 
-						if(CACHE_ENABLED == true)
-							$this->_cacheRoute = $matchedRoute->cache();
-						else{
-							$this->_cacheRoute = 0;
-						}
+					$vars = explode(',', $data['vars']);
+					$controller = explode('.', $data['action'])[0];
+					$action = explode('.', $data['action'])[1];
 
-						if($_GET['action'] == ''){
-							$_GET['action'] = 'default';
-						}
-					}
-					else{
-						$_GET['controller'] = "";
-					}
+					$this->_routerInstance->addRoute(new routeGc($data['url'], $controller, $action, $data['name'], $data['cache'], $vars));
+				}
+
+				if($matchedRoute = $this->_routerInstance->getRoute(preg_replace('`\?'.preg_quote($this->getQuery()).'`isU', '', $this->getUri()))){
+					$_GET = array_merge($_GET, $matchedRoute->vars());
+					$_GET['controller']  = $matchedRoute->controller();
+					$_GET['action']    = $matchedRoute->action();
+					$_GET['pageid']    = $matchedRoute->name();
+
+					if(CACHE_ENABLED == true)
+						$this->_cacheRoute = $matchedRoute->cache();
+					else
+						$this->_cacheRoute = 0;
+
+					if($_GET['action'] == '')
+						$_GET['action'] = 'default';
 				}
 				else{
-					$this->_addError('Le routage a échoué car le fichier "'.ROUTE.'" n\'a pas pu être chargé', __FILE__, __LINE__, FATAL);
+					$_GET['controller'] = "";
 				}
+				
+				$GLOBALS['appDev']-> setTimeExecUser('gcs route');
 			}
-			
+
+			/**
+			 * Routage et instanciation du controller
+			 * @access	public
+			 * @return void
+			 * @since 2.0
+			*/
+
 			public function route(){
-				if(REWRITE == true){ $this->_getRubrique(); }
+				$GLOBALS['appDev']-> setTimeExecUser('gcs controller');
+				if(REWRITE == true){ $this->_getController(); }
 
 				if(isset($_GET['controller']) && $_GET['controller'] != ''){
 					$controller = $_GET['controller'];
-					
+
 					$helper = new helper();
 					$this->_cronInstance  = new cron(); //les crons ont besoin des plugins
 
 					if($this->_cacheRoute > 0){ //le cache de la page est supérieur à 0 secondes et le rewrite activé
-						if($this->_setRubrique($controller) == true){  //on inclut les fichiers necéssaire à l'utilisation d'un contrôleur
+						if($this->_setRubrique($controller) == true){  //on inclut les fichiers necéssaires à l'utilisation d'un contrôleur
 							$class = new $controller($this->_lang);
 
 							if(SECURITY == false || $class->setFirewall() == true){
@@ -118,17 +151,29 @@
 
 											if(method_exists($class, 'action'.ucfirst($_GET['action']))){
 												$action = 'action'.ucfirst($_GET['action']);
-												$class->$action();
-												$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, INFORMATION);
+
+												try{
+													$class->$action();
+													$this->_addError('Appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, INFORMATION);
+												}
+												catch(Exception $e){
+													$this->_addError($e->getMessage(), __FILE__, __LINE__, FATAL);
+												}
 											}
 											else{
 												$action = 'actionDefault';
-												$class->$action();
-												$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
+												
+												try{
+													$class->$action();
+													$this->_addError('Appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, WARNING);
+												}
+												catch(Exception $e){
+													$this->_addError($e->getMessage(), __FILE__, __LINE__, FATAL);
+												}	
 											}
 
 											$class->end();
-										$this->_output = ob_get_contents();
+										$output = ob_get_contents();
 										ob_get_clean();
 
 										$this->_cache->setVal($this->_output);
@@ -158,20 +203,33 @@
 
 							if(SECURITY == false || $class->setFirewall() == true){
 								if(ANTISPAM == false || $class->setAntispam() == true){
-								    $class->loadModel();
+									$class->loadModel();
 
 									ob_start();
 										$class->init();
 
 										if(method_exists($class, 'action'.ucfirst($_GET['action']))){
 											$action = 'action'.ucfirst($_GET['action']);
-											$class->$action();
-											$this->_addError('Appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, INFORMATION);
+											
+											try{
+												$class->$action();
+												$this->_addError('Appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, INFORMATION);
+											}
+											catch(Exception $e){
+												echo 'sd';
+												$this->_addError($e->getMessage(), __FILE__, __LINE__, FATAL);
+											}	
 										}
 										else{
 											$action = 'actionDefault';
-											$class->$action();
-											$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
+
+											try{
+												$class->$action();
+												$this->_addError('Appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, WARNING);
+											}
+											catch(Exception $e){
+												$this->_addError($e->getMessage(), __FILE__, __LINE__, FATAL);
+											}	
 										}
 
 										$class->end();
@@ -184,7 +242,7 @@
 							}
 							else{
 								$this->_addError('Le parefeu semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
-							}								
+							}
 						}
 						else{
 							$this->_addError('L\'instanciation du contrôleur "'.$controller.'" a échoué', __FILE__, __LINE__, FATAL);
@@ -198,8 +256,17 @@
 					$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé car le routage a échoué. URL : http://'.$this->getHost().$this->getUri(), __FILE__,  __LINE__, FATAL);
 					$this->redirect404();
 				}
+				$GLOBALS['appDev']-> setTimeExecUser('gcs controller');
 			}
-			
+
+			/**
+			 * Routage et instanciation du controller
+			 * @access private
+			 * @param $controller string : nom du controller
+			 * @return bool
+			 * @since 2.0
+			*/
+
 			private function _setRubrique($controller){
 				if(file_exists(CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php')){
 					if(file_exists(MODEL_PATH.$controller.MODEL_EXT.'.php')){
@@ -215,6 +282,13 @@
 					return false;
 				}
 			}
+
+			/**
+			 * Lance l'affichage de la page
+			 * @accesspublic
+			 * @return void
+			 * @since 2.0
+			*/
 			
 			public function run(){
 				if(MINIFY_OUTPUT_HTML == true && $this->checkContentType() == true){
@@ -229,10 +303,17 @@
 				}
 			}
 
-			private function checkContentType(){ //renvoie false si on a pas affaire à du html et si on a une directive content-type
+			/**
+			 * renvoie false si on a pas affaire à du html et si on a une directive content-type
+			 * @access public
+			 * @return boolean
+			 * @since 2.0
+			*/
+
+			private function checkContentType(){
 				$header = headers_list();
 
-				if(in_array('Content-Type: text/html; charset='.CHARSET, $header)){
+				if(in_array('Content-Type: text/html; charset=UTF-8', $header)){
 					return true;
 				}
 
@@ -244,13 +325,20 @@
 
 				return false;
 			}
+
+			/**
+			 * définis le type de contenu
+			 * @access public
+			 * @return void
+			 * @since 2.0
+			*/
 			
 			private function _checkHeaderStream($url){
 				$extension = explode('.', $url);
 				
 				switch($extension[count($extension)-1]){
 					case 'html':
-						header('Content-Type: text/html; charset='.CHARSET.'');	
+						header('Content-Type: text/html; charset='.CHARSET.'');
 						$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__, INFORMATION);
 					break;
 					
@@ -280,6 +368,13 @@
 			private function useLang($sentence, $var = array()){
 				return $this->_langInstance->loadSentence($sentence, $var);
 			}
+
+			/**
+			 * définis le type d'environnement : développement ou production
+			 * @access public
+			 * @return void
+			 * @since 2.0
+			*/
 			
 			private function _checkEnvironment(){
 				switch(ENVIRONMENT){	
@@ -300,6 +395,13 @@
 			private function _checkFunctionGenerique(){
 				require_once(FUNCTION_GENERIQUE);
 			}
+
+			/**
+			 * Sécurise les entrées POST et GET
+			 * @access public
+			 * @return void
+			 * @since 2.0
+			*/
 			
 			private function _checkSecureVar(){
 				if(SECUREGET == true && isset($_GET)){
@@ -314,6 +416,13 @@
 					}
 				}
 			}
+
+			/**
+			 * Vérifie l'intégrité des fichiers de configuration
+			 * @access public
+			 * @return void
+			 * @since 2.0
+			*/
 
 			private function _checkConfigFile(){
 				$dom = new \DomDocument('1.0', CHARSET);
@@ -354,20 +463,20 @@
 					$this->_addError('Le fichier '.ERRORPERSO.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
 				}
 			}
-			
+
 			public function setMaintenance(){
-				$tpl = new template(GCSYSTEM_PATH.'GCmaintenance', 'GCmaintenance', 0, $this->_lang);				
+				$tpl = new template(GCSYSTEM_PATH.'maintenance', 'GCmaintenance', 0, $this->_lang);				
 				$tpl->show();
 			}
 
-			protected function _setEventListeners(){
+			private function _setEventListeners(){
 				$dir = new \helper\dir(EVENT_PATH);
 				$GLOBALS['eventListeners'] = array();
 				
 				foreach ($dir->getDirArbo() as $value) {
 					$value = '\event\\'.preg_replace('#'.preg_quote(EVENT_PATH).'(.+)'.preg_quote(EVENT_EXT).preg_quote('.php').'#isU', '$1', $value);
-                    $value = preg_replace('#/#', '\\', $value);
-                    array_push($GLOBALS['eventListeners'], new $value());
+					$value = preg_replace('#/#', '\\', $value);
+					array_push($GLOBALS['eventListeners'], new $value());
 				}
 			}
 

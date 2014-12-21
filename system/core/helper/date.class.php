@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : date.class.php
-	 * @author : fab@c++
-	 * @description : class gérant les dates
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : date.class.php
+	 | @author : fab@c++
+	 | @description : class gérant les dates
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace helper{
 		class date{
@@ -124,7 +126,7 @@
 			public function getDate($time=NULL, $format=NULL, $param = self::PARAM_TIMESTAMP){
 				if($param == self::PARAM_DATETIME){ $time = $this->_getDatetoTimestamp($time); }
 				$time = intval($time);
-				if($time == NULL) $time = time();
+				if($time == NULL && $time != 0) $time = time();
 				if($format == NULL) $format = self::DATE_DEFAULT;
 				return date($format, $time);
 			}

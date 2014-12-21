@@ -14,6 +14,10 @@
 				width: 100%;
 				overflow: auto;
 			}
+
+            header .content{
+                width: 100%;
+            }
 		</style>
 		<header>
 			<div class="content">

@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : errorperso.class.php
-	 * @author : fab@c++
-	 * @description : class gérant les erreurs personnalisées de façon plus propre et plus simple
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : errorperso.class.php
+	 | @author : fab@c++
+	 | @description : class gérant les erreurs personnalisées de façon plus propre et plus simple
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 
 	namespace system{
 		class errorperso{
@@ -13,12 +15,27 @@
 			protected                $_templateInstance = '' ;
 			protected                $_templatedefault  = '' ;
 
+			/**
+			 * constructeur
+			 * @access	public
+			 * @param $lang string : langue
+			 * @since 2.0
+			 */
 			public  function __construct($lang=""){
 				if($lang==""){ $this->_lang=$this->getLangClient(); } else { $this->_lang=$lang; }
 				$this->_createLangInstance();
 			}
 
-			public function errorPerso($id = '0', $var = array()){
+			/**
+			 * retourne une erreur perso
+			 * @access	public
+			 * @param $id int : id de l'erreur
+			 * @param $var array : variables
+			 * @return boolean
+			 * @since 2.0
+			*/
+
+			public function errorPerso($id = 0, $var = array()){
 				$domXml = new \DomDocument('1.0', CHARSET);
 
 				if($domXml->load(ERRORPERSO)){

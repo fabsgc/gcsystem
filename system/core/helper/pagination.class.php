@@ -1,10 +1,12 @@
 <?php
-	/**
-	 * @file : pagination.class.php
-	 * @author : fab@c++
-	 * @description : class gérant la pagination de façon automatique
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : pagination.class.php
+	 | @author : fab@c++
+	 | @description : class gérant la pagination de façon automatique
+	 | @version : 2.4 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace helper{
 		class pagination{
@@ -34,8 +36,7 @@
 			/**
 			 * Crée l'instance de la classe
 			 * @access	public
-			 * @return	void
-			 * @param $data
+			 * @param $data array
 			 *		buttonFl   : bouton premier dernier (true/false)
 			 *		buttonBa   : bouton précédent suivant (true/false)
 			 *		url        : url de la page à utiliser. Les endroits comprenant le numéro de la page devront être remplacés par "{page}"
@@ -44,6 +45,7 @@
 			 *		actualPage : page actuelle
 			 *		totalPage  : affichage du nombre total de pages (true/false)
 			 *		cut        : combien de liens faut-il afficher avant et après le lien actuel
+			 * @param $lang string
 			 * @since 2.0
 			*/
 			public function __construct($data = array(), $lang=""){

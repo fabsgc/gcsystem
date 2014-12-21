@@ -6,8 +6,8 @@
 	#GCsysytem_dev{
 		position: fixed;
 		background-color: #F7F7F7;
-		background-image: -moz-linear-gradient(-90deg, #E4E4E4, white);
-		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E4E4E4), to(white));
+		/*background-image: -moz-linear-gradient(-90deg, #E4E4E4, white);
+		background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E4E4E4), to(white));*/
 		bottom: 0;
 		left: 0;
 		margin: 0;
@@ -97,7 +97,7 @@
 	}
 </style>
 <div id="GCsysytem_dev">
-	<div id="GCsysytem_dev_logo"><img src="{{def:IMG_PATH}}gcs/logo.png"/></div>
+	<div id="GCsysytem_dev_logo"><a href="{{url:gcs.profiler}}" target="_blank"><img src="{{def:IMG_PATH}}gcs/logo.png"/></a></div>
 	<div class="GCsysytem_dev_content">
 		<div class="GCsysytem_dev_content_logo"><img src="{{def:IMG_PATH}}gcs/time.png" title="{{lang:gc_executiontime}}"/><img src="{{def:IMG_PATH}}gcs/memory.png" title="{{lang:gc_memoireuse}}"/></div>
 		<div class="GCsysytem_dev_content_content" style="padding: 2px; width: 70px;">{timeexec} ms<br /><span style="position: relative; top: 10px;">{memory} kb</span></div>

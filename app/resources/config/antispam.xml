@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <antispams>
 	<config>
-		<queryip number="10" duration="5"/>
-		<error template="GCsystem/GCerror">
-			<variable type="var" name="antispam" value="antispam"/>
-			<variable type="lang" name="error" value="antispamerror"/>
-			<variable type="lang" name="explanation" value="antispamexplanation"/>
+		<queryip number="100" duration="5"/>
+		<error template="gcs/error">
+			<variable type="var" name="antispam" value="gc_antispam"/>
+			<variable type="lang" name="error" value="gc_antispamerror"/>
+			<variable type="lang" name="explanation" value="gc_antispamexplanation"/>
 		</error>
 		<exceptions>
+
 		</exceptions>
 	</config>
 	<ips>
-	</ips>
+	<ip ip="127.0.0.1" number="3" since="1409342855"/></ips>
 </antispams>
