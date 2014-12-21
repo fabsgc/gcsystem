@@ -3,26 +3,46 @@
 	 | ------------------------------------------------------
 	 | @file : autoload.php
 	 | @author : fab@c++
-	 | @description : Inclusion automatique de tous les fichiers nécessaires au système
-	 | @version : 2.3 Bêta
+	 | @description : automatic inclusion
+	 | @version : 3.0 Bêta
 	 | ------------------------------------------------------
 	\*/
 
-	namespace GCsystem{
+	namespace system{
+		require_once(APP_FUNCTION);
 		require_once(CLASS_GENERAL);
-		require_once(CLASS_LOG);
 		require_once(CLASS_EXCEPTION);
 
 		class autoloader{
 			public static function load($class){
 				$class = preg_replace('#'.preg_quote('\\').'#isU', '/', $class);
 
-				if(file_exists(CLASS_PATH.$class.'.class.php')){
-					include(CLASS_PATH.$class.'.class.php');
+				if(file_exists(SYSTEM_CORE_PATH.$class.'.class.php')){
+					include_once(SYSTEM_CORE_PATH.$class.'.class.php');
+					return;
 				}
 
-				if(file_exists(RESOURCE_PATH.$class.EVENT_EXT.'.php')){
-					include(RESOURCE_PATH.$class.EVENT_EXT.'.php');
+				if(file_exists(APP_RESOURCE_EVENT_PATH.$class.EXT_EVENT.'.php')){
+					include_once(APP_RESOURCE_EVENT_PATH.$class.EXT_EVENT.'.php');
+					return;
+				}
+
+				if(file_exists(APP_RESOURCE_ENTITY_PATH.$class.EXT_ENTITY.'.php')){
+					include_once(APP_RESOURCE_ENTITY_PATH.$class.EXT_ENTITY.'.php');
+					return;
+				}
+
+				if ($handle = opendir(SRC_PATH)) {
+					while (false !== ($entry = readdir($handle))) {
+						if(is_dir($entry)){
+							if(file_exists(SRC_PATH.$entry.SRC_RESOURCE_EVENT_PATH.$class.EXT_ENTITY.'.php')){
+								include_once(SRC_PATH.$entry.SRC_RESOURCE_EVENT_PATH.$class.EXT_ENTITY.'.php');
+								return;
+							}
+						}
+					}
+
+					closedir($handle);
 				}
 			}
 		}

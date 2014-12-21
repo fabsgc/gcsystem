@@ -1,82 +1,90 @@
 <?php
-	/**
-	 * @file : cron.class.php
-	 * @author : fab@c++
-	 * @description : class gérant les fichiers crons
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : template.class.php
+	 | @author : fab@c++
+	 | @description : cron
+	 | @version : 3.0 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
-		class cron {
-			use error, general;
-			
-			public function __construct($lang = 'fr'){
-				$this->_lang=$lang;
-				$this->_createLangInstance();
+		class cron{
+			use error, langInstance, facades;
 
-				if(@fopen(CRON, 'r+')) {
-					$this->domXml = new \DomDocument('1.0', CHARSET);
-					if($this->domXml->load(CRON)){
-						if($this->exception() == false){
-							$nodeXml = $this->domXml->getElementsByTagName('crons')->item(0)->getElementsByTagName('actions')->item(0);
-							$markupXml = $nodeXml->getElementsByTagName('cron');
+			protected $_requestParent           ;
+			protected $_xmlValid   = true       ;
+			protected $_xmlContent = ''         ;
+			protected $_exception  = false      ;
 
-							foreach($markupXml as $sentence){
-								if (($sentence->getAttribute("executed") + $sentence->getAttribute("time")) < (time()) || $sentence->getAttribute("time") == 0){
-									$sentence->setAttribute("executed", time());
-									$this->domXml->save(CRON);
+			/**
+			 * constructor
+			 * @access public
+			 * @param &$profiler \system\profiler
+			 * @param &$config \system\config
+			 * @param &$request \system\request
+			 * @param $lang string
+			 * @param $file string : file path
+ 			 * @since 3.0
+			*/
 
-									$controller = $sentence->getAttribute("controller");
-									$this->_setRubrique($sentence->getAttribute("controller")); //on inclut les fichiers necéssaires à l'utilisation d'un contrôleur
+			public function __construct (&$profiler, &$config, &$request, $lang, $file){
+				$this->profiler = $profiler;
+				$this->config = $config;
+				$this->_requestParent = $request;
+				$this->lang = $lang;
 
-									if(class_exists($controller)){
-										$class = new $controller($this->_lang);
-										$class->setNameModel($controller);
-										ob_start("ob_gzhandler");
-											$class->init();
-											if(is_callable(array($controller, 'action'.ucfirst($sentence->getAttribute("action"))))){
-												$action = 'action'.ucfirst($sentence->getAttribute("action"));
-												$class->$action();
-												$this->_addError('CRON : Appel du contrôleur "action'.ucfirst($sentence->getAttribute("action")).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, INFORMATION);
-											}
-											else{
-												$this->_addError('CRON : L\'appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" a échoué.', __FILE__, __LINE__, WARNING);
-											}
-											$class->end();
-										$this->_output = ob_get_contents();
-										ob_get_clean();
-									}
-									else{
-										$this->_addError('CRON : L\'appel du contrôleur "'.$controller.'" a échoué.', __FILE__, __LINE__, ERROR);
-									}
+				if(@fopen($file, 'r+')) {
+					if($this->_xmlContent = simplexml_load_file($file)){
+						if($this->_exception() == false){
+							$crons =  $this->_xmlContent->xpath('//cron');
 
-									$this->setErrorLog(LOG_CRONS, '['.$sentence->getAttribute("action")."]\n[".$this->_output."]");
+							foreach ($crons as $key => $value) {
+								if ($value['executed'] + $value['time'] < time() || $value['time'] == 0){
+									$value['executed'] = time();
+									$dom = new \DOMDocument("1.0");
+									$dom->preserveWhiteSpace = false;
+									$dom->formatOutput = true;
+									$dom->loadXML($this->_xmlContent->asXML());
+									$dom->save($file);
+
+									$action = explode('.', $value['action']);
+									$controller = new engine();
+									$controller->initCron($action[0], $action[1], $action[2]);
+
+									ob_start();
+										$controller->runCron();
+										$output = ob_get_contents();
+									ob_get_clean();
+
+									$this->addError('['.$value['action']."]\n[".$output."]",  0, 0, 0, LOG_CRONS);
+									$this->addError('CRON '.$value['action'].' called successfully ', __FILE__, __LINE__, ERROR_INFORMATION);
 								}
 							}
 						}
 						else{
-							$this->_addError('la page appelante est une exception', __FILE__, __LINE__, INFORMATION);
-							$this->_exception = true;
+							$this->addError('CRON : the page is an exception ', __FILE__, __LINE__, ERROR_INFORMATION);
 						}
 					}
 					else{
-						$this->_addError('Le fichier des tâches crons "'.CRON.'" n\'a pas pu être chargé', __FILE__, __LINE__, ERROR);
+						$this->_xmlValid = true;
+						$this->addError('Can\'t open file "'.$file.'"', __FILE__, __LINE__, ERROR_ERROR);
 					}
-				}
-				else{
-					$this->_addError('le fichier des tâches crons est en cours de lecture.', __FILE__, __LINE__, WARNING);
 				}
 			}
 
-			public function exception(){
-				$nodeXml = $this->domXml->getElementsByTagName('crons')->item(0);
-				$node2Xml = $nodeXml->getElementsByTagName('config')->item(0);
-				$markupXml = $node2Xml->getElementsByTagName('exceptions')->item(0);
-			
-				$markup3Xml = $markupXml->getElementsByTagName('exception');
+			/**
+			 * return if the current page which calls crons is an exception
+			 * @access protected
+			 * @return boolean
+ 			 * @since 3.0
+			*/
 
-				foreach ($markup3Xml as $val) {
-					if($_GET['controller'] == $val->getAttribute('controller') && $_GET['action'] == $val->getAttribute('action')){
+			protected function _exception(){
+				$exceptions =  $this->_xmlContent->xpath('//exception');
+
+				foreach ($exceptions as $key => $value) {
+					if($value['action'] == $this->request->src.'.'.$this->request->controller.'.'.$this->request->action){
 						return true;
 					}
 				}
@@ -84,31 +92,13 @@
 				return false;
 			}
 
-			private function _setRubrique($controller){
-				if(file_exists(CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php')){
-					if(file_exists(MODEL_PATH.$controller.MODEL_EXT.'.php')){
-						require_once(MODEL_PATH.$controller.MODEL_EXT.'.php');
-						$this->_addError('CRON : Chargement des fichiers "'.CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php" et "'.MODEL_PATH.$controller.MODEL_EXT.'.php"', __FILE__, __LINE__, INFORMATION);
-					}
-					require_once(CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php');
-					return true;
-				}
-				else{ 
-					$this->_addError('CRON : '.$this->useLang('gc_controllernotfound', array('controller' => $controller)), __FILE__, __LINE__, FATAL);
-					$this->_addError('CRON : Echec lors du chargement des fichiers "'.CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php" et "'.MODEL_PATH.$controller.MODEL_EXT.'.php"', __FILE__, __LINE__, FATAL);
-					return false;
-				}
-			}
+			/**
+			 * destructor
+			 * @access public
+			 * @since 3.0
+			*/
 
-			protected function _createLangInstance(){
-				$this->_langInstance = new lang($this->_lang);
-			}
-			
-			public function useLang($sentence, $var = array(), $template = lang::USE_NOT_TPL){
-				return $this->_langInstance->loadSentence($sentence, $var, $template);
-			}
-			
 			public function __destruct(){
-			}	
+			}
 		}
 	}

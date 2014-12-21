@@ -1,37 +1,63 @@
 <?php
-	/**
-	 * @file : routeGc.class.php
-	 * @author : fab@c++
-	 * @description : class gérant l'url rewriting
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : route.class.php
+	 | @author : fab@c++
+	 | @description : url rewriting
+	 | @version : 3.0 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class router{
-			use error;								//trait
-		
-			protected $routes = array();
+			use error;
 			
-			public function addRoute(routeGc $route){
+			/** 
+			 * contain all the routes
+			 * @var array
+			*/
+
+			protected $routes = array();
+
+			/**
+			 * add route to the instance
+			 * @access public
+			 * @param $route route : route instance
+			 * @return void
+			 * @since 3.0
+			*/
+			
+			public function addRoute(route $route){
 				if (!in_array($route, $this->routes)){
 					$this->routes[] = $route;
 				}
 			}
 			
+			/**
+			 * after url rewriting, return the right route
+			 * @access public
+			 * @param $url string
+			 * @return \system\route
+			 * @since 3.0
+			*/
+
 			public function getRoute($url){
 				foreach ($this->routes as $route){
 					$url2 = substr($url, strlen(FOLDER), strlen($url));
 					if (($varsValues = $route->match($url2)) != false){
-						// Si elle a des variables
+						// if she has vars
 						if ($route->hasVars()){
 							$varsNames = $route->varsNames();
 							$listVars = array();
 							
+							//key : name of the var, value = value
 							// (clé = nom de la variable, valeur = sa valeur)
 							foreach ($varsValues as $key => $match){
-								// La première valeur contient entièrement la chaine capturée (voir la doc sur preg_match)
-								if ($key !== 0){
-									$listVars[$varsNames[$key - 1]] = $match;
+								// the first key contains all the captured string (preg_match)
+								if ($key > 0){
+									if(array_key_exists($key - 1, $varsNames)){
+										$listVars[$varsNames[$key - 1]] = $match;
+									}
 								}
 							}
 							
@@ -42,29 +68,45 @@
 					}
 				}
 			}
-
-			public  function __destruct(){
-			}
 		}
 		
-		class routeGc{
-			use error;								//trait
+		class route{
+			use error;
 			
 			protected $action;
-			protected $module;
-			protected $id;
+			protected $controller;
+			protected $name;
 			protected $cache;
 			protected $url;
 			protected $varsNames;
 			protected $vars = array();
+			protected $src;
+			protected $logged;
+			protected $access;
+
+			/**
+			 * each route from route.xml become an instance of this class
+			 * @access public
+			 * @param $url string
+			 * @param $controller string
+			 * @param $action string
+			 * @param $name string
+			 * @param $cache int
+			 * @param $varsNames array : list of variable from vars=""
+			 * @param $src string : location of the file
+			 * @since 3.0
+			*/
 			
-			public function __construct($url, $module, $action, $id, $cache, $varsNames = array()){
+			public function __construct($url, $controller, $action, $name, $cache, $varsNames = array(), $src, $logged, $access){
 				$this->setUrl($url);
-				$this->setModule($module);
+				$this->setController($controller);
 				$this->setAction($action);
-				$this->setId($id);
+				$this->setName($name);
 				$this->setCache($cache);
 				$this->setVarsNames($varsNames);
+				$this->setSrc($src);
+				$this->setLogged($logged);
+				$this->setAccess($access);
 			}
 			
 			public function hasVars(){
@@ -86,9 +128,9 @@
 				}
 			}
 			
-			public function setId($id){
-				if (is_string($id)){
-					$this->id = $id;
+			public function setName($name){
+				if (is_string($name)){
+					$this->name = $name;
 				}
 			}
 
@@ -96,9 +138,9 @@
 				$this->cache = $cache;
 			}
 			
-			public function setModule($module){
-				if (is_string($module)){
-					$this->module = $module;
+			public function setController($controller){
+				if (is_string($controller)){
+					$this->controller = $controller;
 				}
 			}
 			
@@ -115,13 +157,25 @@
 			public function setVars(array $vars){
 				$this->vars = $vars;
 			}
+
+			public function setSrc($src){
+				$this->src = $src;
+			}
+
+			public function setLogged($logged){
+				$this->logged = $logged;
+			}
+
+			public function setAccess($access){
+				$this->access = $access;
+			}
 			
 			public function action(){
 				return $this->action;
 			}
 			
-			public function id(){
-				return $this->id;
+			public function name(){
+				return $this->name;
 			}
 
 			public function cache(){
@@ -132,8 +186,8 @@
 				return $this->url;
 			}
 			
-			public function module(){
-				return $this->module;
+			public function controller(){
+				return $this->controller;
 			}
 			
 			public function vars(){
@@ -144,7 +198,19 @@
 				return $this->varsNames;
 			}
 
-			public  function __destruct(){
+			public function src(){
+				return $this->src;
+			}
+
+			public function logged(){
+				return $this->logged;
+			}
+
+			public function access(){
+				return $this->access;
+			}
+
+			public function __destruct(){
 			}
 		}
 	}

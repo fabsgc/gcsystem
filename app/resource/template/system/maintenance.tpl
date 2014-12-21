@@ -1,0 +1,1 @@
+<h1 style="text-align:center;">{{lang:system.maintenant.title}}</h1>

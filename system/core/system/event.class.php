@@ -1,43 +1,47 @@
 <?php
-	/**
-	 * @file : event.class.php
-	 * @author : fab@c++
-	 * @description : class permettant l'utilisation du design pattern observer
-	 * @version : 2.3 bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : event.class.php
+	 | @author : fab@c++
+	 | @description : implementation of the pattern design observer
+	 | @version : 2.4 bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class event {
 			use error;
 
-			public $parent              ; //référence vers l'objet qui a lancé l'évènement
-			public $data       =    null; //données supplémentaires passables à l'évènement
+			public $parent              ; //reference to the object which start the event
+			public $data       =    null; //data you can pass from the controller to the event
 
-			protected $_name            ; //nom de l'evènement qui est lancé
-			protected $_status =    true; //statut de l'évènement : arrêté ou en marche
-			protected $_result = array(); //données de retour de l'évènement après chacun de ses appels
+			protected $_name            ; //name of the event which is started
+			protected $_status =    true; //status of the event : stopped or running
+			protected $_result = array(); //data returned by the event after each call
 
 			const START = true;
 			const STOP = false;
 			
 			/**
-			 * Constructeur de la classe
-			 * @access	public
-			 * @return	void
-			 * @since 2.3
+			 * Constructor
+			 * @access public
+			 * @param $name string : name of the event
+			 * @param $parent object : parent object
+			 * @param $data array : data given
+			 * @since 3.0
 			*/
 
 			public function __construct($name = 'event', $parent = null, $data = null) {
-				$this->_name = $name;
-				$this->data = $data;
+				$this->_name  = $name;
+				$this->data   = $data;
 				$this->parent = $parent;
 			}
 
 			/**
-			 * Récupère le nom de l'évènement créé
-			 * @access	public
-			 * @return	string
-			 * @since 2.3
+			 * Return the name
+			 * @access public
+			 * @return string
+			 * @since 3.0
 			*/
 
 			public function getName(){
@@ -45,10 +49,10 @@
 			}
 
 			/**
-			 * Récupère le statut de l'évènement (true en cours ou false arrêté)
-			 * @access	public
-			 * @return	bool
-			 * @since 2.3
+			 * Return the status : true if it's running and false otherwise
+			 * @access public
+			 * @return boolean
+			 * @since 3.0
 			*/
 
 			public function getStatus(){
@@ -56,10 +60,10 @@
 			}
 
 			/**
-			 * Récupère le résultat renvoyé par les écouteurs de l'évènement
-			 * @access	public
-			 * @return	array
-			 * @since 2.3
+			 * Return data returned by the event after his call
+			 * @access public
+			 * @return array
+			 * @since 3.0
 			*/
 
 			public function getResult(){
@@ -67,11 +71,11 @@
 			}
 
 			/**
-			 * Modifie le nom de l'évènement
-			 * @access	public
-			 * @param string $name
-			 * @return void
-			 * @since 2.3
+			 * Set the name
+			 * @access public
+			 * @param $name string 
+			 * @return array
+			 * @since 3.0
 			*/
 
 			public function setName($name = 'event'){
@@ -79,11 +83,11 @@
 			}
 
 			/**
-			 * Modifie le statut de l'évènement (true en cours ou false arrêté)
-			 * @access	public
-			 * @param int $status
+			 * Set the status
+			 * @access public
+			 * @param $status
 			 * @return void
-			 * @since 2.3
+			 * @since 3.0
 			*/
 
 			public function setStatus($status = self::START){
@@ -91,14 +95,14 @@
 			}
 
 			/**
-			 * Modifie le résultat retourné par l'écouteur
-			 * @access	public
-			 * @param ?? $status
-			 * @param int $index : numéro de l'event dans l'ordre (0,1,2,3)
-			 * @param string $class : nom de la classe appelée
-			 * @param string $function : nom de la fonction appelée
+			 * Set the result returned by the event (function used by the framework at the end of the call)
+			 * @access public
+			 * @param $result string : result returned by the listener
+			 * @param $index int : order of the event (0,1,2,3)
+			 * @param $class string : name of the called class
+			 * @param $function string : name of the method called
 			 * @return void
-			 * @since 2.3
+			 * @since 3.0
 			*/
 
 			public function setResult($result = '', $index, $class, $function){
@@ -106,10 +110,10 @@
 			}
 
 			/**
-			 * Destructeur
-			 * @access	public
-			 * @return	void
-			 * @since 2.3
+			 * Desctructor
+			 * @access public
+			 * @return void
+			 * @since 3.0
 			*/
 			
 			public function __destruct(){

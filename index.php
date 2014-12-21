@@ -1,31 +1,18 @@
 <?php
-session_start();
+	session_start();
 
-/*\
- | ------------------------------------------------------
- | @file : index.php
- | @author : fab@c++
- | @description : contrôleur central de l'application
- | @version : 2.4 bêta
- | ------------------------------------------------------
-\*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : index.php
+	 | @author : fab@c++
+	 | @description : central controller of the application
+	 | @version : 3.0 bêta
+	 | ------------------------------------------------------
+	\*/
 
-require_once('web.config.php');
-require_once(CLASS_AUTOLOAD);
+	require_once('web.config.php');
+	require_once(CLASS_AUTOLOAD);
 
-$GLOBALS['appDev'] = new system\appDev();
-$GLOBALS['controller'] = new system\engine(DEFAULTLANG);
-
-$GLOBALS['controller']->init();
-
-if(MAINTENANCE == false){ 
-	$GLOBALS['controller']->route(); 
-	$GLOBALS['controller']->run();
-}
-elseif(MAINTENANCE == true){
-	$GLOBALS['controller']->setMaintenance(); 
-}
-
-if(ENVIRONMENT == 'development' &&  ((DEVTOOL == true && $GLOBALS['appDev']->getShow() == true) || (DEVTOOL ==  false && $GLOBALS['appDev']->getShow() == true))){
-	$GLOBALS['appDev']->show();
-}
+	$controller = new system\engine();
+	$controller->init();
+	$controller->run();

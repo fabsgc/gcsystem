@@ -1,377 +1,559 @@
 <?php
-	/**
-	 * @file : engine.class.php
-	 * @author : fab@c++
-	 * @description : class mère de l'application
-	 * @version : 2.3 Bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : engine.class.php
+	 | @author : fab@c++
+	 | @description : engine
+	 | @version : 3.0 Bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class engine{
-			use error, langInstance, general, urlRegex;
+			use error, langInstance, facades, resolve;
 
-			protected $_output                     ;
-			protected $_configInstance             ;
-			protected $_cronInstance               ;
-			protected $_routerInstance             ;
-			protected $_routeInstance              ;
+			protected $_controller;
+			protected $_route = false;
 			
-			protected $_initInstance               ;
-			protected $_devTool              = true;
+			/**
+			 * constructor
+			 * @access public
+			 * @since 3.0
+			*/
 
-			protected $_cacheRoute           = 0   ;
-			protected $_cache                = null;
-			
-			public  function __construct($lang=""){
-				if($lang == ""){ 
-					$this->_lang=$this->getLangClient(); 
-				} 
-				else { 
-					$this->_lang = $lang; 
-				}
+			public function __construct ($mode = MODE_HTTP){
+				if (!defined('CONSOLE_ENABLED'))
+					define('CONSOLE_ENABLED', $mode);
 
-				$this->_createLangInstance();
+				$this->_setErrorHandler();
+				$this->request  = new request();
+				$this->response = new response();
+				$this->profiler = new profiler();
+				$this->config   = new config();
+				$this->lang = LANG;
 			}
-			
+
+			/**
+			 * initialization of the engine
+			 * @access public
+			 * @return void
+			 * @since 3.0
+			*/
+
 			public function init(){
-				if($this->_initInstance == 0){
-					$this->_checkConfigFile();
-					$this->_setEventListeners();
-					$this->_checkHeaderStream($this->getUri());
-					$this->_checkEnvironment();
-					$this->_checkError();
-					$this->_checkFunctionGenerique();
-					$this->_checkSecureVar();
-					$this->setErrorLog(LOG_HISTORY,'Page rewrite : http://'.$this->getHost().$this->getUri().' contrôleur : '.$this->getServerName().$this->getPhpSelf().'?'.$this->getQuery().' / origine : '.$this->getReferer().' / IP : '.$this->getIp());
-					$this->_configInstance = new config();
-					$this->_initInstance = 1;
+				if(MAINTENANCE == false){
 					date_default_timezone_set(TIMEZONE);
+					$this->_setEnvironment();
+					$this->_route();
+
+					if($this->_route == true){
+						$this->_setSecure();
+						$this->_setCron();
+						$this->_setDefine();
+						$this->_setLibrary();
+						$this->_setEvent();
+						$this->_setFunction();
+						$this->_setFunction($this->request->src);
+						$this->_setCron($this->request->src);
+						$this->_setDefine($this->request->src);
+						$this->_setLibrary($this->request->src);
+						$this->_setEvent($this->request->src);
+					}		
 				}
 			}
-			
-			private function _getRubrique(){
-				$this->_routerInstance = new router($this);
 
-				$domXml = new \DomDocument('1.0', CHARSET);
-				
-				if($domXml->load(ROUTE)){
-					$this->_addError('Le fichier de route " '.ROUTE.'" a bien été chargé', __FILE__, __LINE__, INFORMATION);
-					$nodeXml = $domXml->getElementsByTagName('routes')->item(0);
-					$routes = $nodeXml->getElementsByTagName('route');
-					
-					foreach($routes as $route){
-						$vars = array();
-						
-						if ($route->hasAttribute('vars')){
-							$vars = explode(',', $route->getAttribute('vars'));
-						}
+			/**
+			 * initialization of the engine for cron
+			 * @access public
+			 * @param $src string
+			 * @param $controller string
+			 * @param $action string
+			 * @return void
+			 * @since 3.0
+			*/
 
-						$this->_routerInstance->addRoute(new routeGc($route->getAttribute('url'), $route->getAttribute('controller'), $route->getAttribute('action'), $route->getAttribute('id'), $route->getAttribute('cache'), $vars));
-					}
+			public function initCron($src, $controller, $action){
+				if(MAINTENANCE == false){
+					$this->_routeCron($src, $controller, $action);
 
-					if($matchedRoute = $this->_routerInstance->getRoute(preg_replace('`\?'.preg_quote($this->getQuery()).'`isU', '', $this->getUri()))){
-						$_GET = array_merge($_GET, $matchedRoute->vars());
-						$_GET['controller']  = $matchedRoute->module();
-						$_GET['action']    = $matchedRoute->action();
-						$_GET['pageid']    = $matchedRoute->id();
-
-						if(CACHE_ENABLED == true)
-							$this->_cacheRoute = $matchedRoute->cache();
-						else{
-							$this->_cacheRoute = 0;
-						}
-
-						if($_GET['action'] == ''){
-							$_GET['action'] = 'default';
-						}
-					}
-					else{
-						$_GET['controller'] = "";
-					}
-				}
-				else{
-					$this->_addError('Le routage a échoué car le fichier "'.ROUTE.'" n\'a pas pu être chargé', __FILE__, __LINE__, FATAL);
+					if($this->_route == true){
+						$this->_setFunction($src);
+						$this->_setEvent();
+						$this->_setCron($this->request->src);
+						$this->_setDefine($this->request->src);
+						$this->_setLibrary($this->request->src);
+						$this->_setEvent($this->request->src);
+					}		
 				}
 			}
-			
-			public function route(){
-				if(REWRITE == true){ $this->_getRubrique(); }
 
-				if(isset($_GET['controller']) && $_GET['controller'] != ''){
-					$controller = $_GET['controller'];
-					
-					$helper = new helper();
-					$this->_cronInstance  = new cron(); //les crons ont besoin des plugins
+			/**
+			 * initialization of the console
+			 * @access public
+			 * @return void
+			 * @since 3.0
+			*/
+			public function console(){
+				$this->terminal();
+			}
 
-					if($this->_cacheRoute > 0){ //le cache de la page est supérieur à 0 secondes et le rewrite activé
-						if($this->_setRubrique($controller) == true){  //on inclut les fichiers necéssaire à l'utilisation d'un contrôleur
-							$class = new $controller($this->_lang);
+			/**
+			 * routing
+			 * @access private
+			 * @return this
+			 * @since 3.0
+			*/
 
-							if(SECURITY == false || $class->setFirewall() == true){
-								if(ANTISPAM == false || $class->setAntispam() == true){
-									$class->loadModel();
-									$this->_cache = new cache('page_'.preg_replace('#\/#isU', '-slash-', $this->getUri()), "", $this->_cacheRoute);
+			private function _route(){
+				$this->profiler->addTime('route');
 
-									if($this->_cache->isDie() == true){
-										ob_start();
-											$class->init();
+				$router = new router($this);
 
-											if(method_exists($class, 'action'.ucfirst($_GET['action']))){
-												$action = 'action'.ucfirst($_GET['action']);
-												$class->$action();
-												$this->_addError('Appel du contrôleur "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, INFORMATION);
-											}
-											else{
-												$action = 'actionDefault';
-												$class->$action();
-												$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
-											}
+				foreach ($this->config->config['route'] as $key => $value) {
+					foreach ($value as $data) {
+						$vars = explode(',', $data['vars']);
+						$controller = explode('.', $data['action'])[0];
+						$action = explode('.', $data['action'])[1];
 
-											$class->end();
-										$this->_output = ob_get_contents();
-										ob_get_clean();
+						$router->addRoute(new route($data['url'], $controller, $action, $data['name'], $data['cache'], $vars, $key, $data['logged'], $data['access']));
+					}
+				}
 
-										$this->_cache->setVal($this->_output);
-										$this->_cache->setCache();
-									}
-									else{
-										$this->_output = $this->_cache->getCache();
-									}
+				if($matchedRoute = $router->getRoute(preg_replace('`\?'.preg_quote($_SERVER['QUERY_STRING']).'`isU', '', $_SERVER['REQUEST_URI']))){
+					$_GET = array_merge($_GET, $matchedRoute->vars());
+
+					$this->request->name = $matchedRoute->name();
+					$this->request->src = $matchedRoute->src();
+					$this->request->controller = $matchedRoute->controller();
+					$this->request->action = $matchedRoute->action();
+					$this->request->logged = $matchedRoute->logged();
+					$this->request->access = $matchedRoute->access();
+
+					if(CACHE_ENABLED == true && $matchedRoute->cache() != '')
+						$this->request->cache = $matchedRoute->cache();
+					else
+						$this->request->cache = 0;
+
+					if($this->request->action == '')
+						$this->request->action = 'default';
+
+					$this->_route = true;
+				}
+
+				$this->profiler->addTime('route', profiler::USER_END);
+
+				return $this;
+			}
+
+			/**
+			 * routing with cron
+			 * @access private
+			 * @param $src string
+			 * @param $controller string
+			 * @param $action string
+			 * @return void
+			 * @since 3.0
+			*/
+
+			private function _routeCron($src, $controller, $action){
+				$this->profiler->addTime('route cron : '.$src.'/'.$controller.'/'.$action);
+
+				$this->request->name = '-'.$src.'_'.$controller.'_'.$action;
+				$this->request->src = $src;
+				$this->request->controller = $controller;
+				$this->request->action = $action;
+				$this->_route = true;
+
+				$this->profiler->addTime('route cron : '.$src.'/'.$controller.'/'.$action, profiler::USER_END);
+			}
+
+			/**
+			 * init controller
+			 * @access public
+			 * @return void
+			 * @since 3.0
+			*/
+
+			protected function _controller(){
+				if($this->_setControllerFile($this->request->src, $this->request->controller) == true){
+					$className = "\\".$this->request->src."\\".$this->request->controller;
+					$class = new $className($this->profiler, $this->config, $this->request, $this->response, $this->lang);
+
+					if(SECURITY == false || ($this->request->logged == '*' && $this->request->access == '*') || $class->setFirewall() == true){
+						if(SPAM == false || $class->setSpam() == true){
+							if($this->request->cache > 0){
+								$cache = $this->cache('page_'.preg_replace('#\/#isU', '-slash-', $this->request->env('REQUEST_URI')), $this->request->cache);
+
+								if($cache->isDie() == true){
+									$class->model();
+
+									$output = $this->_action($class);
+									$this->response->page($output);
+
+									$cache->setContent($output);
+									$cache->setCache();
 								}
 								else{
-									$this->_addError('L\'antispam semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
+									$this->response->page($cache->getCache());
 								}
 							}
 							else{
-								$this->_addError(' Le parefeu semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
+								$class->model();
+								$output = $this->_action($class);
+								$this->response->page($output);
 							}
 						}
 						else{
-							$this->_addError('L\'instanciation du contrôleur "'.$controller.'" a échoué', __FILE__, __LINE__, FATAL);
-							$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé', __FILE__,  __LINE__, FATAL);
-							$this->redirect404();
+							$this->addError('The spam filter has detected an error', __FILE__, __LINE__, ERROR_ERROR);
 						}
 					}
 					else{
-						if($this->_setRubrique($controller) == true){
-							$class = new $controller($this->_lang);
-
-							if(SECURITY == false || $class->setFirewall() == true){
-								if(ANTISPAM == false || $class->setAntispam() == true){
-								    $class->loadModel();
-
-									ob_start();
-										$class->init();
-
-										if(method_exists($class, 'action'.ucfirst($_GET['action']))){
-											$action = 'action'.ucfirst($_GET['action']);
-											$class->$action();
-											$this->_addError('Appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" réussi', __FILE__, __LINE__, INFORMATION);
-										}
-										else{
-											$action = 'actionDefault';
-											$class->$action();
-											$this->_addError('L\'appel de l\'action "action'.ucfirst($_GET['action']).'" du contrôleur "'.$controller.'" a échoué. Appel de l\'action par défaut "actionDefault"', __FILE__, __LINE__, WARNING);
-										}
-
-										$class->end();
-									$this->_output = ob_get_contents();
-									ob_get_clean();
-								}
-								else{
-									$this->_addError('L\'antispam semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
-								}
-							}
-							else{
-								$this->_addError('Le parefeu semble avoir détecté une erreur', __FILE__, __LINE__, ERROR);
-							}								
-						}
-						else{
-							$this->_addError('L\'instanciation du contrôleur "'.$controller.'" a échoué', __FILE__, __LINE__, FATAL);
-							$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé', __FILE__,  __LINE__, FATAL);
-							$this->redirect404();
-						}
+						$this->addError('The firewall has detected an error', __FILE__, __LINE__, ERROR_ERROR);
 					}
 				}
 				else{
-					$this->_addError('Le contrôleur \'inconnue\' n\'a pas été instancié car le routage a echoué. Requête http : http://'.$this->getHost().$this->getUri(), __FILE__, __LINE__, FATAL);
-					$this->_addError('Le contrôleur '.$_GET['controller'].' n\'a pas été trouvé car le routage a échoué. URL : http://'.$this->getHost().$this->getUri(), __FILE__,  __LINE__, FATAL);
-					$this->redirect404();
+					throw new exception("Can't include controller and model from module ".$this->request->src, 1);
 				}
 			}
-			
-			private function _setRubrique($controller){
-				if(file_exists(CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php')){
-					if(file_exists(MODEL_PATH.$controller.MODEL_EXT.'.php')){
-						require_once(MODEL_PATH.$controller.MODEL_EXT.'.php');
-						$this->_addError('Chargement des fichiers "'.CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php" et "'.MODEL_PATH.$controller.MODEL_EXT.'.php"', __FILE__, __LINE__, INFORMATION);
+
+			/**
+			 * call action from controller
+			 * @param &$class : controller instance reference
+			 * @access public
+			 * @return string
+			 * @since 3.0
+			*/
+
+			public function _action(&$class){
+				ob_start();
+					$class->init();
+
+					if(method_exists($class, 'action'.ucfirst($this->request->action))){
+						$action = 'action'.ucfirst($this->request->action);
+						$output = $class->$action();
+						$this->addError('Action "action'.ucfirst($this->request->action).'" from "'.$this->request->controller.'" called successfully', __FILE__, __LINE__, ERROR_INFORMATION);
 					}
-					require_once(CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php');
+					else{
+						throw new exception('The requested action "'.$this->request->action.'" from "'.$this->request->controller.'" doesn\'t exist', 1);
+					}
+	
+					$class->end();
+					$output = ob_get_contents().$output;
+				ob_get_clean();
+
+				return $output;
+			}
+
+			/**
+			 * include the module
+			 * @access protected
+			 * @param $src string
+			 * @param $controller string
+			 * @return boolean
+			 * @since 3.0
+			*/
+
+			protected function _setControllerFile($src, $controller){
+				$controllerPath = SRC_PATH.$src.'/'.SRC_CONTROLLER_PATH.$controller.EXT_CONTROLLER.'.php';
+				$modelPath = SRC_PATH.$src.'/'.SRC_MODEL_PATH.$controller.EXT_MODEL.'.php';
+
+				if(file_exists($controllerPath) && file_exists($modelPath)){
+					require_once($controllerPath);
+					require_once($modelPath);
+
 					return true;
 				}
-				else{ 
-					$this->_addError($this->useLang('gc_controllernotfound', array('controller' => $controller)), __FILE__, __LINE__, FATAL);
-					$this->_addError('Echec lors du chargement des fichiers "'.CONTROLLER_PATH.$controller.CONTROLLER_EXT.'.php" et "'.MODEL_PATH.$controller.MODEL_EXT.'.php"', __FILE__, __LINE__, ERROR);
+				else{
 					return false;
 				}
 			}
-			
+
+			/**
+			 * display the page
+			 * @access public
+			 * @return void
+			 * @since 3.0
+			*/
+
 			public function run(){
-				if(MINIFY_OUTPUT_HTML == true && $this->checkContentType() == true){
-					$this->_output = $this->minifyHtml($this->_output);
-				}
+				$lang = $this->lang();
 
-				echo $this->_output;
-				$this->_addErrorHr();
-
-				if($this->checkContentType() == false){
-					$GLOBALS['appDev']->setShow(false);
-				}
-			}
-
-			private function checkContentType(){ //renvoie false si on a pas affaire à du html et si on a une directive content-type
-				$header = headers_list();
-
-				if(in_array('Content-Type: text/html; charset='.CHARSET, $header)){
-					return true;
-				}
-
-				foreach ($header as $value) {
-					if(preg_match('#content-type#', $value)){
-						return false; //on a un content-type qui n'est pas html
+				if(MAINTENANCE == false){
+					if($this->_route == false){
+						$this->response->status(404);
+						$this->addError('routing failed : http://'.$this->request->env('HTTP_HOST').$this->request->env('REQUEST_URI'), __FILE__, __LINE__, ERROR_WARNING);
 					}
+					else{
+						$this->_controller();
+					}
+					
+					$this->response->run($this->profiler, $this->config, $this->response);
+					$this->addErrorHr(LOG_ERROR);
+					$this->addErrorHr(LOG_SYSTEM);
+					$this->_setHistory('');
+
+					if(MINIFY_OUTPUT_HTML == true && preg_match('#text/html#isU', $this->response->contentType()))
+						$this->response->page($this->_minifyHtml($this->response->page()));
+
+					if(ENVIRONMENT == 'development' && PROFILER == true)
+						$this->profiler->profiler($this->request, $this->response);
+				}
+				else{
+					$this->response->page($this->maintenance());
 				}
 
-				return false;
+				echo $this->response->page();
 			}
-			
-			private function _checkHeaderStream($url){
-				$extension = explode('.', $url);
-				
-				switch($extension[count($extension)-1]){
-					case 'html':
-						header('Content-Type: text/html; charset='.CHARSET.'');	
-						$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__, INFORMATION);
-					break;
-					
-					case 'xml':
-						header('Content-Type: text/xml; charset='.CHARSET.'');
-						$GLOBALS['appDev']->setShow(false);
-						$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__, INFORMATION);
-					break;
-					
-					case 'json':
-						header('Content-Type: application/json; charset='.CHARSET.'');
-						$GLOBALS['appDev']->setShow(false);
-						$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__, INFORMATION);
-					break;
-					
-					default:
-						header('Content-Type: text/html; charset='.CHARSET.'');
-						$this->_addError('Content-Type : "Content-Type: text/html; charset='.CHARSET.'"', __FILE__, __LINE__, INFORMATION);
-					break;
+
+			/**
+			 * display the page for a cron
+			 * @access public
+			 * @return void
+			 * @since 3.0
+			*/
+
+			public function runCron(){
+				$lang = $this->lang();
+
+				if(MAINTENANCE == false){
+					$this->_controller();
+					$this->_setHistory('CRON');
+
+					if(ENVIRONMENT == 'development' && PROFILER == true)
+						$this->profiler->profiler($this->request, $this->response);
 				}
+
+				echo $this->response->page();
 			}
-				
-			private function _createLangInstance(){
-				$this->_langInstance = new lang($this->_lang);
+
+			/**
+			 * get maintenance template
+			 * @access public
+			 * @return void
+			 * @since 3.0
+			*/
+
+			private function maintenance(){
+				$tpl = $this->template('.app/system/maintenance', 'maintenance');
+				return $tpl->show();
 			}
+
+			/**
+			 * set error environment
+			 * @access private
+			 * @return void
+			 * @since 3.0
+			*/
 			
-			private function useLang($sentence, $var = array()){
-				return $this->_langInstance->loadSentence($sentence, $var);
-			}
-			
-			private function _checkEnvironment(){
+			private function _setEnvironment(){
 				switch(ENVIRONMENT){	
 					case 'development' :		
-						error_reporting(E_ALL | E_NOTICE);			
+						error_reporting(E_ALL | E_NOTICE);
 					break;
 
 					case 'production' :	
-						error_reporting(0);					
+						error_reporting(0);	
 					break;					
 				}
 			}
-			
-			private function _checkError(){
-				$c = new TestErrorHandling(); 
+
+			/**
+			 * enable error handling
+			 * @access private
+			 * @return void
+			 * @since 3.0
+			*/
+
+			private function _setErrorHandler(){
+				$error = new errorHlander(); 
 			}
-			
-			private function _checkFunctionGenerique(){
-				require_once(FUNCTION_GENERIQUE);
+
+			/**
+			 * set cron
+			 * @access private
+			 * @param $src string 
+			 * @return void
+			 * @since 3.0
+			*/
+
+			private function _setCron($src = null){
+				if($src == null){
+					$cron = new \system\cron($this->profiler, $this->config, $this->request, $this->lang, APP_CONFIG_CRON);
+				}
+				else{
+					$cron = new \system\cron($this->profiler, $this->config, $this->request, $this->lang, SRC_PATH.$src.'/'.SRC_CONFIG_CRON);
+				}
 			}
-			
-			private function _checkSecureVar(){
-				if(SECUREGET == true && isset($_GET)){
-					foreach($_GET as $cle => $val){
-						$_GET[$cle] = htmlentities($val);
+
+			/**
+			 * set define
+			 * @access private
+			 * @param $src string 
+			 * @return void
+			 * @since 3.0
+			*/
+
+			private function _setDefine($src = null){
+				if($src == null){
+					$define = $this->define('app');
+				}
+				else{
+					$define = $this->define($src);
+				}
+			}
+
+			/**
+			 * set library
+			 * @access private
+			 * @param $src string 
+			 * @return void
+			 * @since 3.0
+			*/
+
+			private function _setLibrary($src = null){
+				if($src == null){
+					$library = $this->library('app');
+				}
+				else{
+					$library = $this->library($src);
+				}
+			}
+
+			/**
+			 * escape GET and POST (htmlentities)
+			 * @access private
+			 * @return void
+			 * @since 3.0
+			*/
+
+			private function _setSecure(){
+				if(SECURE_GET == true && isset($_GET)){
+					$_GET = $this->_setSecureArray($_GET);
+				}
+				
+				if(SECURE_POST == true && isset($_POST)){
+					$_POST = $this->_setSecureArray($_POST);
+				}
+			}
+
+			/**
+			 * escape array (htmlentities)
+			 * @access private
+			 * @return mixed
+			 * @since 3.0
+			*/
+
+			private function _setSecureArray($var){
+				if(is_array($var)){
+					foreach ($var as $key => $value) {
+						$var[''.$key.''] = $this->_setSecureArray($value);
 					}
 				}
-				
-				if(SECUREPOST == true && isset($_POST)){
-					foreach($_POST as $cle => $val){
-						$_POST[$cle] = htmlentities($val);
-					}
+				else{
+					$var = htmlentities($var);
 				}
+
+				return $var;
 			}
 
-			private function _checkConfigFile(){
-				$dom = new \DomDocument('1.0', CHARSET);
-				
-				if(!$dom->loadXml(file_get_contents(ROUTE))){
-					$this->_addError('Le fichier '.ROUTE.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
-				}
-
-				if(!$dom->loadXml(file_get_contents(MODOCONFIG))){
-					$this->_addError('Le fichier '.MODOCONFIG.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
-				}
-
-				if(!$dom->loadXml(file_get_contents(APPCONFIG))){
-					$this->_addError('Le fichier '.APPCONFIG.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
-				}
-
-				if(!$dom->loadXml(file_get_contents(HELPER))){
-					$this->_addError('Le fichier '.HELPER.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
-				}
-
-				if(!$dom->loadXml(file_get_contents(FIREWALL))){
-					$this->_addError('Le fichier '.FIREWALL.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
-				}
-
-				if(!$dom->loadXml(file_get_contents(ASPAM))){
-					$this->_addError('Le fichier '.ASPAM.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
-				}
-
-				if(!$dom->loadXml(file_get_contents(ADDON))){
-					$this->_addError('Le fichier '.ADDON.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
-				}
-
-				if(!$dom->loadXml(file_get_contents(CRON))){
-					$this->_addError('Le fichier '.CRON.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
-				}
-
-				if(!$dom->loadXml(file_get_contents(ERRORPERSO))){
-					$this->_addError('Le fichier '.ERRORPERSO.' n\'a pas pu être ouvert', __FILE__, __LINE__, FATAL);
-				}
-			}
+			/**
+			 * set event
+			 * @access private
+			 * @return void
+			 * @since 3.0
+			*/
 			
-			public function setMaintenance(){
-				$tpl = new template(GCSYSTEM_PATH.'GCmaintenance', 'GCmaintenance', 0, $this->_lang);				
-				$tpl->show();
-			}
+			private function _setEvent($src = null){
+				if(empty($GLOBALS['eventListeners'])){
+					$GLOBALS['eventListeners'] = array();
+				}
 
-			protected function _setEventListeners(){
-				$dir = new \helper\dir(EVENT_PATH);
-				$GLOBALS['eventListeners'] = array();
-				
-				foreach ($dir->getDirArbo() as $value) {
-					$value = '\event\\'.preg_replace('#'.preg_quote(EVENT_PATH).'(.+)'.preg_quote(EVENT_EXT).preg_quote('.php').'#isU', '$1', $value);
-                    $value = preg_replace('#/#', '\\', $value);
-                    array_push($GLOBALS['eventListeners'], new $value());
+				if($src != null){
+					$path = SRC_PATH.$src.'/'.SRC_RESOURCE_EVENT_PATH;
+				}
+				else{
+					$path = APP_RESOURCE_EVENT_PATH;
+				}
+
+				if ($handle = opendir($path)) {
+					while (false !== ($entry = readdir($handle))) {
+						if(preg_match('#(\.php$)$#isU', $entry)){
+							if(!array_key_exists($path.$entry, $GLOBALS['eventListeners'])){
+								include_once($path.$entry);
+
+								$event = '\event\\'.preg_replace('#(.+)'.preg_quote(EXT_EVENT.'.php').'#', '$1', $entry);
+								$event = preg_replace('#'.preg_quote('/').'#', '\\', $event);
+
+								if($src == null)
+									$event = '\app'.$event;
+								else
+									$event = '\\'.$src.$event;
+
+
+								$GLOBALS['eventListeners'][''.$path.$entry.''] = new $event();
+							}
+						}
+					}
+
+					closedir($handle);
 				}
 			}
 
-			public  function __destruct(){
+			/**
+			 * set function.php
+			 * @access private
+			 * @param $src string
+			 * @return void
+			 * @since 3.0
+			*/
+
+			private function _setFunction($src = null){
+				if($src == null){
+					require_once(APP_FUNCTION);
+				}
+				else{
+					require_once(SRC_PATH.$src.'/'.SRC_CONTROLLER_FUNCTION_PATH);
+				}
+			}
+
+			/**
+			 * log request in history
+			 * @access private
+			 * @param $message string
+			 * @return void
+			 * @since 3.0
+			*/
+
+			private function _setHistory($message){
+				$this->addError('URL : http://'.$this->request->env('HTTP_HOST').$this->request->env('REQUEST_URI').' ('.$this->response->status().
+					') / SRC "'.$this->request->src.'" / CONTROLLER "'.$this->request->controller.
+					'" / ACTION "'.$this->request->action.'" / CACHE "'.$this->request->cache.
+					'" / ORIGIN : '.$this->request->env('HTTP_REFERER').' / IP : '.$this->request->env('REMOTE_ADDR'). ' / '.$message, 0, 0, 0, LOG_HISTORY);
+			}
+
+			/**
+			 * minify html
+			 * @access private
+			 * @param string buffer
+			 * @return void
+			 * @since 3.0
+			*/
+
+			private function _minifyHtml($buffer) {
+				$search = array('/\>[^\S ]+/s', '/[^\S ]+\</s', '/\>(\s)+/s', '/(\s)+\</s');
+				$replace = array('> ', ' <', '> ', ' <');
+				$buffer = preg_replace($search, $replace, $buffer);
+
+				return $buffer;
+			}
+
+			/**
+			 * destructor
+			 * @access public
+			 * @since 3.0
+			*/
+
+			public function __destruct(){
 			}
 		}
 	}

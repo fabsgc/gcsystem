@@ -1,23 +1,27 @@
 <?php
-	/**
-	 * @file : sql.class.php
-	 * @author : fab@c++
-	 * @description : class facilitant la gestion des requêtes SQL
-	 * @version : 2.3 Bêta
-	*/
-
+	/*\
+	 | ------------------------------------------------------
+	 | @file : sql.class.php
+	 | @author : fab@c++
+	 | @description : sql better system
+	 | @version : 3.0 Bêta
+	 | ------------------------------------------------------
+	\*/
+	
 	namespace system{
 		class sql{
-			use error, general;
-			
-			protected $_var            = array();       //liste des variables
-			protected $_query          = array();       //liste des requêtes
-			protected $_bdd            = array();       //connexion sql
-			protected $_cache                   ;       //référence vers un objet de type cache
-			protected $_requete                 ;       //contient la requête sql
-			protected $_data                    ;       //contient les données
-			
-			const PARAM_INT                 = 1;       //les paramètres des variables, en relation avec PDO::PARAM_
+			use error, facades, entityFacades;
+
+			protected $_var            = array();       //variable list
+			protected $_query          = array();       //query list
+			protected $_bdd            = array();       //Pdo instance
+			protected $_time           = array();       //cache time
+			protected $_cache                   ;       //cache instance
+			protected $_content                 ;       //sql query
+			protected $_data           = array();       //sql data
+			protected $_nameQuery      =      '';       //name for caching file
+
+			const PARAM_INT                 = 1;       //variable type, in relation with PDO_PARAM
 			const PARAM_BOOL                = 5;
 			const PARAM_NULL                = 0;
 			const PARAM_STR                 = 2;
@@ -27,263 +31,324 @@
 			const PARAM_FETCHUPDATE         = 3;
 			const PARAM_NORETURN            = 4;
 			const PARAM_FETCHDELETE         = 5;
-			
+
 			/**
-			 * Crée l'instance de la classe
-			 * @access	public
-			 * @return	void
-			 * @param PDO : référence vers un objet de type PDO
-			 * @since 2.0
+			 * constructor
+			 * @access public
+			 * @param &$profiler \system\profiler
+			 * @param &$config \system\config
+			 * @param &$request \system\request
+			 * @param $lang string
+			 * @param $bdd Pdo instance
+ 			 * @since 3.0
 			*/
-			
-			public  function __construct($bdd){
-				$this->_bdd = $bdd;
+
+			public function __construct (&$profiler, &$config, &$request, &$response, $lang, $bdd){
+				$this->profiler = $profiler;
+				$this->config   =   $config;
+				$this->request  =  $request;
+				$this->response = $response;
+				$this->lang     =     $lang;
+				$this->_bdd     =      $bdd;
+
+				$this->entity = $this->entity($this->_bdd);
+
+				$stack = debug_backtrace(0);
+				$trace = $this->getStackTraceToString($stack);
+
+				$this->_nameQuery = 'sql_'.$this->request->src.'_'.$this->request->controller.'_'.$this->request->action.'__'.$trace;
 			}
-			
+
 			/**
-			 * Récupération sous la forme d'un array des variables transmises à la classe
-			 * @access	public
-			 * @return	void
-			 * @since 2.0
+			 * get the trace of execution. it's used to give an explicit name to the caching file
+			 * @access protected
+			 * @param $stack string
+			 * @return string
 			*/
-			
-			public function getVar(){
-				return print_r($this->_var);
+
+			private function getStackTraceToString($stack){
+				$max = 0;
+				$trace = '';
+
+				for($i = 3; $i < count($stack) && $max < 4; $i++){
+					if(preg_match('#('.preg_quote('system\orm').')#isU', $stack[$i]['file'])){ //ORM
+						$trace .= str_replace('\\', '-', $stack[$i]['class']).'_'.$stack[$i]['function'].'_'.$stack[$i-1]['line'].'__';
+					}
+				}
+
+				return $trace;
 			}
-			
+
 			/**
-			 * modification du DAO
-			 * @access	public
-			 * @return	void
-			 * @since 2.0
+			 * Add a new query to the instance
+			 * @access public
+			 * @param $name string : the name of the query. If the name already exists, the old query will be erased
+			 * @param $query string : the query with the Pdo syntax
+			 * @param $time int : time cache
+			 * @return void
+			 * @since 3.0
 			*/
 			
-			public function setBdd($bdd){
-				$this->_bdd = $bdd;
+			public function query($name, $query, $time = 0){
+				$this->_query[''.$name.''] = $query;
+				$this->_time[''.$name.''] = $time;
 			}
-			
+
 			/**
-			 * Récupération sous la forme d'un array des requêtes sql transmises à la classe
-			 * @access	public
-			 * @return	void
-			 * @since 2.0
+			 * add variables to the instance
+			 * @access public
+			 * @param $var  mixed : contain the list of the variable that will be used in the queries.
+			 *  first syntax  : array('id' => array(31, sql::PARAM_INT), 'pass' => array("fuck", sql::PARAM_STR))
+			 *  second syntax : array('id' => 31, 'pass' => "fuck"). If you don't define the type of the variable, the class will assign itself the correct type
+			 *  If you have only one variable to pass, you can use the 2/3 parameters form
+			 *	first syntax  : ('id', 'value')
+			 *  second syntax : ('id', 'value', sql::PARAM_INT)
+			 * @return void
+			 * @since 3.0
 			*/
 			
-			public function getQuery(){
-				return $this->_requete;
-			}
-			
-			/**
-			 * Ajout d'une nouvelle requête SQL
-			 * @access	public
-			 * @return	void
-			 * @param string $nom : le nom de la requête. Si vous donnez un nom existant déjà dans l'instance, l'ancienne requête sera écrasée
-			 * @param string $query : Votre requête SQL avec la syntaxe de PDO (requête préparée)
-			 * @param string $time : Le temps de mise en cache de la requêt
-			 * @since 2.0
-			*/
-			
-			public function query($nom, $query, $time=0){
-				$this->_query[''.$nom.''] = $query;
-				$this->time[''.$nom.''] = $time;
-			}
-			
-			/**
-			 * Configuration des variables à transmettre à la classe
-			 * @access	public
-			 * @return	void
-			 * @param array $var : tableau contenant la liste des variables qui seront utilisées dans les requêtes<br />
-			 *  premire syntaxe ex : array('id' => array(31, sql::PARAM_INT), 'pass' => array("fuck", sql::PARAM_STR))<br />
-			 *  deuxième syntaxe ex : array('id' => 31, 'pass' => "fuck") si le type de la variable n\'est pas défini grâce aux constantes de la classe, le type sera définie directement pas la classe
-			 * @since 2.0
-			*/
-			
-			public function setVar($var = array()){
-				foreach($var as $cle => $valeur){
-					$this->_var[$cle] = $valeur;
+			public function setVar($var){
+				if(is_array($var)){
+					foreach($var as $key => $valeur){
+						$this->_var[$key] = $valeur;
+					}
+				}
+				else if(func_num_args() == 2){
+					$args = func_get_args();
+					$this->_var[$args[0]] = $args[1];
+				}
+
+				else if(func_num_args() == 3){
+					$args = func_get_args();
+					$this->_var[$args[0]] = array($args[1], $args[2]);
 				}
 			}
-			
+
 			/**
-			 * Exécution de la requête. Cette méthode retourne l'objet PDO juste après son exécution. (execute())
-			 * @access	public
-			 * @return	PDO
-			 * @param string $nom : nom de la requête à exécuter
-			 * @since 2.0
+			 * Execute the query. This method returns the pdo object like the real execute() PDO method. 
+			 * It's usefull if you want to use PDO method like lastInsertId()
+			 * @access public
+			 * @param string $name : name of the query you want to execute
+			 * @return Pdo
+			 * @since 3.0
 			*/
-			
-			public function execute($nom){
+
+			public function execute($name){
 				try{
-					$this->_requete = $this->_bdd->prepare(''.$this->_query[''.$nom.''].'');
+					$query = $this->_bdd->prepare(''.$this->_query[''.$name.''].'');
 					
-					foreach($this->_var as $cle => $val){
-						if(preg_match('`:'.$cle.'[\s|,|\)|\(%]`', $this->_query[''.$nom.''].' ')){
-							if(is_array($val)){
-								$this->_requete->bindValue($cle,$val[0],$val[1]);
+					foreach($this->_var as $key => $value){
+						if(preg_match('`:'.$key.'[\s|,|\)|\(%]`', $this->_query[''.$name.''].' ')){
+							if(is_array($value)){
+								$this->_requete->bindValue($key, $value[0], $value[1]);
 							}
 							else{
-								switch(gettype($val)){
+								switch(gettype($value)){
 									case 'boolean' :
-										$this->_requete->bindValue(":$cle",$val,self::PARAM_BOOL);
+										$this->_requete->bindValue(":$key", $value, self::PARAM_BOOL);
 									break;
 									
 									case 'integer' :
-										$this->_requete->bindValue(":$cle",$val,self::PARAM_INT);
+										$this->_requete->bindValue(":$key", $value, self::PARAM_INT);
 									break;
 									
 									case 'double' :
-										$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
+										$this->_requete->bindValue(":$key", $value, self::PARAM_STR);
 									break;
 									
 									case 'string' :
-										$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
+										$this->_requete->bindValue(":$key", $value, self::PARAM_STR);
 									break;
 									
 									case 'NULL' :
-										$this->_requete->bindValue(":$cle",$val,self::PARAM_NULL);
+										$this->_requete->bindValue(":$key", $value, self::PARAM_NULL);
 									break;
 									
 									default :
-										$this->_addError('type non géré', __FILE__, __LINE__, ERROR);
+										$this->addError('SQL '.$name.'::'.$key.' unrecognized type', __LINE__, __FILE__, ERROR_INFORMATION, LOG_SQL);
 									break;
 								}
 							}
 						}
 					}
 
-					$this->_requete->execute();
+					$query->execute();
 					
-					return $this->_requete;
+					return $query;
 				}
 				catch (exception $e) {
-					$this->_addError($nom.' : '.$e->getMessage(), __FILE__, __LINE__, FATAL);
+					$this->addError($name.' : '.$e->getMessage(), __FILE__, __LINE__, ERROR_FATAL);
 					return false;
 				}
 			}
-			
+
 			/**
-			 * Fetch de la requête. Cette méthode retourne plusieurs valeurs en fonctions des paramètres
-			 * @access	public
-			 * @return	array ou boolean
-			 * @param string $nom : nom de la requête à fetcher
-			 * @param string $fetch : type de fetch à réaliser. Il en existe 3 :
-			 *  sql::PARAM_FETCH         : correspondant au fetch de PDO. Prévu pour une requête de type SELECT
-			 *  sql::PARAM_FETCHCOLUMN   : correspondant au fetchcolumn de PDO. Prévu pour une requête de type SELECT COUNT
-			 *  sql::PARAM_FETCHINSERT   : Prévu pour une requête de type INSERT
-			 *  sql::PARAM_FETCHUPDATE   : Prévu pour une requête de type UPDATE
-			 *  sql::PARAM_FETCHDELETE   : Prévu pour une requête de type DELETE
-			 *  valeur par défaut : sql::PARAM_FETCH
+			 * Fetch a query. This method returns several values, depending on the fetching parameter
+			 * @access public
+			 * @param $name string : the name of the query you want to fetch
+			 * @param $fetch int : type of fetch. 5 values available
+			 *  sql::PARAM_FETCH         : correspond to the fetch of PDO. it's usefull for SELECT queries
+			 *  sql::PARAM_FETCHCOLUMN   : correspond to the fetchcolumn of PDO. it's usefull for SELECT COUNT queries
+			 *  sql::PARAM_FETCHINSERT   : usefull for INSERT queries
+			 *  sql::PARAM_FETCHUPDATE   : usefull for UPDATE queries
+			 *  sql::PARAM_FETCHDELETE   : usefull for DELETE queries
+			 *  default value : sql::PARAM_FETCH
+			 * @return mixed
 			 * @since 2.0
 			*/
 
-			public function fetch($nom, $fetch = self::PARAM_FETCH){
-				$this->_cache = new cache($nom.'.sql', "", $this->time[''.$nom.'']);
+			public function fetch($name, $fetch = self::PARAM_FETCH){
+				if($this->_time[''.$name.''] > 0){
+					$this->_cache = $this->cache($this->_nameQuery.$name.'.sql', "", $this->_time[''.$name.'']);
+				}
 
-				if($this->_cache->isDie() || $fetch == self::PARAM_FETCHINSERT){
+				if((isset($this->_cache) && $this->_cache->isDie() && $this->_time[''.$name.''] > 0) ||
+					$this->_time[''.$name.''] == 0 || $fetch == self::PARAM_FETCHINSERT ||
+					$fetch == self::PARAM_FETCHUPDATE || $fetch == self::PARAM_FETCHDELETE){
 
 					try {
-						$this->_requete = $this->_bdd->prepare(''.$this->_query[''.$nom.''].'');
-						$GLOBALS['appDev']->addSql(''.$this->_query[''.$nom.''].'');
-						$this->setErrorLog(LOG_SQL, '['.$_GET['controller'].']['.$_GET['action'].']['.$nom."] \n".$this->_query[''.$nom.''].'');
+						$query = $this->_bdd->prepare(''.$this->_query[''.$name.''].'');
+						$this->profiler->addTime($this->_nameQuery.$name);
+						$this->profiler->addSql($this->_nameQuery.$name, profiler::SQL_START);
+						$this->addError('['.$this->request->src.'] ['.$this->request->controller.'] ['.$this->request->action.'] ['.$name."]", __LINE__, __FILE__, ERROR_INFORMATION, LOG_SQL);
 						
-						foreach($this->_var as $cle => $val){
-							if(preg_match('`:'.$cle.'[\s|,|\)|\(%]`', $this->_query[''.$nom.''].' ')){
-								if(is_array($val)){
-									$this->_requete->bindValue($cle,$val[0],$val[1]);
-									$GLOBALS['appDev']->addSql(' / _'.$cle.' : '.$val[0]);
-									$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val[0]);
+						foreach($this->_var as $key => $value){
+							if(preg_match('`:'.$key.'[\s|,|\)|\(%]`', $this->_query[''.$name.''].' ')){
+								if(is_array($value)){
+									$query->bindValue($key, $value[0], $value[1]);
 								}
 								else{
-									switch(gettype($val)){
+									switch(gettype($value)){
 										case 'boolean' :
-											$this->_requete->bindValue(":$cle",$val,self::PARAM_BOOL);
-											$GLOBALS['appDev']->addSql(' / _'.$cle.' : '.$val);
-											$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
+											$this->_requete->bindValue(":$key", $value, self::PARAM_BOOL);
 										break;
 										
 										case 'integer' :
-											$this->_requete->bindValue(":$cle",$val,self::PARAM_INT);
-											$GLOBALS['appDev']->addSql(' / _'.$cle.' : '.$val);
-											$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
+											$query->bindValue(":$key", $value, self::PARAM_INT);
 										break;
 										
 										case 'double' :
-											$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
-											$GLOBALS['appDev']->addSql(' / _'.$cle.' : '.$val);
-											$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
+											$query->bindValue(":$key", $value, self::PARAM_STR);
 										break;
 										
 										case 'string' :
-											$this->_requete->bindValue(":$cle",$val,self::PARAM_STR);
-											$GLOBALS['appDev']->addSql(' / _'.$cle.' : '.$val);
-											$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
+											$query->bindValue(":$key", $value, self::PARAM_STR);
 										break;
 										
 										case 'NULL' :
-											$this->_requete->bindValue(":$cle",$val,self::PARAM_NULL);
-											$GLOBALS['appDev']->addSql(' / _'.$cle.' : '.$val);
-											$this->setErrorLog(LOG_SQL, ':'.$cle.' : '.$val);
+											$query->bindValue(":$key", $value, self::PARAM_NULL);
 										break;
 										
 										default :
-											$this->setErrorLog(LOG_SQL, 'sql, variable '.$cle.', type non géré');
+											$this->addError($name.'::'.$key.' unrecognized type', __LINE__, __FILE__, ERROR_INFORMATION, LOG_SQL);
 										break;
 									}
 								}
 							}
 						}
-						
-						$GLOBALS['appDev']->addSql('####################################');
-						$this->setErrorLog(LOG_SQL, "########################################################################\n\n");
-						$this->_requete->execute();
-						
+
+						$query->execute();
+
 						switch($fetch){
-							case self::PARAM_FETCH : $this->_data = $this->_requete->fetchAll(); break;
-							case self::PARAM_FETCHCOLUMN : $this->_data = $this->_requete->fetchColumn(); break;
+							case self::PARAM_FETCH : $this->_data = $query->fetchAll(); break;
+							case self::PARAM_FETCHCOLUMN : $this->_data = $query->fetchColumn(); break;
 							case self::PARAM_FETCHINSERT : $this->_data = true; break;
 							case self::PARAM_FETCHUPDATE : $this->_data = true; break;
 							case self::PARAM_FETCHDELETE : $this->_data = true; break;
 							case self::PARAM_NORETURN : $this->_data = true; break;
-							default : $this->setErrorLog(LOG_SQL, 'la constante d\'exécution '.$fetch.' n\'existe pas'); break;
+							default : $this->addError('the execution constant '.$fetch.' doesn\'t exist', __LINE__, __FILE__, ERROR_INFORMATION, LOG_SQL); break;
 						}
-						
+
+						$this->profiler->addSql($this->_nameQuery.$name, profiler::SQL_END, $query->debugQuery());
+						$this->profiler->addTime($this->_nameQuery.$name, profiler::USER_END);
+
 						switch($fetch){
 							case self::PARAM_FETCH :
-								$this->_cache->setVal($this->_data);
-								$this->_cache->setCache();
+								if(isset($this->_cache)){
+									$this->_cache->setContent($this->_data);
+									$this->_cache->setCache();
+								}
+
 								return $this->_data; break;
 							break;
-							case self::PARAM_FETCHCOLUMN : 
-								$this->_cache->setVal($this->_data);
-								$this->_cache->setCache();
-								return $this->_data; 
+
+							case self::PARAM_FETCHCOLUMN :
+								if(isset($this->_cache)){
+									$this->_cache->setContent($this->_data);
+									$this->_cache->setCache();
+								}
+
+								return $this->_data;
 							break;
+
 							case self::PARAM_FETCHINSERT : return true; break;
 							case self::PARAM_FETCHUPDATE : return true; break;
 							case self::PARAM_FETCHDELETE : return true; break;
 							case self::PARAM_NORETURN : return true; break;
-							default : $this->setErrorLog(LOG_SQL, 'la constante d\'exécution '.$fetch.' n\'existe pas'); break;
 						}
-					} 
+					}
 					catch (exception $e) {
-						$this->_addError($nom.' '.$e->getMessage(), __FILE__, __LINE__, FATAL);
+						$this->addError($name.' '.$e->getMessage(), __FILE__, __LINE__, ERROR_FATAL);
 						return false;
 					}
 				}
 				else{
-					return $this->_cache->getCache();
+					if(isset($this->_cache)){
+						return $this->_cache->getCache();
+					}
+					else{
+						return false;
+					}
 				}
 			}
-			
+
 			/**
-			 * Desctructeur
-			 * @access	public
-			 * @return	boolean
-			 * @since 2.0
+			 * return data as an array of entities
+			 * @access public
+			 * @param $entity string
+			 * @return array
+			 * @since 3.0
 			*/
-			
-			public  function __destruct(){
-			
+
+			public function data($entity = ''){
+				$entities = array();
+
+				foreach($this->_data as $value){
+					if($entity != ''){
+						$entityObject = $this->entity->$entity();
+
+						foreach($value as $key => $value2){
+							$entityObject->$key = $value2;
+						}
+					}
+					else{
+						$entityObject = $this->entityMultiple($value);
+					}
+
+					array_push($entities, $entityObject);
+				}
+
+				return $entities;
+			}
+
+			/**
+			 * return data as an array
+			 * @access public
+			 * @param $entity string
+			 * @return array
+			 * @since 3.0
+			 */
+			public function toArray($entity = ''){
+				return $this->_cache->getCache();
+			}
+
+			/**
+			 * destructor
+			 * @access public
+			 * @since 3.0
+			*/
+
+			public function __destruct(){
 			}
 		}
 	}

@@ -1,0 +1,1 @@
+<h1 style="text-align:center;">{{lang:.app.error.http.title:'code' => $code, 'description' => $description}}</h1>

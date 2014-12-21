@@ -1,23 +1,24 @@
 <?php
-	/**
-	 * @file : eventManager .class.php
-	 * @author : fab@c++
-	 * @description : class permettant l'utilisation du design pattern observer
-	 * @version : 2.3 bêta
-	*/
+	/*\
+	 | ------------------------------------------------------
+	 | @file : eventManager .class.php
+	 | @author : fab@c++
+	 | @description : class permettant l'utilisation du design pattern observer
+	 | @version : 2.4 bêta
+	 | ------------------------------------------------------
+	\*/
 	
 	namespace system{
 		class eventManager {
 			use error;
 
-			protected $_listeners = array(); //tous les écouteurs
-			protected $_events    = array(); //tous les évènements de la pile
+			protected $_listeners = array(); //listeners
+			protected $_events    = array(); //events
 			
 			/**
-			 * Constructeur de la classe
-			 * @access	public
-			 * @return	void
-			 * @since 2.3
+			 * constructor
+			 * @access public
+			 * @since 3.0
 			*/
 
 			public function __construct() {
@@ -25,11 +26,11 @@
 			}
 
 			/**
-			 * ajoute un nouvel évènement à la pile
-			 * @access	public
-			 * @param event $event : objet event
-			 * @return	void
-			 * @since 2.3
+			 * add an event to he pile
+			 * @access public
+			 * @param event $event : object
+			 * @return void
+			 * @since 3.0
 			*/
 
 			public function add($event) {	
@@ -37,11 +38,11 @@
 			}
 
 			/**
-			 * détruit un évènement
-			 * @access	public
-			 * @param string $name : nom de l'évènement à arrêter
-			 * @return	bool
-			 * @since 2.3
+			 * destroy an event
+			 * @access public
+			 * @param string $name
+			 * @return bool
+			 * @since 3.0
 			*/
 
 			public function destroy($name) {	
@@ -52,22 +53,25 @@
 			}
 
 			/**
-			 * Apppelle tous les écouteurs
-			 * @access	public
-			 * @return	void
-			 * @since 2.3
+			 * call listeners
+			 * @access public
+			 * @return void
+			 * @since 3.0
 			*/
 
 			public function dispatch() {	
-				foreach ($this->_listeners as $listeners) {
+				foreach ($this->_listeners as $key => $listeners) {
 					foreach ($this->_events as $events) {
 						if(isset($listeners->implementedEvents()[$events->getName()])){
 							foreach ($listeners->implementedEvents()[$events->getName()] as $event) {
 								if($events->getStatus() == event::START && method_exists($listeners, $event)){
-									ob_start("ob_gzhandler");
-										$this->_addError('EVENT : lancement de l\'écouteur "'.get_class($listeners).'::'.$event.'" de l\'événement "'.$events->getName(), __FILE__, __LINE__, INFORMATION);
+									ob_start();
+										$this->addError('EVENT call the listener "'.$key.'" "'.get_class($listeners).'::'.$event.'" for the event "'.$events->getName().'"', __FILE__, __LINE__, ERROR_INFORMATION);
 										$events->setResult($listeners->$event($events), get_class($listeners).'::'.$event, get_class($listeners), $event);
+										$output = ob_get_contents();
 									ob_get_clean();
+
+									$this->addError('['.$key.'] ['.get_class($listeners).'::'.$event.'] ['.$events->getName()."]\n[".$output.']', 0, 0, 0, LOG_EVENT);
 								}
 							}
 						}
@@ -76,11 +80,11 @@
 			}
 
 			/**
-			 * Récupère les résultats retournés les écouteurs d'un évènement
-			 * @access	public
-			 * @param string $name : nom de l'évènement dont on veut récupérer le résultat. Si vide, on récupère les résultats de tous les évènements
-			 * @return	array
-			 * @since 2.3
+			 * get result returned by the listener
+			 * @access public
+			 * @param string $name : name of the event. If it's empty, get results of all events
+			 * @return array
+			 * @since 3.0
 			*/
 
 			public function getResult($name = '') {
@@ -104,12 +108,12 @@
 			}
 
 			/**
-			 * Modifie le statut d'un évènement
+			 * set the status
 			 * @access public
-			 * @param string $name : nom de l'évènement dont on veut changer le statut
-			 * @param int $status
+			 * @param string $name : name of the event
+			 * @param $status int
 			 * @return bool
-			 * @since 2.3
+			 * @since 3.0
 			*/
 
 			public function setStatus($name = '', $status = self::START) {
@@ -129,11 +133,11 @@
 			}
 
 			/**
-			 * récupère le statut d'un évènement
+			 * get the status of the event
 			 * @access public
-			 * @param string $name : nom de l'évènement dont on veut changer le statut
-			 * @return int|bool
-			 * @since 2.3
+			 * @param $name string : name of the event
+			 * @return mixed
+			 * @since 3.0
 			*/
 
 			public function getStatus($name = ''){
@@ -151,10 +155,10 @@
 			}
 
 			/**
-			 * Destructeur
-			 * @access	public
-			 * @return	void
-			 * @since 2.3
+			 * Destructor
+			 * @access public
+			 * @return void
+			 * @since 3.0
 			*/
 			
 			public function __destruct(){
