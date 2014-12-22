@@ -10,7 +10,7 @@
 	
 	namespace system{
 	    class firewall{
-			use error, facades, langInstance, resolve, url;
+			use error, facades, langInstance, url, resolve;
 
 			protected $_configFirewall;
 			protected $_csrf   = array();
@@ -72,13 +72,11 @@
 			*/
 
 			protected function _setFirewallConfigArray($in, $array){
-				$to = '';
-
 				if(isset($in[''.$array[0].''])){
 					$to = $in[''.$array[0].''];
 					array_splice($array, 0, 1);
 
-					foreach ($array as $key => $value) {
+					foreach ($array as $value) {
 						if(isset($to[''.$value.''])){
 							$to = $to[''.$value.''];
 						}
@@ -97,7 +95,7 @@
 			/**
 			 * check authorization to allow to a visitor to load a page
 			 * @access public
-			 * @return array
+			 * @return mixed
 			 * @since 3.0
  			 * @package system
 			*/
@@ -115,7 +113,7 @@
 									return true;
 								}
 								else{
-									$t = $this->template($this->_configFirewall['forbidden']['template'], 'GCfirewallForbidden', 0);
+									$t = $this->template($this->_configFirewall['forbidden']['template'], 'gcsfirewall', 0);
 									foreach($this->_configFirewall['forbidden']['variable'] as $val){
 										if($val['type'] == 'var'){
 											$t->assign(array($val['name']=>$val['value']));
@@ -170,7 +168,7 @@
 					}
 				}
 				else{
-					$t = $this->template($this->_configFirewall['csrf']['template'], 'GCfirewallForbidden', 0);						
+					$t = $this->template($this->_configFirewall['csrf']['template'], 'gcsfirewall', 0);
 					foreach($this->_configFirewall['csrf']['variable'] as $val){
 						if($val['type'] == 'var'){
 							$t->assign(array($val['name']=>$val['value']));

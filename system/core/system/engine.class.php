@@ -125,7 +125,7 @@
 					}
 				}
 
-				if($matchedRoute = $router->getRoute(preg_replace('`\?'.preg_quote($_SERVER['QUERY_STRING']).'`isU', '', $_SERVER['REQUEST_URI']))){
+				if($matchedRoute = $router->getRoute(preg_replace('`\?'.preg_quote($_SERVER['QUERY_STRING']).'`isU', '', $_SERVER['REQUEST_URI']), $this->config)){
 					$_GET = array_merge($_GET, $matchedRoute->vars());
 
 					$this->request->name = $matchedRoute->name();

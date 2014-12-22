@@ -10,7 +10,7 @@
 	
 	namespace system{
 		abstract class controller{
-			use error, langInstance, url, ormFunctions, facades, entityFacades, entityHelpers;
+			use error, langInstance, url, resolve, ormFunctions, facades, entityFacades, entityHelpers;
 			
 			public $model; //instance model
 			public $bdd  ; //instance PDO

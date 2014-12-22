@@ -10,7 +10,7 @@
 	
 	namespace system{
 		class template{
-			use error, langInstance, facades, url;
+			use error, langInstance, facades, url, resolve;
 
 			protected $_file                     ; //path to the .tpl file
 			protected $_fileCache                ; //path to the .compil.tpl file
@@ -289,7 +289,7 @@
 		*/
 
 		class templateParser{
-			use error, langInstance, url, facades;
+			use error, langInstance, url, resolve, facades;
 
 			protected $_template         ;
 			protected $_content          ;
@@ -528,6 +528,7 @@
 
 			protected function _parsePath(){
 				$this->_content = preg_replace('`'.preg_quote($this->markup['vars'][10]).'(.+)'.preg_quote($this->markup['vars'][2]).'`sU', '<?php echo $this->path(RESOLVE_$1) ?>', $this->_content);
+				$this->_content = preg_replace('`'.preg_quote($this->markup['vars'][10]).'(.+):(.+)'.preg_quote($this->markup['vars'][2]).'`sU', '<?php echo $this->path(RESOLVE_$1, ".$2") ?>', $this->_content);
 			}
 
 			/**

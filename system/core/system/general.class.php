@@ -278,8 +278,6 @@
 		}
 
 		trait url{
-			use resolve;
-			
 			private $_routeAttribute = array();
 
 			/**
