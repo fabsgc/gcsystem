@@ -38,5 +38,14 @@
 		}
 
 		public function actionAssetManager(){
+			if($_GET['type'] =='js' || $_GET['type'] == 'css'){
+				$cache = $this->cache(html_entity_decode($_GET['id']).'.'.html_entity_decode($_GET['type']), 0);
+				$this->response->contentType("text/".$_GET['type']);
+				$this->response->header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + 2592000));
+				header("Content-type: text/".$_GET['type']);
+				return $cache->getCache();
+			}
+			else
+				$this->response->status(404);
 		}
 	}

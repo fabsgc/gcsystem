@@ -28,6 +28,13 @@
 			*/
 			
 			public function __construct(&$profiler, &$config, &$request, &$response, $lang){
+				$this->profiler = $profiler;
+				$this->config   =   $config;
+				$this->request  =  $request;
+				$this->response = $response;
+				$this->lang     =     $lang;
+				$this->_createLangInstance();
+
 				$this->_parseArg($_SERVER['argv']);
 
 				if(isset($this->_argv[0]))
@@ -71,11 +78,11 @@
 			/**
 			 * Terminal interpreter
 			 * @access public
-			 * @param $argv string
+			 * @internal param string $argv
 			 * @return void
 			 * @since 3.0
- 			 * @package system
-			*/
+			 * @package system
+			 */
 
 			protected function _command(){
 				$class = '\system\terminal'.ucfirst($this->_argv[0]);
@@ -91,7 +98,8 @@
 				}
 
 				if(method_exists($class, $method)){
-					$class::$method($this->_argv);
+					$instance = new $class($this->profiler, $this->config, $this->request, $this->response, $this->lang, $this->_bdd, $this->_argv);
+					$instance->$method($this->_argv);
 				}
 				else{
 					if(isset($this->_argv[1])){
@@ -145,8 +153,51 @@
 			}
 		}
 
-		class terminalCreate{
-			public static function module($argv){
+		class command{
+			use error, facades, langInstance, resolve;
+
+			/**
+			 * pdo instance
+			 * @var
+			*/
+
+			protected $_bdd;
+
+			/**
+			 * command content
+			 * @var
+			*/
+
+			protected $_argv;
+
+			/**
+			 * init terminal command
+			 * @access public
+			 * @param &$profiler \system\profiler
+			 * @param &$config \system\config
+			 * @param &$request \system\request
+			 * @param &$response \system\response
+			 * @param $lang string
+			 * @param $bdd
+			 * @param $argv
+			 * @since 3.0
+			 * @package system
+			*/
+
+			public function __construct(&$profiler, &$config, &$request, &$response, $lang, $bdd, $argv){
+				$this->profiler = $profiler;
+				$this->config   =   $config;
+				$this->request  =  $request;
+				$this->response = $response;
+				$this->lang     =     $lang;
+				$this->_createLangInstance();
+				$this->_bdd = $bdd;
+				$this->_argv = $argv;
+			}
+		}
+
+		class terminalCreate extends command{
+			public function module(){
 				$src = '';
 				$controllers = array();
 
@@ -186,6 +237,15 @@
 					}
 				}
 
+				//load all template to fill the new files
+				$tpl['cron'] = $this->template('.app/system/module/cron', 'terminalCreateCron');
+				$tpl['define'] = $this->template('.app/system/module/define', 'terminalCreateDefine');
+				$tpl['lang'] = $this->template('.app/system/module/lang', 'terminalCreateLang');
+				$tpl['library'] = $this->template('.app/system/module/library', 'terminalCreateLibrary');
+				$tpl['route'] = $this->template('.app/system/module/route', 'terminalCreateRoute');
+				$tpl['firewall'] = $this->template('.app/system/module/firewall', 'terminalCreateFirewall');
+				$tpl['firewall']->assign('src', $src);
+
 				//creation of directories and files
 				mkdir(DOCUMENT_ROOT.SRC_PATH.$src);
 				mkdir(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_CONTROLLER_PATH);
@@ -203,29 +263,53 @@
 				mkdir(DOCUMENT_ROOT.WEB_PATH.$src.'/'.WEB_IMAGE_PATH);
 				mkdir(DOCUMENT_ROOT.WEB_PATH.$src.'/'.WEB_JS_PATH);
 
-				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/.htaccess', 'Deny from all');
+				file_put_contents(DOCUMENT_ROOT.WEB_PATH.$src.'/'.WEB_CSS_PATH.'/index.html', '');
+				file_put_contents(DOCUMENT_ROOT.WEB_PATH.$src.'/'.WEB_FILE_PATH.'/index.html', '');
+				file_put_contents(DOCUMENT_ROOT.WEB_PATH.$src.'/'.WEB_IMAGE_PATH.'/index.html', '');
+				file_put_contents(DOCUMENT_ROOT.WEB_PATH.$src.'/'.WEB_JS_PATH.'/index.html', '');
 
-				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'cron.xml', '');
-				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'define.xml', '');
-				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'firewall.xml', '');
-				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'library.xml', '');
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/.htaccess', 'Deny from all');
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_EVENT_PATH.'.htaccess', 'Deny from all');
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_LIBRARY_PATH.'.htaccess', 'Deny from all');
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_LIBRARY_PATH.'.htaccess', 'Deny from all');
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_TEMPLATE_PATH.'.htaccess', 'Deny from all');
+
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'cron.xml', $tpl['cron']->show(template::TPL_COMPILE_ALL, template::COMPILE_TO_STRING));
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'define.xml', $tpl['define']->show(template::TPL_COMPILE_ALL, template::COMPILE_TO_STRING));
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'firewall.xml', $tpl['firewall']->show(template::TPL_COMPILE_ALL, template::COMPILE_TO_STRING));
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'library.xml', $tpl['library']->show(template::TPL_COMPILE_ALL, template::COMPILE_TO_STRING));
 				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'route.xml', '');
+
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_LANG_PATH.'fr.xml', $tpl['lang']->show(template::TPL_COMPILE_ALL, template::COMPILE_TO_STRING));
 
 				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_CONTROLLER_FUNCTION_PATH, '');
 
+				$routeGroup = '';
+
 				foreach ($controllers as $value) {
-					file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_CONTROLLER_PATH.$value.EXT_CONTROLLER.'.php', '');
-					file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_MODEL_PATH.$value.EXT_MODEL.'.php', '');
+					$tpl['routeGroup'] = $this->template('.app/system/module/routeGroup', 'terminalCreateRouteGroup'.$value);
+					$tpl['routeGroup']->assign(array('src' => $src, 'controller' => $value));
+					$routeGroup .= $tpl['routeGroup']->show(template::TPL_COMPILE_ALL, template::COMPILE_TO_STRING);
+
+					$tpl['controller'] = $this->template('.app/system/module/controller', 'terminalCreateController'.$value);
+					$tpl['controller']->assign(array('src' => $src, 'controller' => $value));
+					$tpl['model'] = $this->template('.app/system/module/model', 'terminalCreateModel'.$value);
+					$tpl['model']->assign(array('src' => $src, 'model' => $value));
+
+					file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_CONTROLLER_PATH.$value.EXT_CONTROLLER.'.php', $tpl['controller']->show(template::TPL_COMPILE_ALL, template::COMPILE_TO_STRING));
+					file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_MODEL_PATH.$value.EXT_MODEL.'.php',  $tpl['model']->show(template::TPL_COMPILE_ALL, template::COMPILE_TO_STRING));
 				}
+
+				$tpl['route']->assign('route', $routeGroup);
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'route.xml', $tpl['route']->show(template::TPL_COMPILE_ALL, template::COMPILE_TO_STRING));
 
 				$exist = false;
 				$xml = simplexml_load_file(APP_CONFIG_SRC);
 				$datas =  $xml->xpath('//src');
 
 				foreach ($datas as $data) {
-					if($data['name'] == $src){
+					if($data['name'] == $src)
 						$exist = true;
-					}
 				}
 
 				if($exist == false){
@@ -242,34 +326,37 @@
 				echo ' - the module has been successfully created';
 			}
 
-			public static function controller($argv){
+			public function controller(){
 				
 			}
 
-			public static function entity($argv){
-				$bdd = database::connect($GLOBALS['db']);
+			public function entity(){
+				if(DATABASE){
+					echo ' - choose a table (*) : ';
+					$table = argvInput::get(STDIN);
 
-				echo ' - choose a table (*) : ';
-				$table = argvInput::get(STDIN);
-
-				echo ' - the entity has been successfully created';	
+					echo ' - the entity has been successfully created';
+				}
+				else{
+					echo ' - you\'re not logged to any database';
+				}
 			}
 		}
 
-		class terminalClear{
-			public static function log($argv){
+		class terminalClear extends command{
+			public function log(){
 				terminal::rrmdir(APP_LOG_PATH);
 				echo ' - log files were successfully deleted';
 			}
 
-			public static function cache($argv){
+			public function cache(){
 				terminal::rrmdir(APP_CACHE_PATH);
 				echo ' - cache files were successfully deleted';
 			}
 		}
 
-		class terminalDelete{
-			public static function module($argv){
+		class terminalDelete extends command{
+			public function module(){
 				//choose the module name
 				while(1==1){
 					echo ' - choose the module you want to delete : ';
@@ -301,21 +388,25 @@
 				$dom->save(APP_CONFIG_SRC);
 
 				terminal::rrmdir(SRC_PATH.$src, true);
+				terminal::rrmdir(WEB_PATH.$src, true);
 				rmdir(SRC_PATH.$src);
+				rmdir(WEB_PATH.$src);
 
 				echo ' - the module has been successfully delete';
 			}
 
-			public static function controller($argv){
+			public function controller(){
 
 			}
 		}
 
-		class terminalHelp{
-			public static function help($argv){
+		class terminalHelp extends command{
+			public function help(){
 				echo " - create module\n";
 				echo " - create controller\n";
 				echo " - create entity\n";
+				echo " - delete module\n";
+				echo " - delete controller\n";
 				echo " - clear cache\n";
 				echo " - clear log";
 			}

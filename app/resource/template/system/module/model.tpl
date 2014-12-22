@@ -1,7 +1,9 @@
 {{php: $var='<?php
-	namespace gcs;
+	namespace '.$src.';
 
-	class manager'.ucfirst($controller).' extends \system\model{
+	class manager'.ucfirst($model).' extends \system\model{
 		public function init(){
 		}
-	}'; }}
+	}';
+}}
+{$var}

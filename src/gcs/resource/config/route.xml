@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<route name="index" url="(/*)" action="gcs.default"/>
+	<route name="index" url="(/*)" action="gcs.default" method="GET"/>
 	<group name="gcs" url="/gcs" action="gcs">
 		<route name="lang" url="/lang(/*)" action="lang"/>
 		<route name="profiler" url="/profiler(/*)" action="profiler"/>
-		<route name="assetManager" url="/asset/(.[^\/]+)\.([css|js]+)" action="assetManager" vars="id,type"/>
+		<route name="assetManager" url="/asset/(.[^\/]+)\.([css|js]+)" action="assetManager" vars="id,type" method="GET"/>
 	</group>
 </root>

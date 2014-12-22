@@ -2,20 +2,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Profiler {VERSION}</title>
+    <title>Profiler [{$data['url']}]</title>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="{HTML_WEB_PATH}gcs/image/logo.png" />
+    <link rel="icon" type="image/png" href="{{path:IMAGE}}logo.png" />
 </head>
 <body>
 <style>
     <gc:call block="gcsHtmlDefault()"/>
-    #body{
+    #main{
         width: 100%;
         overflow: auto;
         padding-top: 10px;;
-    }
-    header .content{
-        width: 100%;
     }
     pre{
         width: 100%;
@@ -77,15 +74,20 @@
         color: black;
         padding: 5px;
     }
+	header .content{
+		width: 100%;
+		margin: auto;
+		padding: 5px 5px 5px 5px;
+	}
 </style>
-<header>
+<header id="header">
     <div class="content">
         <h1 style="float:left">
             Profiler [{$data['url']}]
         </h1>
     </div>
 </header>
-<div id="body">
+<div id="main">
     <div class="content">
 		<form method="post" action="">
 			<input type="text" id="page" name="id" placeholder="{{lang:gcs.profiler.page-id}}"/>
@@ -231,22 +233,20 @@
             </div>
         </section>
     </div>
-    <script type="text/javascript" src="{HTML_WEB_PATH}gcs/js/jquery.min.js" ></script>
     <script type="text/javascript" defer>
-        $(document).ready(function(e){
-            updateHeight();
-            $(window).resize(function() {
-                updateHeight();
-            });
+        updateHeight();
 
-            function updateHeight(){
-                $('#body').height( $(window).outerHeight()-$("header").outerHeight()-$("footer").outerHeight());
-                $('#page').width( $(window).outerWidth()- 165);
-            }
-        });
+        window.onresize = function(event) {
+            updateHeight();
+        };
+
+        function updateHeight(){
+            document.getElementById('main').style.height = window.innerHeight - document.getElementById('header').offsetHeight + "px";
+            document.getElementById('page').style.width = window.innerWidth - 165 + "px";
+        }
 
         function save(){
-            $('#form').submit();
+            document.getElementById('form').submit();
         }
     </script>
 </body>

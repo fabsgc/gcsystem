@@ -28,6 +28,8 @@
 			const TPL_COMPILE_ALL       =       0;
 			const TPL_COMPILE_INCLUDE   =       1;
 			const TPL_COMPILE_LANG      =       2;
+			const COMPILE_TO_INLUDE     =       0;
+			const COMPILE_TO_STRING     =       1;
 
 			/**
 			 * constructor
@@ -111,7 +113,7 @@
 				$trace = '';
 
 				for($i = 3; $i < count($stack) && $max < 4; $i++){
-					if(preg_match('#('.preg_quote('system\orm').')#isU', $stack[$i]['file'])){ //ORM
+					if(isset($stack[$i]['file']) && preg_match('#('.preg_quote('system\orm').')#isU', $stack[$i]['file'])){ //ORM
 						$trace .= str_replace('\\', '-', $stack[$i]['class']).'_'.$stack[$i]['function'].'_'.$stack[$i-1]['line'].'__';
 					}
 				}
@@ -180,7 +182,13 @@
 				file_put_contents($this->_fileCache, $content);
 			}
 
-			public function show($type = self::TPL_COMPILE_ALL){
+			/**
+			 * @param int $type
+			 * @param $returnType : make a include or eval the template
+			 * @return mixed
+			*/
+
+			public function show($type = self::TPL_COMPILE_ALL, $returnType = self::COMPILE_TO_INLUDE){
 				$this->profiler->addTime('template '.$this->_name);
 				$this->profiler->addTemplate($this->_name, profiler::TEMPLATE_START, $this->_file);
 
@@ -209,11 +217,23 @@
 					$this->_save($this->_contentCompiled);
 				}
 
-				if($type != self::TPL_COMPILE_INCLUDE)
-					require_once($this->_fileCache);
+				if($returnType == self::COMPILE_TO_INLUDE){
+					if($type != self::TPL_COMPILE_INCLUDE)
+						require_once($this->_fileCache);
+				}
 
 				$this->profiler->addTemplate($this->_name, profiler::TEMPLATE_END, $this->_file);
 				$this->profiler->addTime('template '.$this->_name, profiler::USER_END);
+
+				if($returnType == self::COMPILE_TO_STRING){
+
+					ob_start();
+						require_once($this->_fileCache);
+					$output = ob_get_contents();
+					ob_get_clean();
+
+					return $output;
+				}
 			}
 
 			/**
@@ -284,7 +304,7 @@
 			*/
 
 			protected $markup = array(
-				'vars'         => array('{', '}', '}}', '}_}', '{{gravatar:', '{{php:', '{{url', '{{lang', '{_{url', '{_{lang'),  // vars
+				'vars'         => array('{', '}', '}}', '}_}', '{{gravatar:', '{{php:', '{{url', '{{lang', '{_{url', '{_{lang', '{{path:'),  // vars
 				'include'      => array('include', 'file', 'cache', 'compile', 'false'), // include
 				'condition'    => array('if', 'elseif', 'else', 'condition'),            // condition
 				'foreach'      => array('foreach', 'var', 'as'),                         // foreach
@@ -333,6 +353,7 @@
 				$this->_content = $content;
 				$this->_parseDebugStart();
 				$this->_parseInclude();
+				$this->_parsePath();
 				$this->_parseGravatar();
 				$this->_parseUrl();
 				$this->_parsePhp();
@@ -366,6 +387,7 @@
 				$this->_content = $content;
 				$this->_parseDebugStart();
 				$this->_parseInclude();
+				$this->_parsePath();
 				$this->_parseGravatar();
 				$this->_parseUrl();
 				$this->_parsePhp();
@@ -395,6 +417,7 @@
 			public function parseLang($content){
 				$this->_content = $content;
 				$this->_parseDebugStart();
+				$this->_parsePath();
 				$this->_parseGravatar();
 				$this->_parseUrl();
 				$this->_parsePhp();
@@ -501,6 +524,18 @@
 			 * @return void
 			 * @since 3.0
  			 * @package system
+			*/
+
+			protected function _parsePath(){
+				$this->_content = preg_replace('`'.preg_quote($this->markup['vars'][10]).'(.+)'.preg_quote($this->markup['vars'][2]).'`sU', '<?php echo $this->path(RESOLVE_$1) ?>', $this->_content);
+			}
+
+			/**
+			 * parse gravatar {{gravatar:email:size}}
+			 * @access protected
+			 * @return void
+			 * @since 3.0
+			 * @package system
 			*/
 
 			protected function _parseGravatar(){

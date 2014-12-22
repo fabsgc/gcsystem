@@ -121,7 +121,7 @@
 						$controller = explode('.', $data['action'])[0];
 						$action = explode('.', $data['action'])[1];
 
-						$router->addRoute(new route($data['url'], $controller, $action, $data['name'], $data['cache'], $vars, $key, $data['logged'], $data['access']));
+						$router->addRoute(new route($data['url'], $controller, $action, $data['name'], $data['cache'], $vars, $key, $data['logged'], $data['access'], $data['method']));
 					}
 				}
 
@@ -134,6 +134,7 @@
 					$this->request->action = $matchedRoute->action();
 					$this->request->logged = $matchedRoute->logged();
 					$this->request->access = $matchedRoute->access();
+					$this->request->method = $matchedRoute->method();
 
 					if(CACHE_ENABLED == true && $matchedRoute->cache() != '')
 						$this->request->cache = $matchedRoute->cache();

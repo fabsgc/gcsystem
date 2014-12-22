@@ -1,5 +1,5 @@
 {{php: $var='<?php
-	namespace gcs;
+	namespace '.$src.';
 
 	class '.$controller.' extends \system\controller{		
 		public function init(){
@@ -11,4 +11,6 @@
 		public function actionDefault(){
 			return $this->showDefault();
 		}
-	}'; }}
+	}';
+}}
+{$var}

@@ -9,15 +9,16 @@ html, body{
 	margin: 0;
 }
 header{
-	width: 100%;
+
 	margin: auto;
-	height: 70px;
+	height: 80px;
 	border-bottom: 10px solid #E74C3C;
 	background-color: white;
 }
 header .content{
 	width: 750px;
 	margin: auto;
+	padding: 5px 5px 5px 5px;
 }
 header h1{
 	line-height: 60px;
@@ -27,20 +28,20 @@ header h1{
 	background: url('{HTML_WEB_PATH}gcs/image/logo60.png') top left no-repeat;
 	margin: 0;
 }
-#body{
+#main{
 	width: 750px;
 	min-height: 200px;
 	margin: auto;
 	background-color: white;
 }
-#body .content{
+#main .content{
 	padding: 5px 12px 5px 12px;
 }
-#body h1{
+#main h1{
 	color: #E74C3C;
 	margin-top: 0;
 }
-#body a{
+#main a{
 	color: #E74C3C;
 }
 footer{

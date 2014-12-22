@@ -64,7 +64,7 @@
 			*/
 
 			protected function path($type, $data = '', $php = false){
-				if($php == false){
+				if($php == true){
 					return $this->resolve($type, $data);
 				}
 				else{

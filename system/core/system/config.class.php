@@ -42,7 +42,8 @@
 				array('name' => 'vars', 'separator' => ',', 'concatenate' => true),
 				array('name' => 'cache', 'separator' => '', 'concatenate' => false),
 				array('name' => 'logged', 'separator' => '', 'concatenate' => false),
-				array('name' => 'access', 'separator' => '', 'concatenate' => false)
+				array('name' => 'access', 'separator' => '', 'concatenate' => false),
+				array('name' => 'method', 'separator' => '', 'concatenate' => false)
 			);
 
 			/** 
@@ -124,49 +125,54 @@
 				$datas =  $xml->xpath('//src');
 
 				foreach ($datas as $data) {
-					/* ## ROUTE ## */
-					$this->_parseRoute($data['name']);
+					if(file_exists(SRC_PATH.'/'.$data['name'])){
+						/* ## ROUTE ## */
+						$this->_parseRoute($data['name']);
 
-					/* ## LANG ## */
-					if ($handle = opendir(SRC_PATH.$data['name'].'/'.SRC_RESOURCE_LANG_PATH)) {
-						while (false !== ($entry = readdir($handle))) {
-							if(preg_match('#('.preg_quote(EXT_LANG).')$#isU', $entry)){
-								$lang = str_replace(EXT_LANG, '', $entry);
-								$this->_parseLang($data['name'], $lang);
+						/* ## LANG ## */
+						if ($handle = opendir(SRC_PATH.$data['name'].'/'.SRC_RESOURCE_LANG_PATH)) {
+							while (false !== ($entry = readdir($handle))) {
+								if(preg_match('#('.preg_quote(EXT_LANG).')$#isU', $entry)){
+									$lang = str_replace(EXT_LANG, '', $entry);
+									$this->_parseLang($data['name'], $lang);
+								}
 							}
+
+							closedir($handle);
 						}
 
-						closedir($handle);
+						/* ## TEMPLATE ## */
+						$this->config['template'][''.$data['name'].''] = SRC_PATH.$data['name'].'/'.SRC_RESOURCE_TEMPLATE_PATH;
+						/* ## CSS ## */
+						$this->config['css'][''.$data['name'].''] = WEB_PATH.$data['name'].'/'.WEB_CSS_PATH;
+						/* ## IMAGE ## */
+						$this->config['image'][''.$data['name'].''] = WEB_PATH.$data['name'].'/'.WEB_IMAGE_PATH;
+						/* ## FILE ## */
+						$this->config['file'][''.$data['name'].''] = WEB_PATH.$data['name'].'/'.WEB_FILE_PATH;
+						/* ## JS ## */
+						$this->config['js'][''.$data['name'].''] = WEB_PATH.$data['name'].'/'.WEB_JS_PATH;
+						/* ## FIREWALL ## */
+						$this->_parseFirewall($data['name']);
+						/* ## DEFINE ## */
+						$this->_parseDefine($data['name']);
+						/* ## LIBRARY ## */
+						$this->_parseLibrary($data['name']);
+
+						//copy app lang in each other module lang
+						foreach ($this->config['lang'] as $key => $value) {
+							if($key != 'app'){
+								foreach($value as $key2 => $value2){
+									$this->config['lang'][''.$key.''][''.$key2.''] =
+										array_merge(
+											$this->config['lang']['app'][''.$key2.''],
+											$value2
+										);
+								}
+							}
+						}
 					}
-
-					/* ## TEMPLATE ## */
-					$this->config['template'][''.$data['name'].''] = SRC_PATH.$data['name'].'/'.SRC_RESOURCE_TEMPLATE_PATH;
-					/* ## CSS ## */
-					$this->config['css'][''.$data['name'].''] = WEB_PATH.$data['name'].'/'.WEB_CSS_PATH;
-					/* ## IMAGE ## */
-					$this->config['image'][''.$data['name'].''] = WEB_PATH.$data['name'].'/'.WEB_IMAGE_PATH;
-					/* ## FILE ## */
-					$this->config['file'][''.$data['name'].''] = WEB_PATH.$data['name'].'/'.WEB_FILE_PATH;
-					/* ## JS ## */
-					$this->config['js'][''.$data['name'].''] = WEB_PATH.$data['name'].'/'.WEB_JS_PATH;
-					/* ## FIREWALL ## */
-					$this->_parseFirewall($data['name']);
-					/* ## DEFINE ## */
-					$this->_parseDefine($data['name']);
-					/* ## LIBRARY ## */
-					$this->_parseLibrary($data['name']);
-					
-					//copy app lang in each other module lang
-					foreach ($this->config['lang'] as $key => $value) {
-						if($key != 'app'){
-							foreach($value as $key2 => $value2){
-								$this->config['lang'][''.$key.''][''.$key2.''] =
-									array_merge(
-										$this->config['lang']['app'][''.$key2.''],
-										$value2
-									);
-							}
-						}
+					else{
+						throw new exception('The module '.$data['name'].' described in the module config file is missing', 1);
 					}
 				}
 
@@ -204,11 +210,14 @@
 
 						$data = $this->_parseParent($value, $data, $this->_routeAttribute);
 
-						if( $data['logged'] == '')
+						if(empty($data['logged']) || $data['logged'] == '')
 							 $data['logged'] = '*';
 
-						if( $data['access'] == '')
+						if(empty($data['access']) || $data['access'] == '')
 							 $data['access'] = '*';
+
+						if(empty($data['method']) || $data['method'] == '')
+							$data['method'] = '*';
 
 						$this->config['route'][''.$src.''][''.$data['name'].''] = $data;
 					}

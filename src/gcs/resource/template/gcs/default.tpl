@@ -4,18 +4,18 @@
 	<head>
 		<title>GCsystem V{VERSION}</title>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="{{def:IMG_PATH}}gcs/logo.png" />
+		<link rel="icon" type="image/png" href="{{path:IMAGE}}logo.png" />
 	</head>
-	<body>
+	<body id="body">
 		<style>
 			<gc:call block="gcsHtmlDefault()"/>
 		</style>
-		<header>
+		<header id="header">
 			<div class="content">
 				<h1>GCsystem V{VERSION}</h1>
 			</div>
 		</header>
-		<div id="body">
+		<div id="main">
 			<div class="content">
 				<h1>{{lang:gcs.default.welcome}}</h1>
 				<p>{{lang:gcs.default.content}}</p>
@@ -26,19 +26,18 @@
 				</ul>
 			</div>
 		</div>
-		<footer>Gcsystem V{VERSION}</footer>
-		<script type="text/javascript" src="{HTML_WEB_PATH}gcs/js/jquery.min.js" ></script>
+		<footer id="footer">Gcsystem V{VERSION}</footer>
 		<script type="text/javascript" defer>
-			$(document).ready(function(e){
-				updateHeight();
-				$(window).resize(function() {
-					updateHeight();
-				});
+			updateHeight();
 
-				function updateHeight(){
-					$('#body').height( $(window).outerHeight()-$("header").outerHeight()-$("footer").outerHeight());
-				}
-			});
+			window.onresize = function(event) {
+				updateHeight();
+			};
+
+			function updateHeight(){
+				console.log(document.body.offsetHeight);
+				document.getElementById('main').style.height = window.innerHeight - document.getElementById('header').offsetHeight - document.getElementById('footer').offsetHeight + "px";
+			}
 		</script>
 	</body>
 </html>
