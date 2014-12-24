@@ -44,7 +44,6 @@ define('WEB_IMAGE_PATH', 'image/');
 define('WEB_JS_PATH', 'js/');
 
 define('SYSTEM_PATH', 'system/');
-define('SYSTEM_BACKUP', SYSTEM_PATH.'backup/');
 define('SYSTEM_CORE_PATH', SYSTEM_PATH.'core/');
 define('SYSTEM_CORE_SYSTEM_PATH', SYSTEM_CORE_PATH.'system/');
 define('SYSTEM_CORE_HELPER_PATH', SYSTEM_CORE_PATH.'helper/');
@@ -80,36 +79,9 @@ define('SRC_CONFIG_DEFINE', SRC_RESOURCE_CONFIG_PATH.'define.xml');
 define('SRC_CONFIG_FIREWALL', SRC_RESOURCE_CONFIG_PATH.'firewall.xml');
 define('SRC_CONFIG_LIBRARY', SRC_RESOURCE_CONFIG_PATH.'library.xml');
 define('SRC_CONFIG_ROUTE', SRC_RESOURCE_CONFIG_PATH.'route.xml');
-define('SRC_CONFIG_SPAM', SRC_RESOURCE_CONFIG_PATH.'spam.xml');
 
-define('CLASS_SRC', SYSTEM_CORE_SYSTEM_PATH.'src.class.php');
-define('CLASS_BACKUP', SYSTEM_CORE_SYSTEM_PATH.'backup.class.php');
-define('CLASS_DEFINE', SYSTEM_CORE_SYSTEM_PATH.'define.class.php');
-define('CLASS_AUTOLOAD', SYSTEM_CORE_PATH.'autoload.php');
-define('CLASS_CACHE', SYSTEM_CORE_SYSTEM_PATH.'cache.class.php');
-define('CLASS_CRON', SYSTEM_CORE_SYSTEM_PATH.'cron.class.php');
-define('CLASS_CONTROLLER', SYSTEM_CORE_SYSTEM_PATH.'controller.class.php');
-define('CLASS_MODEL', SYSTEM_CORE_SYSTEM_PATH.'model.class.php');
-define('CLASS_ENGINE', SYSTEM_CORE_SYSTEM_PATH.'engine.class.php');
-define('CLASS_EXCEPTION', SYSTEM_CORE_SYSTEM_PATH.'exception.class.php');
-define('CLASS_EVENT', SYSTEM_CORE_SYSTEM_PATH.'event.class.php');
-define('CLASS_EVENT_MANAGER', SYSTEM_CORE_SYSTEM_PATH.'eventManager.class.php');
-define('CLASS_FACADE', SYSTEM_CORE_SYSTEM_PATH.'facade.class.php');
-define('CLASS_FIREWALL', SYSTEM_CORE_SYSTEM_PATH.'firewall.class.php');
-define('CLASS_GENERAL', SYSTEM_CORE_SYSTEM_PATH.'general.class.php');
-define('CLASS_LIBRARY', SYSTEM_CORE_SYSTEM_PATH.'library.class.php');
-define('CLASS_INSTALL', SYSTEM_CORE_SYSTEM_PATH.'install.class.php');
-define('CLASS_LANG', SYSTEM_CORE_SYSTEM_PATH.'lang.class.php');
-define('CLASS_PROFILER', SYSTEM_CORE_SYSTEM_PATH.'profiler.class.php');
-define('CLASS_TEMPLATE', SYSTEM_CORE_SYSTEM_PATH.'template.class.php');
-define('CLASS_TERMINAL', SYSTEM_CORE_SYSTEM_PATH.'terminal.class.php');
-define('CLASS_ROUTER', SYSTEM_CORE_SYSTEM_PATH.'router.class.php');
-define('CLASS_RESPONSE', SYSTEM_CORE_SYSTEM_PATH.'response.class.php');
-define('CLASS_REQUEST', SYSTEM_CORE_SYSTEM_PATH.'request.class.php');
-define('CLASS_SPAM', SYSTEM_CORE_SYSTEM_PATH.'spam.class.php');
-define('CLASS_SQL', SYSTEM_CORE_SYSTEM_PATH.'sql.class.php');
-
-define('FUNCTION', APP_PATH.'function.php');
+define('CLASS_GENERAL', SYSTEM_CORE_SYSTEM_PATH.'General/General.class.php');
+define('CLASS_AUTOLOAD', SYSTEM_CORE_PATH.'Autoload.php');
 
 define('ERROR_WARNING', 'WARNING');
 define('ERROR_ERROR', 'ERROR');
@@ -144,7 +116,7 @@ $GLOBALS['db']['collation']= "utf8_unicode_ci";
 /* ############### USER ############### */
 
 // open database connection
-define('DATABASE', false);
+define('DATABASE', true);
 
 // use firewall
 define('SECURITY', true);

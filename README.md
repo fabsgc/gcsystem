@@ -6,15 +6,14 @@ Informations :
 * Créateur : fab@c++
 * Contributeurs : Lucas5190, t1307
 * Description : framework PHP MVC de développement d'applications Web. 
-* Principe : Ce framework se base sur la notion de module. Un module regroupe des contrôleurs, des modèles et des templates ainsi que des fichiers de configuration qui leur son propres 
-* Langues : Framework proposant par défaut 3 langues : français, anglais, néerlandais
+* Principe : Ce framework se base sur la notion de module. Un module regroupe des contrôleurs, des modèles et des templates ainsi que des fichiers de configuration qui leurs sont propres
+* Langues : Framework proposant par défaut 3 langues : français, anglais, néerlandais (en finition)
 
 Spécifications :
 -----------
 
-* PHP 5.4 minimum
-* L'extension CURL activée pour pouvoir faire les mises à jour et pouvoir lire des flux rss avec la classe feed
-* Chmod en lecture écriture (755,777)
+* PHP 5.6 minimum
+* Chmod en lecture écriture (755) (cache, log, console)
 * rewrite_module apache activé
 
 Installation :

@@ -13,6 +13,6 @@
 	require_once('web.config.php');
 	require_once(CLASS_AUTOLOAD);
 
-	$controller = new system\engine();
+	$controller = new system\Engine\Engine();
 	$controller->init();
 	$controller->run();

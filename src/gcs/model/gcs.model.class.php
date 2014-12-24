@@ -1,7 +1,9 @@
 <?php
 	namespace gcs;
 
-	class managerGcs extends \system\model{
+	use system\Model\Model;
+
+	class ManagerGcs extends Model{
 		public function init(){
 		}
 	}

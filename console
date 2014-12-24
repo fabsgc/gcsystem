@@ -13,5 +13,5 @@
 	require_once('web.config.php');
 	require_once(CLASS_AUTOLOAD);
 
-	$controller = new system\engine(MODE_CONSOLE);
+	$controller = new system\Engine\Engine(MODE_CONSOLE);
 	$controller->console();

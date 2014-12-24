@@ -1,7 +1,9 @@
 <?php
 	namespace gcs;
 
-	class gcs extends \system\controller{		
+	use system\Controller\Controller;
+
+	class Gcs extends Controller{
 		public function init(){
 			if(ENVIRONMENT != 'development'){
 				$this->response->status(404);

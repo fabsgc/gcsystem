@@ -11,9 +11,8 @@
 	namespace system{
 		require_once(APP_FUNCTION);
 		require_once(CLASS_GENERAL);
-		require_once(CLASS_EXCEPTION);
 
-		class autoloader{
+		class Autoload{
 			public static function load($class){
 				$class = preg_replace('#'.preg_quote('\\').'#isU', '/', $class);
 
@@ -47,5 +46,5 @@
 			}
 		}
 
-		spl_autoload_register(__NAMESPACE__ . "\\autoloader::load");
+		spl_autoload_register(__NAMESPACE__ . "\\Autoload::load");
 	}
