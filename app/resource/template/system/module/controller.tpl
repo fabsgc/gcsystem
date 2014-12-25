@@ -1,7 +1,9 @@
 {{php: $var='<?php
 	namespace '.$src.';
 
-	class '.$controller.' extends \system\controller{		
+	use system\Controller\Controller;
+
+	class '.ucfirst($controller).' extends Controller{
 		public function init(){
 		}
 

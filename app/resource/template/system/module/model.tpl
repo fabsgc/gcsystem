@@ -1,7 +1,9 @@
 {{php: $var='<?php
 	namespace '.$src.';
 
-	class manager'.ucfirst($model).' extends \system\model{
+	use system\Model\Model;
+
+	class Manager'.ucfirst($model).' extends Model{
 		public function init(){
 		}
 	}';

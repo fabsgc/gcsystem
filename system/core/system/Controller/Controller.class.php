@@ -124,7 +124,7 @@
 		*/
 		
 		final public function model(){
-			$class = "\\".$this->request->src."\\".'manager'.ucfirst($this->request->controller);
+			$class = "\\".$this->request->src."\\".'Manager'.ucfirst($this->request->controller);
 			
 			if(class_exists($class)){
 				$this->model = new $class($this->profiler, $this->config, $this->request, $this->response, $this->lang, $this->bdd, $this->entity, $this->helper);
