@@ -33,10 +33,17 @@
 			else
 				$cache = $this->cache('gcsProfiler', 0);
 
-			$t = $this->template('gcs/profiler', 'gcsProfiler', '0');
-			$t->assign(array('data' => $cache->getCache()));
+			$data = $cache->getCache();
 
-			return $t->show();
+			if($data != ''){
+				$t = $this->template('gcs/profiler', 'gcsProfiler', '0');
+				$t->assign(array('data' => $cache->getCache()));
+
+				return $t->show();
+			}
+			else{
+				$this->response->status(404);
+			}
 		}
 
 		public function actionAssetManager(){

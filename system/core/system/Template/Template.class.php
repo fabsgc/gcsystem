@@ -194,14 +194,14 @@
 		}
 
 		/**
-		 * @param int $type
 		 * @param $returnType : make a include or eval the template
+		 * @param int $type
 		 * @return mixed
 		 * @since 3.0
 		 * @package system\Template
 		*/
 
-		public function show($type = self::TPL_COMPILE_ALL, $returnType = self::TPL_COMPILE_TO_INCLUDE){
+		public function show($returnType = self::TPL_COMPILE_TO_STRING, $type = self::TPL_COMPILE_ALL){
 			$this->profiler->addTime('template '.$this->_name);
 			$this->profiler->addTemplate($this->_name, Profiler::TEMPLATE_START, $this->_file);
 
@@ -231,15 +231,15 @@
 			}
 
 			if($returnType == self::TPL_COMPILE_TO_INCLUDE){
-				if($type != self::TPL_COMPILE_INCLUDE)
+				if($type != self::TPL_COMPILE_INCLUDE){
 					require_once($this->_fileCache);
+				}
 			}
 
 			$this->profiler->addTemplate($this->_name, Profiler::TEMPLATE_END, $this->_file);
 			$this->profiler->addTime('template '.$this->_name, Profiler::USER_END);
 
 			if($returnType == self::TPL_COMPILE_TO_STRING){
-
 				ob_start();
 					require_once($this->_fileCache);
 				$output = ob_get_contents();

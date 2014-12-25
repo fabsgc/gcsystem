@@ -203,7 +203,7 @@
 						$t = $this->template($m[1], 'tplInclude_'.$this->_template->getName().'_'.$this->lang.'_'.$this->_includeI.'_', '0');
 
 					$t->assign($this->_template->vars);
-					$t->show(template::TPL_COMPILE_INCLUDE);
+					$t->show(Template::TPL_COMPILE_TO_INCLUDE, Template::TPL_COMPILE_INCLUDE);
 
 					if(file_get_contents($t->getFileCache()))
 						$content = file_get_contents($t->getFileCache());

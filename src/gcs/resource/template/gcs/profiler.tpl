@@ -4,7 +4,7 @@
     <head>
         <title>Profiler [{$data['url']}]</title>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/png" href="{{path:IMAGE}}logo.png" />
+        <link rel="icon" type="image/png" href="/{{path:IMAGE}}logo.png" />
     </head>
     <body>
     <style>
@@ -44,7 +44,7 @@
         }
     	input[type='submit'] {
     		display: inline-block;
-    		line-height: 35px;
+    		line-height: 34px;
     		margin: 0;
     		background-color: #e74c3c;
     		cursor: pointer;
@@ -62,6 +62,8 @@
     		text-decoration: none;
     		border: none;
     		outline:none;
+            position: relative;
+            top: 1px;
     	}
     	input[type='text']  {
     		width: 500px;

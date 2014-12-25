@@ -75,7 +75,7 @@
 				else{
 					$tpl = $this->template($config[$this->lang][$name], $name, 0, Template::TPL_STRING);
 					$tpl->assign($vars);
-					return $tpl->show(Template::TPL_COMPILE_LANG);
+					return $tpl->show(Template::TPL_COMPILE_TO_STRING, Template::TPL_COMPILE_LANG);
 				}
 			}
 			else{

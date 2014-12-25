@@ -91,13 +91,13 @@
 			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_LIBRARY_PATH.'.htaccess', 'Deny from all');
 			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_TEMPLATE_PATH.'.htaccess', 'Deny from all');
 
-			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'cron.xml', $tpl['cron']->show(Template::TPL_COMPILE_ALL, Template::TPL_COMPILE_TO_STRING));
-			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'define.xml', $tpl['define']->show(Template::TPL_COMPILE_ALL, Template::TPL_COMPILE_TO_STRING));
-			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'firewall.xml', $tpl['firewall']->show(Template::TPL_COMPILE_ALL, Template::TPL_COMPILE_TO_STRING));
-			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'library.xml', $tpl['library']->show(Template::TPL_COMPILE_ALL, Template::TPL_COMPILE_TO_STRING));
+			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'cron.xml', $tpl['cron']->show());
+			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'define.xml', $tpl['define']->show());
+			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'firewall.xml', $tpl['firewall']->show());
+			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'library.xml', $tpl['library']->show());
 			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'route.xml', '');
 
-			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_LANG_PATH.'fr.xml', $tpl['lang']->show(Template::TPL_COMPILE_ALL, Template::TPL_COMPILE_TO_STRING));
+			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_LANG_PATH.'fr.xml', $tpl['lang']->show());
 
 			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_CONTROLLER_FUNCTION_PATH, '');
 
@@ -106,19 +106,19 @@
 			foreach ($controllers as $value) {
 				$tpl['routeGroup'] = $this->template('.app/system/module/routeGroup', 'terminalCreateRouteGroup'.$value);
 				$tpl['routeGroup']->assign(array('src' => $src, 'controller' => $value));
-				$routeGroup .= $tpl['routeGroup']->show(Template::TPL_COMPILE_ALL, Template::TPL_COMPILE_TO_STRING);
+				$routeGroup .= $tpl['routeGroup']->show();
 
 				$tpl['controller'] = $this->template('.app/system/module/controller', 'terminalCreateController'.$value);
 				$tpl['controller']->assign(array('src' => $src, 'controller' => ucfirst($value)));
 				$tpl['model'] = $this->template('.app/system/module/model', 'terminalCreateModel'.$value);
 				$tpl['model']->assign(array('src' => $src, 'model' => ucfirst($value)));
 
-				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_CONTROLLER_PATH.ucfirst($value).EXT_CONTROLLER.'.php', $tpl['controller']->show(Template::TPL_COMPILE_ALL, Template::TPL_COMPILE_TO_STRING));
-				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_MODEL_PATH.ucfirst($value).EXT_MODEL.'.php',  $tpl['model']->show(Template::TPL_COMPILE_ALL, Template::TPL_COMPILE_TO_STRING));
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_CONTROLLER_PATH.ucfirst($value).EXT_CONTROLLER.'.php', $tpl['controller']->show());
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_MODEL_PATH.ucfirst($value).EXT_MODEL.'.php',  $tpl['model']->show());
 			}
 
 			$tpl['route']->assign('route', $routeGroup);
-			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'route.xml', $tpl['route']->show(Template::TPL_COMPILE_ALL, Template::TPL_COMPILE_TO_STRING));
+			file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_RESOURCE_CONFIG_PATH.'route.xml', $tpl['route']->show());
 
 			$exist = false;
 			$xml = simplexml_load_file(APP_CONFIG_SRC);
