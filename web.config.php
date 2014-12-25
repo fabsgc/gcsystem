@@ -116,7 +116,7 @@ $GLOBALS['db']['collation']= "utf8_unicode_ci";
 /* ############### USER ############### */
 
 // open database connection
-define('DATABASE', true);
+define('DATABASE', false);
 
 // use firewall
 define('SECURITY', true);

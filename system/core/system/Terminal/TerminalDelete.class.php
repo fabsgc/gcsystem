@@ -42,8 +42,8 @@
 			$dom->load(APP_CONFIG_SRC);
 			$dom->save(APP_CONFIG_SRC);
 
-			terminal::rrmdir(SRC_PATH.$src, true);
-			terminal::rrmdir(WEB_PATH.$src, true);
+			Terminal::rrmdir(SRC_PATH.$src, true);
+			Terminal::rrmdir(WEB_PATH.$src, true);
 			rmdir(SRC_PATH.$src);
 			rmdir(WEB_PATH.$src);
 

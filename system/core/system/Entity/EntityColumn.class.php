@@ -10,6 +10,8 @@
 
 	namespace system\Entity;
 
+	use system\General\error;
+
 	class EntityColumn {
 		use error;
 

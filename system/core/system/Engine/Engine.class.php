@@ -162,7 +162,7 @@
 				$this->_route = true;
 			}
 
-			$this->profiler->addTime('route', profiler::USER_END);
+			$this->profiler->addTime('route', Profiler::USER_END);
 
 			return $this;
 		}
@@ -187,7 +187,7 @@
 			$this->request->action = $action;
 			$this->_route = true;
 
-			$this->profiler->addTime('route cron : '.$src.'/'.$controller.'/'.$action, profiler::USER_END);
+			$this->profiler->addTime('route cron : '.$src.'/'.$controller.'/'.$action, Profiler::USER_END);
 		}
 
 		/**

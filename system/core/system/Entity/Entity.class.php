@@ -10,6 +10,11 @@
 
 	namespace system\Entity;
 
+	use system\General\error;
+	use system\General\langs;
+	use system\General\facades;
+	use system\Sql\Sql;
+
 	class Entity {
 		use error, facades, langs;
 
@@ -246,7 +251,7 @@
 		*/
 
 		public function insert() {
-			$sql = $this->sql($this->bdd);
+			$sql = $this->sql($this->_bdd);
 			$fields = '';
 			$values = '';
 			$keyAutoIncrement = '';
@@ -272,7 +277,7 @@
 			$query = 'INSERT INTO '.$this->_table.'('.$fields.') VALUES('.$values.')';
 			
 			$sql->query('insert_'.$this->_table.'_'.$this->_uniq, $query);
-			$sql->fetch('insert_'.$this->_table.'_'.$this->_uniq, sql::PARAM_FETCHINSERT);
+			$sql->fetch('insert_'.$this->_table.'_'.$this->_uniq, Sql::PARAM_FETCHINSERT);
 
 			if($keyAutoIncrement != ''){
 				$this->_columns[''.$keyAutoIncrement.'']->setValue($this->_bdd->lastInsertId());
@@ -292,7 +297,7 @@
 		*/
 
 		public function update($where = '', $var = array()) {
-			$sql = $this->sql($this->bdd);
+			$sql = $this->sql($this->_bdd);
 			$query = '';
 
 			if($where == '' && $this->_primary != ''){
@@ -321,7 +326,7 @@
 			$query = 'UPDATE '.$this->_table.' SET '.$query.' WHERE '.$where;
 
 			$sql->query('update_'.$this->_table.'_'.$this->_uniq, $query);
-			$sql->fetch('update_'.$this->_table.'_'.$this->_uniq, sql::PARAM_FETCHUPDATE);
+			$sql->fetch('update_'.$this->_table.'_'.$this->_uniq, Sql::PARAM_FETCHUPDATE);
 
 			return true;
 		}
@@ -337,7 +342,7 @@
 		*/
 
 		public function delete($where = '', $var = array()) {
-			$sql = $this->sql($this->bdd);
+			$sql = $this->sql($this->_bdd);
 
 			echo $this->_primary;
 
@@ -353,7 +358,7 @@
 			$query = 'DELETE FROM '.$this->_table.' WHERE '.$where;
 
 			$sql->query('delete_'.$this->_table.'_'.$this->_uniq, $query);
-			$sql->fetch('delete_'.$this->_table.'_'.$this->_uniq, sql::PARAM_FETCHDELETE);
+			$sql->fetch('delete_'.$this->_table.'_'.$this->_uniq, Sql::PARAM_FETCHDELETE);
 
 			return true;
 		}

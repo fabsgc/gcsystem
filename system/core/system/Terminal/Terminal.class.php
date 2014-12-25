@@ -42,12 +42,12 @@
 			$this->lang     =     $lang;
 			$this->_createlang();
 
+			$this->_bdd = Database::connect($GLOBALS['db']);
+
 			$this->_parseArg($_SERVER['argv']);
 
 			if(isset($this->_argv[0]))
 				$this->_command();
-
-			$this->_bdd = Database::connect($GLOBALS['db']);
 		}
 
 		/**
@@ -105,6 +105,7 @@
 			}
 
 			if(method_exists($class, $method)){
+
 				$instance = new $class($this->profiler, $this->config, $this->request, $this->response, $this->lang, $this->_bdd, $this->_argv);
 				$instance->$method($this->_argv);
 			}
@@ -147,20 +148,6 @@
 					}
 				reset($objects);
 			}
-		}
-
-		/**
-		 * Create Entity
-		 * @access public
-		 * @param $database string
-		 * @param $table string
-		 * @return string
-		 * @since 3.0
-	 	 * @package system\Terminal
-		*/
-
-		public static function addEntity($database, $table) {
-
 		}
 
 		/**
@@ -211,9 +198,9 @@
 			$this->request  =  $request;
 			$this->response = $response;
 			$this->lang     =     $lang;
+			$this->_bdd     =      $bdd;
+			$this->_argv    =     $argv;
 			$this->_createlang();
-			$this->_bdd = $bdd;
-			$this->_argv = $argv;
 		}
 	}
 

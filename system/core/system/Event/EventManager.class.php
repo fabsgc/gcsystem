@@ -71,7 +71,7 @@
 				foreach ($this->_events as $events) {
 					if(isset($listeners->implementedEvents()[$events->getName()])){
 						foreach ($listeners->implementedEvents()[$events->getName()] as $event) {
-							if($events->getStatus() == event::START && method_exists($listeners, $event)){
+							if($events->getStatus() == Event::START && method_exists($listeners, $event)){
 								ob_start();
 									$this->addError('EVENT call the listener "'.$key.'" "'.get_class($listeners).'::'.$event.'" for the event "'.$events->getName().'"', __FILE__, __LINE__, ERROR_INFORMATION);
 									$events->setResult($listeners->$event($events), get_class($listeners).'::'.$event, get_class($listeners), $event);

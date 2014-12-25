@@ -12,12 +12,12 @@
 
 	class TerminalClear extends TerminalCommand{
 		public function log(){
-			terminal::rrmdir(APP_LOG_PATH);
+			Terminal::rrmdir(APP_LOG_PATH);
 			echo ' - log files were successfully deleted';
 		}
 
 		public function cache(){
-			terminal::rrmdir(APP_CACHE_PATH);
+			Terminal::rrmdir(APP_CACHE_PATH);
 			echo ' - cache files were successfully deleted';
 		}
 	}

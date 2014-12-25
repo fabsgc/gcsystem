@@ -37,8 +37,8 @@
 		const TPL_COMPILE_ALL       =       0;
 		const TPL_COMPILE_INCLUDE   =       1;
 		const TPL_COMPILE_LANG      =       2;
-		const COMPILE_TO_INCLUDE    =       0;
-		const COMPILE_TO_STRING     =       1;
+		const TPL_COMPILE_TO_INCLUDE    =       0;
+		const TPL_COMPILE_TO_STRING     =       1;
 
 		/**
 		 * constructor
@@ -201,9 +201,9 @@
 		 * @package system\Template
 		*/
 
-		public function show($type = self::TPL_COMPILE_ALL, $returnType = self::COMPILE_TO_INCLUDE){
+		public function show($type = self::TPL_COMPILE_ALL, $returnType = self::TPL_COMPILE_TO_INCLUDE){
 			$this->profiler->addTime('template '.$this->_name);
-			$this->profiler->addTemplate($this->_name, profiler::TEMPLATE_START, $this->_file);
+			$this->profiler->addTemplate($this->_name, Profiler::TEMPLATE_START, $this->_file);
 
 			foreach ($this->vars as $cle => $valeur){
 				${$cle} = $valeur;
@@ -230,15 +230,15 @@
 				$this->_save($this->_contentCompiled);
 			}
 
-			if($returnType == self::COMPILE_TO_INCLUDE){
+			if($returnType == self::TPL_COMPILE_TO_INCLUDE){
 				if($type != self::TPL_COMPILE_INCLUDE)
 					require_once($this->_fileCache);
 			}
 
-			$this->profiler->addTemplate($this->_name, profiler::TEMPLATE_END, $this->_file);
-			$this->profiler->addTime('template '.$this->_name, profiler::USER_END);
+			$this->profiler->addTemplate($this->_name, Profiler::TEMPLATE_END, $this->_file);
+			$this->profiler->addTime('template '.$this->_name, Profiler::USER_END);
 
-			if($returnType == self::COMPILE_TO_STRING){
+			if($returnType == self::TPL_COMPILE_TO_STRING){
 
 				ob_start();
 					require_once($this->_fileCache);

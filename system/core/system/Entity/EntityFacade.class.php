@@ -10,6 +10,9 @@
 	
 	namespace system\Entity;
 
+	use system\General\error;
+	use system\General\langs;
+	use system\General\facades;
 	use system\Exception\MissingEntityException;
 
 	class EntityFacade{

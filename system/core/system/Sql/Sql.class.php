@@ -15,6 +15,7 @@
 	use system\General\facadesEntity;
 	use system\Exception\Exception;
 	use system\Exception\MissingSqlException;
+	use system\Profiler\Profiler;
 
 	class Sql{
 		use error, facades,facadesEntity;
@@ -42,7 +43,7 @@
 		/**
 		 * constructor
 		 * @access public
-		 * @param &$profiler \system\Profiler\Profiler
+		 * @param &$profiler Profiler
 		 * @param &$config \system\Config\Config
 		 * @param &$request \system\Request\Request
 		 * @param $response
@@ -82,8 +83,11 @@
 			$trace = '';
 
 			for($i = 3; $i < count($stack) && $max < 4; $i++){
-				if(preg_match('#('.preg_quote('system\orm').')#isU', $stack[$i]['file'])){ //ORM
+				if(isset($stack[$i]['file']) && preg_match('#('.preg_quote('system\Orm\Orm').')#isU', $stack[$i]['file'])){ //ORM
 					$trace .= str_replace('\\', '-', $stack[$i]['class']).'_'.$stack[$i]['function'].'_'.$stack[$i-1]['line'].'__';
+				}
+				else{
+					$trace .= str_replace('\\', '-', $stack[$i]['class']).'_'.$stack[$i]['function'].'__';
 				}
 			}
 
@@ -110,11 +114,11 @@
 		 * add variables to the instance
 		 * @access public
 		 * @param $var  mixed : contain the list of the variable that will be used in the queries.
-		 *  first syntax  : array('id' => array(31, sql::PARAM_INT), 'pass' => array("fuck", sql::PARAM_STR))
+		 *  first syntax  : array('id' => array(31, Sql::PARAM_INT), 'pass' => array("fuck", sql::PARAM_STR))
 		 *  second syntax : array('id' => 31, 'pass' => "fuck"). If you don't define the type of the variable, the class will assign itself the correct type
 		 *  If you have only one variable to pass, you can use the 2/3 parameters form
 		 *	first syntax  : ('id', 'value')
-		 *  second syntax : ('id', 'value', sql::PARAM_INT)
+		 *  second syntax : ('id', 'value', Sql::PARAM_INT)
 		 * @return void
 		 * @since 3.0
 		 * @package system\Sql
@@ -224,8 +228,7 @@
 				try {
 					$query = $this->_bdd->prepare(''.$this->_query[''.$name.''].'');
 					$this->profiler->addTime($this->_nameQuery.$name);
-					$this->profiler->addSql($this->_nameQuery.$name, profiler::SQL_START);
-					$this->addError('['.$this->request->src.'] ['.$this->request->controller.'] ['.$this->request->action.'] ['.$name."]", __LINE__, __FILE__, ERROR_INFORMATION, LOG_SQL);
+					$this->profiler->addSql($this->_nameQuery.$name, Profiler::SQL_START);
 					
 					foreach($this->_var as $key => $value){
 						if(preg_match('`:'.$key.'[\s|,|\)|\(%]`', $this->_query[''.$name.''].' ')){
@@ -274,8 +277,9 @@
 						default : $this->addError('the execution constant '.$fetch.' doesn\'t exist', __LINE__, __FILE__, ERROR_INFORMATION, LOG_SQL); break;
 					}
 
-					$this->profiler->addSql($this->_nameQuery.$name, profiler::SQL_END, $query->debugQuery());
-					$this->profiler->addTime($this->_nameQuery.$name, profiler::USER_END);
+					$this->addError('['.$this->request->src.'] ['.$this->request->controller.'] ['.$this->request->action.'] ['.$name."] \n [".$query->debugQuery()."]", __LINE__, __FILE__, ERROR_INFORMATION, LOG_SQL);
+					$this->profiler->addSql($this->_nameQuery.$name, Profiler::SQL_END, $query->debugQuery());
+					$this->profiler->addTime($this->_nameQuery.$name, Profiler::USER_END);
 
 					switch($fetch){
 						case self::PARAM_FETCH :

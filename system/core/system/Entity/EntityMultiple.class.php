@@ -10,6 +10,10 @@
 
 	namespace system\Entity;
 
+	use system\General\error;
+	use system\General\langs;
+	use system\General\facades;
+
 	class EntityMultiple {
 		use error, facades, langs;
 
