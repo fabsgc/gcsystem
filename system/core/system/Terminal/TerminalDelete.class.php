@@ -21,7 +21,7 @@
 					break;
 				}
 				else{
-					echo "[ERROR] this module doesn't exist\n";
+					echo " - [ERROR] this module doesn't exist\n";
 				}
 			}
 
@@ -51,6 +51,50 @@
 		}
 
 		public function controller(){
+			$src = '';
+			$controllers = array();
 
+			//choose the module name
+			while(1==1){
+				echo ' - choose module : ';
+				$src = ArgvInput::get(STDIN);
+
+				if(file_exists(DOCUMENT_ROOT.SRC_PATH.$src.'/')){
+					break;
+				}
+				else{
+					echo " - [ERROR] this module doesn't exist\n";
+				}
+			}
+
+			//choose the controllers
+			while(1==1){
+				echo ' - choose a controller (keep empty to stop) : ';
+				$controller = argvInput::get(STDIN);
+					
+				if($controller != ''){
+					if(!in_array($controller, $controllers) AND file_exists(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_CONTROLLER_PATH.'/'.ucfirst($controller).EXT_CONTROLLER.'.php')){
+						array_push($controllers, $controller);
+					}
+					else{
+						echo " - [ERROR] you have already chosen this controller or it isn't created.\n";
+					}
+				}
+				else{
+					if(count($controllers) > 0){
+						break;
+					}
+					else{
+						echo " - [ERROR] you must add at least one controller\n";
+					}
+				}
+			}
+
+			foreach ($controllers as $value) {
+				unlink(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_CONTROLLER_PATH.ucfirst($value).EXT_CONTROLLER.'.php');
+				unlink(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_MODEL_PATH.ucfirst($value).EXT_MODEL.'.php');
+
+				echo " - the controller ".$value." have been successfully deleted";
+			}
 		}
 	}

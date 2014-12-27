@@ -144,7 +144,56 @@
 		}
 
 		public function controller(){
-			
+			$src = '';
+			$controllers = array();
+
+			//choose the module name
+			while(1==1){
+				echo ' - choose a module : ';
+				$src = ArgvInput::get(STDIN);
+
+				if(file_exists(DOCUMENT_ROOT.SRC_PATH.$src.'/')){
+					break;
+				}
+				else{
+					echo " - [ERROR] this module doesn't exist\n";
+				}
+			}
+
+			//choose the controllers
+			while(1==1){
+				echo ' - add a controller (keep empty to stop) : ';
+				$controller = argvInput::get(STDIN);
+					
+				if($controller != ''){
+					if(!in_array($controller, $controllers) AND !file_exists(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_CONTROLLER_PATH.'/'.ucfirst($controller).EXT_CONTROLLER.'.php')){
+						array_push($controllers, $controller);
+					}
+					else{
+						echo "[ERROR] you have already chosen this controller or it's already created.\n";
+					}
+				}
+				else{
+					if(count($controllers) > 0){
+						break;
+					}
+					else{
+						echo "[ERROR] you must add at least one controller\n";
+					}
+				}
+			}
+
+			foreach ($controllers as $value) {
+				$tpl['controller'] = $this->template('.app/system/module/controller', 'terminalCreateController'.$value);
+				$tpl['controller']->assign(array('src' => $src, 'controller' => ucfirst($value)));
+				$tpl['model'] = $this->template('.app/system/module/model', 'terminalCreateModel'.$value);
+				$tpl['model']->assign(array('src' => $src, 'model' => ucfirst($value)));
+
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_CONTROLLER_PATH.ucfirst($value).EXT_CONTROLLER.'.php', $tpl['controller']->show(Template::TPL_COMPILE_ALL, Template::TPL_COMPILE_TO_STRING));
+				file_put_contents(DOCUMENT_ROOT.SRC_PATH.$src.'/'.SRC_MODEL_PATH.ucfirst($value).EXT_MODEL.'.php',  $tpl['model']->show(Template::TPL_COMPILE_ALL, Template::TPL_COMPILE_TO_STRING));
+				
+				echo " - the controller ".$value." have been successfully created";
+			}
 		}
 
 		public function entity(){

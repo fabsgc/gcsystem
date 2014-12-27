@@ -23,7 +23,7 @@
 		 * Constructor
 		 * @access public
 		 * @since 3.0
-		 * @package system
+		 * @package system\Entity
 		*/
 
 		public function __construct() {

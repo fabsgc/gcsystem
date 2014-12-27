@@ -45,7 +45,7 @@
 			$this->_bdd     =      $bdd;
 
 			if($entity != '')
-				$this->entity  =   $this->entity->$entity();
+				$this->entity = $this->entity->$entity();
 		}
 
 		/**

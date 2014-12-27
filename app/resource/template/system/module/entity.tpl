@@ -1,5 +1,5 @@
 {{php: $var='<?php
-	namespace entity;
+	namespace Entity;
 
 	use \system\Entity\Entity;
 

@@ -57,7 +57,7 @@
 			if(file_exists(APP_RESOURCE_ENTITY_PATH.$name.EXT_ENTITY.'.php')){
 				include_once(APP_RESOURCE_ENTITY_PATH.$name.EXT_ENTITY.'.php');
 
-				$class = '\entity\\'.$name;
+				$class = '\Entity\\'.$name;
 
 				$params = array(
 					&$this->profiler, 

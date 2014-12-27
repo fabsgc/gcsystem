@@ -1,0 +1,122 @@
+<?php class blockgcsHtmlDefault extends \system\Template\Template { public static function gcsHtmlDefault(){ ?> 
+*{
+	box-sizing: border-box;
+}
+html, body{
+	background-color: #E1E1E1;
+	font-family: Calibri, sans-serif;
+	padding: 0;
+	margin: 0;
+}
+header{
+
+	margin: auto;
+	height: 80px;
+	border-bottom: 10px solid #E74C3C;
+	background-color: white;
+}
+header .content{
+	width: 750px;
+	margin: auto;
+	padding: 5px 5px 5px 5px;
+}
+header h1{
+	line-height: 60px;
+	font-size: 30px;
+	color: #E74C3C;
+	padding-left: 65px;
+	background: url('<?php echo (HTML_WEB_PATH); ?>gcs/image/logo60.png') top left no-repeat;
+	margin: 0;
+}
+#main{
+	width: 750px;
+	min-height: 200px;
+	margin: auto;
+	background-color: white;
+}
+#main .content{
+	padding: 5px 12px 5px 12px;
+}
+#main h1{
+	color: #E74C3C;
+	margin-top: 0;
+}
+#main a{
+	color: #E74C3C;
+}
+footer{
+	width: 750px;
+	margin: auto;
+	color: white;
+	padding: 5px;
+	background-color: #E74C3C;
+}
+textarea.large{
+  	width: 32%;
+  	height: 75px;
+  		margin-left:10px;
+  		margin-bottom:7px;
+  		padding: 5px;
+}
+a.button{
+	display: inline-block;
+	line-height: 35px;
+	margin: 0px 10px 10px 0;
+	background-color: #e74c3c;
+	cursor: pointer;
+	border-radius: 2px;
+	color: white;
+	font-size: 17px;
+	color: white !important;
+	padding: 0 10px;
+	-webkit-transition-duration: 0.15s;
+	-moz-transition-duration: 0.15s;
+	-ms-transition-duration: 0.15s;
+	-o-transition-duration: 0.15s;
+	transition-duration: 0.15s;
+	box-shadow: rgba(0, 0, 0, 0.0980392) 0px -1px 0px inset, rgba(0, 0, 0, 0.0980392) 0px 2px 0px;
+	text-decoration:none;
+}
+ <?php } } ?>
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>GCsystem V<?php echo (VERSION); ?></title>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="<?php echo $this->path(RESOLVE_IMAGE) ?>logo.png" />
+	</head>
+	<body id="body">
+		<style>
+			<?php blockgcsHtmlDefault::gcsHtmlDefault(); ?>
+		</style>
+		<header id="header">
+			<div class="content">
+				<h1>GCsystem V<?php echo (VERSION); ?></h1>
+			</div>
+		</header>
+		<div id="main">
+			<div class="content">
+				<h1><?php echo $this->useLang('gcs.default.welcome',array()); ?></h1>
+				<p><?php echo $this->useLang('gcs.default.content',array()); ?></p>
+				<ul>
+					<li><a href="http://www.gcs-framework.dzv.me/fr/"><?php echo $this->useLang('gcs.default.website',array()); ?></a></li>
+					<li><a href="http://www.gcs-framework.dzv.me/fr/documentation"><?php echo $this->useLang('gcs.default.website-documentation',array()); ?></a></li>
+					<li><a href="http://www.gcs-framework.dzv.me/fr/tutorial"><?php echo $this->useLang('gcs.default.website-tutorial',array()); ?></a></li>
+				</ul>
+			</div>
+		</div>
+		<footer id="footer">Gcsystem V<?php echo (VERSION); ?></footer>
+		<script type="text/javascript" defer>
+			updateHeight();
+
+			window.onresize = function(event) {
+				updateHeight();
+			};
+
+			function updateHeight(){
+				console.log(document.body.offsetHeight);
+				document.getElementById('main').style.height = window.innerHeight - document.getElementById('header').offsetHeight - document.getElementById('footer').offsetHeight + "px";
+			}
+		</script>
+	</body>
+</html>
