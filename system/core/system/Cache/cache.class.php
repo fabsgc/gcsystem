@@ -24,7 +24,7 @@
 		
 		/**
 		 * Constructor
-		 * @access	public
+		 * @access public
 		 * @param &$profiler \system\Profiler\Profiler
 		 * @param &$config \system\Config\Config
 		 * @param &$request \system\Request\Request

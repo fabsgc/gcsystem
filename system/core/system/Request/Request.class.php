@@ -11,7 +11,7 @@
 	namespace system\Request;
 
 	use system\General\error;
-	use system\Exception\Exception;
+	use system\Exception\AttributeNotAllowedException;
 
 	class Request{
 		use error;
@@ -22,14 +22,15 @@
 		*/
 			
 		public $param = array(
-			'name' => '',
-			'src' => '',
-			'controller' => '',
-			'action' => '',
-			'cache' => 0,
-			'logged' => '*',
-			'access' => '*',
-			'method' => '*'
+			'name'       =>  '',
+			'src'        =>  '',
+			'controller' =>  '',
+			'action'     =>  '',
+			'cache'      =>   0,
+			'logged'     => '*',
+			'access'     => '*',
+			'method'     => '*',
+			'auth'       =>   ''
 		);
 		
 		/**
@@ -47,7 +48,7 @@
 		 * @access public
 		 * @param $name string : name of the attribute
 		 * @return mixed
-		 * @throws Exception
+		 * @throws \system\Exception\AttributeNotAllowedException
 		 * @since 3.0
 		 * @package system\Request
 		*/
@@ -57,7 +58,7 @@
 				return $this->param[$name];
 			}
 			else{
-				throw new Exception("the attribute ".$name." doesn't exist");
+				throw new AttributeNotAllowedException("the attribute ".$name." doesn't exist");
 			}
 		}
 
@@ -67,7 +68,7 @@
 		 * @param $name string : name of the attribute
 		 * @param $value string : new value
 		 * @return void
-		 * @throws Exception
+		 * @throws \system\Exception\AttributeNotAllowedException
 		 * @since 3.0
 		 * @package system\Request
 		*/
@@ -77,7 +78,7 @@
 				$this->param[$name] = $value;
 			}
 			else{
-				throw new Exception("the attribute ".$name." doesn't exist");
+				throw new AttributeNotAllowedException("the attribute ".$name." doesn't exist");
 			}
 		}
 
@@ -88,7 +89,7 @@
 		 * @return boolean
 		 * @since 3.0
 		 * @package system\Request
-		 */
+		*/
 
 		public function env($env){
 			if(isset($_SERVER[$env])){

@@ -16,6 +16,15 @@
 		public function actionDefault(){
 			$t = $this->template('gcs/default', 'gcsDefault', '0');
 			return $t->show();
+
+			//echo $this->request->auth->role('gcs');
+			//echo $this->request->auth->role;
+
+			/*$this->assetManager(array(
+				'files' => array(),
+				'type' => 'css',
+				'cache' => 0
+			));*/
 		}
 
 		public function actionLang(){

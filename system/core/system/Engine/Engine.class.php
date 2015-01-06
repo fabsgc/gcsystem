@@ -16,6 +16,7 @@
 	use system\General\facades;
 	use system\General\resolve;
 	use system\Request\Request;
+	use system\Request\Auth;
 	use system\Response\Response;
 	use system\Profiler\Profiler;
 	use system\Config\Config;
@@ -143,13 +144,14 @@
 			if($matchedRoute = $router->getRoute(preg_replace('`\?'.preg_quote($_SERVER['QUERY_STRING']).'`isU', '', $_SERVER['REQUEST_URI']), $this->config)){
 				$_GET = array_merge($_GET, $matchedRoute->vars());
 
-				$this->request->name = $matchedRoute->name();
-				$this->request->src = $matchedRoute->src();
-				$this->request->controller = $matchedRoute->controller();
-				$this->request->action = $matchedRoute->action();
-				$this->request->logged = $matchedRoute->logged();
-				$this->request->access = $matchedRoute->access();
-				$this->request->method = $matchedRoute->method();
+				$this->request->name       =                        $matchedRoute->name();
+				$this->request->src        =                         $matchedRoute->src();
+				$this->request->controller =                  $matchedRoute->controller();
+				$this->request->action     =                      $matchedRoute->action();
+				$this->request->logged     =                      $matchedRoute->logged();
+				$this->request->access     =                      $matchedRoute->access();
+				$this->request->method     =                      $matchedRoute->method();
+				$this->request->auth       = new Auth($this->config, $this->request->src);
 
 				if(CACHE_ENABLED == true && $matchedRoute->cache() != '')
 					$this->request->cache = $matchedRoute->cache();
@@ -180,13 +182,12 @@
 
 		private function _routeCron($src, $controller, $action){
 			$this->profiler->addTime('route cron : '.$src.'/'.$controller.'/'.$action);
-
-			$this->request->name = '-'.$src.'_'.$controller.'_'.$action;
-			$this->request->src = $src;
-			$this->request->controller = $controller;
-			$this->request->action = $action;
+			$this->request->name       =         '-'.$src.'_'.$controller.'_'.$action;
+			$this->request->src        =                                         $src;
+			$this->request->controller =                                  $controller;
+			$this->request->action     =                                      $action;
+			$this->request->auth       = new Auth($this->config, $this->request->src);
 			$this->_route = true;
-
 			$this->profiler->addTime('route cron : '.$src.'/'.$controller.'/'.$action, Profiler::USER_END);
 		}
 
