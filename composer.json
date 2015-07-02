@@ -6,9 +6,12 @@
 	"type": "project",
 	"minimum-stability": "dev",
 	"require": {
-		"php": ">=5.5.12"
-	}
-	"require-dev"{
-		"gcsystem/framework": "dev-master@dev"
+		"php": ">=5.5.12",
+		"gcsystem/framework": "3.1"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "3.1"
+		}
 	}
 }
