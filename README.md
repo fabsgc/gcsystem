@@ -5,7 +5,7 @@
 * Version  : 3.1 Bêta
 * Créateur : fab@c++
 * Contributeurs : Lucas5190, t1307
-* Description : framework PHP MVC de développement d'applications Web.
+* Description : framework PHP MVC de développement d'applications Web
 
 Spécifications :
 -----------
@@ -27,10 +27,11 @@ Installation :
 * Ou directement :
 
 ```text
-> composer require gcsystem/gcsystem
+> composer global require "gcsystem/installer:dev-master"
+> gcsystem
 ```
 
-* dans le fichier config.php, modifiez la constante "FOLDER" et indiquez-y le répertoire où se trouve le framework. Par exemple : /projet
+* dans le fichier config.php, modifiez la constante "FOLDER" et indiquez-y le répertoire où se trouve le framework à partir de la racine. Par exemple : /projet
 * chargez l'url racine du site (/)
 
 Documentation :
