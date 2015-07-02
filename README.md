@@ -20,15 +20,7 @@ Installation :
 * Clônez le dépôt github et installlez-le avec composer:
 
 ```text
-> https://github.com/fabsgc/gcsystem.git
-> composer install
-```
-
-* Ou directement :
-
-```text
-> composer global require "gcsystem/installer:dev-master"
-> gcsystem
+> git clone https://github.com/fabsgc/gcs-dev.git
 ```
 
 * dans le fichier config.php, modifiez la constante "FOLDER" et indiquez-y le répertoire où se trouve le framework à partir de la racine. Par exemple : /projet
