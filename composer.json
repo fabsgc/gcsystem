@@ -7,11 +7,12 @@
 	"minimum-stability": "dev",
 	"require": {
 		"php": ">=5.5.12",
-		"gcsystem/framework": "3.1-dev"
+		"gcsystem/framework": "dev-master"
 	},
 	"extra": {
 		"branch-alias": {
 			"dev-master": "3.1-dev"
 		}
-	}
+	},
+	"minimum-stability": "dev"
 }
