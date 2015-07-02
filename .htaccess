@@ -1,0 +1,7 @@
+php_flag short_open_tag off
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+php_flag zlib.output_compression on
