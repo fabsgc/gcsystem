@@ -1,7 +1,7 @@
 {
 	"name": "gcsystem/gcsystem",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
+	"description": "GCsystem Framework.",
+	"keywords": ["framework", "gcsystem"],
 	"license": "MIT",
 	"type": "project",
 	"require": {
