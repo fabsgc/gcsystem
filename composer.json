@@ -4,6 +4,7 @@
 	"keywords": ["framework", "gcsystem"],
 	"license": "MIT",
 	"type": "project",
+	"minimum-stability": "dev",
 	"require": {
 		"php": ">=5.5.12"
 	}
