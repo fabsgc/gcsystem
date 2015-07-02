@@ -43,7 +43,7 @@ define('WEB_FILE_PATH', 'file/');
 define('WEB_IMAGE_PATH', 'image/');
 define('WEB_JS_PATH', 'js/');
 
-define('SYSTEM_PATH', 'system/');
+define('SYSTEM_PATH', 'vendor/gcsystem/system/');
 define('SYSTEM_CORE_PATH', SYSTEM_PATH.'core/');
 define('SYSTEM_CORE_SYSTEM_PATH', SYSTEM_CORE_PATH.'system/');
 define('SYSTEM_CORE_HELPER_PATH', SYSTEM_CORE_PATH.'helper/');
