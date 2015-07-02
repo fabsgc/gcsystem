@@ -6,6 +6,9 @@
 	"type": "project",
 	"require": {
 		"php": ">=5.5.12",
-		"gcsystem/framework": "dev-master"
+		"gcsystem/framework": "dev-master@dev"
+	}
+	"require-dev"{
+
 	}
 }
