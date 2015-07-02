@@ -1,6 +1,7 @@
 <?php
 	namespace gcs;
 
+	use System\Controller\Controller;
 	use System\Template\Template;
 
 	class Index extends Controller{
