@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<route name="index" url="(/*)" action="gcs.default" method="GET"/>
-	<group name="gcs" url="/gcs" action="gcs">
-		<route name="lang" url="/lang(/*)" action="lang"/>
-		<route name="profiler" url="/profiler(/*)" action="profiler"/>
-		<route name="assetManager" url="/asset/(.[^\/]+)\.([css|js]+)" action="assetManager" vars="id,type" method="GET"/>
+	<route name="index" url="(/*)" action="index.default" method="GET"/>
+	<group name="gcs" url="/gcs">
+		<route name="lang.default" url="/lang(/*)" action="lang.default"/>
+		<route name="profiler.default" url="/profiler(/*)" action="profiler.default"/>
+		<route name="assetManager.default" url="/asset/(.[^\/]+)\.([css|js]+)" action="assetManager.default" vars="id,type" method="GET"/>
+		<group name="scaffolding" url="/scaffolding" action="scaffolding">
+			<route name="default" url="(/*)" action="default"/>
+			<route name="entity" url="/entity/(.*)(/*)" action="entity" vars="name"/>
+			<route name="insert" url="/entity/insert/(.*)(/*)" action="entity" vars="entity"/>
+			<route name="update" url="/entity/update/([0-9]+)/(.*)(/*)" action="insert" vars="id,entity"/>
+			<route name="delete" url="/entity/delete/([0-9]+)/(.*)(/*)" action="delete" vars="id,entity"/>
+		</group>
 	</group>
 </root>

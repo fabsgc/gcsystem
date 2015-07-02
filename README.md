@@ -1,4 +1,4 @@
-Informations :
+﻿Informations :
 -----------
 
 * Open-Source depuis sa création

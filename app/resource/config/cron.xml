@@ -5,6 +5,5 @@
 	</exceptions>
   </config>
   <crons>
-    <!--<cron action="gcs.gcs.profiler" time="0" executed="1418332534"/>-->
   </crons>
 </root>

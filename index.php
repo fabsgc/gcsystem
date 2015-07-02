@@ -10,9 +10,9 @@
 	 | ------------------------------------------------------
 	\*/
 
-	require_once('web.config.php');
+	require_once('config.php');
 	require_once(CLASS_AUTOLOAD);
 
-	$controller = new system\Engine\Engine();
-	$controller->init();
+	$controller = new \System\Engine\Engine();
+	$controller->init($db);
 	$controller->run();
