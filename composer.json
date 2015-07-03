@@ -14,10 +14,5 @@
 			"dev-master": "3.1-dev"
 		}
 	},
-	"autoload": {
-		"psr-4": {
-			"Scaffolding\\" : "vendor/gcsystem/scaffolding/src"
-		}
-	},
 	"minimum-stability": "dev"
 }
