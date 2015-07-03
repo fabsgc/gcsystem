@@ -43,7 +43,8 @@ define('WEB_FILE_PATH', 'file/');
 define('WEB_IMAGE_PATH', 'image/');
 define('WEB_JS_PATH', 'js/');
 
-define('SYSTEM_PATH', 'vendor/gcsystem/framework/');
+define('VENDOR_PATH', 'vendor/');
+define('SYSTEM_PATH', VENDOR_PATH.'gcsystem/framework/');
 define('SYSTEM_CORE_PATH', SYSTEM_PATH.'core/');
 define('SYSTEM_CORE_SYSTEM_PATH', SYSTEM_CORE_PATH.'system/');
 define('SYSTEM_CORE_HELPER_PATH', SYSTEM_CORE_PATH.'helper/');
@@ -73,6 +74,7 @@ define('APP_CONFIG_CRON', APP_RESOURCE_CONFIG_PATH.'cron.xml');
 define('APP_CONFIG_DEFINE', APP_RESOURCE_CONFIG_PATH.'define.xml');
 define('APP_CONFIG_LIBRARY', APP_RESOURCE_CONFIG_PATH.'library.xml');
 define('APP_CONFIG_SPAM', APP_RESOURCE_CONFIG_PATH.'spam.xml');
+define('APP_CONFIG_TEMPLATE', APP_RESOURCE_CONFIG_PATH.'template.xml');
 
 define('SRC_CONFIG_CRON', SRC_RESOURCE_CONFIG_PATH.'cron.xml');
 define('SRC_CONFIG_DEFINE', SRC_RESOURCE_CONFIG_PATH.'define.xml');

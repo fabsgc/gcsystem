@@ -1,16 +1,22 @@
 {
-	"name": "gcsystem/gcsystem",
+	"name": "gcsystem/gcs-dev",
 	"description": "GCsystem Framework.",
 	"keywords": ["framework", "gcsystem"],
 	"license": "MIT",
 	"type": "project",
 	"require": {
 		"php": ">=5.5.12",
-		"gcsystem/framework": "dev-master"
+		"gcsystem/framework": "dev-master",
+		"gcsystem/scaffolding": "dev-master"
 	},
 	"extra": {
 		"branch-alias": {
 			"dev-master": "3.1-dev"
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"Scaffolding\\" : "vendor/gcsystem/scaffolding/src"
 		}
 	},
 	"minimum-stability": "dev"

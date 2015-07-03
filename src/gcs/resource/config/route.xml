@@ -6,11 +6,11 @@
 		<route name="profiler.default" url="/profiler(/*)" action="profiler.default"/>
 		<route name="assetManager.default" url="/asset/(.[^\/]+)\.([css|js]+)" action="assetManager.default" vars="id,type" method="GET"/>
 		<group name="scaffolding" url="/scaffolding" action="scaffolding">
-			<route name="default" url="(/*)" action="default"/>
-			<route name="entity" url="/entity/(.*)(/*)" action="entity" vars="name"/>
-			<route name="insert" url="/entity/insert/(.*)(/*)" action="entity" vars="entity"/>
-			<route name="update" url="/entity/update/([0-9]+)/(.*)(/*)" action="insert" vars="id,entity"/>
-			<route name="delete" url="/entity/delete/([0-9]+)/(.*)(/*)" action="delete" vars="id,entity"/>
+			<route name="default" url="(/*)" action="home"/>
+			<route name="insert" url="/entity/insert/([a-zA-Z]+)(/*)" action="insert" vars="entity"/>
+			<route name="update" url="/entity/update/([a-zA-Z]+)/([0-9]+)(/*)" action="update" vars="entity,id"/>
+			<route name="delete" url="/entity/delete/([a-zA-Z]+)/([0-9]+)(/*)" action="delete" vars="entity,id"/>
+			<route name="entity" url="/entity/([a-zA-Z]+)(/*)" action="entity" vars="entity"/>
 		</group>
 	</group>
 </root>

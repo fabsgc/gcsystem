@@ -21,6 +21,20 @@
 					<li><a href="http://www.gcs-framework.dzv.me/fr/documentation">{{lang:gcs.default.website-documentation}}</a></li>
 					<li><a href="http://www.gcs-framework.dzv.me/fr/tutorial">{{lang:gcs.default.website-tutorial}}</a></li>
 				</ul>
+
+				<ul>
+					<gc:foreach var="$data" as="$value">
+						<li>
+							<h4>Cours "{$value->name}"</h4>
+							<p>{$value->content}</p>
+							<ul>
+								<gc:foreach var="$value->students" as="$students">
+									<li>{$students->name}</li>
+								</gc:foreach>
+							</ul>
+						</li>
+					</gc:foreach>
+				</ul>
 			</div>
 		</div>
 		<footer id="footer">Gcsystem V{VERSION}</footer>

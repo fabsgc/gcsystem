@@ -2,7 +2,6 @@
 	namespace gcs;
 
 	use System\Controller\Controller;
-	use System\Template\Template;
 
 	class Index extends Controller{
 		public function init(){
@@ -11,7 +10,7 @@
 		}
 		
 		public function actionDefault(){
-			$t = new Template('index/default', 'gcsDefault');
-			return $t->show();
+			return self::Template('index/default', 'gcsDefault')
+				->show();
 		}
 	}
