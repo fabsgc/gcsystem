@@ -1,5 +1,5 @@
 <?php
-	namespace gcs;
+	namespace Gcs;
 
 	class Scaffolding extends \Scaffolding\Scaffolding{
 		public function init(){

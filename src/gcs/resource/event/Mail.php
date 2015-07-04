@@ -1,6 +1,8 @@
 <?php
 	namespace Event\Gcs;
 
-	class Mail{
-		
+	use System\Event\Event;
+
+	class Mail extends Event{
+
 	}

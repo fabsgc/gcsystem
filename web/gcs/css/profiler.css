@@ -71,3 +71,6 @@ header .content{
     margin: auto;
     padding: 5px 5px 5px 5px;
 }
+footer{
+    display: none;
+}
