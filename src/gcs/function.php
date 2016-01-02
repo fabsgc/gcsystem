@@ -7,17 +7,15 @@
 		}
 
 		foreach($a as $k => $value) {
-			if($k != ''){
-				if($n != 0){
-					echo '<ul>';
-				}
-				if($k<10){
-					echo '<li><strong>'.$k.'</strong> : ';
-					printArray($value, $n+1);
-				}
-				if($n != 0){
-					echo '</ul>';
-				}
+			if($n != 0){
+				echo '<ul>';
+			}
+			if($k<10){
+				echo '<li><strong>'.$k.'</strong> : ';
+				printArray($value, $n+1);
+			}
+			if($n != 0){
+				echo '</ul>';
 			}
 		}
 	}
@@ -34,16 +32,16 @@
 			}
 		}
 
-		$data = preg_replace('#,$#isU', '', $data);
-
-		return $data.')';
+		return trim($data, ',');
 	}
 
-	function getFunctionArgNames($function = array()) {
+	function getFunctionArgNames($function = []) {
 		$f = new \ReflectionFunction($function);
-		$result = array();
+		$result = [];
+
 		foreach ($f->getParameters() as $param) {
 			$result[] = $param->name;
 		}
+
 		return $result;
 	}

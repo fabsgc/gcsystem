@@ -48,8 +48,8 @@ define('WEB_JS_PATH', 'js/');
 define('VENDOR_PATH', 'vendor/');
 define('SYSTEM_PATH', VENDOR_PATH.'gcsystem/framework/');
 define('SYSTEM_CORE_PATH', SYSTEM_PATH.'core/');
-define('SYSTEM_CORE_SYSTEM_PATH', SYSTEM_CORE_PATH.'system/');
-define('SYSTEM_CORE_HELPER_PATH', SYSTEM_CORE_PATH.'helper/');
+define('SYSTEM_CORE_SYSTEM_PATH', SYSTEM_CORE_PATH.'System/');
+define('SYSTEM_CORE_HELPER_PATH', SYSTEM_CORE_PATH.'Helper/');
 
 define('EXT_LANG', '.xml');
 define('EXT_TEMPLATE', '.tpl');
@@ -132,7 +132,7 @@ define('SPAM', true);
 define('CHARSET', 'UTF-8');
 
 // where the framework is placed. If it's the root, keep empty, otherwise : /projet
-define('FOLDER', '');
+define('FOLDER', 'gcsystem/gcs-dev/');
 
 // default language
 define('LANG', 'fr');
@@ -162,7 +162,7 @@ define('CACHE_SHA1', false);
 define('LOG_ENABLED', true);
 
 // minify html output
-define('MINIFY_OUTPUT_HTML', true);
+define('MINIFY_OUTPUT_HTML', false);
 
 // display in the page fatal and exception error
 define('DISPLAY_ERROR_FATAL', true);

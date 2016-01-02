@@ -16,10 +16,16 @@
 			</group>
 		</group>
 		<group name="http">
-			<lang name="title">Erreur {code} {description}</lang>
+			<lang name="title">Erreur {code} : {description}</lang>
 		</group>
 		<group name="maintenance">
 			<lang name="title">Maintenance</lang>
+		</group>
+		<group name="form">
+			<lang name="exist">Le champs n'existe pas</lang>
+		</group>
+		<group name="entity">
+			<lang name="exist">Le champs n'existe pas</lang>
 		</group>
 	</group>
 </root>

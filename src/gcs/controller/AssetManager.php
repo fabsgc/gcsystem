@@ -2,6 +2,7 @@
 	namespace Gcs;
 
 	use System\Controller\Controller;
+	use System\Cache\Cache;
 
 	class AssetManager extends Controller{
 		public function init(){
@@ -14,7 +15,7 @@
 				self::Response()->contentType("text/".$_GET['type']);
 				self::Response()->header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + 2592000));
 
-				$cache = self::Cache(html_entity_decode($_GET['id'].'.'.$_GET['type']), 0);
+				$cache = new Cache(html_entity_decode($_GET['id'].'.'.$_GET['type']), 0);
 
 				return $cache->getCache();
 			}

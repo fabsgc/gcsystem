@@ -1,7 +1,7 @@
 <gc:extends file="main"/>
 <form method="post" action="">
 	<input type="text" id="page" name="id" placeholder="{{lang:gcs.profiler.page-id}}"/>
-	<input type="submit" value="{{lang:gcs.profiler.page-send}}"/>
+	<input type="submit" id="submit" value="{{lang:gcs.profiler.page-send}}"/>
 </form>
 <br />
 <section>
@@ -62,7 +62,8 @@
 			<pre>{{php:
 				$sql = preg_replace('#([\t]+)#isU', '', $value['query']);
 				echo join("\n", array_map("trim", explode("\n", trim($sql))));
-				}}</pre>
+				}}
+			</pre>
 		</div>
 	</gc:foreach>
 </div>

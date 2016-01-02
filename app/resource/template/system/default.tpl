@@ -19,7 +19,6 @@ body{
 	left:50%; 
 	margin-left:-300px; 
 }
-	
 h1{
 	text-align: center;
 }

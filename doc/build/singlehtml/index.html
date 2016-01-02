@@ -1,0 +1,772 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>documentation Documentation GCsystem 1</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="None" href="index.html#document-index"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html#document-index" class="icon icon-home"> Documentation GCsystem
+        
+
+        
+        </a>
+
+        
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-getting-started/index">Pour commencer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-getting-started/architecture">Architecture du GCsystem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/architecture#organisation-du-framework">Organisation du Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/architecture#cheminement-d-une-requete">Cheminement d&#8217;une requête</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-getting-started/install">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/install#installation-avec-composer">Installation avec Composer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/install#installation-avec-github-et-composer">Installation avec Github et Composer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-getting-started/configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#connexion-a-la-base-de-donnees">Connexion à la base de données</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#parefeu">Parefeu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#antispam">Antispam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#encodage">Encodage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#repertoire-racine">Répertoire racine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#langue-par-defaut">Langue par défaut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#choix-de-l-environnement">Choix de l&#8217;environnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#maintenance">Maintenance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#profiler">Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#echappement-des-variables-superglobales">Échappement des variables superglobales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#constantes-utilisateur">Constantes utilisateur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#affichage-des-erreurs">Affichage des erreurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#minifier-sortie-html">Minifier sortie html</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#asset-manager">Asset manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/configuration#chemins-vers-les-ressources-web">Chemins vers les ressources web</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-getting-started/spam">L&#8217;anti spam</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/spam#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/spam#page-d-erreur">Page d&#8217;erreur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/spam#exceptions">Exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-getting-started/firewall">Le parefeu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/firewall#les-roles">Les rôles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/firewall#les-redirections">Les redirections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index.html#document-getting-started/firewall#page-de-connexion">Page de connexion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#document-getting-started/firewall#page-par-defaut">Page par défaut</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/firewall#les-pages-d-erreur">Les pages d&#8217;erreur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/firewall#la-faille-csrf">La faille CSRF</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-getting-started/routing">Le routing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/routing#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/routing#creation-de-routes">Création de routes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index.html#document-getting-started/routing#creation-d-une-route-simple">Création d&#8217;une route simple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#document-getting-started/routing#gestion-des-routes-a-parametres-variables">Gestion des routes à paramètres variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#document-getting-started/routing#gestion-des-groupes-de-routes">Gestion des groupes de routes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#document-getting-started/routing#restreindre-l-acces-a-une-url">Restreindre l&#8217;accès à une url</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index.html#document-getting-started/routing#connexion-de-l-utilisateur">Connexion de l&#8217;utilisateur</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#document-getting-started/routing#statut-de-l-utilisateur">Statut de l&#8217;utilisateur</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-getting-started/request-response">Les objets Request et Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-getting-started/controller">Les contrôleurs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-getting-started/model">Les modèles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-getting-started/view">Les vues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-getting-started/orm">L&#8217;Orm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-advanced/index">Notions avancées</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-tutorial/index">Tutoriaux</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-tutorial/blog/index">Création d&#8217;un blog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-helper/index">Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-helper/pagination">Pagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#document-helper/mail">Mails</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-other/index">Autre</a><ul class="simple">
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html#document-index">Documentation GCsystem</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html#document-index">Docs</a> &raquo;</li>
+      
+    <li>documentation Documentation GCsystem 1</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="bienvenue-dans-la-documentation-du-gcsystem">
+<h1>Bienvenue dans la documentation du GCsystem<a class="headerlink" href="#bienvenue-dans-la-documentation-du-gcsystem" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/logo.png"><img alt="_images/logo.png" src="_images/logo.png" style="width: 125px;" /></a>
+</div>
+<div class="section" id="presentation-rapide">
+<h2>Présentation rapide<a class="headerlink" href="#presentation-rapide" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Le GCsystem est un framework PHP MVC full stack orienté objet. Son apparition remonte à l&#8217;été 2011. A l&#8217;époque, il s&#8217;agissait seulement d&#8217;une organisation plus claire des codes sources ainsi que de l&#8217;existence de quelques fonctions constituant une sorte de librairie. Un an plus tard, le système a été entièrement recodé pour sa version 2.0, ne gardant comme point commun que le système de rubrique déjà existant et en introduisant le modèle MVC (Modèle Vue Contrôleur).</p>
+<p>La version actuelle (3.0) cherche cette fois à professionnaliser le framework en lui apportant les composants qui lui manquaient (Orm, gestion des erreurs, Composer etc.) et en lui donnant une structure plus robuste et plus facilement maintenable.</p>
+</div>
+<div class="section" id="philosophie-du-gcsystem">
+<h2>Philosophie du GCsystem<a class="headerlink" href="#philosophie-du-gcsystem" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Le premier but du GCsystem est d&#8217;être simple à comprendre d&#8217;un premier abord pour permettre d&#8217;aller rapidement au plus important : créer votre application web. Pour cela, le GCsystem est basé sur le principe des modules : une rubrique constitue un ensemble de fonctionnalités relativement proche. Par exemple, on trouvera généralement deux ou trois modules sur un site :</p>
+<ul class="simple">
+<li>Front office</li>
+<li>Back office</li>
+<li>REST api</li>
+</ul>
+<p>De plus, le GCsystem est également - comme la plupart des framework aujourd&#8217;hui - d&#8217;un grande assistance pour tout ce qui concerne les tâches rébarbatives telles que : l&#8217;authentification, les droits d&#8217;accès, le routing, la gestion du cache, la sécurité etc.
+Le GCsystem inclue également quelques helpers aujourd&#8217;hui bien développés qui permettent de simplifier grandement des mécanismes tels que les formulaires, l&#8217;envoi de mail ou encore la pagination.
+En clair, le GCsystem se veut être un outil simple mais puissant qui sera à même de répondre à tous vos besoin.</p>
+</div>
+<div class="section" id="apercu">
+<h2>Aperçu<a class="headerlink" href="#apercu" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Gcs</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">System\Controller\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">System\Template\Template</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Orm\Entity\Article</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Orm\Entity\Category</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Article</span> <span class="k">extends</span> <span class="nx">Controller</span><span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">actionNew</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Template</span><span class="p">(</span><span class="s1">&#39;index/formPost&#39;</span><span class="p">,</span> <span class="s1">&#39;formDefault&#39;</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;Création article&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="nx">Category</span><span class="o">::</span><span class="na">find</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">())</span>
+            <span class="o">-&gt;</span><span class="na">show</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">actionSave</span><span class="p">(</span><span class="nx">Article</span> <span class="nv">$article</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="nv">$article</span><span class="o">-&gt;</span><span class="na">valid</span><span class="p">()){</span>
+            <span class="nv">$article</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">else</span><span class="p">{</span>
+            <span class="k">return</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Template</span><span class="p">(</span><span class="s1">&#39;index/formPost&#39;</span><span class="p">,</span> <span class="s1">&#39;formDefault&#39;</span><span class="p">))</span>
+                <span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;Création article&#39;</span><span class="p">)</span>
+                <span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s1">&#39;article&#39;</span><span class="p">,</span> <span class="nv">$article</span><span class="p">)</span>
+                <span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="nx">Category</span><span class="o">::</span><span class="na">find</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">())</span>
+                <span class="o">-&gt;</span><span class="na">show</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="equipe-de-developpement">
+<h2>Équipe de développement<a class="headerlink" href="#equipe-de-developpement" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="figure align-center">
+<img alt="_images/contributors.png" src="_images/contributors.png" />
+</div>
+<p>Le GCsystem est activement développé par fabsgc et lucas5190</p>
+</div>
+<div class="section" id="sommaire">
+<h2>Sommaire<a class="headerlink" href="#sommaire" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="toctree-wrapper compound">
+<span id="document-getting-started/index"></span><div class="section" id="pour-commencer">
+<h3>Pour commencer<a class="headerlink" href="#pour-commencer" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="toctree-wrapper compound">
+<span id="document-getting-started/architecture"></span><div class="section" id="architecture-du-gcsystem">
+<h4>Architecture du GCsystem<a class="headerlink" href="#architecture-du-gcsystem" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Avant de commencer à développer votre application, il est important que vous preniez connaissance de l&#8217;architecture du GCsystem.</p>
+<div class="section" id="organisation-du-framework">
+<h5>Organisation du Framework<a class="headerlink" href="#organisation-du-framework" title="Lien permanent vers ce titre">¶</a></h5>
+<p>La struture du dossier du framework est similaire à celle-ci :</p>
+<div class="code html highlight-python"><div class="highlight"><pre>app/
+    cache/
+    log/
+    resource/
+src/
+    gcs/
+        controller/
+        model/
+        resource/
+vendor/
+web/
+</pre></div>
+</div>
+<p>Le dossier <code class="docutils literal"><span class="pre">app</span></code> contient les fichiers de cache et de log. Il comprend également toutes les ressources qui seront communes à tous les modules de votre application (configuration, entités, évènements, fichiers de langues, validation de formulaire, template).</p>
+<p>Le dossier <code class="docutils literal"><span class="pre">src</span></code> est le coeur de votre application, c&#8217;est là que vous placerez tous vos modules (contrôleurs, modèles, templates etc.), ainsi que les ressources propres à chaque module (configuration, entités, évènements, fichiers de langues, validation de formulaire).</p>
+<p>Le dossier <code class="docutils literal"><span class="pre">vendor</span></code> est lié à l&#8217;intégration de Composer. C&#8217;est dans ce dossier que se trouve le framework en tant que tel. Vous n&#8217;aurez jamais à modifier vous-même ce dossier.</p>
+</div>
+<div class="section" id="cheminement-d-une-requete">
+<h5>Cheminement d&#8217;une requête<a class="headerlink" href="#cheminement-d-une-requete" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Le premier fichier appelé avant le routing  est <code class="docutils literal"><span class="pre">index.php</span></code>. Il s&#8217;agit du contrôleur principal de l&#8217;application qui va se charger de lancer le moteur. Son appel est paramétré dans le .htaccess situé à la racine du projet :</p>
+<div class="code apache highlight-python"><div class="highlight"><pre>php_flag short_open_tag off
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+php_flag zlib.output_compression on
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">Si vous utilisez un autre logiciel qu&#8217;Apache, il vous faudra configurer l&#8217;équivalent du .htaccess par vous-même.</p>
+</div>
+<p>Une fois le moteur lancé, celui-ci va se charger d&#8217;analyser l&#8217;URL soumise afin d&#8217;en retirer les informations qui permettront d&#8217;appeler les bons contrôleurs des bonnes rubriques.</p>
+<p>Parallèlement à l&#8217;appel des contrôleurs, le moteur se charge également des processus tels que l&#8217;antispam, le parefeu, les crons, la connexion à la base de données, le cache des pages, la création des constantes personnalisées etc.</p>
+<p>Comme un bon croquis vaut mieux qu&#8217;un long discours, voici un résumé du fonctionnement interne du framework :</p>
+<div class="figure align-center">
+<img alt="_images/query.png" src="_images/query.png" />
+</div>
+</div>
+</div>
+<span id="document-getting-started/install"></span><div class="section" id="installation">
+<h4>Installation<a class="headerlink" href="#installation" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Actuellement, il existe deux manières différentes d&#8217;installer le framework.</p>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p>Pour pouvoir utiliser le GCsystem, vous devez absolument remplir les conditions suivantes :</p>
+<ul class="last simple">
+<li>PHP 5.4 minimum</li>
+<li>Réécriture d&#8217;URL activée (Apache, Nginx ou autre)</li>
+<li>Chmod 755 sur les situés dans app/</li>
+<li>Composer</li>
+</ul>
+</div>
+<div class="section" id="installation-avec-composer">
+<h5>Installation avec Composer<a class="headerlink" href="#installation-avec-composer" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Le GCsystem dispose d&#8217;un petit programme séparé qui va se charger de l&#8217;installation. Tout d&#8217;abord, téléchargez ce petit programme en mode global depuis composer.Par la suite, exécutez la commande Composer <code class="docutils literal"><span class="pre">gcsystem</span></code> nouvellement créée dans le répertoire de votre choix, et enfin faites un simple <code class="docutils literal"><span class="pre">composer</span> <span class="pre">update</span></code></p>
+<div class="highlight-bash"><div class="highlight"><pre>composer global require <span class="s2">&quot;gcsystem/installer=dev-master&quot;</span>
+composer gcsystem
+composer update
+</pre></div>
+</div>
+<p>Vous pouvez également utiliser la commande <code class="docutils literal"><span class="pre">create-project</span></code> de Composer :</p>
+<div class="highlight-bash"><div class="highlight"><pre>composer create-project <span class="s2">&quot;gcsystem/gcsystem=dev-master&quot;</span>
+<span class="nb">cd </span>gcsystem
+composer update
+</pre></div>
+</div>
+</div>
+<div class="section" id="installation-avec-github-et-composer">
+<h5>Installation avec Github et Composer<a class="headerlink" href="#installation-avec-github-et-composer" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Tout d&#8217;abord, Récupérer le framework (sans son coeur), depuis le dépôt Github :</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone https://github.com/fabsgc/gcsystem.git
+</pre></div>
+</div>
+<p>Ensuite, il vous suffit d&#8217;exécuter la commande <code class="docutils literal"><span class="pre">update</span></code> de Composer pour mettre à jour toutes les dépendances (le coeur du framework :</p>
+<div class="highlight-bash"><div class="highlight"><pre>composer update
+</pre></div>
+</div>
+</div>
+</div>
+<span id="document-getting-started/configuration"></span><div class="section" id="configuration">
+<h4>Configuration<a class="headerlink" href="#configuration" title="Lien permanent vers ce titre">¶</a></h4>
+<p>La configuration du framework est contenue dans un fichier unique située à la racine : <code class="docutils literal"><span class="pre">config.php</span></code>. Ce fichier contient une partie qui ne doit pas être modifiée (la majorité des chemins d&#8217;accès), ainsi que d&#8217;une partie personnalisable. Nous allons ici voir chacune de ces options en détails.</p>
+<div class="section" id="connexion-a-la-base-de-donnees">
+<h5>Connexion à la base de données<a class="headerlink" href="#connexion-a-la-base-de-donnees" title="Lien permanent vers ce titre">¶</a></h5>
+<p>La connexion se présente sous la forme d&#8217;un tableau PHP contenant les champs habituels d&#8217;une connexion avec PDO (hôte, nom d&#8217;utilisateur, mot de passe, nom de la base). Le système propose également de choisir le driver bien qu&#8217;actuellement, seul PDO soit supporté. De plus, on peut également choisir le SGBD (seul Mysql supporté pour l&#8217;instant), ainsi que l&#8217;encodage.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;hostname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">;</span>
+<span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;root&quot;</span><span class="p">;</span>
+<span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span><span class="p">;</span>
+<span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;driver&#39;</span><span class="p">]</span>   <span class="o">=</span> <span class="s2">&quot;pdo&quot;</span><span class="p">;</span>
+<span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="s2">&quot;mysql&quot;</span><span class="p">;</span>
+<span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;charset&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s2">&quot;utf8&quot;</span><span class="p">;</span>
+<span class="nv">$db</span><span class="p">[</span><span class="s1">&#39;collation&#39;</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;utf8_unicode_ci&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Une fois que la connexion est configurée, vous pouvez choisir de l&#8217;activer ou non. Par défaut celle-ci est désactivée. Le paramètre à modifier est la constante <code class="docutils literal"><span class="pre">DATABASE</span></code> :</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;DATABASE&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parefeu">
+<h5>Parefeu<a class="headerlink" href="#parefeu" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Le parefeu est un système entièrement configurable qui vous permet de pouvoir gérer aisément les droits d&#8217;accès à vos page en tenant compte du statut de connexion ainsi que du grade de vos visiteurs s&#8217;ils sont connectés. Il vous protège également contre la faille CSRF en GET et en POST (son fonctionnement sera détaillé par la suite dans un chapitre dédié).</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;SECURITY&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="antispam">
+<h5>Antispam<a class="headerlink" href="#antispam" title="Lien permanent vers ce titre">¶</a></h5>
+<p>L&#8217;antispam est un petit système complémentaire qui permet grâce à une reconnaissance par IP de pouvoir empêcher certaines personnes de spammer des pages en mettant en place une limite de requête pour une période donnée.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;SPAM&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="encodage">
+<h5>Encodage<a class="headerlink" href="#encodage" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Vous pouvez spécifier dans la configuration l&#8217;encodage qui sera renvoyé par le serveur au client. Par défaut, il s&#8217;agit de l&#8217;UTF-8</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;CHARSET&#39;</span><span class="p">,</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="repertoire-racine">
+<h5>Répertoire racine<a class="headerlink" href="#repertoire-racine" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Il peut arriver dans certains cas que le framework ne soit pas situé à la racine du site. Par exemple si le framework est situé dans un dossier <code class="docutils literal"><span class="pre">site</span></code>, il faudra mettre la constante <code class="docutils literal"><span class="pre">FOLDER</span></code> à la valeur <code class="docutils literal"><span class="pre">site/</span></code> .</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;FOLDER&#39;</span><span class="p">,</span> <span class="s1">&#39;site/&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="langue-par-defaut">
+<h5>Langue par défaut<a class="headerlink" href="#langue-par-defaut" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Le framework est capable de gérer l&#8217;internationalisation. Pour cela, il vous propose d&#8217;indiquer une langue par défaut dans la configuration (le français). Par conséquent, à condition que la langue ne soit pas changée par la suite, ce sera cette langue qui sera utilisée à l&#8217;affichage. L&#8217;utilisation des fichiers de langue vous sera expliquée ensuite.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;LANG&#39;</span><span class="p">,</span> <span class="s1">&#39;fr&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="choix-de-l-environnement">
+<h5>Choix de l&#8217;environnement<a class="headerlink" href="#choix-de-l-environnement" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Il existe deux environnements : <code class="docutils literal"><span class="pre">development</span></code> et <code class="docutils literal"><span class="pre">production</span></code>. La seule différence est qu&#8217;en production les erreurs ne sont plus affichées.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;ENVIRONMENT&#39;</span><span class="p">,</span> <span class="s1">&#39;development&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="maintenance">
+<h5>Maintenance<a class="headerlink" href="#maintenance" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Si jamais vous devez procéder à une maintenant sur le site et donc le rendre inaccessible pour une période donnée, vous pouvez le spécifier directement ici. Si la maintenant est activée, une page spéciale s&#8217;affichera quelque soit l&#8217;url entrée. La template de cette page se situe dans <code class="docutils literal"><span class="pre">app/resource/template/system/maintenance.tpl</span></code>. L&#8217;utilisation des templates sera expliquée dans le chapitre sur les vues.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;MAINTENANCE&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="profiler">
+<h5>Profiler<a class="headerlink" href="#profiler" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Le profiler est un formidable outil qui vous apportera une grande quantité d&#8217;informations sur chaque page qui est exécutée par le framework. Il enregistre par exemple le contenu de toutes les variables superglobales, les requêtes SQL, les fichiers chargés etc. Nous vous recommandons grandement de l&#8217;utiliser pour des raisons évidentes.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PROFILER&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="echappement-des-variables-superglobales">
+<h5>Échappement des variables superglobales<a class="headerlink" href="#echappement-des-variables-superglobales" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Si vous activez ces paramètres, les variables <code class="docutils literal"><span class="pre">$_GET</span></code> et <code class="docutils literal"><span class="pre">$_POST</span></code> seront automatiquement échappées en utilisant la fonction <code class="docutils literal"><span class="pre">htmlspecialchars</span></code></p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;SECURE_GET&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;SECURE_POST&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="constantes-utilisateur">
+<h5>Constantes utilisateur<a class="headerlink" href="#constantes-utilisateur" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Le framework vous permet de définir dans un fichier XML vos propres constantes. Pour différencier ces constantes de celles du framework, il est recommandé de leur attribuer un préfix. L&#8217;utilisation des constantes personnalisées vous sera expliquée par la suite.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;DEFINE_PREFIX&#39;</span><span class="p">,</span> <span class="s1">&#39;USER_&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cache">
+<h5>Cache<a class="headerlink" href="#cache" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Le GCsystem met à votre disposition un puissant système de cache que vous pouvez activer ou désactiver via la constante <code class="docutils literal"><span class="pre">CACHE_ENABLED</span></code>. De plus, pour encore augmenter la performance de l&#8217;application, le framework peut mettre en cache toute la configuration du système grâce à <code class="docutils literal"><span class="pre">CACHE_CONFIG</span></code>. Nous vous recommandons de n&#8217;activer cette option que si vous êtes en mode production car cette option nécessite de supprimer le cache après chaque modification de la configuration. Enfin si vous le souhaitez vous pouvez faire en sorte de hasher le nom des fichiers de cache avec <code class="docutils literal"><span class="pre">CACHE_SHA1</span></code>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;CACHE_ENABLED&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;CACHE_CONFIG&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;CACHE_SHA1&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="logs">
+<h5>Logs<a class="headerlink" href="#logs" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Le GCsystem procède à l&#8217;enregistrement de différents logs dans <code class="docutils literal"><span class="pre">app/log/</span></code> :</p>
+<ul class="simple">
+<li>les erreurs de php</li>
+<li>les erreurs propres au framework</li>
+<li>l&#8217;historique des requêtes</li>
+<li>les requêtes SQL</li>
+</ul>
+<p>Vous pouvez évidemment désactiver ces logs.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;LOG_ENABLED&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="affichage-des-erreurs">
+<h5>Affichage des erreurs<a class="headerlink" href="#affichage-des-erreurs" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Les erreurs propres au framework sont de 3 types. Vous pouvez activer ou désactiver l&#8217;affichage de ces erreurs. Notez que si vous désactiver l&#8217;affichage, ces erreurs sont quand même enregistrées dans les fichiers de log s&#8217;ils sont activés.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;DISPLAY_ERROR_FATAL&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;DISPLAY_ERROR_EXCEPTION&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;DISPLAY_ERROR_ERROR&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="minifier-sortie-html">
+<h5>Minifier sortie html<a class="headerlink" href="#minifier-sortie-html" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Lorsque vous affichez des pages HTML, le framework vous permet de les minifier en supprimant tous les espaces inutiles afin de les alléger.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="asset-manager">
+<h5>Asset manager<a class="headerlink" href="#asset-manager" title="Lien permanent vers ce titre">¶</a></h5>
+<p>L&#8217;asset manager est un module qui vous permet de regrouper vos fichiers CSS et JS en un seul fichier dont le contenu est compressé et mis en cache. Cela vous permet d&#8217;avoir une organisation de fichiers lourdes mais claire sans pour autant entraîner le téléchargement d&#8217;un trop grand nombre de fichiers par le client. Le fonctionnement de ce module vous sera expliqué dans un chapitre séparé.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;ASSET_MANAGER&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="chemins-vers-les-ressources-web">
+<h5>Chemins vers les ressources web<a class="headerlink" href="#chemins-vers-les-ressources-web" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Ces chemins sont quelques raccourcis qui vous permettent d&#8217;accéder plus facilement aux ressources; que vous soyez dans les fichiers de templates ou les fichiers php.</p>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;HTML_WEB_PATH&#39;</span><span class="p">,</span> <span class="nx">FOLDER</span><span class="o">.</span><span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="nx">WEB_PATH</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;PHP_WEB_PATH&#39;</span><span class="p">,</span> <span class="nx">WEB_PATH</span><span class="p">);</span>
+
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;IMAGE_PATH_PHP&#39;</span><span class="p">,</span> <span class="nx">WEB_PATH</span><span class="o">.</span><span class="s1">&#39;image/&#39;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;CSS_PATH_PHP&#39;</span><span class="p">,</span> <span class="nx">WEB_PATH</span><span class="o">.</span><span class="s1">&#39;css/&#39;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;JS_PATH_PHP&#39;</span><span class="p">,</span> <span class="nx">WEB_PATH</span><span class="o">.</span><span class="s1">&#39;js/&#39;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;FILE_PATH_PHP&#39;</span><span class="p">,</span> <span class="nx">WEB_PATH</span><span class="o">.</span><span class="s1">&#39;file/&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<span id="document-getting-started/spam"></span><div class="section" id="l-anti-spam">
+<h4>L&#8217;anti spam<a class="headerlink" href="#l-anti-spam" title="Lien permanent vers ce titre">¶</a></h4>
+<div class="section" id="configuration">
+<h5>Configuration<a class="headerlink" href="#configuration" title="Lien permanent vers ce titre">¶</a></h5>
+</div>
+<div class="section" id="page-d-erreur">
+<h5>Page d&#8217;erreur<a class="headerlink" href="#page-d-erreur" title="Lien permanent vers ce titre">¶</a></h5>
+</div>
+<div class="section" id="exceptions">
+<h5>Exceptions<a class="headerlink" href="#exceptions" title="Lien permanent vers ce titre">¶</a></h5>
+</div>
+</div>
+<span id="document-getting-started/firewall"></span><div class="section" id="le-parefeu">
+<h4>Le parefeu<a class="headerlink" href="#le-parefeu" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Pour rappel, le parefeu est un système entièrement configurable qui vous permet de pouvoir gérer aisément les droits d&#8217;accès à vos page en tenant compte du statut de connexion ainsi que du grade de vos visiteurs s&#8217;ils sont connectés. Il vous protège également contre la faille CSRF en GET et en POST.</p>
+<p>Il existe un parefeu pour chaque module que vous créez. Comme ce fichier est assez complexe, nous allons le détailler point par point d&#8217;après un exemple :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;root&gt;</span>
+    <span class="nt">&lt;roles</span> <span class="na">name=</span><span class="s">&quot;role.gcs&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;role</span> <span class="na">name=</span><span class="s">&quot;USER&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/roles&gt;</span>
+    <span class="nt">&lt;config&gt;</span>
+        <span class="nt">&lt;login&gt;</span>
+            <span class="nt">&lt;source</span> <span class="na">name=</span><span class="s">&quot;.gcs.index&quot;</span> <span class="na">vars=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/login&gt;</span>
+        <span class="nt">&lt;default&gt;</span>
+            <span class="nt">&lt;source</span> <span class="na">name=</span><span class="s">&quot;.gcs.gcs.profiler&quot;</span> <span class="na">vars=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/default&gt;</span>
+        <span class="nt">&lt;forbidden</span> <span class="na">template=</span><span class="s">&quot;.app/error/firewall&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;variable</span> <span class="na">type=</span><span class="s">&quot;lang&quot;</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">value=</span><span class="s">&quot;system.firewall.forbidden.title&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;variable</span> <span class="na">type=</span><span class="s">&quot;lang&quot;</span> <span class="na">name=</span><span class="s">&quot;message&quot;</span> <span class="na">value=</span><span class="s">&quot;system.firewall.forbidden.content&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/forbidden&gt;</span>
+        <span class="nt">&lt;csrf</span> <span class="na">name=</span><span class="s">&quot;token.gcs&quot;</span> <span class="na">template=</span><span class="s">&quot;.app/error/firewall&quot;</span> <span class="na">enabled=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;variable</span> <span class="na">type=</span><span class="s">&quot;lang&quot;</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">value=</span><span class="s">&quot;system.firewall.csrf.title&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;variable</span> <span class="na">type=</span><span class="s">&quot;lang&quot;</span> <span class="na">name=</span><span class="s">&quot;message&quot;</span> <span class="na">value=</span><span class="s">&quot;system.firewall.csrf.content&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/csrf&gt;</span>
+        <span class="nt">&lt;logged</span> <span class="na">name=</span><span class="s">&quot;logged.gcs&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/config&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="les-roles">
+<h5>Les rôles<a class="headerlink" href="#les-roles" title="Lien permanent vers ce titre">¶</a></h5>
+</div>
+<div class="section" id="les-redirections">
+<h5>Les redirections<a class="headerlink" href="#les-redirections" title="Lien permanent vers ce titre">¶</a></h5>
+<div class="section" id="page-de-connexion">
+<h6>Page de connexion<a class="headerlink" href="#page-de-connexion" title="Lien permanent vers ce titre">¶</a></h6>
+</div>
+<div class="section" id="page-par-defaut">
+<h6>Page par défaut<a class="headerlink" href="#page-par-defaut" title="Lien permanent vers ce titre">¶</a></h6>
+</div>
+</div>
+<div class="section" id="les-pages-d-erreur">
+<h5>Les pages d&#8217;erreur<a class="headerlink" href="#les-pages-d-erreur" title="Lien permanent vers ce titre">¶</a></h5>
+</div>
+<div class="section" id="la-faille-csrf">
+<h5>La faille CSRF<a class="headerlink" href="#la-faille-csrf" title="Lien permanent vers ce titre">¶</a></h5>
+</div>
+</div>
+<span id="document-getting-started/routing"></span><div class="section" id="le-routing">
+<h4>Le routing<a class="headerlink" href="#le-routing" title="Lien permanent vers ce titre">¶</a></h4>
+<p>Une fois que vous avez correctement configuré le framework, il serait intéressant de pouvoir commencer à créer vos propres pages. Et la première pierre de votre site passera immanquablement par la création de nouvelles urls. Nous allons donc ici vous présenter en détail le système de routing.</p>
+<p>Chaque module que vous créez dans le répertoire <code class="docutils literal"><span class="pre">src</span></code> possède son propre fichier de routing pour des raisons de lisibilité. Ce fichier nommé <code class="docutils literal"><span class="pre">route.xml</span></code> est situé dans le sous répertoire <code class="docutils literal"><span class="pre">src/module/resource/config/</span></code>. Voici un exemple d&#8217;un fichier de routing :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;root&gt;</span>
+    <span class="nt">&lt;route</span> <span class="na">name=</span><span class="s">&quot;index&quot;</span> <span class="na">url=</span><span class="s">&quot;(/*)&quot;</span> <span class="na">action=</span><span class="s">&quot;index.default&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;route</span> <span class="na">name=</span><span class="s">&quot;get&quot;</span> <span class="na">url=</span><span class="s">&quot;/form(/*)&quot;</span> <span class="na">action=</span><span class="s">&quot;index.get&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;group</span> <span class="na">name=</span><span class="s">&quot;gcs&quot;</span> <span class="na">url=</span><span class="s">&quot;/gcs&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;route</span> <span class="na">name=</span><span class="s">&quot;lang.default&quot;</span> <span class="na">url=</span><span class="s">&quot;/lang(/*)&quot;</span> <span class="na">action=</span><span class="s">&quot;lang.default&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;route</span> <span class="na">name=</span><span class="s">&quot;profiler.default&quot;</span> <span class="na">url=</span><span class="s">&quot;/profiler(/*)&quot;</span> <span class="na">action=</span><span class="s">&quot;profiler.default&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/group&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="introduction">
+<h5>Introduction<a class="headerlink" href="#introduction" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Ce fichier est composé de deux balises différentes : les balises <code class="docutils literal"><span class="pre">route</span></code> et les balises <code class="docutils literal"><span class="pre">group</span></code>. Les balises route servent à représenter une url donnée tandis que les balises group permettent d&#8217;encapsuler des routes possédents des attributs communs (noms proches, urls proches etc.).</p>
+<p>Ces deux balises possèdent les mêmes attributs :</p>
+<ul class="simple">
+<li><strong>name</strong> : il s&#8217;agit du nom de la route. Attention, toutes les routes d&#8217;un même module doivent avoir des noms différents. En revanche, les routes provenant de modules différents peuvent avoir des noms en commun.</li>
+<li><strong>url</strong> : il s&#8217;agit de l&#8217;url de la route.</li>
+<li><strong>vars</strong> : pour chaque url, vous pouvez préciser des parties variables.</li>
+<li><strong>action</strong> : cet attribut précise quelle action de quel controller devra être invoquée.</li>
+<li><strong>method</strong> : il est possible de limiter la méthode d&#8217;accès à certaines pages parmi : get, post, put et delete.</li>
+<li><strong>access</strong> : il est aussi possible de limiter l&#8217;accès à une url pour certains types d&#8217;utilisateurs.</li>
+<li><strong>logged</strong> : on peut aussi dire si la page peut-être vu en étant connecté ou non.</li>
+<li><strong>cache</strong> : il est possible d&#8217;enregistrer un cache totale de la page (cache html) en précisant le temps de mise en cache en seconde.</li>
+</ul>
+</div>
+<div class="section" id="creation-de-routes">
+<h5>Création de routes<a class="headerlink" href="#creation-de-routes" title="Lien permanent vers ce titre">¶</a></h5>
+<div class="section" id="creation-d-une-route-simple">
+<h6>Création d&#8217;une route simple<a class="headerlink" href="#creation-d-une-route-simple" title="Lien permanent vers ce titre">¶</a></h6>
+<p>Nous souhaitons créer une page d&#8217;accueil d&#8217;un blog sans aucun paramètre permettant d&#8217;appeler l&#8217;action <code class="docutils literal"><span class="pre">index</span></code> du controller <code class="docutils literal"><span class="pre">blog</span></code>. Cette page ne peut être vue que en GET. Nous écrirons alors :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;route</span> <span class="na">name=</span><span class="s">&quot;blog&quot;</span> <span class="na">url=</span><span class="s">&quot;/blog&quot;</span> <span class="na">action=</span><span class="s">&quot;blog.index&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Il est important de souligner que toutes les urls doivent absolument commencer par un <code class="docutils literal"><span class="pre">/</span></code>. De plus dans l&#8217;attribut action, il faut séparer le nom du controller de l&#8217;action par un <code class="docutils literal"><span class="pre">.</span></code>.</p>
+</div>
+<div class="section" id="gestion-des-routes-a-parametres-variables">
+<h6>Gestion des routes à paramètres variables<a class="headerlink" href="#gestion-des-routes-a-parametres-variables" title="Lien permanent vers ce titre">¶</a></h6>
+<p>Il arrive très souvent que vous ayez besoin de rajouter des parties variables dans vos urls. Pour cela, le routeur du GCS s&#8217;appuie sur la syntaxe des Regex. Imaginons par exemple une route permettant d&#8217;afficher un article d&#8217;un blog. Cette route devra contenir le numéro de l&#8217;article ainsi que son titre. L&#8217;url sera donc :</p>
+<div class="code html highlight-python"><div class="highlight"><pre><span class="n">url</span><span class="o">=</span><span class="s">&quot;/blog/article/([0-9]+)/(.+)&quot;</span>
+</pre></div>
+</div>
+<p>Maintenant que l&#8217;url est écrire, il ne reste plus qu&#8217;à préciser au framework quelles sont les parties variables. Pour cela, nous utilisons l&#8217;attribut <code class="docutils literal"><span class="pre">vars</span></code>. Il suffit d&#8217;y lister dans leur ordre d&#8217;apparition le nom des variables que vous voulez créer et le framework se chargera d&#8217;associer à chaque variable la bonne valeur :</p>
+<div class="code html highlight-python"><div class="highlight"><pre><span class="nb">vars</span><span class="o">=</span><span class="s">&quot;id,title&quot;</span>
+</pre></div>
+</div>
+<p>Grâce à cette ligne, le GCS va créer dans le tableau <code class="docutils literal"><span class="pre">$_GET</span></code> les clefs <code class="docutils literal"><span class="pre">id</span></code> et <code class="docutils literal"><span class="pre">title</span></code>. Nous obtenons donc au final la route suivante :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;route</span> <span class="na">name=</span><span class="s">&quot;blog.article&quot;</span> <span class="na">url=</span><span class="s">&quot;/blog/article/([0-9]+)/(.+)&quot;</span> <span class="na">vars=</span><span class="s">&quot;id,title&quot;</span> <span class="na">action=</span><span class="s">&quot;blog.article&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gestion-des-groupes-de-routes">
+<h6>Gestion des groupes de routes<a class="headerlink" href="#gestion-des-groupes-de-routes" title="Lien permanent vers ce titre">¶</a></h6>
+<p>Il arrive parfois que vous ayez de nombreuses urls avec des points communs. Dans ce cas, il devient vite fastidieux d&#8217;écrire les parties redondantes. Pour éviter cela, le GCS propose l&#8217;utilisation des groupes. Imaginons alors l&#8217;exemple du CRUD. Nous avons dans un module 4 action permettant de lister, créer, modifier et supprimer des données. Ces urls ont beaucoup de points communs (name, url, action, logged, access, method et cache). Nous écrirons alors :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;group</span> <span class="na">name=</span><span class="s">&quot;crud&quot;</span> <span class="na">url=</span><span class="s">&quot;/crud&quot;</span> <span class="na">action=</span><span class="s">&quot;crud&quot;</span> <span class="na">method=</span><span class="s">&quot;*&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;route</span> <span class="na">name=</span><span class="s">&quot;default&quot;</span> <span class="na">url=</span><span class="s">&quot;(/*)&quot;</span> <span class="na">action=</span><span class="s">&quot;home&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;route</span> <span class="na">name=</span><span class="s">&quot;insert&quot;</span> <span class="na">url=</span><span class="s">&quot;/insert(/*)&quot;</span> <span class="na">action=</span><span class="s">&quot;insert&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;route</span> <span class="na">name=</span><span class="s">&quot;update&quot;</span> <span class="na">url=</span><span class="s">&quot;/update/([0-9]+)(/*)&quot;</span> <span class="na">action=</span><span class="s">&quot;update&quot;</span> <span class="na">vars=</span><span class="s">&quot;id&quot;</span> <span class="na">method=</span><span class="s">&quot;put&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;route</span> <span class="na">name=</span><span class="s">&quot;delete&quot;</span> <span class="na">url=</span><span class="s">&quot;/delete/([0-9]+)(/*)&quot;</span> <span class="na">action=</span><span class="s">&quot;delete&quot;</span> <span class="na">vars=</span><span class="s">&quot;id&quot;</span> <span class="na">method=</span><span class="s">&quot;delete&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/group&gt;</span>
+</pre></div>
+</div>
+<p>Vous pouvez remarquer que les attributs name, url et action vons se concatener tandis que l&#8217;attribut methode de la balise group va être remplacer par l&#8217;attribut method de ses enfants.</p>
+</div>
+</div>
+<div class="section" id="restreindre-l-acces-a-une-url">
+<h5>Restreindre l&#8217;accès à une url<a class="headerlink" href="#restreindre-l-acces-a-une-url" title="Lien permanent vers ce titre">¶</a></h5>
+<p>Il existe deux façons de protéger l&#8217;accès à vos page :</p>
+<ul class="simple">
+<li>vérifier si l&#8217;utilisateur est connecté ou non</li>
+<li>vérifier si l&#8217;utilisateur connecté possède les droits adéquats</li>
+</ul>
+<div class="section" id="connexion-de-l-utilisateur">
+<h6>Connexion de l&#8217;utilisateur<a class="headerlink" href="#connexion-de-l-utilisateur" title="Lien permanent vers ce titre">¶</a></h6>
+<p>La vérification de la connexion de l&#8217;utilisateur se fait via l&#8217;attribut <code class="docutils literal"><span class="pre">logged</span></code>. Il peut prendre trois valeurs : <code class="docutils literal"><span class="pre">true</span></code>, <code class="docutils literal"><span class="pre">false</span></code> ou <code class="docutils literal"><span class="pre">*</span></code> (les deux). Si cet attribut n&#8217;est pas renseigné pour une route, la valeur par défaut est <code class="docutils literal"><span class="pre">*</span></code>.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;route</span> <span class="na">name=</span><span class="s">&quot;blog&quot;</span> <span class="na">url=</span><span class="s">&quot;/blog&quot;</span> <span class="na">action=</span><span class="s">&quot;blog.index&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span> <span class="na">logged=</span><span class="s">&quot;*&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="statut-de-l-utilisateur">
+<h6>Statut de l&#8217;utilisateur<a class="headerlink" href="#statut-de-l-utilisateur" title="Lien permanent vers ce titre">¶</a></h6>
+<p>Si jamais vous voulez que l&#8217;utilisateur soit connecté pour accéder à une page, vous pouvez, en relation avec les rôles écrits dans le parefeu, préciser quels utilisateurs peuvent voire cette page en les listant dans l&#8217;attribut <code class="docutils literal"><span class="pre">access</span></code> :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;route</span> <span class="na">name=</span><span class="s">&quot;blog&quot;</span> <span class="na">url=</span><span class="s">&quot;/blog&quot;</span> <span class="na">action=</span><span class="s">&quot;blog.index&quot;</span> <span class="na">method=</span><span class="s">&quot;get&quot;</span> <span class="na">logged=</span><span class="s">&quot;true&quot;</span> <span class="na">access=</span><span class="s">&quot;ADMIN,USER&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<span id="document-getting-started/request-response"></span><div class="section" id="les-objets-request-et-response">
+<h4>Les objets Request et Response<a class="headerlink" href="#les-objets-request-et-response" title="Lien permanent vers ce titre">¶</a></h4>
+</div>
+<span id="document-getting-started/controller"></span><div class="section" id="les-controleurs">
+<h4>Les contrôleurs<a class="headerlink" href="#les-controleurs" title="Lien permanent vers ce titre">¶</a></h4>
+</div>
+<span id="document-getting-started/model"></span><div class="section" id="les-modeles">
+<h4>Les modèles<a class="headerlink" href="#les-modeles" title="Lien permanent vers ce titre">¶</a></h4>
+</div>
+<span id="document-getting-started/view"></span><div class="section" id="les-vues">
+<h4>Les vues<a class="headerlink" href="#les-vues" title="Lien permanent vers ce titre">¶</a></h4>
+</div>
+<span id="document-getting-started/orm"></span><div class="section" id="l-orm">
+<h4>L&#8217;Orm<a class="headerlink" href="#l-orm" title="Lien permanent vers ce titre">¶</a></h4>
+</div>
+</div>
+</div>
+<span id="document-advanced/index"></span><div class="section" id="notions-avancees">
+<h3>Notions avancées<a class="headerlink" href="#notions-avancees" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<span id="document-tutorial/index"></span><div class="section" id="tutoriaux">
+<h3>Tutoriaux<a class="headerlink" href="#tutoriaux" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="toctree-wrapper compound">
+<span id="document-tutorial/blog/index"></span><div class="section" id="creation-d-un-blog">
+<h4>Création d&#8217;un blog<a class="headerlink" href="#creation-d-un-blog" title="Lien permanent vers ce titre">¶</a></h4>
+</div>
+</div>
+</div>
+<span id="document-helper/index"></span><div class="section" id="helpers">
+<h3>Helpers<a class="headerlink" href="#helpers" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="toctree-wrapper compound">
+<span id="document-helper/pagination"></span><div class="section" id="pagination">
+<h4>Pagination<a class="headerlink" href="#pagination" title="Lien permanent vers ce titre">¶</a></h4>
+</div>
+<span id="document-helper/mail"></span><div class="section" id="mails">
+<h4>Mails<a class="headerlink" href="#mails" title="Lien permanent vers ce titre">¶</a></h4>
+</div>
+</div>
+</div>
+<span id="document-other/index"></span><div class="section" id="autre">
+<h3>Autre<a class="headerlink" href="#autre" title="Lien permanent vers ce titre">¶</a></h3>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, fabsgc.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

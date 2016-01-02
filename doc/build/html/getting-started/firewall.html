@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Le parefeu &mdash; documentation Documentation GCsystem 1</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="documentation Documentation GCsystem 1" href="../index.html"/>
+        <link rel="up" title="Pour commencer" href="index.html"/>
+        <link rel="next" title="Le routing" href="routing.html"/>
+        <link rel="prev" title="L’anti spam" href="spam.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> Documentation GCsystem
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Pour commencer</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">Architecture du GCsystem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#organisation-du-framework">Organisation du Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="architecture.html#cheminement-d-une-requete">Cheminement d&#8217;une requête</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#installation-avec-composer">Installation avec Composer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#installation-avec-github-et-composer">Installation avec Github et Composer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#connexion-a-la-base-de-donnees">Connexion à la base de données</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#parefeu">Parefeu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#antispam">Antispam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#encodage">Encodage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#repertoire-racine">Répertoire racine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#langue-par-defaut">Langue par défaut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#choix-de-l-environnement">Choix de l&#8217;environnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#maintenance">Maintenance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#profiler">Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#echappement-des-variables-superglobales">Échappement des variables superglobales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#constantes-utilisateur">Constantes utilisateur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#affichage-des-erreurs">Affichage des erreurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#minifier-sortie-html">Minifier sortie html</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#asset-manager">Asset manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#chemins-vers-les-ressources-web">Chemins vers les ressources web</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="spam.html">L&#8217;anti spam</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Le parefeu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#les-roles">Les rôles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#les-redirections">Les redirections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#page-de-connexion">Page de connexion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page-par-defaut">Page par défaut</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#les-pages-d-erreur">Les pages d&#8217;erreur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#la-faille-csrf">La faille CSRF</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routing.html">Le routing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routing.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="routing.html#creation-de-routes">Création de routes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="routing.html#creation-d-une-route-simple">Création d&#8217;une route simple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="routing.html#gestion-des-routes-a-parametres-variables">Gestion des routes à paramètres variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="routing.html#gestion-des-groupes-de-routes">Gestion des groupes de routes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="routing.html#restreindre-l-acces-a-une-url">Restreindre l&#8217;accès à une url</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="routing.html#connexion-de-l-utilisateur">Connexion de l&#8217;utilisateur</a></li>
+<li class="toctree-l4"><a class="reference internal" href="routing.html#statut-de-l-utilisateur">Statut de l&#8217;utilisateur</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="request-response.html">Les objets Request et Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Les contrôleurs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Les modèles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view.html">Les vues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orm.html">L&#8217;Orm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/index.html">Notions avancées</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutoriaux</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/blog/index.html">Création d&#8217;un blog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../helper/index.html">Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helper/pagination.html">Pagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helper/mail.html">Mails</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other/index.html">Autre</a><ul class="simple">
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Documentation GCsystem</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Pour commencer</a> &raquo;</li>
+      
+    <li>Le parefeu</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/getting-started/firewall.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="le-parefeu">
+<h1>Le parefeu<a class="headerlink" href="#le-parefeu" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Pour rappel, le parefeu est un système entièrement configurable qui vous permet de pouvoir gérer aisément les droits d&#8217;accès à vos page en tenant compte du statut de connexion ainsi que du grade de vos visiteurs s&#8217;ils sont connectés. Il vous protège également contre la faille CSRF en GET et en POST.</p>
+<p>Il existe un parefeu pour chaque module que vous créez. Comme ce fichier est assez complexe, nous allons le détailler point par point d&#8217;après un exemple :</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;root&gt;</span>
+    <span class="nt">&lt;roles</span> <span class="na">name=</span><span class="s">&quot;role.gcs&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;role</span> <span class="na">name=</span><span class="s">&quot;USER&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/roles&gt;</span>
+    <span class="nt">&lt;config&gt;</span>
+        <span class="nt">&lt;login&gt;</span>
+            <span class="nt">&lt;source</span> <span class="na">name=</span><span class="s">&quot;.gcs.index&quot;</span> <span class="na">vars=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/login&gt;</span>
+        <span class="nt">&lt;default&gt;</span>
+            <span class="nt">&lt;source</span> <span class="na">name=</span><span class="s">&quot;.gcs.gcs.profiler&quot;</span> <span class="na">vars=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/default&gt;</span>
+        <span class="nt">&lt;forbidden</span> <span class="na">template=</span><span class="s">&quot;.app/error/firewall&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;variable</span> <span class="na">type=</span><span class="s">&quot;lang&quot;</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">value=</span><span class="s">&quot;system.firewall.forbidden.title&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;variable</span> <span class="na">type=</span><span class="s">&quot;lang&quot;</span> <span class="na">name=</span><span class="s">&quot;message&quot;</span> <span class="na">value=</span><span class="s">&quot;system.firewall.forbidden.content&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/forbidden&gt;</span>
+        <span class="nt">&lt;csrf</span> <span class="na">name=</span><span class="s">&quot;token.gcs&quot;</span> <span class="na">template=</span><span class="s">&quot;.app/error/firewall&quot;</span> <span class="na">enabled=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;variable</span> <span class="na">type=</span><span class="s">&quot;lang&quot;</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">value=</span><span class="s">&quot;system.firewall.csrf.title&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;variable</span> <span class="na">type=</span><span class="s">&quot;lang&quot;</span> <span class="na">name=</span><span class="s">&quot;message&quot;</span> <span class="na">value=</span><span class="s">&quot;system.firewall.csrf.content&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/csrf&gt;</span>
+        <span class="nt">&lt;logged</span> <span class="na">name=</span><span class="s">&quot;logged.gcs&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/config&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="les-roles">
+<h2>Les rôles<a class="headerlink" href="#les-roles" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="les-redirections">
+<h2>Les redirections<a class="headerlink" href="#les-redirections" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="page-de-connexion">
+<h3>Page de connexion<a class="headerlink" href="#page-de-connexion" title="Lien permanent vers ce titre">¶</a></h3>
+</div>
+<div class="section" id="page-par-defaut">
+<h3>Page par défaut<a class="headerlink" href="#page-par-defaut" title="Lien permanent vers ce titre">¶</a></h3>
+</div>
+</div>
+<div class="section" id="les-pages-d-erreur">
+<h2>Les pages d&#8217;erreur<a class="headerlink" href="#les-pages-d-erreur" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="la-faille-csrf">
+<h2>La faille CSRF<a class="headerlink" href="#la-faille-csrf" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="routing.html" class="btn btn-neutral float-right" title="Le routing" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="spam.html" class="btn btn-neutral" title="L’anti spam" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, fabsgc.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

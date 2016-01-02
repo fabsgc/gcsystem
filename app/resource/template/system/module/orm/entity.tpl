@@ -5,13 +5,10 @@
 	use System\Orm\Entity\Field;
 	use System\Orm\Entity\ForeignKey;
 
-	/**
-
-	*/
-
 	class '.$class.' extends Entity{
 		public function tableDefinition(){
 			$this->name(\''.$table.'\');
+			$this->form(\'form-'.strtolower($table).'\');
 '.$field.'		}
 	}';
 }}

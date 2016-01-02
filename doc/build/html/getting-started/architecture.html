@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Architecture du GCsystem &mdash; documentation Documentation GCsystem 1</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="documentation Documentation GCsystem 1" href="../index.html"/>
+        <link rel="up" title="Pour commencer" href="index.html"/>
+        <link rel="next" title="Installation" href="install.html"/>
+        <link rel="prev" title="Pour commencer" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> Documentation GCsystem
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Pour commencer</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">Architecture du GCsystem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#organisation-du-framework">Organisation du Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cheminement-d-une-requete">Cheminement d&#8217;une requête</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="install.html#installation-avec-composer">Installation avec Composer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="install.html#installation-avec-github-et-composer">Installation avec Github et Composer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#connexion-a-la-base-de-donnees">Connexion à la base de données</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#parefeu">Parefeu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#antispam">Antispam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#encodage">Encodage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#repertoire-racine">Répertoire racine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#langue-par-defaut">Langue par défaut</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#choix-de-l-environnement">Choix de l&#8217;environnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#maintenance">Maintenance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#profiler">Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#echappement-des-variables-superglobales">Échappement des variables superglobales</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#constantes-utilisateur">Constantes utilisateur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#cache">Cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#affichage-des-erreurs">Affichage des erreurs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#minifier-sortie-html">Minifier sortie html</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#asset-manager">Asset manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#chemins-vers-les-ressources-web">Chemins vers les ressources web</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routing.html">Le routing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="request-response.html">Les objets Request et Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controller.html">Les contrôleurs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html">Les modèles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view.html">Les vues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orm.html">L&#8217;Orm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/index.html">Notions avancées</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutoriaux</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial/blog/index.html">Création d&#8217;un blog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../helper/index.html">Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../helper/pagination.html">Pagination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../helper/mail.html">Mails</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other/index.html">Autre</a><ul class="simple">
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Documentation GCsystem</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Pour commencer</a> &raquo;</li>
+      
+    <li>Architecture du GCsystem</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/getting-started/architecture.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="architecture-du-gcsystem">
+<h1>Architecture du GCsystem<a class="headerlink" href="#architecture-du-gcsystem" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Avant de commencer à développer votre application, il est important que vous preniez connaissance de l&#8217;architecture du GCsystem.</p>
+<div class="section" id="organisation-du-framework">
+<h2>Organisation du Framework<a class="headerlink" href="#organisation-du-framework" title="Lien permanent vers ce titre">¶</a></h2>
+<p>La struture du dossier du framework est similaire à celle-ci :</p>
+<div class="code html highlight-python"><div class="highlight"><pre>app/
+    cache/
+    log/
+    resource/
+src/
+    gcs/
+        controller/
+        model/
+        resource/
+vendor/
+web/
+</pre></div>
+</div>
+<p>Le dossier <code class="docutils literal"><span class="pre">app</span></code> contient les fichiers de cache et de log. Il comprend également toutes les ressources qui seront communes à tous les modules de votre application (configuration, entités, évènements, fichiers de langues, validation de formulaire, template).</p>
+<p>Le dossier <code class="docutils literal"><span class="pre">src</span></code> est le coeur de votre application, c&#8217;est là que vous placerez tous vos modules (contrôleurs, modèles, templates etc.), ainsi que les ressources propres à chaque module (configuration, entités, évènements, fichiers de langues, validation de formulaire).</p>
+<p>Le dossier <code class="docutils literal"><span class="pre">vendor</span></code> est lié à l&#8217;intégration de Composer. C&#8217;est dans ce dossier que se trouve le framework en tant que tel. Vous n&#8217;aurez jamais à modifier vous-même ce dossier.</p>
+</div>
+<div class="section" id="cheminement-d-une-requete">
+<h2>Cheminement d&#8217;une requête<a class="headerlink" href="#cheminement-d-une-requete" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Le premier fichier appelé avant le routing  est <code class="docutils literal"><span class="pre">index.php</span></code>. Il s&#8217;agit du contrôleur principal de l&#8217;application qui va se charger de lancer le moteur. Son appel est paramétré dans le .htaccess situé à la racine du projet :</p>
+<div class="code apache highlight-python"><div class="highlight"><pre>php_flag short_open_tag off
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+php_flag zlib.output_compression on
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">Si vous utilisez un autre logiciel qu&#8217;Apache, il vous faudra configurer l&#8217;équivalent du .htaccess par vous-même.</p>
+</div>
+<p>Une fois le moteur lancé, celui-ci va se charger d&#8217;analyser l&#8217;URL soumise afin d&#8217;en retirer les informations qui permettront d&#8217;appeler les bons contrôleurs des bonnes rubriques.</p>
+<p>Parallèlement à l&#8217;appel des contrôleurs, le moteur se charge également des processus tels que l&#8217;antispam, le parefeu, les crons, la connexion à la base de données, le cache des pages, la création des constantes personnalisées etc.</p>
+<p>Comme un bon croquis vaut mieux qu&#8217;un long discours, voici un résumé du fonctionnement interne du framework :</p>
+<div class="figure align-center">
+<img alt="../_images/query.png" src="../_images/query.png" />
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Pour commencer" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, fabsgc.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 <?php
-	namespace Gcs;
+	namespace gcs;
 
 	use System\Model\Model;
 

@@ -44,22 +44,3 @@ footer{
     padding: 5px;
     background-color: #E74C3C;
 }
-a.button{
-    display: inline-block;
-    line-height: 35px;
-    margin: 0px 10px 10px 0;
-    background-color: #e74c3c;
-    cursor: pointer;
-    border-radius: 2px;
-    color: white;
-    font-size: 17px;
-    color: white !important;
-    padding: 0 10px;
-    -webkit-transition-duration: 0.15s;
-    -moz-transition-duration: 0.15s;
-    -ms-transition-duration: 0.15s;
-    -o-transition-duration: 0.15s;
-    transition-duration: 0.15s;
-    box-shadow: rgba(0, 0, 0, 0.0980392) 0px -1px 0px inset, rgba(0, 0, 0, 0.0980392) 0px 2px 0px;
-    text-decoration:none;
-}

@@ -33,6 +33,7 @@ section .content-section{
     padding: 10px;
 }
 input[type='submit'] {
+    width: 115px;
     display: inline-block;
     line-height: 34px;
     margin: 0;
@@ -41,30 +42,23 @@ input[type='submit'] {
     border-radius: 2px;
     color: white;
     font-size: 17px;
-    color: white !important;
     padding: 0 10px;
-    -webkit-transition-duration: 0.15s;
-    -moz-transition-duration: 0.15s;
-    -ms-transition-duration: 0.15s;
-    -o-transition-duration: 0.15s;
     transition-duration: 0.15s;
-    box-shadow: rgba(0, 0, 0, 0.0980392) 0px -1px 0px inset, rgba(0, 0, 0, 0.0980392) 0px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.0980392) 0 -1px 0 inset, rgba(0, 0, 0, 0.0980392) 0 2px 0;
     text-decoration: none;
     border: none;
     outline:none;
     position: relative;
-    top: 1px;
+    top: 0;
 }
 input[type='text']  {
     width: 500px;
     padding: 8px;
     outline:none;
+    margin-bottom: 8px;
 }
-.query-header{
-    width: 100%;
-    background-color: #C3CBC4;
-    color: black;
-    padding: 5px;
+input[type='file']  {
+    margin-left: 4px;
 }
 header .content{
     width: 100%;
