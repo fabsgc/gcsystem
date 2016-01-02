@@ -132,7 +132,7 @@ define('SPAM', true);
 define('CHARSET', 'UTF-8');
 
 // where the framework is placed. If it's the root, keep empty, otherwise : /projet
-define('FOLDER', 'gcsystem/gcs-dev/');
+define('FOLDER', 'gcsystem/');
 
 // default language
 define('LANG', 'fr');
