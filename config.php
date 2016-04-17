@@ -42,7 +42,7 @@ define('SRC_RESOURCE_TEMPLATE_PATH', SRC_RESOURCE_PATH.'template/');
 define('WEB_PATH', 'web/');
 define('WEB_CSS_PATH', 'css/');
 define('WEB_FILE_PATH', 'file/');
-define('WEB_IMAGE_PATH', 'image/');
+define('WEB_IMAGE_PATH', 'img/');
 define('WEB_JS_PATH', 'js/');
 
 define('VENDOR_PATH', 'vendor/');
@@ -97,7 +97,7 @@ define('RESOLVE_ROUTE', 'route');
 define('RESOLVE_LANG', 'lang');
 define('RESOLVE_TEMPLATE', 'template');
 define('RESOLVE_CSS', 'css');
-define('RESOLVE_IMAGE', 'image');
+define('RESOLVE_IMAGE', 'img');
 define('RESOLVE_FILE', 'file');
 define('RESOLVE_JS', 'js');
 
@@ -182,7 +182,7 @@ define('CACHE_ENABLED', true);
 define('HTML_WEB_PATH', FOLDER.'/'.WEB_PATH);
 define('PHP_WEB_PATH', WEB_PATH);
 
-define('IMAGE_PATH_PHP', WEB_PATH.'image/');
+define('IMAGE_PATH_PHP', WEB_PATH.'img/');
 define('CSS_PATH_PHP', WEB_PATH.'css/');
 define('JS_PATH_PHP', WEB_PATH.'js/');
 define('FILE_PATH_PHP', WEB_PATH.'file/');

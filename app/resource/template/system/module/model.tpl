@@ -1,5 +1,5 @@
 {{php: $var='<?php
-	namespace '.$src.';
+	namespace '.ucfirst($src).';
 
 	use System\Model\Model;
 
