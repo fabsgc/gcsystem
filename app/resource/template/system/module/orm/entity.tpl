@@ -5,7 +5,9 @@
 	use System\Orm\Entity\Field;
 	use System\Orm\Entity\ForeignKey;
 
-'.$property.'
+	/**
+'.$property.'	*/
+
 	class '.$class.' extends Entity{
 		public function tableDefinition(){
 			$this->name(\''.$table.'\');
