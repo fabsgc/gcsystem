@@ -6,7 +6,9 @@
 	use System\Orm\Entity\ForeignKey;
 
 	/**
-'.$property.'	*/
+	 * Class '.$class.'
+'.$property.'	 * @package Orm\Entity
+    */
 
 	class '.$class.' extends Entity{
 		public function tableDefinition(){

@@ -178,6 +178,9 @@ define('CACHE_CONFIG', false);
 // enable cache
 define('CACHE_ENABLED', true);
 
+//send mail
+define('MAIL', false);
+
 // don't modify
 define('HTML_WEB_PATH', FOLDER.'/'.WEB_PATH);
 define('PHP_WEB_PATH', WEB_PATH);
