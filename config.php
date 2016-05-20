@@ -131,8 +131,8 @@ define('SPAM', true);
 // charset
 define('CHARSET', 'UTF-8');
 
-// where the framework is placed. If it's the root, keep empty, otherwise : /projet
-define('FOLDER', 'gcsystem/');
+// where the framework is placed. If it's the root, keep empty, otherwise : project/
+define('FOLDER', '');
 
 // default language
 define('LANG', 'fr');

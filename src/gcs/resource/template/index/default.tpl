@@ -1,4 +1,4 @@
-<gc:extends file="main"/>
+{gc:extends file="main"/}
 <h1>{{lang:gcs.default.welcome}}</h1>
 <p>{{lang:gcs.default.content}}</p>
 <ul>

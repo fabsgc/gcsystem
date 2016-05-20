@@ -1,4 +1,4 @@
-<gc:extends file="main"/>
+{gc:extends file="main"/}
 <form method="post" action="">
 	<input type="text" id="page" name="id" placeholder="{{lang:gcs.profiler.page-id}}"/>
 	<input type="submit" id="submit" value="{{lang:gcs.profiler.page-send}}"/>
@@ -10,9 +10,9 @@
 </div>
 <div class="content-section">
 	<ul>
-		<gc:foreach var="$data['timeUser']" as="$key => $value">
+		{gc:foreach var="$data['timeUser']" as="$key => $value"}
 			<li><strong>{$key}</strong> : {$value}</li>
-		</gc:foreach>
+		{/gc:foreach}
 	</ul>
 </div>
 </section>
@@ -56,7 +56,7 @@
 	<h3>{{lang:gcs.profiler.sql}}</h3>
 </div>
 <div class="content-section">
-	<gc:foreach var="$data['sql']" as="$key => $value">
+	{gc:foreach var="$data['sql']" as="$key => $value"}
 		<div class="query-header">{$key} ({$value['time']} ms)</div>
 		<div>
 			<pre>{{php:
@@ -65,7 +65,7 @@
 				}}
 			</pre>
 		</div>
-	</gc:foreach>
+	{/gc:foreach}
 </div>
 </section>
 <section>
@@ -74,9 +74,9 @@
 </div>
 <div class="content-section">
 	<ul>
-		<gc:foreach var="$data['template']" as="$key => $value">
+		{gc:foreach var="$data['template']" as="$key => $value"}
 			<li>{$key} ({$value['time']} ms)</li>
-		</gc:foreach>
+		{/gc:foreach}
 	</ul>
 </div>
 </section>
@@ -144,9 +144,9 @@
 </div>
 <div class="content-section">
 	<ul>
-		<gc:foreach var="$data['controller']" as="$key => $value">
+		{gc:foreach var="$data['controller']" as="$key => $value"}
 			<li>{$value}</li>
-		</gc:foreach>
+		{/gc:foreach}
 	</ul>
 </div>
 </section>
