@@ -1,38 +1,43 @@
 <?php
 	namespace Gcs;
 
-	use System\Controller\Controller;
-	use System\Template\Template;
 	use System\Cache\Cache;
+	use System\Controller\Controller;
+	use System\Response\Response;
+	use System\Template\Template;
 
-	class Profiler extends Controller{
-		public function init(){
-			if(ENVIRONMENT != 'development')
-				self::Response()->status(404);
-		}
-		
-		public function actionDefault(){
-			self::Profiler()->enable(false);
-
-			if(isset($_POST['id'])){
-				if($_POST['id'] == '')
-					$cache = new Cache('gcsProfiler', 0);
-				else
-					$cache = new Cache('gcsProfiler_'.$_POST['id'], 0);
+	class Profiler extends Controller {
+		public function init() {
+			if (ENVIRONMENT != 'development') {
+				Response::getInstance()->status(404);
 			}
-			else
+		}
+
+		public function actionDefault() {
+			\System\Profiler\Profiler::getInstance()->enable(false);
+
+			if (isset($_POST['id'])) {
+				if ($_POST['id'] == '') {
+					$cache = new Cache('gcsProfiler', 0);
+				}
+				else {
+					$cache = new Cache('gcsProfiler_' . $_POST['id'], 0);
+				}
+			}
+			else {
 				$cache = new Cache('gcsProfiler', 0);
+			}
 
 			$data = $cache->getCache();
 
-			if($data != ''){
+			if ($data != '') {
 				return (new Template('profiler/default', 'gcsProfiler', '0'))
 					->assign('data', $cache->getCache())
-					->assign('title', 'Profiler ['.$data['url'].']')
+					->assign('title', 'Profiler [' . $data['url'] . ']')
 					->show();
 			}
-			else{
-				self::Response()->status(404);
+			else {
+				Response::getInstance()->status(404);
 			}
 		}
 	}

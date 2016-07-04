@@ -2,12 +2,14 @@
 	namespace Gcs;
 
 	use System\Controller\Controller;
+	use System\Response\Response;
 	use System\Template\Template;
 
 	class Index extends Controller{
 		public function init(){
-			if(ENVIRONMENT != 'development')
-				self::Response()->status(404);
+			if (ENVIRONMENT != 'development') {
+				Response::getInstance()->status(404);
+			}
 		}
 		
 		public function actionDefault(){

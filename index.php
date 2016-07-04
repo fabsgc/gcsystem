@@ -14,6 +14,8 @@
 	require_once('vendor/autoload.php');
 	require_once(CLASS_AUTOLOAD);
 
+	/** @var $db [] */
+
 	$controller = new \System\Engine\Engine();
 	$controller->init($db);
 	$controller->run();

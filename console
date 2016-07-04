@@ -13,5 +13,7 @@
 	require_once('config.php');
 	require_once(CLASS_AUTOLOAD);
 
+    /** @var $db [] */
+
 	$controller = new system\Engine\Engine(MODE_CONSOLE);
 	$controller->console($db);
