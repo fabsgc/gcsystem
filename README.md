@@ -23,7 +23,7 @@ Installation :
 > git clone https://github.com/fabsgc/gcs-dev.git
 ```
 
-* dans le fichier config.php, modifiez la constante "FOLDER" et indiquez-y le répertoire où se trouve le framework. Par exemple : /projet
+* dans le fichier app/config.php, modifiez la valeur "framework/folder" et indiquez-y le répertoire où se trouve le framework. Par exemple : projet/
 * chargez l'url racine du site (/)
 
 Documentation :

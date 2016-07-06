@@ -1,5 +1,5 @@
 <?php
-	
+
 	/*\
 	 | ------------------------------------------------------
 	 | @file : config.php
@@ -36,7 +36,7 @@
 
 		'debug' => [
 			'environment' => 'development',
-			'maintenance'  => false,
+			'maintenance' => false,
 			'profiler'    => true,
 			'log'         => true,
 			'error'       => [
@@ -52,16 +52,20 @@
 		],
 
 		'output' => [
-			'lang'         => 'fr',
-			'contentType'  => 'text/html',
-			'charset'      => 'UTF-8',
-			'asset'        => true,
-			'minify'       => true,
-			'timezone'     => 'Europe/Paris',
-			'cache'        => [
+			'https'       => false,
+			'lang'        => 'fr',
+			'contentType' => 'text/html',
+			'charset'     => 'UTF-8',
+			'minify'      => true,
+			'timezone'    => 'Europe/Paris',
+			'cache'       => [
 				'enabled' => true,
 				'config'  => false,
 				'sha1'    => false
+			],
+			'asset'       => [
+				'enabled' => true,
+				'cache'   => 0
 			]
 		],
 
