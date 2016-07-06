@@ -2,19 +2,20 @@
 	namespace Gcs;
 
 	use System\Cache\Cache;
+	use System\Config\Config;
 	use System\Controller\Controller;
 	use System\Response\Response;
 	use System\Template\Template;
 
 	class Profiler extends Controller {
 		public function init() {
-			if (ENVIRONMENT != 'development') {
-				Response::getInstance()->status(404);
+			if (Config::config()['user']['debug']['environment'] != 'development') {
+				Response::instance()->status(404);
 			}
 		}
 
 		public function actionDefault() {
-			\System\Profiler\Profiler::getInstance()->enable(false);
+			\System\Profiler\Profiler::instance()->enable(false);
 
 			if (isset($_POST['id'])) {
 				if ($_POST['id'] == '') {
@@ -37,7 +38,7 @@
 					->show();
 			}
 			else {
-				Response::getInstance()->status(404);
+				Response::instance()->status(404);
 			}
 		}
 	}

@@ -1,5 +1,4 @@
 <?php
-	session_start();
 
 	/*\
 	 | ------------------------------------------------------
@@ -9,13 +8,17 @@
 	 | @version : 3.0 bêta
 	 | ------------------------------------------------------
 	\*/
+	
+	use System\Config\Config;
 
-	require_once('config.php');
-	require_once('vendor/autoload.php');
+	session_start();
+
+	/** @var [] $config */
+	$config = require_once('config.php');
+	require_once(VENDOR_PATH . 'autoload.php');
 	require_once(CLASS_AUTOLOAD);
 
-	/** @var $db [] */
-
-	$controller = new \System\Engine\Engine();
-	$controller->init($db);
-	$controller->run();
+	Config::instance($config);
+	$engine = new \System\Engine\Engine();
+	$engine->init();
+	$engine->run();
