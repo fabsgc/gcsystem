@@ -34,7 +34,6 @@
 	define('SRC_RESOURCE_CONFIG_PATH', SRC_RESOURCE_PATH . 'config/');
 	define('SRC_RESOURCE_EVENT_PATH', SRC_RESOURCE_PATH . 'event/');
 	define('SRC_RESOURCE_LANG_PATH', SRC_RESOURCE_PATH . 'lang/');
-	define('SRC_RESOURCE_LIBRARY_PATH', SRC_RESOURCE_PATH . 'library/');
 	define('SRC_RESOURCE_REQUEST_PATH', SRC_RESOURCE_PATH . 'request/');
 	define('SRC_RESOURCE_TEMPLATE_PATH', SRC_RESOURCE_PATH . 'template/');
 
@@ -60,16 +59,9 @@
 	define('APP_FUNCTION', APP_PATH . 'function.php');
 	define('SRC_FUNCTION', SRC_CONTROLLER_PATH . 'function.php');
 
-	define('APP_CONFIG_CRON', APP_RESOURCE_CONFIG_PATH . 'cron.xml');
-	define('APP_CONFIG_DEFINE', APP_RESOURCE_CONFIG_PATH . 'define.xml');
-	define('APP_CONFIG_LIBRARY', APP_RESOURCE_CONFIG_PATH . 'library.xml');
-	define('APP_CONFIG_SPAM', APP_RESOURCE_CONFIG_PATH . 'spam.xml');
-	define('APP_CONFIG_TEMPLATE', APP_RESOURCE_CONFIG_PATH . 'template.xml');
+	define('APP_CONFIG_SECURITY', APP_RESOURCE_CONFIG_PATH . 'security.xml');
 
-	define('SRC_CONFIG_CRON', SRC_RESOURCE_CONFIG_PATH . 'cron.xml');
-	define('SRC_CONFIG_DEFINE', SRC_RESOURCE_CONFIG_PATH . 'define.xml');
 	define('SRC_CONFIG_FIREWALL', SRC_RESOURCE_CONFIG_PATH . 'firewall.xml');
-	define('SRC_CONFIG_LIBRARY', SRC_RESOURCE_CONFIG_PATH . 'library.xml');
 	define('SRC_CONFIG_ROUTE', SRC_RESOURCE_CONFIG_PATH . 'route.xml');
 
 	define('CLASS_GENERAL', SYSTEM_CORE_SYSTEM_PATH . 'General/General.php');

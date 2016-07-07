@@ -23,7 +23,7 @@
 		],
 
 		'database' => [
-			'enabled'   => true,
+			'enabled'   => false,
 			'hostname'  => 'localhost',
 			'username'  => 'root',
 			'password'  => '',
@@ -44,6 +44,11 @@
 				'fatal'     => true,
 				'exception' => true
 			]
+		],
+
+		'security' => [
+			'firewall' => true,
+			'spam'     => true
 		],
 
 		'secure' => [
@@ -69,15 +74,6 @@
 			]
 		],
 
-		'security' => [
-			'firewall' => true,
-			'spam'     => true
-		],
-
-		'define' => [
-			'prefix' => 'USER_'
-		],
-
 		'mail' => [
 			'enabled' => false,
 			'smtp'    => [
@@ -87,5 +83,17 @@
 				'password' => 'password',
 				'from'     => 'contact@example.com'
 			]
+		],
+
+		'library' => [
+
+		],
+
+		'template' => [
+
+		],
+
+		'custom' => [
+
 		]
 	];

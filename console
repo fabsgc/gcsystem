@@ -1,19 +1,23 @@
 <?php
-	session_start();
 
-	/*\
-	 | ------------------------------------------------------
-	 | @file : console
-	 | @author : fab@c++
-	 | @description : central controller for the terminal
-	 | @version : 3.0 bêta
-	 | ------------------------------------------------------
-	\*/
+    /*\
+     | ------------------------------------------------------
+     | @file : console
+     | @author : fab@c++
+     | @description : front controller for the terminal
+     | @version : 3.0 bêta
+     | ------------------------------------------------------
+    \*/
 
-	require_once('config.php');
-	require_once(CLASS_AUTOLOAD);
+    session_start();
 
-    /** @var $db [] */
+    use System\Config\Config;
+    use System\Engine\Engine;
 
-	$controller = new system\Engine\Engine(MODE_CONSOLE);
-	$controller->console($db);
+    $config = require_once('config.php');
+    require_once(VENDOR_PATH . 'autoload.php');
+    require_once(CLASS_AUTOLOAD);
+
+    Config::instance($config);
+    $engine = new Engine(MODE_CONSOLE);
+    $engine->console();
