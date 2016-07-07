@@ -7,8 +7,7 @@
 	"require": {
 		"php": ">=5.5.12",
 		"gcsystem/framework": "dev-master",
-		"gcsystem/scaffolding": "dev-master",
-		"nesbot/carbon": "~1.14"
+		"gcsystem/scaffolding": "dev-master"
 	},
 	"extra": {
 		"branch-alias": {
