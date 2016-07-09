@@ -23,7 +23,7 @@
 		],
 
 		'database' => [
-			'enabled'   => false,
+			'enabled'   => true,
 			'hostname'  => 'localhost',
 			'username'  => 'root',
 			'password'  => '',
@@ -47,8 +47,57 @@
 		],
 
 		'security' => [
-			'firewall' => true,
-			'spam'     => true
+			'firewall' =>  true,
+			'spam' => [
+				'enabled' => true,
+				'config' => [
+					'query' => [
+						'duration' => 8,
+						'number' => 16
+					],
+					'error' => [
+						'template' => '.app/error/spam',
+						'variable' => [
+							'title' => [
+								'type' => 'lang',
+								'value' => '.app.system.spam.title'
+							],
+							'message' => [
+								'type' => 'lang',
+								'value' => '.app.system.spam.message'
+							]
+						]
+					],
+					'exception' => [
+						'.gcs.index.default',
+						'.gcs.lang.default',
+						'.gcs.profiler.default',
+						'.gcs.assetManager.default',
+						'.gcs.scaffolding.default',
+						'.gcs.scaffolding.entity',
+						'.gcs.scaffolding.update',
+						'.gcs.scaffolding.delete',
+					]
+				]
+			]
+		],
+
+		'cron' => [
+			'config' => [
+				'exception' => [
+					'.gcs.index.default',
+					'.gcs.lang.default',
+					'.gcs.profiler.default',
+					'.gcs.assetManager.default',
+					'.gcs.scaffolding.default',
+					'.gcs.scaffolding.entity',
+					'.gcs.scaffolding.update',
+					'.gcs.scaffolding.delete',
+				]
+			],
+			'task' => [
+
+			]
 		],
 
 		'secure' => [
@@ -94,6 +143,6 @@
 		],
 
 		'custom' => [
-
+			'vendor' => 'vendor/'
 		]
 	];

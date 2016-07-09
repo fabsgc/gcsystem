@@ -59,8 +59,6 @@
 	define('APP_FUNCTION', APP_PATH . 'function.php');
 	define('SRC_FUNCTION', SRC_CONTROLLER_PATH . 'function.php');
 
-	define('APP_CONFIG_SECURITY', APP_RESOURCE_CONFIG_PATH . 'security.xml');
-
 	define('SRC_CONFIG_FIREWALL', SRC_RESOURCE_CONFIG_PATH . 'firewall.xml');
 	define('SRC_CONFIG_ROUTE', SRC_RESOURCE_CONFIG_PATH . 'route.xml');
 
