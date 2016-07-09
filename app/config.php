@@ -143,6 +143,6 @@
 		],
 
 		'custom' => [
-			'vendor' => 'vendor/'
+
 		]
 	];
