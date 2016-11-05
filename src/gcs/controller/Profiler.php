@@ -7,12 +7,24 @@
 	use System\Response\Response;
 	use System\Template\Template;
 
+	/**
+	 * Class Profiler
+	 * @package Gcs
+	 * @Before(class="\Gcs\Profiler", method="init")
+	 */
+
 	class Profiler extends Controller {
+
 		public function init() {
 			if (Config::config()['user']['debug']['environment'] != 'development') {
 				Response::instance()->status(404);
 			}
 		}
+
+		/**
+		 * @Routing(name="gcs.profiler.default", url="/gcs/profiler(/*)", method="get,post")
+		 * @return mixed
+		 */
 
 		public function actionDefault() {
 			\System\Profiler\Profiler::instance()->enable(false);

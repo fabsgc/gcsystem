@@ -100,6 +100,30 @@
 </section>
 <section>
 <div class="title">
+	<h3>PUT</h3>
+</div>
+<div class="content-section">
+	{{php: printArray($data['put']); }}
+</div>
+</section>
+<section>
+<div class="title">
+	<h3>PATCH</h3>
+</div>
+<div class="content-section">
+	{{php: printArray($data['patch']); }}
+</div>
+</section>
+<section>
+<div class="title">
+	<h3>DELETE</h3>
+</div>
+<div class="content-section">
+	{{php: printArray($data['delete']); }}
+</div>
+</section>
+<section>
+<div class="title">
 	<h3>SESSION</h3>
 </div>
 <div class="content-section">

@@ -3,6 +3,5 @@
 
 	use System\Event\Event;
 
-	class Mail extends Event{
-
+	class Mail extends Event {
 	}

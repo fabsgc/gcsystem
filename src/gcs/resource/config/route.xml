@@ -1,18 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<route name="index" url="(/*)" action="index.default" method="get"/>
-	<group name="gcs" url="/gcs">
-		<route name="lang.default" url="/lang(/*)" action="lang.default"/>
-		<route name="profiler.default" url="/profiler(/*)" action="profiler.default"/>
-		<route name="assetManager.default" url="/asset/(.[^\/]+)\.([css|js]+)" action="assetManager.default" vars="id,type" method="get"/>
-		<group name="scaffolding" url="/scaffolding" action="scaffolding">
-			<route name="default" url="(/*)" action="home"/>
-			<route name="insert" url="/entity/insert/([a-zA-Z]+)(/*)" action="insert" vars="entity" method="get"/>
-			<route name="insert-save" url="/entity/insert/([a-zA-Z]+)(/*)" action="insert" vars="entity" method="post"/>
-			<route name="update" url="/entity/update/([a-zA-Z]+)/([0-9]+)(/*)" action="update" vars="entity,id" method="get"/>
-			<route name="update-save" url="/entity/update/([a-zA-Z]+)/([0-9]+)(/*)" action="update" vars="entity,id" method="put"/>
-			<route name="delete" url="/entity/delete/([a-zA-Z]+)/([0-9]+)(/*)" action="delete" vars="entity,id"/>
-			<route name="entity" url="/entity/([a-zA-Z]+)(/*)" action="entity" vars="entity"/>
-		</group>
-	</group>
 </root>

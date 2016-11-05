@@ -6,7 +6,19 @@
 	use System\Controller\Controller;
 	use System\Response\Response;
 
+	/**
+	 * Class AssetManager
+	 * @package Gcs
+	 * @Before(class="\Gcs\AssetManager", method="init")
+	 */
+
 	class AssetManager extends Controller {
+
+		/**
+		 * @Routing(name="gcs.assetManager.default", url="/gcs/asset/(.[^\/]+)\.([css|js]+)", vars="id,type", method="get")
+		 * @return mixed
+		 */
+
 		public function actionDefault() {
 			if ($_GET['type'] == 'js' || $_GET['type'] == 'css') {
 				Response::instance()->contentType("text/" . $_GET['type']);
