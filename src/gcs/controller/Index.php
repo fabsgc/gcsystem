@@ -21,7 +21,7 @@
 		}
 
 		/**
-		 * @Routing(name="index", url="(/*)", method="get,post,put")
+		 * @Routing(name="index", url="(/*)", method="get")
 		 */
 
 		public function actionDefault() {
