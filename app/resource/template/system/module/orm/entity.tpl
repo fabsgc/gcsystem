@@ -1,32 +1,32 @@
-{{php: $var='<?php
-	namespace Orm\Entity;
+{$php}
 
-	use System\Orm\Entity\Entity;
-	use System\Orm\Entity\Field;
-	use System\Orm\Entity\ForeignKey;
+    namespace Orm\Entity;
 
-	/**
-	 * Class '.$class.'
-'.$property.'	 * @package Orm\Entity
-    */
+    {gc:if condition="$collection"}use System\Collection\Collection;{/gc:if}
 
-	class '.$class.' extends Entity{
-		public function tableDefinition(){
-			$this->name(\''.$table.'\');
-			$this->form(\'form-'.strtolower($table).'\');
-'.$field.'		}
+    use System\Orm\Entity\Entity;
 
-        public function beforeInsert(){
+    /**
+     * Class {$class}
 
-        }
+     * @Table(name="{$table}")
+     * @Form(name="{$form}")
+     {gc:foreach var="$fields" as="$field"}* @property {$field['type-php']} {$field['name']}
 
-        public function beforeUpdate(){
+     {/gc:foreach}* @package Orm\Entity
+     */
 
-        }
+    class {$class} extends Entity {
+    {gc:foreach var="$fields" as="$field"}
 
-        public function beforeDelete(){
+        /**
+        {gc:if condition="$field['foreign']['enabled'] == false"} * @var {$field['type-php']}
 
-        }
-	}';
-}}
-{$var}
+         * @Column(type="{$field['type-orm']}"{gc:if condition="$field['unique']"}, unique="true"{/gc:if}{gc:if condition="$field['primary']"}, primary="true"{/gc:if}{gc:if condition="$field['size'] != 0"}, size="{$field['size']}"{/gc:if}{gc:if condition="!$field['beNull']"}, null="false"{/gc:if}{gc:if condition="$field['defaultValue'] != ''"}, default="{$field['defaultValue']}"{/gc:if}{gc:if condition="$field['precision'] != ''"}, precision="{$field['precision']}"{/gc:if}{gc:if condition="$field['enum'] != ''"}, enum="{$field['enum']}"{/gc:if})
+         */
+        {gc:else/} * @var $field['type-php']
+         * @{$field['type']}(to="{$field['to']}")
+        {/gc:if}protected ${$field['name']};
+    {/gc:foreach}
+
+    }
