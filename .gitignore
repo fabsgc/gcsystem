@@ -1,1 +1,10 @@
-.git
+.git/
+.idea/
+vendor/
+app/cache/default/
+app/cache/template/
+app/log/error.log
+app/log/history.log
+app/log/sql.log
+app/log/system.log
+composer.lock
