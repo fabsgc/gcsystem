@@ -1,6 +1,7 @@
 .git/
 .idea/
 vendor/
+app/config.php
 app/cache/default/
 app/cache/template/
 app/log/error.log
