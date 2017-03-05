@@ -12,7 +12,7 @@
 	 * @Before(class="\Gcs\AssetManager", method="init")
 	 */
 
-	class AssetManager extends Controller {
+	class Asset extends Controller {
 
 		/**
 		 * @Routing(name="gcs.assetManager.default", url="/gcs/asset/(.[^\/]+)\.([css|js]+)", vars="id,type", method="get")
