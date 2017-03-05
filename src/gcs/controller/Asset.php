@@ -9,7 +9,7 @@
 	/**
 	 * Class AssetManager
 	 * @package Gcs
-	 * @Before(class="\Gcs\AssetManager", method="init")
+	 * @Before(class="\Gcs\Asset", method="init")
 	 */
 
 	class Asset extends Controller {
