@@ -7,7 +7,7 @@
 	use System\Response\Response;
 
 	/**
-	 * Class AssetManager
+	 * Class Asset
 	 * @package Gcs
 	 * @Before(class="\Gcs\Asset", method="init")
 	 */
@@ -15,7 +15,7 @@
 	class Asset extends Controller {
 
 		/**
-		 * @Routing(name="gcs.assetManager.default", url="/gcs/asset/(.[^\/]+)\.([css|js]+)", vars="id,type", method="get")
+		 * @Routing(name="gcs.asset.default", url="/gcs/asset/(.[^\/]+)\.([css|js]+)", vars="id,type", method="get")
 		 * @return mixed
 		 */
 
