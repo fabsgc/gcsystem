@@ -57,7 +57,7 @@ Ensuite, il vous suffit d'exécuter la commande ``update`` de Composer pour mett
 Documentation :
 -----------
 
-* La documentation du framework est disponible dans le répertoire ``doc/build/pdf/``
+* La documentation du framework est disponible ici ``doc/build/singlehtml/index.html``
 
 Site du projet
 -----------

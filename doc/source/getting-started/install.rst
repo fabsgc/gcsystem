@@ -34,13 +34,13 @@ Vous pouvez également utiliser la commande ``create-project`` de Composer :
 Installation avec Github et Composer
 ====================================
 
-Tout d'abord, Récupérer le framework (sans son coeur), depuis le dépôt Github :
+Tout d'abord, récupérez le framework (sans son coeur), depuis le dépôt Github :
 
 .. sourcecode:: bash
 
     git clone https://github.com/fabsgc/gcsystem.git
 
-Ensuite, il vous suffit d'exécuter la commande ``update`` de Composer pour mettre à jour toutes les dépendances (le coeur du framework :
+Ensuite, il vous suffit d'exécuter la commande ``update`` de Composer pour mettre à jour toutes les dépendances (le coeur du framework) :
 
 .. sourcecode:: bash
     
