@@ -34,10 +34,10 @@ Aperçu
     <?php
     namespace Gcs;
 
-    use System\Controller\Controller;
-    use System\Template\Template;
-    use Orm\Entity\Article;
-    use Orm\Entity\Category;
+    use Gcs\Framework\Core\Controller\Controller;
+    use Gcs\Framework\Core\Template\Template;
+    use Gcs\App\Resource\Entity\Article;
+    use Gcs\App\Resource\Entity\Category;
 
     class Article extends Controller{
         public function actionNew(){

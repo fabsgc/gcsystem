@@ -2,7 +2,7 @@
 	/*\
 	 | ------------------------------------------------------
 	 | @file : config.php
-	 | @author : fab@c++
+	 | @author : Fabien Beaujean
 	 | @description : Configuration of the application
 	 | @version : 3.0 Bêta
 	 | ------------------------------------------------------
@@ -17,24 +17,24 @@
 	define('APP_CACHE_PATH_DEFAULT', APP_PATH . 'cache/default/');
 	define('APP_CACHE_PATH_TEMPLATE', APP_PATH . 'cache/template/');
 	define('APP_LOG_PATH', APP_PATH . 'log/');
-	define('APP_RESOURCE_PATH', APP_PATH . 'resource/');
+	define('APP_RESOURCE_PATH', APP_PATH . 'Resource/');
 	define('APP_RESOURCE_CONFIG_PATH', APP_RESOURCE_PATH . 'config/');
-	define('APP_RESOURCE_EVENT_PATH', APP_RESOURCE_PATH . 'event/');
+	define('APP_RESOURCE_EVENT_PATH', APP_RESOURCE_PATH . 'Event/');
 	define('APP_RESOURCE_LANG_PATH', APP_RESOURCE_PATH . 'lang/');
-	define('APP_RESOURCE_ENTITY_PATH', APP_RESOURCE_PATH . 'entity/');
-	define('APP_RESOURCE_LIBRARY_PATH', APP_RESOURCE_PATH . 'library/');
-	define('APP_RESOURCE_REQUEST_PATH', APP_RESOURCE_PATH . 'request/');
+	define('APP_RESOURCE_ENTITY_PATH', APP_RESOURCE_PATH . 'Entity/');
+	define('APP_RESOURCE_LIBRARY_PATH', APP_RESOURCE_PATH . 'Library/');
+	define('APP_RESOURCE_REQUEST_PATH', APP_RESOURCE_PATH . 'Request/');
 	define('APP_RESOURCE_TEMPLATE_PATH', APP_RESOURCE_PATH . 'template/');
 	define('APP_RESOURCE_TEMPLATE_ERROR_PATH', APP_RESOURCE_TEMPLATE_PATH . 'error/');
 
 	define('SRC_PATH', 'src/');
-	define('SRC_CONTROLLER_PATH', 'controller/');
-	define('SRC_CONTROLLER_FUNCTION_PATH', 'function.php');
-	define('SRC_RESOURCE_PATH', 'resource/');
+	define('SRC_CONTROLLER_PATH', 'Controller/');
+	define('SRC_CONTROLLER_FUNCTION_PATH', 'functions.php');
+	define('SRC_RESOURCE_PATH', 'Resource/');
 	define('SRC_RESOURCE_CONFIG_PATH', SRC_RESOURCE_PATH . 'config/');
-	define('SRC_RESOURCE_EVENT_PATH', SRC_RESOURCE_PATH . 'event/');
+	define('SRC_RESOURCE_EVENT_PATH', SRC_RESOURCE_PATH . 'Event/');
 	define('SRC_RESOURCE_LANG_PATH', SRC_RESOURCE_PATH . 'lang/');
-	define('SRC_RESOURCE_REQUEST_PATH', SRC_RESOURCE_PATH . 'request/');
+	define('SRC_RESOURCE_REQUEST_PATH', SRC_RESOURCE_PATH . 'Request/');
 	define('SRC_RESOURCE_TEMPLATE_PATH', SRC_RESOURCE_PATH . 'template/');
 
 	define('WEB_PATH', 'web/');
@@ -56,14 +56,11 @@
 	define('LOG_CRONS', 'cron');
 	define('LOG_EVENT', 'event');
 
-	define('APP_FUNCTION', APP_PATH . 'function.php');
-	define('SRC_FUNCTION', SRC_CONTROLLER_PATH . 'function.php');
+	define('APP_FUNCTION', APP_PATH . 'functions.php');
+	define('SRC_FUNCTION', SRC_CONTROLLER_PATH . 'functions.php');
 
 	define('SRC_CONFIG_FIREWALL', SRC_RESOURCE_CONFIG_PATH . 'firewall.xml');
 	define('SRC_CONFIG_ROUTE', SRC_RESOURCE_CONFIG_PATH . 'route.xml');
-
-	define('CLASS_GENERAL', SYSTEM_CORE_SYSTEM_PATH . 'General/General.php');
-	define('CLASS_AUTOLOAD', SYSTEM_CORE_PATH . 'Autoload.php');
 
 	define('ERROR_WARNING', 'WARNING');
 	define('ERROR_ERROR', 'ERROR');

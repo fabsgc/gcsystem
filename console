@@ -3,7 +3,7 @@
     /*\
      | ------------------------------------------------------
      | @file : console
-     | @author : fab@c++
+     | @author : Fabien Beaujean
      | @description : front controller for the terminal
      | @version : 3.0 bêta
      | ------------------------------------------------------
@@ -11,12 +11,12 @@
 
     session_start();
 
-    use System\Config\Config;
-    use System\Engine\Engine;
+    require_once('vendor/autoload.php');
+
+    use Gcs\Framework\Core\Config\Config;
+    use Gcs\Framework\Core\Engine\Engine;
 
     $config = require_once('config.php');
-    require_once(VENDOR_PATH . 'autoload.php');
-    require_once(CLASS_AUTOLOAD);
 
     Config::instance($config);
     $engine = new Engine(MODE_CONSOLE);

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <group name="system">
+        <group name="spam">
+            <lang name="title">Votre IP a été temporairement bloquée</lang>
+            <lang name="message">Votre IP a dépassé le nombre de requêtes autorisée sur une période donnée. Veuillez
+                patienter le temps que cette période soit écoulée
+            </lang>
+        </group>
+        <group name="firewall">
+            <group name="forbidden">
+                <lang name="title">Accès interdit</lang>
+                <lang name="message">L'accès à cette page vous est interdit</lang>
+            </group>
+            <group name="csrf">
+                <lang name="title">Erreur dans les paramètres de l'url ou d'un formulaire</lang>
+                <lang name="message">Une erreur dans les paramètres de l'url ou d'un formulaire a contraint
+                    l'application à bloquer l'accès à cette page
+                </lang>
+            </group>
+        </group>
+        <group name="http">
+            <lang name="title">Erreur {code} : {description}</lang>
+        </group>
+        <group name="maintenance">
+            <lang name="title">Maintenance</lang>
+        </group>
+        <group name="form">
+            <lang name="exist">Le champs n'existe pas</lang>
+        </group>
+        <group name="entity">
+            <lang name="exist">Le champs n'existe pas</lang>
+        </group>
+    </group>
+</root>

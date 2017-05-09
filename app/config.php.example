@@ -3,7 +3,7 @@
 	/*\
 	 | ------------------------------------------------------
 	 | @file : config.php
-	 | @author : fab@c++
+	 | @author : Fabien Beaujean
 	 | @description : User configuration of the application
 	 | @version : 3.0 Bêta
 	 | ------------------------------------------------------
@@ -11,7 +11,7 @@
 
 	return [
 		'framework' => [
-			'folder' => '',
+			'folder' => '/gcsystem',
 			'http'   => [
 				'error' => [
 					'template' => '.app/error/http',
@@ -69,14 +69,14 @@
 						]
 					],
 					'exception' => [
-						'.gcs.index.default',
-						'.gcs.lang.default',
-						'.gcs.profiler.default',
-						'.gcs.asset.default',
-						'.gcs.scaffolding.default',
-						'.gcs.scaffolding.entity',
-						'.gcs.scaffolding.update',
-						'.gcs.scaffolding.delete',
+						'.Gcs.index.default',
+						'.Gcs.lang.default',
+						'.Gcs.profiler.default',
+						'.Gcs.asset.default',
+						'.Gcs.scaffolding.default',
+						'.Gcs.scaffolding.entity',
+						'.Gcs.scaffolding.update',
+						'.Gcs.scaffolding.delete',
 					]
 				]
 			]
@@ -85,14 +85,14 @@
 		'cron' => [
 			'config' => [
 				'exception' => [
-					'.gcs.index.default',
-					'.gcs.lang.default',
-					'.gcs.profiler.default',
-					'.gcs.asset.default',
-					'.gcs.scaffolding.default',
-					'.gcs.scaffolding.entity',
-					'.gcs.scaffolding.update',
-					'.gcs.scaffolding.delete',
+					'.Gcs.index.default',
+					'.Gcs.lang.default',
+					'.Gcs.profiler.default',
+					'.Gcs.asset.default',
+					'.Gcs.scaffolding.default',
+					'.Gcs.scaffolding.entity',
+					'.Gcs.scaffolding.update',
+					'.Gcs.scaffolding.delete',
 				]
 			],
 			'task' => [
@@ -143,6 +143,6 @@
 		],
 
 		'custom' => [
-
+		
 		]
 	];

@@ -1,18 +1,38 @@
 {
-	"name": "gcsystem/gcs-dev",
-	"description": "GCsystem Framework.",
-	"keywords": ["framework", "gcsystem"],
-	"license": "MIT",
-	"type": "project",
-	"require": {
-		"php": ">=5.6",
-		"gcsystem/framework": "dev-master",
-		"gcsystem/scaffolding": "dev-master"
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "3.1-dev"
-		}
-	},
-	"minimum-stability": "dev"
+    "name": "gcsystem/gcsystem",
+    "license": "MIT",
+    "type": "project",
+    "description": "GCsystem PHP Framework",
+    "keywords": ["framework", "gcsystem", "PHP"],
+    "authors": [
+        {
+            "name": "Fabien Beaujean",
+            "homepage": "https://github.com/fabsgc"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/fabsgc/gcsystem/issues",
+        "forum": "https://stackoverflow.com/tags/gcsystem",
+        "source": "https://github.com/fabsgc/gcsystem"
+    },
+    "require": {
+        "php": ">=5.6",
+        "gcsystem/framework": "dev-master",
+        "gcsystem/scaffolding": "dev-master"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.1-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Gcs\\App\\" : "app",
+            "Src\\" : "src"
+        },
+        "files": [
+            "app/functions.php"
+        ]
+    }
 }

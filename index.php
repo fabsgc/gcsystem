@@ -3,22 +3,24 @@
 	/*\
 	 | ------------------------------------------------------
 	 | @file : index.php
-	 | @author : fab@c++
-	 | @description : front controller of the application
+	 | @author : Fabien Beaujean
+	 | @description : Front controller of the application
 	 | @version : 3.0 bêta
 	 | ------------------------------------------------------
 	\*/
 
 	session_start();
 
-	use System\Config\Config;
-	use System\Engine\Engine;
+	require_once('vendor/autoload.php');
+
+	use Gcs\Framework\Core\Config\Config;
+	use Gcs\Framework\Core\Engine\Engine;
 
 	$config = require_once('config.php');
-	require_once(VENDOR_PATH . 'autoload.php');
-	require_once(CLASS_AUTOLOAD);
 
 	Config::instance($config);
+
 	$engine = new Engine();
 	$engine->init();
 	$engine->run();
+

@@ -15,10 +15,10 @@ Il existe un parefeu pour chaque module que vous créez. Comme ce fichier est as
         </roles>
         <config>
             <login>
-                <source name=".gcs.index" vars=""/>
+                <source name=".Gcs.index" vars=""/>
             </login>
             <default>
-                <source name=".gcs.gcs.profiler" vars=""/>
+                <source name=".Gcs.gcs.profiler" vars=""/>
             </default>
             <forbidden template=".app/error/firewall">
                 <variable type="lang" name="title" value="system.firewall.forbidden.title"/>
