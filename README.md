@@ -3,7 +3,7 @@
 
 * Open-Source
 * Version  : 3.1 Bêta
-* Créateur : Fabien Beaujean
+* Créateur : Fabgsgc
 * Contributeurs : Lucas5190, t1307
 * Description : framework PHP MVC de développement d'applications Web.
 
@@ -53,18 +53,6 @@ Ensuite, il vous suffit d'exécuter la commande ``update`` de Composer pour mett
 ```text
 > composer update
 ```
-
-Documentation :
------------
-
-* La documentation du framework est disponible ici ``doc/build/singlehtml/index.html``
-
-Site du projet
------------
-
-[GCsystem : framework PHP français hautes performances][1]
-
-[1]: http://gcs-framework.dzv.me/
 
 Licence :
 -----------
